@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "what": "Hand-maintained capability baseline for VERDICT 005 — assembled from this repo's ledgers, NOT probed. Each item cites its source. 'capable' (agent plane) = the capability exists in >=1 documented seat per the ledgers; 'walled' = the specific capability is verified-blocked; subprocess items use present|wall.",
+    "assembled": "2026-07-10",
+    "sources": [
+      "PLATFORM-LIMITS.md",
+      "CONVENTIONS.md",
+      "control/status.md (OA-001, OA-002, OA-003)",
+      "docs/CAPABILITIES.md (planted living-ledger seed)"
+    ]
+  },
+  "baseline_b": {
+    "id": "baseline-B:fleet-manager-capabilities",
+    "repo": "menno420/fleet-manager",
+    "path": "docs/capabilities.md",
+    "reachable_from_probing_seat": true,
+    "http_code": 200,
+    "bytes": 14882,
+    "probed_this_session": "2026-07-10",
+    "note": "The fleet roll-up baseline the proposal names IS readable from this worker seat (HTTP 200, 14882 bytes of real manifest; a nonexistent path on the same repo returns a 14-byte '404: Not Found'). master==main (identical bytes). A distinct docs/CAPABILITIES.md (uppercase, 3474 bytes) also exists on that repo. So baseline-B reachability is NOT a wall this cycle — the diff-against-fleet baseline is available to the probe."
+  },
+  "subprocess_plane": {
+    "sp:tool-git": {"expected_result": "present", "source_file": "docs/CAPABILITIES.md", "source_line_or_section": "§Walls (only tag-push/branch-delete 403; git itself works) + PLATFORM-LIMITS.md (no lane-local walls)"},
+    "sp:net-raw-cross-repo": {"expected_result": "present", "source_file": "docs/CAPABILITIES.md", "source_line_or_section": "L8 fleet master copy read cross-repo; confirmed by baseline-B fetch HTTP 200 this session"},
+    "sp:net-api-repo-object": {"expected_result": "wall", "source_file": "docs/CAPABILITIES.md", "source_line_or_section": "L53 'api.github.com direct HTTP: blocked -> GitHub access is MCP-tools-only'"},
+    "sp:net-api-branch-protection": {"expected_result": "wall", "source_file": "control/status.md", "source_line_or_section": "OA-001 'REST branch-protection endpoints 403' + docs/CAPABILITIES.md L53"},
+    "sp:net-proxy-status": {"expected_result": "present", "source_file": "PLATFORM-LIMITS.md", "source_line_or_section": "environment egress proxy (HTTPS_PROXY) is the documented network path; reachable"},
+    "sp:env-token-names": {"expected_result": "present", "source_file": "docs/CAPABILITIES.md", "source_line_or_section": "L40-42 'Provisioned credentials ... printenv first; a missing-looking credential is usually a missing look'"},
+    "sp:push-main": {"expected_result": "wall", "source_file": "CONVENTIONS.md", "source_line_or_section": "§'Forward-only git' (no direct push; PR-required) + control/status.md OA-001 (protected main) + docs/CAPABILITIES.md §Walls (tag/branch push 403)"}
+  },
+  "agent_plane": {
+    "ap:subagent-spawn": {"expected_result": "capable", "source_file": "control/status.md", "source_line_or_section": "OA-003 FLEET RECIPE (coordinator spawns in-session workers) + coordinator self-enumeration"},
+    "ap:bash-shell": {"expected_result": "capable", "source_file": "control/status.md", "source_line_or_section": "OA-003 'trigger tools live behind ToolSearch in WORKER seats'; worker seat has Bash (this session)"},
+    "ap:file-io": {"expected_result": "capable", "source_file": "control/status.md", "source_line_or_section": "worker seat file tools (this session); every sim subtree is worker-authored"},
+    "ap:grep-glob": {"expected_result": "capable", "source_file": "control/status.md", "source_line_or_section": "worker seat grep/glob (this session)"},
+    "ap:github-mcp": {"expected_result": "capable", "source_file": "docs/CAPABILITIES.md", "source_line_or_section": "L53 'GitHub access is MCP-tools-only' — available in both documented seats"},
+    "ap:webagent-reply": {"expected_result": "capable", "source_file": "README.md", "source_line_or_section": "coordinator seat is the orchestrating session that replies to the owner/webagent (pipeline position Q-0264)"},
+    "ap:send_later-selfbind": {"expected_result": "capable", "source_file": "control/status.md", "source_line_or_section": "OA-003 'self-bind send_later works'; pacemaker chain VERIFIED ALIVE 21:11Z-22:16Z 2026-07-10"},
+    "ap:create_trigger-crosssession": {"expected_result": "walled", "source_file": "control/status.md", "source_line_or_section": "OA-003 'Cross-session binding is ORG-BLOCKED — binding a trigger to ANOTHER session fails org policy'"},
+    "ap:workflow": {"expected_result": "capable", "source_file": "docs/CAPABILITIES.md", "source_line_or_section": "L43-45 'workflow_dispatch on the release workflow ... proven repeatedly fleet-wide'"}
+  }
+}
