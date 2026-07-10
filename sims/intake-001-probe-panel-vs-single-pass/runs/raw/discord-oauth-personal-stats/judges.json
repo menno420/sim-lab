@@ -1,0 +1,27 @@
+{
+  "comparison": "mode1 rep-1 report vs mode2 rep-1 report (representative reps chosen per protocol)",
+  "mode_labels_stripped": true,
+  "judges": [
+    {
+      "judge": "judge_1",
+      "order": {"A": "mode1", "B": "mode2"},
+      "A": {"risk_surfacing": 5, "specificity": 5, "actionability": 5, "calibration": 4, "coverage": 4},
+      "B": {"risk_surfacing": 5, "specificity": 5, "actionability": 5, "calibration": 5, "coverage": 5},
+      "winner": "B",
+      "winner_mode": "mode2",
+      "margin": "slight",
+      "why": "Both nail IDOR + read-only-source as the twin failure modes with grounded, concrete falsifiers. B adds decisive value: challenges the 'guilds' scope as broader than needed, flags versioned-contract as premature, and ties the demand/opportunity-cost lens to a defensible HOLD verdict."
+    },
+    {
+      "judge": "judge_2",
+      "order": {"A": "mode2", "B": "mode1"},
+      "A": {"risk_surfacing": 5, "specificity": 5, "actionability": 5, "calibration": 5, "coverage": 5},
+      "B": {"risk_surfacing": 5, "specificity": 4, "actionability": 4, "calibration": 4, "coverage": 4},
+      "winner": "A",
+      "winner_mode": "mode2",
+      "margin": "slight",
+      "why": "Both nail the IDOR/isolation and read-only-coupling failure modes. A goes further: challenges the 'guilds' scope as over-broad and answerable bot-side, questions the versioned contract as premature, and frames the demand/opportunity-cost sequencing more sharply. B is thorough and well-structured but slightly more restating the brief."
+    }
+  ],
+  "consensus": "Both judges favor mode2 (panel) by a slight margin in both orderings; no position bias detected (winner tracked the mode2 content regardless of A/B slot)."
+}

@@ -1,0 +1,22 @@
+{
+  "mode": 2,
+  "rep": 1,
+  "cell_agents": 4,
+  "cell_tokens": 80728,
+  "cell_wall_parallel_ms": 71140,
+  "personas": {
+    "skeptic": {"agent_id": "ab0281e0e32a7d96d", "recommendation": "HOLD", "confidence": 0.6, "tokens": 19407, "wall_ms": 34932, "top_risk": "Karma collapses into a second activity/social-graph counter rather than a distinct 'appreciation' signal, and is trivially farmed via mutual-boosting and alts.", "cheapest_evidence": "2-4 week manual/shadow trial: rank correlation karma vs XP + reciprocal-pair concentration."},
+    "builder": {"agent_id": "acea13d374d91631f", "recommendation": "BUILD", "confidence": 0.6, "tokens": 19420, "wall_ms": 32000, "top_risk": "Karma collapses into a second activity counter (or popularity/collusion contest) rather than a distinct appreciation signal.", "cheapest_evidence": "Minimal !thanks grant with per-day caps, then check karma vs XP leaderboard rank correlation after 2-4 weeks."},
+    "user_value": {"agent_id": "a44cc695dc5f4ff97", "recommendation": "HOLD", "confidence": 0.6, "tokens": 20303, "wall_ms": 33466, "top_risk": "Karma collapses into a second activity counter (or a gameable popularity contest) rather than a distinct 'appreciation' signal.", "cheapest_evidence": "Shadow-log peer grants for a few weeks and correlate karma against existing XP; low correlation + non-trivial grant volume validates distinctness before any UI ships."}
+  },
+  "synth": {
+    "agent_id": "a1648c33444a3e584",
+    "recommendation": "HOLD",
+    "confidence": 0.65,
+    "tokens": 21598,
+    "wall_ms": 36208,
+    "top_risk": "Karma collapses into a second activity counter (or a gameable popularity/collusion contest) rather than a distinct 'appreciation' signal.",
+    "cheapest_evidence": "Run a 2-4 week shadow trial in one active server (grants logged, leaderboard hidden): rank-correlate karma vs XP and measure reciprocal-pair grant concentration; low correlation + healthy non-pair grant volume validates distinctness before any leaderboard ships.",
+    "report": "Panel synthesis: HOLD/BUILD/HOLD all at 0.6; the lone BUILD is 'BUILD minimal experiment, HOLD on full feature.' Reconciled verdict HOLD. Core claim semantic (third non-redundant axis). Strongest failure: distinctness collapse compounded by gameability; anti-gaming defenses push karma back toward activity, worsening redundancy; secondary cold-start/thin liquidity and social-toxicity/moderation load. Falsification: 2-4 week rank-correlate karma vs XP + grant-graph reciprocal-pair concentration + alt/sybil spot test, preferably shadow (leaderboard hidden). MVP cost low; real cost is open-ended anti-abuse layer; don't build sybil defenses before evidence of gaming. Smallest slice: single grant, no self-grant + per-granter daily cap/per-pair cooldown, purely reputational, grants logged day one, leaderboard hidden until distinctness test passes."
+  }
+}

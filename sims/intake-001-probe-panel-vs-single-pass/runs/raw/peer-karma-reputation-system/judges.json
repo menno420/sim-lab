@@ -1,0 +1,29 @@
+{
+  "idea_slug": "peer-karma-reputation-system",
+  "compared": "mode1 rep-1 report vs mode2 rep-1 report (labels stripped, order randomized/swapped per judge)",
+  "judges": [
+    {
+      "judge": "judge_1",
+      "agent_id": "ac30155d165ecc97a",
+      "order": {"A": "mode1", "B": "mode2"},
+      "A": {"risk_surfacing": 4, "specificity": 5, "actionability": 5, "calibration": 5, "coverage": 4},
+      "B": {"risk_surfacing": 5, "specificity": 5, "actionability": 5, "calibration": 5, "coverage": 5},
+      "winner": "B",
+      "winner_mode": "mode2",
+      "margin": "slight",
+      "why": "Both grounded in actual XP/coins/karma mechanics with no fabrication, name correlation+reciprocity falsification, propose same capped-grant MVP. B edges ahead: surfaces the anti-gaming-defenses-worsen-redundancy trap, cold-start/thin-liquidity, moderation load, and the shadow-log-before-visible point."
+    },
+    {
+      "judge": "judge_2",
+      "agent_id": "aaccf35264add8bf6",
+      "order": {"A": "mode2", "B": "mode1"},
+      "A": {"risk_surfacing": 5, "specificity": 5, "actionability": 5, "calibration": 5, "coverage": 5},
+      "B": {"risk_surfacing": 5, "specificity": 5, "actionability": 4, "calibration": 4, "coverage": 4},
+      "winner": "A",
+      "winner_mode": "mode2",
+      "margin": "slight",
+      "why": "Both nail distinctness-collapse core risk with grounded non-fabricated mechanics and cheap correlation/reciprocity tests. A edges ahead on the anti-gaming-defenses-worsen-redundancy trap, the shadow-trial insight that publishing creates the gaming it measures, and explicit staged decision rules."
+    }
+  ],
+  "result": "Both judges picked mode2 at slight margin; mode2 won regardless of A/B position (no position bias detected)."
+}

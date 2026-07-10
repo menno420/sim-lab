@@ -1,0 +1,13 @@
+{
+  "mode": 1,
+  "rep": 3,
+  "agents": 1,
+  "role": "single-pass",
+  "tokens": 35986,
+  "wall_ms": 49701,
+  "recommendation": "BUILD",
+  "confidence": 0.72,
+  "top_risk": "Reward inflation vs fishing/mining earn rates is unmeasurable pre-launch — no earn-rate baseline exists, so drawing from the shared pool could quietly undercut those games.",
+  "cheapest_evidence": "Ship a logging-first slice at (threshold=24, debounce=30s, cooldown=900s) with provisional reward values and log fishing+mining coins/items earned per active user/day over the same window, so the encounter_mint / fishing_mining_earn ratio becomes computable.",
+  "report": "## Probe: Wild Encounters (activity-triggered spawn engine)\n\n### 1. Core claim\nPassive engagement: debounced per-channel counter at ~24 counted messages spawns a claimable embed; first valid claimer wins reward from existing infra (economy_service coins, fishing/mining catalogue, new GAME_ENCOUNTERS XP key). Repo's first message-triggered event. Claims (a) parameter set rare-but-visible + farming unprofitable; (b) reuse doesn't undercut fishing/mining.\n\n### 2. Strongest failure mode\nReward economics, not spawn tuning. Claim (a) settled. Real exposure is (b): no measured fishing/mining earn-rate baseline, ratio uncomputable pre-launch. Secondary: '0% farmer share' optimistic — reflex-bot not modeled; guarantee is per-claimer cooldown cap (4/hr at cd=900) enforced server-side.\n\n### 3. Falsify / cheapest evidence\nClaim (a) adequate evidence in repo: deterministic 5-seed 946-self-check sim. At 24/30s/900s: spawns/active-hour = 0.93/3.00/4.38 (low/med/high), spawn ceiling 5.22/hr, farm cap 4.00/hr. Falsifiers: real channel slower than EST low tier; reflex-bot beating message-driven claim model. Claim (b) only on live data via logging-first slice.\n\n### 4. Cost/complexity vs payoff\nFavorable. Reuses economy_service, catalogue, game_xp_service (only new GAME_ENCOUNTERS key). Spawn tuning de-risked by sim. Remaining: debounced counter, one-live-spawn state, atomic exactly-once claim, cooldown at callback, off-by-default opt-in. Open cost: telemetry to close (b).\n\n### 5. Smallest shippable slice\nSingle-channel opt-in encounter at 24/30s/900s, all guardrails, rewards PROVISIONAL, telemetry from day one: per-spawn, per-claim, per-channel/day mint, and fishing+mining earned per active user/day (missing baseline). Verdict BUILD the logging-first slice; do not scale reward values until ratio computed."
+}

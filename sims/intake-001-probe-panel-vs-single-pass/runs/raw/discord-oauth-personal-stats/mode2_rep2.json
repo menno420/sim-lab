@@ -1,0 +1,35 @@
+{
+  "mode": 2,
+  "rep": 2,
+  "cell_agents": 4,
+  "cell_tokens": 81625,
+  "cell_wall_parallel_ms": 89059,
+  "personas": {
+    "skeptic": {
+      "tokens": 19510, "wall_ms": 51188,
+      "recommendation": "HOLD", "confidence": 0.6,
+      "top_risk": "Per-user isolation (IDOR): if the API trusts any client-supplied user id instead of the verified session identity, one user reads another's stats — the exact gate that defines 'trustworthy'.",
+      "cheapest_evidence": "A one-page threat model plus a single OAuth-to-API vertical slice with an explicit A-reads-B isolation test, before building the full page."
+    },
+    "builder": {
+      "tokens": 19524, "wall_ms": 52737,
+      "recommendation": "BUILD", "confidence": 0.6,
+      "top_risk": "The prod-to-API data path is unspecified — a 'read-only, token-scoped API' still needs a data source, and that pipeline (replica? export? sync job?) is the real hidden cost and an untracked trust surface.",
+      "cheapest_evidence": "One OAuth-gated 'my XP' endpoint that derives the user id strictly from the server-side session, plus an IDOR test that tries to read another user's stats and must fail."
+    },
+    "user_value": {
+      "tokens": 21159, "wall_ms": 45921,
+      "recommendation": "HOLD", "confidence": 0.6,
+      "top_risk": "A full OAuth flow plus a separate read-only API lane is being stood up for a personal-stats page whose actual user demand is not measured.",
+      "cheapest_evidence": "An unauthenticated demand signal (count of users requesting personal stats, or a waitlist/poll) collected off Phases 1-2 before any OAuth or API-lane code is written."
+    }
+  },
+  "synth": {
+    "tokens": 21432, "wall_ms": 36322,
+    "recommendation": "HOLD",
+    "confidence": 0.62,
+    "top_risk": "Two distinct unknowns share the same HOLD verdict: (a) the prod-to-API data provenance is unspecified — a 'read-only, token-scoped' API still needs a source (prod read-replica, committed exports, or a sync/ETL job), and that pipeline is the real hidden cost and an untracked trust surface; and (b) per-user isolation (IDOR) — if any endpoint derives the user id from a client-supplied value instead of the verified server-side session, one user reads another's stats, defeating the exact gate that defines 'trustworthy'.",
+    "cheapest_evidence": "Two cheap artifacts, in order: (1) off the already-planned Phases 1-2, collect an unauthenticated demand signal (request counter / notify-me / waitlist count) to justify the highest-cost phase before any OAuth or API-lane code; (2) a one-page abuse-case/threat-model that names the concrete data source AND the isolation enforcement point, then a single OAuth->server-side-session->one 'my XP' endpoint vertical slice whose user id comes only from the session, gated by a mandatory A-reads-B IDOR test and a CSRF/state-parameter test that must fail the attacker.",
+    "report": "Panel: two HOLD (Skeptic, User-Value) and one BUILD (Builder), all at 0.6 — a genuine split, not a landslide, so the synthesis is a conditional HOLD: the design is sound and the security gate is unusually well-specified, but two independent cheap tests have not been run, and each blocks a different failure mode. All three name the SAME under-measured back door: the data-access path between the new API and production Postgres. The idea says prod 'cannot be queried directly' but never states where the API DOES get data. Candidates carry very different cost/risk: a prod read-only connection/replica partly contradicts the premise and adds a live trust surface; committed JSON exports (consistent with Phase 2) are cheapest but have unmeasured staleness; a sync/ETL job is the largest hidden cost. This must be resolved before the endpoint is written. Second, all three name per-user isolation (IDOR) as the sharpest security failure: 'read-only' and 'token-scoped' do NOT prevent cross-user reads; isolation holds only if every query is keyed to the Discord id from the verified server-side session. Third, User-Value contributes the decisive HOLD reason: opportunity cost — Phase 3 is the highest-cost, highest-risk phase yet demand is not measured, and the cheapest demand test is already free (instrument the ungated Phases 1-2). Weighing the lone BUILD: Builder is right that nothing in the gate is exotic, but its own 0.6 cap is set by the unmeasured data feed and it concedes the abuse-walkthrough + IDOR/CSRF tests should come first — so even the BUILD vote collapses toward HOLD. Scope note: identify+guilds fixed as minimal but per-user stats plausibly need only identify; default to identify-only for the slice. Falsifiers by cost: (1) demand; (2) provenance (name the data source; if 'read prod directly' the premise is violated); (3) trust (single-endpoint slice with A-reads-B IDOR test and CSRF/state test). Smallest viable slice: ship Phases 1-2 immediately; for Phase 3, resolve data source (prefer committed exports) and confirm demand, then build one identify-only 'my XP' endpoint with user id from session, state parameter, ephemeral session, per-session rate limit, and the abuse-walkthrough + IDOR/CSRF tests as the merge gate — invite-only until isolation and state checks pass. Defer guilds scope, leaderboards, mining. HOLD, confidence 0.62."
+  }
+}

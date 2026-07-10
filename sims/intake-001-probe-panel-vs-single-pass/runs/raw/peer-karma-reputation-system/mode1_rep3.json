@@ -1,0 +1,12 @@
+{
+  "mode": 1,
+  "rep": 3,
+  "agent_id": "abfdc38692d5db67d",
+  "recommendation": "BUILD",
+  "confidence": 0.6,
+  "top_risk": "Karma collapses into a second activity counter (or a collusion/alt-farmed number), so it duplicates XP instead of measuring a distinct 'appreciation' axis.",
+  "cheapest_evidence": "Run a time-boxed manual/thin-slice trial and correlate per-member karma against XP rank; low correlation plus a plausible top-N shows the axis is distinct and not trivially gamed.",
+  "tokens": 20253,
+  "wall_ms": 31138,
+  "report": "## (1) Core claim\nPeer-granted reputation score positioned as a third axis alongside XP (activity) and coins (economy) with its own leaderboard. Load-bearing claim is narrow/testable: person-to-person appreciation is meaningfully distinct from and additive to activity/economy.\n## (2) Strongest failure mode\nDegeneration into a correlated duplicate: (a) activity-collinearity (most active = most seen = most karma; karma rank approx XP rank), (b) gaming (collusion/mutual-boosting/sybil/alt). Rate-limiting/caps/sybil resistance not measured. Spendability not measured; if spendable, gaming incentive rises.\n## (3) Falsification / cheapest evidence\nFalsifier: karma not distinct or not trustworthy. Correlate karma vs XP; high correlation falsifies. Eyeball grant graph for reciprocity clusters/new-account spikes. Cheapest: time-boxed thin-slice trial in one real server with logging.\n## (4) Cost vs payoff\nCore mechanic cheap (reuses XP/coins leaderboard scaffolding); expensive part is integrity (caps, cooldowns, self/alt blocking, reciprocity dampening, sybil resistance) - all not measured. Payoff near-zero if correlated.\n## (5) Smallest slice\nSingle grant command with basic guards only: no self-grant, per-pair cooldown, small per-granter daily cap, purely reputational (non-spendable). Ship read-only-scored with its own leaderboard, log every grant, run correlation-vs-XP after a trial window before deeper anti-sybil work."
+}

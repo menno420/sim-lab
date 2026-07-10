@@ -1,0 +1,22 @@
+{
+  "mode": 2,
+  "rep": 2,
+  "cell_agents": 4,
+  "cell_tokens": 79609,
+  "cell_wall_parallel_ms": 58885,
+  "personas": {
+    "skeptic": {"agent_id": "a9ed3c9025f5259bc", "recommendation": "HOLD", "confidence": 0.68, "tokens": 20263, "wall_ms": 33652, "top_risk": "Karma collapses into a second activity counter, gameable by mutual-boosting/alts, so it adds a leaderboard without adding a distinct signal.", "cheapest_evidence": "Instrument grants ~2-4 weeks; measure rank correlation karma vs XP plus share of karma in small reciprocal clusters."},
+    "builder": {"agent_id": "aa2377c11ab8c1a53", "recommendation": "HOLD", "confidence": 0.6, "tokens": 19420, "wall_ms": 35619, "top_risk": "Peer-granted karma collapses into a second activity/social-clique counter, gameable by mutual-boosting and alts, so it duplicates XP instead of measuring a distinct 'appreciation' axis.", "cheapest_evidence": "Minimal !karma grant + separate leaderboard behind a config flag on one live server, then correlate karma rank vs XP rank after ~2 weeks."},
+    "user_value": {"agent_id": "aca95568d2ce7a801", "recommendation": "HOLD", "confidence": 0.6, "tokens": 19415, "wall_ms": 22006, "top_risk": "Karma collapses into a second activity counter (proxy for XP + social clique size) rather than an orthogonal 'appreciation' axis.", "cheapest_evidence": "Time-boxed shadow pilot in one server: log grants, compute karma-vs-XP rank correlation, eyeball grant graph for reciprocity; no leaderboard UI needed to test the core claim."}
+  },
+  "synth": {
+    "agent_id": "ad2f193bf43259208",
+    "recommendation": "HOLD",
+    "confidence": 0.66,
+    "tokens": 20511,
+    "wall_ms": 23266,
+    "top_risk": "Karma collapses into a second activity counter - gameable by mutual-boosting, reciprocal cliques, and alts - duplicating XP instead of measuring a distinct appreciation axis.",
+    "cheapest_evidence": "Config-flagged single-server pilot: log every grant, then measure karma-vs-XP rank correlation plus the share of karma flowing inside small reciprocal clusters - low correlation + low clustering is the load-bearing signal it's distinct.",
+    "report": "Panel synthesis: all three HOLD (0.68/0.6/0.6), no dissent on direction, only on how much to build for the test; synthesized 0.66. Core claim semantic (third orthogonal axis). Strongest failure unanimous: distinctness collapse reinforced by gameability (mutual-boosting/reciprocal clusters/sybil); secondary thin engagement if reputational, merge into coins if spendable; anti-abuse layer is the real unresolved cost. Falsification: instrument one live server ~2-4 weeks, (a) rank correlation karma vs XP, (b) reciprocal-cluster concentration; run instrument-first, gate leaderboard behind passing the test. Asymmetry: cheap to ship, expensive to make trustworthy, worthless if untrusted. Smallest slice: +karma command behind config flag on single server, no self-grant/hard rate limit/per-pair cooldown/account-age gate, purely reputational, no leaderboard UI yet, every grant logged."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mode": 1,
+  "rep": 2,
+  "agent_id": "a12dd8194bc6376a9",
+  "recommendation": "BUILD",
+  "confidence": 0.6,
+  "top_risk": "Karma collapses into a second activity counter, gameable by mutual-boosting/alts, so it duplicates XP rather than adding a distinct signal.",
+  "cheapest_evidence": "Ship a capped, log-only karma grant behind a flag and correlate karma vs XP rankings after a few weeks; low correlation + non-trivial grant volume validates distinctness.",
+  "tokens": 20296,
+  "wall_ms": 28265,
+  "report": "## Probe Report\n### (1) Core claim\nAdds a person-granted reputation score to a bot with XP (activity) and coins (economy). Claim: peer-granted reputation is a distinct, worthwhile signal, distinguished by the source of value (other members, not the bot).\n### (2) Strongest failure mode\nKarma degenerates into a second activity counter (distinctness collapse) AND is adversarially captured (collusion, mutual-boosting rings, sybil/alt farming). Open-probe mitigations (rate-limiting, caps, anti-collusion, spendable-or-not) are not measured in source.\n### (3) Falsification / cheapest evidence\nRank-correlate karma vs XP over a trial window; high correlation falsifies distinctness. Inspect grant graph for reciprocity clusters, new-account bursts, concentration. Cheapest: log-only/shadow mode behind a flag, compute correlation offline.\n### (4) Cost vs payoff\nModest schema/command/leaderboard cost; real cost is anti-abuse (can grow unbounded). Payoff contingent on distinctness (unproven).\n### (5) Smallest slice\nPeer grant with hard daily cap per grantor, no self-grants, per-pair cooldown, purely reputational (non-spendable), append-only grant events, NO leaderboard in v1 (log/shadow scores). Turn on leaderboard only after distinctness correlation clears a pre-agreed bar."
+}

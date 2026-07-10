@@ -1,0 +1,22 @@
+{
+  "mode": 2,
+  "rep": 3,
+  "cell_agents": 4,
+  "cell_tokens": 79749,
+  "cell_wall_parallel_ms": 60734,
+  "personas": {
+    "skeptic": {"agent_id": "ab0d2af51dd1422ee", "recommendation": "HOLD", "confidence": 0.6, "tokens": 19407, "wall_ms": 31824, "top_risk": "Karma likely collapses into a second activity/social-graph counter rather than a distinct 'appreciation' signal, and is trivially gamed by mutual-boosting and alts.", "cheapest_evidence": "2-4 week manual/low-code trial in the live server: correlation karma rank vs XP rank plus how many grants come from reciprocal pairs."},
+    "builder": {"agent_id": "a7ca24b5c7e62c4a8", "recommendation": "BUILD", "confidence": 0.6, "tokens": 19420, "wall_ms": 29788, "top_risk": "Karma collapses into a second activity counter - highly correlated with XP - so it earns its own leaderboard without carrying a distinct signal.", "cheapest_evidence": "Bare +karma command to one active server, log grants ~2-4 weeks, compute rank correlation karma vs XP and inspect grant graph for reciprocal pairs."},
+    "user_value": {"agent_id": "aebee1217aa8a9447", "recommendation": "BUILD", "confidence": 0.6, "tokens": 20352, "wall_ms": 28847, "top_risk": "Karma collapses into a second activity counter (helpfulness correlates with talking a lot), making it redundant with XP.", "cheapest_evidence": "After N weeks, correlate karma against XP per member; low correlation + a different top-of-leaderboard set proves the axis is distinct."}
+  },
+  "synth": {
+    "agent_id": "abc9037fd6e5ad50c",
+    "recommendation": "BUILD",
+    "confidence": 0.6,
+    "tokens": 20570,
+    "wall_ms": 28910,
+    "top_risk": "Karma collapses into a second activity counter - highly correlated with XP - so it earns its own leaderboard without carrying a distinct 'appreciation' signal, and mutual-boosting/alts launder social gaming as reputation.",
+    "cheapest_evidence": "Ship a bare, non-spendable +karma command to one active server, log every grant for 2-4 weeks, then compute karma-vs-XP rank correlation (Spearman, thresholds fixed in advance) and inspect the directed grant graph for reciprocal pairs.",
+    "report": "Panel synthesis: two BUILD (builder, user/value) + one HOLD (skeptic), all 0.6; converge on identical failure mode and falsification test. Disagreement is sequencing, not substance; reconciled verdict BUILD the measurement slice. Core claim semantic (distinct axis). Strongest failure: axis collapse (helpfulness correlates with talking) coupled with mutual-boosting/collusion/sybil laundering gaming as appreciation; secondary social/moral hazard of public 'who is liked' ranking; sparsity/cold-start. Falsification: 2-4 weeks MVP logs: Spearman karma vs XP, grant-graph reciprocity, different top-of-leaderboard set; thresholds fixed in advance. MVP cost low; true cost deferred into anti-gaming/moderation. Smallest slice: purely reputational counter, single grant command, block self+reciprocal grants, per-granter daily cap + per-target cooldown, one server, every grant logged; run leaderboard shadow/private during trial, public launch + spendability gated on distinctness evidence."
+  }
+}
