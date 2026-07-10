@@ -1,0 +1,13 @@
+{
+  "mode": 1,
+  "rep": 2,
+  "agents": 1,
+  "role": "single-pass",
+  "tokens": 27714,
+  "wall_ms": 48076,
+  "recommendation": "BUILD",
+  "confidence": 0.72,
+  "top_risk": "Reward inflation vs fishing/mining is unmeasurable pre-launch — no earn-rate baseline exists to compute the undercut ratio.",
+  "cheapest_evidence": "Ship off-by-default in a few opt-in channels logging encounter mint AND fishing+mining coins/items per active user/day over the same window; compute encounter_mint / fishing_mining_earn.",
+  "report": "## Probe — Wild Encounters (message-triggered spawn engine)\nGrounding: repo contains completed rung-1 numeric simulation at sims/intake-003-wild-encounter-spawn-tuning/, verdict needs-more-evidence.\n\n### 1. Core claim\nPassive engagement mechanic: debounced per-channel counter crosses ~24 msgs, fires spawn (embed + Claim button); first valid claimer wins via audited workflow. Repo's first message-triggered event. Reuses economy_service coins, fishing/mining catalogue, new GAME_ENCOUNTERS XP key. Claims (a) tuning keeps rare-but-visible + farming unprofitable; (b) reward pool draw doesn't undercut fishing/mining.\n\n### 2. Strongest failure mode\nReward-economics failure, not tuning. Sim settles (a) but shows (b) unmeasurable pre-launch: fishing v1 shipped with no published earn rate. Mint ~6.8/24.0/35.0 claims per 8h. Secondary: reflex-claim bot not simulated; binding guarantee is per-account cooldown cap (4/hr at cd=900s) enforced server-side.\n\n### 3. Falsify / cheapest evidence\nClaim (a) evidenced. Concentrate on (b): ship off-by-default, per-channel opt-in, allow-list, PROVISIONAL reward values; log per-spawn, per-claim, per-channel/day mint, and fishing+mining earned per active user/day (missing baseline). Compute encounter_mint / fishing_mining_earn.\n\n### 4. Cost/complexity vs payoff\nLow-to-moderate: reuses seams; net-new is GAME_ENCOUNTERS key + Encounters cog + audited claim workflow. Tuning bounded analytically: spawn ceiling 3600/((threshold-1)*debounce)=5.22/hr; farm cap min(ceiling,3600/cooldown)=4/hr. Residual cost: atomic exactly-once claim + telemetry.\n\n### 5. Smallest shippable slice\nEncounters cog defaults 24/30s/900s; off-by-default + opt-in + allow-list; one-live-spawn; server-side cooldown at Claim callback; atomic exactly-once claim; provisional rewards; full telemetry from day one."
+}

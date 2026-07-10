@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "idea_source": "menno420/idea-engine ideas/superbot/idea-probe-brainstorm-simulator-2026-07-10.md @ 3e3e80d73ea4ad2af1a0f8bee49262db1da09302",
+    "intake": "INTAKE 001",
+    "modes": {"mode1": "single-pass battery (1 agent)", "mode2": "panel: 3 personas (skeptic/builder/user_value) + synthesizer (4 agents)"},
+    "reps_per_mode": 3,
+    "instrumentation": "subagent_tokens + duration_ms from each Agent <usage> block; absolute values Opus-4.8/this-env specific, ratios transferable",
+    "note": "frozen live-probe runs; the LLM layer is not bit-reproducible; analyze.py recomputes headlines deterministically over this file"
+  },
+  "ideas": {
+    "discord-oauth-personal-stats": {
+      "mode1": [
+        {"rep": 1, "recommendation": "BUILD", "confidence": 0.7, "tokens": 20465, "wall_ms": 44211},
+        {"rep": 2, "recommendation": "BUILD", "confidence": 0.7, "tokens": 31561, "wall_ms": 87643},
+        {"rep": 3, "recommendation": "HOLD", "confidence": 0.62, "tokens": 29298, "wall_ms": 84751}
+      ],
+      "mode2": [
+        {"rep": 1, "recommendation": "HOLD", "confidence": 0.62, "cell_tokens": 79724, "cell_agents": 4, "cell_wall_parallel_ms": 89483, "persona_recs": {"skeptic": "HOLD", "builder": "BUILD", "user_value": "HOLD"}},
+        {"rep": 2, "recommendation": "HOLD", "confidence": 0.62, "cell_tokens": 81625, "cell_agents": 4, "cell_wall_parallel_ms": 89059, "persona_recs": {"skeptic": "HOLD", "builder": "BUILD", "user_value": "HOLD"}},
+        {"rep": 3, "recommendation": "HOLD", "confidence": 0.62, "cell_tokens": 81205, "cell_agents": 4, "cell_wall_parallel_ms": 92098, "persona_recs": {"skeptic": "HOLD", "builder": "BUILD", "user_value": "HOLD"}}
+      ],
+      "judges": [
+        {"judge": "judge_1", "order": {"A": "mode1", "B": "mode2"}, "winner_mode": "mode2", "margin": "slight"},
+        {"judge": "judge_2", "order": {"A": "mode2", "B": "mode1"}, "winner_mode": "mode2", "margin": "slight"}
+      ]
+    },
+    "wild-encounters-activity-spawning": {
+      "mode1": [
+        {"rep": 1, "recommendation": "BUILD", "confidence": 0.68, "tokens": 34999, "wall_ms": 40092},
+        {"rep": 2, "recommendation": "BUILD", "confidence": 0.72, "tokens": 27714, "wall_ms": 48076},
+        {"rep": 3, "recommendation": "BUILD", "confidence": 0.72, "tokens": 35986, "wall_ms": 49701}
+      ],
+      "mode2": [
+        {"rep": 1, "recommendation": "BUILD", "confidence": 0.63, "cell_tokens": 90953, "cell_agents": 4, "cell_wall_parallel_ms": 118796, "persona_recs": {"skeptic": "HOLD", "builder": "BUILD", "user_value": "BUILD"}},
+        {"rep": 2, "recommendation": "BUILD", "confidence": 0.61, "cell_tokens": 79486, "cell_agents": 4, "cell_wall_parallel_ms": 70305, "persona_recs": {"skeptic": "BUILD", "builder": "BUILD", "user_value": "BUILD"}},
+        {"rep": 3, "recommendation": "BUILD", "confidence": 0.6, "cell_tokens": 80352, "cell_agents": 4, "cell_wall_parallel_ms": 74172, "persona_recs": {"skeptic": "BUILD", "builder": "BUILD", "user_value": "BUILD"}}
+      ],
+      "judges": [
+        {"judge": "judge_1", "order": {"A": "mode1", "B": "mode2"}, "winner_mode": "mode2", "margin": "slight"},
+        {"judge": "judge_2", "order": {"A": "mode2", "B": "mode1"}, "winner_mode": "mode2", "margin": "slight"}
+      ]
+    },
+    "peer-karma-reputation-system": {
+      "mode1": [
+        {"rep": 1, "recommendation": "BUILD", "confidence": 0.6, "tokens": 20257, "wall_ms": 35797},
+        {"rep": 2, "recommendation": "BUILD", "confidence": 0.6, "tokens": 20296, "wall_ms": 28265},
+        {"rep": 3, "recommendation": "BUILD", "confidence": 0.6, "tokens": 20253, "wall_ms": 31138}
+      ],
+      "mode2": [
+        {"rep": 1, "recommendation": "HOLD", "confidence": 0.65, "cell_tokens": 80728, "cell_agents": 4, "cell_wall_parallel_ms": 71140, "persona_recs": {"skeptic": "HOLD", "builder": "BUILD", "user_value": "HOLD"}},
+        {"rep": 2, "recommendation": "HOLD", "confidence": 0.66, "cell_tokens": 79609, "cell_agents": 4, "cell_wall_parallel_ms": 58885, "persona_recs": {"skeptic": "HOLD", "builder": "HOLD", "user_value": "HOLD"}},
+        {"rep": 3, "recommendation": "BUILD", "confidence": 0.6, "cell_tokens": 79749, "cell_agents": 4, "cell_wall_parallel_ms": 60734, "persona_recs": {"skeptic": "HOLD", "builder": "BUILD", "user_value": "BUILD"}}
+      ],
+      "judges": [
+        {"judge": "judge_1", "order": {"A": "mode1", "B": "mode2"}, "winner_mode": "mode2", "margin": "slight"},
+        {"judge": "judge_2", "order": {"A": "mode2", "B": "mode1"}, "winner_mode": "mode2", "margin": "slight"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "mode": 2,
+  "rep": 3,
+  "cell_agents": 4,
+  "cell_tokens": 81205,
+  "cell_wall_parallel_ms": 92098,
+  "personas": {
+    "skeptic": {
+      "tokens": 20395, "wall_ms": 61052,
+      "recommendation": "HOLD", "confidence": 0.6,
+      "top_risk": "Per-user data isolation rides on the new API's own authorization filter, not on OAuth scopes — one missing WHERE user_id = me leaks every user's stats.",
+      "cheapest_evidence": "One integration test: user A's token requests user B's Discord ID and must get 403/empty; plus a one-line confirmation of the data path (read-replica vs committed export vs live prod)."
+    },
+    "builder": {
+      "tokens": 19524, "wall_ms": 38657,
+      "recommendation": "BUILD", "confidence": 0.62,
+      "top_risk": "Per-user data isolation and OAuth state/CSRF correctness are exactly where a public, adversarially-verified auth surface fails, and none of it is measured yet.",
+      "cheapest_evidence": "A local end-to-end spike: Discord OAuth (identify+guilds), a stateless short-lived session, and one authorization test proving user A cannot fetch user B's stats by ID swap."
+    },
+    "user_value": {
+      "tokens": 19523, "wall_ms": 54516,
+      "recommendation": "HOLD", "confidence": 0.6,
+      "top_risk": "A full OAuth flow plus a separate read-only API service is being stood up for a personal-stats page whose user demand is not measured, adding the site's only auth attack surface for possibly-marginal payoff over existing bot commands.",
+      "cheapest_evidence": "Before building any auth, measure demand: count existing in-bot stats/rank command usage or run a one-question poll to users; if usage is high and users say they'd prefer a web view, proceed."
+    }
+  },
+  "synth": {
+    "tokens": 21763, "wall_ms": 31046,
+    "recommendation": "HOLD",
+    "confidence": 0.62,
+    "top_risk": "Per-user data isolation is the sharpest failure and it does not ride on OAuth scopes — identify+guilds authenticate WHO, not WHICH rows. The guarantee lives entirely in the new API's per-request authorization (mapping the session's Discord id to only that user's rows). A single missing WHERE user_id=me, an IDOR on /users/{id}/stats, or trusting a client-supplied guild id leaks every user's stats. This is exactly the property the trustworthiness gate names, and it is currently asserted, not demonstrated.",
+    "cheapest_evidence": "Two cheap probes, in order. (1) Demand, hours no code: count existing in-bot stats/rank command invocations or run a one-question poll — this is upstream of the whole security spend and can retire the phase before any auth surface is built. (2) If demand clears, one adversarial integration test: user A's token requests user B's stats/Discord id and must return 403/empty; plus a one-line confirmation of the actual data path (read-replica vs committed export vs live prod creds with role scoping). Add a state-parameter forge/replay test and a 'no long-lived token persisted' assertion to close the remaining named sub-checks.",
+    "report": "All three probes agree on the mechanics (OAuth identify+guilds -> separate superbot-lane read-only token-scoped API serving a versioned contract -> page renders own XP/coins/mining/rank; prod Postgres not queried directly) and framing (the artifact is a CLAIM — buildable-as-designed AND trustworthy under adversarial verification — with Phases 1-2 carrying no auth and correctly not gated). The split is BUILD (0.62) vs two HOLD (0.6/0.6), but thinner than the labels: the Builder concedes the security details are 'none of it measured yet' and makes the authorization+state tests the real gate; the Skeptic and User_Value call the same untested properties reason to HOLD. Reconciled, a HOLD one or two cheap probes away from BUILD, not a design objection. Unanimous sharpest technical risk: per-user isolation (IDOR), where the API authenticates the user but derives the target record from a client-supplied identifier. The headline architecture (separate read-only API) defends prod WRITES and AVAILABILITY — not cross-user READS, which is the risk the gate actually centers; the marquee design choice is aimed at a different threat than the sharpest one. Secondary agreed: (a) guilds scope broader than necessary; per-server rank derivable server-side; (b) the Postgres->API data path is unspecified and materially changes risk; (c) session/token lifecycle and CSRF/state named but not evidenced. User_Value contributes the upstream consideration: demand is not measured, and this phase stands up the site's ENTIRE auth surface plus a second deployable service to deliver data a zero-auth Discord command already returns; the demand probe costs hours and no code and should run first. Smallest defensible slice: ship Phases 1-2 now; for Phase 3, validate demand via the existing bot command/DM; if confirmed, build the thinnest web slice behind an allowlist — OAuth identify scope only (defer guilds), short-lived stateless session, read-only API exposing a single endpoint returning ONLY the caller's own aggregate stats with NO /{id} in the path, no leaderboard-of-others in v1. Gate public exposure on the authorization-isolation test and state-parameter test being green, with the data path documented and abuse-case walkthrough written. HOLD, not KILL and not BUILD."
+  }
+}

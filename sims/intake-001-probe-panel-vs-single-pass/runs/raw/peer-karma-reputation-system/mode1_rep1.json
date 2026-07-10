@@ -1,0 +1,12 @@
+{
+  "mode": 1,
+  "rep": 1,
+  "agent_id": "a215f6449d5385e68",
+  "recommendation": "BUILD",
+  "confidence": 0.6,
+  "top_risk": "Without rate-limits and collusion resistance, karma collapses into a second activity/social-clique counter rather than a distinct appreciation signal.",
+  "cheapest_evidence": "Ship a minimal grant command with a hard daily cap, log every grant with grantor/grantee, then measure grant-graph reciprocity and correlation with XP before building the leaderboard.",
+  "tokens": 20257,
+  "wall_ms": 35797,
+  "report": "## (1) What is this really / core claim\nThe core is a peer-granted reputation score on a Discord bot: value flows human-to-human, mediated (not minted) by the bot. Load-bearing claim: person-granted reputation is a meaningfully distinct, worthwhile signal alongside XP (activity) and coins (economy), warranting its own leaderboard. Novel property: XP and coins are bot-minted; karma is peer-minted. That provenance shift is the whole idea.\n## (2) Strongest failure mode\nKarma degenerates into a second activity counter (thanked most = talk most, high XP correlation). Adjacent, all not measured: collusion/mutual-boosting, sybil/alt gaming (Discord accounts cheap), semantic ambiguity if spendable. Whether karma is spendable is not resolved in source.\n## (3) Falsification / cheapest evidence\nFalsified if karma carries no information independent of XP/coins. Correlation test (karma vs XP/coins), grant-graph reciprocity, grantor diversity. Cheapest: instrument grants behind a hard cap before investing in the leaderboard.\n## (4) Cost vs payoff\nModest mechanic cost (reuses XP/coins patterns); additive cost is anti-abuse. Payoff contingent on distinctness; near-zero if it collapses into activity.\n## (5) Smallest slice\nSingle grant action, hard daily cap, self-grant blocked, full logging, no leaderboard yet, purely reputational; ship leaderboard only after correlation+reciprocity confirm distinctness."
+}

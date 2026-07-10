@@ -1,0 +1,31 @@
+{
+  "idea_slug": "wild-encounters-activity-spawning",
+  "compared": "mode1_rep1 report vs mode2_rep1 report (labels stripped, order randomized/swapped between judges)",
+  "judges": [
+    {
+      "judge": "judge_1",
+      "order": {"A": "mode1", "B": "mode2"},
+      "A": {"risk_surfacing": 4, "specificity": 5, "actionability": 4, "calibration": 4, "coverage": 4},
+      "B": {"risk_surfacing": 5, "specificity": 5, "actionability": 5, "calibration": 5, "coverage": 5},
+      "winner": "B",
+      "winner_mode": "mode2",
+      "margin": "slight",
+      "why": "Both grounded in actual mechanics with no fabricated specifics; both isolate (b) reward inflation and the missing fishing/mining baseline as load-bearing. B edges ahead: disaggregates panel disagreement (model-proven vs traffic-proven for claim a), adds offline log replay + shadow mode as concrete pre-ship falsification, gates GA on both measurement gaps.",
+      "tokens": 21116,
+      "wall_ms": 4860
+    },
+    {
+      "judge": "judge_2",
+      "order": {"A": "mode2", "B": "mode1"},
+      "A": {"risk_surfacing": 5, "specificity": 5, "actionability": 5, "calibration": 5, "coverage": 5},
+      "B": {"risk_surfacing": 4, "specificity": 5, "actionability": 4, "calibration": 4, "coverage": 4},
+      "winner": "A",
+      "winner_mode": "mode2",
+      "margin": "slight",
+      "why": "Both tightly grounded in the idea's real mechanics (sim params, exactly-once claim, fishing/mining baseline gap) with no fabricated specifics. A edges ahead: explicitly reconciles model-proven-vs-traffic-proven on claim (a) and demands log-replay validation, whereas B slightly overclaims (a) as 'effectively settled' by the synthetic sim.",
+      "tokens": 21116,
+      "wall_ms": 4684
+    }
+  ],
+  "judge_verdict": "Both judges selected mode2 (panel) at slight margin, regardless of A/B position — no detectable position bias; panel report preferred chiefly for reconciling the model-proven vs traffic-proven distinction on claim (a) and not overclaiming the in-repo sim."
+}
