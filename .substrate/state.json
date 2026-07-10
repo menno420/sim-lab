@@ -1,0 +1,124 @@
+{
+  "graduation": {
+    "criteria": {
+      "blocking_questions": 0,
+      "critical_slots_filled_pct": 0.8
+    },
+    "soft_target_sessions": 50
+  },
+  "graduation_proposed": false,
+  "kit_version": "1.7.0",
+  "last_compaction_session": 0,
+  "mode": "guided",
+  "mode_history": [
+    {
+      "date": "2026-07-10",
+      "mode": "guided",
+      "session": 0
+    }
+  ],
+  "open_questions": [],
+  "planted_doc_hashes": {
+    ".session-journal.md": "5e8e56ffff0282a12b12d4959e04875008f26224924288e2cd4ed8afda4dedf3",
+    "CONSTITUTION.md": "c86f457b7432e5ad4277019de63b9695562d6b4ba4f845210f5e1adfc2616bb0",
+    "control/README.md": "3f464318fc31c38a25266e5f78c75f9175850d6691c6a810dd9af0f904be1366",
+    "control/inbox.md": "6d104e1d5621e4104090121dc0d16ae0db51ffcabc26d3238eb92dbc6ef316c3",
+    "control/status.md": "dfc8bd14a6cb3bde759eda95520a51acaf749c38c4e35ac135866667366f3f08",
+    "docs/AGENT_ORIENTATION.md": "b85a4bb7dc119b2677430aa0eabba7e14f77962fc9e866e8fd03e5309e66c1e2",
+    "docs/CAPABILITIES.md": "5e88b0570dc4e87bdb426e857e3df01c6a881f7ba85007a7af9f60d44cdfc01f",
+    "docs/ai-project-workflow.md": "a7a1dc9958195c0fb3b443f8a8ae81b05458467a75213b3c17e7322bd44bb414",
+    "docs/architecture.md": "f1c044c6cffa17daa5be238f34b5a6e9a75779f1b7d665e6734d079fc152bddc",
+    "docs/collaboration-model.md": "12a4e1e21f4613f6d65b8cd49b21a964bb74fc35bad5d1c3645dea29418d93cc",
+    "docs/current-state.md": "aaa090e03d51c0a95920baccdc75f9afdbcb038a906f2161b35f6cf07b2f95e7",
+    "docs/decisions.md": "ba4b8f48d817203fc2aa0cdd6dd7c9e6160ac8eb8110f5b071d87f3bdefe66ea",
+    "docs/helper-policy.md": "ff61cc452ba3599bc0ad4626c035147fd4f8e079128ee12ccc8401d4a59ebb0b",
+    "docs/ideas/README.md": "156b6fb94dd82a9bd5c592143c7748dd31e9b85590742194f52b776858b978fb",
+    "docs/owner-profile.md": "8bd9c2d1041030fd5982e8f8c564f8ba0d26c040c648be2a7274b755b7c87018",
+    "docs/ownership.md": "bae54e61485c686bb63e22ade468562b707b29fd1e25301b038d405da677fa7b",
+    "docs/question-router.md": "9776e3bca30a69c5abc74ea2f23afc7ef8b1d986831500057e0a772596e5f3de",
+    "docs/repo-navigation-map.md": "2f37a61a6c1f8612e3fbfe2dab1558f523e5eae84eb94d63d0b25c694804e6cc",
+    "docs/runtime_contracts.md": "32bf13cd7f5f2ade945738561cfa41de863e26365264d001f15babc43356a1cc"
+  },
+  "project_id": "ff8e5bbe973b",
+  "promotion_rights": "propose",
+  "quiet_sessions": 0,
+  "reflection_buffer": {
+    "active_count": 0,
+    "last_mined": null
+  },
+  "review_log": [],
+  "session_count": 0,
+  "slot_values": {
+    "architecture_layers": {
+      "question_id": "Q-004",
+      "source": "user",
+      "value": "sims/<idea-slug>/ \u2014 one self-contained subtree per idea (seeded/deterministic, own README, one run command, results report); harness/ \u2014 the reusable template + tiny stdlib-only helpers (seeded runs, sweeps, report emission, validity-gate checklist), versioned by tags, consumed via raw/copy; control/ \u2014 inbox/outbox/status in kit ORDER grammar; docs/ \u2014 kit workflow docs. Rules: sims never import each other; harness never imports a sim; a sim may vendor-copy from harness/; a sim that needs a dependency pins it inside its own subtree, never repo-globally."
+    },
+    "doc_roots": {
+      "question_id": "Q-007",
+      "source": "derived",
+      "value": "docs"
+    },
+    "drift_resolution": {
+      "question_id": "Q-011",
+      "source": "user",
+      "value": "Committed sim runs and source win over docs; docs/current-state.md wins over the journal. When a doc and a sim result disagree, re-run the sim at HEAD (reproducibility is the contract) and fix the doc in the same session."
+    },
+    "mutation_seam": {
+      "question_id": "Q-009",
+      "source": "user",
+      "value": "The verdict path is the seam: sim run -> results report answering the five validity-gate questions -> @codex review comment on the PR's final head (one specific question) -> finalized entry appended to control/outbox.md (kit ORDER grammar, status: finalized). control/status.md is overwritten as the session's deliberate LAST step. No verdict bypasses the gate or the Codex step."
+    },
+    "new_area_ownership": {
+      "question_id": "Q-013",
+      "source": "user",
+      "value": "A new idea under evidence = a new sims/<idea-slug>/ subtree born complete (model, seeds, run command, README, results report). A harness/ change ships only with a consumer sim proving it in the same PR. No other top-level areas without a control/inbox.md ORDER naming one."
+    },
+    "owner_profile": {
+      "question_id": "Q-008",
+      "source": "user",
+      "value": "The owner designs and dispatches; he does not code. He reads control/status.md heartbeats and the claude.ai Routines screen and reacts to what he sees in the repos \u2014 never wait for him (decide-and-flag). He builds ideas iteratively in fragments: state back the fuller picture before substantive work. Family-level model names only; no secret values in any repo, ever."
+    },
+    "ownership_model": {
+      "question_id": "Q-006",
+      "source": "user",
+      "value": "Single-writer: agents of this Project write ONLY sim-lab (fleet rule Q-0260); cross-repo state is read via the public raw path. The Idea Engine (menno420/idea-engine) owns the standing intake feed (its control/outbox.md, read-only pull); the fleet manager owns routing \u2014 finalized verdicts leave via control/outbox.md addressed to it, never dispatched to lanes directly."
+    },
+    "project_name": {
+      "question_id": "Q-002",
+      "source": "derived",
+      "value": "sim-lab"
+    },
+    "review_ritual": {
+      "question_id": "Q-010",
+      "source": "user",
+      "value": "Every verdict PR gets an @codex comment with ONE specific question on its final head before finalization (Q-0264.4); merge is not blocked on the reply \u2014 fold it in when it lands and record the disposition in the verdict. The fleet manager final-reviews finalized outbox entries post-merge and routes them as ORDERs; lanes never receive work from this repo directly."
+    },
+    "staleness_review": {
+      "question_id": "Q-012",
+      "source": "user",
+      "value": "Every wake lands on origin/main HEAD before reading anything. The status heartbeat is the only readable record of a wake (owner-verified: completed routine runs are not inspectable) \u2014 a heartbeat older than two wake cycles (>4h) is stale and gets flagged in the next overwrite. sims/REFERENCE.md is re-checked whenever the harness tag bumps."
+    },
+    "verify_command": {
+      "question_id": "Q-005",
+      "source": "user",
+      "value": "python3 bootstrap.py check --strict (the substrate gate); plus each touched sim's own documented run command reproducing its committed result"
+    }
+  },
+  "slots": {
+    "architecture_layers": "filled",
+    "doc_roots": "provisional",
+    "drift_resolution": "filled",
+    "mutation_seam": "filled",
+    "new_area_ownership": "filled",
+    "owner_profile": "filled",
+    "ownership_model": "filled",
+    "project_name": "provisional",
+    "review_ritual": "filled",
+    "staleness_review": "filled",
+    "verify_command": "filled"
+  },
+  "stage": "integration",
+  "stance": "analysis",
+  "version": 1
+}

@@ -1,0 +1,10 @@
+# retro questions
+
+> **Status:** `reference`
+
+The standing self-review set this lane answers at retro time is the fleet set:
+superbot `docs/planning/fleet-retro-questions-2026-07-09.md` (universal core A–F, answered
+by ID, citations required, "not measured" over invention). Planted at seed per the
+gen2-blueprint §1 day-0 checklist. Lane-specific rider: at every retro, re-ask the five
+validity-gate questions against your two most recent verdicts — a gate answered
+ceremonially is worse than one answered late.
