@@ -185,44 +185,13 @@ Evidence strength: **moderate-strong** (measured core strong; generality is judg
 
 ---
 
-## VERDICT & recommendation (for the fleet manager to route)
+## 8. VERDICT & recommendation (for the fleet manager to route)
 
-**Verdict: `[COORDINATOR TO FINALIZE]`.** The measured core points to one ruling — **"probe must
-annotate per-seat-type sections (schema named); regenerate-whole-file from one seat is NOT
-honest"** — because the two documented seats' seat-defining tools are disjoint (divergence 5) and
-each is a false wall from the other's single-seat view (5), while a naive present/absent
-projection also over-claims one walled capability (1). The subprocess plane *is* honestly
-whole-repo-probeable (seat-invariant, 0 false-walls), so the honest artifact is **subprocess plane
-= one shared section; agent plane = one section PER seat type, with ledger-sourced behavioral
-walls marked `not-probeable`.** The coordinator finalizes the exact ruling wording + status.
-
-**Recommended output schema — `CAPABILITIES.v1`** (what a substrate-kit `capabilities --probe`
-ORDER should implement; emitted this cycle as `CAPABILITIES.json`):
-
-```
-record:
-  id            : "sp:*" | "ap:*"
-  plane         : "subprocess" | "agent"
-  seat          : "seat-invariant" | "coordinator" | "worker" | <seat-type>
-  seat_variant  : bool
-  result        : "present" | "absent" | "wall" | "not-probeable"
-  detail        : verbatim status / error / ledger note (env: NAMES + count, NEVER values)
-  source        : "probed" | "ledger"
-  agreement     : { runs: int, rate: float|null }          # over N frozen live runs
-  baseline_diff : { baseline_expected, false_wall: bool, false_capability: bool }
-rollup:
-  subprocess_agreement, seat_divergence{count,items},
-  baseline_diff{false_walls, false_capabilities, ...}, baseline_b_reachable
-```
-
-**Guardrails the ORDER must carry:**
-- **Agent-plane sections are per-seat-type; never collapse them into one whole-repo verdict.**
-- **`env-token-names` records NAMES + count only — never a value** (self-checked here).
-- **Behavioral walls (`push-main`, cross-session trigger bind) are `source=ledger /
-  not-probeable`** — a probe must not silently claim/deny them.
-- **Emit `agreement.rate` per probed item** so a network flake is visible, not averaged away.
-- **Diff against the fleet baseline, but record baseline-B reachability per seat** (it is itself
-  seat-variant — reachable from this worker seat this cycle: HTTP 200).
-
-**Codex review:** _placeholder — the coordinator will post the `@codex` review comment (one
-specific question, on the final PR head); reply disposition to be recorded in the outbox verdict._
+- **Verdict:** needs-more-evidence — the proposal's naive form ("regenerate a whole `docs/CAPABILITIES.md`") is measured-NOT-honest; a per-seat-annotated schema IS honest and buildable (see ruling).
+- **Ruling:** *probe must annotate per-seat-type sections* (schema **CAPABILITIES.v1**, named below). Regenerate-whole-file-from-one-seat is NOT honest — measured: **5 of 9** agent-plane items diverge coordinator↔worker, so a single-seat whole-file regen produces **5 false-walls + 1 false-capability** vs sim-lab's hand-maintained ledger. File-granularity is NOT the problem: the seat-invariant subprocess plane regenerates honestly (**agreement 1.00** over 5 runs, **0 false-walls**). So the fix is per-seat annotation + provenance, not abandoning the file.
+- **Target:** menno420/substrate-kit (owns `bootstrap.py`/`adopt.py` ledger plant) — build ORDER: `capabilities --probe` implementing CAPABILITIES.v1. Co-consumers: every kit-adopted seat via `upgrade`, fleet-manager `docs/capabilities.md` roll-up, sim-lab's own `docs/CAPABILITIES.md`. Feeds the EAP platform-manifest ask (window ends 2026-07-14).
+- **Recommended schema — CAPABILITIES.v1:** per record `{id, plane(subprocess|agent), seat, seat_variant, result(present|absent|wall|not-probeable), detail(verbatim status/error), source(probed|ledger), agreement{runs,rate}}`; per-file `baseline_diff{false_walls,false_capabilities}`. Split the emitted file into (a) a **seat-invariant subprocess section** auto-regenerated from probes (safe to overwrite — agreement 1.00, 0 false-walls), and (b) **per-seat-type agent-plane sections** labeled by seat, where behavioral/side-effect walls are `source:ledger` (inherited-with-attribution), NEVER machine-asserted.
+- **Guardrail (measured):** a read-only probe cannot test side-effect/behavioral walls (trigger binding, push-to-main) → those rows MUST be `source:ledger`. The single false-capability — `create_trigger` surfaces `present` in both seats while its cross-session bind is org-walled (OA-003) — is exactly this failure mode: presence ≠ ability.
+- **Telemetry:** per-seat probe stamp + per-item `agreement_rate`; alert if any subprocess item drops below `rate=1.0` (flake).
+- **Out-of-scope / JUDGMENT-ONLY:** cross-environment generality (measured in ONE container, 2 seat types); browser Routines UI binding (owner-verified, not probeable); fleet-manager roll-up **content**-diff (baseline was reachable HTTP 200 from the worker seat but NOT content-diffed this pass, and NOT reachable from the coordinator seat — so reachability is itself seat-variant, reinforcing the ruling).
+- **Codex review:** PR #15 comment https://github.com/menno420/sim-lab/pull/15#issuecomment-4940305236 — one question on the false-capability classification rule; **reply: pending** (OA-002 live-but-usage-capped; the Codex bot returned "reached usage limits"). Per Q-0120, any substantive reply will be verified against the tree before folding in, never obeyed.
