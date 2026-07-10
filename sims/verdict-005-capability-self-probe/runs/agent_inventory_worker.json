@@ -1,0 +1,17 @@
+{
+  "seat": "worker",
+  "method": "ToolSearch enumeration + known worker toolset (spawned Bash seat, this session 2026-07-10)",
+  "note": "Honest self-enumeration by the running worker. subagent-spawn is NOT discoverable in this seat (ToolSearch 'spawn subagent Agent' returned only SendMessage/TaskStop/EnterWorktree, no Agent/Task spawn tool); Bash/file/grep/github-mcp are directly available; send_later/create_trigger are reachable via ToolSearch but were NOT invoked (read-only probe); ap:workflow present via mcp__github__actions_* workflow-control tools. create_trigger cross-session bind stays org-walled per OA-003 even though the tool is reachable.",
+  "stamp": "2026-07-10T23:06:21Z",
+  "items": {
+    "ap:subagent-spawn": "absent",
+    "ap:bash-shell": "present",
+    "ap:file-io": "present",
+    "ap:grep-glob": "present",
+    "ap:github-mcp": "present",
+    "ap:webagent-reply": "absent",
+    "ap:send_later-selfbind": "present",
+    "ap:create_trigger-crosssession": "present-but-walled",
+    "ap:workflow": "present"
+  }
+}

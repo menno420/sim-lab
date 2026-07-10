@@ -1,0 +1,17 @@
+{
+  "seat": "coordinator",
+  "method": "coordinator self-enumeration (this session's toolset; supplied by the dispatching coordinator)",
+  "note": "create_trigger cross-session bind is org-walled per OA-003; self-bind send_later works. The coordinator orchestrates via subagent-spawn + webagent-reply and has NO Bash/file/grep of its own (delegates those to spawned workers).",
+  "stamp": "2026-07-10T23:06:21Z",
+  "items": {
+    "ap:subagent-spawn": "present",
+    "ap:bash-shell": "absent",
+    "ap:file-io": "absent",
+    "ap:grep-glob": "absent",
+    "ap:github-mcp": "present",
+    "ap:webagent-reply": "present",
+    "ap:send_later-selfbind": "present",
+    "ap:create_trigger-crosssession": "present-but-walled",
+    "ap:workflow": "present"
+  }
+}

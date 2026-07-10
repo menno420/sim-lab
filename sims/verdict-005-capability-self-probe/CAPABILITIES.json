@@ -1,0 +1,573 @@
+{
+  "generated_from": "frozen runs under sims/verdict-005-capability-self-probe/runs/ (deterministic; live layer not bit-reproducible)",
+  "intake": "INTAKE 005 / PROPOSAL 005 (capability self-awareness probe)",
+  "records": [
+    {
+      "agreement": {
+        "rate": 1.0,
+        "runs": 5
+      },
+      "baseline_diff": {
+        "baseline_expected": "present",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "git version 2.43.0",
+      "id": "sp:tool-git",
+      "plane": "subprocess",
+      "result": "present",
+      "seat": "seat-invariant",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "agreement": {
+        "rate": 1.0,
+        "runs": 5
+      },
+      "baseline_diff": {
+        "baseline_expected": "present",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "200 (238 bytes head read)",
+      "id": "sp:net-raw-cross-repo",
+      "plane": "subprocess",
+      "result": "present",
+      "seat": "seat-invariant",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "agreement": {
+        "rate": 1.0,
+        "runs": 5
+      },
+      "baseline_diff": {
+        "baseline_expected": "wall",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "403 {\"message\":\"GitHub access is not enabled for this session. An org admin must connect the Claude GitHub App for this orga",
+      "id": "sp:net-api-repo-object",
+      "plane": "subprocess",
+      "result": "wall",
+      "seat": "seat-invariant",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "agreement": {
+        "rate": 1.0,
+        "runs": 5
+      },
+      "baseline_diff": {
+        "baseline_expected": "wall",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "403 {\"message\":\"GitHub access is not enabled for this session. An org admin must connect the Claude GitHub App for this orga (OA-001: REST branch-protection read walled)",
+      "id": "sp:net-api-branch-protection",
+      "plane": "subprocess",
+      "result": "wall",
+      "seat": "seat-invariant",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "agreement": {
+        "rate": 1.0,
+        "runs": 5
+      },
+      "baseline_diff": {
+        "baseline_expected": "present",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "200 reachable",
+      "id": "sp:net-proxy-status",
+      "plane": "subprocess",
+      "result": "present",
+      "seat": "seat-invariant",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "agreement": {
+        "rate": 1.0,
+        "runs": 5
+      },
+      "baseline_diff": {
+        "baseline_expected": "present",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "9 matching env NAME(s) (values withheld): CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR, CLAUDE_SESSION_INGRESS_TOKEN_FILE, CLOUDSDK_AUTH_ACCESS_TOKEN, GH_TOKEN, GITHUB_TOKEN, GIT_CONFIG_KEY_0, GIT_CONFIG_KEY_1, GIT_CONFIG_KEY_2, MAX_THINKING_TOKENS",
+      "id": "sp:env-token-names",
+      "plane": "subprocess",
+      "result": "present",
+      "seat": "seat-invariant",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "wall",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "not-probeable read-only: direct push to protected main would be a side-effect; wall recorded by forward-only/PR-required convention (CONVENTIONS.md) + OA-001",
+      "id": "sp:push-main",
+      "plane": "subprocess",
+      "result": "not-probeable",
+      "seat": "seat-invariant",
+      "seat_variant": false,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:subagent-spawn",
+      "plane": "agent",
+      "result": "present",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": true
+      },
+      "detail": "seat inventory token='absent'; baseline=capable",
+      "id": "ap:bash-shell",
+      "plane": "agent",
+      "result": "absent",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": true
+      },
+      "detail": "seat inventory token='absent'; baseline=capable",
+      "id": "ap:file-io",
+      "plane": "agent",
+      "result": "absent",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": true
+      },
+      "detail": "seat inventory token='absent'; baseline=capable",
+      "id": "ap:grep-glob",
+      "plane": "agent",
+      "result": "absent",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:github-mcp",
+      "plane": "agent",
+      "result": "present",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:webagent-reply",
+      "plane": "agent",
+      "result": "present",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:send_later-selfbind",
+      "plane": "agent",
+      "result": "present",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "walled",
+        "false_capability": true,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present-but-walled'; baseline=walled; tool visible but capability org-walled (OA-003)",
+      "id": "ap:create_trigger-crosssession",
+      "plane": "agent",
+      "result": "present",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:workflow",
+      "plane": "agent",
+      "result": "present",
+      "seat": "coordinator",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": true
+      },
+      "detail": "seat inventory token='absent'; baseline=capable",
+      "id": "ap:subagent-spawn",
+      "plane": "agent",
+      "result": "absent",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:bash-shell",
+      "plane": "agent",
+      "result": "present",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:file-io",
+      "plane": "agent",
+      "result": "present",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:grep-glob",
+      "plane": "agent",
+      "result": "present",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:github-mcp",
+      "plane": "agent",
+      "result": "present",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": true
+      },
+      "detail": "seat inventory token='absent'; baseline=capable",
+      "id": "ap:webagent-reply",
+      "plane": "agent",
+      "result": "absent",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:send_later-selfbind",
+      "plane": "agent",
+      "result": "present",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "walled",
+        "false_capability": true,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present-but-walled'; baseline=walled; tool visible but capability org-walled (OA-003)",
+      "id": "ap:create_trigger-crosssession",
+      "plane": "agent",
+      "result": "present",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "agreement": {
+        "rate": null,
+        "runs": 0
+      },
+      "baseline_diff": {
+        "baseline_expected": "capable",
+        "false_capability": false,
+        "false_wall": false
+      },
+      "detail": "seat inventory token='present'; baseline=capable",
+      "id": "ap:workflow",
+      "plane": "agent",
+      "result": "present",
+      "seat": "worker",
+      "seat_variant": true,
+      "source": "ledger"
+    }
+  ],
+  "rollup": {
+    "baseline_b_fleet_manager_reachable": true,
+    "baseline_diff": {
+      "false_capabilities": 1,
+      "false_capability_items": [
+        "ap:create_trigger-crosssession"
+      ],
+      "false_capability_seat_pairs": [
+        {
+          "id": "ap:create_trigger-crosssession",
+          "seat": "coordinator"
+        },
+        {
+          "id": "ap:create_trigger-crosssession",
+          "seat": "worker"
+        }
+      ],
+      "false_wall_items": [
+        {
+          "id": "ap:bash-shell",
+          "seat": "coordinator"
+        },
+        {
+          "id": "ap:file-io",
+          "seat": "coordinator"
+        },
+        {
+          "id": "ap:grep-glob",
+          "seat": "coordinator"
+        },
+        {
+          "id": "ap:subagent-spawn",
+          "seat": "worker"
+        },
+        {
+          "id": "ap:webagent-reply",
+          "seat": "worker"
+        }
+      ],
+      "false_walls": 5
+    },
+    "seat_divergence": {
+      "count": 5,
+      "items": [
+        {
+          "coordinator": "present",
+          "id": "ap:subagent-spawn",
+          "worker": "absent"
+        },
+        {
+          "coordinator": "absent",
+          "id": "ap:bash-shell",
+          "worker": "present"
+        },
+        {
+          "coordinator": "absent",
+          "id": "ap:file-io",
+          "worker": "present"
+        },
+        {
+          "coordinator": "absent",
+          "id": "ap:grep-glob",
+          "worker": "present"
+        },
+        {
+          "coordinator": "present",
+          "id": "ap:webagent-reply",
+          "worker": "absent"
+        }
+      ]
+    },
+    "subprocess_agreement": {
+      "sp:env-token-names": {
+        "modal": "present",
+        "rate": 1.0,
+        "runs": 5
+      },
+      "sp:net-api-branch-protection": {
+        "modal": "wall",
+        "rate": 1.0,
+        "runs": 5
+      },
+      "sp:net-api-repo-object": {
+        "modal": "wall",
+        "rate": 1.0,
+        "runs": 5
+      },
+      "sp:net-proxy-status": {
+        "modal": "present",
+        "rate": 1.0,
+        "runs": 5
+      },
+      "sp:net-raw-cross-repo": {
+        "modal": "present",
+        "rate": 1.0,
+        "runs": 5
+      },
+      "sp:tool-git": {
+        "modal": "present",
+        "rate": 1.0,
+        "runs": 5
+      }
+    },
+    "subprocess_flaky_items": []
+  },
+  "run_stamps": [
+    "2026-07-10T23:05:22.163908Z",
+    "2026-07-10T23:05:23.369489Z",
+    "2026-07-10T23:05:24.566798Z",
+    "2026-07-10T23:05:25.782109Z",
+    "2026-07-10T23:05:26.995389Z"
+  ],
+  "schema": "CAPABILITIES.v1",
+  "seats": [
+    "coordinator",
+    "worker"
+  ]
+}

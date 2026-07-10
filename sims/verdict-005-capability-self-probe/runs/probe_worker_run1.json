@@ -1,0 +1,135 @@
+{
+  "items": [
+    {
+      "detail": "git version 2.43.0",
+      "id": "sp:tool-git",
+      "plane": "subprocess",
+      "result": "present",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "detail": "200 (238 bytes head read)",
+      "id": "sp:net-raw-cross-repo",
+      "plane": "subprocess",
+      "result": "present",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "detail": "403 {\"message\":\"GitHub access is not enabled for this session. An org admin must connect the Claude GitHub App for this orga",
+      "id": "sp:net-api-repo-object",
+      "plane": "subprocess",
+      "result": "wall",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "detail": "403 {\"message\":\"GitHub access is not enabled for this session. An org admin must connect the Claude GitHub App for this orga (OA-001: REST branch-protection read walled)",
+      "id": "sp:net-api-branch-protection",
+      "plane": "subprocess",
+      "result": "wall",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "detail": "200 reachable",
+      "id": "sp:net-proxy-status",
+      "plane": "subprocess",
+      "result": "present",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "detail": "9 matching env NAME(s) (values withheld): CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR, CLAUDE_SESSION_INGRESS_TOKEN_FILE, CLOUDSDK_AUTH_ACCESS_TOKEN, GH_TOKEN, GITHUB_TOKEN, GIT_CONFIG_KEY_0, GIT_CONFIG_KEY_1, GIT_CONFIG_KEY_2, MAX_THINKING_TOKENS",
+      "id": "sp:env-token-names",
+      "plane": "subprocess",
+      "result": "present",
+      "seat_variant": false,
+      "source": "probed"
+    },
+    {
+      "detail": "not-probeable read-only: direct push to protected main would be a side-effect; wall recorded by forward-only/PR-required convention (CONVENTIONS.md) + OA-001",
+      "id": "sp:push-main",
+      "plane": "subprocess",
+      "result": "not-probeable",
+      "seat_variant": false,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:subagent-spawn",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:bash-shell",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:file-io",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:grep-glob",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:github-mcp",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:webagent-reply",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:send_later-selfbind",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:create_trigger-crosssession",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    },
+    {
+      "detail": "agent-plane: availability enumerated by the running seat, not by this subprocess; see runs/agent_inventory_worker.json",
+      "id": "ap:workflow",
+      "plane": "agent",
+      "result": "not-probeable",
+      "seat_variant": true,
+      "source": "ledger"
+    }
+  ],
+  "run_id": 1,
+  "seat": "worker",
+  "stamp": "2026-07-10T23:05:22.163908Z"
+}
