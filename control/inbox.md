@@ -115,3 +115,13 @@ source: owner-direct request 2026-07-11 (mennovanhattum@gmail.com) via coordinat
 idea: subject repos read-only — superbot-next @ 168ef8080347905766893fd92ae3be1ec2ebbc4c (main), superbot @ 9f46cb7840cb2216a012002fe27feb342d45f480 (main)
 method: NUMERIC/STRUCTURAL SIMULATION (rung 1–2, measured-from-code): full settings/command/panel inventory + diff, redundancy (dead/display-only/duplicate/subordinate), combinability (co-read collapse + seeded config-space sampling), reachability graph (steps-to-reach per setting, discoverability, task battery), AI-panel independent structured audit, UX-delta proxies. Overall-UX-improved magnitude = JUDGMENT-ONLY.
 outcome: VERDICT 009 finalized → outbox (needs-more-evidence / approve-the-direction + named changes). Report sims/owner-001-superbot-next-settings-ux/REPORT.md.
+
+## INTAKE 009 · 2026-07-11T16:36:50Z · status: in-progress
+source: menno420/idea-engine control/outbox.md @ 05601ba3ef751e794b610b2dbc84fe8a30398dd0 (PROPOSAL 009, status: sim-ready)
+idea: superbot docs/ideas/settle-once-architecture-guard-2026-06-24.md @ 8214200aa0c00dda4156748617c9482dadc4277a (canonical); idea-engine ideas/superbot/settle-once-architecture-guard-2026-07-10.md @ b2b855b8a11c8bcf47a48b859a04d16fa2b264ba
+method: NUMERIC SIMULATION / reconstruction (rung 1–2) — reconstruct each of the six documented double-settlement instances as a minimal replayable case, then run every candidate settle-once guard contract through a catch matrix (instance × contract: prevented-statically / caught-at-runtime / missed) + a false-positive column (legit settlement must still pass) + a variant/interleaving generalization sweep.
+target (build, if approved): superbot-next (owns the tools/check_* CI seam, the K7 op grammar D-0010, the D-0042 wager-lane discipline); lane-side one-liner for superbot (Rule 6 registry-roots drift).
+corpus: (1) superbot BUG-0013 deathmatch challenge-view timeout; (2) RPS PvP #1444; (3) deathmatch bot-duel #1444; (4) blackjack PvP #1445; (5) Gate-V Arm-D deathmatch W/L double-write #1781; (6) superbot-next #133 blackjack-tournament consolation double-payout.
+done-when: reproduced-evidence verdict — catch matrix + false-positive count + one recommended guard contract stated as the invariant every money-moving leg must satisfy + the static rule that enforces it; states whether superbot's Rule 6 registry-roots drift (check_consistency.py:1151 roots=("views/","services/") vs docstring cogs/) changes the catch row.
+finalizes-as: VERDICT 010 (009 already used by owner-direct settings/UX audit).
+this session.
