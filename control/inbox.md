@@ -92,3 +92,11 @@ method: rung-3 JUDGMENT-ONLY on the value axis (no live users / no ground truth 
 done-when / evidence: reproduced-evidence verdict with STATED criteria + NAMED sources ("not measured" beats invention): (1) concept-value assessment vs the mineverse direct view; (2) conformance check against the committed feed (re-litigate NO transport); (3) ONE ruling proceed-as-scoped / redirect / stop-at-phase-1, WHO-builds (seam A/B/C, idea-engine #87) explicitly out of scope.
 depends: product-forge (requesting lane) — phase-1 artifacts as evidence inputs @ 43563dc. Duplicate-guard: the deferral is product-forge's own ORDER 001 prose, so a later manager relay of the same deferral is a duplicate — reconciled by this source citation at intake (PROPOSAL 006 precedent clause). Sequencing: verdict is worth most BEFORE the superbot-lane providing ORDER (fm ORDER 012/013, verified UNROUTED @ 58040c6) unblocks phase-2 spend.
 cost: S (conformance diff + structured JUDGMENT-ONLY scoring; no build, no sim)
+
+## ORDER 002 · 2026-07-11T10:00Z · status: new
+priority: P1
+from: fleet-manager coordinator — owner-requested fleet-wide self-review relay (provenance: filed by fleet-manager on coordinator direction, cse_012o8pySy5K3AV6JWoPKryZL; owner-directed)
+executor: sim-lab seat (next wake)
+do: quick self-review of this lane covering roughly the last 24h (2026-07-10 ~20:00Z → now): (1) anything that WENT WRONG — red CI runs, guard/classifier denials, walls hit, drift found, mistakes made or corrected — each with a citation (PR/run/commit); (2) anything REQUIRING OWNER ATTENTION — owner-only asks, pending vetoes, risky decisions taken decide-and-flag, spend/publish items — click-level and plain language; (3) one-line current health (what shipped, what's next). Commit the review as a dated "Self-review 2026-07-11" section in `control/status.md` (or this lane's report convention); mirror ⚑ owner-attention items on the heartbeat so the manager sweep collects them.
+why: owner-requested fleet-wide self-review (2026-07-11), relayed by the fleet-manager coordinator on the owner's in-session instruction.
+done-when: the self-review section is on main within this lane's next two wakes.
