@@ -1,0 +1,12 @@
+{
+  "decided_transport": {
+    "envelope_contract": "mining_snapshot.v1",
+    "source": "fm ORDER 012/013 superbot-lane committed-JSON feed",
+    "consumed_via": "GET /api/snapshot (superbot read relay)"
+  },
+  "games_web_self_api": {
+    "endpoint": "GET /v1/games-web/character-sheet/{id}",
+    "envelope_contract": "games-web.character-sheet",
+    "source": "product-forge products/games-web/docs/phase2-data-api-proposal.md @ 43563dc"
+  }
+}
