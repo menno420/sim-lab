@@ -8,17 +8,91 @@
 
 ## Stability baseline
 
-(Describe the accepted-stable baseline once established — what is known-good and
-should not be re-audited without a reported regression.)
+The evidence workflow is accepted-stable: the method ladder (numeric sim →
+measured prototype → JUDGMENT-ONLY), the five-question validity gate, and the
+verdict grammar (README.md) do not get re-audited without a reported regression.
+Harness v0.1 (`harness/simharness.py` + `REPORT_TEMPLATE.md` + `selftest.py`) is
+the reusable second product — consumed by other Projects via raw/copy. kit
+v1.7.0; `python3 bootstrap.py check --strict` exits 0.
 
 ## In flight
 
-(Verify against live source control — this section is a dated snapshot.)
+None. The idea-engine sim-ready queue is EMPTY — consumed through PROPOSAL 009 →
+VERDICT 010. No open PRs, no branches beyond `main`, no open issues (verified
+2026-07-11 at archive close-out). Next evidence work resumes when idea-engine
+posts PROPOSAL 010+ to `menno420/idea-engine` `control/outbox.md` (status:
+sim-ready).
 
 ## Recently shipped (newest first)
 
-(Merged work only, newest first.)
+- **VERDICT 011** — websites (all four) — **approve** (serves-purpose on all four
+  + ship named fixes; review deploy is OWNER-ACTION). MEASURED crawl rung 1–2.
+  Headline negative: control-plane ships 25 dead content links; review has no
+  deployed URL. Hardened by a wider-cap (400/8) re-crawl — no verdict-flipping
+  route hidden by the original 80-page cap.
+- **VERDICT 010** — superbot-next (settle-once fence) + superbot cogs one-liner —
+  **approve** (adopt contract c). Sim reconstruction rung 1–2, 72 self-checks.
+- **VERDICT 009** — superbot-next OWNER-DIRECT settings/UX — **needs-more-evidence**
+  (approve-the-direction + named changes). Sim rung 1–2 + JUDGMENT-ONLY.
+- **VERDICT 008** — superbot mining-grid-encounters — **needs-more-evidence**.
+  Defaults threshold=15/chance=0.02/cooldown=600s.
+- **VERDICT 007** — product-forge games-web phase-2 — **needs-more-evidence**
+  (redirect). JUDGMENT-ONLY + rung-2 conformance.
+- **VERDICT 006** — superbot-idle idle_engine/economy-v1 — **approve** (graduate
+  PROVISIONAL→SIM-PINNED; two guardrails). Sim drove the real engine.
+- **VERDICT 005** — substrate-kit capabilities --probe — **needs-more-evidence**
+  (per-seat annotation). Prototype rung 2.
+- **VERDICT 004** — superbot explore-hub XP split — **needs-more-evidence**
+  (phi=0 invariant). Sim rung 1.
+- **VERDICT 003** — websites lane + superbot §4 API — **needs-more-evidence**
+  (buildable-with-named-changes). Prototype + JUDGMENT-ONLY.
+- **VERDICT 002** — idea-engine probe battery — **approve-selectively** (panel
+  only for big/contested). Prototype.
+- **VERDICT 001** — superbot Encounters cog — **needs-more-evidence**. Defaults
+  threshold=24/debounce=30s/cooldown=900s.
+
+Scoreboard: 3 approve (006, 010, 011) · 1 approve-selectively (002) · 5
+needs-more-evidence (001, 003, 004, 005, 008) · 1 redirect (007).
+
+## Owner-action ledger (OA)
+
+Durable mirror of `control/status.md` ⚑ needs-owner; see
+`docs/retro/archive-ready-2026-07-11.md` for full context and
+`docs/retro/self-review-2026-07-11.md` for the ORDER-002 self-review.
+
+- **OA-002** — Codex integration LIVE but usage-capped; bot replies "reached
+  usage limits" on every verdict PR; 6+ @codex questions pending. Merge is not
+  gated on the reply (CONVENTIONS.md), so verdicts finalized without fold-in.
+- **OA-003** — VERDICT 011 `review` site has no deployed URL (owner deploy;
+  routed via outbox).
+- **OA-004** — `refs/tags/*` push is 403-walled; `harness-v0.1.0` un-pushed;
+  raw/copy consumption still works.
+- **OA-005** — standing failsafe trigger `trig_01SHfnLv6EqZesr4tC3T9kUU` is bound
+  to the to-be-archived coordinator session; disable in Routines or re-arm per
+  `PLATFORM-LIMITS.md` § wake-recipe.
+
+## Verdict-numbering map
+
+- **VERDICT 009** = OWNER-DIRECT settings/UX audit (superbot-next vs superbot) —
+  NOT an idea-engine proposal.
+- **idea-engine PROPOSAL 009** (settle-once-architecture-guard) became **VERDICT
+  010** — the two owner-direct verdicts (009, 011) interleaved with idea-engine
+  intake, offsetting the numbers. Outbox is append-only, so this map is the
+  reconciliation.
+
+## Recurring evidence gap
+
+No live fishing/mining **earn-rate baseline** exists in source, so reward-VALUE
+conclusions stayed provisional in VERDICTs 001 and 008 (drives
+needs-more-evidence, not approve). Unlock = the named telemetry slice
+(per-spawn/per-claim/per-channel mint + the fishing/mining earn-rate baseline),
+owned upstream (idea-engine / the game repos), not fixable in sim-lab. Flag to
+the manager on the next reward-scaling idea.
 
 ## Review rhythm
 
-Every verdict PR gets an @codex comment with ONE specific question on its final head before finalization (Q-0264.4); merge is not blocked on the reply — fold it in when it lands and record the disposition in the verdict. The fleet manager final-reviews finalized outbox entries post-merge and routes them as ORDERs; lanes never receive work from this repo directly.
+Every verdict PR gets an @codex comment with ONE specific question on its final
+head before finalization (Q-0264.4); merge is not blocked on the reply — fold it
+in when it lands and record the disposition in the verdict. The fleet manager
+final-reviews finalized outbox entries post-merge and routes them as ORDERs;
+lanes never receive work from this repo directly.
