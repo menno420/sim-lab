@@ -116,13 +116,24 @@ def head_status(url):
         return None
 
 
-def crawl_pass(base, max_pages, max_depth, status_cache):
-    """One BFS pass. status_cache memoizes link/asset status within a pass."""
+def _skipped(url, skip_prefixes):
+    """True if url starts with any caller-supplied skip prefix (e.g. a gated route)."""
+    return any(url.startswith(pfx) for pfx in (skip_prefixes or ()))
+
+
+def crawl_pass(base, max_pages, max_depth, status_cache, skip_prefixes=()):
+    """One BFS pass. status_cache memoizes link/asset status within a pass.
+
+    skip_prefixes: same-origin URL prefixes never fetched or enqueued (e.g. the
+    401-gated /owner route -- GET-only crawler, we do not probe gated routes).
+    """
     seen = set()
     pages = []
     q = collections.deque([(base, 0)])
     while q and len(pages) < max_pages:
         url, depth = q.popleft()
+        if _skipped(url, skip_prefixes):
+            continue
         canon = url.rstrip("/") if url != base else url
         if canon in seen:
             continue
@@ -142,7 +153,7 @@ def crawl_pass(base, max_pages, max_depth, status_cache):
                     continue
                 if same_origin(base, absu):
                     out_links.append(absu)
-                    if depth + 1 <= max_depth:
+                    if depth + 1 <= max_depth and not _skipped(absu, skip_prefixes):
                         q.append((absu, depth + 1))
                 else:
                     ext_count += 1
@@ -176,11 +187,11 @@ def crawl_pass(base, max_pages, max_depth, status_cache):
     return pages
 
 
-def crawl(base, site, max_pages, max_depth):
+def crawl(base, site, max_pages, max_depth, skip_prefixes=()):
     status_cache = {}
     passes = []
     for n in (1, 2):
-        pages = crawl_pass(base, max_pages, max_depth, dict(status_cache))
+        pages = crawl_pass(base, max_pages, max_depth, dict(status_cache), skip_prefixes)
         passes.append({"pass": n, "pages": pages})
     return {
         "site": site,
@@ -189,6 +200,8 @@ def crawl(base, site, max_pages, max_depth):
         "head_sha": "UNPINNED-recrawl",
         "purpose_quote": "",
         "purpose_path": "",
+        "cap": {"pages": max_pages, "depth": max_depth},
+        "skipped_prefixes": sorted(skip_prefixes),
         "passes": passes,
         "playwright": {"skipped": True,
                        "reason": "stdlib crawler does not run a browser; see REPORT.md"},
@@ -202,10 +215,13 @@ def main(argv=None):
     ap.add_argument("site_name")
     ap.add_argument("--max-pages", type=int, default=DEFAULT_MAX_PAGES)
     ap.add_argument("--max-depth", type=int, default=DEFAULT_MAX_DEPTH)
+    ap.add_argument("--skip-prefix", action="append", default=[],
+                    help="same-origin URL prefix never fetched/enqueued (repeatable; e.g. a gated route)")
     ap.add_argument("--out", default=None, help="output path (default: <site>.json)")
     args = ap.parse_args(argv)
 
-    snap = crawl(args.base_url.rstrip("/"), args.site_name, args.max_pages, args.max_depth)
+    snap = crawl(args.base_url.rstrip("/"), args.site_name, args.max_pages,
+                 args.max_depth, tuple(args.skip_prefix))
     out = args.out or (args.site_name + ".json")
     with open(out, "w") as f:
         f.write(json.dumps(snap, indent=2, sort_keys=True) + "\n")
