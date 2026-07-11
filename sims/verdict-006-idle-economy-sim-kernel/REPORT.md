@@ -52,7 +52,10 @@ per-second loop** over the first two resets (a self-check); additive **S3b** = S
 
 **All ten pre-registered acceptance criteria PASS (10/10)** on the current PROVISIONAL
 parameters -- so the table graduates PROVISIONAL -> SIM-PINNED (economy-v1.md section Verdict
-semantics). Every number below is a committed output of the one run command.
+semantics). Every number below is a committed output of the one run command. A
+**parameter-sensitivity appendix** now follows the base scorecard in the same run (a `+-20%`
+sweep of all 7 parameters; see the "PARAMETER-SENSITIVITY SWEEP" stdout block and gate 3) -- the
+point below is the *base* verdict; the sweep re-scores it across the grid.
 
 | id | criterion (band) | measured | verdict |
 |---|---|---|---|
@@ -138,15 +141,44 @@ thing a live build would feel first (see What it did NOT settle).
 
 **3. ROBUST?** *"does the conclusion survive variation at the edges"*
 
-The conclusion is re-derived at the policy edges: **S3 (1-s greedy)** and **S3b
-(payback-gated)** reach first prestige at the *identical* 12573 s -- the ranking is
-policy-insensitive because additive-linear effects make greedy optimal. Across check-in
-cadence N in {0.25,2,8,24}h the pacing degrades smoothly and monotonically (first-prestige
-3.75->6->16->48 h), exactly as the cost/effect shapes predict -- no cliff, no inversion. O6 is
-tested to 20 resets (2x the ">=3" the criteria demand) and the shrinkage stays sub-geometric to
-the edge. The one edge the criteria do **not** probe is the parameter grid itself (only the
-single PROVISIONAL point is run) -- SIM-001 asked for the point, not a sweep; a sweep is the
-natural next hardening if the floor smell is retuned.
+Re-derived at both the policy edges AND the parameter grid. *Policy:* **S3 (1-s greedy)** and
+**S3b (payback-gated)** reach first prestige at the *identical* 12573 s -- the ranking is
+policy-insensitive because additive-linear effects make greedy optimal; across check-in cadence
+N in {0.25,2,8,24}h the pacing degrades smoothly and monotonically (first-prestige 3.75->6->16->48 h),
+no cliff, no inversion; O6 holds sub-geometric to 20 resets (2x the ">=3" the criteria demand).
+
+*Parameters (new -- a `+-20%` sensitivity sweep, printed in full in stdout under
+"PARAMETER-SENSITIVITY SWEEP").* Each of the 7 provisional parameters is perturbed over
+`{x0.8,x0.9,x1.0,x1.1,x1.2}` (growth as num/den, den=100 fixed; THRESHOLD & AWARD_DIVISOR moved
+together) and **all ten A-criteria are re-scored per cell** by constructing `UpgradeSpec` /
+`PrestigeSpec` **directly** with the perturbed field values and driving the *same* real engine
+(the builders emit only the provisional point; disclosed, and self-checked byte-identical to the
+base run at the provisional cell). Result -- the 10/10 conclusion is **robust on 6 of the 7
+knobs but NOT uniformly across the whole grid, and this is the headline, not a footnote**:
+
+- **base_cost_seconds, effect_percent, threshold=divisor, bonus_percent: 10/10 PASS across the
+  entire `+-20%` range** (all shown criteria stay mid-band).
+- **Growth ratio is the one sensitive knob**, and one-sidedly on the *downside*: `cost(L) =
+  base * ratio^L` compounds over ~40 levels, so the `x0.9` growth cell (ratio `1.15 -> 1.04`)
+  collapses the cost curve -- S3 first-prestige falls to **1.56 h (below A3's [2,8] h)** and
+  A4/A3 balloons to **17.8x (above A6's [4,12]x)**: **first flip at growth `x0.9`, criteria
+  A3 & A6**. Growth *up* (`x1.1=1.27`, `x1.2=1.38`) stays in band (A3 5.0/6.2 h; A6 5.56/4.45x,
+  the latter nearing but not crossing the lower edge). The `x0.8` growth cell (ratio 0.92) is
+  **INFEASIBLE** -- the engine's own `UpgradeSpec` guard rejects `num<den` ("shrinking costs are
+  an exploit"), a hard design floor, reported, not hidden.
+- **Corners:** all-7-`x1.2` simultaneously scores **9/10** (A7 flips -- once every parameter is
+  dearer at once, one pre-prestige S2 visit buys <2 levels); all-7-`x0.8` is **INFEASIBLE** (same
+  growth `num<den` guard).
+
+**Bottom line:** the pinned provisional point is *not* a knife-edge -- it survives `+-20%` on
+6/7 parameters with margin -- but the sweep exposes a genuine **growth-ratio sensitivity cliff on
+the downside**: a ~10% reduction of the 1.15 growth ratio breaks the pacing targets. That does
+not overturn the point-verdict (the pinned economy still passes 10/10), but it **qualifies** the
+approval and converts "keep growth as-is" from a preference into a **guardrail**: growth `1.15`
+must be pinned as a near-floor, and any future retune below ~`1.04` re-opens SIM-001. A stricter
+reviewer could read the growth-`x0.9` flip as grounds to route needs-more-evidence pending an
+explicit growth-direction pin rationale; this report keeps the verdict at **approve with a
+robustness caveat** and hands the routing call to the fleet manager.
 
 **4. REPRODUCIBLE?** *"committed code, one documented command, same result"*
 
@@ -160,8 +192,11 @@ the whole O1-O6 + scorecard is deterministic by construction. Runs in < 1 s.
 
 It shows the PROVISIONAL parameters hit their pacing *targets* on the reference world; it does
 **not** show they feel good live. It does not model real players (greedy/grid/no-churn
-abstractions), does not test the parameter grid (single point), does not cover multi-generator
-or multi-upgrade interaction, says nothing about T10 (no purchase path), and -- the sharpest
+abstractions); it now **does** test the parameter grid (a `+-20%` per-parameter sweep, gate 3),
+but that sweep is `+-20%` on one axis at a time (plus the two all-move corners), **not** a dense
+or wider-range joint sweep -- so it bounds local sensitivity, not the global valid region; it
+does not cover multi-generator or multi-upgrade interaction, says nothing about T10 (no purchase
+path), and -- the sharpest
 limit -- **does not flag the `base_rate=1` floor as a failure** because no criterion covers it,
 even though it makes 3 of every 4 early "+25%" purchases inert. Launch telemetry needed for
 what it cannot establish: real time-to-first-upgrade / time-to-first-prestige distributions,
@@ -184,29 +219,43 @@ condition (sub-exponential + no super-geometric shrinkage + ratios trending to 1
 and discloses the quantisation dips rather than hiding them; it does not soften a genuinely
 failing criterion.
 
-## EVIDENCE STRENGTH: moderate-strong -- gate PASS
+## EVIDENCE STRENGTH: moderate-strong -- gate PASS (with a growth-ratio robustness caveat)
 
 No gate fully fails. Gates 2 and 4 are the **strongest possible** for this class: the sim runs
-the *real* engine (zero mechanics gap), carries 62 exact self-checks including a
-tick==offline-closed-form proof and an event-jump==per-second byte-equality proof, and is
-bit-reproducible in < 1 s. Gate 1 is genuinely strong for S1/S3 (no player freedom) and only
-*partial* for S2 (visit-grid quantisation, disclosed, non-flipping). It falls short of `strong`
-for one honest reason (gate 3/5): a **single parameter point** is run, not a sweep, and the
-live-UX floor smell is unmodelled -- so this settles "the pre-registered targets are met by
-these numbers on this world," which is exactly what SIM-001 asked, at `moderate-strong`.
+the *real* engine (zero mechanics gap), carries **70 exact self-checks** (62 base + 8 sweep,
+including a faithfulness proof that the direct-spec sweep reproduces the base run byte-identically
+at the provisional cell, plus a full-grid determinism re-run) -- a tick==offline-closed-form proof
+and an event-jump==per-second byte-equality proof among them -- and is bit-reproducible in < 1 s.
+Gate 1 is genuinely strong for S1/S3 (no player freedom) and only *partial* for S2 (visit-grid
+quantisation, disclosed, non-flipping). Gate 3 is now **directly answered by a `+-20%` parameter
+sweep** (no longer "unswept"): the 10/10 conclusion **survives `+-20%` on 6 of 7 parameters with
+margin**, but the sweep exposes a real **growth-ratio sensitivity cliff on the downside** (growth
+`x0.9` = ratio `1.15->1.04` flips A3 & A6) and a 9/10 all-`x1.2` corner (A7). That is why the grade
+stays `moderate-strong` rather than rising to `strong`: the pinned point is settled and not a
+knife-edge, but its pacing is fragile to a downward growth retune, and the live-UX `base_rate=1`
+floor smell is still unmodelled. This settles "the pre-registered targets are met by these numbers
+on this world, and survive `+-20%` on 6/7 knobs (growth-down excepted)," at `moderate-strong`.
 
 ## VERDICT & recommendation (for the fleet manager to route)
 
-- **Verdict:** **approve** -- 10/10 acceptance criteria PASS; the PROVISIONAL economy-v1
-  parameter table graduates **PROVISIONAL -> SIM-PINNED** (economy-v1.md section Verdict semantics).
-- **Ruling:** n/a (not needs-more-evidence).
+- **Verdict:** **approve, with a robustness caveat** -- 10/10 acceptance criteria PASS at the
+  pinned point; the PROVISIONAL economy-v1 parameter table graduates **PROVISIONAL -> SIM-PINNED**
+  (economy-v1.md section Verdict semantics). The `+-20%` sweep (gate 3) confirms the point is not a
+  knife-edge (survives `+-20%` on 6/7 params) but surfaces a **growth-ratio downside cliff** that
+  qualifies -- not overturns -- the approval; the fleet manager owns the final routing call.
+- **Ruling:** n/a at the pinned point (not needs-more-evidence); a stricter reviewer may route
+  needs-more-evidence pending an explicit growth-direction pin rationale (see gate 3 bottom line).
 - **Target:** `menno420/superbot-idle` (the economy-v1 doc + `idle_engine/economy.py` parameter
   table; the follow-up PR flips PROVISIONAL->SIM-PINNED in both, same-PR, per the integrity floor).
 - **Recommended implementation:** keep all seven parameters as-is (they hit every pacing target
-  with mid-band margin); pin them. **Named follow-up (not blocking the pin):** address the
-  `base_rate=1` floor so the advertised "+25%/level" is felt every level, not every 4th -- raise
-  `tier1.base_rate` (e.g. to >=4) or apply the upgrade/prestige multiplier before the floor;
-  re-run this sim to confirm the pin survives, and add a small parameter sweep as harness hardening.
+  with mid-band margin); pin them -- and, because the sweep shows the **growth ratio `1.15` sits
+  near a downside pacing cliff (a ~10% cut to `1.04` flips A3 & A6)**, pin growth with an explicit
+  "do-not-lower" note: any retune of the growth ratio below ~`1.04` re-opens SIM-001 and must
+  re-run this sim. **Named follow-up (not blocking the pin):** address the `base_rate=1` floor so
+  the advertised "+25%/level" is felt every level, not every 4th -- raise `tier1.base_rate` (e.g.
+  to >=4) or apply the upgrade/prestige multiplier before the floor; re-run this sim (base run +
+  sweep appendix) to confirm the pin survives. The parameter sweep asked for as harness hardening
+  now **ships in this sim** (see gate 3 / stdout "PARAMETER-SENSITIVITY SWEEP").
 - **Guardrails:** the parity test (`tests/test_economy_design_doc.py`) already fails the build if
   the doc table and `economy.py` drift -- keep it; any retune must move doc + engine same-PR.
 - **Telemetry:** on launch capture real time-to-first-upgrade, time-to-first-prestige, per-visit
@@ -220,7 +269,7 @@ idea: idea-engine control/outbox.md PROPOSAL 006 @ 7df1d6cd09d52ad8574b6f37adf00
 verdict: approve
 evidence: simulation
 report: sims/verdict-006-idle-economy-sim-kernel/ - run: python3 sims/verdict-006-idle-economy-sim-kernel/idle_economy_sim.py
-recommendation: all 10 acceptance criteria PASS on the PROVISIONAL params -- graduate PROVISIONAL -> SIM-PINNED; non-blocking follow-up: fix the base_rate=1 floor (levels 1-3 add zero real rate) + add a parameter sweep
+recommendation: all 10 acceptance criteria PASS on the PROVISIONAL params -- graduate PROVISIONAL -> SIM-PINNED (approve with a robustness caveat); the +-20% parameter sweep now ships in the sim and confirms 10/10 survives +-20% on 6/7 params but exposes a growth-ratio downside cliff (growth x0.9 = 1.15->1.04 flips A3 & A6) -- pin growth 1.15 as a near-floor (do-not-lower below ~1.04); non-blocking follow-up: fix the base_rate=1 floor (levels 1-3 add zero real rate)
 codex: PR #<n> comment - reply: pending
 gate: PASS
 -->

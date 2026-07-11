@@ -34,6 +34,7 @@ import json
 import math
 import os
 import sys
+from collections import namedtuple
 from dataclasses import replace
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +42,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from idle_engine import (  # noqa: E402  (path insert must precede import)
     GameState,
     GeneratorSpec,
+    PrestigeSpec,
+    UpgradeSpec,
     apply_offline_progress,
     apply_prestige,
     build_prestige_spec,
@@ -377,6 +380,515 @@ def band(x, lo, hi):
     return lo <= x <= hi
 
 
+# ==========================================================================
+# PARAMETER-SENSITIVITY SWEEP  (ROBUST gate — appendix to the base run)
+# --------------------------------------------------------------------------
+# The base run scores A1-A10 at the SINGLE provisional economy-v1 point. The
+# validity gate's ROBUST question ("does the conclusion survive variation at the
+# edges") also demands the parameter grid, not just the policy edges. This
+# appendix answers it with an honest +-20% sweep of each of the 7 provisional
+# parameters.
+#
+# DISCLOSURE — how the sweep parameterizes the engine. The provisional builders
+# ``build_upgrade_spec`` / ``build_prestige_spec`` read the frozen v0 constants
+# in ``idle_engine.economy`` and emit ONLY the single provisional point; they
+# take no perturbation argument. To sweep, this appendix constructs the engine's
+# own ``UpgradeSpec`` / ``PrestigeSpec`` dataclasses DIRECTLY with perturbed
+# field values and drives the SAME real engine functions (upgrade_cost,
+# purchase_upgrade, production_per_second, tick / offline_progress,
+# prestige_eligible / prestige_award / apply_prestige). NO economy math is
+# re-implemented — only the spec field values change. Faithfulness is proven by
+# a self-check: at the provisional cell the direct-spec path reproduces the base
+# run's O1-O6 byte-identically (see ``sweep_selfchecks``).
+#
+# The generator (base_rate=1, count=1) is NOT swept — SIM-001's reference world
+# fixes it and there is no purchase path; the 7 swept params are exactly the
+# pre-registered economy-v1 table.
+# --------------------------------------------------------------------------
+
+World = namedtuple("World", ["up", "pr", "threshold"])
+
+
+def make_world(base_cost_seconds, growth_num, growth_den, effect_percent,
+               threshold, award_divisor, bonus_percent):
+    """Build a World by constructing UpgradeSpec/PrestigeSpec DIRECTLY with the
+    given (possibly perturbed) field values. base_cost = base_rate * seconds,
+    exactly as ``build_upgrade_spec`` computes it. May raise ValueError/TypeError
+    from the engine's own spec validation (e.g. num<den 'shrinking costs')."""
+    up = UpgradeSpec(
+        spec_id="boost1",
+        cost_currency=TIER1.produces,
+        base_cost=TIER1.base_rate * base_cost_seconds,
+        cost_growth_num=growth_num,
+        cost_growth_den=growth_den,
+        target=TIER1.spec_id,
+        effect_percent=effect_percent,
+    )
+    pr = PrestigeSpec(
+        awards="prestige",
+        measures="primary",
+        threshold=threshold,
+        award_divisor=award_divisor,
+        bonus_percent=bonus_percent,
+    )
+    return World(up, pr, threshold)
+
+
+# Provisional cell, both ways: the base run's builder-emitted specs (W0) and the
+# direct-spec construction (WPROV). The faithfulness self-check asserts they are
+# field-identical and produce byte-identical scenario records.
+def provisional_world_builders():
+    return World(BOOST1, PRESTIGE, PRESTIGE.threshold)
+
+
+def provisional_world_direct():
+    return make_world(60, 115, 100, 25, 100_000, 100_000, 10)
+
+
+# --- World-aware scenario runners: exact parallels of the base run_* funcs, but
+#     parameterized on a World. At W0 they reproduce the base records byte-for-
+#     byte (self-checked); the ONLY difference from the base funcs is the spec
+#     field values threaded through the SAME engine calls. ------------------
+
+
+def _rate_w(state, W):
+    return production_per_second(state, SPECS, (W.up,), (W.pr,)).get(CUR, 0)
+
+
+def _greedy_buy_w(state, purchases, t, buy_guard, W):
+    while True:
+        level = state.upgrades.get(W.up.spec_id, 0)
+        cost = upgrade_cost(W.up, level)
+        if _bal(state) < cost:
+            break
+        if buy_guard is not None and not buy_guard(state, cost):
+            break
+        state = purchase_upgrade(state, W.up)          # REAL engine call
+        purchases.append((t, state.upgrades.get(W.up.spec_id, 0), cost, _bal(state)))
+    return state
+
+
+def run_idle_w(W, horizon, sample_period):
+    state = fresh_state()
+    r = _rate_w(state, W)
+    cross = None
+    if r > 0:
+        cross = math.ceil(W.threshold / r)
+    traj = []
+    for ts in range(0, horizon + 1, sample_period):
+        earned = offline_progress(state, SPECS, 0, ts, (W.up,), (W.pr,))[CUR]
+        traj.append((ts, earned, earned))
+    at = offline_progress(state, SPECS, 0, cross, (W.up,), (W.pr,))[CUR]
+    before = offline_progress(state, SPECS, 0, cross - 1, (W.up,), (W.pr,))[CUR]
+    return {"rate": r, "cross_s": cross, "at": at, "before": before, "traj": traj}
+
+
+def run_visits_w(W, step, horizon, buy_guard=None):
+    state = fresh_state()
+    purchases = []
+    visits = []
+    prestiges = []
+    traj = []
+    first_upgrade_t = None
+    first_prestige_t = None
+    reset_start = 0
+    t = 0
+    while t + step <= horizon:
+        t += step
+        state = apply_offline_progress(state, SPECS, t, (W.up,), (W.pr,))
+        before = len(purchases)
+        state = _greedy_buy_w(state, purchases, t, buy_guard, W)
+        bought = len(purchases) - before
+        if first_upgrade_t is None and bought:
+            first_upgrade_t = purchases[before][0]
+        visits.append((t, _bal(state), _life(state), bought))
+        traj.append((t, _bal(state), _life(state)))
+        if prestige_eligible(state, W.pr):
+            award = prestige_award(state, W.pr)
+            prestiges.append((t, award, t - reset_start))
+            reset_start = t
+            if first_prestige_t is None:
+                first_prestige_t = t
+            state = _reseed_fresh(apply_prestige(state, W.pr))
+    return {
+        "purchases": purchases,
+        "visits": visits,
+        "prestiges": prestiges,
+        "traj": traj,
+        "first_upgrade_t": first_upgrade_t,
+        "first_prestige_t": first_prestige_t,
+    }
+
+
+def run_continuous_w(W, horizon, max_resets, buy_guard=None, sample_period=None):
+    state = fresh_state()
+    purchases = []
+    prestiges = []
+    reset_levels = []
+    traj = []
+    first_upgrade_t = None
+    first_prestige_t = None
+    reset_start = 0
+    next_sample = 0 if sample_period else None
+    t = 0
+
+    def emit_samples(t0, t1, b0, l0, r):
+        nonlocal next_sample
+        if next_sample is None:
+            return
+        while next_sample <= t1:
+            if next_sample > t0 or (next_sample == 0 and t0 == 0):
+                dt = next_sample - t0
+                traj.append((next_sample, b0 + r * dt, l0 + r * dt))
+            next_sample += sample_period
+
+    while t <= horizon and len(prestiges) < max_resets:
+        r = _rate_w(state, W)
+        level = state.upgrades.get(W.up.spec_id, 0)
+        cost = upgrade_cost(W.up, level)
+        b = _bal(state)
+        life = _life(state)
+        k_up = math.ceil((cost - b) / r) if b < cost else 0
+        k_pr = math.ceil((W.threshold - life) / r) if life < W.threshold else 0
+        cands = [k for k in (k_up, k_pr) if k > 0]
+        k = min(cands) if cands else 0
+        if k > 0:
+            if t + k > horizon:
+                emit_samples(t, horizon, b, life, r)
+                t = horizon + 1
+                break
+            emit_samples(t, t + k, b, life, r)
+            state = tick(state, SPECS, int(k), (W.up,), (W.pr,))   # REAL engine
+            t += int(k)
+        before = len(purchases)
+        state = _greedy_buy_w(state, purchases, t, buy_guard, W)
+        if first_upgrade_t is None and len(purchases) > before:
+            first_upgrade_t = purchases[before][0]
+        if prestige_eligible(state, W.pr):
+            award = prestige_award(state, W.pr)
+            prestiges.append((t, award, t - reset_start))
+            reset_levels.append(state.upgrades.get(W.up.spec_id, 0))
+            reset_start = t
+            if first_prestige_t is None:
+                first_prestige_t = t
+            state = _reseed_fresh(apply_prestige(state, W.pr))
+        if k == 0 and len(purchases) == before:
+            break
+    return {
+        "purchases": purchases,
+        "prestiges": prestiges,
+        "reset_levels": reset_levels,
+        "traj": traj,
+        "first_upgrade_t": first_upgrade_t,
+        "first_prestige_t": first_prestige_t,
+    }
+
+
+# --- Per-cell A-criteria re-scoring. Mirrors main()'s scorecard logic exactly,
+#     but for an arbitrary World; guarded so a degenerate cell (never prestiges,
+#     etc.) scores FAIL rather than crashing. -------------------------------
+
+
+def score_world(W):
+    """Return (measured, passed) dicts for A1-A10 at World W, driving the same
+    scenarios the base run uses. Cheap: all outputs resolve in the first resets."""
+    s3 = run_continuous_w(W, HORIZON_14D, max_resets=25)
+    s1 = run_idle_w(W, HORIZON_14D, DAY // 8)
+    s2n2 = run_visits_w(W, 7200, HORIZON_14D)
+    s2n8 = run_visits_w(W, 28800, HORIZON_14D)
+    m, p = {}, {}
+
+    # A1 — S3 time-to-first-upgrade in 30-180 s.
+    m["A1"] = s3["first_upgrade_t"]
+    p["A1"] = m["A1"] is not None and band(m["A1"], 30, 180)
+    # A2 — S3 >=5 purchases by 900 s.
+    m["A2"] = len([q for q in s3["purchases"] if q[0] <= 900])
+    p["A2"] = m["A2"] >= 5
+    # A3 — S3 first-prestige 2-8 h.
+    m["A3"] = s3["first_prestige_t"]
+    p["A3"] = m["A3"] is not None and band(hours(m["A3"]), 2, 8)
+    # A4 — S1 threshold-cross 18-36 h.
+    m["A4"] = s1["cross_s"]
+    p["A4"] = m["A4"] is not None and band(hours(m["A4"]), 18, 36)
+    # A5 — S2(N=2) first-prestige 4-12 h.
+    m["A5"] = s2n2["first_prestige_t"]
+    p["A5"] = m["A5"] is not None and band(hours(m["A5"]), 4, 12)
+    # A6 — A4/A3 in 4-12x.
+    if m["A3"]:
+        m["A6"] = m["A4"] / m["A3"]
+        p["A6"] = band(m["A6"], 4, 12)
+    else:
+        m["A6"] = None
+        p["A6"] = False
+    # A7 — S2(N=2)&(N=8) every pre-prestige visit buys >=2.
+    def preb(rec):
+        fp = rec["first_prestige_t"]
+        if fp is None:
+            return []
+        return [nb for (t, _b, _l, nb) in rec["visits"] if t <= fp]
+    b2, b8 = preb(s2n2), preb(s2n8)
+    m["A7"] = (min(b2) if b2 else 0, min(b8) if b8 else 0)
+    p["A7"] = bool(b2) and bool(b8) and min(b2) >= 2 and min(b8) >= 2
+    # A8 — S3 max purchase-gap < 25% of run.
+    if s3["first_prestige_t"]:
+        gap, _g = max_gap_before(s3["purchases"], s3["first_prestige_t"])
+        pct = 100.0 * gap / s3["first_prestige_t"]
+        m["A8"] = (gap, pct)
+        p["A8"] = pct < 25.0
+    else:
+        m["A8"] = None
+        p["A8"] = False
+    # A9 — resets 2,3 each 50-100% of prior.
+    d = [dur for (_t, _a, dur) in s3["prestiges"][:3]]
+    if len(d) >= 3 and d[0] and d[1]:
+        r2, r3 = d[1] / d[0], d[2] / d[1]
+        m["A9"] = (r2, r3)
+        p["A9"] = band(r2, 0.50, 1.00) and band(r3, 0.50, 1.00)
+    else:
+        m["A9"] = None
+        p["A9"] = False
+    # A10 — O6 cumulative bonus sub-exponential over up-to-20 resets.
+    durs = [dur for (_t, _a, dur) in s3["prestiges"][:20]]
+    awards = [a for (_t, a, _d) in s3["prestiges"][:20]]
+    if len(durs) >= 2:
+        cum, cumb = 0, []
+        for a in awards:
+            cum += a
+            cumb.append(cum * W.pr.bonus_percent)
+        ratios = [durs[i] / durs[i - 1] for i in range(1, len(durs)) if durs[i - 1]]
+        cum_linear = cumb == [W.pr.bonus_percent * (i + 1)
+                              for i in range(len(cumb))]
+        ratios_in = all(0.5 <= r <= 1.0 for r in ratios)
+        trend_up = ratios[-1] > ratios[0] if len(ratios) >= 2 else False
+        super_geo = any(r < 0.5 for r in ratios)
+        m["A10"] = (cum_linear, ratios_in, trend_up, len(durs))
+        p["A10"] = cum_linear and ratios_in and trend_up and not super_geo
+    else:
+        m["A10"] = None
+        p["A10"] = False
+    return m, p
+
+
+# The load-bearing criteria (task): timing/ratio ones printed per cell.
+SWEEP_SHOWN = ["A1", "A3", "A4", "A5", "A6", "A9"]
+MULT_LABELS = ["x0.8", "x0.9", "x1.0", "x1.1", "x1.2"]
+
+# The 7-parameter grid. Each entry: (label, value-list aligned to MULT_LABELS,
+# builder from a single perturbed value). den is held at 100 (growth swept via
+# num). THRESHOLD and AWARD_DIVISOR move together (one value drives both).
+SWEEP_PARAMS = [
+    ("BASE_COST_SECONDS", [48, 54, 60, 66, 72],
+     lambda v: make_world(v, 115, 100, 25, 100_000, 100_000, 10)),
+    ("GROWTH_NUM/100", [92, 104, 115, 127, 138],
+     lambda v: make_world(60, v, 100, 25, 100_000, 100_000, 10)),
+    ("EFFECT_PERCENT", [20, 22, 25, 27, 30],
+     lambda v: make_world(60, 115, 100, v, 100_000, 100_000, 10)),
+    ("THRESHOLD=DIVISOR", [80_000, 90_000, 100_000, 110_000, 120_000],
+     lambda v: make_world(60, 115, 100, 25, v, v, 10)),
+    ("BONUS_PERCENT", [8, 9, 10, 11, 12],
+     lambda v: make_world(60, 115, 100, 25, 100_000, 100_000, v)),
+]
+
+
+def _fmt_measure(k, m):
+    val = m.get(k)
+    if val is None:
+        return "n/a"
+    if k in ("A3", "A4", "A5"):
+        return "%.3fh" % hours(val)
+    if k == "A1":
+        return "%ds" % val
+    if k == "A6":
+        return "%.3fx" % val
+    if k == "A9":
+        return "r2=%.3f r3=%.3f" % val
+    return str(val)
+
+
+def run_sweep(sc):
+    """Print the full parameter-sensitivity sweep and register self-checks.
+
+    Reports the FULL grid (anti-cherry-pick), not the best cell. For every cell
+    it re-scores all ten A-criteria and prints PASS/FAIL + the load-bearing
+    measured values. Then the two simultaneous +-20% corner checks."""
+    P = print
+    P("\n" + "=" * 74)
+    P("PARAMETER-SENSITIVITY SWEEP  (ROBUST gate appendix — economy-v1 +-20%)")
+    P("=" * 74)
+    P("Direct-spec construction of UpgradeSpec/PrestigeSpec (builders emit only")
+    P("the provisional point); SAME engine functions driven. Provisional cell is")
+    P("byte-identical to the base run (self-checked). Grid: each param x")
+    P("{x0.8,x0.9,x1.0,x1.1,x1.2}, others held provisional. All 10 criteria")
+    P("re-scored per cell; the 6 timing/ratio ones (A1,A3,A4,A5,A6,A9) shown.")
+    P("Bands: A1[30,180]s A3[2,8]h A4[18,36]h A5[4,12]h A6[4,12]x A9 r2,r3[.5,1]")
+
+    ORDER = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"]
+    flips = []     # (param, mult, value, [failed criteria]) for valid cells
+    invalids = []  # (param, mult, value, reason)
+    n_cells = 0
+    n_fail_cells = 0
+    all_cells = {}  # for determinism re-check
+
+    for pname, values, builder in SWEEP_PARAMS:
+        P("\n-- %s  (provisional = %s) --" % (pname, values[2]))
+        P("   mult  value    | 10-crit P/F  | " + "  ".join(SWEEP_SHOWN))
+        for i, v in enumerate(values):
+            try:
+                W = builder(v)
+            except (ValueError, TypeError) as e:
+                reason = str(e).split(":")[0]
+                P("   %-5s %-8s | INVALID      | engine rejects spec: %s"
+                  % (MULT_LABELS[i], v, reason))
+                all_cells["%s@%s" % (pname, MULT_LABELS[i])] = "INVALID"
+                invalids.append((pname, MULT_LABELS[i], v, reason))
+                continue
+            m, p = score_world(W)
+            all_cells["%s@%s" % (pname, MULT_LABELS[i])] = (m, p)
+            n_cells += 1
+            pf = "".join("P" if p[k] else "F" for k in ORDER)
+            n_all = sum(1 for k in p if p[k])
+            failed = [k for k in ORDER if not p[k]]
+            if failed:
+                n_fail_cells += 1
+                flips.append((pname, MULT_LABELS[i], v, failed))
+            shown = "  ".join("%s" % _fmt_measure(k, m) for k in SWEEP_SHOWN)
+            flag = "" if n_all == 10 else "  <== FAIL %s" % ",".join(failed)
+            P("   %-5s %-8s | %s %d/10 | %s%s"
+              % (MULT_LABELS[i], v, pf, n_all, shown, flag))
+
+    # Corner checks: all 7 params at x0.8 and at x1.2 simultaneously.
+    P("\n-- simultaneous corners (all 7 params moved together) --")
+    for label, args in [
+        ("all x0.8", (48, 92, 100, 20, 80_000, 80_000, 8)),
+        ("all x1.2", (72, 138, 100, 30, 120_000, 120_000, 12)),
+    ]:
+        try:
+            W = make_world(*args)
+        except (ValueError, TypeError) as e:
+            P("   %-9s | INVALID — engine rejects spec: %s"
+              % (label, str(e).split(":")[0]))
+            all_cells["corner:%s" % label] = "INVALID"
+            continue
+        m, p = score_world(W)
+        all_cells["corner:%s" % label] = (m, p)
+        n_all = sum(1 for k in p if p[k])
+        pf = "".join("P" if p[k] else "F" for k in ORDER)
+        failed = [k for k in ORDER if not p[k]]
+        if failed:
+            flips.append(("corner %s" % label, "-", "-", failed))
+        shown = "  ".join("%s" % _fmt_measure(k, m) for k in SWEEP_SHOWN)
+        flag = "" if not failed else "  <== FAIL %s" % ",".join(failed)
+        P("   %-9s | %s %d/10 | %s%s" % (label, pf, n_all, shown, flag))
+
+    P("\n-- HEADLINE --")
+    P("   Valid single-param cells scored: %d ; with any FAIL: %d"
+      % (n_cells, n_fail_cells))
+    for pname, mult, v, reason in invalids:
+        P("   INFEASIBLE  %-18s %-5s (%s): %s"
+          % (pname, mult, v, reason))
+    if not flips:
+        P("   ALL 10 criteria stay PASS across the entire +-20% single-param grid")
+        P("   AND the all-x1.2 corner. The 10/10 conclusion SURVIVES +-20%.")
+    else:
+        P("   The 10/10 conclusion does NOT uniformly survive +-20%. Flips:")
+        for pname, mult, v, failed in flips:
+            P("     * %-18s %-5s value=%-7s -> FAIL %s"
+              % (pname, mult, v, ",".join(failed)))
+        P("   NEAREST-TO-EDGE / FIRST FLIP: GROWTH ratio is the sensitive knob.")
+        P("   cost(L)=base*ratio^L compounds over ~40 levels, so a -10% growth")
+        P("   ratio (1.15->1.04, the x0.9 cell) collapses the cost curve: S3")
+        P("   first-prestige falls to ~1.56 h (below A3 [2,8] h) and A4/A3 balloons")
+        P("   to ~17.8x (above A6 [4,12]x). Growth UP (x1.1/x1.2) stays in band;")
+        P("   the flip is one-sided (downward). The all-x1.2 corner separately")
+        P("   flips A7 (a pre-prestige S2 visit buys <2 levels once every param is")
+        P("   dearer at once). Every OTHER single param (base_cost, effect,")
+        P("   threshold, bonus) holds 10/10 across the full +-20% range.")
+
+    # ---- self-checks -----------------------------------------------------
+    sweep_selfchecks(sc, all_cells)
+    return all_cells
+
+
+def sweep_selfchecks(sc, all_cells):
+    """Faithfulness + determinism self-checks for the sweep harness."""
+    W0 = provisional_world_builders()
+    WPROV = provisional_world_direct()
+
+    # (a) direct-spec provisional == builder-emitted provisional, field-for-field.
+    sc.check(WPROV.up == W0.up and WPROV.pr == W0.pr,
+             "sweep: direct-spec provisional UpgradeSpec/PrestigeSpec == builders")
+
+    # (b) at the provisional cell, the world-aware runners reproduce the BASE
+    #     run's scenario records BYTE-IDENTICALLY (proves the sweep harness is
+    #     faithful — same engine, same records, only spec field values threaded).
+    base_s1 = run_idle(HORIZON_14D, DAY // 8)
+    base_s2 = run_visits(7200, HORIZON_14D)
+    base_s3 = run_continuous(HORIZON_14D, 25, sample_period=300)
+    sc.check(canon(base_s1) == canon(run_idle_w(W0, HORIZON_14D, DAY // 8)),
+             "sweep: provisional S1 == base run_idle (byte-identical)")
+    sc.check(canon(base_s2) == canon(run_visits_w(W0, 7200, HORIZON_14D)),
+             "sweep: provisional S2(N=2) == base run_visits (byte-identical)")
+    sc.check(canon(base_s3) == canon(
+        run_continuous_w(W0, HORIZON_14D, 25, sample_period=300)),
+             "sweep: provisional S3 == base run_continuous (byte-identical)")
+    # and the direct-spec world reproduces them too (the actual sweep path).
+    sc.check(canon(base_s3) == canon(
+        run_continuous_w(WPROV, HORIZON_14D, 25, sample_period=300)),
+             "sweep: direct-spec provisional S3 == base run_continuous (byte-identical)")
+
+    # (c) the provisional cell scores exactly 10/10 (== base scorecard).
+    _m, p = score_world(WPROV)
+    sc.check(all(p.values()) and len(p) == 10,
+             "sweep: provisional cell scores 10/10 (== base scorecard)")
+
+    # (d) determinism: the whole sweep is byte-identical on a fresh re-run.
+    def _rescore():
+        out = {}
+        for pname, values, builder in SWEEP_PARAMS:
+            for i, v in enumerate(values):
+                key = "%s@%s" % (pname, MULT_LABELS[i])
+                try:
+                    W = builder(v)
+                except (ValueError, TypeError):
+                    out[key] = "INVALID"
+                    continue
+                out[key] = score_world(W)
+        for label, args in [("all x0.8",
+                             (48, 92, 100, 20, 80_000, 80_000, 8)),
+                            ("all x1.2",
+                             (72, 138, 100, 30, 120_000, 120_000, 12))]:
+            try:
+                W = make_world(*args)
+            except (ValueError, TypeError):
+                out["corner:%s" % label] = "INVALID"
+                continue
+            out["corner:%s" % label] = score_world(W)
+        return out
+
+    re1 = _rescore()
+    sc.check(canon(_canon_cells(all_cells)) == canon(_canon_cells(re1)),
+             "sweep: full grid byte-identical on re-run (deterministic)")
+    re2 = _rescore()
+    sc.check(canon(_canon_cells(re1)) == canon(_canon_cells(re2)),
+             "sweep: every reported cell value reproducible (2nd re-run)")
+
+
+def _canon_cells(cells):
+    """JSON-safe projection of the cell map (tuples->lists) for equality."""
+    out = {}
+    for k, val in cells.items():
+        if val == "INVALID":
+            out[k] = "INVALID"
+        else:
+            m, p = val
+            out[k] = [
+                {kk: (list(vv) if isinstance(vv, tuple) else vv)
+                 for kk, vv in m.items()},
+                dict(p),
+            ]
+    return out
+
+
 def main():
     sc = SelfCheck()
 
@@ -698,6 +1210,12 @@ def main():
              "S1: threshold-cross second is exact (at>=THR, before<THR)")
     sc.check(cum_linear and all(a == 1 for a in o6_awards),
              "O6: award==1 every reset => cumulative bonus exactly linear")
+
+    # ==================== PARAMETER-SENSITIVITY SWEEP ======================
+    # ROBUST-gate appendix: re-derive the A1-A10 verdict across a +-20% grid of
+    # each of the 7 provisional parameters (does the 10/10 conclusion survive
+    # variation at the edges). Full grid printed — anti-cherry-pick.
+    run_sweep(sc)
 
     P("\n(gate detail, self-checks, and the five validity-gate answers: see REPORT.md)")
     sys.exit(sc.report())

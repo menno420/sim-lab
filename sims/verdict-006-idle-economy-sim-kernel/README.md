@@ -15,6 +15,10 @@ own `tick`, `offline_progress`, `purchase_upgrade`, `upgrade_cost`,
 **Verdict (mechanical): `10/10 PASS` → approve — graduate the PROVISIONAL
 parameter table PROVISIONAL → SIM-PINNED.** `[COORDINATOR TO FINALIZE]` — the
 coordinator finalizes VERDICT 006 and the heartbeat after reviewing the numbers.
+**Robustness caveat (±20% sweep):** the 10/10 conclusion survives ±20% on 6 of 7
+parameters, but the **growth ratio** is a one-sided downside cliff — a ~10% cut
+(`1.15 → 1.04`, the `×0.9` cell) flips A3 & A6 — so growth `1.15` should be pinned
+as a near-floor (see `REPORT.md` gate 3).
 
 Source idea: `menno420/idea-engine` `control/outbox.md` PROPOSAL 006 @
 `7df1d6cd09d52ad8574b6f37adf00abb99179f5e`, relaying superbot-idle **SIM-001**
@@ -27,8 +31,10 @@ python3 sims/verdict-006-idle-economy-sim-kernel/idle_economy_sim.py
 Deterministic, stdlib-only, no RNG. A single run per scenario **is** the
 distribution (the engine is pure and integer-exact); determinism is proven by
 byte-identical re-run of every scenario, not by seeds. Exit 0 iff every
-self-check passes (**62 this cycle**). Prints the O1–O6 tables, the A1–A10
-scorecard, and the terminal `SELF-CHECKS: n passed, 0 failed` line. Runs in < 1 s.
+self-check passes (**70 this cycle** — 62 base + 8 for the sweep). Prints the
+O1–O6 tables, the A1–A10 scorecard, a **PARAMETER-SENSITIVITY SWEEP** appendix
+(a ±20% sweep of all 7 economy parameters, re-scoring A1–A10 per cell), and the
+terminal `SELF-CHECKS: n passed, 0 failed` line. Runs in < 1 s.
 
 ## What it models
 The economy-v1 **reference world**: one generator `tier1` (`base_rate=1`, count
