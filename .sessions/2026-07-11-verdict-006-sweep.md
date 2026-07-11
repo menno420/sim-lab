@@ -1,6 +1,6 @@
 # Session — VERDICT 006 · SIM-001 sweep — parameter-sensitivity appendix (economy-v1)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus 4 · 2026-07-11 · VERDICT 006 sweep (follow-up) session
 > Objective: close the ROBUST validity-gate half-answer on the merged VERDICT 006 sim — the
 > 10/10-PASS conclusion was scored at the SINGLE provisional economy-v1 point ("only unswept
