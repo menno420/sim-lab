@@ -1,0 +1,1529 @@
+[
+ {
+  "name": "ai_enabled",
+  "subsystem": "ai",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:109",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_natural_language_enabled",
+  "subsystem": "ai",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:122",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_default_provider",
+  "subsystem": "ai",
+  "type": "enum",
+  "default": "deterministic",
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:136",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_default_model",
+  "subsystem": "ai",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:155",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_minimum_level_default",
+  "subsystem": "ai",
+  "type": "int",
+  "default": 2,
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:167",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_cooldown_seconds",
+  "subsystem": "ai",
+  "type": "int",
+  "default": 30,
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:182",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_fresh_user_mention_allowance",
+  "subsystem": "ai",
+  "type": "int",
+  "default": 1,
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:196",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_guild_instruction_profile",
+  "subsystem": "ai",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:210",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_memory_window_minutes",
+  "subsystem": "ai",
+  "type": "enum",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:225",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "ai_memory_channel_scan_enabled",
+  "subsystem": "ai",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:AIPanelView>Settings / panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/ai/schemas.py:244",
+  "read_where": [
+   "disbot/services/ai_config_projection_service.py:54 (scalar projection into typed ai_guild_policy)"
+  ],
+  "notes": "AI scalar SettingSpec; edited via AI panel Settings button (cogs/ai_cog.py:_build_ai_settings_panel) and the Settings hub. enum allowed_values: deterministic/openai/anthropic (provider); 0/15/30/60/120 (memory window)."
+ },
+ {
+  "name": "automod_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:135",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_spam_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:148",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_invites_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:157",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_caps_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:166",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_mentions_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:175",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_cross_channel_spam_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:184",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_duplicate_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:197",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_spam_count",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 5,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:210",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_spam_window_seconds",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 7,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:224",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_caps_percent",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 70,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:235",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_mentions_count",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 4,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:249",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_cross_channel_spam_count",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 4,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:260",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_duplicate_count",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 3,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:274",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_exempt_roles",
+  "subsystem": "automod",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:288",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "automod_exempt_channels",
+  "subsystem": "automod",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/automod/schemas.py:300",
+  "read_where": [
+   "disbot/services/automod_config.py:149 (load_policy)"
+  ],
+  "notes": "default from services/automod_config.py"
+ },
+ {
+  "name": "blackjack_default_entry_fee",
+  "subsystem": "blackjack",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/blackjack/schemas.py:29",
+  "read_where": [
+   "disbot/cogs/blackjack_cog.py (bjtournament reads BLACKJACK_DEFAULT_ENTRY_FEE when entry_fee omitted)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "cleanup_spam_window_seconds",
+  "subsystem": "cleanup",
+  "type": "int",
+  "default": 15,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/cleanup/schemas.py:60",
+  "read_where": [
+   "disbot/cogs/cleanup_cog.py (!cleanuphistory spam sweep reads CLEANUP_SPAM_WINDOW_SECONDS)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "counters_enabled",
+  "subsystem": "counters",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/counters/schemas.py:82",
+  "read_where": [
+   "disbot/services/counter_config.py:239 (load_policy)"
+  ],
+  "notes": "channel settings use input_hint=channel"
+ },
+ {
+  "name": "counters_total_channel",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/counters/schemas.py:95",
+  "read_where": [
+   "disbot/services/counter_config.py:239 (load_policy)"
+  ],
+  "notes": "channel settings use input_hint=channel"
+ },
+ {
+  "name": "counters_humans_channel",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/counters/schemas.py:108",
+  "read_where": [
+   "disbot/services/counter_config.py:239 (load_policy)"
+  ],
+  "notes": "channel settings use input_hint=channel"
+ },
+ {
+  "name": "counters_bots_channel",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/counters/schemas.py:118",
+  "read_where": [
+   "disbot/services/counter_config.py:239 (load_policy)"
+  ],
+  "notes": "channel settings use input_hint=channel"
+ },
+ {
+  "name": "counters_total_template",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "👥 Members: {count}",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/counters/schemas.py:128",
+  "read_where": [
+   "disbot/services/counter_config.py:239 (load_policy)"
+  ],
+  "notes": "channel settings use input_hint=channel"
+ },
+ {
+  "name": "counters_humans_template",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "🧑 Humans: {count}",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/counters/schemas.py:137",
+  "read_where": [
+   "disbot/services/counter_config.py:239 (load_policy)"
+  ],
+  "notes": "channel settings use input_hint=channel"
+ },
+ {
+  "name": "counters_bots_template",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "🤖 Bots: {count}",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/counters/schemas.py:146",
+  "read_where": [
+   "disbot/services/counter_config.py:239 (load_policy)"
+  ],
+  "notes": "channel settings use input_hint=channel"
+ },
+ {
+  "name": "deathmatch_turn_timeout",
+  "subsystem": "deathmatch",
+  "type": "int",
+  "default": 60,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/deathmatch/schemas.py:33",
+  "read_where": [
+   "disbot/cogs/deathmatch_cog.py (_ChallengeView.btn_accept -> _DuelView reads DEATHMATCH_TURN_TIMEOUT)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "image_moderation_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/image_moderation/schemas.py:96",
+  "read_where": [
+   "disbot/services/image_moderation_config.py:103 (load_policy)"
+  ],
+  "notes": "default from services/image_moderation_config.py"
+ },
+ {
+  "name": "image_moderation_sexual_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/image_moderation/schemas.py:109",
+  "read_where": [
+   "disbot/services/image_moderation_config.py:103 (load_policy)"
+  ],
+  "notes": "default from services/image_moderation_config.py"
+ },
+ {
+  "name": "image_moderation_violence_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/image_moderation/schemas.py:118",
+  "read_where": [
+   "disbot/services/image_moderation_config.py:103 (load_policy)"
+  ],
+  "notes": "default from services/image_moderation_config.py"
+ },
+ {
+  "name": "image_moderation_harassment_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/image_moderation/schemas.py:127",
+  "read_where": [
+   "disbot/services/image_moderation_config.py:103 (load_policy)"
+  ],
+  "notes": "default from services/image_moderation_config.py"
+ },
+ {
+  "name": "image_moderation_hate_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/image_moderation/schemas.py:136",
+  "read_where": [
+   "disbot/services/image_moderation_config.py:103 (load_policy)"
+  ],
+  "notes": "default from services/image_moderation_config.py"
+ },
+ {
+  "name": "image_moderation_threshold_percent",
+  "subsystem": "image_moderation",
+  "type": "int",
+  "default": 80,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/image_moderation/schemas.py:145",
+  "read_where": [
+   "disbot/services/image_moderation_config.py:103 (load_policy)"
+  ],
+  "notes": "default from services/image_moderation_config.py"
+ },
+ {
+  "name": "image_moderation_exempt_roles",
+  "subsystem": "image_moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/image_moderation/schemas.py:159",
+  "read_where": [
+   "disbot/services/image_moderation_config.py:103 (load_policy)"
+  ],
+  "notes": "default from services/image_moderation_config.py"
+ },
+ {
+  "name": "image_moderation_exempt_channels",
+  "subsystem": "image_moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/image_moderation/schemas.py:171",
+  "read_where": [
+   "disbot/services/image_moderation_config.py:103 (load_policy)"
+  ],
+  "notes": "default from services/image_moderation_config.py"
+ },
+ {
+  "name": "karma_enabled",
+  "subsystem": "karma",
+  "type": "bool",
+  "default": true,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/karma/schemas.py:75",
+  "read_where": [
+   "disbot/services/karma_config.py:73 (load_policy)"
+  ],
+  "notes": "default from services/karma_config.py"
+ },
+ {
+  "name": "karma_cooldown",
+  "subsystem": "karma",
+  "type": "int",
+  "default": 3600,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/karma/schemas.py:87",
+  "read_where": [
+   "disbot/services/karma_config.py:73 (load_policy)"
+  ],
+  "notes": "default from services/karma_config.py"
+ },
+ {
+  "name": "karma_daily_cap",
+  "subsystem": "karma",
+  "type": "int",
+  "default": 10,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/karma/schemas.py:101",
+  "read_where": [
+   "disbot/services/karma_config.py:73 (load_policy)"
+  ],
+  "notes": "default from services/karma_config.py"
+ },
+ {
+  "name": "karma_reaction_emoji",
+  "subsystem": "karma",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/karma/schemas.py:112",
+  "read_where": [
+   "disbot/services/karma_config.py:73 (load_policy)"
+  ],
+  "notes": "default from services/karma_config.py"
+ },
+ {
+  "name": "logging_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:115",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_auto_create_channels",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:128",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_messages_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:147",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_members_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:160",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_roles_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:169",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_moderation_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:185",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_channels_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:199",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_server_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:212",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_voice_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:226",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_event_routing",
+  "subsystem": "logging",
+  "type": "enum",
+  "default": "combined",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:238",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_ignored_channels",
+  "subsystem": "logging",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:257",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_ignored_users",
+  "subsystem": "logging",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/logging/schemas.py:270",
+  "read_where": [
+   "disbot/services/server_logging_config.py:185 (load_policy)"
+  ],
+  "notes": "default from services/server_logging_config.py; enum event_routing: combined/per_category"
+ },
+ {
+  "name": "logging_mod_channel",
+  "subsystem": "logging",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView (binding mod_channel)",
+  "set_ref": "disbot/utils/settings_keys/logging.py:13",
+  "read_where": [
+   "disbot/services/server_logging.py resolve_log_channel (reads LOGGING_MOD_CHANNEL)"
+  ],
+  "notes": "Channel id; declared as BindingSpec mod_channel (cogs/logging/schemas.py:291) but runtime still reads the legacy scalar key. No scalar SettingSpec."
+ },
+ {
+  "name": "logging_cleanup_channel",
+  "subsystem": "logging",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView (binding cleanup_channel)",
+  "set_ref": "disbot/utils/settings_keys/logging.py:17",
+  "read_where": [
+   "disbot/services/server_logging.py resolve_log_channel (reads LOGGING_CLEANUP_CHANNEL, falls back to mod_channel)"
+  ],
+  "notes": "Channel id; declared as BindingSpec cleanup_channel (cogs/logging/schemas.py:301). No scalar SettingSpec."
+ },
+ {
+  "name": "warn_threshold",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 3,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:189",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "warn_timeout_minutes",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 10,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:201",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_warn_escalation_action",
+  "subsystem": "moderation",
+  "type": "enum",
+  "default": "timeout",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:213",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_dm_on_action",
+  "subsystem": "moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:230",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_dm_actions",
+  "subsystem": "moderation",
+  "type": "str",
+  "default": "warn,timeout,kick,ban",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:244",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_dm_template",
+  "subsystem": "moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:259",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_require_reason",
+  "subsystem": "moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:272",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_ban_delete_message_days",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:285",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_max_timeout_minutes",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 40320,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:299",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_post_action_cleanup",
+  "subsystem": "moderation",
+  "type": "enum",
+  "default": "none",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:316",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_post_action_cleanup_limit",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 100,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:331",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_public_log_actions",
+  "subsystem": "moderation",
+  "type": "enum",
+  "default": "none",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:348",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderation_public_log_channel",
+  "subsystem": "moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:363",
+  "read_where": [
+   "disbot/services/moderation_config.py:280 (load_policy); :326 resolve_value"
+  ],
+  "notes": "default from services/moderation_config.py"
+ },
+ {
+  "name": "moderator_tier_role_id",
+  "subsystem": "moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:386",
+  "read_where": [
+   "disbot/governance/resolver.py _resolve_member_tier (grants moderator tier from MODERATOR_TIER_ROLE_ID); via config_arbitration"
+  ],
+  "notes": "Role id string; capability-native authority (ADR-008). Reader per schema docstring."
+ },
+ {
+  "name": "trusted_tier_role_id",
+  "subsystem": "moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/moderation/schemas.py:401",
+  "read_where": [
+   "disbot/governance/resolver.py _resolve_member_tier (grants trusted tier from TRUSTED_TIER_ROLE_ID)"
+  ],
+  "notes": "Role id string; capability-native authority (ADR-008). Reader per schema docstring."
+ },
+ {
+  "name": "time_roles_stack",
+  "subsystem": "role",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/role/schemas.py:35",
+  "read_where": [
+   "disbot/cogs/role_cog.py / role automation engine (reads stacking toggles on promotion)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "xp_roles_stack",
+  "subsystem": "role",
+  "type": "bool",
+  "default": true,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/role/schemas.py:48",
+  "read_where": [
+   "disbot/cogs/role_cog.py / role automation engine (reads stacking toggles on promotion)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "reaction_roles_enabled",
+  "subsystem": "role",
+  "type": "bool",
+  "default": true,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/role/schemas.py:61",
+  "read_where": [
+   "disbot/cogs/role_cog.py / role automation engine (reads stacking toggles on promotion)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "rps_default_entry_fee",
+  "subsystem": "rps_tournament",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/rps_tournament/schemas.py:34",
+  "read_where": [
+   "disbot/cogs/rps_tournament/schemas.py:67 resolve_default_entry_fee (reads RPS_DEFAULT_ENTRY_FEE)"
+  ],
+  "notes": "display name 'Rock Paper Scissors'"
+ },
+ {
+  "name": "security_enabled",
+  "subsystem": "security",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:95",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_alert_channel",
+  "subsystem": "security",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:108",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_raid_enabled",
+  "subsystem": "security",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:122",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_raid_join_count",
+  "subsystem": "security",
+  "type": "int",
+  "default": 10,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:131",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_raid_window_seconds",
+  "subsystem": "security",
+  "type": "int",
+  "default": 60,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:143",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_raid_slowmode_channel",
+  "subsystem": "security",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:155",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_raid_slowmode_seconds",
+  "subsystem": "security",
+  "type": "int",
+  "default": 10,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:168",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_raid_lockdown_seconds",
+  "subsystem": "security",
+  "type": "int",
+  "default": 300,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:180",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_age_enabled",
+  "subsystem": "security",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:193",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_age_min_days",
+  "subsystem": "security",
+  "type": "int",
+  "default": 7,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:202",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "security_age_action",
+  "subsystem": "security",
+  "type": "enum",
+  "default": "alert",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/security/schemas.py:214",
+  "read_where": [
+   "disbot/services/security_config.py:158 (load_policy)"
+  ],
+  "notes": "default from services/security_config.py; enum age_action: alert/kick"
+ },
+ {
+  "name": "welcome_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:133",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_join_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": true,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:146",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_leave_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:155",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_channel",
+  "subsystem": "welcome",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:164",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_join_message",
+  "subsystem": "welcome",
+  "type": "str",
+  "default": "👋 Welcome {user} to **{server}**! You're member #{count}.",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:177",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_leave_message",
+  "subsystem": "welcome",
+  "type": "str",
+  "default": "👋 **{user}** has left {server}. We're now {count} members.",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:190",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_entry_role",
+  "subsystem": "welcome",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:203",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_card_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:217",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_dm_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:230",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_dm_message",
+  "subsystem": "welcome",
+  "type": "str",
+  "default": null,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:243",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default is a multi-line DM greeting string in services/welcome_config.py:65 (not pinned to literal here)"
+ },
+ {
+  "name": "welcome_min_account_age_days",
+  "subsystem": "welcome",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:256",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "welcome_delete_after_seconds",
+  "subsystem": "welcome",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/welcome/schemas.py:271",
+  "read_where": [
+   "disbot/services/welcome_config.py:275 (load_policy)"
+  ],
+  "notes": "default from services/welcome_config.py"
+ },
+ {
+  "name": "xp_min",
+  "subsystem": "xp",
+  "type": "int",
+  "default": 15,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/xp/schemas.py:71",
+  "read_where": [
+   "disbot/cogs/xp_cog.py (XP award path reads xp_min/xp_max/xp_cooldown)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "xp_max",
+  "subsystem": "xp",
+  "type": "int",
+  "default": 25,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/xp/schemas.py:80",
+  "read_where": [
+   "disbot/cogs/xp_cog.py (XP award path reads xp_min/xp_max/xp_cooldown)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "xp_cooldown",
+  "subsystem": "xp",
+  "type": "int",
+  "default": 60,
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView",
+  "set_ref": "disbot/cogs/xp/schemas.py:89",
+  "read_where": [
+   "disbot/cogs/xp_cog.py (XP award path reads xp_min/xp_max/xp_cooldown)"
+  ],
+  "notes": "reader per schema docstring; exact line not pinned"
+ },
+ {
+  "name": "ai_review_channel",
+  "subsystem": "ai",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "service:ai_review_log_service / command:!aireview",
+  "set_ref": "disbot/utils/settings_keys/ai.py:35",
+  "read_where": [
+   "disbot/cogs/ai_review_cog.py:160",
+   "disbot/cogs/ai_review_cog.py:180",
+   "disbot/services/ai_review_log_service.py:429"
+  ],
+  "notes": "Service-owned channel pointer (no SettingSpec, not in Settings hub). Typed owner ai_review_log_service."
+ },
+ {
+  "name": "btd6_strategy_submission_channel",
+  "subsystem": "btd6",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "config:none (reserved)",
+  "set_ref": "disbot/utils/settings_keys/btd6.py:31",
+  "read_where": [],
+  "notes": "NO READER FOUND — reserved key (M4), no SettingSpec, no runtime consumer. Pinned reserved by tests/unit/invariants/test_reserved_settings_keys.py. DEAD SETTING."
+ },
+ {
+  "name": "btd6_ct_group_id",
+  "subsystem": "btd6",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:!btd6 ctteam",
+  "set_ref": "disbot/utils/settings_keys/btd6.py:33",
+  "read_where": [
+   "disbot/services/btd6_ct_team_service.py:54 (get_setting)"
+  ],
+  "notes": "Service-owned (btd6_ct_team_service). No SettingSpec."
+ },
+ {
+  "name": "btd6_version_announcement_channel",
+  "subsystem": "btd6",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:!btd6 ops announcechannel",
+  "set_ref": "disbot/utils/settings_keys/btd6.py:35",
+  "read_where": [
+   "disbot/services/btd6_version_announce.py:83 (get_setting)"
+  ],
+  "notes": "Service-owned (btd6_version_announce). No SettingSpec."
+ },
+ {
+  "name": "btd6_cache_default_interval_seconds",
+  "subsystem": "btd6",
+  "type": null,
+  "default": null,
+  "scope": "guild",
+  "set_where": "config:none (reserved)",
+  "set_ref": "disbot/utils/settings_keys/btd6_cache.py:19",
+  "read_where": [],
+  "notes": "NO READER FOUND — reserved key (M3B), no SettingSpec, no runtime consumer. Pinned reserved by tests/unit/invariants/test_reserved_settings_keys.py. DEAD SETTING."
+ },
+ {
+  "name": "btd6_cache_circuit_breaker_threshold",
+  "subsystem": "btd6",
+  "type": null,
+  "default": null,
+  "scope": "guild",
+  "set_where": "config:none (reserved)",
+  "set_ref": "disbot/utils/settings_keys/btd6_cache.py:20",
+  "read_where": [],
+  "notes": "NO READER FOUND — reserved key (M3B), no SettingSpec, no runtime consumer. Pinned reserved by tests/unit/invariants/test_reserved_settings_keys.py. DEAD SETTING."
+ },
+ {
+  "name": "btd6_cache_freshness_warning_hours",
+  "subsystem": "btd6",
+  "type": null,
+  "default": null,
+  "scope": "guild",
+  "set_where": "config:none (reserved)",
+  "set_ref": "disbot/utils/settings_keys/btd6_cache.py:21",
+  "read_where": [],
+  "notes": "NO READER FOUND — reserved key (M3B), no SettingSpec, no runtime consumer. Pinned reserved by tests/unit/invariants/test_reserved_settings_keys.py. DEAD SETTING."
+ },
+ {
+  "name": "economy_log_channel",
+  "subsystem": "economy",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:economy binding / legacy KV",
+  "set_ref": "disbot/utils/settings_keys/economy.py:3",
+  "read_where": [
+   "disbot/core/runtime/config_arbitration.py:578 get_economy_log_channel (binding-first, legacy KV fallback)"
+  ],
+  "notes": "Retired scalar pointer; converged to binding lane (P0-3). No SettingSpec."
+ },
+ {
+  "name": "xp_announce_channel",
+  "subsystem": "xp",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "panel:SubsystemSettingsView (binding announce_channel) / legacy KV",
+  "set_ref": "disbot/utils/settings_keys/xp.py:6",
+  "read_where": [
+   "disbot/core/runtime/config_arbitration.py:553 get_xp_announce_channel (binding-first, legacy KV fallback)"
+  ],
+  "notes": "Retired scalar SettingSpec (P0-3 arc PR2); now the binding lane owns it (XP announce_channel binding). Legacy KV readable as arbitration rollback fallback."
+ },
+ {
+  "name": "active_tournament",
+  "subsystem": "games",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "runtime:tournament_state_service",
+  "set_ref": "disbot/utils/settings_keys/games.py:12",
+  "read_where": [
+   "disbot/services/tournament_state_service.py:64 (get_setting)"
+  ],
+  "notes": "Runtime state flag (not operator config); shared-write by rps_tournament + blackjack cogs. No SettingSpec."
+ },
+ {
+  "name": "governance_version",
+  "subsystem": "governance",
+  "type": "int",
+  "default": null,
+  "scope": "guild",
+  "set_where": "runtime:governance/writes.py",
+  "set_ref": "disbot/utils/settings_keys/governance.py:4",
+  "read_where": [
+   "disbot/governance/health.py:30",
+   "disbot/governance/writes.py:534"
+  ],
+  "notes": "Governance runtime internal (per-guild registry version); written by GovernanceMutationPipeline. No SettingSpec, not operator-facing."
+ },
+ {
+  "name": "skip_roles",
+  "subsystem": "role",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "config:none (legacy)",
+  "set_ref": "disbot/utils/settings_keys/role.py:6",
+  "read_where": [],
+  "notes": "NO READER FOUND — legacy name-based time-only exemption list; superseded by role_automation_exemptions table (migration 052). Retained as stable key only; no longer read at runtime. DEAD SETTING."
+ }
+]

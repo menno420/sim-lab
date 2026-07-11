@@ -1,0 +1,2571 @@
+[
+ {
+  "name": "/adminmenu",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "sb/manifest/admin.py (module; dynamically declared)",
+  "opens_panel": "admin.hub"
+ },
+ {
+  "name": "/admin",
+  "subsystem": "admin",
+  "kind": "both",
+  "ref": "sb/manifest/admin.py (module; dynamically declared)",
+  "opens_panel": "admin.hub"
+ },
+ {
+  "name": "/serverstats",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "sb/manifest/admin.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/coglist",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "sb/manifest/admin.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/slashes",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "sb/manifest/admin.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/loglevel",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "sb/manifest/admin.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/restart",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "sb/manifest/admin.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:101",
+  "opens_panel": "ai.hub"
+ },
+ {
+  "name": "/ai status",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/server_logging.py:108",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai readiness",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai settings",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/settings.py:43",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai policy",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai diagnostics",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py:57",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai providers",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai routing",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai why-no-response",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai forget",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ai support-report",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/aimenu",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:127",
+  "opens_panel": "ai.hub"
+ },
+ {
+  "name": "/aimenu",
+  "subsystem": "ai",
+  "kind": "slash",
+  "ref": "sb/manifest/ai.py:127",
+  "opens_panel": "ai.hub"
+ },
+ {
+  "name": "/aireview",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:142",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview list",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:178",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview resolve",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview export",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview channel",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview off",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview preset",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:158",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview.preset add",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:165",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview.preset from",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:171",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview.preset list",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:178",
+  "opens_panel": null
+ },
+ {
+  "name": "/aireview.preset remove",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:184",
+  "opens_panel": null
+ },
+ {
+  "name": "/automod",
+  "subsystem": "automod",
+  "kind": "prefix",
+  "ref": "sb/manifest/automod.py:63",
+  "opens_panel": "automod.status"
+ },
+ {
+  "name": "/blackjack",
+  "subsystem": "blackjack",
+  "kind": "prefix",
+  "ref": "sb/manifest/blackjack.py:32",
+  "opens_panel": null
+ },
+ {
+  "name": "/bjtournament",
+  "subsystem": "blackjack",
+  "kind": "prefix",
+  "ref": "sb/manifest/blackjack.py:38",
+  "opens_panel": null
+ },
+ {
+  "name": "/bjstart",
+  "subsystem": "blackjack",
+  "kind": "prefix",
+  "ref": "sb/manifest/blackjack.py:45",
+  "opens_panel": null
+ },
+ {
+  "name": "/bjstatus",
+  "subsystem": "blackjack",
+  "kind": "prefix",
+  "ref": "sb/manifest/blackjack.py:51",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py:88",
+  "opens_panel": "btd6.hub"
+ },
+ {
+  "name": "/btd6 income",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 rbe",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 round",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 tower",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 estimate",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 hero",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 relic",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 ct",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 ask",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 status",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/server_logging.py:108",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 diagnostics",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py:57",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 test-intent",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 ctteam",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 strat",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.strat browse",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.strat mine",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.strat strategy",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.strat strategy-audit",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.strat submit",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.strat pending",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.strat strategies",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.strat why-no-response",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 ops",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.ops readiness",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.ops runs",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.ops source_enable",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.ops source_disable",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.ops seed-data",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.ops announcechannel",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6 events",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.events live",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.events event",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.events leaderboard",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/leaderboard.py:25",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.events sources",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.events source-health",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.events latest-data",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.events refresh-source",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6.events grounding",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6menu",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py:219",
+  "opens_panel": "btd6.hub"
+ },
+ {
+  "name": "/btd6ref",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py:223",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ref tower",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ref hero",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ref round",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ref income",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ref rbe",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ref relic",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ref ct",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py:249",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat browse",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat mine",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat strategy",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat strategy-audit",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat submit",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat pending",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat strategies",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6strat why-no-response",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py:272",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events live",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events event",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events leaderboard",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/leaderboard.py:25",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events sources",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events source-health",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events latest-data",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events refresh-source",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6events grounding",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ops",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py:295",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ops readiness",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ops runs",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ops source_enable",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ops source_disable",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/btd6ops seed-data",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "sb/manifest/btd6.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/casino",
+  "subsystem": "casino",
+  "kind": "prefix",
+  "ref": "sb/manifest/casino.py:19",
+  "opens_panel": "casino.hub"
+ },
+ {
+  "name": "/poker",
+  "subsystem": "casino",
+  "kind": "prefix",
+  "ref": "sb/manifest/casino.py:25",
+  "opens_panel": null
+ },
+ {
+  "name": "/chain",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "sb/manifest/chain.py:30",
+  "opens_panel": null
+ },
+ {
+  "name": "/chain create",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "sb/manifest/chain.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/chain delete",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "sb/manifest/chain.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/chain setlimit",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "sb/manifest/chain.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/chain removelimit",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "sb/manifest/chain.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/chain list",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:178",
+  "opens_panel": null
+ },
+ {
+  "name": "/chainmenu",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "sb/manifest/chain.py:46",
+  "opens_panel": "chain.hub"
+ },
+ {
+  "name": "/channelmenu",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": "channel.hub"
+ },
+ {
+  "name": "/set",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/evt",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/create",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/bulkdelete",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/del",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/list",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:178",
+  "opens_panel": null
+ },
+ {
+  "name": "/clone",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/move",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/lock",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/unlock",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/channelinfo",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/rename",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/slowmode",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/topic",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/permissions",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/bulkcreate",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/cleanup",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "sb/manifest/cleanup.py (module; dynamically declared)",
+  "opens_panel": "cleanup.hub"
+ },
+ {
+  "name": "/wordmenu",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "sb/manifest/cleanup.py (module; dynamically declared)",
+  "opens_panel": "cleanup.words"
+ },
+ {
+  "name": "/cleanuphistory",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "sb/manifest/cleanup.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/word",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "sb/manifest/cleanup.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/word add",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:165",
+  "opens_panel": null
+ },
+ {
+  "name": "/word remove",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:184",
+  "opens_panel": null
+ },
+ {
+  "name": "/word list",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:178",
+  "opens_panel": null
+ },
+ {
+  "name": "/community",
+  "subsystem": "community",
+  "kind": "prefix",
+  "ref": "sb/manifest/community.py:20",
+  "opens_panel": "community.hub"
+ },
+ {
+  "name": "/community",
+  "subsystem": "community",
+  "kind": "slash",
+  "ref": "sb/manifest/community.py:20",
+  "opens_panel": "community.hub"
+ },
+ {
+  "name": "/spotlight",
+  "subsystem": "community_spotlight",
+  "kind": "prefix",
+  "ref": "sb/manifest/community_spotlight.py:23",
+  "opens_panel": "community_spotlight.hub"
+ },
+ {
+  "name": "/counters",
+  "subsystem": "counters",
+  "kind": "both",
+  "ref": "sb/manifest/counters.py:59",
+  "opens_panel": "counters.status"
+ },
+ {
+  "name": "/counterpreset",
+  "subsystem": "counters",
+  "kind": "prefix",
+  "ref": "sb/manifest/counters.py:64",
+  "opens_panel": null
+ },
+ {
+  "name": "/countingmenu",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": "counting.hub"
+ },
+ {
+  "name": "/start_match",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/end_match",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/reset_count",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/toggle_turns",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/count_info",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/counttop",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/count_rules",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/set_skip_numbers",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/toggle_reset_on_wrong_count",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "sb/manifest/counting.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/catch",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "sb/manifest/creature.py:74",
+  "opens_panel": null
+ },
+ {
+  "name": "/creatures",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "sb/manifest/creature.py:81",
+  "opens_panel": "creature.hub"
+ },
+ {
+  "name": "/dex",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "sb/manifest/creature.py:87",
+  "opens_panel": null
+ },
+ {
+  "name": "/dextop",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "sb/manifest/creature.py:93",
+  "opens_panel": null
+ },
+ {
+  "name": "/cbattle",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "sb/manifest/creature.py:99",
+  "opens_panel": null
+ },
+ {
+  "name": "/cbrecord",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "sb/manifest/creature.py:105",
+  "opens_panel": null
+ },
+ {
+  "name": "/cbattletop",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "sb/manifest/creature.py:111",
+  "opens_panel": null
+ },
+ {
+  "name": "/dm_challenge",
+  "subsystem": "deathmatch",
+  "kind": "prefix",
+  "ref": "sb/manifest/deathmatch.py:34",
+  "opens_panel": null
+ },
+ {
+  "name": "/dm_help",
+  "subsystem": "deathmatch",
+  "kind": "prefix",
+  "ref": "sb/manifest/deathmatch.py:41",
+  "opens_panel": null
+ },
+ {
+  "name": "/diagnostics",
+  "subsystem": "diagnostic",
+  "kind": "both",
+  "ref": "sb/manifest/diagnostic.py:57",
+  "opens_panel": "diagnostic.hub"
+ },
+ {
+  "name": "/latency",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py:66",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform",
+  "subsystem": "diagnostic",
+  "kind": "both",
+  "ref": "sb/manifest/diagnostic.py:75",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform access",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/settings.py:61",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform anchors",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform bindings",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform caches",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform cleanup-preview",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform command-access",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform consistency",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform counting-health",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform customization",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform economy",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform economytrend",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform findings",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform flags",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform identity",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform lifecycle",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform locks",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform media",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform migrations",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform participation-schemas",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform provisioning",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform resource-requirements",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform resources",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform schemas",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform sessions",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform settings-registry",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform setup-readiness",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform tasks",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform views",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform backfill",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform setting",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform finding",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/platform flag",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": "diagnostic.flag_manager"
+ },
+ {
+  "name": "/platform automation",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "sb/manifest/diagnostic.py (module; dynamically declared)",
+  "opens_panel": "diagnostic.automation_panel"
+ },
+ {
+  "name": "/economymenu",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": "economy.hub"
+ },
+ {
+  "name": "/economy",
+  "subsystem": "economy",
+  "kind": "slash",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": "economy.hub"
+ },
+ {
+  "name": "/daily",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/work",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/shop",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": "economy.shop_panel"
+ },
+ {
+  "name": "/balance",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/pay",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/setlogchannel",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/joblist",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "sb/manifest/economy.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/farm",
+  "subsystem": "farm",
+  "kind": "prefix",
+  "ref": "sb/manifest/farm.py:18",
+  "opens_panel": "farm.hub"
+ },
+ {
+  "name": "/fish",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/fishing",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": "fishing.hub"
+ },
+ {
+  "name": "/fishlog",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/fishtop",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/trophies",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/forecast",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/sail",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/rod",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/bait",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/craftbait",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/craftcharm",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/craftrod",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/rodrecipes",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/craftpearl",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/curios",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/craftcurio",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/tidepool",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/dock",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/boathouse",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/fishery",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "sb/manifest/fishing.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/games",
+  "subsystem": "games",
+  "kind": "both",
+  "ref": "sb/manifest/games.py:70",
+  "opens_panel": "games.hub"
+ },
+ {
+  "name": "/world",
+  "subsystem": "games",
+  "kind": "prefix",
+  "ref": "sb/manifest/games.py:76",
+  "opens_panel": "games.world"
+ },
+ {
+  "name": "/worldcard",
+  "subsystem": "games",
+  "kind": "prefix",
+  "ref": "sb/manifest/games.py:82",
+  "opens_panel": null
+ },
+ {
+  "name": "/generalmenu",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "sb/manifest/general.py:22",
+  "opens_panel": null
+ },
+ {
+  "name": "/help",
+  "subsystem": "help",
+  "kind": "both",
+  "ref": "sb/manifest/help.py:18",
+  "opens_panel": "help.home"
+ },
+ {
+  "name": "/bugreport",
+  "subsystem": "hermes",
+  "kind": "slash",
+  "ref": "sb/manifest/hermes.py:24",
+  "opens_panel": null
+ },
+ {
+  "name": "/dispatch",
+  "subsystem": "hermes",
+  "kind": "slash",
+  "ref": "sb/manifest/hermes.py:36",
+  "opens_panel": null
+ },
+ {
+  "name": "/imagemod",
+  "subsystem": "image_moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/image_moderation.py:50",
+  "opens_panel": "image_moderation.status"
+ },
+ {
+  "name": "/inventory",
+  "subsystem": "inventory",
+  "kind": "prefix",
+  "ref": "sb/manifest/inventory.py:19",
+  "opens_panel": null
+ },
+ {
+  "name": "/thanks",
+  "subsystem": "karma",
+  "kind": "prefix",
+  "ref": "sb/manifest/karma.py:87",
+  "opens_panel": null
+ },
+ {
+  "name": "/karma",
+  "subsystem": "karma",
+  "kind": "prefix",
+  "ref": "sb/manifest/karma.py:94",
+  "opens_panel": null
+ },
+ {
+  "name": "/karma add",
+  "subsystem": "karma",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:165",
+  "opens_panel": null
+ },
+ {
+  "name": "/karma",
+  "subsystem": "karma",
+  "kind": "slash",
+  "ref": "sb/manifest/karma.py:94",
+  "opens_panel": null
+ },
+ {
+  "name": "/leaderboard",
+  "subsystem": "leaderboard",
+  "kind": "prefix",
+  "ref": "sb/manifest/leaderboard.py:25",
+  "opens_panel": null
+ },
+ {
+  "name": "/logging",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "sb/manifest/server_logging.py:104",
+  "opens_panel": "logging.hub"
+ },
+ {
+  "name": "/logging status",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "sb/manifest/server_logging.py:108",
+  "opens_panel": "logging.status_card"
+ },
+ {
+  "name": "/logging set",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "sb/manifest/logging.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/logging create",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "sb/manifest/logging.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/logging routes",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "sb/manifest/logging.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/logging test",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "sb/manifest/logging.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/minemenu",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": "mining.hub"
+ },
+ {
+  "name": "/mine",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/chop",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/explore",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/sell",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/sellall",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/buy",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/market",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/mineinv",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/minestats",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/fastmine",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/build",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/buildlist",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/buildable",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/use",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/cook",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/equip",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/unequip",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/gear",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/loadout",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/character",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/descend",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ascend",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/mineworld",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/vault",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/stash",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/unstash",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/vaultupgrade",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/skills",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/skill",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/titles",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/forge",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/home",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/workshop",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/repair",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/quickcraft",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/reset_inventory",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "sb/manifest/mining.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/modmenu",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": "moderation.hub"
+ },
+ {
+  "name": "/moderation",
+  "subsystem": "moderation",
+  "kind": "both",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": "moderation.hub"
+ },
+ {
+  "name": "/warn",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/timeout",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/kick",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ban",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/unban",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/clearwarnings",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/modlogs",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "sb/manifest/moderation.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/projmoon.py:43",
+  "opens_panel": "projmoon.hub"
+ },
+ {
+  "name": "/pm",
+  "subsystem": "projmoon",
+  "kind": "slash",
+  "ref": "sb/manifest/projmoon.py:43",
+  "opens_panel": "projmoon.hub"
+ },
+ {
+  "name": "/pm lookup",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/projmoon.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm list",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:178",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm origins",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/projmoon.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm sinner",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/projmoon.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm sin",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/projmoon.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm status",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/server_logging.py:108",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm ego",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/projmoon.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm damage",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/projmoon.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/pm mechanic",
+  "subsystem": "projmoon",
+  "kind": "prefix",
+  "ref": "sb/manifest/projmoon.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/+prize",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/proof_channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/-prize",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/proof_channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/prizestatus",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/proof_channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/prizemenu",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/proof_channel.py (module; dynamically declared)",
+  "opens_panel": "proof_channel.hub"
+ },
+ {
+  "name": "/timedprize",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "sb/manifest/proof_channel.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/roles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": "role.hub"
+ },
+ {
+  "name": "/rolesettings",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/roleinfo",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/rolemenu",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": "role.hub"
+ },
+ {
+  "name": "/rolecreator",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/assignroles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/createrole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/deleterole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/setrole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/unsetrole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/debugroles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/refreshmembers",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/reactroles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/removereactrole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/listreactroles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/temprole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/temproles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "sb/manifest/role.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/rps",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "sb/manifest/rps_tournament.py:58",
+  "opens_panel": null
+ },
+ {
+  "name": "/rpsregister",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "sb/manifest/rps_tournament.py:64",
+  "opens_panel": null
+ },
+ {
+  "name": "/rpsstart",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "sb/manifest/rps_tournament.py:71",
+  "opens_panel": null
+ },
+ {
+  "name": "/rpsbot",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "sb/manifest/rps_tournament.py:77",
+  "opens_panel": null
+ },
+ {
+  "name": "/rpsmatchup",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "sb/manifest/rps_tournament.py:82",
+  "opens_panel": null
+ },
+ {
+  "name": "/rpshelp",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "sb/manifest/rps_tournament.py:88",
+  "opens_panel": null
+ },
+ {
+  "name": "/rpssettings",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "sb/manifest/rps_tournament.py:93",
+  "opens_panel": null
+ },
+ {
+  "name": "/security",
+  "subsystem": "security",
+  "kind": "prefix",
+  "ref": "sb/manifest/security.py:63",
+  "opens_panel": "security.status"
+ },
+ {
+  "name": "/servermanagement",
+  "subsystem": "server_management",
+  "kind": "prefix",
+  "ref": "sb/manifest/server_management.py:25",
+  "opens_panel": "server_management.hub"
+ },
+ {
+  "name": "/server-management",
+  "subsystem": "server_management",
+  "kind": "slash",
+  "ref": "sb/manifest/server_management.py:33",
+  "opens_panel": "server_management.hub"
+ },
+ {
+  "name": "/settings",
+  "subsystem": "settings",
+  "kind": "both",
+  "ref": "sb/manifest/settings.py:43",
+  "opens_panel": "settings.hub"
+ },
+ {
+  "name": "/settings access",
+  "subsystem": "settings",
+  "kind": "prefix",
+  "ref": "sb/manifest/settings.py:61",
+  "opens_panel": null
+ },
+ {
+  "name": "/setup",
+  "subsystem": "setup",
+  "kind": "both",
+  "ref": "sb/manifest/setup.py:18",
+  "opens_panel": "setup.hub"
+ },
+ {
+  "name": "/ticket",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "sb/manifest/ticket.py (module; dynamically declared)",
+  "opens_panel": "ticket.hub"
+ },
+ {
+  "name": "/ticket new",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "sb/manifest/ticket.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ticket add",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:165",
+  "opens_panel": null
+ },
+ {
+  "name": "/ticket remove",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "sb/manifest/ai.py:184",
+  "opens_panel": null
+ },
+ {
+  "name": "/ticket claim",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "sb/manifest/ticket.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/ticket close",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "sb/manifest/ticket.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/treasury",
+  "subsystem": "treasury",
+  "kind": "prefix",
+  "ref": "sb/manifest/treasury.py:22",
+  "opens_panel": "treasury.hub"
+ },
+ {
+  "name": "/treasury contribute",
+  "subsystem": "treasury",
+  "kind": "prefix",
+  "ref": "sb/manifest/treasury.py:28",
+  "opens_panel": null
+ },
+ {
+  "name": "/treasury grant",
+  "subsystem": "treasury",
+  "kind": "prefix",
+  "ref": "sb/manifest/treasury.py:35",
+  "opens_panel": null
+ },
+ {
+  "name": "/utilitymenu",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "sb/manifest/utility.py:26",
+  "opens_panel": null
+ },
+ {
+  "name": "/utility",
+  "subsystem": "utility",
+  "kind": "slash",
+  "ref": "sb/manifest/utility.py:33",
+  "opens_panel": null
+ },
+ {
+  "name": "/ping",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "sb/manifest/utility.py:39",
+  "opens_panel": null
+ },
+ {
+  "name": "/avatar",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "sb/manifest/utility.py:44",
+  "opens_panel": null
+ },
+ {
+  "name": "/serverinfo",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "sb/manifest/utility.py:49",
+  "opens_panel": null
+ },
+ {
+  "name": "/myprofile",
+  "subsystem": "utility",
+  "kind": "both",
+  "ref": "sb/manifest/utility.py:55",
+  "opens_panel": null
+ },
+ {
+  "name": "/uxlab",
+  "subsystem": "ux_lab",
+  "kind": "prefix",
+  "ref": "sb/manifest/ux_lab.py:29",
+  "opens_panel": null
+ },
+ {
+  "name": "/uxlab",
+  "subsystem": "ux_lab",
+  "kind": "slash",
+  "ref": "sb/manifest/ux_lab.py:29",
+  "opens_panel": null
+ },
+ {
+  "name": "/welcome",
+  "subsystem": "welcome",
+  "kind": "prefix",
+  "ref": "sb/manifest/welcome.py:72",
+  "opens_panel": "welcome.status"
+ },
+ {
+  "name": "/xpmenu",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "sb/manifest/xp.py (module; dynamically declared)",
+  "opens_panel": "xp.hub"
+ },
+ {
+  "name": "/rank",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "sb/manifest/xp.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/givexp",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "sb/manifest/xp.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/resetxp",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "sb/manifest/xp.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/xpconfig",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "sb/manifest/xp.py (module; dynamically declared)",
+  "opens_panel": null
+ },
+ {
+  "name": "/xpimport",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "sb/manifest/xp.py (module; dynamically declared)",
+  "opens_panel": null
+ }
+]

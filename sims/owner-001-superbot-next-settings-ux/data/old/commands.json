@@ -1,0 +1,4358 @@
+[
+ {
+  "name": "adminmenu",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:38",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "admin",
+  "subsystem": "admin",
+  "kind": "slash",
+  "ref": "disbot/cogs/admin_cog.py:53",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "serverstats",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:77",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "cog",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:99",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "loadall",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:127",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "unloadall",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:150",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "coglist",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:177",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "syncslash",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:201",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "slashes",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:298",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "?",
+  "subsystem": "admin",
+  "kind": "slash",
+  "ref": "disbot/cogs/admin_cog.py:310",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "restart",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:368",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "loglevel",
+  "subsystem": "admin",
+  "kind": "prefix",
+  "ref": "disbot/cogs/admin_cog.py:403",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "?",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:10",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "ai",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:365",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "status",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:371",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "readiness",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:379",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "settings",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:409",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "why-no-response",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:417",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "policy",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:459",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "diagnostics",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:497",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "providers",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:502",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "routing",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:507",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "aimenu",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:516",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "forget",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:522",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "support-report",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:550",
+  "opens_panel": null,
+  "decorator": "@ai_group.command",
+  "is_group": false
+ },
+ {
+  "name": "status",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:580",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "readiness",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:588",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "diagnostics",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:622",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "providers",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:633",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "routing",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:644",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "forget",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:659",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "support-report",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:688",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "policy",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:712",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "settings",
+  "subsystem": "ai",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_cog.py:754",
+  "opens_panel": null,
+  "decorator": "@ai_app_group.command",
+  "is_group": false
+ },
+ {
+  "name": "aimenu",
+  "subsystem": "ai",
+  "kind": "slash",
+  "ref": "disbot/cogs/ai_cog.py:770",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "aireview",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:172",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "channel",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:200",
+  "opens_panel": null,
+  "decorator": "@aireview_group.command",
+  "is_group": false
+ },
+ {
+  "name": "off",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:223",
+  "opens_panel": null,
+  "decorator": "@aireview_group.command",
+  "is_group": false
+ },
+ {
+  "name": "list",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:237",
+  "opens_panel": null,
+  "decorator": "@aireview_group.command",
+  "is_group": false
+ },
+ {
+  "name": "export",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:275",
+  "opens_panel": null,
+  "decorator": "@aireview_group.command",
+  "is_group": false
+ },
+ {
+  "name": "resolve",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:332",
+  "opens_panel": null,
+  "decorator": "@aireview_group.command",
+  "is_group": false
+ },
+ {
+  "name": "preset",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:351",
+  "opens_panel": null,
+  "decorator": "@aireview_group.group",
+  "is_group": true
+ },
+ {
+  "name": "add",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:365",
+  "opens_panel": null,
+  "decorator": "@aireview_preset.command",
+  "is_group": false
+ },
+ {
+  "name": "from",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:381",
+  "opens_panel": null,
+  "decorator": "@aireview_preset.command",
+  "is_group": false
+ },
+ {
+  "name": "list",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:444",
+  "opens_panel": null,
+  "decorator": "@aireview_preset.command",
+  "is_group": false
+ },
+ {
+  "name": "remove",
+  "subsystem": "ai_review",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ai_review_cog.py:480",
+  "opens_panel": null,
+  "decorator": "@aireview_preset.command",
+  "is_group": false
+ },
+ {
+  "name": "automod",
+  "subsystem": "automod",
+  "kind": "prefix",
+  "ref": "disbot/cogs/automod_cog.py:120",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "blackjack",
+  "subsystem": "blackjack",
+  "kind": "prefix",
+  "ref": "disbot/cogs/blackjack_cog.py:434",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "bjtournament",
+  "subsystem": "blackjack",
+  "kind": "prefix",
+  "ref": "disbot/cogs/blackjack_cog.py:519",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "bjstart",
+  "subsystem": "blackjack",
+  "kind": "prefix",
+  "ref": "disbot/cogs/blackjack_cog.py:580",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "bjstatus",
+  "subsystem": "blackjack",
+  "kind": "prefix",
+  "ref": "disbot/cogs/blackjack_cog.py:592",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "btd6",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:74",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "income",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:87",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "income",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:106",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "rbe",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:119",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "rbe",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:136",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "round",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:149",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "round",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:166",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "tower",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:179",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "tower",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:184",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "estimate",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:192",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "estimate",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:203",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "hero",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:212",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "hero",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:220",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "relic",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:228",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "relic",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:236",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "ct",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:245",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "ct",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:253",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "ask",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:262",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "ask",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:274",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "status",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:284",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "status",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:289",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "diagnostics",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:297",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "diagnostics",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:306",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "test-intent",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:314",
+  "opens_panel": null,
+  "decorator": "@btd6_app.command",
+  "is_group": false
+ },
+ {
+  "name": "test-intent",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:326",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "ctteam",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:334",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "strat",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:356",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.group",
+  "is_group": true
+ },
+ {
+  "name": "browse",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:362",
+  "opens_panel": null,
+  "decorator": "@strat_app.command",
+  "is_group": false
+ },
+ {
+  "name": "browse",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:370",
+  "opens_panel": null,
+  "decorator": "@strat_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "mine",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:376",
+  "opens_panel": null,
+  "decorator": "@strat_app.command",
+  "is_group": false
+ },
+ {
+  "name": "mine",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:400",
+  "opens_panel": null,
+  "decorator": "@strat_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "strategy",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:415",
+  "opens_panel": null,
+  "decorator": "@strat_app.command",
+  "is_group": false
+ },
+ {
+  "name": "strategy",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:427",
+  "opens_panel": null,
+  "decorator": "@strat_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "strategy-audit",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:441",
+  "opens_panel": null,
+  "decorator": "@strat_app.command",
+  "is_group": false
+ },
+ {
+  "name": "strategy-audit",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:452",
+  "opens_panel": null,
+  "decorator": "@strat_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "submit",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:458",
+  "opens_panel": null,
+  "decorator": "@strat_app.command",
+  "is_group": false
+ },
+ {
+  "name": "submit",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:471",
+  "opens_panel": null,
+  "decorator": "@strat_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "pending",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:480",
+  "opens_panel": null,
+  "decorator": "@strat_app.command",
+  "is_group": false
+ },
+ {
+  "name": "pending",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:508",
+  "opens_panel": null,
+  "decorator": "@strat_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "strategies",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:523",
+  "opens_panel": null,
+  "decorator": "@strat_app.command",
+  "is_group": false
+ },
+ {
+  "name": "strategies",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:540",
+  "opens_panel": null,
+  "decorator": "@strat_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "why-no-response",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:549",
+  "opens_panel": null,
+  "decorator": "@strat_app.command",
+  "is_group": false
+ },
+ {
+  "name": "why-no-response",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:569",
+  "opens_panel": null,
+  "decorator": "@strat_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "ops",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:596",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.group",
+  "is_group": true
+ },
+ {
+  "name": "readiness",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:603",
+  "opens_panel": null,
+  "decorator": "@ops_app.command",
+  "is_group": false
+ },
+ {
+  "name": "readiness",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:614",
+  "opens_panel": null,
+  "decorator": "@ops_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "runs",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:622",
+  "opens_panel": null,
+  "decorator": "@ops_app.command",
+  "is_group": false
+ },
+ {
+  "name": "runs",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:643",
+  "opens_panel": null,
+  "decorator": "@ops_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "source_enable",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:655",
+  "opens_panel": null,
+  "decorator": "@ops_app.command",
+  "is_group": false
+ },
+ {
+  "name": "source_enable",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:673",
+  "opens_panel": null,
+  "decorator": "@ops_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "source_disable",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:683",
+  "opens_panel": null,
+  "decorator": "@ops_app.command",
+  "is_group": false
+ },
+ {
+  "name": "source_disable",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:701",
+  "opens_panel": null,
+  "decorator": "@ops_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "seed-data",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:711",
+  "opens_panel": null,
+  "decorator": "@ops_app.command",
+  "is_group": false
+ },
+ {
+  "name": "seed-data",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:732",
+  "opens_panel": null,
+  "decorator": "@ops_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "announcechannel",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:741",
+  "opens_panel": null,
+  "decorator": "@ops_app.command",
+  "is_group": false
+ },
+ {
+  "name": "announcechannel",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:765",
+  "opens_panel": null,
+  "decorator": "@ops_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "events",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:790",
+  "opens_panel": null,
+  "decorator": "@btd6_prefix.group",
+  "is_group": true
+ },
+ {
+  "name": "live",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:796",
+  "opens_panel": null,
+  "decorator": "@events_app.command",
+  "is_group": false
+ },
+ {
+  "name": "live",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:811",
+  "opens_panel": null,
+  "decorator": "@events_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "event",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:821",
+  "opens_panel": null,
+  "decorator": "@events_app.command",
+  "is_group": false
+ },
+ {
+  "name": "event",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:836",
+  "opens_panel": null,
+  "decorator": "@events_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "leaderboard",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:846",
+  "opens_panel": null,
+  "decorator": "@events_app.command",
+  "is_group": false
+ },
+ {
+  "name": "leaderboard",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:859",
+  "opens_panel": null,
+  "decorator": "@events_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "sources",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:872",
+  "opens_panel": null,
+  "decorator": "@events_app.command",
+  "is_group": false
+ },
+ {
+  "name": "sources",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:880",
+  "opens_panel": null,
+  "decorator": "@events_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "source-health",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:886",
+  "opens_panel": null,
+  "decorator": "@events_app.command",
+  "is_group": false
+ },
+ {
+  "name": "source-health",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:900",
+  "opens_panel": null,
+  "decorator": "@events_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "latest-data",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:906",
+  "opens_panel": null,
+  "decorator": "@events_app.command",
+  "is_group": false
+ },
+ {
+  "name": "latest-data",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:914",
+  "opens_panel": null,
+  "decorator": "@events_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "refresh-source",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:920",
+  "opens_panel": null,
+  "decorator": "@events_app.command",
+  "is_group": false
+ },
+ {
+  "name": "refresh-source",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:939",
+  "opens_panel": null,
+  "decorator": "@events_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "grounding",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:954",
+  "opens_panel": null,
+  "decorator": "@events_app.command",
+  "is_group": false
+ },
+ {
+  "name": "grounding",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6/_unified.py:985",
+  "opens_panel": null,
+  "decorator": "@events_prefix.command",
+  "is_group": false
+ },
+ {
+  "name": "btd6menu",
+  "subsystem": "btd6",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_cog.py:171",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "btd6menu",
+  "subsystem": "btd6",
+  "kind": "slash",
+  "ref": "disbot/cogs/btd6_cog.py:182",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "btd6events",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:38",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "live",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:48",
+  "opens_panel": null,
+  "decorator": "@btd6events_group.command",
+  "is_group": false
+ },
+ {
+  "name": "event",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:58",
+  "opens_panel": null,
+  "decorator": "@btd6events_group.command",
+  "is_group": false
+ },
+ {
+  "name": "leaderboard",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:72",
+  "opens_panel": null,
+  "decorator": "@btd6events_group.command",
+  "is_group": false
+ },
+ {
+  "name": "sources",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:85",
+  "opens_panel": null,
+  "decorator": "@btd6events_group.command",
+  "is_group": false
+ },
+ {
+  "name": "source-health",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:90",
+  "opens_panel": null,
+  "decorator": "@btd6events_group.command",
+  "is_group": false
+ },
+ {
+  "name": "latest-data",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:99",
+  "opens_panel": null,
+  "decorator": "@btd6events_group.command",
+  "is_group": false
+ },
+ {
+  "name": "refresh-source",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:104",
+  "opens_panel": null,
+  "decorator": "@btd6events_group.command",
+  "is_group": false
+ },
+ {
+  "name": "grounding",
+  "subsystem": "btd6_events",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_events_cog.py:123",
+  "opens_panel": null,
+  "decorator": "@btd6events_group.command",
+  "is_group": false
+ },
+ {
+  "name": "btd6ops",
+  "subsystem": "btd6_ops",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_ops_cog.py:41",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "readiness",
+  "subsystem": "btd6_ops",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_ops_cog.py:52",
+  "opens_panel": null,
+  "decorator": "@btd6ops.command",
+  "is_group": false
+ },
+ {
+  "name": "runs",
+  "subsystem": "btd6_ops",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_ops_cog.py:59",
+  "opens_panel": null,
+  "decorator": "@btd6ops.command",
+  "is_group": false
+ },
+ {
+  "name": "source_enable",
+  "subsystem": "btd6_ops",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_ops_cog.py:71",
+  "opens_panel": null,
+  "decorator": "@btd6ops.command",
+  "is_group": false
+ },
+ {
+  "name": "source_disable",
+  "subsystem": "btd6_ops",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_ops_cog.py:84",
+  "opens_panel": null,
+  "decorator": "@btd6ops.command",
+  "is_group": false
+ },
+ {
+  "name": "seed-data",
+  "subsystem": "btd6_ops",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_ops_cog.py:97",
+  "opens_panel": null,
+  "decorator": "@btd6ops.command",
+  "is_group": false
+ },
+ {
+  "name": "announcechannel",
+  "subsystem": "btd6_ops",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_ops_cog.py:105",
+  "opens_panel": null,
+  "decorator": "@btd6ops.command",
+  "is_group": false
+ },
+ {
+  "name": "btd6ref",
+  "subsystem": "btd6_reference",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_reference_cog.py:37",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "tower",
+  "subsystem": "btd6_reference",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_reference_cog.py:47",
+  "opens_panel": null,
+  "decorator": "@btd6ref_group.command",
+  "is_group": false
+ },
+ {
+  "name": "hero",
+  "subsystem": "btd6_reference",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_reference_cog.py:51",
+  "opens_panel": null,
+  "decorator": "@btd6ref_group.command",
+  "is_group": false
+ },
+ {
+  "name": "round",
+  "subsystem": "btd6_reference",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_reference_cog.py:55",
+  "opens_panel": null,
+  "decorator": "@btd6ref_group.command",
+  "is_group": false
+ },
+ {
+  "name": "income",
+  "subsystem": "btd6_reference",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_reference_cog.py:65",
+  "opens_panel": null,
+  "decorator": "@btd6ref_group.command",
+  "is_group": false
+ },
+ {
+  "name": "rbe",
+  "subsystem": "btd6_reference",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_reference_cog.py:75",
+  "opens_panel": null,
+  "decorator": "@btd6ref_group.command",
+  "is_group": false
+ },
+ {
+  "name": "relic",
+  "subsystem": "btd6_reference",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_reference_cog.py:85",
+  "opens_panel": null,
+  "decorator": "@btd6ref_group.command",
+  "is_group": false
+ },
+ {
+  "name": "ct",
+  "subsystem": "btd6_reference",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_reference_cog.py:90",
+  "opens_panel": null,
+  "decorator": "@btd6ref_group.command",
+  "is_group": false
+ },
+ {
+  "name": "btd6strat",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:39",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "browse",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:49",
+  "opens_panel": null,
+  "decorator": "@btd6strat_group.command",
+  "is_group": false
+ },
+ {
+  "name": "mine",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:58",
+  "opens_panel": null,
+  "decorator": "@btd6strat_group.command",
+  "is_group": false
+ },
+ {
+  "name": "strategy",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:73",
+  "opens_panel": null,
+  "decorator": "@btd6strat_group.command",
+  "is_group": false
+ },
+ {
+  "name": "strategy-audit",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:90",
+  "opens_panel": null,
+  "decorator": "@btd6strat_group.command",
+  "is_group": false
+ },
+ {
+  "name": "submit",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:99",
+  "opens_panel": null,
+  "decorator": "@btd6strat_group.command",
+  "is_group": false
+ },
+ {
+  "name": "pending",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:111",
+  "opens_panel": null,
+  "decorator": "@btd6strat_group.command",
+  "is_group": false
+ },
+ {
+  "name": "strategies",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:135",
+  "opens_panel": null,
+  "decorator": "@btd6strat_group.command",
+  "is_group": false
+ },
+ {
+  "name": "why-no-response",
+  "subsystem": "btd6_strategy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/btd6_strategy_cog.py:144",
+  "opens_panel": null,
+  "decorator": "@btd6strat_group.command",
+  "is_group": false
+ },
+ {
+  "name": "casino",
+  "subsystem": "casino",
+  "kind": "prefix",
+  "ref": "disbot/cogs/casino_cog.py:40",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "poker",
+  "subsystem": "casino",
+  "kind": "prefix",
+  "ref": "disbot/cogs/casino_cog.py:46",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "chain",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "disbot/cogs/chain_cog.py:69",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "create",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "disbot/cogs/chain_cog.py:79",
+  "opens_panel": null,
+  "decorator": "@chain.command",
+  "is_group": false
+ },
+ {
+  "name": "delete",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "disbot/cogs/chain_cog.py:134",
+  "opens_panel": null,
+  "decorator": "@chain.command",
+  "is_group": false
+ },
+ {
+  "name": "setlimit",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "disbot/cogs/chain_cog.py:167",
+  "opens_panel": null,
+  "decorator": "@chain.command",
+  "is_group": false
+ },
+ {
+  "name": "removelimit",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "disbot/cogs/chain_cog.py:216",
+  "opens_panel": null,
+  "decorator": "@chain.command",
+  "is_group": false
+ },
+ {
+  "name": "chainmenu",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "disbot/cogs/chain_cog.py:253",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "list",
+  "subsystem": "chain",
+  "kind": "prefix",
+  "ref": "disbot/cogs/chain_cog.py:270",
+  "opens_panel": null,
+  "decorator": "@chain.command",
+  "is_group": false
+ },
+ {
+  "name": "channelmenu",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:191",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "set",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:209",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "evt",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:232",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "create",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:277",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "bulkdelete",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:328",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "del",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:379",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "list",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:404",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "clone",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:436",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "move",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:469",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "lock",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:498",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "unlock",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:514",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "channelinfo",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:530",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rename",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:569",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "slowmode",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:597",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "topic",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:640",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "permissions",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:672",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "bulkcreate",
+  "subsystem": "channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/channel_cog.py:703",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "cleanuphistory",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/cleanup_cog.py:321",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "word",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/cleanup_cog.py:493",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "add",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/cleanup_cog.py:507",
+  "opens_panel": null,
+  "decorator": "@word_cmd.command",
+  "is_group": false
+ },
+ {
+  "name": "remove",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/cleanup_cog.py:530",
+  "opens_panel": null,
+  "decorator": "@word_cmd.command",
+  "is_group": false
+ },
+ {
+  "name": "list",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/cleanup_cog.py:553",
+  "opens_panel": null,
+  "decorator": "@word_cmd.command",
+  "is_group": false
+ },
+ {
+  "name": "wordmenu",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/cleanup_cog.py:567",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "cleanup",
+  "subsystem": "cleanup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/cleanup_cog.py:576",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "community",
+  "subsystem": "community",
+  "kind": "prefix",
+  "ref": "disbot/cogs/community_cog.py:41",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "community",
+  "subsystem": "community",
+  "kind": "slash",
+  "ref": "disbot/cogs/community_cog.py:55",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "spotlight",
+  "subsystem": "community_spotlight",
+  "kind": "prefix",
+  "ref": "disbot/cogs/community_spotlight_cog.py:300",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "counters",
+  "subsystem": "counters",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counters_cog.py:152",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "counterpreset",
+  "subsystem": "counters",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counters_cog.py:164",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "counters",
+  "subsystem": "counters",
+  "kind": "slash",
+  "ref": "disbot/cogs/counters_cog.py:221",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "countingmenu",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:179",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "start_match",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:196",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "end_match",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:383",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "reset_count",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:432",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "toggle_turns",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:487",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "count_info",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:517",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "counttop",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:572",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "count_rules",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:604",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "set_skip_numbers",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:635",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "toggle_reset_on_wrong_count",
+  "subsystem": "counting",
+  "kind": "prefix",
+  "ref": "disbot/cogs/counting_cog.py:686",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "cbattle",
+  "subsystem": "creature_battle",
+  "kind": "prefix",
+  "ref": "disbot/cogs/creature_battle_cog.py:72",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "cbrecord",
+  "subsystem": "creature_battle",
+  "kind": "prefix",
+  "ref": "disbot/cogs/creature_battle_cog.py:89",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "cbattletop",
+  "subsystem": "creature_battle",
+  "kind": "prefix",
+  "ref": "disbot/cogs/creature_battle_cog.py:96",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "catch",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "disbot/cogs/creature_cog.py:58",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "creatures",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "disbot/cogs/creature_cog.py:69",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "dex",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "disbot/cogs/creature_cog.py:78",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "dextop",
+  "subsystem": "creature",
+  "kind": "prefix",
+  "ref": "disbot/cogs/creature_cog.py:85",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "dm_challenge",
+  "subsystem": "deathmatch",
+  "kind": "prefix",
+  "ref": "disbot/cogs/deathmatch_cog.py:457",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "dm_help",
+  "subsystem": "deathmatch",
+  "kind": "prefix",
+  "ref": "disbot/cogs/deathmatch_cog.py:516",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "?",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:4",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "?",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:83",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "?",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:84",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "platform",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:110",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "status",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:129",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-readiness",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:135",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "anchors",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:154",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "identity",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:160",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "runtime",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:177",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "health",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:183",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "startup",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:205",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "findings",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:232",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "finding",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:265",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "lifecycle",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:312",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "caches",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:318",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "media",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:324",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "economy",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:337",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "economytrend",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:348",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "locks",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:360",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "tasks",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:366",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "views",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:372",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "slow",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:378",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "automation",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:384",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "sessions",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:399",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "schemas",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:413",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "settings-registry",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:419",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "setting",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:425",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "customization",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:439",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "provisioning",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:445",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "participation-schemas",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:451",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "resource-requirements",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:457",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "bindings",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:463",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "resources",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:469",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "flags",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:475",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "flag",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:481",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "migrations",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:504",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "consistency",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:510",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "backfill",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:519",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "command-access",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:527",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "access",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:556",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "cleanup-preview",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:580",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "counting-health",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic/platform_group.py:614",
+  "opens_panel": null,
+  "decorator": "@platform_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "diagnostics",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:55",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "lifecycle",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:62",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "platform",
+  "subsystem": "diagnostic",
+  "kind": "slash",
+  "ref": "disbot/cogs/diagnostic_cog.py:110",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "list_commands_detailed",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:135",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "find_command",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:146",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "validate_json_files",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:181",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "check_database",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:188",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "diagnostic_bot_status",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:199",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "latency",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:206",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "system_info",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:218",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "query_logs",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:229",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "recent_errors",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:236",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "test_notification",
+  "subsystem": "diagnostic",
+  "kind": "prefix",
+  "ref": "disbot/cogs/diagnostic_cog.py:243",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "economymenu",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/economy_cog.py:65",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "economy",
+  "subsystem": "economy",
+  "kind": "slash",
+  "ref": "disbot/cogs/economy_cog.py:81",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "daily",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/economy_cog.py:217",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "work",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/economy_cog.py:283",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "shop",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/economy_cog.py:325",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "balance",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/economy_cog.py:334",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "pay",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/economy_cog.py:352",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setlogchannel",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/economy_cog.py:420",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "joblist",
+  "subsystem": "economy",
+  "kind": "prefix",
+  "ref": "disbot/cogs/economy_cog.py:433",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "farm",
+  "subsystem": "farm",
+  "kind": "prefix",
+  "ref": "disbot/cogs/farm_cog.py:43",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "fish",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:75",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "fishing",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:86",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "forecast",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:97",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "sail",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:115",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "fishlog",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:126",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "fishtop",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:140",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "trophies",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:167",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rod",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:195",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "bait",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:206",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "craftbait",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:220",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "craftcharm",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:244",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "craftrod",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:270",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rodrecipes",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:281",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "craftpearl",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:287",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "curios",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:317",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "tidepool",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:348",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "dock",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:360",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "boathouse",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:372",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "fishery",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:384",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "craftcurio",
+  "subsystem": "fishing",
+  "kind": "prefix",
+  "ref": "disbot/cogs/fishing_cog.py:397",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "420",
+  "subsystem": "four_twenty",
+  "kind": "prefix",
+  "ref": "disbot/cogs/four_twenty_cog.py:181",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "games",
+  "subsystem": "games",
+  "kind": "prefix",
+  "ref": "disbot/cogs/games_cog.py:38",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "world",
+  "subsystem": "games",
+  "kind": "prefix",
+  "ref": "disbot/cogs/games_cog.py:44",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "worldcard",
+  "subsystem": "games",
+  "kind": "prefix",
+  "ref": "disbot/cogs/games_cog.py:58",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "games",
+  "subsystem": "games",
+  "kind": "slash",
+  "ref": "disbot/cogs/games_cog.py:80",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "generalmenu",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "disbot/cogs/general_cog.py:82",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "fact",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "disbot/cogs/general_cog.py:112",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "joke",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "disbot/cogs/general_cog.py:124",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "quote",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "disbot/cogs/general_cog.py:136",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "trivia",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "disbot/cogs/general_cog.py:148",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "motivate",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "disbot/cogs/general_cog.py:170",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "eightball",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "disbot/cogs/general_cog.py:179",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "greet",
+  "subsystem": "general",
+  "kind": "prefix",
+  "ref": "disbot/cogs/general_cog.py:190",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "help",
+  "subsystem": "help",
+  "kind": "prefix",
+  "ref": "disbot/cogs/help_cog.py:283",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "help",
+  "subsystem": "help",
+  "kind": "slash",
+  "ref": "disbot/cogs/help_cog.py:365",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "bugreport",
+  "subsystem": "hermes",
+  "kind": "slash",
+  "ref": "disbot/cogs/hermes_cog.py:96",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "dispatch",
+  "subsystem": "hermes",
+  "kind": "slash",
+  "ref": "disbot/cogs/hermes_cog.py:158",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "imagemod",
+  "subsystem": "image_moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/image_moderation_cog.py:116",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "inventory",
+  "subsystem": "inventory",
+  "kind": "prefix",
+  "ref": "disbot/cogs/inventory_cog.py:562",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "thanks",
+  "subsystem": "karma",
+  "kind": "prefix",
+  "ref": "disbot/cogs/karma_cog.py:209",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "karma",
+  "subsystem": "karma",
+  "kind": "prefix",
+  "ref": "disbot/cogs/karma_cog.py:224",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "add",
+  "subsystem": "karma",
+  "kind": "prefix",
+  "ref": "disbot/cogs/karma_cog.py:235",
+  "opens_panel": null,
+  "decorator": "@karma.command",
+  "is_group": false
+ },
+ {
+  "name": "karma",
+  "subsystem": "karma",
+  "kind": "slash",
+  "ref": "disbot/cogs/karma_cog.py:248",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "leaderboard",
+  "subsystem": "leaderboard",
+  "kind": "prefix",
+  "ref": "disbot/cogs/leaderboard_cog.py:195",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "logging",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "disbot/cogs/logging_cog.py:313",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "status",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "disbot/cogs/logging_cog.py:329",
+  "opens_panel": null,
+  "decorator": "@logging_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "set",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "disbot/cogs/logging_cog.py:335",
+  "opens_panel": null,
+  "decorator": "@logging_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "create",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "disbot/cogs/logging_cog.py:372",
+  "opens_panel": null,
+  "decorator": "@logging_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "routes",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "disbot/cogs/logging_cog.py:401",
+  "opens_panel": null,
+  "decorator": "@logging_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "test",
+  "subsystem": "logging",
+  "kind": "prefix",
+  "ref": "disbot/cogs/logging_cog.py:421",
+  "opens_panel": null,
+  "decorator": "@logging_grp.command",
+  "is_group": false
+ },
+ {
+  "name": "minemenu",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:56",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "mine",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:90",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "fastmine",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:97",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "chop",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:117",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "mineinv",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:130",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "minestats",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:144",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "build",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:187",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "buildlist",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:207",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "buildable",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:238",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "explore",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:263",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "use",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:279",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "cook",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:290",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "equip",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:313",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "unequip",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:324",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "gear",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:336",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "loadout",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:359",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "character",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:404",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "descend",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:439",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "ascend",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:456",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "mineworld",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:468",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "sell",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:499",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "sellall",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:510",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "buy",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:520",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "market",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:529",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "vault",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:565",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "stash",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:579",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "unstash",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:599",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "vaultupgrade",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:619",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "skills",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:631",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "skill",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:645",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "titles",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:668",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "forge",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:684",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "home",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:700",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "workshop",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:716",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "repair",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:733",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "quickcraft",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:744",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "reset_inventory",
+  "subsystem": "mining",
+  "kind": "prefix",
+  "ref": "disbot/cogs/mining_cog.py:756",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "modmenu",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/moderation_cog.py:100",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "moderation",
+  "subsystem": "moderation",
+  "kind": "slash",
+  "ref": "disbot/cogs/moderation_cog.py:115",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "warn",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/moderation_cog.py:150",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "timeout",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/moderation_cog.py:177",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "kick",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/moderation_cog.py:203",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "ban",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/moderation_cog.py:235",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "unban",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/moderation_cog.py:268",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "clearwarnings",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/moderation_cog.py:299",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "modlogs",
+  "subsystem": "moderation",
+  "kind": "prefix",
+  "ref": "disbot/cogs/moderation_cog.py:314",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "paragon",
+  "subsystem": "paragon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/paragon_cog.py:26",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "pm",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:74",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "lookup",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:84",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "list",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:102",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "origins",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:136",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "sinner",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:141",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "sin",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:146",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "status",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:151",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "ego",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:156",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "damage",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:161",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "mechanic",
+  "subsystem": "project_moon",
+  "kind": "prefix",
+  "ref": "disbot/cogs/project_moon_cog.py:166",
+  "opens_panel": null,
+  "decorator": "@pm_group.command",
+  "is_group": false
+ },
+ {
+  "name": "pm",
+  "subsystem": "project_moon",
+  "kind": "slash",
+  "ref": "disbot/cogs/project_moon_cog.py:175",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "+prize",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/proof_channel_cog.py:263",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "-prize",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/proof_channel_cog.py:280",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "prizestatus",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/proof_channel_cog.py:294",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "prizemenu",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/proof_channel_cog.py:311",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "timedprize",
+  "subsystem": "proof_channel",
+  "kind": "prefix",
+  "ref": "disbot/cogs/proof_channel_cog.py:326",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup",
+  "subsystem": "quicksetup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/quicksetup_cog.py:31",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup",
+  "subsystem": "quicksetup",
+  "kind": "slash",
+  "ref": "disbot/cogs/quicksetup_cog.py:40",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "roles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:354",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rolesettings",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:369",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "roleinfo",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:375",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rolemenu",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:414",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rolecreator",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:423",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "assignroles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:433",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "createrole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:444",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "deleterole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:483",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setrole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:504",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "unsetrole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:537",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "debugroles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:567",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "refreshmembers",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:578",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "reactroles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:651",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "removereactrole",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:689",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "listreactroles",
+  "subsystem": "role",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_cog.py:709",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "temprole",
+  "subsystem": "role_grants",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_grants_cog.py:61",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "temproles",
+  "subsystem": "role_grants",
+  "kind": "prefix",
+  "ref": "disbot/cogs/role_grants_cog.py:104",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rpsregister",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "disbot/cogs/rps_tournament_cog.py:201",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rpsstart",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "disbot/cogs/rps_tournament_cog.py:370",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rpsbot",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "disbot/cogs/rps_tournament_cog.py:414",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rpsmatchup",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "disbot/cogs/rps_tournament_cog.py:426",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rpshelp",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "disbot/cogs/rps_tournament_cog.py:731",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rpssettings",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "disbot/cogs/rps_tournament_cog.py:747",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rps",
+  "subsystem": "rps_tournament",
+  "kind": "prefix",
+  "ref": "disbot/cogs/rps_tournament_cog.py:779",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "security",
+  "subsystem": "security",
+  "kind": "prefix",
+  "ref": "disbot/cogs/security_cog.py:108",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "servermanagement",
+  "subsystem": "server_management",
+  "kind": "prefix",
+  "ref": "disbot/cogs/server_management_cog.py:39",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "server-management",
+  "subsystem": "server_management",
+  "kind": "slash",
+  "ref": "disbot/cogs/server_management_cog.py:73",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "settings",
+  "subsystem": "settings",
+  "kind": "prefix",
+  "ref": "disbot/cogs/settings_cog.py:121",
+  "opens_panel": "SettingsHubView",
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "access",
+  "subsystem": "settings",
+  "kind": "prefix",
+  "ref": "disbot/cogs/settings_cog.py:145",
+  "opens_panel": null,
+  "decorator": "@settings_root.command",
+  "is_group": false
+ },
+ {
+  "name": "settings",
+  "subsystem": "settings",
+  "kind": "slash",
+  "ref": "disbot/cogs/settings_cog.py:194",
+  "opens_panel": "SettingsHubView",
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setupadvanced",
+  "subsystem": "setup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/setup_cog.py:84",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-advanced",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:104",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setupdescribe",
+  "subsystem": "setup",
+  "kind": "prefix",
+  "ref": "disbot/cogs/setup_cog.py:123",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-describe",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:143",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-hub",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:163",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-depth",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:224",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-skip",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:308",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-unskip",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:331",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-reset",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:410",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-delegate",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:481",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-undelegate",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:510",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "setup-status",
+  "subsystem": "setup",
+  "kind": "slash",
+  "ref": "disbot/cogs/setup_cog.py:537",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "starboard",
+  "subsystem": "starboard",
+  "kind": "prefix",
+  "ref": "disbot/cogs/starboard_cog.py:151",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "off",
+  "subsystem": "starboard",
+  "kind": "prefix",
+  "ref": "disbot/cogs/starboard_cog.py:194",
+  "opens_panel": null,
+  "decorator": "@starboard_group.command",
+  "is_group": false
+ },
+ {
+  "name": "selfstar",
+  "subsystem": "starboard",
+  "kind": "prefix",
+  "ref": "disbot/cogs/starboard_cog.py:201",
+  "opens_panel": null,
+  "decorator": "@starboard_group.command",
+  "is_group": false
+ },
+ {
+  "name": "ignore",
+  "subsystem": "starboard",
+  "kind": "prefix",
+  "ref": "disbot/cogs/starboard_cog.py:219",
+  "opens_panel": null,
+  "decorator": "@starboard_group.command",
+  "is_group": false
+ },
+ {
+  "name": "unignore",
+  "subsystem": "starboard",
+  "kind": "prefix",
+  "ref": "disbot/cogs/starboard_cog.py:236",
+  "opens_panel": null,
+  "decorator": "@starboard_group.command",
+  "is_group": false
+ },
+ {
+  "name": "panel",
+  "subsystem": "starboard",
+  "kind": "prefix",
+  "ref": "disbot/cogs/starboard_cog.py:251",
+  "opens_panel": null,
+  "decorator": "@starboard_group.command",
+  "is_group": false
+ },
+ {
+  "name": "ticket",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:134",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "new",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:140",
+  "opens_panel": null,
+  "decorator": "@ticket.command",
+  "is_group": false
+ },
+ {
+  "name": "close",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:154",
+  "opens_panel": null,
+  "decorator": "@ticket.command",
+  "is_group": false
+ },
+ {
+  "name": "claim",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:178",
+  "opens_panel": null,
+  "decorator": "@ticket.command",
+  "is_group": false
+ },
+ {
+  "name": "add",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:194",
+  "opens_panel": null,
+  "decorator": "@ticket.command",
+  "is_group": false
+ },
+ {
+  "name": "remove",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:210",
+  "opens_panel": null,
+  "decorator": "@ticket.command",
+  "is_group": false
+ },
+ {
+  "name": "ticketpanel",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:236",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "ticketsetup",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:243",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "ticketlimit",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:275",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "ticketblacklist",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:287",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "add",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:293",
+  "opens_panel": null,
+  "decorator": "@ticket_blacklist.command",
+  "is_group": false
+ },
+ {
+  "name": "remove",
+  "subsystem": "ticket",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ticket_cog.py:310",
+  "opens_panel": null,
+  "decorator": "@ticket_blacklist.command",
+  "is_group": false
+ },
+ {
+  "name": "treasury",
+  "subsystem": "treasury",
+  "kind": "prefix",
+  "ref": "disbot/cogs/treasury_cog.py:42",
+  "opens_panel": null,
+  "decorator": "@commands.group",
+  "is_group": true
+ },
+ {
+  "name": "contribute",
+  "subsystem": "treasury",
+  "kind": "prefix",
+  "ref": "disbot/cogs/treasury_cog.py:52",
+  "opens_panel": null,
+  "decorator": "@treasury.command",
+  "is_group": false
+ },
+ {
+  "name": "grant",
+  "subsystem": "treasury",
+  "kind": "prefix",
+  "ref": "disbot/cogs/treasury_cog.py:61",
+  "opens_panel": null,
+  "decorator": "@treasury.command",
+  "is_group": false
+ },
+ {
+  "name": "utilitymenu",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:81",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "utility",
+  "subsystem": "utility",
+  "kind": "slash",
+  "ref": "disbot/cogs/utility_cog.py:95",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "myprofile",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:114",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "myprofile",
+  "subsystem": "utility",
+  "kind": "slash",
+  "ref": "disbot/cogs/utility_cog.py:130",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "clear",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:160",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "info",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:180",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "serverinfo",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:246",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "userinfo",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:255",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "avatar",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:264",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "remind",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:276",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "invite",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:290",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "poll",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:297",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "ping",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:315",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "botinfo",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:333",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "membercount",
+  "subsystem": "utility",
+  "kind": "prefix",
+  "ref": "disbot/cogs/utility_cog.py:372",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "uxlab",
+  "subsystem": "ux_lab",
+  "kind": "prefix",
+  "ref": "disbot/cogs/ux_lab_cog.py:56",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "uxlab",
+  "subsystem": "ux_lab",
+  "kind": "slash",
+  "ref": "disbot/cogs/ux_lab_cog.py:61",
+  "opens_panel": null,
+  "decorator": "@app_commands.command",
+  "is_group": false
+ },
+ {
+  "name": "welcome",
+  "subsystem": "welcome",
+  "kind": "prefix",
+  "ref": "disbot/cogs/welcome_cog.py:155",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "xpmenu",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "disbot/cogs/xp_cog.py:91",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "rank",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "disbot/cogs/xp_cog.py:119",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "givexp",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "disbot/cogs/xp_cog.py:177",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "resetxp",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "disbot/cogs/xp_cog.py:195",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "xpconfig",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "disbot/cogs/xp_cog.py:208",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ },
+ {
+  "name": "xpimport",
+  "subsystem": "xp",
+  "kind": "prefix",
+  "ref": "disbot/cogs/xp_cog.py:216",
+  "opens_panel": null,
+  "decorator": "@commands.command",
+  "is_group": false
+ }
+]
