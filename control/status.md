@@ -1,6 +1,6 @@
 # sim-lab · status
 
-updated: 2026-07-11T20:00:00Z
+updated: 2026-07-11T20:20:00Z
 phase: CLOSE-OUT / ARCHIVE-READY — coordinator chat being archived. Sim-ready intake queue EMPTY (idea-engine outbox consumed through PROPOSAL 009 → VERDICT 010). 11 verdicts finalized (V001–011). No open PRs/branches/issues. Durable state brought current: docs/current-state.md living ledger filled (recently-shipped + OA ledger + verdict-numbering map + earn-rate evidence gap); PLATFORM-LIMITS.md lane-local walls recorded (wake-recipe, merge-path, tag-push); ORDER-002 self-review + archive-ready note in docs/retro/. A fresh session resumes from README + CONVENTIONS + control/, re-arms the wake loop per PLATFORM-LIMITS.md § wake-recipe, and polls idea-engine outbox for PROPOSAL 010+.
 health: green
 kit: v1.7.0 · check: green (bootstrap.py check --strict exit 0) · engaged: yes
@@ -34,12 +34,12 @@ WHY-IT-MATTERS: the harness release is un-versioned; raw/copy consumption still 
 UNBLOCKS: tagged harness releases.
 VERIFIED-NEEDED: 403 on refs/tags/* push reproduced.
 
-### ⚑ OWNER-ACTION — OA-005 standing failsafe trigger
-WHAT: Disable/delete recurring trigger trig_01SHfnLv6EqZesr4tC3T9kUU ('sim-lab failsafe wake', cron `0 1-23/2 * * *`), or re-arm per PLATFORM-LIMITS.md wake-recipe.
-WHERE: Routines screen — it is bound to the to-be-archived coordinator session.
-HOW: owner disables it in the Routines UI (cross-session unbind is org-walled from agents).
-WHY-IT-MATTERS: it will keep firing at a dead session after archive.
+### ⚑ OA-005 standing failsafe trigger — RESOLVED (coordinator, 2026-07-11 ~19:50Z)
+WHAT: RESOLVED — no owner click needed. Recurring trigger trig_01SHfnLv6EqZesr4tC3T9kUU ('sim-lab failsafe wake') and the pending one-shot trig_01QoXDsjqF1QhgyDcVXYFMN9 were both deleted by the coordinator via a worker seat before archive.
+WHERE: account Routines — resolved out-of-band, not in the UI.
+HOW: coordinator deleted both triggers from a worker seat; list_triggers showed the recurring one already `ended_reason=auto_disabled_env_deleted`.
+WHY-IT-MATTERS: prevents a dead-session trigger from firing after archive — now moot.
 UNBLOCKS: a clean archive.
-VERIFIED-NEEDED: trigger armed + confirmed firing 2026-07-10.
+VERIFIED-NEEDED: post-delete enumeration of all account triggers confirms ZERO sim-lab triggers remain.
 
-notes: CLOSE-OUT session (owner order — wrap the project for archive; anything not in the repo is LOST). No new feature work. All in-flight work classified: 0 open PRs, 0 open issues, only origin/main; verdict PRs #2–#41 all merged. Chat-only knowledge captured to durable homes (wake-recipe + merge-path + tag-push → PLATFORM-LIMITS.md; OA ledger + verdict-numbering map + earn-rate gap → docs/current-state.md; self-review + archive-ready → docs/retro/). Recurring evidence gap (no live fishing/mining earn-rate baseline) flagged in current-state for the manager. This heartbeat is the LAST commit of the close-out PR.
+notes: CLOSE-OUT session (owner order — wrap the project for archive; anything not in the repo is LOST). No new feature work. All in-flight work classified: 0 open PRs, 0 open issues, only origin/main; verdict PRs #2–#41 all merged. Chat-only knowledge captured to durable homes (wake-recipe + merge-path + tag-push → PLATFORM-LIMITS.md; OA ledger + verdict-numbering map + earn-rate gap → docs/current-state.md; self-review + archive-ready → docs/retro/). Recurring evidence gap (no live fishing/mining earn-rate baseline) flagged in current-state for the manager. This heartbeat is the LAST commit of the close-out PR. OA-005 resolved by coordinator (both sim-lab triggers deleted; zero remain).

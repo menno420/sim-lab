@@ -27,12 +27,7 @@ issues. kit v1.7.0, `bootstrap.py check --strict` exits 0.
 - **OA-004 — harness tag-push 403.** Pushing refs/tags/* is 403-walled;
   harness-v0.1.0 is un-pushed (a local tag → 6db7cee existed only in a dead
   session). Owner: allow tag pushes or push the tag from a fresh clone.
-- **OA-005 — standing failsafe trigger.** Recurring cron trigger
-  `trig_01SHfnLv6EqZesr4tC3T9kUU` ('sim-lab failsafe wake', cron `0 1-23/2 * * *`)
-  is still bound to the to-be-archived coordinator session. Owner: disable/delete
-  it in the Routines screen, OR a future coordinator re-arms per
-  PLATFORM-LIMITS.md § wake-recipe. (Pacemaker one-shot
-  trig_01QoXDsjqF1QhgyDcVXYFMN9 was being disarmed at hand-off.)
+- **OA-005 — standing failsafe trigger — RESOLVED (coordinator, 2026-07-11 ~19:50Z).** Recurring cron trigger `trig_01SHfnLv6EqZesr4tC3T9kUU` ('sim-lab failsafe wake') and the pending one-shot `trig_01QoXDsjqF1QhgyDcVXYFMN9` were both deleted by the coordinator via a worker seat before archive; list_triggers showed the recurring one already `ended_reason=auto_disabled_env_deleted`. Post-delete enumeration confirms ZERO sim-lab triggers remain — no owner click needed.
 - **control-plane dead links (manager/lane, not owner).** VERDICT 011 headline:
   control-plane ships 25 dead in-content links — routed to the websites lane via
   outbox.
