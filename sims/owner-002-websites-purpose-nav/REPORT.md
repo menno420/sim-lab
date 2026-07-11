@@ -350,3 +350,102 @@ recommendation: (1) control-plane — rewrite 25 dead in-content .md/.sh links t
 codex: PR #<PRNUM> comment <CODEX_URL> · reply: pending
 gate: PASS
 -->
+
+## Robustness addendum — wider-cap re-crawl (2026-07-11)
+
+> **Closes the VERDICT 011 ROBUST-gate gap and the open @codex question.** VERDICT 011
+> crawled all sites at an **80-page / depth-2 cap**; two LIVE sites (control-plane,
+> botsite) *hit that cap*, so a broken route could in principle have hidden beyond it.
+> The @codex comment on PR #38 asked exactly this: *"could the 80-page cap hide a broken
+> route that flips a sub-verdict?"* This addendum answers it with a measured **wider** re-crawl.
+> Run: `python3 sims/owner-002-websites-purpose-nav/analyze_wide.py` (the original
+> `analyze_nav.py` stays green and unchanged in its numbers).
+> Wider snapshots: `runs/{control-plane,botsite}-wide.json` — crawled LIVE at **cap = 400
+> pages / depth = 8**, **2 passes each** (5× the page budget, 4× the depth). control-plane's
+> 401-gated `/owner` was **skipped** (GET-only crawler; no credentials, no password probe).
+
+### Method (wider re-crawl)
+
+Same stdlib BFS crawler (`crawl_site.py`), now invoked with `--max-pages 400 --max-depth 8`
+(control-plane additionally `--skip-prefix …/owner`). The wider snapshots carry a
+`"cap":{"pages":400,"depth":8}` field and the same schema as the original runs. A sibling
+analyzer, `analyze_wide.py`, **reuses** `analyze_nav.py`'s measured metric functions and
+`SelfCheck` harness (imported, never duplicated), ingests BOTH the narrow and wide snapshots,
+and computes the new-vs-old delta. It is byte-deterministic (whole computation run twice,
+asserted byte-identical) and self-checks: statuses in 100–599, `recrawl_agreement == 1.0`,
+the wider **crawled-URL set is a superset-or-equal** of the narrow one (BFS-order guarantee,
+home-slash-normalized), the wider **dead-link set is a superset-or-equal** of the narrow one
+for control-plane (no known 404 dropped), and that no gated 401/403 route was crawled.
+**`SELF-CHECKS: 2829 passed, 0 failed`**, exit 0; emits `results-wide.json`.
+
+### Wider metrics (narrow 80/2 → wide 400/8)
+
+| site | pages (n→w) | max depth (n→w) | dead links (n→w) | **new dead** | broken assets (wide) | orphans (wide) | dead-ends (n→w) | re-crawl | still truncated? |
+|---|---|---|---|---|---|---|---|---|---|
+| **control-plane** | 80 → **400** | 2 → **3** | 25 → **25** | **+0** | **0 / 6** | **0** | 26 → 5 | **100%** | **YES (400-cap)** |
+| **botsite** | 80 → **400** | 2 → **2** | 0 → **0** | **+0** | **0 / 2400** | **0** | 0 → 0 | **100%** | **YES (400-cap)** |
+
+Supporting coverage (measured from the wide snapshots):
+- **control-plane** reached **depth 3** (257 depth-3 journal-leaf pages, **all HTTP 200**).
+  Full status split at 400 pages: **375 × 200 + 25 × 404**. The **25 404s are byte-for-byte
+  the SAME set** the 80-cap saw (superset holds, **0 dropped, 0 added**). Forms rose 54 → 370
+  (more journal filter forms — expected, not a defect). **Still truncated** at the 400 cap.
+- **botsite** is **breadth-bound**: 400 pages exhausted at **depth 2** (392 of 400 pages sit
+  at depth 2) because the `/commands/*` + `/features` reference fans out there. The wider crawl
+  reached **349 `/commands/*` pages** (of the ~365 that exist) + **44 `/features`** — **all
+  HTTP 200**, **0 dead of 400 pages, 0 broken of 2,400 assets probed**. **Still truncated** at
+  the 400 cap (~16 command pages beyond the budget), but 349/~365 spot-checked healthy is
+  decisive at this coverage.
+
+> Note on dead-ends (control-plane 26 → 5): this is **live-site variation, not a regression** —
+> journal `file?path=` leaves that were bare terminals in the earlier narrow crawl now render
+> with nav chrome (out-links), so fewer count as dead-ends. Dead-ends were never a defect class
+> (they are expected terminal content); a lower count is neutral.
+
+### New-vs-old delta — does the cap hide anything?
+
+**Zero new defects surfaced beyond the 80-cap, on either site.**
+
+| delta (wide − narrow) | control-plane | botsite |
+|---|---|---|
+| new dead links | **0** | **0** |
+| new broken assets | **0** | **0** |
+| new orphan pages | **0** | **0** |
+| dropped (known) dead links | **0** | **0** |
+| new **hard failures** of any class | **none** | **none** |
+
+### The explicit @codex cap answer
+
+**Does the 80-page cap hide a verdict-flipping route? — NO.** At **5× the page budget** (80 →
+400) and, on control-plane, **one depth level deeper** (depth 2 → 3, 257 additional
+all-200 journal leaves), and on botsite **320 additional pages** (349/~365 of the `/commands/*`
+reference plus all `/features`, every one HTTP 200), the wider crawl surfaced **zero** new
+dead links, **zero** new broken assets, and **zero** new orphans. control-plane's known 25
+dead `.md`/`.sh` content links are reproduced **exactly** (superset, nothing dropped, nothing
+added); botsite stays **0 dead / 0 broken**. **Neither sub-verdict flips:**
+
+- **control-plane** — still *serves-purpose*; the single defect is still exactly the **25 dead
+  in-content `.md`/`.sh` links**. The deeper crawl found **no additional broken route**. **Sub-verdict HOLDS.**
+- **botsite** — still *serves-purpose* with a **clean nav graph**; 349/~365 command pages + all
+  features now measured healthy (was ~29 command pages in-cap before). **Sub-verdict HOLDS.**
+
+### Updated gate answers (superseding the 80-cap disclosures)
+
+- **ROBUST (updated).** The 80-cap ROBUST gap is now **closed by measurement**: the
+  "serves-purpose" ruling survives a 5×-wider, deeper re-crawl on both large sites with **no
+  new defect of any class**. What remains **NOT** exhaustively crawled is the tail past **400**
+  pages (botsite is breadth-bound and still truncated — ~16 command pages beyond the budget;
+  control-plane still truncated at 400 with a depth-4+ journal tail unvisited), but at
+  400-page/349-of-365 coverage with a **0.0% defect rate** in the newly-revealed surface, a
+  hidden verdict-flipping route is not credible.
+- **LIMITS (updated).** The cap is now **400**, not 80. **botsite is still truncated at 400** —
+  349 of ~365 `/commands/*` pages were crawled and **all spot-checked HTTP 200** (0 dead / 0
+  broken of 2,400 assets); the ~16 uncrawled command pages are the only unaudited botsite
+  routes. **control-plane is still truncated at 400** (depth-3 tail reached, all 200; deeper
+  journal leaves beyond the budget unvisited). Live-console-error capture, `/owner` (401,
+  now explicitly skipped), and review-not-deployed limits are unchanged from §5.
+
+**Bottom line:** the wider crawl **confirms** VERDICT 011 — it does not change the ruling. No
+new @codex comment and no correction to the finalized outbox VERDICT 011 are warranted (no
+sub-verdict flipped). The addendum only *strengthens* the ROBUST gate from "disclosed gap" to
+"measured-and-clean at 5× the budget."

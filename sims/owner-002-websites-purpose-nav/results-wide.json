@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "analysis": "owner-002-websites-purpose-nav -- wider-cap robustness re-crawl",
+    "closes": "VERDICT 011 ROBUST-gate 80-page-cap gap + @codex cap question",
+    "reproducibility": "byte-identical analyzer over committed wide snapshots; live re-crawl agreement-reproducible (see crawl_site.py --max-pages 400 --max-depth 8)",
+    "sites": [
+      "control-plane",
+      "botsite"
+    ],
+    "wide_snapshot_source": "live re-crawl 2026-07-11 (UNPINNED-recrawl); cap=400 pages / depth=8, 2 passes"
+  },
+  "sites": {
+    "botsite": {
+      "base_url": "https://botsite-production-cfd7.up.railway.app",
+      "cap": {
+        "depth": 8,
+        "pages": 400
+      },
+      "crawl_mode": "live",
+      "delta": {
+        "depth_gained": 0,
+        "dropped_dead_links": {
+          "count": 0,
+          "urls": []
+        },
+        "new_broken_assets": {
+          "count": 0,
+          "urls": []
+        },
+        "new_dead_links": {
+          "count": 0,
+          "urls": []
+        },
+        "new_orphan_pages": {
+          "count": 0,
+          "urls": []
+        },
+        "pages_gained": 320,
+        "surfaced_new_hard_failures": false,
+        "wide_crawl_is_superset_of_narrow": true,
+        "wide_dead_is_superset_of_narrow": true
+      },
+      "narrow": {
+        "broken_assets_count": 0,
+        "dead_end_pages_count": 0,
+        "dead_links_count": 0,
+        "max_depth": 2,
+        "orphan_pages_count": 0,
+        "total_pages": 80
+      },
+      "skipped_prefixes": [],
+      "wide": {
+        "avg_depth": 1.9775,
+        "broken_assets": {
+          "count": 0,
+          "total_assets": 2400,
+          "urls": []
+        },
+        "dead_end_pages": {
+          "count": 0,
+          "urls": []
+        },
+        "dead_links": {
+          "count": 0,
+          "urls": []
+        },
+        "forms_total": 1,
+        "max_depth": 2,
+        "orphan_pages": {
+          "count": 0,
+          "urls": []
+        },
+        "recrawl_agreement": {
+          "compared": 400,
+          "diffs": [],
+          "rate": 1.0
+        },
+        "total_pages": 400,
+        "truncated_at_cap": true
+      }
+    },
+    "control-plane": {
+      "base_url": "https://control-plane-production-abb0.up.railway.app",
+      "cap": {
+        "depth": 8,
+        "pages": 400
+      },
+      "crawl_mode": "live",
+      "delta": {
+        "depth_gained": 1,
+        "dropped_dead_links": {
+          "count": 0,
+          "urls": []
+        },
+        "new_broken_assets": {
+          "count": 0,
+          "urls": []
+        },
+        "new_dead_links": {
+          "count": 0,
+          "urls": []
+        },
+        "new_orphan_pages": {
+          "count": 0,
+          "urls": []
+        },
+        "pages_gained": 320,
+        "surfaced_new_hard_failures": false,
+        "wide_crawl_is_superset_of_narrow": true,
+        "wide_dead_is_superset_of_narrow": true
+      },
+      "narrow": {
+        "broken_assets_count": 0,
+        "dead_end_pages_count": 26,
+        "dead_links_count": 25,
+        "max_depth": 2,
+        "orphan_pages_count": 0,
+        "total_pages": 80
+      },
+      "skipped_prefixes": [
+        "https://control-plane-production-abb0.up.railway.app/owner"
+      ],
+      "wide": {
+        "avg_depth": 2.605,
+        "broken_assets": {
+          "count": 0,
+          "total_assets": 6,
+          "urls": []
+        },
+        "dead_end_pages": {
+          "count": 5,
+          "urls": [
+            "https://control-plane-production-abb0.up.railway.app/activity.xml",
+            "https://control-plane-production-abb0.up.railway.app/activity.xml?repo=substrate-kit",
+            "https://control-plane-production-abb0.up.railway.app/activity.xml?repo=superbot",
+            "https://control-plane-production-abb0.up.railway.app/activity.xml?repo=superbot-next",
+            "https://control-plane-production-abb0.up.railway.app/activity.xml?repo=websites"
+          ]
+        },
+        "dead_links": {
+          "count": 25,
+          "urls": [
+            "https://control-plane-production-abb0.up.railway.app/README.md",
+            "https://control-plane-production-abb0.up.railway.app/SPEC-TEMPLATE.md",
+            "https://control-plane-production-abb0.up.railway.app/archetype-bot-prod.sh",
+            "https://control-plane-production-abb0.up.railway.app/archetype-coordinator.sh",
+            "https://control-plane-production-abb0.up.railway.app/archetype-gba-lab.sh",
+            "https://control-plane-production-abb0.up.railway.app/archetype-pinned-research.sh",
+            "https://control-plane-production-abb0.up.railway.app/archetype-python-lab.sh",
+            "https://control-plane-production-abb0.up.railway.app/archetypes.md",
+            "https://control-plane-production-abb0.up.railway.app/docs/findings/gba-toolchain-proof-2026-07-09.md",
+            "https://control-plane-production-abb0.up.railway.app/docs/mod-concepts.md",
+            "https://control-plane-production-abb0.up.railway.app/env-grant-policy.md",
+            "https://control-plane-production-abb0.up.railway.app/environments/README.md",
+            "https://control-plane-production-abb0.up.railway.app/environments/archetypes.md",
+            "https://control-plane-production-abb0.up.railway.app/findings/fleet-economics-2026-07.md",
+            "https://control-plane-production-abb0.up.railway.app/findings/instruction-and-env-audit-2026-07-11.md",
+            "https://control-plane-production-abb0.up.railway.app/findings/night-review-2026-07-10.md",
+            "https://control-plane-production-abb0.up.railway.app/gen2-blueprint.md",
+            "https://control-plane-production-abb0.up.railway.app/launch-readiness-2026-07-10.md",
+            "https://control-plane-production-abb0.up.railway.app/multi-repo.md",
+            "https://control-plane-production-abb0.up.railway.app/planning/gen2-launch-record-2026-07-10.md",
+            "https://control-plane-production-abb0.up.railway.app/projects/README.md",
+            "https://control-plane-production-abb0.up.railway.app/setup-base.sh",
+            "https://control-plane-production-abb0.up.railway.app/templates/env-vars.md",
+            "https://control-plane-production-abb0.up.railway.app/templates/setup-universal.sh",
+            "https://control-plane-production-abb0.up.railway.app/templates/smoke.yml"
+          ]
+        },
+        "forms_total": 370,
+        "max_depth": 3,
+        "orphan_pages": {
+          "count": 0,
+          "urls": []
+        },
+        "recrawl_agreement": {
+          "compared": 400,
+          "diffs": [],
+          "rate": 1.0
+        },
+        "total_pages": 400,
+        "truncated_at_cap": true
+      }
+    }
+  }
+}
