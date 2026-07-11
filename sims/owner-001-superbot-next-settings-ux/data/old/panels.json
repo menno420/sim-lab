@@ -1,0 +1,404 @@
+[
+ {
+  "panel": "SettingsHubView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/hub.py:330",
+  "widgets": [
+   "_SubsystemSelect (dropdown of actionable settings groups)"
+  ],
+  "opened_by": "command:!settings (disbot/cogs/settings_cog.py:140) ; command:/settings (disbot/cogs/settings_cog.py:189)",
+  "buttons": [
+   "Open group->SubsystemSettingsView (via _SubsystemSelect)",
+   "Needs setup->NeedsSetupView",
+   "Invalid settings->InvalidSettingsView",
+   "Missing bindings->MissingBindingsView",
+   "Recent changes->RecentChangesView",
+   "Command access->CommandAccessView",
+   "◀ Prev groups->SettingsHubView(page-1)",
+   "More groups ▶->SettingsHubView(page+1)"
+  ]
+ },
+ {
+  "panel": "SubsystemSettingsView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/subsystem_view.py:607",
+  "widgets": [
+   "scalar edit widgets dispatched per SettingSpec: bool toggle (edit_boolean), number modal (edit_number.NumberSettingModal), number presets (edit_number_presets.NumericPresetsView), enum select (edit_enum), channel select (edit_channel.ChannelSettingSelectView), role select (edit_role.RoleSettingSelectView), text modal (edit_text.TextSettingModal)",
+   "reset button (reset_button)"
+  ],
+  "opened_by": "parent-panel:SettingsHubView (_SubsystemSelect.callback, hub.py:186)",
+  "buttons": [
+   "Open Panel->cog help view (custom_id settings_subsystem.open_panel, subsystem_view.py:310)",
+   "Reset->confirm reset",
+   "↩ Back to hub->SettingsHubView"
+  ]
+ },
+ {
+  "panel": "NeedsSetupView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/needs_setup.py:131",
+  "widgets": [
+   "read-only setup-health listing"
+  ],
+  "opened_by": "parent-panel:SettingsHubView (hub.py:229)",
+  "buttons": [
+   "↩ Back to hub->SettingsHubView"
+  ]
+ },
+ {
+  "panel": "InvalidSettingsView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/invalid_settings.py:110",
+  "widgets": [
+   "read-only invalid-value listing"
+  ],
+  "opened_by": "parent-panel:SettingsHubView (hub.py:247)",
+  "buttons": [
+   "↩ Back to hub->SettingsHubView"
+  ]
+ },
+ {
+  "panel": "MissingBindingsView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/missing_bindings.py:103",
+  "widgets": [
+   "read-only unbound-slot listing"
+  ],
+  "opened_by": "parent-panel:SettingsHubView (hub.py:268)",
+  "buttons": [
+   "↩ Back to hub->SettingsHubView"
+  ]
+ },
+ {
+  "panel": "RecentChangesView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/audit_view.py:130",
+  "widgets": [
+   "read-only settings audit history"
+  ],
+  "opened_by": "parent-panel:SettingsHubView (hub.py:289)",
+  "buttons": [
+   "↩ Back to hub->SettingsHubView"
+  ]
+ },
+ {
+  "panel": "CommandAccessView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/edit_command_access.py:492",
+  "widgets": [
+   "_ChannelAllowlistSelect (ChannelSelect)",
+   "_AllChannelsButton",
+   "_SelectedChannelsButton",
+   "_DisabledButton",
+   "_DeleteBlockedToggleButton"
+  ],
+  "opened_by": "parent-panel:SettingsHubView (hub.py:319)",
+  "buttons": [
+   "All channels->set mode",
+   "Selected channels->set mode",
+   "Disabled->set mode",
+   "Delete blocked toggle",
+   "↩ Back to hub->SettingsHubView"
+  ]
+ },
+ {
+  "panel": "NumberSettingModal",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/edit_number.py:21",
+  "widgets": [
+   "int/float text input"
+  ],
+  "opened_by": "parent-panel:SubsystemSettingsView",
+  "buttons": [
+   "Submit->SettingsMutationPipeline write"
+  ]
+ },
+ {
+  "panel": "NumericPresetsView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/edit_number_presets.py:161",
+  "widgets": [
+   "_PresetButton(s)",
+   "_OverrideButton"
+  ],
+  "opened_by": "parent-panel:SubsystemSettingsView",
+  "buttons": [
+   "<preset>->write",
+   "Override…->NumberSettingModal"
+  ]
+ },
+ {
+  "panel": "TextSettingModal",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/edit_text.py:19",
+  "widgets": [
+   "free-form text input"
+  ],
+  "opened_by": "parent-panel:SubsystemSettingsView",
+  "buttons": [
+   "Submit->write"
+  ]
+ },
+ {
+  "panel": "ChannelSettingSelectView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/edit_channel.py:156",
+  "widgets": [
+   "_ChannelPickSelect (ChannelSelect)",
+   "_ClearChannelButton"
+  ],
+  "opened_by": "parent-panel:SubsystemSettingsView",
+  "buttons": [
+   "<pick channel>->write",
+   "Clear->write empty"
+  ]
+ },
+ {
+  "panel": "RoleSettingSelectView",
+  "subsystem": "settings",
+  "ref": "disbot/views/settings/edit_role.py:154",
+  "widgets": [
+   "_RolePickSelect (RoleSelect)",
+   "_ClearRoleButton"
+  ],
+  "opened_by": "parent-panel:SubsystemSettingsView",
+  "buttons": [
+   "<pick role>->write",
+   "Clear->write empty"
+  ]
+ },
+ {
+  "panel": "AIPanelView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/panel.py:94",
+  "widgets": [
+   "read-only AI gateway diagnostics embed; 8 buttons"
+  ],
+  "opened_by": "command:!ai panel (disbot/cogs/ai_cog.py:369) ; command:!ai (disbot/cogs/ai_cog.py:520) ; persistent anchor (registered @register)",
+  "buttons": [
+   "Refresh (ai:refresh)",
+   "Diagnostics (ai:diagnostics)",
+   "Providers (ai:providers)",
+   "Routing (ai:routing)",
+   "Settings (ai:settings)->AI settings panel (cogs/ai_cog.py:_build_ai_settings_panel)",
+   "Policy (ai:policy)->PolicyChooserView",
+   "Behavior (ai:behavior)->BehaviorChooserView",
+   "Tools (ai:tools)->ToolsChooserView"
+  ]
+ },
+ {
+  "panel": "PolicyChooserView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/policy/chooser.py:74",
+  "widgets": [
+   "5 scope buttons + back"
+  ],
+  "opened_by": "parent-panel:AIPanelView (Policy button, panel.py:201)",
+  "buttons": [
+   "Channel->ChannelPolicySelectView",
+   "Category->CategoryPolicySelectView",
+   "Role->RolePolicySelectView",
+   "Effective policy->PreviewChannelSelectView",
+   "List overrides->PolicyListView",
+   "↩ AI home->AIPanelView"
+  ]
+ },
+ {
+  "panel": "ChannelPolicySelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/policy/channel_view.py:207",
+  "widgets": [
+   "_ChannelPickSelect",
+   "opens ChannelPolicyModal"
+  ],
+  "opened_by": "parent-panel:PolicyChooserView",
+  "buttons": [
+   "<pick channel>->ChannelPolicyModal->ai_policy_mutation write",
+   "↩ AI Policy->PolicyChooserView"
+  ]
+ },
+ {
+  "panel": "CategoryPolicySelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/policy/category_view.py:173",
+  "widgets": [
+   "_CategoryPickSelect",
+   "opens CategoryPolicyModal"
+  ],
+  "opened_by": "parent-panel:PolicyChooserView",
+  "buttons": [
+   "<pick category>->CategoryPolicyModal->write",
+   "↩ AI Policy->PolicyChooserView"
+  ]
+ },
+ {
+  "panel": "RolePolicySelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/policy/role_view.py:185",
+  "widgets": [
+   "_RolePickSelect",
+   "opens RolePolicyModal"
+  ],
+  "opened_by": "parent-panel:PolicyChooserView",
+  "buttons": [
+   "<pick role>->RolePolicyModal->write",
+   "↩ AI Policy->PolicyChooserView"
+  ]
+ },
+ {
+  "panel": "PreviewChannelSelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/policy/preview_view.py:264",
+  "widgets": [
+   "_PreviewChannelSelect (dry-run effective policy)"
+  ],
+  "opened_by": "parent-panel:PolicyChooserView",
+  "buttons": [
+   "<pick channel>->preview effective policy",
+   "↩ AI Policy->PolicyChooserView"
+  ]
+ },
+ {
+  "panel": "PolicyListView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/policy/list_view.py:164",
+  "widgets": [
+   "read-only override listing"
+  ],
+  "opened_by": "parent-panel:PolicyChooserView",
+  "buttons": [
+   "↩ AI Policy->PolicyChooserView"
+  ]
+ },
+ {
+  "panel": "BehaviorChooserView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/behavior/chooser.py:90",
+  "widgets": [
+   "5 buttons + back"
+  ],
+  "opened_by": "parent-panel:AIPanelView (Behavior button, panel.py:227)",
+  "buttons": [
+   "Channel->BehaviorChannelSelectView",
+   "Category->BehaviorCategorySelectView",
+   "Preview (dry-run)->preview",
+   "Routing matrix->RoutingMatrixSelectView",
+   "Advanced->PresetPickerView",
+   "↩ AI home->AIPanelView"
+  ]
+ },
+ {
+  "panel": "BehaviorChannelSelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/behavior/scope_picker.py:76",
+  "widgets": [
+   "_BehaviorChannelSelect"
+  ],
+  "opened_by": "parent-panel:BehaviorChooserView",
+  "buttons": [
+   "<pick channel>->PresetPickerView",
+   "↩ AI Behavior->BehaviorChooserView"
+  ]
+ },
+ {
+  "panel": "BehaviorCategorySelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/behavior/scope_picker.py:128",
+  "widgets": [
+   "_BehaviorCategorySelect"
+  ],
+  "opened_by": "parent-panel:BehaviorChooserView",
+  "buttons": [
+   "<pick category>->PresetPickerView",
+   "↩ AI Behavior->BehaviorChooserView"
+  ]
+ },
+ {
+  "panel": "PresetPickerView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/behavior/preset_picker.py:134",
+  "widgets": [
+   "_PresetSelect (behavior preset)"
+  ],
+  "opened_by": "parent-panel:BehaviorChooserView / scope pickers",
+  "buttons": [
+   "<pick preset>->ai_policy_mutation write"
+  ]
+ },
+ {
+  "panel": "RoutingMatrixSelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/routing/matrix.py:162",
+  "widgets": [
+   "_MatrixChannelSelect (routing matrix)"
+  ],
+  "opened_by": "parent-panel:BehaviorChooserView (Routing matrix)",
+  "buttons": [
+   "<pick channel>->routing matrix view"
+  ]
+ },
+ {
+  "panel": "ToolsChooserView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/tools/chooser.py:91",
+  "widgets": [
+   "4 scope buttons + back"
+  ],
+  "opened_by": "parent-panel:AIPanelView (Tools button, panel.py:251)",
+  "buttons": [
+   "Guild->GuildToolsProfileView",
+   "Channel->ChannelToolsSelectView",
+   "Category->CategoryToolsSelectView",
+   "Preview (dry-run)->ToolsPreviewChannelSelectView",
+   "↩ AI home->AIPanelView"
+  ]
+ },
+ {
+  "panel": "GuildToolsProfileView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/tools/scope_view.py:153",
+  "widgets": [
+   "_ProfileSelect (orchestration profile)"
+  ],
+  "opened_by": "parent-panel:ToolsChooserView",
+  "buttons": [
+   "<pick profile>->ai_orchestration_mutation write"
+  ]
+ },
+ {
+  "panel": "ChannelToolsSelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/tools/scope_view.py:192",
+  "widgets": [
+   "_ChannelPickSelect"
+  ],
+  "opened_by": "parent-panel:ToolsChooserView",
+  "buttons": [
+   "<pick channel>->_ProfileSelect->write"
+  ]
+ },
+ {
+  "panel": "CategoryToolsSelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/tools/scope_view.py:229",
+  "widgets": [
+   "_CategoryPickSelect"
+  ],
+  "opened_by": "parent-panel:ToolsChooserView",
+  "buttons": [
+   "<pick category>->_ProfileSelect->write"
+  ]
+ },
+ {
+  "panel": "ToolsPreviewChannelSelectView",
+  "subsystem": "ai",
+  "ref": "disbot/views/ai/tools/preview_view.py:193",
+  "widgets": [
+   "_ToolsPreviewChannelSelect (dry-run)"
+  ],
+  "opened_by": "parent-panel:ToolsChooserView",
+  "buttons": [
+   "<pick channel>->preview tools resolution"
+  ]
+ }
+]

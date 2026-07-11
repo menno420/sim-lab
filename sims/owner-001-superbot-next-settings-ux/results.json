@@ -1,0 +1,2863 @@
+{
+ "combinability": {
+  "next": {
+   "coread_collapsed_groups": {
+    "ai": [
+     [
+      "ai_default_model",
+      "ai_default_provider"
+     ]
+    ],
+    "counters": [
+     [
+      "counters_bots_template",
+      "counters_enabled",
+      "counters_humans_template",
+      "counters_total_template"
+     ],
+     [
+      "counters.bots_channel",
+      "counters.humans_channel",
+      "counters.total_channel"
+     ]
+    ],
+    "image_moderation": [
+     [
+      "image_moderation_enabled",
+      "image_moderation_exempt_channels",
+      "image_moderation_exempt_roles",
+      "image_moderation_harassment_enabled",
+      "image_moderation_hate_enabled",
+      "image_moderation_sexual_enabled",
+      "image_moderation_threshold_percent",
+      "image_moderation_violence_enabled"
+     ]
+    ],
+    "logging": [
+     [
+      "logging.audit_channel",
+      "logging.cleanup_channel",
+      "logging.debug_channel",
+      "logging.error_channel",
+      "logging.events_channel",
+      "logging.info_channel",
+      "logging.member_channel",
+      "logging.message_channel",
+      "logging.mod_channel",
+      "logging.role_channel",
+      "logging.warning_channel"
+     ],
+     [
+      "logging_channels_enabled",
+      "logging_members_enabled",
+      "logging_messages_enabled",
+      "logging_moderation_enabled",
+      "logging_roles_enabled",
+      "logging_server_enabled",
+      "logging_voice_enabled"
+     ]
+    ],
+    "security": [
+     [
+      "security_age_action",
+      "security_age_enabled",
+      "security_age_min_days",
+      "security_enabled",
+      "security_raid_enabled",
+      "security_raid_join_count",
+      "security_raid_lockdown_seconds",
+      "security_raid_slowmode_seconds",
+      "security_raid_window_seconds"
+     ],
+     [
+      "security.alert_channel",
+      "security.raid_slowmode_channel"
+     ]
+    ],
+    "xp": [
+     [
+      "xp_cooldown",
+      "xp_max",
+      "xp_min"
+     ]
+    ]
+   },
+   "sampled_config_space": {
+    "ai": {
+     "collapse_ratio_mean": 1.0,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 32,
+     "dims": 5,
+     "distinct_behaviors_mean": 32,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 32
+    },
+    "automod": {
+     "collapse_ratio_mean": 1.0,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 128,
+     "dims": 7,
+     "distinct_behaviors_mean": 128,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 128
+    },
+    "image_moderation": {
+     "collapse_ratio_mean": 0.0625,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 32,
+     "dims": 5,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 32
+    },
+    "logging": {
+     "collapse_ratio_mean": 0.040625,
+     "collapse_ratio_sd": 0.003983608994994363,
+     "config_space": 1024,
+     "dims": 10,
+     "distinct_behaviors_mean": 10.4,
+     "distinct_behaviors_sd": 1.019803902718557,
+     "fully_enumerated": false,
+     "n_sampled": 256
+    },
+    "moderation": {
+     "collapse_ratio_mean": 1.0,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 32,
+     "dims": 5,
+     "distinct_behaviors_mean": 32,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 32
+    },
+    "role": {
+     "collapse_ratio_mean": 1.0,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 8,
+     "dims": 3,
+     "distinct_behaviors_mean": 8,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 8
+    },
+    "security": {
+     "collapse_ratio_mean": 0.125,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 16,
+     "dims": 4,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 16
+    },
+    "welcome": {
+     "collapse_ratio_mean": 1.0,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 16,
+     "dims": 4,
+     "distinct_behaviors_mean": 16,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 16
+    }
+   }
+  },
+  "old": {
+   "coread_collapsed_groups": {
+    "ai": [
+     [
+      "ai_cooldown_seconds",
+      "ai_default_model",
+      "ai_default_provider",
+      "ai_enabled",
+      "ai_fresh_user_mention_allowance",
+      "ai_guild_instruction_profile",
+      "ai_memory_channel_scan_enabled",
+      "ai_memory_window_minutes",
+      "ai_minimum_level_default",
+      "ai_natural_language_enabled"
+     ]
+    ],
+    "automod": [
+     [
+      "automod_caps_enabled",
+      "automod_caps_percent",
+      "automod_cross_channel_spam_count",
+      "automod_cross_channel_spam_enabled",
+      "automod_duplicate_count",
+      "automod_duplicate_enabled",
+      "automod_enabled",
+      "automod_exempt_channels",
+      "automod_exempt_roles",
+      "automod_invites_enabled",
+      "automod_mentions_count",
+      "automod_mentions_enabled",
+      "automod_spam_count",
+      "automod_spam_enabled",
+      "automod_spam_window_seconds"
+     ]
+    ],
+    "counters": [
+     [
+      "counters_bots_channel",
+      "counters_bots_template",
+      "counters_enabled",
+      "counters_humans_channel",
+      "counters_humans_template",
+      "counters_total_channel",
+      "counters_total_template"
+     ]
+    ],
+    "image_moderation": [
+     [
+      "image_moderation_enabled",
+      "image_moderation_exempt_channels",
+      "image_moderation_exempt_roles",
+      "image_moderation_harassment_enabled",
+      "image_moderation_hate_enabled",
+      "image_moderation_sexual_enabled",
+      "image_moderation_threshold_percent",
+      "image_moderation_violence_enabled"
+     ]
+    ],
+    "karma": [
+     [
+      "karma_cooldown",
+      "karma_daily_cap",
+      "karma_enabled",
+      "karma_reaction_emoji"
+     ]
+    ],
+    "logging": [
+     [
+      "logging_auto_create_channels",
+      "logging_channels_enabled",
+      "logging_enabled",
+      "logging_event_routing",
+      "logging_ignored_channels",
+      "logging_ignored_users",
+      "logging_members_enabled",
+      "logging_messages_enabled",
+      "logging_moderation_enabled",
+      "logging_roles_enabled",
+      "logging_server_enabled",
+      "logging_voice_enabled"
+     ],
+     [
+      "logging_cleanup_channel",
+      "logging_mod_channel"
+     ]
+    ],
+    "moderation": [
+     [
+      "moderation_ban_delete_message_days",
+      "moderation_dm_actions",
+      "moderation_dm_on_action",
+      "moderation_dm_template",
+      "moderation_max_timeout_minutes",
+      "moderation_post_action_cleanup",
+      "moderation_post_action_cleanup_limit",
+      "moderation_public_log_actions",
+      "moderation_public_log_channel",
+      "moderation_require_reason",
+      "moderation_warn_escalation_action",
+      "warn_threshold",
+      "warn_timeout_minutes"
+     ],
+     [
+      "moderator_tier_role_id",
+      "trusted_tier_role_id"
+     ]
+    ],
+    "role": [
+     [
+      "reaction_roles_enabled",
+      "time_roles_stack",
+      "xp_roles_stack"
+     ]
+    ],
+    "security": [
+     [
+      "security_age_action",
+      "security_age_enabled",
+      "security_age_min_days",
+      "security_alert_channel",
+      "security_enabled",
+      "security_raid_enabled",
+      "security_raid_join_count",
+      "security_raid_lockdown_seconds",
+      "security_raid_slowmode_channel",
+      "security_raid_slowmode_seconds",
+      "security_raid_window_seconds"
+     ]
+    ],
+    "welcome": [
+     [
+      "welcome_card_enabled",
+      "welcome_channel",
+      "welcome_delete_after_seconds",
+      "welcome_dm_enabled",
+      "welcome_dm_message",
+      "welcome_enabled",
+      "welcome_entry_role",
+      "welcome_join_enabled",
+      "welcome_join_message",
+      "welcome_leave_enabled",
+      "welcome_leave_message",
+      "welcome_min_account_age_days"
+     ]
+    ],
+    "xp": [
+     [
+      "xp_cooldown",
+      "xp_max",
+      "xp_min"
+     ]
+    ]
+   },
+   "sampled_config_space": {
+    "ai": {
+     "collapse_ratio_mean": 0.0625,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 32,
+     "dims": 5,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 32
+    },
+    "automod": {
+     "collapse_ratio_mean": 0.015625,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 128,
+     "dims": 7,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 128
+    },
+    "image_moderation": {
+     "collapse_ratio_mean": 0.0625,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 32,
+     "dims": 5,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 32
+    },
+    "logging": {
+     "collapse_ratio_mean": 0.00390625,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 1024,
+     "dims": 10,
+     "distinct_behaviors_mean": 1,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": false,
+     "n_sampled": 256
+    },
+    "moderation": {
+     "collapse_ratio_mean": 0.0625,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 32,
+     "dims": 5,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 32
+    },
+    "role": {
+     "collapse_ratio_mean": 0.25,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 8,
+     "dims": 3,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 8
+    },
+    "security": {
+     "collapse_ratio_mean": 0.125,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 16,
+     "dims": 4,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 16
+    },
+    "welcome": {
+     "collapse_ratio_mean": 0.0625,
+     "collapse_ratio_sd": 0.0,
+     "config_space": 32,
+     "dims": 5,
+     "distinct_behaviors_mean": 2,
+     "distinct_behaviors_sd": 0.0,
+     "fully_enumerated": true,
+     "n_sampled": 32
+    }
+   }
+  }
+ },
+ "inventory_diff": {
+  "commands": {
+   "added_names": [
+    "ai diagnostics",
+    "ai forget",
+    "ai policy",
+    "ai providers",
+    "ai readiness",
+    "ai routing",
+    "ai settings",
+    "ai status",
+    "ai support-report",
+    "ai why-no-response",
+    "aireview channel",
+    "aireview export",
+    "aireview list",
+    "aireview off",
+    "aireview preset",
+    "aireview resolve",
+    "aireview.preset add",
+    "aireview.preset from",
+    "aireview.preset list",
+    "aireview.preset remove",
+    "btd6 ask",
+    "btd6 ct",
+    "btd6 ctteam",
+    "btd6 diagnostics",
+    "btd6 estimate",
+    "btd6 events",
+    "btd6 hero",
+    "btd6 income",
+    "btd6 ops",
+    "btd6 rbe",
+    "btd6 relic",
+    "btd6 round",
+    "btd6 status",
+    "btd6 strat",
+    "btd6 test-intent",
+    "btd6 tower",
+    "btd6.events event",
+    "btd6.events grounding",
+    "btd6.events latest-data",
+    "btd6.events leaderboard",
+    "btd6.events live",
+    "btd6.events refresh-source",
+    "btd6.events source-health",
+    "btd6.events sources",
+    "btd6.ops announcechannel",
+    "btd6.ops readiness",
+    "btd6.ops runs",
+    "btd6.ops seed-data",
+    "btd6.ops source_disable",
+    "btd6.ops source_enable",
+    "btd6.strat browse",
+    "btd6.strat mine",
+    "btd6.strat pending",
+    "btd6.strat strategies",
+    "btd6.strat strategy",
+    "btd6.strat strategy-audit",
+    "btd6.strat submit",
+    "btd6.strat why-no-response",
+    "btd6events event",
+    "btd6events grounding",
+    "btd6events latest-data",
+    "btd6events leaderboard",
+    "btd6events live",
+    "btd6events refresh-source",
+    "btd6events source-health",
+    "btd6events sources",
+    "btd6ops readiness",
+    "btd6ops runs",
+    "btd6ops seed-data",
+    "btd6ops source_disable",
+    "btd6ops source_enable",
+    "btd6ref ct",
+    "btd6ref hero",
+    "btd6ref income",
+    "btd6ref rbe",
+    "btd6ref relic",
+    "btd6ref round",
+    "btd6ref tower",
+    "btd6strat browse",
+    "btd6strat mine",
+    "btd6strat pending",
+    "btd6strat strategies",
+    "btd6strat strategy",
+    "btd6strat strategy-audit",
+    "btd6strat submit",
+    "btd6strat why-no-response",
+    "chain create",
+    "chain delete",
+    "chain list",
+    "chain removelimit",
+    "chain setlimit",
+    "karma add",
+    "logging create",
+    "logging routes",
+    "logging set",
+    "logging status",
+    "logging test",
+    "platform access",
+    "platform anchors",
+    "platform automation",
+    "platform backfill",
+    "platform bindings",
+    "platform caches",
+    "platform cleanup-preview",
+    "platform command-access",
+    "platform consistency",
+    "platform counting-health",
+    "platform customization",
+    "platform economy",
+    "platform economytrend",
+    "platform finding",
+    "platform findings",
+    "platform flag",
+    "platform flags",
+    "platform identity",
+    "platform lifecycle",
+    "platform locks",
+    "platform media",
+    "platform migrations",
+    "platform participation-schemas",
+    "platform provisioning",
+    "platform resource-requirements",
+    "platform resources",
+    "platform schemas",
+    "platform sessions",
+    "platform setting",
+    "platform settings-registry",
+    "platform setup-readiness",
+    "platform tasks",
+    "platform views",
+    "pm damage",
+    "pm ego",
+    "pm list",
+    "pm lookup",
+    "pm mechanic",
+    "pm origins",
+    "pm sin",
+    "pm sinner",
+    "pm status",
+    "settings access",
+    "ticket add",
+    "ticket claim",
+    "ticket close",
+    "ticket new",
+    "ticket remove",
+    "treasury contribute",
+    "treasury grant",
+    "word add",
+    "word list",
+    "word remove"
+   ],
+   "distinct_added": 150,
+   "distinct_delta": -3,
+   "distinct_kept": 212,
+   "distinct_new": 362,
+   "distinct_old": 365,
+   "distinct_removed": 153,
+   "per_subsystem": {
+    "admin": {
+     "delta": -5,
+     "new": 7,
+     "old": 12
+    },
+    "ai": {
+     "delta": 1,
+     "new": 24,
+     "old": 23
+    },
+    "ai_review": {
+     "delta": -11,
+     "new": 0,
+     "old": 11
+    },
+    "automod": {
+     "delta": 0,
+     "new": 1,
+     "old": 1
+    },
+    "blackjack": {
+     "delta": 0,
+     "new": 4,
+     "old": 4
+    },
+    "btd6": {
+     "delta": -3,
+     "new": 72,
+     "old": 75
+    },
+    "btd6_events": {
+     "delta": -9,
+     "new": 0,
+     "old": 9
+    },
+    "btd6_ops": {
+     "delta": -7,
+     "new": 0,
+     "old": 7
+    },
+    "btd6_reference": {
+     "delta": -8,
+     "new": 0,
+     "old": 8
+    },
+    "btd6_strategy": {
+     "delta": -9,
+     "new": 0,
+     "old": 9
+    },
+    "casino": {
+     "delta": 0,
+     "new": 2,
+     "old": 2
+    },
+    "chain": {
+     "delta": 0,
+     "new": 7,
+     "old": 7
+    },
+    "channel": {
+     "delta": 0,
+     "new": 17,
+     "old": 17
+    },
+    "cleanup": {
+     "delta": 0,
+     "new": 7,
+     "old": 7
+    },
+    "community": {
+     "delta": 0,
+     "new": 2,
+     "old": 2
+    },
+    "community_spotlight": {
+     "delta": 0,
+     "new": 1,
+     "old": 1
+    },
+    "counters": {
+     "delta": -1,
+     "new": 2,
+     "old": 3
+    },
+    "counting": {
+     "delta": 0,
+     "new": 10,
+     "old": 10
+    },
+    "creature": {
+     "delta": 3,
+     "new": 7,
+     "old": 4
+    },
+    "creature_battle": {
+     "delta": -3,
+     "new": 0,
+     "old": 3
+    },
+    "deathmatch": {
+     "delta": 0,
+     "new": 2,
+     "old": 2
+    },
+    "diagnostic": {
+     "delta": -19,
+     "new": 36,
+     "old": 55
+    },
+    "economy": {
+     "delta": 0,
+     "new": 9,
+     "old": 9
+    },
+    "farm": {
+     "delta": 0,
+     "new": 1,
+     "old": 1
+    },
+    "fishing": {
+     "delta": 0,
+     "new": 20,
+     "old": 20
+    },
+    "four_twenty": {
+     "delta": -1,
+     "new": 0,
+     "old": 1
+    },
+    "games": {
+     "delta": -1,
+     "new": 3,
+     "old": 4
+    },
+    "general": {
+     "delta": -7,
+     "new": 1,
+     "old": 8
+    },
+    "help": {
+     "delta": -1,
+     "new": 1,
+     "old": 2
+    },
+    "hermes": {
+     "delta": 0,
+     "new": 2,
+     "old": 2
+    },
+    "image_moderation": {
+     "delta": 0,
+     "new": 1,
+     "old": 1
+    },
+    "inventory": {
+     "delta": 0,
+     "new": 1,
+     "old": 1
+    },
+    "karma": {
+     "delta": 0,
+     "new": 4,
+     "old": 4
+    },
+    "leaderboard": {
+     "delta": 0,
+     "new": 1,
+     "old": 1
+    },
+    "logging": {
+     "delta": 0,
+     "new": 6,
+     "old": 6
+    },
+    "mining": {
+     "delta": 0,
+     "new": 37,
+     "old": 37
+    },
+    "moderation": {
+     "delta": 0,
+     "new": 9,
+     "old": 9
+    },
+    "paragon": {
+     "delta": -1,
+     "new": 0,
+     "old": 1
+    },
+    "project_moon": {
+     "delta": -11,
+     "new": 0,
+     "old": 11
+    },
+    "projmoon": {
+     "delta": 11,
+     "new": 11,
+     "old": 0
+    },
+    "proof_channel": {
+     "delta": 0,
+     "new": 5,
+     "old": 5
+    },
+    "quicksetup": {
+     "delta": -2,
+     "new": 0,
+     "old": 2
+    },
+    "role": {
+     "delta": 2,
+     "new": 17,
+     "old": 15
+    },
+    "role_grants": {
+     "delta": -2,
+     "new": 0,
+     "old": 2
+    },
+    "rps_tournament": {
+     "delta": 0,
+     "new": 7,
+     "old": 7
+    },
+    "security": {
+     "delta": 0,
+     "new": 1,
+     "old": 1
+    },
+    "server_management": {
+     "delta": 0,
+     "new": 2,
+     "old": 2
+    },
+    "settings": {
+     "delta": -1,
+     "new": 2,
+     "old": 3
+    },
+    "setup": {
+     "delta": -11,
+     "new": 1,
+     "old": 12
+    },
+    "starboard": {
+     "delta": -6,
+     "new": 0,
+     "old": 6
+    },
+    "ticket": {
+     "delta": -6,
+     "new": 6,
+     "old": 12
+    },
+    "treasury": {
+     "delta": 0,
+     "new": 3,
+     "old": 3
+    },
+    "utility": {
+     "delta": -9,
+     "new": 6,
+     "old": 15
+    },
+    "ux_lab": {
+     "delta": 0,
+     "new": 2,
+     "old": 2
+    },
+    "welcome": {
+     "delta": 0,
+     "new": 1,
+     "old": 1
+    },
+    "xp": {
+     "delta": 0,
+     "new": 6,
+     "old": 6
+    }
+   },
+   "raw_delta": -117,
+   "raw_total_new": 367,
+   "raw_total_old": 484,
+   "removed_names": [
+    "420",
+    "?",
+    "access",
+    "add",
+    "anchors",
+    "announcechannel",
+    "ask",
+    "automation",
+    "backfill",
+    "bindings",
+    "botinfo",
+    "browse",
+    "caches",
+    "channel",
+    "check_database",
+    "claim",
+    "cleanup-preview",
+    "clear",
+    "close",
+    "cog",
+    "command-access",
+    "consistency",
+    "contribute",
+    "counting-health",
+    "ct",
+    "ctteam",
+    "customization",
+    "damage",
+    "delete",
+    "diagnostic_bot_status",
+    "economytrend",
+    "ego",
+    "eightball",
+    "estimate",
+    "event",
+    "events",
+    "export",
+    "fact",
+    "find_command",
+    "finding",
+    "findings",
+    "flag",
+    "flags",
+    "forget",
+    "from",
+    "grant",
+    "greet",
+    "grounding",
+    "health",
+    "hero",
+    "identity",
+    "ignore",
+    "income",
+    "info",
+    "invite",
+    "joke",
+    "latest-data",
+    "lifecycle",
+    "list_commands_detailed",
+    "live",
+    "loadall",
+    "locks",
+    "lookup",
+    "mechanic",
+    "media",
+    "membercount",
+    "migrations",
+    "motivate",
+    "new",
+    "off",
+    "ops",
+    "origins",
+    "panel",
+    "paragon",
+    "participation-schemas",
+    "pending",
+    "policy",
+    "poll",
+    "preset",
+    "providers",
+    "provisioning",
+    "query_logs",
+    "quote",
+    "rbe",
+    "readiness",
+    "recent_errors",
+    "refresh-source",
+    "relic",
+    "remind",
+    "remove",
+    "removelimit",
+    "resolve",
+    "resource-requirements",
+    "resources",
+    "round",
+    "routes",
+    "routing",
+    "runs",
+    "runtime",
+    "schemas",
+    "seed-data",
+    "selfstar",
+    "sessions",
+    "setlimit",
+    "setting",
+    "settings-registry",
+    "setup-advanced",
+    "setup-delegate",
+    "setup-depth",
+    "setup-describe",
+    "setup-hub",
+    "setup-readiness",
+    "setup-reset",
+    "setup-skip",
+    "setup-status",
+    "setup-undelegate",
+    "setup-unskip",
+    "setupadvanced",
+    "setupdescribe",
+    "sin",
+    "sinner",
+    "slow",
+    "source-health",
+    "source_disable",
+    "source_enable",
+    "sources",
+    "starboard",
+    "startup",
+    "status",
+    "strat",
+    "strategies",
+    "strategy",
+    "strategy-audit",
+    "submit",
+    "support-report",
+    "syncslash",
+    "system_info",
+    "tasks",
+    "test",
+    "test-intent",
+    "test_notification",
+    "ticketblacklist",
+    "ticketlimit",
+    "ticketpanel",
+    "ticketsetup",
+    "tower",
+    "trivia",
+    "unignore",
+    "unloadall",
+    "userinfo",
+    "validate_json_files",
+    "views",
+    "why-no-response"
+   ]
+  },
+  "settings": {
+   "added": [
+    "ai.audit_log_channel",
+    "counters.bots_channel",
+    "counters.humans_channel",
+    "counters.total_channel",
+    "economy.log_channel",
+    "logging.audit_channel",
+    "logging.cleanup_channel",
+    "logging.debug_channel",
+    "logging.error_channel",
+    "logging.events_channel",
+    "logging.info_channel",
+    "logging.member_channel",
+    "logging.message_channel",
+    "logging.mod_channel",
+    "logging.role_channel",
+    "logging.warning_channel",
+    "moderation.public_log",
+    "proof_channel.proof_channel",
+    "rps_default_best_of",
+    "rps_default_mode",
+    "security.alert_channel",
+    "security.raid_slowmode_channel",
+    "welcome.channel",
+    "welcome.entry_role",
+    "xp.announce_channel"
+   ],
+   "added_count": 25,
+   "count_new": 125,
+   "count_old": 118,
+   "kept": [
+    "ai_cooldown_seconds",
+    "ai_default_model",
+    "ai_default_provider",
+    "ai_enabled",
+    "ai_fresh_user_mention_allowance",
+    "ai_guild_instruction_profile",
+    "ai_memory_channel_scan_enabled",
+    "ai_memory_window_minutes",
+    "ai_minimum_level_default",
+    "ai_natural_language_enabled",
+    "ai_review_channel",
+    "automod_caps_enabled",
+    "automod_caps_percent",
+    "automod_cross_channel_spam_count",
+    "automod_cross_channel_spam_enabled",
+    "automod_duplicate_count",
+    "automod_duplicate_enabled",
+    "automod_enabled",
+    "automod_exempt_channels",
+    "automod_exempt_roles",
+    "automod_invites_enabled",
+    "automod_mentions_count",
+    "automod_mentions_enabled",
+    "automod_spam_count",
+    "automod_spam_enabled",
+    "automod_spam_window_seconds",
+    "blackjack_default_entry_fee",
+    "btd6_strategy_submission_channel",
+    "cleanup_spam_window_seconds",
+    "counters_bots_template",
+    "counters_enabled",
+    "counters_humans_template",
+    "counters_total_template",
+    "deathmatch_turn_timeout",
+    "governance_version",
+    "image_moderation_enabled",
+    "image_moderation_exempt_channels",
+    "image_moderation_exempt_roles",
+    "image_moderation_harassment_enabled",
+    "image_moderation_hate_enabled",
+    "image_moderation_sexual_enabled",
+    "image_moderation_threshold_percent",
+    "image_moderation_violence_enabled",
+    "karma_cooldown",
+    "karma_daily_cap",
+    "karma_enabled",
+    "karma_reaction_emoji",
+    "logging_auto_create_channels",
+    "logging_channels_enabled",
+    "logging_enabled",
+    "logging_event_routing",
+    "logging_ignored_channels",
+    "logging_ignored_users",
+    "logging_members_enabled",
+    "logging_messages_enabled",
+    "logging_moderation_enabled",
+    "logging_roles_enabled",
+    "logging_server_enabled",
+    "logging_voice_enabled",
+    "moderation_ban_delete_message_days",
+    "moderation_dm_actions",
+    "moderation_dm_on_action",
+    "moderation_dm_template",
+    "moderation_max_timeout_minutes",
+    "moderation_post_action_cleanup",
+    "moderation_post_action_cleanup_limit",
+    "moderation_public_log_actions",
+    "moderation_require_reason",
+    "moderation_warn_escalation_action",
+    "moderator_tier_role_id",
+    "reaction_roles_enabled",
+    "rps_default_entry_fee",
+    "security_age_action",
+    "security_age_enabled",
+    "security_age_min_days",
+    "security_enabled",
+    "security_raid_enabled",
+    "security_raid_join_count",
+    "security_raid_lockdown_seconds",
+    "security_raid_slowmode_seconds",
+    "security_raid_window_seconds",
+    "skip_roles",
+    "time_roles_stack",
+    "trusted_tier_role_id",
+    "warn_threshold",
+    "warn_timeout_minutes",
+    "welcome_card_enabled",
+    "welcome_delete_after_seconds",
+    "welcome_dm_enabled",
+    "welcome_dm_message",
+    "welcome_enabled",
+    "welcome_join_enabled",
+    "welcome_join_message",
+    "welcome_leave_enabled",
+    "welcome_leave_message",
+    "welcome_min_account_age_days",
+    "xp_cooldown",
+    "xp_max",
+    "xp_min",
+    "xp_roles_stack"
+   ],
+   "kept_count": 100,
+   "moved": [
+    "moderator_tier_role_id",
+    "trusted_tier_role_id"
+   ],
+   "moved_detail": {
+    "moderator_tier_role_id": {
+     "new_subsystem": "governance",
+     "old_subsystem": "moderation"
+    },
+    "trusted_tier_role_id": {
+     "new_subsystem": "governance",
+     "old_subsystem": "moderation"
+    }
+   },
+   "removed": [
+    "active_tournament",
+    "btd6_cache_circuit_breaker_threshold",
+    "btd6_cache_default_interval_seconds",
+    "btd6_cache_freshness_warning_hours",
+    "btd6_ct_group_id",
+    "btd6_version_announcement_channel",
+    "counters_bots_channel",
+    "counters_humans_channel",
+    "counters_total_channel",
+    "economy_log_channel",
+    "logging_cleanup_channel",
+    "logging_mod_channel",
+    "moderation_public_log_channel",
+    "security_alert_channel",
+    "security_raid_slowmode_channel",
+    "welcome_channel",
+    "welcome_entry_role",
+    "xp_announce_channel"
+   ],
+   "removed_count": 18,
+   "rename_candidates": [
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "counters.bots_channel",
+     "new_type": "binding:channel",
+     "old": "counters_bots_channel",
+     "old_type": "str",
+     "subsystem": "counters",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "counters.humans_channel",
+     "new_type": "binding:channel",
+     "old": "counters_humans_channel",
+     "old_type": "str",
+     "subsystem": "counters",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "counters.total_channel",
+     "new_type": "binding:channel",
+     "old": "counters_total_channel",
+     "old_type": "str",
+     "subsystem": "counters",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "economy.log_channel",
+     "new_type": "binding:channel",
+     "old": "economy_log_channel",
+     "old_type": "str",
+     "subsystem": "economy",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "logging.cleanup_channel",
+     "new_type": "binding:channel",
+     "old": "logging_cleanup_channel",
+     "old_type": "str",
+     "subsystem": "logging",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "logging.mod_channel",
+     "new_type": "binding:channel",
+     "old": "logging_mod_channel",
+     "old_type": "str",
+     "subsystem": "logging",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "security.alert_channel",
+     "new_type": "binding:channel",
+     "old": "security_alert_channel",
+     "old_type": "str",
+     "subsystem": "security",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "security.raid_slowmode_channel",
+     "new_type": "binding:channel",
+     "old": "security_raid_slowmode_channel",
+     "old_type": "str",
+     "subsystem": "security",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "welcome.channel",
+     "new_type": "binding:channel",
+     "old": "welcome_channel",
+     "old_type": "str",
+     "subsystem": "welcome",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "welcome.entry_role",
+     "new_type": "binding:role",
+     "old": "welcome_entry_role",
+     "old_type": "str",
+     "subsystem": "welcome",
+     "type_changed": true
+    },
+    {
+     "basis": "CANDIDATE ONLY: same subsystem, name equal after separator/prefix normalization; not confirmed",
+     "new": "xp.announce_channel",
+     "new_type": "binding:channel",
+     "old": "xp_announce_channel",
+     "old_type": "str",
+     "subsystem": "xp",
+     "type_changed": true
+    }
+   ]
+  }
+ },
+ "meta": {
+  "seeds": [
+   11,
+   23,
+   42,
+   101,
+   2027
+  ],
+  "sha": {
+   "next": "168ef8080347905766893fd92ae3be1ec2ebbc4c",
+   "old": "9f46cb7840cb2216a012002fe27feb342d45f480"
+  },
+  "versions": {
+   "new": "next",
+   "old": "old"
+  }
+ },
+ "reachability": {
+  "consistency": {
+   "deeper_count": 10,
+   "deeper_in_new": [
+    "ai_cooldown_seconds",
+    "ai_default_model",
+    "ai_default_provider",
+    "ai_enabled",
+    "ai_fresh_user_mention_allowance",
+    "ai_guild_instruction_profile",
+    "ai_memory_channel_scan_enabled",
+    "ai_memory_window_minutes",
+    "ai_minimum_level_default",
+    "ai_natural_language_enabled"
+   ],
+   "incomparable": [
+    "ai_review_channel",
+    "btd6_strategy_submission_channel",
+    "governance_version",
+    "skip_roles"
+   ],
+   "incomparable_count": 4,
+   "matched_count": 100,
+   "per_matched_steps": {
+    "ai_cooldown_seconds": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_default_model": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_default_provider": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_enabled": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_fresh_user_mention_allowance": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_guild_instruction_profile": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_memory_channel_scan_enabled": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_memory_window_minutes": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_minimum_level_default": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_natural_language_enabled": {
+     "new": 3,
+     "old": 2
+    },
+    "ai_review_channel": {
+     "new": 3,
+     "old": null
+    },
+    "automod_caps_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_caps_percent": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_cross_channel_spam_count": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_cross_channel_spam_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_duplicate_count": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_duplicate_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_exempt_channels": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_exempt_roles": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_invites_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_mentions_count": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_mentions_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_spam_count": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_spam_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "automod_spam_window_seconds": {
+     "new": 3,
+     "old": 3
+    },
+    "blackjack_default_entry_fee": {
+     "new": 3,
+     "old": 3
+    },
+    "btd6_strategy_submission_channel": {
+     "new": 3,
+     "old": null
+    },
+    "cleanup_spam_window_seconds": {
+     "new": 3,
+     "old": 3
+    },
+    "counters_bots_template": {
+     "new": 3,
+     "old": 3
+    },
+    "counters_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "counters_humans_template": {
+     "new": 3,
+     "old": 3
+    },
+    "counters_total_template": {
+     "new": 3,
+     "old": 3
+    },
+    "deathmatch_turn_timeout": {
+     "new": 3,
+     "old": 3
+    },
+    "governance_version": {
+     "new": 3,
+     "old": null
+    },
+    "image_moderation_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "image_moderation_exempt_channels": {
+     "new": 3,
+     "old": 3
+    },
+    "image_moderation_exempt_roles": {
+     "new": 3,
+     "old": 3
+    },
+    "image_moderation_harassment_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "image_moderation_hate_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "image_moderation_sexual_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "image_moderation_threshold_percent": {
+     "new": 3,
+     "old": 3
+    },
+    "image_moderation_violence_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "karma_cooldown": {
+     "new": 3,
+     "old": 3
+    },
+    "karma_daily_cap": {
+     "new": 3,
+     "old": 3
+    },
+    "karma_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "karma_reaction_emoji": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_auto_create_channels": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_channels_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_event_routing": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_ignored_channels": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_ignored_users": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_members_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_messages_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_moderation_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_roles_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_server_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "logging_voice_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_ban_delete_message_days": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_dm_actions": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_dm_on_action": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_dm_template": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_max_timeout_minutes": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_post_action_cleanup": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_post_action_cleanup_limit": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_public_log_actions": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_require_reason": {
+     "new": 3,
+     "old": 3
+    },
+    "moderation_warn_escalation_action": {
+     "new": 3,
+     "old": 3
+    },
+    "moderator_tier_role_id": {
+     "new": 3,
+     "old": 3
+    },
+    "reaction_roles_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "rps_default_entry_fee": {
+     "new": 3,
+     "old": 3
+    },
+    "security_age_action": {
+     "new": 3,
+     "old": 3
+    },
+    "security_age_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "security_age_min_days": {
+     "new": 3,
+     "old": 3
+    },
+    "security_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "security_raid_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "security_raid_join_count": {
+     "new": 3,
+     "old": 3
+    },
+    "security_raid_lockdown_seconds": {
+     "new": 3,
+     "old": 3
+    },
+    "security_raid_slowmode_seconds": {
+     "new": 3,
+     "old": 3
+    },
+    "security_raid_window_seconds": {
+     "new": 3,
+     "old": 3
+    },
+    "skip_roles": {
+     "new": 3,
+     "old": null
+    },
+    "time_roles_stack": {
+     "new": 3,
+     "old": 3
+    },
+    "trusted_tier_role_id": {
+     "new": 3,
+     "old": 3
+    },
+    "warn_threshold": {
+     "new": 3,
+     "old": 3
+    },
+    "warn_timeout_minutes": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_card_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_delete_after_seconds": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_dm_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_dm_message": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_join_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_join_message": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_leave_enabled": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_leave_message": {
+     "new": 3,
+     "old": 3
+    },
+    "welcome_min_account_age_days": {
+     "new": 3,
+     "old": 3
+    },
+    "xp_cooldown": {
+     "new": 3,
+     "old": 3
+    },
+    "xp_max": {
+     "new": 3,
+     "old": 3
+    },
+    "xp_min": {
+     "new": 3,
+     "old": 3
+    },
+    "xp_roles_stack": {
+     "new": 3,
+     "old": 3
+    }
+   },
+   "same": [
+    "automod_caps_enabled",
+    "automod_caps_percent",
+    "automod_cross_channel_spam_count",
+    "automod_cross_channel_spam_enabled",
+    "automod_duplicate_count",
+    "automod_duplicate_enabled",
+    "automod_enabled",
+    "automod_exempt_channels",
+    "automod_exempt_roles",
+    "automod_invites_enabled",
+    "automod_mentions_count",
+    "automod_mentions_enabled",
+    "automod_spam_count",
+    "automod_spam_enabled",
+    "automod_spam_window_seconds",
+    "blackjack_default_entry_fee",
+    "cleanup_spam_window_seconds",
+    "counters_bots_template",
+    "counters_enabled",
+    "counters_humans_template",
+    "counters_total_template",
+    "deathmatch_turn_timeout",
+    "image_moderation_enabled",
+    "image_moderation_exempt_channels",
+    "image_moderation_exempt_roles",
+    "image_moderation_harassment_enabled",
+    "image_moderation_hate_enabled",
+    "image_moderation_sexual_enabled",
+    "image_moderation_threshold_percent",
+    "image_moderation_violence_enabled",
+    "karma_cooldown",
+    "karma_daily_cap",
+    "karma_enabled",
+    "karma_reaction_emoji",
+    "logging_auto_create_channels",
+    "logging_channels_enabled",
+    "logging_enabled",
+    "logging_event_routing",
+    "logging_ignored_channels",
+    "logging_ignored_users",
+    "logging_members_enabled",
+    "logging_messages_enabled",
+    "logging_moderation_enabled",
+    "logging_roles_enabled",
+    "logging_server_enabled",
+    "logging_voice_enabled",
+    "moderation_ban_delete_message_days",
+    "moderation_dm_actions",
+    "moderation_dm_on_action",
+    "moderation_dm_template",
+    "moderation_max_timeout_minutes",
+    "moderation_post_action_cleanup",
+    "moderation_post_action_cleanup_limit",
+    "moderation_public_log_actions",
+    "moderation_require_reason",
+    "moderation_warn_escalation_action",
+    "moderator_tier_role_id",
+    "reaction_roles_enabled",
+    "rps_default_entry_fee",
+    "security_age_action",
+    "security_age_enabled",
+    "security_age_min_days",
+    "security_enabled",
+    "security_raid_enabled",
+    "security_raid_join_count",
+    "security_raid_lockdown_seconds",
+    "security_raid_slowmode_seconds",
+    "security_raid_window_seconds",
+    "time_roles_stack",
+    "trusted_tier_role_id",
+    "warn_threshold",
+    "warn_timeout_minutes",
+    "welcome_card_enabled",
+    "welcome_delete_after_seconds",
+    "welcome_dm_enabled",
+    "welcome_dm_message",
+    "welcome_enabled",
+    "welcome_join_enabled",
+    "welcome_join_message",
+    "welcome_leave_enabled",
+    "welcome_leave_message",
+    "welcome_min_account_age_days",
+    "xp_cooldown",
+    "xp_max",
+    "xp_min",
+    "xp_roles_stack"
+   ],
+   "same_count": 86,
+   "shallower_count": 0,
+   "shallower_in_new": []
+  },
+  "next": {
+   "avg_steps": 3,
+   "discoverability_from_top_count": 125,
+   "discoverability_from_top_fraction": 1.0,
+   "distribution": {
+    "3": 125
+   },
+   "max_steps": 3,
+   "median_steps": 3,
+   "path_multiplicity_gt1": [
+    "ai.audit_log_channel",
+    "ai_cooldown_seconds",
+    "ai_default_model",
+    "ai_default_provider",
+    "ai_enabled",
+    "ai_fresh_user_mention_allowance",
+    "ai_guild_instruction_profile",
+    "ai_memory_channel_scan_enabled",
+    "ai_memory_window_minutes",
+    "ai_minimum_level_default",
+    "ai_natural_language_enabled",
+    "ai_review_channel",
+    "automod_caps_enabled",
+    "automod_caps_percent",
+    "automod_cross_channel_spam_count",
+    "automod_cross_channel_spam_enabled",
+    "automod_duplicate_count",
+    "automod_duplicate_enabled",
+    "automod_enabled",
+    "automod_exempt_channels",
+    "automod_exempt_roles",
+    "automod_invites_enabled",
+    "automod_mentions_count",
+    "automod_mentions_enabled",
+    "automod_spam_count",
+    "automod_spam_enabled",
+    "automod_spam_window_seconds",
+    "blackjack_default_entry_fee",
+    "btd6_strategy_submission_channel",
+    "cleanup_spam_window_seconds",
+    "counters.bots_channel",
+    "counters.humans_channel",
+    "counters.total_channel",
+    "counters_bots_template",
+    "counters_enabled",
+    "counters_humans_template",
+    "counters_total_template",
+    "deathmatch_turn_timeout",
+    "economy.log_channel",
+    "governance_version",
+    "image_moderation_enabled",
+    "image_moderation_exempt_channels",
+    "image_moderation_exempt_roles",
+    "image_moderation_harassment_enabled",
+    "image_moderation_hate_enabled",
+    "image_moderation_sexual_enabled",
+    "image_moderation_threshold_percent",
+    "image_moderation_violence_enabled",
+    "karma_cooldown",
+    "karma_daily_cap",
+    "karma_enabled",
+    "karma_reaction_emoji",
+    "logging.audit_channel",
+    "logging.cleanup_channel",
+    "logging.debug_channel",
+    "logging.error_channel",
+    "logging.events_channel",
+    "logging.info_channel",
+    "logging.member_channel",
+    "logging.message_channel",
+    "logging.mod_channel",
+    "logging.role_channel",
+    "logging.warning_channel",
+    "logging_auto_create_channels",
+    "logging_channels_enabled",
+    "logging_enabled",
+    "logging_event_routing",
+    "logging_ignored_channels",
+    "logging_ignored_users",
+    "logging_members_enabled",
+    "logging_messages_enabled",
+    "logging_moderation_enabled",
+    "logging_roles_enabled",
+    "logging_server_enabled",
+    "logging_voice_enabled",
+    "moderation.public_log",
+    "moderation_ban_delete_message_days",
+    "moderation_dm_actions",
+    "moderation_dm_on_action",
+    "moderation_dm_template",
+    "moderation_max_timeout_minutes",
+    "moderation_post_action_cleanup",
+    "moderation_post_action_cleanup_limit",
+    "moderation_public_log_actions",
+    "moderation_require_reason",
+    "moderation_warn_escalation_action",
+    "moderator_tier_role_id",
+    "proof_channel.proof_channel",
+    "reaction_roles_enabled",
+    "rps_default_best_of",
+    "rps_default_entry_fee",
+    "rps_default_mode",
+    "security.alert_channel",
+    "security.raid_slowmode_channel",
+    "security_age_action",
+    "security_age_enabled",
+    "security_age_min_days",
+    "security_enabled",
+    "security_raid_enabled",
+    "security_raid_join_count",
+    "security_raid_lockdown_seconds",
+    "security_raid_slowmode_seconds",
+    "security_raid_window_seconds",
+    "skip_roles",
+    "time_roles_stack",
+    "trusted_tier_role_id",
+    "warn_threshold",
+    "warn_timeout_minutes",
+    "welcome.channel",
+    "welcome.entry_role",
+    "welcome_card_enabled",
+    "welcome_delete_after_seconds",
+    "welcome_dm_enabled",
+    "welcome_dm_message",
+    "welcome_enabled",
+    "welcome_join_enabled",
+    "welcome_join_message",
+    "welcome_leave_enabled",
+    "welcome_leave_message",
+    "welcome_min_account_age_days",
+    "xp.announce_channel",
+    "xp_cooldown",
+    "xp_max",
+    "xp_min",
+    "xp_roles_stack"
+   ],
+   "path_multiplicity_gt1_count": 125,
+   "reachable_count": 125,
+   "steps": {
+    "ai.audit_log_channel": 3,
+    "ai_cooldown_seconds": 3,
+    "ai_default_model": 3,
+    "ai_default_provider": 3,
+    "ai_enabled": 3,
+    "ai_fresh_user_mention_allowance": 3,
+    "ai_guild_instruction_profile": 3,
+    "ai_memory_channel_scan_enabled": 3,
+    "ai_memory_window_minutes": 3,
+    "ai_minimum_level_default": 3,
+    "ai_natural_language_enabled": 3,
+    "ai_review_channel": 3,
+    "automod_caps_enabled": 3,
+    "automod_caps_percent": 3,
+    "automod_cross_channel_spam_count": 3,
+    "automod_cross_channel_spam_enabled": 3,
+    "automod_duplicate_count": 3,
+    "automod_duplicate_enabled": 3,
+    "automod_enabled": 3,
+    "automod_exempt_channels": 3,
+    "automod_exempt_roles": 3,
+    "automod_invites_enabled": 3,
+    "automod_mentions_count": 3,
+    "automod_mentions_enabled": 3,
+    "automod_spam_count": 3,
+    "automod_spam_enabled": 3,
+    "automod_spam_window_seconds": 3,
+    "blackjack_default_entry_fee": 3,
+    "btd6_strategy_submission_channel": 3,
+    "cleanup_spam_window_seconds": 3,
+    "counters.bots_channel": 3,
+    "counters.humans_channel": 3,
+    "counters.total_channel": 3,
+    "counters_bots_template": 3,
+    "counters_enabled": 3,
+    "counters_humans_template": 3,
+    "counters_total_template": 3,
+    "deathmatch_turn_timeout": 3,
+    "economy.log_channel": 3,
+    "governance_version": 3,
+    "image_moderation_enabled": 3,
+    "image_moderation_exempt_channels": 3,
+    "image_moderation_exempt_roles": 3,
+    "image_moderation_harassment_enabled": 3,
+    "image_moderation_hate_enabled": 3,
+    "image_moderation_sexual_enabled": 3,
+    "image_moderation_threshold_percent": 3,
+    "image_moderation_violence_enabled": 3,
+    "karma_cooldown": 3,
+    "karma_daily_cap": 3,
+    "karma_enabled": 3,
+    "karma_reaction_emoji": 3,
+    "logging.audit_channel": 3,
+    "logging.cleanup_channel": 3,
+    "logging.debug_channel": 3,
+    "logging.error_channel": 3,
+    "logging.events_channel": 3,
+    "logging.info_channel": 3,
+    "logging.member_channel": 3,
+    "logging.message_channel": 3,
+    "logging.mod_channel": 3,
+    "logging.role_channel": 3,
+    "logging.warning_channel": 3,
+    "logging_auto_create_channels": 3,
+    "logging_channels_enabled": 3,
+    "logging_enabled": 3,
+    "logging_event_routing": 3,
+    "logging_ignored_channels": 3,
+    "logging_ignored_users": 3,
+    "logging_members_enabled": 3,
+    "logging_messages_enabled": 3,
+    "logging_moderation_enabled": 3,
+    "logging_roles_enabled": 3,
+    "logging_server_enabled": 3,
+    "logging_voice_enabled": 3,
+    "moderation.public_log": 3,
+    "moderation_ban_delete_message_days": 3,
+    "moderation_dm_actions": 3,
+    "moderation_dm_on_action": 3,
+    "moderation_dm_template": 3,
+    "moderation_max_timeout_minutes": 3,
+    "moderation_post_action_cleanup": 3,
+    "moderation_post_action_cleanup_limit": 3,
+    "moderation_public_log_actions": 3,
+    "moderation_require_reason": 3,
+    "moderation_warn_escalation_action": 3,
+    "moderator_tier_role_id": 3,
+    "proof_channel.proof_channel": 3,
+    "reaction_roles_enabled": 3,
+    "rps_default_best_of": 3,
+    "rps_default_entry_fee": 3,
+    "rps_default_mode": 3,
+    "security.alert_channel": 3,
+    "security.raid_slowmode_channel": 3,
+    "security_age_action": 3,
+    "security_age_enabled": 3,
+    "security_age_min_days": 3,
+    "security_enabled": 3,
+    "security_raid_enabled": 3,
+    "security_raid_join_count": 3,
+    "security_raid_lockdown_seconds": 3,
+    "security_raid_slowmode_seconds": 3,
+    "security_raid_window_seconds": 3,
+    "skip_roles": 3,
+    "time_roles_stack": 3,
+    "trusted_tier_role_id": 3,
+    "warn_threshold": 3,
+    "warn_timeout_minutes": 3,
+    "welcome.channel": 3,
+    "welcome.entry_role": 3,
+    "welcome_card_enabled": 3,
+    "welcome_delete_after_seconds": 3,
+    "welcome_dm_enabled": 3,
+    "welcome_dm_message": 3,
+    "welcome_enabled": 3,
+    "welcome_join_enabled": 3,
+    "welcome_join_message": 3,
+    "welcome_leave_enabled": 3,
+    "welcome_leave_message": 3,
+    "welcome_min_account_age_days": 3,
+    "xp.announce_channel": 3,
+    "xp_cooldown": 3,
+    "xp_max": 3,
+    "xp_min": 3,
+    "xp_roles_stack": 3
+   },
+   "subsystem_depth_variance": {
+    "ai": 0,
+    "automod": 0,
+    "blackjack": 0.0,
+    "btd6": 0.0,
+    "cleanup": 0.0,
+    "counters": 0,
+    "deathmatch": 0.0,
+    "economy": 0.0,
+    "governance": 0,
+    "image_moderation": 0,
+    "karma": 0,
+    "logging": 0,
+    "moderation": 0,
+    "proof_channel": 0.0,
+    "role": 0,
+    "rps_tournament": 0,
+    "security": 0,
+    "welcome": 0,
+    "xp": 0
+   },
+   "total_settings": 125,
+   "unreachable": [],
+   "unreachable_count": 0,
+   "worst10": [
+    {
+     "name": "ai.audit_log_channel",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_cooldown_seconds",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_default_model",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_default_provider",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_enabled",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_fresh_user_mention_allowance",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_guild_instruction_profile",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_memory_channel_scan_enabled",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_memory_window_minutes",
+     "steps": 3,
+     "subsystem": "ai"
+    },
+    {
+     "name": "ai_minimum_level_default",
+     "steps": 3,
+     "subsystem": "ai"
+    }
+   ]
+  },
+  "old": {
+   "avg_steps": 2.9074,
+   "discoverability_from_top_count": 108,
+   "discoverability_from_top_fraction": 0.9153,
+   "distribution": {
+    "2": 10,
+    "3": 98
+   },
+   "max_steps": 3,
+   "median_steps": 3.0,
+   "path_multiplicity_gt1": [
+    "ai_cooldown_seconds",
+    "ai_default_model",
+    "ai_default_provider",
+    "ai_enabled",
+    "ai_fresh_user_mention_allowance",
+    "ai_guild_instruction_profile",
+    "ai_memory_channel_scan_enabled",
+    "ai_memory_window_minutes",
+    "ai_minimum_level_default",
+    "ai_natural_language_enabled"
+   ],
+   "path_multiplicity_gt1_count": 10,
+   "reachable_count": 108,
+   "steps": {
+    "active_tournament": null,
+    "ai_cooldown_seconds": 2,
+    "ai_default_model": 2,
+    "ai_default_provider": 2,
+    "ai_enabled": 2,
+    "ai_fresh_user_mention_allowance": 2,
+    "ai_guild_instruction_profile": 2,
+    "ai_memory_channel_scan_enabled": 2,
+    "ai_memory_window_minutes": 2,
+    "ai_minimum_level_default": 2,
+    "ai_natural_language_enabled": 2,
+    "ai_review_channel": null,
+    "automod_caps_enabled": 3,
+    "automod_caps_percent": 3,
+    "automod_cross_channel_spam_count": 3,
+    "automod_cross_channel_spam_enabled": 3,
+    "automod_duplicate_count": 3,
+    "automod_duplicate_enabled": 3,
+    "automod_enabled": 3,
+    "automod_exempt_channels": 3,
+    "automod_exempt_roles": 3,
+    "automod_invites_enabled": 3,
+    "automod_mentions_count": 3,
+    "automod_mentions_enabled": 3,
+    "automod_spam_count": 3,
+    "automod_spam_enabled": 3,
+    "automod_spam_window_seconds": 3,
+    "blackjack_default_entry_fee": 3,
+    "btd6_cache_circuit_breaker_threshold": null,
+    "btd6_cache_default_interval_seconds": null,
+    "btd6_cache_freshness_warning_hours": null,
+    "btd6_ct_group_id": null,
+    "btd6_strategy_submission_channel": null,
+    "btd6_version_announcement_channel": null,
+    "cleanup_spam_window_seconds": 3,
+    "counters_bots_channel": 3,
+    "counters_bots_template": 3,
+    "counters_enabled": 3,
+    "counters_humans_channel": 3,
+    "counters_humans_template": 3,
+    "counters_total_channel": 3,
+    "counters_total_template": 3,
+    "deathmatch_turn_timeout": 3,
+    "economy_log_channel": 3,
+    "governance_version": null,
+    "image_moderation_enabled": 3,
+    "image_moderation_exempt_channels": 3,
+    "image_moderation_exempt_roles": 3,
+    "image_moderation_harassment_enabled": 3,
+    "image_moderation_hate_enabled": 3,
+    "image_moderation_sexual_enabled": 3,
+    "image_moderation_threshold_percent": 3,
+    "image_moderation_violence_enabled": 3,
+    "karma_cooldown": 3,
+    "karma_daily_cap": 3,
+    "karma_enabled": 3,
+    "karma_reaction_emoji": 3,
+    "logging_auto_create_channels": 3,
+    "logging_channels_enabled": 3,
+    "logging_cleanup_channel": 3,
+    "logging_enabled": 3,
+    "logging_event_routing": 3,
+    "logging_ignored_channels": 3,
+    "logging_ignored_users": 3,
+    "logging_members_enabled": 3,
+    "logging_messages_enabled": 3,
+    "logging_mod_channel": 3,
+    "logging_moderation_enabled": 3,
+    "logging_roles_enabled": 3,
+    "logging_server_enabled": 3,
+    "logging_voice_enabled": 3,
+    "moderation_ban_delete_message_days": 3,
+    "moderation_dm_actions": 3,
+    "moderation_dm_on_action": 3,
+    "moderation_dm_template": 3,
+    "moderation_max_timeout_minutes": 3,
+    "moderation_post_action_cleanup": 3,
+    "moderation_post_action_cleanup_limit": 3,
+    "moderation_public_log_actions": 3,
+    "moderation_public_log_channel": 3,
+    "moderation_require_reason": 3,
+    "moderation_warn_escalation_action": 3,
+    "moderator_tier_role_id": 3,
+    "reaction_roles_enabled": 3,
+    "rps_default_entry_fee": 3,
+    "security_age_action": 3,
+    "security_age_enabled": 3,
+    "security_age_min_days": 3,
+    "security_alert_channel": 3,
+    "security_enabled": 3,
+    "security_raid_enabled": 3,
+    "security_raid_join_count": 3,
+    "security_raid_lockdown_seconds": 3,
+    "security_raid_slowmode_channel": 3,
+    "security_raid_slowmode_seconds": 3,
+    "security_raid_window_seconds": 3,
+    "skip_roles": null,
+    "time_roles_stack": 3,
+    "trusted_tier_role_id": 3,
+    "warn_threshold": 3,
+    "warn_timeout_minutes": 3,
+    "welcome_card_enabled": 3,
+    "welcome_channel": 3,
+    "welcome_delete_after_seconds": 3,
+    "welcome_dm_enabled": 3,
+    "welcome_dm_message": 3,
+    "welcome_enabled": 3,
+    "welcome_entry_role": 3,
+    "welcome_join_enabled": 3,
+    "welcome_join_message": 3,
+    "welcome_leave_enabled": 3,
+    "welcome_leave_message": 3,
+    "welcome_min_account_age_days": 3,
+    "xp_announce_channel": 3,
+    "xp_cooldown": 3,
+    "xp_max": 3,
+    "xp_min": 3,
+    "xp_roles_stack": 3
+   },
+   "subsystem_depth_variance": {
+    "ai": 0,
+    "automod": 0,
+    "blackjack": 0.0,
+    "cleanup": 0.0,
+    "counters": 0,
+    "deathmatch": 0.0,
+    "economy": 0.0,
+    "image_moderation": 0,
+    "karma": 0,
+    "logging": 0,
+    "moderation": 0,
+    "role": 0,
+    "rps_tournament": 0.0,
+    "security": 0,
+    "welcome": 0,
+    "xp": 0
+   },
+   "total_settings": 118,
+   "unreachable": [
+    "active_tournament",
+    "ai_review_channel",
+    "btd6_cache_circuit_breaker_threshold",
+    "btd6_cache_default_interval_seconds",
+    "btd6_cache_freshness_warning_hours",
+    "btd6_ct_group_id",
+    "btd6_strategy_submission_channel",
+    "btd6_version_announcement_channel",
+    "governance_version",
+    "skip_roles"
+   ],
+   "unreachable_count": 10,
+   "worst10": [
+    {
+     "name": "automod_caps_enabled",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_caps_percent",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_cross_channel_spam_count",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_cross_channel_spam_enabled",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_duplicate_count",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_duplicate_enabled",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_enabled",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_exempt_channels",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_exempt_roles",
+     "steps": 3,
+     "subsystem": "automod"
+    },
+    {
+     "name": "automod_invites_enabled",
+     "steps": 3,
+     "subsystem": "automod"
+    }
+   ]
+  },
+  "task_battery": {
+   "mean_clicks_new": 3,
+   "mean_clicks_old": 2.9333,
+   "mean_delta": 0.0667,
+   "tasks": [
+    {
+     "clicks_new": 3,
+     "clicks_old": 2,
+     "delta": 1,
+     "setting": "ai_cooldown_seconds",
+     "subsystem": "ai"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "automod_caps_enabled",
+     "subsystem": "automod"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "blackjack_default_entry_fee",
+     "subsystem": "blackjack"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": null,
+     "delta": null,
+     "setting": "btd6_strategy_submission_channel",
+     "subsystem": "btd6"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "cleanup_spam_window_seconds",
+     "subsystem": "cleanup"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "counters_bots_template",
+     "subsystem": "counters"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "deathmatch_turn_timeout",
+     "subsystem": "deathmatch"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": null,
+     "delta": null,
+     "setting": "governance_version",
+     "subsystem": "governance"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "image_moderation_enabled",
+     "subsystem": "image_moderation"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "karma_cooldown",
+     "subsystem": "karma"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "logging_auto_create_channels",
+     "subsystem": "logging"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "moderation_ban_delete_message_days",
+     "subsystem": "moderation"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "reaction_roles_enabled",
+     "subsystem": "role"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "rps_default_entry_fee",
+     "subsystem": "rps_tournament"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "security_age_action",
+     "subsystem": "security"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "welcome_card_enabled",
+     "subsystem": "welcome"
+    },
+    {
+     "clicks_new": 3,
+     "clicks_old": 3,
+     "delta": 0,
+     "setting": "xp_cooldown",
+     "subsystem": "xp"
+    }
+   ]
+  }
+ },
+ "redundancy": {
+  "next": {
+   "dead": [
+    "ai.audit_log_channel",
+    "btd6_strategy_submission_channel",
+    "cleanup_spam_window_seconds",
+    "deathmatch_turn_timeout",
+    "moderation.public_log",
+    "skip_roles",
+    "welcome_card_enabled",
+    "welcome_min_account_age_days"
+   ],
+   "dead_count": 8,
+   "display_only": [
+    "image_moderation_enabled",
+    "image_moderation_exempt_channels",
+    "image_moderation_exempt_roles",
+    "image_moderation_harassment_enabled",
+    "image_moderation_hate_enabled",
+    "image_moderation_sexual_enabled",
+    "image_moderation_threshold_percent",
+    "image_moderation_violence_enabled",
+    "security.alert_channel",
+    "security.raid_slowmode_channel",
+    "security_age_action",
+    "security_age_enabled",
+    "security_age_min_days",
+    "security_enabled",
+    "security_raid_enabled",
+    "security_raid_join_count",
+    "security_raid_lockdown_seconds",
+    "security_raid_slowmode_seconds",
+    "security_raid_window_seconds"
+   ],
+   "display_only_count": 19,
+   "duplicate_effect_group_count": 9,
+   "duplicate_effect_groups": [
+    [
+     "logging.audit_channel",
+     "logging.cleanup_channel",
+     "logging.debug_channel",
+     "logging.error_channel",
+     "logging.events_channel",
+     "logging.info_channel",
+     "logging.member_channel",
+     "logging.message_channel",
+     "logging.mod_channel",
+     "logging.role_channel",
+     "logging.warning_channel"
+    ],
+    [
+     "security_age_action",
+     "security_age_enabled",
+     "security_age_min_days",
+     "security_enabled",
+     "security_raid_enabled",
+     "security_raid_join_count",
+     "security_raid_lockdown_seconds",
+     "security_raid_slowmode_seconds",
+     "security_raid_window_seconds"
+    ],
+    [
+     "image_moderation_enabled",
+     "image_moderation_exempt_channels",
+     "image_moderation_exempt_roles",
+     "image_moderation_harassment_enabled",
+     "image_moderation_hate_enabled",
+     "image_moderation_sexual_enabled",
+     "image_moderation_threshold_percent",
+     "image_moderation_violence_enabled"
+    ],
+    [
+     "logging_channels_enabled",
+     "logging_members_enabled",
+     "logging_messages_enabled",
+     "logging_moderation_enabled",
+     "logging_roles_enabled",
+     "logging_server_enabled",
+     "logging_voice_enabled"
+    ],
+    [
+     "counters_bots_template",
+     "counters_enabled",
+     "counters_humans_template",
+     "counters_total_template"
+    ],
+    [
+     "counters.bots_channel",
+     "counters.humans_channel",
+     "counters.total_channel"
+    ],
+    [
+     "xp_cooldown",
+     "xp_max",
+     "xp_min"
+    ],
+    [
+     "ai_default_model",
+     "ai_default_provider"
+    ],
+    [
+     "security.alert_channel",
+     "security.raid_slowmode_channel"
+    ]
+   ],
+   "subordinate_pair_count": 0,
+   "subordinate_pairs": []
+  },
+  "old": {
+   "dead": [
+    "btd6_cache_circuit_breaker_threshold",
+    "btd6_cache_default_interval_seconds",
+    "btd6_cache_freshness_warning_hours",
+    "btd6_strategy_submission_channel",
+    "skip_roles"
+   ],
+   "dead_count": 5,
+   "display_only": [],
+   "display_only_count": 0,
+   "duplicate_effect_group_count": 13,
+   "duplicate_effect_groups": [
+    [
+     "automod_caps_enabled",
+     "automod_caps_percent",
+     "automod_cross_channel_spam_count",
+     "automod_cross_channel_spam_enabled",
+     "automod_duplicate_count",
+     "automod_duplicate_enabled",
+     "automod_enabled",
+     "automod_exempt_channels",
+     "automod_exempt_roles",
+     "automod_invites_enabled",
+     "automod_mentions_count",
+     "automod_mentions_enabled",
+     "automod_spam_count",
+     "automod_spam_enabled",
+     "automod_spam_window_seconds"
+    ],
+    [
+     "moderation_ban_delete_message_days",
+     "moderation_dm_actions",
+     "moderation_dm_on_action",
+     "moderation_dm_template",
+     "moderation_max_timeout_minutes",
+     "moderation_post_action_cleanup",
+     "moderation_post_action_cleanup_limit",
+     "moderation_public_log_actions",
+     "moderation_public_log_channel",
+     "moderation_require_reason",
+     "moderation_warn_escalation_action",
+     "warn_threshold",
+     "warn_timeout_minutes"
+    ],
+    [
+     "logging_auto_create_channels",
+     "logging_channels_enabled",
+     "logging_enabled",
+     "logging_event_routing",
+     "logging_ignored_channels",
+     "logging_ignored_users",
+     "logging_members_enabled",
+     "logging_messages_enabled",
+     "logging_moderation_enabled",
+     "logging_roles_enabled",
+     "logging_server_enabled",
+     "logging_voice_enabled"
+    ],
+    [
+     "welcome_card_enabled",
+     "welcome_channel",
+     "welcome_delete_after_seconds",
+     "welcome_dm_enabled",
+     "welcome_dm_message",
+     "welcome_enabled",
+     "welcome_entry_role",
+     "welcome_join_enabled",
+     "welcome_join_message",
+     "welcome_leave_enabled",
+     "welcome_leave_message",
+     "welcome_min_account_age_days"
+    ],
+    [
+     "security_age_action",
+     "security_age_enabled",
+     "security_age_min_days",
+     "security_alert_channel",
+     "security_enabled",
+     "security_raid_enabled",
+     "security_raid_join_count",
+     "security_raid_lockdown_seconds",
+     "security_raid_slowmode_channel",
+     "security_raid_slowmode_seconds",
+     "security_raid_window_seconds"
+    ],
+    [
+     "ai_cooldown_seconds",
+     "ai_default_model",
+     "ai_default_provider",
+     "ai_enabled",
+     "ai_fresh_user_mention_allowance",
+     "ai_guild_instruction_profile",
+     "ai_memory_channel_scan_enabled",
+     "ai_memory_window_minutes",
+     "ai_minimum_level_default",
+     "ai_natural_language_enabled"
+    ],
+    [
+     "image_moderation_enabled",
+     "image_moderation_exempt_channels",
+     "image_moderation_exempt_roles",
+     "image_moderation_harassment_enabled",
+     "image_moderation_hate_enabled",
+     "image_moderation_sexual_enabled",
+     "image_moderation_threshold_percent",
+     "image_moderation_violence_enabled"
+    ],
+    [
+     "counters_bots_channel",
+     "counters_bots_template",
+     "counters_enabled",
+     "counters_humans_channel",
+     "counters_humans_template",
+     "counters_total_channel",
+     "counters_total_template"
+    ],
+    [
+     "karma_cooldown",
+     "karma_daily_cap",
+     "karma_enabled",
+     "karma_reaction_emoji"
+    ],
+    [
+     "reaction_roles_enabled",
+     "time_roles_stack",
+     "xp_roles_stack"
+    ],
+    [
+     "xp_cooldown",
+     "xp_max",
+     "xp_min"
+    ],
+    [
+     "logging_cleanup_channel",
+     "logging_mod_channel"
+    ],
+    [
+     "moderator_tier_role_id",
+     "trusted_tier_role_id"
+    ]
+   ],
+   "subordinate_pair_count": 0,
+   "subordinate_pairs": []
+  }
+ },
+ "ux_delta": {
+  "consistency_counts": {
+   "deeper_in_new": 10,
+   "incomparable": 4,
+   "same": 86,
+   "shallower_in_new": 0
+  },
+  "metrics": {
+   "dead_settings": {
+    "better_direction": "lower",
+    "delta": 3,
+    "new": 8,
+    "old": 5
+   },
+   "discoverability_fraction": {
+    "better_direction": "higher",
+    "delta": 0.0847,
+    "new": 1.0,
+    "old": 0.9153
+   },
+   "display_only_settings": {
+    "better_direction": "lower",
+    "delta": 19,
+    "new": 19,
+    "old": 0
+   },
+   "max_steps_to_reach": {
+    "better_direction": "lower",
+    "delta": 0,
+    "new": 3,
+    "old": 3
+   },
+   "mean_steps_to_reach": {
+    "better_direction": "lower",
+    "delta": 0.0926,
+    "new": 3,
+    "old": 2.9074
+   },
+   "mean_task_battery_clicks": {
+    "better_direction": "lower",
+    "delta": 0.0667,
+    "new": 3,
+    "old": 2.9333
+   },
+   "median_steps_to_reach": {
+    "better_direction": "lower",
+    "delta": 0.0,
+    "new": 3,
+    "old": 3.0
+   },
+   "total_settings": {
+    "better_direction": "n/a",
+    "delta": 7,
+    "new": 125,
+    "old": 118
+   },
+   "unreachable_settings": {
+    "better_direction": "lower",
+    "delta": -10,
+    "new": 0,
+    "old": 10
+   }
+  },
+  "regressions": [
+   {
+    "delta": 3,
+    "metric": "dead_settings",
+    "new": 8,
+    "old": 5
+   },
+   {
+    "delta": 19,
+    "metric": "display_only_settings",
+    "new": 19,
+    "old": 0
+   },
+   {
+    "delta": 0.0926,
+    "metric": "mean_steps_to_reach",
+    "new": 3,
+    "old": 2.9074
+   },
+   {
+    "delta": 0.0667,
+    "metric": "mean_task_battery_clicks",
+    "new": 3,
+    "old": 2.9333
+   }
+  ],
+  "task_regressions": [
+   {
+    "clicks_new": 3,
+    "clicks_old": 2,
+    "delta": 1,
+    "setting": "ai_cooldown_seconds",
+    "subsystem": "ai"
+   }
+  ]
+ }
+}

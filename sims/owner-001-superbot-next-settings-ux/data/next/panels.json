@@ -1,0 +1,2234 @@
+[
+ {
+  "panel": "admin.hub",
+  "subsystem": "admin",
+  "ref": "sb/domain/operator_spine.py:76 (hub_spec factory; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:admin.hub_settings"
+  ],
+  "opened_by": [
+   "command:/admin",
+   "command:/adminmenu"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "ai.hub",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:145",
+  "widgets": [],
+  "opened_by": [
+   "command:/ai",
+   "command:/aimenu"
+  ],
+  "buttons": [
+   "Refresh->panel:ai.hub",
+   "Diagnostics->handler:ai.diagnostics_view",
+   "Providers->handler:ai.providers_view",
+   "Routing->handler:ai.routing_view",
+   "Settings->panel:ai.settings",
+   "Policy->panel:ai.policy_chooser",
+   "Behavior->panel:ai.behavior_chooser",
+   "Tools->panel:ai.tools_chooser"
+  ]
+ },
+ {
+  "panel": "ai.settings",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:891",
+  "widgets": [
+   "text",
+   "provider:ai.settings_fields",
+   "select:edit_setting",
+   "select:reset_setting"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Back to Hub->panel:settings.hub",
+   "Open Panel->panel:ai.hub"
+  ]
+ },
+ {
+  "panel": "ai.card",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:201",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.policy_chooser",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:255",
+  "widgets": [
+   "text",
+   "provider:ai.policy_chooser_fields"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Channel->panel:ai.policy_channel_picker",
+   "Category->panel:ai.policy_category_picker",
+   "Role->panel:ai.policy_role_picker",
+   "Effective policy->panel:ai.policy_preview_picker",
+   "List overrides->handler:ai.policy_list_open"
+  ]
+ },
+ {
+  "panel": "ai.behavior_chooser",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:329",
+  "widgets": [
+   "text",
+   "provider:ai.behavior_chooser_fields"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Channel->panel:ai.behavior_channel_picker",
+   "Category->panel:ai.behavior_category_picker",
+   "Preview (dry-run)->panel:ai.behavior_preview_picker",
+   "Routing matrix->handler:ai.chooser_scope_pending",
+   "Advanced->panel:ai.policy_chooser"
+  ]
+ },
+ {
+  "panel": "ai.tools_chooser",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:416",
+  "widgets": [
+   "text",
+   "provider:ai.tools_chooser_fields"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Guild->handler:ai.chooser_scope_pending",
+   "Channel->handler:ai.chooser_scope_pending",
+   "Category->handler:ai.chooser_scope_pending",
+   "Preview (dry-run)->handler:ai.chooser_scope_pending"
+  ]
+ },
+ {
+  "panel": "ai.settings_edit_presets",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:1003",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "0->handler:ai.settings_preset_pick",
+   "1->handler:ai.settings_preset_pick",
+   "2->handler:ai.settings_preset_pick",
+   "3->handler:ai.settings_preset_pick",
+   "4->handler:ai.settings_preset_pick",
+   "5->handler:ai.settings_preset_pick",
+   "Override…->handler:ai.settings_number_submit"
+  ]
+ },
+ {
+  "panel": "ai.settings_edit_enum",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:1049",
+  "widgets": [
+   "select:enum_value"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.settings_edit_text",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:1079",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Edit…->handler:ai.settings_text_submit"
+  ]
+ },
+ {
+  "panel": "ai.policy_channel_picker",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "select:policy_channel_pick"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.policy_category_picker",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "select:policy_category_pick"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.policy_role_picker",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "select:policy_role_pick"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.policy_preview_picker",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "select:policy_preview_pick"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.policy_scope_edit",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:621",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Edit…->handler:ai.policy_mode_submit"
+  ]
+ },
+ {
+  "panel": "ai.policy_role_edit",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:645",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Edit…->handler:ai.policy_role_submit"
+  ]
+ },
+ {
+  "panel": "ai.policy_list",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:671",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Prev->handler:ai.policy_list_page",
+   "Next->handler:ai.policy_list_page"
+  ]
+ },
+ {
+  "panel": "ai.behavior_channel_picker",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "select:behavior_channel_pick"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.behavior_category_picker",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "select:behavior_category_pick"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.behavior_preview_picker",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "select:behavior_preview_pick"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ai.behavior_preset_picker",
+  "subsystem": "ai",
+  "ref": "sb/domain/ai/panels.py:777",
+  "widgets": [
+   "text",
+   "select:behavior_preset_pick"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "automod.hub",
+  "subsystem": "automod",
+  "ref": "sb/domain/operator_spine.py:76 (hub_spec factory; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:automod.hub_settings"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "automod.status",
+  "subsystem": "automod",
+  "ref": "sb/domain/automod/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": [
+   "command:/automod"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "blackjack.hub",
+  "subsystem": "blackjack",
+  "ref": "sb/domain/blackjack/panels.py:108",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Solo Free Play->workflow:blackjack.solo_start",
+   "Solo Bet->workflow:blackjack.solo_start",
+   "Tournament Status->handler:blackjack.status_view"
+  ]
+ },
+ {
+  "panel": "blackjack.table",
+  "subsystem": "blackjack",
+  "ref": "sb/domain/blackjack/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Hit->handler:blackjack.table_click",
+   "Stand->handler:blackjack.table_click",
+   "Double Down->handler:blackjack.table_click"
+  ]
+ },
+ {
+  "panel": "blackjack.pvp",
+  "subsystem": "blackjack",
+  "ref": "sb/domain/blackjack/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "blackjack.registration",
+  "subsystem": "blackjack",
+  "ref": "sb/domain/blackjack/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Join Tournament->handler:blackjack.tournament_join"
+  ]
+ },
+ {
+  "panel": "blackjack.tournament_table",
+  "subsystem": "blackjack",
+  "ref": "sb/domain/blackjack/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Hit->handler:blackjack.tournament_click",
+   "Stand->handler:blackjack.tournament_click"
+  ]
+ },
+ {
+  "panel": "blackjack.tournament_results",
+  "subsystem": "blackjack",
+  "ref": "sb/domain/blackjack/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "btd6.hub",
+  "subsystem": "btd6",
+  "ref": "sb/domain/btd6/panels.py:82",
+  "widgets": [],
+  "opened_by": [
+   "command:/btd6",
+   "command:/btd6menu"
+  ],
+  "buttons": [
+   "Ask->handler:btd6.cmd_ask",
+   "Live Events->handler:btd6.events_usage_view",
+   "Units->handler:btd6.ref_tower_view",
+   "Rounds->handler:btd6.ref_round_view",
+   "Maps & Modes->handler:btd6.cmd_diagnostics",
+   "Strategy->handler:btd6.strat_published_view",
+   "Status->handler:btd6.cmd_status",
+   "🛠️ Admin->handler:btd6.ops_usage_view"
+  ]
+ },
+ {
+  "panel": "btd6.card",
+  "subsystem": "btd6",
+  "ref": "sb/domain/btd6/panels.py:167",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "btd6.ctteam",
+  "subsystem": "btd6",
+  "ref": "sb/domain/btd6/panels.py:187",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Set CT team…->handler:btd6.ctteam_set_pending"
+  ]
+ },
+ {
+  "panel": "casino.hub",
+  "subsystem": "casino",
+  "ref": "sb/domain/casino/panels.py:28",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/casino",
+   "panel:{'$ref': 'panel:games.hub'}"
+  ],
+  "buttons": [
+   "Poker (Hold'em)->handler:casino.poker_pending",
+   "Hand Rankings->handler:casino.hand_rank_view"
+  ]
+ },
+ {
+  "panel": "chain.hub",
+  "subsystem": "chain",
+  "ref": "sb/domain/chain/panels.py:98",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/chainmenu"
+  ],
+  "buttons": [
+   "➕ Create Chain->handler:chain.create_route",
+   "🗑️ Delete Chain->handler:chain.delete_route",
+   "📏 Set Limit->handler:chain.setlimit_route",
+   "🚫 Clear Limit->handler:chain.removelimit_route",
+   "🔄 Refresh->handler:chain.hub_refresh"
+  ]
+ },
+ {
+  "panel": "channel.hub",
+  "subsystem": "channel",
+  "ref": "sb/domain/channel/panels.py:82",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/channelmenu"
+  ],
+  "buttons": [
+   "Create Channel->handler:channel.create_pending",
+   "Delete Channel->handler:channel.delete_pending",
+   "Manage Restrictions->handler:channel.restrict_pending",
+   "Move / Reorder->handler:channel.move_pending",
+   "Subsystem Visibility->handler:channel.visibility_pending"
+  ]
+ },
+ {
+  "panel": "cleanup.hub",
+  "subsystem": "cleanup",
+  "ref": "sb/domain/cleanup/panels.py:147",
+  "widgets": [
+   "text",
+   "provider:cleanup.hub_fields"
+  ],
+  "opened_by": [
+   "command:/cleanup"
+  ],
+  "buttons": [
+   "🔤 Prohibited Words->panel:cleanup.words",
+   "📝 Logging Status->handler:cleanup.logging_pending",
+   "⚙️ Settings->handler:cleanup.settings_pending",
+   "🧹 Cleanup Policies->handler:cleanup.policies_pending",
+   "🔄 Refresh->panel:cleanup.hub"
+  ]
+ },
+ {
+  "panel": "cleanup.words",
+  "subsystem": "cleanup",
+  "ref": "sb/domain/cleanup/panels.py:221",
+  "widgets": [
+   "provider:cleanup.words_fields"
+  ],
+  "opened_by": [
+   "command:/wordmenu"
+  ],
+  "buttons": [
+   "➕ Add Word->handler:cleanup.word_add_pending",
+   "➖ Remove Word->handler:cleanup.word_remove_pending",
+   "🔄 Refresh->handler:cleanup.word_refresh_pending",
+   "🔍 Scan History->handler:cleanup.scan_history_pending",
+   "🛡️ Anti-evasion->handler:cleanup.anti_evasion_pending"
+  ]
+ },
+ {
+  "panel": "community.hub",
+  "subsystem": "community",
+  "ref": "sb/domain/community/panels.py:121",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/community"
+  ],
+  "buttons": [
+   "XP->panel:xp.hub",
+   "Karma->handler:karma.card_view",
+   "Leaderboards->panel:leaderboard.board",
+   "Spotlight->panel:community_spotlight.hub"
+  ]
+ },
+ {
+  "panel": "community_spotlight.hub",
+  "subsystem": "community_spotlight",
+  "ref": "sb/domain/community/panels.py:194",
+  "widgets": [
+   "text",
+   "provider:community_spotlight.overview"
+  ],
+  "opened_by": [
+   "command:/spotlight"
+  ],
+  "buttons": [
+   "XP Leaders->handler:spotlight.xp_leaders",
+   "Richest->handler:spotlight.richest",
+   "Games->panel:community_spotlight.games",
+   "Refresh->panel:community_spotlight.hub"
+  ]
+ },
+ {
+  "panel": "community_spotlight.games",
+  "subsystem": "community_spotlight",
+  "ref": "sb/domain/community/panels.py:234",
+  "widgets": [
+   "text",
+   "select:game_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:community_spotlight.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "counters.hub",
+  "subsystem": "counters",
+  "ref": "sb/domain/operator_spine.py:76 (hub_spec factory; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:counters.hub_settings"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "counters.status",
+  "subsystem": "counters",
+  "ref": "sb/domain/counters/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": [
+   "command:/counters"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "counting.hub",
+  "subsystem": "counting",
+  "ref": "sb/domain/counting/panels.py:102",
+  "widgets": [
+   "text",
+   "select:counting_pick_channel",
+   "select:counting_enable_mode"
+  ],
+  "opened_by": [
+   "command:/countingmenu"
+  ],
+  "buttons": [
+   "🔄 Toggle Turns->handler:counting.hub_toggle_turns",
+   "♻️ Toggle Reset->handler:counting.hub_toggle_reset",
+   "🔁 Reset Count->handler:counting.hub_reset",
+   "🛑 Disable Here->handler:counting.hub_disable",
+   "🔄 Refresh->handler:counting.hub_refresh"
+  ]
+ },
+ {
+  "panel": "creature.hub",
+  "subsystem": "creature",
+  "ref": "sb/manifest/creature.py:34",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/creatures",
+   "panel:{'$ref': 'panel:games.world'}"
+  ],
+  "buttons": [
+   "Catch->handler:creature.catch_route",
+   "My Dex->handler:creature.dex_view",
+   "Top Catchers->handler:creature.dextop_view"
+  ]
+ },
+ {
+  "panel": "deathmatch.hub",
+  "subsystem": "deathmatch",
+  "ref": "sb/domain/deathmatch/panels.py:66",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:games.world'}"
+  ],
+  "buttons": [
+   "Fight Bot->workflow:deathmatch.bot_start",
+   "My Stats->handler:deathmatch.stats_view",
+   "Leaderboard->handler:deathmatch.top_view",
+   "Help->handler:deathmatch.help_view"
+  ]
+ },
+ {
+  "panel": "diagnostic.hub",
+  "subsystem": "diagnostic",
+  "ref": "sb/domain/diagnostic/panels.py:327",
+  "widgets": [],
+  "opened_by": [
+   "command:/diagnostics"
+  ],
+  "buttons": [
+   "🤖 Bot Status->handler:diagnostic.diag_pending",
+   "📡 Latency->handler:diagnostic.diag_latency",
+   "💻 System Info->handler:diagnostic.diag_pending",
+   "🗄️ Database->handler:diagnostic.diag_pending",
+   "📄 JSON Files->handler:diagnostic.diag_pending",
+   "📋 Commands->handler:diagnostic.diag_pending",
+   "🔍 Recent Errors->handler:diagnostic.diag_pending",
+   "🔔 Test Notify->handler:diagnostic.diag_pending"
+  ]
+ },
+ {
+  "panel": "diagnostic.card",
+  "subsystem": "diagnostic",
+  "ref": "sb/domain/diagnostic/panels.py:374",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "diagnostic.platform_hub",
+  "subsystem": "diagnostic",
+  "ref": "sb/domain/diagnostic/panels.py:404",
+  "widgets": [
+   "select:pf_runtime",
+   "select:pf_catalogues",
+   "select:pf_resources",
+   "select:pf_validation"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "↩ Overview->handler:diagnostic.hub_reopen",
+   "🚩 Flag manager->panel:diagnostic.flag_manager"
+  ]
+ },
+ {
+  "panel": "diagnostic.flag_manager",
+  "subsystem": "diagnostic",
+  "ref": "sb/domain/diagnostic/panels.py:461",
+  "widgets": [
+   "select:pf_flag_pick"
+  ],
+  "opened_by": [
+   "command:/platform flag"
+  ],
+  "buttons": [
+   "✅ Enable for this guild->handler:diagnostic.flag_pending",
+   "🛑 Disable for this guild->handler:diagnostic.flag_pending",
+   "🔄 Refresh->handler:diagnostic.flag_reopen",
+   "↩ Back to Platform->handler:diagnostic.hub_reopen"
+  ]
+ },
+ {
+  "panel": "diagnostic.automation_panel",
+  "subsystem": "diagnostic",
+  "ref": "sb/domain/diagnostic/panels.py:521",
+  "widgets": [
+   "select:pf_auto_rule"
+  ],
+  "opened_by": [
+   "command:/platform automation"
+  ],
+  "buttons": [
+   "Enable->handler:diagnostic.automation_pending",
+   "Disable->handler:diagnostic.automation_pending",
+   "Delete->handler:diagnostic.automation_pending",
+   "Refresh->handler:diagnostic.automation_reopen"
+  ]
+ },
+ {
+  "panel": "economy.hub",
+  "subsystem": "economy",
+  "ref": "sb/domain/economy/panels.py:161",
+  "widgets": [
+   "text",
+   "provider:economy.hub_overview"
+  ],
+  "opened_by": [
+   "command:/economy",
+   "command:/economymenu"
+  ],
+  "buttons": [
+   "🎁 Daily->workflow:economy.daily",
+   "💼 Work->panel:economy.jobcenter",
+   "🛒 Shop->panel:economy.shop_panel",
+   "💰 Balance->handler:economy.balance_view",
+   "🎒 Inventory->panel:inventory.hub",
+   "📋 Jobs->handler:economy.joblist_view",
+   "🏛️ Treasury->panel:treasury.hub",
+   "↩ Overview->panel:economy.hub"
+  ]
+ },
+ {
+  "panel": "economy.jobcenter",
+  "subsystem": "economy",
+  "ref": "sb/domain/economy/panels.py:251",
+  "widgets": [
+   "text",
+   "provider:economy.jobcenter_overview",
+   "select:job_select"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "economy.shop_panel",
+  "subsystem": "economy",
+  "ref": "sb/domain/economy/panels.py:298",
+  "widgets": [
+   "text",
+   "provider:economy.shop_overview",
+   "select:item_select"
+  ],
+  "opened_by": [
+   "command:/shop",
+   "panel:{'$ref': 'panel:economy.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "economy.daily_card",
+  "subsystem": "economy",
+  "ref": "sb/domain/economy/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "economy.wallet_card",
+  "subsystem": "economy",
+  "ref": "sb/domain/economy/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "farm.hub",
+  "subsystem": "farm",
+  "ref": "sb/domain/farm/panels.py:61",
+  "widgets": [
+   "text",
+   "provider:farm.hub_status"
+  ],
+  "opened_by": [
+   "command:/farm",
+   "panel:{'$ref': 'panel:games.world'}"
+  ],
+  "buttons": [
+   "Collect->workflow:farm.collect",
+   "Buy Hen->workflow:farm.buy_chicken",
+   "Upgrade Coop->workflow:farm.upgrade_coop",
+   "Refresh->panel:farm.hub"
+  ]
+ },
+ {
+  "panel": "fishing.hub",
+  "subsystem": "fishing",
+  "ref": "sb/manifest/fishing.py:31",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/fishing",
+   "panel:{'$ref': 'panel:games.world'}"
+  ],
+  "buttons": [
+   "Cast->handler:fishing.fish_route",
+   "Fish Dex->handler:fishing.log_view",
+   "Trophies->handler:fishing.trophies_view"
+  ]
+ },
+ {
+  "panel": "games.hub",
+  "subsystem": "games",
+  "ref": "sb/domain/games/panels.py:55",
+  "widgets": [
+   "text",
+   "provider:games.hub_overview"
+  ],
+  "opened_by": [
+   "command:/games"
+  ],
+  "buttons": [
+   "Blackjack->panel:blackjack.hub",
+   "Rock Paper Scissors->panel:rps_tournament.hub",
+   "World->panel:games.world",
+   "My World Card->handler:games.world_card_view"
+  ]
+ },
+ {
+  "panel": "games.world",
+  "subsystem": "games",
+  "ref": "sb/domain/games/panels.py:95",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/world",
+   "panel:{'$ref': 'panel:games.hub'}"
+  ],
+  "buttons": [
+   "Mine->panel:mining.hub",
+   "Fish->panel:fishing.hub",
+   "Farm->panel:farm.hub",
+   "Creatures->panel:creature.hub",
+   "Deathmatch->panel:deathmatch.hub",
+   "Casino->panel:casino.hub",
+   "My World Card->handler:games.world_card_view"
+  ]
+ },
+ {
+  "panel": "general.menu",
+  "subsystem": "general",
+  "ref": "sb/domain/general/panels.py:72",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "💡 Fact->handler:general.fact_view",
+   "😄 Joke->handler:general.joke_view",
+   "💬 Quote->handler:general.quote_view",
+   "🧠 Trivia->handler:general.trivia_view",
+   "💪 Motivate->handler:general.motivate_view",
+   "🎱 8-Ball->handler:general.eightball_answer",
+   "👋 Greet->handler:general.greet_view",
+   "↩ Overview->panel:general.menu"
+  ]
+ },
+ {
+  "panel": "help.sub_games",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_games_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_blackjack",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_blackjack_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_casino",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_casino_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_deathmatch",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_deathmatch_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_rps_tournament",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_rps_tournament_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_mining",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_mining_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_mining_p2",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_mining_1"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_counting",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_counting_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_chain",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_chain_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_fishing",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_fishing_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_creature",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_creature_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_farm",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_farm_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_games'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_games",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_games",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_btd6",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_btd6_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_btd6'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_btd6_p2",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_btd6_1"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_btd6'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_btd6_p3",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_btd6_2"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_btd6'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_btd6",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_btd6",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_projmoon",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_projmoon_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_project_moon'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_project_moon",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_project_moon",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_economy",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_economy_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_economy'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_inventory",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_inventory_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_economy'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_leaderboard",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_leaderboard_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_economy'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_treasury",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_treasury_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_economy'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_economy",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_economy",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_moderation",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_moderation_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_moderation'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_automod",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_automod_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_moderation'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_image_moderation",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_image_moderation_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_moderation'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_cleanup",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_cleanup_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_moderation'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_logging",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_logging_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_moderation'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_proof_channel",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_proof_channel_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_moderation'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_security",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_security_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_moderation'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_moderation",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_moderation",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_community",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_community_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_community'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_xp",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_xp_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_community'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_karma",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_karma_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_community'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_community_spotlight",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_community_spotlight_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_community'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_role",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_role_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_community'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_welcome",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_welcome_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_community'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_counters",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_counters_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_community'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_ticket",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_ticket_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_community'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_community",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_community",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_utility",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_utility_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_utility'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_general",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_general_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_utility'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_utility",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_utility",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_admin",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_admin_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_ux_lab",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_ux_lab_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_channel",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_channel_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_server_management",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_server_management_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_ai",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_ai_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_settings",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_settings_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_diagnostic",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_diagnostic_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_diagnostic_p2",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_diagnostic_1"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_setup",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_setup_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_admin'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_admin",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_admin",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.sub_hermes",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cmds_hermes_0"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.cat_other'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.cat_other",
+  "subsystem": "help",
+  "ref": "sb/domain/help/panels.py (module; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_cat_other",
+   "select:feature_select"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "help.home",
+  "subsystem": "help",
+  "ref": "sb/kernel/panels/projections.py:104",
+  "widgets": [
+   "text",
+   "provider:sb.panels.help_home_categories",
+   "select:category_select"
+  ],
+  "opened_by": [
+   "command:/help"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "hermes.bridge_unconfigured",
+  "subsystem": "hermes",
+  "ref": "sb/domain/hermes/panels.py (module; dynamically built)",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "image_moderation.hub",
+  "subsystem": "image_moderation",
+  "ref": "sb/domain/operator_spine.py:76 (hub_spec factory; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:image_moderation.hub_settings"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "image_moderation.status",
+  "subsystem": "image_moderation",
+  "ref": "sb/domain/image_moderation/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": [
+   "command:/imagemod"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "inventory.hub",
+  "subsystem": "inventory",
+  "ref": "sb/domain/inventory/panels.py:149",
+  "widgets": [
+   "text",
+   "provider:inventory.hub_overview"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Mining Materials->panel:inventory.cat_mining_materials",
+   "Crafted Items->panel:inventory.cat_crafted_items",
+   "Tools->panel:inventory.cat_tools",
+   "Fishing->panel:inventory.cat_fishing",
+   "Collectibles->panel:inventory.cat_collectibles",
+   "Economy Items->panel:inventory.cat_economy_items",
+   "Other->panel:inventory.cat_other"
+  ]
+ },
+ {
+  "panel": "inventory.cat_mining_materials",
+  "subsystem": "inventory",
+  "ref": "sb/domain/inventory/panels.py (module; dynamically built)",
+  "widgets": [
+   "provider:inventory.items_mining_materials"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:inventory.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "inventory.cat_crafted_items",
+  "subsystem": "inventory",
+  "ref": "sb/domain/inventory/panels.py (module; dynamically built)",
+  "widgets": [
+   "provider:inventory.items_crafted_items"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:inventory.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "inventory.cat_tools",
+  "subsystem": "inventory",
+  "ref": "sb/domain/inventory/panels.py (module; dynamically built)",
+  "widgets": [
+   "provider:inventory.items_tools"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:inventory.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "inventory.cat_fishing",
+  "subsystem": "inventory",
+  "ref": "sb/domain/inventory/panels.py (module; dynamically built)",
+  "widgets": [
+   "provider:inventory.items_fishing"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:inventory.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "inventory.cat_collectibles",
+  "subsystem": "inventory",
+  "ref": "sb/domain/inventory/panels.py (module; dynamically built)",
+  "widgets": [
+   "provider:inventory.items_collectibles"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:inventory.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "inventory.cat_economy_items",
+  "subsystem": "inventory",
+  "ref": "sb/domain/inventory/panels.py (module; dynamically built)",
+  "widgets": [
+   "provider:inventory.items_economy_items"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:inventory.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "inventory.cat_other",
+  "subsystem": "inventory",
+  "ref": "sb/domain/inventory/panels.py (module; dynamically built)",
+  "widgets": [
+   "provider:inventory.items_other"
+  ],
+  "opened_by": [
+   "panel:{'$ref': 'panel:inventory.hub'}"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "karma.card",
+  "subsystem": "karma",
+  "ref": "sb/domain/karma/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "karma.error_card",
+  "subsystem": "karma",
+  "ref": "sb/domain/karma/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "leaderboard.board",
+  "subsystem": "leaderboard",
+  "ref": "sb/domain/community/panels.py:161",
+  "widgets": [
+   "text",
+   "select:category_select"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "logging.hub",
+  "subsystem": "logging",
+  "ref": "sb/domain/server_logging/panels.py:127",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/logging"
+  ],
+  "buttons": [
+   "📝 Refresh Status->handler:logging.panel_status",
+   "🔗 Set Mod Channel->handler:logging.panel_set_mod",
+   "🔗 Set Cleanup Channel->handler:logging.panel_set_cleanup",
+   "🆕 Create Mod Channel->handler:logging.panel_create",
+   "🆕 Create Cleanup Channel->handler:logging.panel_create",
+   "🔔 Test->handler:logging.panel_test",
+   "🗺️ Routes->handler:logging.panel_routes",
+   "↩ Overview->handler:logging.panel_status"
+  ]
+ },
+ {
+  "panel": "logging.status_card",
+  "subsystem": "logging",
+  "ref": "sb/domain/server_logging/panels.py:182",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/logging status"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "logging.routes",
+  "subsystem": "logging",
+  "ref": "sb/domain/server_logging/panels.py:252",
+  "widgets": [
+   "text",
+   "select:select"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "🔗 Set Channel->handler:logging.routes_set",
+   "🆕 Create Channel->handler:logging.panel_create",
+   "🔄 Refresh->handler:logging.panel_routes",
+   "↩ Back to Logging->handler:logging.panel_open"
+  ]
+ },
+ {
+  "panel": "logging.bind_picker",
+  "subsystem": "logging",
+  "ref": "sb/domain/server_logging/panels.py:343",
+  "widgets": [
+   "text",
+   "select:pick"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Clear binding->handler:logging.bind_clear"
+  ]
+ },
+ {
+  "panel": "mining.hub",
+  "subsystem": "mining",
+  "ref": "sb/manifest/mining.py:35",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/minemenu",
+   "panel:{'$ref': 'panel:games.world'}"
+  ],
+  "buttons": [
+   "Mine->handler:mining.mine_route",
+   "Chop->handler:mining.chop_route",
+   "Explore->handler:mining.explore_route",
+   "Sell All->handler:mining.sellall_route"
+  ]
+ },
+ {
+  "panel": "moderation.hub",
+  "subsystem": "moderation",
+  "ref": "sb/domain/moderation/panels.py:116",
+  "widgets": [
+   "text"
+  ],
+  "opened_by": [
+   "command:/moderation",
+   "command:/modmenu"
+  ],
+  "buttons": [
+   "⚠️ Warn->workflow:moderation.warn",
+   "⏳ Timeout->handler:moderation.timeout_command",
+   "👢 Kick->workflow:moderation.kick",
+   "🚫 Ban->workflow:moderation.ban",
+   "✅ Unban->workflow:moderation.unban",
+   "📋 Mod Logs->handler:moderation.modlogs_view",
+   "⬛ Clear Warnings->workflow:moderation.clearwarnings"
+  ]
+ },
+ {
+  "panel": "projmoon.hub",
+  "subsystem": "projmoon",
+  "ref": "sb/domain/projmoon/panels.py:57",
+  "widgets": [],
+  "opened_by": [
+   "command:/pm"
+  ],
+  "buttons": [
+   "Overview->handler:projmoon.overview_view",
+   "Sinners->handler:projmoon.sinner_view",
+   "Sins->handler:projmoon.sin_view",
+   "Damage types->handler:projmoon.damage_view",
+   "Mechanics->handler:projmoon.mechanic_view",
+   "E.G.O grades->handler:projmoon.ego_view",
+   "Statuses->handler:projmoon.status_view",
+   "Origins->handler:projmoon.origins_view"
+  ]
+ },
+ {
+  "panel": "projmoon.card",
+  "subsystem": "projmoon",
+  "ref": "sb/domain/projmoon/panels.py:100",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "proof_channel.hub",
+  "subsystem": "proof_channel",
+  "ref": "sb/domain/proof_channel/handlers.py:168",
+  "widgets": [],
+  "opened_by": [
+   "command:/prizemenu"
+  ],
+  "buttons": [
+   "🏆 Grant Access->workflow:proof_channel.grant_access",
+   "⏱️ Timed Access->workflow:proof_channel.grant_access",
+   "🔒 End Session->workflow:proof_channel.end_access",
+   "🔄 Refresh Status->panel:proof_channel.hub"
+  ]
+ },
+ {
+  "panel": "role.hub",
+  "subsystem": "role",
+  "ref": "sb/domain/role/panels.py:58",
+  "widgets": [
+   "text",
+   "provider:role.hub_overview"
+  ],
+  "opened_by": [
+   "command:/rolemenu",
+   "command:/roles"
+  ],
+  "buttons": [
+   "Create->handler:role.create_pending",
+   "Manage->handler:role.manage_view",
+   "Time Roles->handler:role.time_roles_view",
+   "XP Roles->handler:role.xp_roles_view",
+   "Reaction Roles->handler:role.reaction_view",
+   "Diagnostics->handler:role.diagnostics_view",
+   "Exemptions->handler:role.exemptions_view"
+  ]
+ },
+ {
+  "panel": "rps_tournament.hub",
+  "subsystem": "rps_tournament",
+  "ref": "sb/domain/rps/panels.py:102",
+  "widgets": [
+   "text",
+   "select:rps_quick_move"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Rules->handler:rps.help_view",
+   "Settings->handler:rps.settings_view"
+  ]
+ },
+ {
+  "panel": "rps_tournament.quickplay",
+  "subsystem": "rps_tournament",
+  "ref": "sb/domain/rps_tournament/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Rock->workflow:rps.solo_play",
+   "Paper->workflow:rps.solo_play",
+   "Scissors->workflow:rps.solo_play"
+  ]
+ },
+ {
+  "panel": "rps_tournament.pvp",
+  "subsystem": "rps_tournament",
+  "ref": "sb/domain/rps_tournament/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "rps_tournament.registration",
+  "subsystem": "rps_tournament",
+  "ref": "sb/domain/rps_tournament/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Join Tournament->handler:rps.tournament_join"
+  ]
+ },
+ {
+  "panel": "rps_tournament.match",
+  "subsystem": "rps_tournament",
+  "ref": "sb/domain/rps_tournament/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": [
+   "Rock->handler:rps.tournament_move",
+   "Paper->handler:rps.tournament_move",
+   "Scissors->handler:rps.tournament_move",
+   "Lizard->handler:rps.tournament_move",
+   "Spock->handler:rps.tournament_move",
+   "Pawn->handler:rps.tournament_move",
+   "Knight->handler:rps.tournament_move",
+   "Queen->handler:rps.tournament_move",
+   "Fire->handler:rps.tournament_move",
+   "Water->handler:rps.tournament_move",
+   "Grass->handler:rps.tournament_move"
+  ]
+ },
+ {
+  "panel": "security.hub",
+  "subsystem": "security",
+  "ref": "sb/domain/operator_spine.py:76 (hub_spec factory; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:security.hub_settings"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "security.status",
+  "subsystem": "security",
+  "ref": "sb/domain/security/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": [
+   "command:/security"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "server_management.hub",
+  "subsystem": "server_management",
+  "ref": "sb/domain/server_management/panels.py:149",
+  "widgets": [
+   "text",
+   "provider:server_management.hub_health"
+  ],
+  "opened_by": [
+   "command:/server-management",
+   "command:/servermanagement",
+   "panel:{'$ref': 'panel:help.home'}"
+  ],
+  "buttons": [
+   "🛡️ Moderation->handler:server_management.moderation_pending",
+   "📺 Channels->panel:channel.hub",
+   "🎭 Roles->handler:server_management.roles_pending",
+   "🧹 Cleanup->handler:server_management.cleanup_pending",
+   "🧩 Setup->panel:setup.hub",
+   "🔓 Access Map->handler:server_management.access_map_pending",
+   "👁 Help Preview->handler:server_management.help_preview_pending",
+   "✏️ Help editor->handler:server_management.help_editor_pending",
+   "🔄 Refresh->panel:server_management.hub",
+   "↩ Back to Help->panel:help.home"
+  ]
+ },
+ {
+  "panel": "settings.hub",
+  "subsystem": "settings",
+  "ref": "sb/domain/settings/panels.py:266",
+  "widgets": [
+   "text",
+   "provider:settings.hub_fields",
+   "select:subsystem_select"
+  ],
+  "opened_by": [
+   "command:/settings"
+  ],
+  "buttons": [
+   "Needs setup->handler:settings.needs_setup_pending",
+   "Invalid settings->handler:settings.invalid_pending",
+   "Missing bindings->handler:settings.missing_bindings_pending",
+   "Recent changes->handler:settings.audit_pending",
+   "Command access->handler:settings.command_access_pending"
+  ]
+ },
+ {
+  "panel": "settings.access",
+  "subsystem": "settings",
+  "ref": "sb/domain/settings/panels.py:333",
+  "widgets": [
+   "text",
+   "provider:settings.access_fields",
+   "select:subsystem",
+   "select:select_scope"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "🔬 Explain Access->handler:settings.access_explain_pending",
+   "🔄 Reset->handler:settings.access_reset_pending",
+   "◀ Prev->handler:settings.access_page_pending",
+   "Next ▶->handler:settings.access_page_pending"
+  ]
+ },
+ {
+  "panel": "setup.hub",
+  "subsystem": "setup",
+  "ref": "sb/domain/setup/panels.py:43",
+  "widgets": [
+   "text",
+   "provider:setup.sections_index"
+  ],
+  "opened_by": [
+   "command:/setup"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "ticket.hub",
+  "subsystem": "ticket",
+  "ref": "sb/domain/ticket/handlers.py:197",
+  "widgets": [],
+  "opened_by": [
+   "command:/ticket"
+  ],
+  "buttons": [
+   "Open a ticket->handler:ticket.open_submit",
+   "My open tickets->handler:ticket.my_tickets",
+   "Post panel here->handler:ticket.post_panel"
+  ]
+ },
+ {
+  "panel": "treasury.hub",
+  "subsystem": "treasury",
+  "ref": "sb/domain/treasury/panels.py:72",
+  "widgets": [
+   "text",
+   "provider:treasury.hub_overview"
+  ],
+  "opened_by": [
+   "command:/treasury"
+  ],
+  "buttons": [
+   "Contribute->workflow:treasury.contribute",
+   "Refresh->panel:treasury.hub"
+  ]
+ },
+ {
+  "panel": "utility.panel",
+  "subsystem": "utility",
+  "ref": "sb/domain/utility/panels.py:115",
+  "widgets": [
+   "text",
+   "provider:utility.children_field"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "🖥️ Server Info->handler:utility.server_info_view",
+   "👤 User Info->handler:utility.user_info_view",
+   "🖼️ Avatar->handler:utility.avatar_view",
+   "📊 Poll->handler:utility.poll_pending",
+   "🔔 Remind Me->handler:utility.remind_pending",
+   "🔗 Invite->handler:utility.invite_pending",
+   "↩ Overview->panel:utility.panel",
+   "💬 General->panel:general.menu",
+   "🍃 420->handler:utility.four_twenty_pending"
+  ]
+ },
+ {
+  "panel": "utility.pong",
+  "subsystem": "utility",
+  "ref": "sb/domain/utility/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "utility.avatar_card",
+  "subsystem": "utility",
+  "ref": "sb/domain/utility/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "utility.server_info",
+  "subsystem": "utility",
+  "ref": "sb/domain/utility/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "utility.user_info",
+  "subsystem": "utility",
+  "ref": "sb/domain/utility/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "utility.profile_card",
+  "subsystem": "utility",
+  "ref": "sb/domain/utility/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "ux_lab.home",
+  "subsystem": "ux_lab",
+  "ref": "sb/domain/ux_lab/panels.py:112",
+  "widgets": [
+   "text",
+   "provider:ux_lab.home_fields"
+  ],
+  "opened_by": null,
+  "buttons": [
+   "Buttons->handler:ux_lab.buttons_wing",
+   "Selects->handler:ux_lab.selects_wing",
+   "Modals->handler:ux_lab.modals_wing",
+   "Embeds->handler:ux_lab.embeds_wing",
+   "Components V2->handler:ux_lab.components_v2_wing",
+   "PIL cards->handler:ux_lab.pil_cards_wing",
+   "Mock studio->handler:ux_lab.mock_studio_wing",
+   "Probe bench->handler:ux_lab.probe_bench_wing",
+   "Compare->handler:ux_lab.compare_wing"
+  ]
+ },
+ {
+  "panel": "welcome.hub",
+  "subsystem": "welcome",
+  "ref": "sb/domain/operator_spine.py:76 (hub_spec factory; dynamically built)",
+  "widgets": [
+   "text",
+   "provider:welcome.hub_settings"
+  ],
+  "opened_by": null,
+  "buttons": []
+ },
+ {
+  "panel": "welcome.status",
+  "subsystem": "welcome",
+  "ref": "sb/domain/welcome/panels.py (module; dynamically built)",
+  "widgets": [],
+  "opened_by": [
+   "command:/welcome"
+  ],
+  "buttons": []
+ },
+ {
+  "panel": "xp.hub",
+  "subsystem": "xp",
+  "ref": "sb/domain/xp/panels.py:111",
+  "widgets": [
+   "text",
+   "provider:xp.hub_overview"
+  ],
+  "opened_by": [
+   "command:/xpmenu"
+  ],
+  "buttons": [
+   "My Rank->handler:xp.rank_view",
+   "Configure->handler:xp.xpconfig_view",
+   "Give XP->workflow:xp.award",
+   "Reset XP->workflow:xp.reset"
+  ]
+ },
+ {
+  "panel": "xp.rank_card",
+  "subsystem": "xp",
+  "ref": "sb/domain/xp/panels.py:179",
+  "widgets": [],
+  "opened_by": null,
+  "buttons": []
+ }
+]

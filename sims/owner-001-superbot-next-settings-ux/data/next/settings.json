@@ -1,0 +1,1630 @@
+[
+ {
+  "name": "ai_enabled",
+  "subsystem": "ai",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:29",
+  "read_where": [
+   "sb/domain/settings/ai_readers.py:92",
+   "sb/domain/settings/ai_readers.py:70"
+  ],
+  "notes": "guild-policy bundle + configured-gate; activation=off_until_opt_in"
+ },
+ {
+  "name": "ai_natural_language_enabled",
+  "subsystem": "ai",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:31",
+  "read_where": [
+   "sb/domain/settings/ai_readers.py:93"
+  ],
+  "notes": "activation=off_until_opt_in"
+ },
+ {
+  "name": "ai_default_provider",
+  "subsystem": "ai",
+  "type": "enum",
+  "default": "deterministic",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:34",
+  "read_where": [
+   "sb/domain/ai/readers.py:27"
+  ],
+  "notes": "gateway provider/model overlay"
+ },
+ {
+  "name": "ai_default_model",
+  "subsystem": "ai",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:41",
+  "read_where": [
+   "sb/domain/ai/readers.py:27"
+  ],
+  "notes": "gateway provider/model overlay"
+ },
+ {
+  "name": "ai_minimum_level_default",
+  "subsystem": "ai",
+  "type": "int",
+  "default": 2,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:46",
+  "read_where": [
+   "sb/domain/settings/ai_readers.py:102"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "ai_cooldown_seconds",
+  "subsystem": "ai",
+  "type": "int",
+  "default": 30,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:56",
+  "read_where": [
+   "sb/domain/settings/ai_readers.py:104"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "ai_fresh_user_mention_allowance",
+  "subsystem": "ai",
+  "type": "int",
+  "default": 1,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:63",
+  "read_where": [
+   "sb/domain/settings/ai_readers.py:108"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "ai_guild_instruction_profile",
+  "subsystem": "ai",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:72",
+  "read_where": [
+   "sb/domain/settings/ai_readers.py:105",
+   "sb/domain/settings/ai_readers.py:125"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "ai_memory_window_minutes",
+  "subsystem": "ai",
+  "type": "enum",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:78",
+  "read_where": [
+   "sb/domain/settings/ai_readers.py:116"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "ai_memory_channel_scan_enabled",
+  "subsystem": "ai",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:86",
+  "read_where": [
+   "sb/domain/settings/ai_readers.py:117"
+  ],
+  "notes": "activation=off_until_opt_in"
+ },
+ {
+  "name": "ai_review_channel",
+  "subsystem": "ai",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:ai settings (settings.set_scalar op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:101",
+  "read_where": [
+   "sb/domain/ai/store.py:238",
+   "sb/domain/ai/service.py:224"
+  ],
+  "notes": "review-log channel routing/display"
+ },
+ {
+  "name": "ai.audit_log_channel",
+  "subsystem": "ai",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:ai bindings (settings.set_binding op)",
+  "set_ref": "sb/domain/ai/settings_schema.py:110",
+  "read_where": [],
+  "notes": "NO READER FOUND (binding only echoed for display in ai/panels.py:871)"
+ },
+ {
+  "name": "automod_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:28",
+  "read_where": [
+   "sb/domain/automod/engine.py:86",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate(); activation=off_until_opt_in"
+ },
+ {
+  "name": "automod_spam_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:19",
+  "read_where": [
+   "sb/domain/automod/engine.py:87",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate(); activation=off_until_opt_in"
+ },
+ {
+  "name": "automod_invites_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:19",
+  "read_where": [
+   "sb/domain/automod/engine.py:88",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate(); activation=off_until_opt_in"
+ },
+ {
+  "name": "automod_caps_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:19",
+  "read_where": [
+   "sb/domain/automod/engine.py:89",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate(); activation=off_until_opt_in"
+ },
+ {
+  "name": "automod_mentions_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:19",
+  "read_where": [
+   "sb/domain/automod/engine.py:90",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate(); activation=off_until_opt_in"
+ },
+ {
+  "name": "automod_cross_channel_spam_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:19",
+  "read_where": [
+   "sb/domain/automod/engine.py:91",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate(); activation=off_until_opt_in"
+ },
+ {
+  "name": "automod_duplicate_enabled",
+  "subsystem": "automod",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:19",
+  "read_where": [
+   "sb/domain/automod/engine.py:93",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate(); activation=off_until_opt_in"
+ },
+ {
+  "name": "automod_spam_count",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 5,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:33",
+  "read_where": [
+   "sb/domain/automod/engine.py:94",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate()"
+ },
+ {
+  "name": "automod_spam_window_seconds",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 7,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:36",
+  "read_where": [
+   "sb/domain/automod/engine.py:95",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate()"
+ },
+ {
+  "name": "automod_caps_percent",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 70,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:39",
+  "read_where": [
+   "sb/domain/automod/engine.py:96",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate()"
+ },
+ {
+  "name": "automod_mentions_count",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 4,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:42",
+  "read_where": [
+   "sb/domain/automod/engine.py:97",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate()"
+ },
+ {
+  "name": "automod_cross_channel_spam_count",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 4,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:45",
+  "read_where": [
+   "sb/domain/automod/engine.py:98",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate()"
+ },
+ {
+  "name": "automod_duplicate_count",
+  "subsystem": "automod",
+  "type": "int",
+  "default": 3,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:48",
+  "read_where": [
+   "sb/domain/automod/engine.py:100",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate()"
+ },
+ {
+  "name": "automod_exempt_roles",
+  "subsystem": "automod",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:51",
+  "read_where": [
+   "sb/domain/automod/engine.py:101",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate()"
+ },
+ {
+  "name": "automod_exempt_channels",
+  "subsystem": "automod",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:automod settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/automod.py:54",
+  "read_where": [
+   "sb/domain/automod/engine.py:102",
+   "sb/domain/automod/engine.py:106"
+  ],
+  "notes": "load_policy + evaluate()"
+ },
+ {
+  "name": "blackjack_default_entry_fee",
+  "subsystem": "blackjack",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:blackjack settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/blackjack.py:19",
+  "read_where": [
+   "sb/domain/blackjack/handlers.py:234"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "btd6_strategy_submission_channel",
+  "subsystem": "btd6",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:btd6 settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/btd6.py:35",
+  "read_where": [],
+  "notes": "NO READER FOUND (declared, never consumed)"
+ },
+ {
+  "name": "cleanup_spam_window_seconds",
+  "subsystem": "cleanup",
+  "type": "int",
+  "default": 15,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:cleanup settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/cleanup.py:55",
+  "read_where": [],
+  "notes": "NO READER FOUND (settings view pending; not consumed)"
+ },
+ {
+  "name": "counters_enabled",
+  "subsystem": "counters",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:counters settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/counters.py:24",
+  "read_where": [
+   "sb/domain/counters/service.py:106"
+  ],
+  "notes": "counter name compose; activation=off_until_opt_in"
+ },
+ {
+  "name": "counters_total_template",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "👥 Members: {count}",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:counters settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/counters.py:28",
+  "read_where": [
+   "sb/domain/counters/service.py:106"
+  ],
+  "notes": "counter name compose"
+ },
+ {
+  "name": "counters_humans_template",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "🧑 Humans: {count}",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:counters settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/counters.py:32",
+  "read_where": [
+   "sb/domain/counters/service.py:106"
+  ],
+  "notes": "counter name compose"
+ },
+ {
+  "name": "counters_bots_template",
+  "subsystem": "counters",
+  "type": "str",
+  "default": "🤖 Bots: {count}",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:counters settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/counters.py:36",
+  "read_where": [
+   "sb/domain/counters/service.py:106"
+  ],
+  "notes": "counter name compose"
+ },
+ {
+  "name": "counters.total_channel",
+  "subsystem": "counters",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:counters bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/counters.py:40",
+  "read_where": [
+   "sb/domain/counters/service.py:94"
+  ],
+  "notes": "binding; get_binding"
+ },
+ {
+  "name": "counters.humans_channel",
+  "subsystem": "counters",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:counters bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/counters.py:43",
+  "read_where": [
+   "sb/domain/counters/service.py:94"
+  ],
+  "notes": "binding; get_binding"
+ },
+ {
+  "name": "counters.bots_channel",
+  "subsystem": "counters",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:counters bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/counters.py:46",
+  "read_where": [
+   "sb/domain/counters/service.py:94"
+  ],
+  "notes": "binding; get_binding"
+ },
+ {
+  "name": "deathmatch_turn_timeout",
+  "subsystem": "deathmatch",
+  "type": "int",
+  "default": 60,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:deathmatch settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/deathmatch.py:21",
+  "read_where": [],
+  "notes": "NO READER FOUND (deathmatch/ops.py:10 notes it is declared but the timeout is not consumed)"
+ },
+ {
+  "name": "economy.log_channel",
+  "subsystem": "economy",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:economy bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/economy.py:54",
+  "read_where": [
+   "sb/domain/economy/service.py:154"
+  ],
+  "notes": "binding; get_binding"
+ },
+ {
+  "name": "governance_version",
+  "subsystem": "governance",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:governance settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/governance.py:103",
+  "read_where": [
+   "sb/domain/governance/service.py:201",
+   "sb/domain/governance/resolver.py:102"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "trusted_tier_role_id",
+  "subsystem": "governance",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:governance settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/governance.py:108",
+  "read_where": [
+   "sb/domain/governance/resolver.py:147"
+  ],
+  "notes": "tier authority check"
+ },
+ {
+  "name": "moderator_tier_role_id",
+  "subsystem": "governance",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:governance settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/governance.py:113",
+  "read_where": [
+   "sb/domain/governance/resolver.py:143"
+  ],
+  "notes": "tier authority check"
+ },
+ {
+  "name": "image_moderation_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:image_moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/image_moderation.py:29",
+  "read_where": [
+   "sb/domain/image_moderation/panels.py:78"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported); activation=off_until_opt_in"
+ },
+ {
+  "name": "image_moderation_sexual_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:image_moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/image_moderation.py:21",
+  "read_where": [
+   "sb/domain/image_moderation/panels.py:78"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported); activation=off_until_opt_in"
+ },
+ {
+  "name": "image_moderation_violence_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:image_moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/image_moderation.py:21",
+  "read_where": [
+   "sb/domain/image_moderation/panels.py:78"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported); activation=off_until_opt_in"
+ },
+ {
+  "name": "image_moderation_harassment_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:image_moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/image_moderation.py:21",
+  "read_where": [
+   "sb/domain/image_moderation/panels.py:78"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported); activation=off_until_opt_in"
+ },
+ {
+  "name": "image_moderation_hate_enabled",
+  "subsystem": "image_moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:image_moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/image_moderation.py:21",
+  "read_where": [
+   "sb/domain/image_moderation/panels.py:78"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported); activation=off_until_opt_in"
+ },
+ {
+  "name": "image_moderation_threshold_percent",
+  "subsystem": "image_moderation",
+  "type": "int",
+  "default": 80,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:image_moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/image_moderation.py:35",
+  "read_where": [
+   "sb/domain/image_moderation/panels.py:78"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "image_moderation_exempt_roles",
+  "subsystem": "image_moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:image_moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/image_moderation.py:38",
+  "read_where": [
+   "sb/domain/image_moderation/panels.py:78"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "image_moderation_exempt_channels",
+  "subsystem": "image_moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:image_moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/image_moderation.py:41",
+  "read_where": [
+   "sb/domain/image_moderation/panels.py:78"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "karma_enabled",
+  "subsystem": "karma",
+  "type": "bool",
+  "default": true,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:karma settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/karma.py:51",
+  "read_where": [
+   "sb/domain/karma/policy.py:66"
+  ],
+  "notes": "activation=on_by_default"
+ },
+ {
+  "name": "karma_cooldown",
+  "subsystem": "karma",
+  "type": "int",
+  "default": 3600,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:karma settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/karma.py:56",
+  "read_where": [
+   "sb/domain/karma/policy.py:67"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "karma_daily_cap",
+  "subsystem": "karma",
+  "type": "int",
+  "default": 10,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:karma settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/karma.py:65",
+  "read_where": [
+   "sb/domain/karma/policy.py:68"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "karma_reaction_emoji",
+  "subsystem": "karma",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:karma settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/karma.py:72",
+  "read_where": [
+   "sb/domain/karma/policy.py:69"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "logging_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:41",
+  "read_where": [
+   "sb/domain/server_logging/service.py:229"
+  ],
+  "notes": "activation=off_until_opt_in"
+ },
+ {
+  "name": "logging_auto_create_channels",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:45",
+  "read_where": [
+   "sb/domain/server_logging/service.py:231"
+  ],
+  "notes": "activation=off_until_opt_in"
+ },
+ {
+  "name": "logging_event_routing",
+  "subsystem": "logging",
+  "type": "enum",
+  "default": "combined",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:50",
+  "read_where": [
+   "sb/domain/server_logging/service.py:220"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "logging_ignored_channels",
+  "subsystem": "logging",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:54",
+  "read_where": [
+   "sb/domain/server_logging/service.py:235"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "logging_ignored_users",
+  "subsystem": "logging",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:57",
+  "read_where": [
+   "sb/domain/server_logging/service.py:237"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "logging_messages_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:32",
+  "read_where": [
+   "sb/domain/server_logging/service.py:227"
+  ],
+  "notes": "per-category toggle loop; activation=off_until_opt_in"
+ },
+ {
+  "name": "logging_members_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:32",
+  "read_where": [
+   "sb/domain/server_logging/service.py:227"
+  ],
+  "notes": "per-category toggle loop; activation=off_until_opt_in"
+ },
+ {
+  "name": "logging_roles_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:32",
+  "read_where": [
+   "sb/domain/server_logging/service.py:227"
+  ],
+  "notes": "per-category toggle loop; activation=off_until_opt_in"
+ },
+ {
+  "name": "logging_moderation_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:32",
+  "read_where": [
+   "sb/domain/server_logging/service.py:227"
+  ],
+  "notes": "per-category toggle loop; activation=off_until_opt_in"
+ },
+ {
+  "name": "logging_channels_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:32",
+  "read_where": [
+   "sb/domain/server_logging/service.py:227"
+  ],
+  "notes": "per-category toggle loop; activation=off_until_opt_in"
+ },
+ {
+  "name": "logging_server_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:32",
+  "read_where": [
+   "sb/domain/server_logging/service.py:227"
+  ],
+  "notes": "per-category toggle loop; activation=off_until_opt_in"
+ },
+ {
+  "name": "logging_voice_enabled",
+  "subsystem": "logging",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:logging settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/server_logging.py:32",
+  "read_where": [
+   "sb/domain/server_logging/service.py:227"
+  ],
+  "notes": "per-category toggle loop; activation=off_until_opt_in"
+ },
+ {
+  "name": "logging.mod_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:66",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.events_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:69",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.cleanup_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:71",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.debug_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:74",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.info_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:76",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.warning_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:78",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.error_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:80",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.audit_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:82",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.message_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:84",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.member_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:86",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "logging.role_channel",
+  "subsystem": "logging",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:logging bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/server_logging.py:88",
+  "read_where": [
+   "sb/domain/server_logging/service.py:247"
+  ],
+  "notes": "binding; get_binding(binding_name)"
+ },
+ {
+  "name": "warn_threshold",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 3,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:38",
+  "read_where": [
+   "sb/domain/moderation/service.py:95"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "warn_timeout_minutes",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 10,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:41",
+  "read_where": [
+   "sb/domain/moderation/service.py:96"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation_warn_escalation_action",
+  "subsystem": "moderation",
+  "type": "enum",
+  "default": "timeout",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:44",
+  "read_where": [
+   "sb/domain/moderation/service.py:98"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation_dm_on_action",
+  "subsystem": "moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:48",
+  "read_where": [
+   "sb/domain/moderation/service.py:100"
+  ],
+  "notes": "load_policy; activation=off_until_opt_in"
+ },
+ {
+  "name": "moderation_dm_actions",
+  "subsystem": "moderation",
+  "type": "str",
+  "default": "warn,timeout,kick,ban",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:53",
+  "read_where": [
+   "sb/domain/moderation/service.py:101"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation_dm_template",
+  "subsystem": "moderation",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:57",
+  "read_where": [
+   "sb/domain/moderation/service.py:102"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation_require_reason",
+  "subsystem": "moderation",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:60",
+  "read_where": [
+   "sb/domain/moderation/service.py:103"
+  ],
+  "notes": "load_policy; activation=off_until_opt_in"
+ },
+ {
+  "name": "moderation_ban_delete_message_days",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:64",
+  "read_where": [
+   "sb/domain/moderation/service.py:104"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation_max_timeout_minutes",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 40320,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:68",
+  "read_where": [
+   "sb/domain/moderation/service.py:106"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation_post_action_cleanup",
+  "subsystem": "moderation",
+  "type": "enum",
+  "default": "none",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:72",
+  "read_where": [
+   "sb/domain/moderation/service.py:108"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation_post_action_cleanup_limit",
+  "subsystem": "moderation",
+  "type": "int",
+  "default": 100,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:76",
+  "read_where": [
+   "sb/domain/moderation/service.py:110"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation_public_log_actions",
+  "subsystem": "moderation",
+  "type": "enum",
+  "default": "none",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:moderation settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/moderation.py:80",
+  "read_where": [
+   "sb/domain/moderation/service.py:112"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "moderation.public_log",
+  "subsystem": "moderation",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:moderation bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/moderation.py:87",
+  "read_where": [],
+  "notes": "NO READER FOUND (binding declared, never consumed)"
+ },
+ {
+  "name": "proof_channel.proof_channel",
+  "subsystem": "proof_channel",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:proof_channel bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/proof_channel.py:51",
+  "read_where": [
+   "sb/domain/proof_channel/service.py:71"
+  ],
+  "notes": "binding; get_binding"
+ },
+ {
+  "name": "skip_roles",
+  "subsystem": "role",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:role settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/role.py:106",
+  "read_where": [],
+  "notes": "NO READER FOUND (declared, never consumed)"
+ },
+ {
+  "name": "time_roles_stack",
+  "subsystem": "role",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:role settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/role.py:110",
+  "read_where": [
+   "sb/domain/role/service.py:166"
+  ],
+  "notes": "activation=off_until_opt_in"
+ },
+ {
+  "name": "xp_roles_stack",
+  "subsystem": "role",
+  "type": "bool",
+  "default": true,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:role settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/role.py:115",
+  "read_where": [
+   "sb/domain/role/service.py:171"
+  ],
+  "notes": "activation=on_by_default"
+ },
+ {
+  "name": "reaction_roles_enabled",
+  "subsystem": "role",
+  "type": "bool",
+  "default": true,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:role settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/role.py:120",
+  "read_where": [
+   "sb/domain/role/service.py:174"
+  ],
+  "notes": "activation=on_by_default"
+ },
+ {
+  "name": "rps_default_entry_fee",
+  "subsystem": "rps_tournament",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:rps_tournament settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/rps_tournament.py:33",
+  "read_where": [
+   "sb/domain/rps/handlers.py:192"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "rps_default_mode",
+  "subsystem": "rps_tournament",
+  "type": "str",
+  "default": "classic",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:rps_tournament settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/rps_tournament.py:40",
+  "read_where": [
+   "sb/domain/rps/handlers.py:198"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "rps_default_best_of",
+  "subsystem": "rps_tournament",
+  "type": "int",
+  "default": 3,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:rps_tournament settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/rps_tournament.py:46",
+  "read_where": [
+   "sb/domain/rps/handlers.py:207"
+  ],
+  "notes": ""
+ },
+ {
+  "name": "security_enabled",
+  "subsystem": "security",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:20",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported); activation=off_until_opt_in"
+ },
+ {
+  "name": "security_raid_enabled",
+  "subsystem": "security",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:24",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported); activation=off_until_opt_in"
+ },
+ {
+  "name": "security_raid_join_count",
+  "subsystem": "security",
+  "type": "int",
+  "default": 10,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:28",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "security_raid_window_seconds",
+  "subsystem": "security",
+  "type": "int",
+  "default": 60,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:31",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "security_raid_slowmode_seconds",
+  "subsystem": "security",
+  "type": "int",
+  "default": 10,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:34",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "security_raid_lockdown_seconds",
+  "subsystem": "security",
+  "type": "int",
+  "default": 300,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:37",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "security_age_enabled",
+  "subsystem": "security",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:40",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported); activation=off_until_opt_in"
+ },
+ {
+  "name": "security_age_min_days",
+  "subsystem": "security",
+  "type": "int",
+  "default": 7,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:44",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "security_age_action",
+  "subsystem": "security",
+  "type": "enum",
+  "default": "alert",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:security settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/security.py:47",
+  "read_where": [
+   "sb/domain/security/panels.py:74"
+  ],
+  "notes": "DISPLAY-ONLY: read only by settings panel; no behavioral/gating consumer (engine not ported)"
+ },
+ {
+  "name": "security.raid_slowmode_channel",
+  "subsystem": "security",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:security bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/security.py:51",
+  "read_where": [
+   "sb/domain/security/panels.py:89"
+  ],
+  "notes": "DISPLAY-ONLY binding: read only by settings panel; no behavioral consumer"
+ },
+ {
+  "name": "security.alert_channel",
+  "subsystem": "security",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:security bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/security.py:54",
+  "read_where": [
+   "sb/domain/security/panels.py:89"
+  ],
+  "notes": "DISPLAY-ONLY binding: read only by settings panel; no behavioral consumer"
+ },
+ {
+  "name": "welcome_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:21",
+  "read_where": [
+   "sb/domain/welcome/service.py:77"
+  ],
+  "notes": "load_policy; activation=off_until_opt_in"
+ },
+ {
+  "name": "welcome_join_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": true,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:25",
+  "read_where": [
+   "sb/domain/welcome/service.py:79"
+  ],
+  "notes": "load_policy; activation=on_by_default"
+ },
+ {
+  "name": "welcome_leave_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:29",
+  "read_where": [
+   "sb/domain/welcome/service.py:81"
+  ],
+  "notes": "load_policy; activation=off_until_opt_in"
+ },
+ {
+  "name": "welcome_join_message",
+  "subsystem": "welcome",
+  "type": "str",
+  "default": "👋 Welcome {user} to **{server}**! You're member #{count}.",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:33",
+  "read_where": [
+   "sb/domain/welcome/service.py:84"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "welcome_leave_message",
+  "subsystem": "welcome",
+  "type": "str",
+  "default": "👋 **{user}** has left {server}. We're now {count} members.",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:37",
+  "read_where": [
+   "sb/domain/welcome/service.py:86"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "welcome_dm_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:41",
+  "read_where": [
+   "sb/domain/welcome/service.py:83"
+  ],
+  "notes": "load_policy; activation=off_until_opt_in"
+ },
+ {
+  "name": "welcome_dm_message",
+  "subsystem": "welcome",
+  "type": "str",
+  "default": "",
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:46",
+  "read_where": [
+   "sb/domain/welcome/service.py:88"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "welcome_card_enabled",
+  "subsystem": "welcome",
+  "type": "bool",
+  "default": false,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:49",
+  "read_where": [],
+  "notes": "NO READER FOUND (not read by welcome load_policy); activation=off_until_opt_in"
+ },
+ {
+  "name": "welcome_min_account_age_days",
+  "subsystem": "welcome",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:53",
+  "read_where": [],
+  "notes": "NO READER FOUND (not read by welcome load_policy)"
+ },
+ {
+  "name": "welcome_delete_after_seconds",
+  "subsystem": "welcome",
+  "type": "int",
+  "default": 0,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:welcome settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/welcome.py:56",
+  "read_where": [
+   "sb/domain/welcome/service.py:90"
+  ],
+  "notes": "load_policy"
+ },
+ {
+  "name": "welcome.channel",
+  "subsystem": "welcome",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:welcome bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/welcome.py:59",
+  "read_where": [
+   "sb/domain/welcome/service.py:101"
+  ],
+  "notes": "binding; get_binding"
+ },
+ {
+  "name": "welcome.entry_role",
+  "subsystem": "welcome",
+  "type": "binding:role",
+  "default": null,
+  "scope": "role",
+  "set_where": "command:/settings -> panel:welcome bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/welcome.py:62",
+  "read_where": [
+   "sb/domain/welcome/service.py:111"
+  ],
+  "notes": "binding; get_binding"
+ },
+ {
+  "name": "xp_min",
+  "subsystem": "xp",
+  "type": "int",
+  "default": 15,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:xp settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/xp.py:84",
+  "read_where": [
+   "sb/domain/xp/service.py:58"
+  ],
+  "notes": "xp_config chat award"
+ },
+ {
+  "name": "xp_max",
+  "subsystem": "xp",
+  "type": "int",
+  "default": 25,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:xp settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/xp.py:88",
+  "read_where": [
+   "sb/domain/xp/service.py:58"
+  ],
+  "notes": "xp_config chat award"
+ },
+ {
+  "name": "xp_cooldown",
+  "subsystem": "xp",
+  "type": "int",
+  "default": 60,
+  "scope": "guild",
+  "set_where": "command:/settings -> panel:xp settings (settings.set_scalar op)",
+  "set_ref": "sb/manifest/xp.py:92",
+  "read_where": [
+   "sb/domain/xp/service.py:58"
+  ],
+  "notes": "xp_config chat award"
+ },
+ {
+  "name": "xp.announce_channel",
+  "subsystem": "xp",
+  "type": "binding:channel",
+  "default": null,
+  "scope": "channel",
+  "set_where": "command:/settings -> panel:xp bindings (settings.set_binding op)",
+  "set_ref": "sb/manifest/xp.py:102",
+  "read_where": [
+   "sb/domain/xp/service.py:259"
+  ],
+  "notes": "binding; get_binding level-up fanout"
+ }
+]
