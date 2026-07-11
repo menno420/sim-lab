@@ -136,7 +136,47 @@ extra click** — see gate Q1/Q5. It is reported, not asserted as a real regress
 | max_steps_to_reach | 3 | 3 | 0 | lower | flat |
 | mean_task_battery_clicks | 3.00 | 2.933 | +0.067 | lower | regress (AI artifact) |
 
-<!-- AI-PANEL-FINDINGS: filled by finalizer -->
+## AI PANEL — independent audit (mixed: measured file:line evidence + UX judgment)
+
+> These are AI-panel improvables found **INDEPENDENTLY** by a read-only source audit of
+> `sb/domain/ai/*` + `sb/kernel/panels/*` cross-referenced against OLD (`superbot/disbot/views/ai/*`,
+> `cogs/ai_cog.py`). The owner suspected the AI panel had issues; we did **not** ask what he saw —
+> every finding below is our own, each cited `file:line`. Severity mix per `findings.json`: **3 high,
+> 4 medium, 1 low**.
+
+**Flow characterization (entry → panels → widgets).** `!ai` / `!aimenu` / `/aimenu` all route to
+`PanelRef("ai.hub")` (`sb/manifest/ai.py:101-141`). The hub is a live status embed (💤/⚠️/✅ over six
+diagnostics fields, `operator_cards.py:188`, rendered by `panels.py:1116-1122`) above two button rows:
+a **diagnostics quartet** Refresh / Diagnostics / Providers / Routing (`panels.py:144-196`, the latter
+three are `HandlerRef`s into `service.py:140-159`, each presented via `_card`→`open_panel("ai.card")`)
+and a **config quartet** Settings / Policy / Behavior / Tools that does in-place page swaps
+(`ai.settings` typed edit/reset widgets through the audited `settings.set_scalar` op; `ai.policy_chooser`;
+`ai.behavior_chooser`; `ai.tools_chooser`). Every widget/chooser page carries a `↩ Back` route **except
+`ai.card`**, which carries none.
+
+| id | sev | title | file:line | fix |
+|---|---|---|---|---|
+| AIP-01 | **high** | Tools chooser entirely non-functional — all 4 buttons dead-end to `chooser_scope_pending` | `sb/domain/ai/panels.py:434-439` (+224-234; `settings_widgets.py:367-385`) | wire the 4 tools pickers to real orchestration pages, or hide the Tools hub button until the slice exists |
+| AIP-02 | **high** | Operator cards (`ai.card`) render no back/home/help — Diagnostics/Providers/Routing + both Preview flows strand the operator | `sb/domain/ai/panels.py:206-207` (+1125-1139; escapes never-strand fence via `compile.py:139-144`) | give `ai.card` a back route, or render diagnostics onto the hub view (retaining its buttons) as OLD did |
+| AIP-03 | **high** | Doubled prefix in every settings ack/prompt: shows `ai.ai_enabled` (option value = `settings_key` formatted as `ai.{key}`); same embed's Scalar field prints single-prefix `ai_enabled` | `sb/domain/ai/panels.py:825-829` (+869; acks `settings_widgets.py:172/185/…/352`) | use `spec.name` as the option value (or strip leading `ai_`); align both spellings |
+| AIP-04 | medium | Behavior "Routing matrix" button dead-ends (`chooser_scope_pending`) and overloads the word "Routing" (a live hub button already owns it) | `sb/domain/ai/panels.py:357-358` (+161-162; `settings_widgets.py:362-366`) | wire it to the dry-run resolver (reuse the preview embed) or remove; rename to disambiguate |
+| AIP-05 | medium | Tools "Current" field shows hardcoded `overrides: 0 channel · 0 category`; guild-default read silently drops the field on except | `sb/domain/ai/panels.py:400-412` | compute real override counts, or drop the field while Tools is non-functional |
+| AIP-06 | medium | `audit_log_channel` binding advertised as configurable but has no control (selects exclude `BindingSpec`) and no behavioral consumer | `sb/domain/ai/panels.py:871-874` (+887, 919-931; `settings_schema.py:100-116`) | add a real channel-binding picker + consumer, or drop the Bindings row |
+| AIP-07 | medium | Enum/preset picks ack "✅ Updated" but never re-render → stale `default=True` / primary-styled highlight (toggle/reset/number/text all DO refresh) | `sb/domain/ai/settings_widgets.py:225-242, 245-273` | re-render the widget page in place after the write, as the number/text submits do |
+| AIP-08 | low | Hub `PanelSpec.title` hardcodes `💤 AI Platform`; live status only appears because `_render_hub` swaps the whole embed — a render path without the override shows the platform asleep | `sb/domain/ai/panels.py:147` (+181, 1116-1122) | neutralise the declared title to `AI Platform`; keep the status emoji only in the state renderer |
+
+**Old-vs-new comparison (from the audit).** *Genuinely improved:* NEW's per-setting edit/reset widgets
+write through an **audited `settings.set_scalar`** op with typed coercion, bounds/allowed-value validation
+and explicit ✅ acks; policy/behavior mutations are audited ops carrying `generation`/`mutation_id`; the
+paged override List with empty-state copy and edge-disabled Prev/Next is a clean addition, and every
+chooser/widget page has a consistent back-route (`settings_widgets.py`, `policy_widgets.py:407-410`,
+`behavior_widgets.py:132-136`). *Regressed / merely different:* OLD kept the full panel attached
+(`edit_message(view=self)`, `panel.py:142/156/170`) so every diagnostic stayed navigable, whereas NEW
+routes them to the nav-less `ai.card` (AIP-02); NEW's Tools chooser is fully dead (AIP-01) where OLD at
+least rendered a live `ToolsChooserView` snapshot; NEW acks double the `ai.` prefix (AIP-03); "Routing
+matrix" is a dead terminal and the Tools "Current" counts are hardcoded zeros (AIP-04/05). Net: the NEW
+AI panel is a **more auditable write path wrapped around three high-severity dead-ends/label bugs** that
+did not exist (or were navigable) in OLD.
 
 ## What it did NOT settle
 
@@ -218,34 +258,50 @@ moderate-strong on the surface facts; the label travels with the verdict.
 
 ## VERDICT & recommendation (for the fleet manager to route)
 
-- **Verdict:** **approve-with-changes** (mixed-evidence). superbot-next's settings
-  surface is a **measured structural improvement in discoverability and
-  organization** (100% vs 91.5% reachable, 10→0 unreachable, monolithic→granular
-  wiring, command surface trimmed 484→367) **carrying two measured regressions
-  that must be fixed before the "UX improved" claim is honest**: +19 display-only
-  settings (all image_moderation + security — configurable-looking, engine-dead)
-  and +3 dead settings. The "overall UX-improved / by how much" magnitude is
-  JUDGMENT-ONLY and not established by this evidence.
-- **Ruling / what would settle the JUDGMENT axis:** a live task-time or
-  click/abandonment A/B (NEW settings hub vs OLD) — unreachable in this
-  environment.
+- **Verdict:** **needs-more-evidence** (mixed-evidence). Two axes, split by
+  evidence class. The **settings-design axis** — redundancy (dead/display-only),
+  combinability (co-read collapse), and reachability/discoverability — is
+  **MEASURED and settled** below and actionable now. The **"overall UX improved /
+  by how much" axis** has no ground truth reachable here (no live users, no
+  telemetry), so the magnitude claim is **JUDGMENT-ONLY** (a hypothesis) — which is
+  the **only** reason this is `needs-more-evidence` and not a clean `approve`.
+  (Lane precedent: VERDICT 003 / VERDICT 007 — a measured core carrying a
+  JUDGMENT-ONLY value axis takes the weakest-for-the-question label.)
+- **Ruling:** **approve-the-direction + ship the named changes.** The
+  redundancy/combinability/reachability findings are measured and can be acted on
+  immediately; the overall-UX-improved MAGNITUDE is the sole hypothesis left open.
+  What would settle the JUDGMENT axis: a live task-time or click/abandonment A/B
+  (NEW settings hub vs OLD) — unreachable in this environment.
 - **Target:** superbot-next (`168ef80…`).
 - **Ranked named changes (each tied to a finding):**
-  1. **Wire or gate the 19 display-only settings** (redundancy: display_only=19,
+  1. **Wire-or-hide the 19 display-only settings** (redundancy: display_only=19,
      all `image_moderation`+`security`). Either connect them to a real
      enforcement engine, or hide them until wired — shipping 19
-     configurable-looking, engine-dead toggles is the top UX-integrity defect.
+     configurable-looking, engine-dead toggles is the top UX-integrity defect (a
+     user changes them and nothing happens).
   2. **Remove/wire the 8 dead settings** (dead=8; NEW-introduced dead:
      `ai.audit_log_channel, moderation.public_log, welcome_card_enabled,
-     welcome_min_account_age_days`).
-  3. **Confirm & document the 11 rename candidates** (dot-namespacing +
-     `str`→`binding:channel`) so migration/back-compat is explicit — flagged, not
-     confirmed.
-  4. **Re-verify AI settings depth** against real panels (the +1-click graph
+     welcome_min_account_age_days`; full list `ai.audit_log_channel,
+     btd6_strategy_submission_channel, cleanup_spam_window_seconds,
+     deathmatch_turn_timeout, moderation.public_log, skip_roles,
+     welcome_card_enabled, welcome_min_account_age_days`).
+  3. **Fix the 3 high-severity AI-panel defects** (independent audit, cited above):
+     AIP-01 Tools chooser non-functional (all 4 buttons → `chooser_scope_pending`,
+     `panels.py:434-439`); AIP-02 operator cards (`ai.card`) strand — render no
+     back/home/help (`panels.py:206-207`); AIP-03 doubled-prefix ack bug (shows
+     `ai.ai_enabled` vs field `ai_enabled`, `panels.py:825-829`).
+  4. **Confirm & document the 11 rename candidates** (dot-namespacing +
+     `str`→`binding:channel`, e.g. `welcome_channel`→`welcome.channel`) so
+     migration/back-compat is explicit — flagged, not confirmed.
+  5. **Preserve the discoverability win**: 100% vs 91.5% reachable from `/settings`
+     and the 10→0 unreachable drop are the strongest measured gains — keep the
+     single-hub `/settings` entry. HEADLINE NEGATIVE to hold against the "UX
+     improved" story: the settings surface **GREW** (dead +3, display-only +19)
+     even as commands fell −117 — "fewer knobs" is false; the win is
+     discoverability + granularity, not simplification.
+  6. **Re-verify AI settings depth** against real panels (the +1-click graph
      result is likely a 29-vs-165 panel-inventory artifact; confirm `/ai` →
      settings is not actually a real regression).
-  5. **Keep the unification win**: 100% discoverability from `/settings` and the
-     10→0 unreachable drop are the strongest measured gains — preserve them.
 - **Guardrails:** a CI check asserting no setting is display-only (every
   `read_where` includes a non-`panels.py` reader) and no setting is dead
   (`read_where` non-empty) would prevent regressions 1–2 recurring.
@@ -253,15 +309,16 @@ moderate-strong on the surface facts; the label travels with the verdict.
   open→change funnels (time-to-change, abandonment) in NEW.
 - **Codex review:** reply: pending
 
-<!-- Outbox verdict-grammar block (README), emitted on finalization:
-VERDICT owner-001 - <ISO> - finalized
-target: superbot-next @ 168ef8080347905766893fd92ae3be1ec2ebbc4c
-idea: owner-001 settings/UX surface question
-verdict: approve-with-changes
-evidence: simulation (rung 1-2, measured-from-code) + JUDGMENT-ONLY on overall UX-improved
+<!-- Outbox verdict-grammar block (README), emitted on finalization — see control/outbox.md VERDICT 009:
+VERDICT 009 - <ISO> - finalized
+target: menno420/superbot-next
+idea: OWNER-DIRECT request 2026-07-11 — settings/command/UX surface vs old superbot
+verdict: needs-more-evidence
+ruling: approve-the-direction + ship the named changes
+evidence: simulation (rung 1-2, measured-from-code) + JUDGMENT-ONLY (overall UX-improved magnitude)
 report: sims/owner-001-superbot-next-settings-ux/REPORT.md
 run: python3 sims/owner-001-superbot-next-settings-ux/settings_ux_sim.py
-recommendation: approve the discoverability/organization gains; fix 19 display-only + 8 dead settings before claiming UX improved
-codex: pending
+recommendation: ship the named changes — (1) wire-or-hide 19 display-only, (2) remove/wire 8 dead, (3) fix 3 high AI-panel defects, (4) confirm/document 11 renames, (5) preserve the 100% /settings discoverability win. Overall-UX-improved magnitude stays JUDGMENT-ONLY.
+codex: PR #<PRNUM> comment <CODEX_URL> · reply: pending
 gate: PASS
 -->
