@@ -13,6 +13,12 @@ economics of the grid-mine per-action encounter mechanic for `menno420/superbot`
   ```
   python3 sims/verdict-008-mining-grid-encounters/mining_grid_encounter_sim.py
   ```
+- **Wider-variation robustness pass** (post-verdict addendum — adversarially stress-tests the
+  anti-farm cooldown cap against bot-speed / boundary-timing / AFK grinders + wider param edges;
+  verdict unchanged; 811 self-checks, exit 0 iff clean):
+  ```
+  python3 sims/verdict-008-mining-grid-encounters/robustness_wide.py
+  ```
 - **What it models:** a single player's 1-hour grid-mine traversal. Each mine action, at a grid
   depth, may roll a LIVE per-action encounter — it fires iff `depth >= threshold` AND off the
   per-PLAYER cooldown AND `u < chance` (one live encounter per player; resolved instantly for

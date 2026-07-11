@@ -252,6 +252,69 @@ telemetry lands.
   STYLIZED traces and pin the "rare-but-present" target).
 - **Codex review:** reply: pending.
 
+---
+
+## WIDER-VARIATION ROBUSTNESS (empty-queue hardening)
+
+> **Post-verdict robustness addendum — the verdict is UNCHANGED.** `needs-more-evidence`
+> stands; the loot-**VALUE** half is still unsettled regardless (no live earn-rate baseline).
+> This appendix does **not** re-open VERDICT 008. It only **hardens** the single load-bearing,
+> *analytic* anti-farm conclusion — "the per-**PLAYER** cooldown caps encounters at
+> `3600/cooldown` enc/hr for **everyone** incl. the `!fastmine` grinder" — by adversarially
+> trying to **break** it with wider variation than the base 64-cell sweep. Companion module
+> **`robustness_wide.py`** (reuses the base sim's model + vendored helpers via a `sys.path`
+> insert — one model of record — and stays runnable standalone). **Run:**
+> `python3 sims/verdict-008-mining-grid-encounters/robustness_wide.py`
+> (deterministic, stdlib-only, 5 seeds, **811 self-checks**, exit 0 iff all pass).
+
+**Does the anti-farm conclusion survive the wider variation? YES.** The cap held on **every
+cell, every seed, every adversary** (811/811 self-checks pass, 0 failed) — nothing exceeded
+`3600/cooldown`, so nothing flips. This is expected: the cooldown gate is a hard floor on
+inter-fire spacing, so `enc/hr ≤ 3600/cooldown` is structural, not an artifact of the base
+operating point. The **boundary farmer at ~the cap is the true worst case**, and it *pins* to
+the cap without exceeding it.
+
+The five adversarial variations run against the recommended default set (**threshold=15,
+chance=0.02, cooldown=600s**, cap **6.00 enc/hr**), each seeded + multi-seed + determinism-checked:
+
+1. **EXTREME bot-speed cadence** — grinder parked deep, mining at action gaps **1.0s / 0.5s /
+   0.1s** (up to **6000 rolls/hr**). Yield stays **6.00 ± 0.00 enc/hr = the cap** at every gap
+   and at chance 0.02 *and* 0.10 — **faster spam does not raise yield past the cap**; it only
+   inflates rolls-per-encounter (600 → 1200 → **6000** rolls per encounter, i.e.
+   reward-per-action collapses). *Cap asserted on every gap/chance/seed.*
+2. **NON-PARKED grinder** — fastmine cadence but *roams* depth (dips below threshold), sharing
+   the exact timing + roll stream with the parked grinder. It yields **4.60 ± 0.49** vs parked
+   **5.20 ± 0.40** at chance 0.02 (and **5.60 vs 6.00** at 0.10): **parking is optimal; roaming
+   only loses yield.** *Non-parked ≤ parked asserted on every seed.*
+3. **BURST / BOUNDARY farmer (the tightest adversary)** — fires the instant the cooldown
+   expires, timing actions exactly on cooldown boundaries. The idealized boundary farmer
+   **pins to the cap: 6.0000 enc/hr = the 6.00 cap (ratio 1.0000), never exceeding it** — this
+   is the true worst-case grinder yield. A realistic bot-speed (0.1s) boundary farmer *reaches*
+   the cap and **stops there**. Across the **wider cooldown edges** {30…3600s} the ideal farmer
+   equals the cap at every point (120 / 60 / 12 / 6 / 4 / 2 / 1 enc/hr) and never overshoots.
+   *Boundary ≤ cap asserted on every cooldown/seed.*
+4. **AFK / bursty HONEST play** — honest deep-runner with random idle (AFK) bursts drops to
+   **1.20 ± 0.75 enc/hr**, *below* the always-on deep-runner (**2.80**) and far below the
+   boundary farmer (6.00) and the cap — confirming **honest players sit further below the cap,
+   never above it**. *honest-AFK < cap and < boundary-farmer asserted on every seed.*
+5. **WIDER param edges** — cooldown ∈ {30, 60, 300, 600, 900, 1800, 3600}s × chance ∈ {0.005,
+   0.01, 0.02, 0.05, 0.10, 0.25, 0.5} at threshold=15. The cap `enc/hr ≤ 3600/cooldown` holds
+   on **all 49 cells × 3 playstyles × 5 seeds**. The report finds the **chance ceiling** at which
+   the honest deep-runner crosses from "rare" (well below cap) to "cap-bound" (saturating ≥ 90%
+   of the cap): at the recommended **cooldown=600s that ceiling is chance ≈ 0.25** — so the
+   recommended **chance = 0.02 keeps honest play well below the cap** (rare-but-present), while
+   the ceiling drops as cooldown lengthens (chance ≈ 0.10 at 900s, 0.02 at 1800s, 0.01 at 3600s:
+   beyond those, even honest play saturates the faucet). This is the chance ceiling the manager
+   should not blow past if honest play is to stay clearly below the cap.
+
+**Self-check summary line (verbatim from stdout): `SELF-CHECKS: 811 passed, 0 failed`.** Checks
+tie every variation to the analytic cap (cap on every cell/seed for every variation;
+boundary-farmer ≤ cap and pins to it; non-parked ≤ parked; honest-AFK < cap; whole pass run
+twice, byte-identical; 2 `expect_reject` negatives). One honest sentence: **the anti-farm
+conclusion SURVIVES the wider variation** — the boundary farmer at exactly the cap is the
+worst case and nothing beat it, so the RATE half stays settled and **nothing flips**; the
+loot-VALUE half remains out of scope and the verdict remains `needs-more-evidence`.
+
 <!-- Outbox verdict-grammar block (README), emitted on finalization — DRAFT, coordinator finalizes:
 ## VERDICT 008 · <ISO8601> · status: finalized
 target: menno420/superbot
