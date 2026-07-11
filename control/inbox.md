@@ -125,3 +125,9 @@ corpus: (1) superbot BUG-0013 deathmatch challenge-view timeout; (2) RPS PvP #14
 done-when: reproduced-evidence verdict — catch matrix + false-positive count + one recommended guard contract stated as the invariant every money-moving leg must satisfy + the static rule that enforces it; states whether superbot's Rule 6 registry-roots drift (check_consistency.py:1151 roots=("views/","services/") vs docstring cogs/) changes the catch row.
 finalizes-as: VERDICT 010 (009 already used by owner-direct settings/UX audit).
 this session.
+
+## INTAKE owner-002 · 2026-07-11T18:20:00Z · status: finalized · source: OWNER-DIRECT (not idea-engine queue)
+source: owner-direct request 2026-07-11 (mennovanhattum@gmail.com) via coordinator routing — audit the fleet's websites: do the four sites (control-plane, botsite, dashboard, review) serve their stated purpose, is the navigation healthy (dead links / orphans / dead-ends / broken assets), and are they consistent with each other.
+idea: subject repo read-only — menno420/websites @ 31cfd9f (four services enumerated by review/app.py:3-15 + docs/current-state.md). games-web (product-forge concept, VERDICT 007) + superbot-stats (botsite phase-3 feature, VERDICT 003) investigated and excluded — not among the four.
+method: (1) NUMERIC/MEASURED CRAWL SIMULATION (rung 1–2) for the 3 LIVE-crawled production Railway sites (control-plane/botsite/dashboard, 2 passes each, stdlib HTTP BFS, 80-page/depth-2 cap) + (2) MEASURED PROTOTYPE for the not-deployed review site (built + served locally, crawled at 127.0.0.1, Playwright local). Deterministic analyzer re-derives every number from the committed snapshots; byte-identical re-run; 243 self-checks.
+outcome: VERDICT 011 finalized → outbox (approve — serves-purpose on all four + ship named fixes; owner-action: deploy review). Report sims/owner-002-websites-purpose-nav/REPORT.md.

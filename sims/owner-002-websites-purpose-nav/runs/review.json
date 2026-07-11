@@ -1,0 +1,620 @@
+{
+  "site": "review",
+  "base_url": "http://127.0.0.1:8099",
+  "crawl_mode": "local",
+  "head_sha": "31cfd9f69a845515c0a7162fafa3457cc8e38468",
+  "purpose_quote": "Program review site \u2014 how an owner + Claude-agent fleet ships, told honestly. Built for Anthropic reviewers looking at how this program runs: one human owner who designs and directs but does not code, and a fleet of Claude agents that build, verify, and coordinate through committed git files. The site gives a visual, plain-English account of the process, the growth (real per-day numbers from git history), the successes, and \u2014 deliberately first-class \u2014 the problems. Every claim links to committed evidence; nothing is marketing prose.",
+  "purpose_path": "review/app.py:1-15",
+  "passes": [
+    {
+      "pass": 1,
+      "pages": [
+        {
+          "url": "http://127.0.0.1:8099/",
+          "depth": 0,
+          "http_status": 200,
+          "title": "Program Review \u2014 how an owner + agent fleet ships",
+          "out_links": [
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 5,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/process",
+          "depth": 1,
+          "http_status": 200,
+          "title": "Process \u2014 Program Review",
+          "out_links": [
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 5,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/growth",
+          "depth": 1,
+          "http_status": 200,
+          "title": "Growth \u2014 Program Review07-09: 4507-10: 3607-11: 4507-09: 2907-10: 2107-11: 2207-09: 10607-10: 17807-11: 250",
+          "out_links": [
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 3,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/successes",
+          "depth": 1,
+          "http_status": 200,
+          "title": "Successes \u2014 Program Review",
+          "out_links": [
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 21,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/problems",
+          "depth": 1,
+          "http_status": 200,
+          "title": "Problems \u2014 Program Review",
+          "out_links": [
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 21,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/story.json",
+          "depth": 1,
+          "http_status": 200,
+          "title": null,
+          "out_links": [],
+          "external_links": 0,
+          "forms": 0,
+          "buttons": 0,
+          "assets": [],
+          "is_dead_end": true,
+          "redirected_to": null,
+          "console_errors": []
+        }
+      ]
+    },
+    {
+      "pass": 2,
+      "pages": [
+        {
+          "url": "http://127.0.0.1:8099/",
+          "depth": 0,
+          "http_status": 200,
+          "title": "Program Review \u2014 how an owner + agent fleet ships",
+          "out_links": [
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 5,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/process",
+          "depth": 1,
+          "http_status": 200,
+          "title": "Process \u2014 Program Review",
+          "out_links": [
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 5,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/growth",
+          "depth": 1,
+          "http_status": 200,
+          "title": "Growth \u2014 Program Review07-09: 4507-10: 3607-11: 4507-09: 2907-10: 2107-11: 2207-09: 10607-10: 17807-11: 250",
+          "out_links": [
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 3,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/successes",
+          "depth": 1,
+          "http_status": 200,
+          "title": "Successes \u2014 Program Review",
+          "out_links": [
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 21,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/problems",
+          "depth": 1,
+          "http_status": 200,
+          "title": "Problems \u2014 Program Review",
+          "out_links": [
+            "http://127.0.0.1:8099/problems",
+            "http://127.0.0.1:8099/",
+            "http://127.0.0.1:8099/process",
+            "http://127.0.0.1:8099/growth",
+            "http://127.0.0.1:8099/successes",
+            "http://127.0.0.1:8099/story.json"
+          ],
+          "external_links": 21,
+          "forms": 0,
+          "buttons": 2,
+          "assets": [
+            {
+              "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;600&display=swap",
+              "status": null
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/tokens.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/components.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/site.css",
+              "status": 200
+            },
+            {
+              "url": "http://127.0.0.1:8099/static/ds/ds.js",
+              "status": 200
+            }
+          ],
+          "is_dead_end": false,
+          "redirected_to": null,
+          "console_errors": []
+        },
+        {
+          "url": "http://127.0.0.1:8099/story.json",
+          "depth": 1,
+          "http_status": 200,
+          "title": null,
+          "out_links": [],
+          "external_links": 0,
+          "forms": 0,
+          "buttons": 0,
+          "assets": [],
+          "is_dead_end": true,
+          "redirected_to": null,
+          "console_errors": []
+        }
+      ]
+    }
+  ],
+  "playwright": {
+    "pages": [
+      {
+        "url": "http://127.0.0.1:8099/",
+        "status": 200,
+        "svg_count": 0,
+        "svg_nonempty": 0,
+        "console_errors": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: net::ERR_CONNECTION_RESET"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+          }
+        ],
+        "console_warnings": []
+      },
+      {
+        "url": "http://127.0.0.1:8099/process",
+        "status": 200,
+        "svg_count": 0,
+        "svg_nonempty": 0,
+        "console_errors": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: net::ERR_CONNECTION_RESET"
+          }
+        ],
+        "console_warnings": []
+      },
+      {
+        "url": "http://127.0.0.1:8099/growth",
+        "status": 200,
+        "svg_count": 3,
+        "svg_nonempty": 3,
+        "console_errors": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: net::ERR_CONNECTION_RESET"
+          }
+        ],
+        "console_warnings": []
+      },
+      {
+        "url": "http://127.0.0.1:8099/successes",
+        "status": 200,
+        "svg_count": 0,
+        "svg_nonempty": 0,
+        "console_errors": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: net::ERR_CONNECTION_RESET"
+          }
+        ],
+        "console_warnings": []
+      },
+      {
+        "url": "http://127.0.0.1:8099/problems",
+        "status": 200,
+        "svg_count": 0,
+        "svg_nonempty": 0,
+        "console_errors": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: net::ERR_CONNECTION_RESET"
+          }
+        ],
+        "console_warnings": []
+      }
+    ],
+    "skipped": false
+  },
+  "task_battery": [
+    {
+      "task": "Read overview (/)",
+      "steps": [
+        "http://127.0.0.1:8099/"
+      ],
+      "clicks": 0,
+      "reached": true,
+      "failure": null,
+      "notes": "200. Real totals from snapshot render (126 PRs merged, 250 test functions, 72 session cards, 4 services). Full nav to all 5 pages present. No placeholder text."
+    },
+    {
+      "task": "View /process",
+      "steps": [
+        "http://127.0.0.1:8099/",
+        "http://127.0.0.1:8099/process"
+      ],
+      "clicks": 1,
+      "reached": true,
+      "failure": null,
+      "notes": "200. 7395 chars of curated process narrative with 5 GitHub evidence deep-links, no placeholder."
+    },
+    {
+      "task": "View /growth charts (SVG present + non-empty?)",
+      "steps": [
+        "http://127.0.0.1:8099/",
+        "http://127.0.0.1:8099/growth"
+      ],
+      "clicks": 1,
+      "reached": true,
+      "failure": null,
+      "notes": "200. 3 inline SVG charts, all non-empty (3 <path> + 6 <text> + 1 axis <line> each) in static HTML AND confirmed rendered by Playwright (svg_nonempty=3/3). Real per-day numbers baked from snapshot."
+    },
+    {
+      "task": "Read /successes",
+      "steps": [
+        "http://127.0.0.1:8099/",
+        "http://127.0.0.1:8099/successes"
+      ],
+      "clicks": 1,
+      "reached": true,
+      "failure": null,
+      "notes": "200. 21 GitHub evidence deep-links, no placeholder."
+    },
+    {
+      "task": "Read /problems",
+      "steps": [
+        "http://127.0.0.1:8099/",
+        "http://127.0.0.1:8099/problems"
+      ],
+      "clicks": 1,
+      "reached": true,
+      "failure": null,
+      "notes": "200. 21 GitHub evidence deep-links, 7534 chars (longest page) \u2014 problems list leads and is as specific as successes, matching stated honesty intent. No placeholder."
+    },
+    {
+      "task": "Content REAL (snapshot.json) vs placeholder",
+      "steps": [
+        "http://127.0.0.1:8099/",
+        "http://127.0.0.1:8099/growth",
+        "http://127.0.0.1:8099/story.json"
+      ],
+      "clicks": 0,
+      "reached": true,
+      "failure": null,
+      "notes": "REAL. Numbers trace to committed data/snapshot.json (totals 126/149/72/250/4, 3 days 07-09..07-11). No honest-banner (snapshot loaded OK). /story.json exposes same machine-readable data. No lorem/placeholder/TODO on any page."
+    },
+    {
+      "task": "All 5 pages reachable from home nav",
+      "steps": [
+        "http://127.0.0.1:8099/"
+      ],
+      "clicks": 0,
+      "reached": true,
+      "failure": null,
+      "notes": "Every page carries the same 5-item nav (Overview/Process/Growth/Successes/Problems); all cross-linked, no orphans."
+    }
+  ]
+}
