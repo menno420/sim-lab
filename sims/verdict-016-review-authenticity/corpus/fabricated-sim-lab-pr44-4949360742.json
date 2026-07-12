@@ -1,0 +1,27 @@
+{
+  "id": 4949360742,
+  "comment_type": "issue_comment",
+  "in_reply_to_context": "reply to @codex question issue comment 4949354456 on the same PR (no API in_reply_to field; issue comments are flat)",
+  "body": "**Summary**\n* Added exact/suffix resolution counters to the verdict-012 sweep table so suffix-resolved cites are visible as telemetry instead of being folded into silent pass/fail totals. [sims/verdict-012-doc-cite-checker-spec/cite_checker_sweep.pyL293-L305](https://github.com/menno420/sim-lab/blob/b0835812faf7f5a6e4b190a9cc93a11280f099a4/sims/verdict-012-doc-cite-checker-spec/cite_checker_sweep.py#L293-L305)\n* Updated the sweep summary output to print `exact`, `suffix`, and `ambiguous` resolution counts per variant. [sims/verdict-012-doc-cite-checker-spec/cite_checker_sweep.pyL671-L676](https://github.com/menno420/sim-lab/blob/b0835812faf7f5a6e4b190a9cc93a11280f099a4/sims/verdict-012-doc-cite-checker-spec/cite_checker_sweep.py#L671-L676)\n* Updated the verdict recommendation to require suffix-resolved cites to still satisfy rule (b), and to treat suffix-resolved counts as the cheap audit queue for bounding the silent false-negative blind spot. [sims/verdict-012-doc-cite-checker-spec/REPORT.mdL196-L204](https://github.com/menno420/sim-lab/blob/b0835812faf7f5a6e4b190a9cc93a11280f099a4/sims/verdict-012-doc-cite-checker-spec/REPORT.md#L196-L204)\n* Expanded the telemetry recommendation and paste-ready verdict entry to include exact/suffix/foreign/ambiguous resolution telemetry before broad red-gate promotion. [sims/verdict-012-doc-cite-checker-spec/REPORT.mdL222-L229](https://github.com/menno420/sim-lab/blob/b0835812faf7f5a6e4b190a9cc93a11280f099a4/sims/verdict-012-doc-cite-checker-spec/REPORT.md#L222-L229) [sims/verdict-012-doc-cite-checker-spec/REPORT.mdL243-L245](https://github.com/menno420/sim-lab/blob/b0835812faf7f5a6e4b190a9cc93a11280f099a4/sims/verdict-012-doc-cite-checker-spec/REPORT.md#L243-L245)\n\n**Testing**\n* ✅ `python3 -m py_compile sims/verdict-012-doc-cite-checker-spec/cite_checker_sweep.py`\n* ✅ `python3 - <<'PY' ... run_synthetic(...) ... PY`\n* ⚠️ `python3 sims/verdict-012-doc-cite-checker-spec/cite_checker_sweep.py` failed due an environment/network limitation while fetching the pinned GitHub corpus: `CONNECT tunnel failed, response 403`.\n\nCommitted changes on the current branch and created a PR titled **“Add cite resolution telemetry to verdict-012 follow-up.”**\n\n [View task →](https://chatgpt.com/s/cd_6a52e2af8aa0819193051543666cca43)",
+  "html_url": "https://github.com/menno420/sim-lab/pull/44#issuecomment-4949360742",
+  "user": {
+    "login": "chatgpt-codex-connector[bot]",
+    "id": 199175422,
+    "profile_url": "https://github.com/apps/chatgpt-codex-connector",
+    "avatar_url": "https://avatars.githubusercontent.com/in/1144995?v=4"
+  },
+  "author_association": "NONE",
+  "reactions": {
+    "total_count": 0,
+    "+1": 0,
+    "-1": 0,
+    "laugh": 0,
+    "confused": 0,
+    "heart": 0,
+    "hooray": 0,
+    "rocket": 0,
+    "eyes": 0
+  },
+  "created_at": "2026-07-12T00:43:33Z",
+  "updated_at": "2026-07-12T00:43:33Z"
+}

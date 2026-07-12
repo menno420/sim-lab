@@ -1,0 +1,15 @@
+{
+  "id": 3566891110,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOZLq",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-ecosystem-research-2026-07-12.md",
+  "line": 176,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Harden third-party Actions before teaching CI**\n\nThis recommends marketplace Actions as copy-paste CI building blocks, but the gift repo will be beginner- and Claude-edited, so it needs the missing workflow hardening rule: pin third-party actions to full commit SHAs and set minimal `permissions:` before any render/compile workflow is shipped. GitHub recommends SHA pinning to limit compromised dependencies, and a linter such as Ensure SHA Pinned Actions can enforce it ([GitHub changelog](https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/), [marketplace action](https://github.com/marketplace/actions/ensure-sha-pinned-actions)).\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:42:56Z",
+  "updated_at": "2026-07-12T18:42:57Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/265#discussion_r3566891110"
+}

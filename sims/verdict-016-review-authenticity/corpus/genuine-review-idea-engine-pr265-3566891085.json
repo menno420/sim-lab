@@ -1,0 +1,15 @@
+{
+  "id": 3566891085,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOZLX",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-ecosystem-research-2026-07-12.md",
+  "line": 190,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Add mesh and slicer checks to the CI loop**\n\nFor the companion blueprint's generated-model projects, rendering an STL and relying on GitHub's viewer does not catch non-manifold geometry or profile-specific slicing failures before the friend tries to print. Add the missing CI tools here: e.g. [ADMesh](https://github.com/admesh/admesh) or [trimesh](https://github.com/mikedh/trimesh) for watertight/manifold checks, plus a PrusaSlicer/Slic3r CLI smoke slice using `--export-gcode` with the committed profile ([Slic3r CLI docs](https://manual.slic3r.org/advanced/command-line)).\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:42:56Z",
+  "updated_at": "2026-07-12T18:42:57Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/265#discussion_r3566891085"
+}

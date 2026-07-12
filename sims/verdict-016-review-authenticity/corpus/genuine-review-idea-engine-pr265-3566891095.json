@@ -1,0 +1,15 @@
+{
+  "id": 3566891095,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOZLd",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-ecosystem-research-2026-07-12.md",
+  "line": 191,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Add a devcontainer for the workshop toolchain**\n\nThis PlatformIO/OpenSCAD/Python stack is meant for a beginner on day one, but the dossier never includes the setup-reproducibility tool that makes that realistic. Add `.devcontainer/devcontainer.json`/Codespaces so OpenSCAD, PlatformIO, Arduino CLI, Python packages, and VS Code extensions are pinned in one environment ([GitHub dev containers](https://docs.github.com/codespaces/setting-up-your-project-for-codespaces/introduction-to-dev-containers), [Dev Container spec](https://devcontainers.github.io/implementors/json_reference/)); otherwise the first session can stall on local installs instead of the maker loop.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:42:56Z",
+  "updated_at": "2026-07-12T18:42:57Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/265#discussion_r3566891095"
+}
