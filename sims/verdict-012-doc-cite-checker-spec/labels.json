@@ -1,0 +1,699 @@
+{
+ "_audit_note": "Hand-audited 2026-07-12 against the pinned trees (superbot-next@2c62a099, superbot@b2b7fe0c) by reading each flagged cite's context; rule-a and rule-b cover EVERY unique (doc,path) pair flagged by the audit variant g1-loose|keep|all-md|suffix; rule-c is an explicitly stated deterministic sample (sorted pairs, fixed stride, n=15) of a 548-pair population. verdict semantics: true-catch = the cite as written misleads a reader of THIS repo at THIS SHA (file absent from tree / content moved); false-positive = the cite is not a defect a red gate should stop (cross-repo reference clear from context, library path, deliberate mention of an absent path, grammar artifact, boundary noise).",
+ "rule_a": {
+  "superbot-next|.sessions/2026-07-11-moderation-parity-flip.md|bot1.py": {
+   "class": "cross-repo-legacy-bare",
+   "reason": "bare cite of legacy superbot bot1.py:541-586 pinned @7f7628e1 (other repo); loose grammar only",
+   "verdict": "false-positive"
+  },
+  "superbot-next|.sessions/2026-07-11-role-counting-rehome.md|role_cog.py": {
+   "class": "cross-repo-legacy-bare",
+   "reason": "bare cite of legacy superbot cogs/role_cog.py; loose grammar only",
+   "verdict": "false-positive"
+  },
+  "superbot-next|control/inbox.md|disbot/services/moderation_service.py": {
+   "class": "cross-repo-legacy",
+   "reason": "manager ORDER quoting menno420/superbot paths explicitly ('full text: menno420/superbot docs/eap/...')",
+   "verdict": "false-positive"
+  },
+  "superbot-next|control/status.md|disbot/cogs/role_cog.py": {
+   "class": "cross-repo-legacy",
+   "reason": "status heartbeat citing the legacy superbot tree (disbot/) for a parity port",
+   "verdict": "false-positive"
+  },
+  "superbot-next|docs/decisions.md|bot1.py": {
+   "class": "cross-repo-legacy-bare",
+   "reason": "decision provenance cites legacy superbot bot1.py; loose grammar only",
+   "verdict": "false-positive"
+  },
+  "superbot-next|docs/decisions.md|disbot/healthserver.py": {
+   "class": "cross-repo-legacy",
+   "reason": "decision names the legacy source file being ported (core/runtime/lifecycle.py port)",
+   "verdict": "false-positive"
+  },
+  "superbot-next|docs/decisions.md|subsystem_schema.py": {
+   "class": "cross-repo-legacy-bare",
+   "reason": "legacy superbot disbot/core/subsystem_schema.py cited bare; loose grammar only",
+   "verdict": "false-positive"
+  },
+  "superbot-next|docs/decisions.md|views/navigation.py": {
+   "class": "cross-repo-legacy",
+   "reason": "legacy superbot views/ tree cited in a port decision; superbot-next has no views/",
+   "verdict": "false-positive"
+  },
+  "superbot|.sessions/2026-07-04-rebuild-foundational-design.md|core/contracts.py": {
+   "class": "intentional-absent-mention",
+   "reason": "deliberate mention of the FABRICATED path while documenting/correcting the fabrication (WorkflowResult case); rule (a) fires correctly on the absent file, but redding a correction note is a false positive for gating -- red-gate needs a waiver marker",
+   "verdict": "false-positive"
+  },
+  "superbot|.sessions/2026-07-06-rebuild-consolidation-fable5.md|ext/commands/bot.py": {
+   "class": "library-path",
+   "reason": "discord.py library internals (discord/ext/commands/bot.py:1413 author.bot guard) -- a dependency path, never in this tree",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/design/shared-vocabulary.md|core/contracts.py": {
+   "class": "intentional-absent-mention",
+   "reason": "deliberate mention of the FABRICATED path while documenting/correcting the fabrication (WorkflowResult case); rule (a) fires correctly on the absent file, but redding a correction note is a false positive for gating -- red-gate needs a waiver marker",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/design/strand-1-kernel-spine/04-authority-engine.md|disbot/core/contracts.py": {
+   "class": "intentional-absent-mention",
+   "reason": "deliberate mention of the FABRICATED path while documenting/correcting the fabrication (WorkflowResult case); rule (a) fires correctly on the absent file, but redding a correction note is a false positive for gating -- red-gate needs a waiver marker",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/design/strand-1-kernel-spine/05-ops-kernel-rails.md|..._supervisor.py": {
+   "class": "grammar-artifact",
+   "reason": "regex artifact, not a real path (ellipsis-truncated name / line-range glued to the next cite across a separator); the g3-strict-guard grammar excludes it",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|163-168/setup_ai_advisor.py": {
+   "class": "grammar-artifact",
+   "reason": "regex artifact, not a real path (ellipsis-truncated name / line-range glued to the next cite across a separator); the g3-strict-guard grammar excludes it",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|221/message_pipeline.py": {
+   "class": "grammar-artifact",
+   "reason": "regex artifact, not a real path (ellipsis-truncated name / line-range glued to the next cite across a separator); the g3-strict-guard grammar excludes it",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|adopt.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|dist/bootstrap.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|economy/engine.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|interview.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|lib/modes.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|lib/state.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|loop/maintenance.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|loop/triggers.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|maintenance.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|review_seam.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|state.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|triggers.py": {
+   "class": "kit-subtree-moved",
+   "reason": "cite into the substrate-kit subtree, in-repo at authoring ('living in-repo at substrate-kit/'), EXTRACTED to its own repo by b2b7fe0 (substrate-kit/ and tests/unit/substrate_kit both verified absent) -- the in-tree cite is broken for a reader at this SHA: the stale/moved class",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|cog.py": {
+   "class": "bare-shorthand-artifact",
+   "reason": "bare token from truncated scaffold text ('...cog.py'); the real cite on the row (disbot/cogs/server_management_cog.py:39-45) resolves fine; loose grammar only",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-B-economy.md|workflow.py": {
+   "class": "bare-shorthand-abbreviation",
+   "reason": "prose shorthand for services/creature_workflow.py cited in full earlier on the row; no file named workflow.py exists; loose grammar only",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/audits/helper-debt-inventory.md|views/setup/sections/readiness.py": {
+   "class": "stale-deleted",
+   "reason": "disbot/views/setup/sections/ exists WITHOUT readiness.py -- file deleted/refactored since the audit",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/audits/repo-wide-audit-2026-05-29.md|cogs/moderation/_helpers.py": {
+   "class": "stale-deleted",
+   "reason": "disbot/cogs/moderation/ exists WITHOUT _helpers.py -- refactored since the 2026-05-29 audit",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/audits/repo-wide-audit-2026-05-29.md|xp/_helpers.py": {
+   "class": "stale-deleted",
+   "reason": "no xp/ module with _helpers.py anywhere in the tree -- moved/refactored since the audit",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/audits/ui-view-adoption-audit.md|_panel.py": {
+   "class": "brace-shorthand-artifact",
+   "reason": "token from brace-set shorthand views/channels/{delete,restrict}_panel.py:48-62 -- the regex cannot expand braces; both expanded files exist; loose grammar only",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/audits/ui-view-adoption-audit.md|views/mining/mine_view.py": {
+   "class": "stale-deleted",
+   "reason": "disbot/views/mining/ exists WITHOUT mine_view.py (grid_mine_view.py now) -- the grid-Mine redesign renamed it",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|.github/workflows/golden-parity.yml": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|ops.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/adapters/discord/panel_view.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/adapters/parity/transport.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/domain/blackjack/handlers.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/domain/blackjack/ops.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/domain/moderation/ops.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/domain/moderation/service.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/domain/settings/ops.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/domain/settings/service.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/kernel/db/settings.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/kernel/settings/__init__.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|sb/kernel/workflow/compile.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|tests/test_engine.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|tests/unit/band2/test_band2_slice1.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|tests/unit/settings_band/test_band1_settings.py": {
+   "class": "cross-repo-next",
+   "reason": "fleet-quality review OF superbot-next; the cite targets the superbot-next tree ('within next' per the doc) -- clear-from-context cross-repo reference",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/hostile-audit-checking-the-checkers-2026-07-10.md|substrate-gate.yml": {
+   "class": "cross-repo-other",
+   "reason": "cites another repo's .github/workflows/substrate-gate.yml (kit-adopter gate); superbot has no such workflow",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|ops.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|sb/domain/economy/ops.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|sb/domain/games/service.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|sb/domain/moderation/ops.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|sb/domain/proof_channel/ops.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|sb/kernel/workflow/engine.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|tests/unit/band2/test_band2_slice1.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|tests/unit/band6/test_band6_games_substrate.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/superbot-next-runtime-review-2026-07-10.md|tests/unit/interaction/test_handler_kit.py": {
+   "class": "cross-repo-next",
+   "reason": "runtime review OF superbot-next; cites say 'in superbot-next' explicitly",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/ideas/README.md|core/contracts.py": {
+   "class": "intentional-absent-mention",
+   "reason": "deliberate mention of the FABRICATED path while documenting/correcting the fabrication (WorkflowResult case); rule (a) fires correctly on the absent file, but redding a correction note is a false positive for gating -- red-gate needs a waiver marker",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/ideas/rebuild-design-cite-checker-2026-07-04.md|core/contracts.py": {
+   "class": "intentional-absent-mention",
+   "reason": "deliberate mention of the FABRICATED path while documenting/correcting the fabrication (WorkflowResult case); rule (a) fires correctly on the absent file, but redding a correction note is a false positive for gating -- red-gate needs a waiver marker",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/ideas/rebuild-design-cite-checker-2026-07-04.md|disbot/core/contracts.py": {
+   "class": "intentional-absent-mention",
+   "reason": "deliberate mention of the FABRICATED path while documenting/correcting the fabrication (WorkflowResult case); rule (a) fires correctly on the absent file, but redding a correction note is a false positive for gating -- red-gate needs a waiver marker",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/ideas/wire-level-live-bot-loop-2026-07-02.md|ext/commands/bot.py": {
+   "class": "library-path",
+   "reason": "discord.py library internals (discord/ext/commands/bot.py:1413 author.bot guard) -- a dependency path, never in this tree",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/planning/kit-lab-founding-plan-2026-07-07.md|cli.py": {
+   "class": "kit-subtree-moved",
+   "reason": "substrate-kit subtree cite (doc cites it as in-repo, e.g. 'tests green at tests/unit/substrate_kit/'); subtree extracted before b2b7fe0, so the cite is broken in-tree",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/kit-lab-founding-plan-2026-07-07.md|guardrail.py": {
+   "class": "kit-subtree-moved",
+   "reason": "substrate-kit subtree cite (doc cites it as in-repo, e.g. 'tests green at tests/unit/substrate_kit/'); subtree extracted before b2b7fe0, so the cite is broken in-tree",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/kit-lab-founding-plan-2026-07-07.md|substrate-kit/src/engine/adopt.py": {
+   "class": "kit-subtree-moved",
+   "reason": "substrate-kit subtree cite (doc cites it as in-repo, e.g. 'tests green at tests/unit/substrate_kit/'); subtree extracted before b2b7fe0, so the cite is broken in-tree",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/kit-lab-founding-plan-2026-07-07.md|substrate-kit/src/engine/loop/maintenance.py": {
+   "class": "kit-subtree-moved",
+   "reason": "substrate-kit subtree cite (doc cites it as in-repo, e.g. 'tests green at tests/unit/substrate_kit/'); subtree extracted before b2b7fe0, so the cite is broken in-tree",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/kit-lab-founding-plan-2026-07-07.md|test_bootstrap.py": {
+   "class": "kit-subtree-moved",
+   "reason": "substrate-kit subtree cite (doc cites it as in-repo, e.g. 'tests green at tests/unit/substrate_kit/'); subtree extracted before b2b7fe0, so the cite is broken in-tree",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/rebuild-canonical-plan-2026-07-06.md|ext/commands/bot.py": {
+   "class": "library-path",
+   "reason": "discord.py library internals (discord/ext/commands/bot.py:1413 author.bot guard) -- a dependency path, never in this tree",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/planning/rebuild-canonical-plan-2026-07-06.md|substrate-kit/src/engine/lib/state.py": {
+   "class": "kit-subtree-moved",
+   "reason": "substrate-kit subtree cite (doc cites it as in-repo, e.g. 'tests green at tests/unit/substrate_kit/'); subtree extracted before b2b7fe0, so the cite is broken in-tree",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/rebuild-foundational-design-opus-brief-2026-07-03.md|disbot/core/contracts.py": {
+   "class": "intentional-absent-mention",
+   "reason": "deliberate mention of the FABRICATED path while documenting/correcting the fabrication (WorkflowResult case); rule (a) fires correctly on the absent file, but redding a correction note is a false positive for gating -- red-gate needs a waiver marker",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/planning/rebuild-phase-2.5-procedure-2026-07-06.md|loop/review_seam.py": {
+   "class": "kit-subtree-moved",
+   "reason": "substrate-kit subtree cite (doc cites it as in-repo, e.g. 'tests green at tests/unit/substrate_kit/'); subtree extracted before b2b7fe0, so the cite is broken in-tree",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/rebuild-phase-2.5-procedure-2026-07-06.md|substrate-kit/src/engine/lib/state.py": {
+   "class": "kit-subtree-moved",
+   "reason": "substrate-kit subtree cite (doc cites it as in-repo, e.g. 'tests green at tests/unit/substrate_kit/'); subtree extracted before b2b7fe0, so the cite is broken in-tree",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/rebuild-test-guild-design-2026-07-06.md|ext/commands/bot.py": {
+   "class": "library-path",
+   "reason": "discord.py library internals (discord/ext/commands/bot.py:1413 author.bot guard) -- a dependency path, never in this tree",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/planning/untapped-runtime-services-workflows-map-2026-06-10.md|disbot/cogs/mining/market.py": {
+   "class": "stale-deleted",
+   "reason": "disbot/cogs/mining/ directory no longer exists -- mining moved to views/mining + services/mining_workflow",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/untapped-runtime-services-workflows-map-2026-06-10.md|disbot/cogs/mining/workshop.py": {
+   "class": "stale-deleted",
+   "reason": "disbot/cogs/mining/ directory no longer exists -- mining moved to views/mining + services/mining_workflow",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/untapped-runtime-services-workflows-map-2026-06-10.md|disbot/core/resources/mutation.py": {
+   "class": "stale-deleted",
+   "reason": "disbot/core/resources/ exists WITHOUT mutation.py -- cited as evidence at authoring, removed since",
+   "verdict": "true-catch"
+  }
+ },
+ "rule_b": {
+  "superbot|.session-journal-archive.md|diagnostic_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 472 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|.sessions/2026-06-17-manifest-spine-pr2-panel-registry.md|panels.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 209 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|.sessions/2026-07-02-lane-c-games-audit.md|_state.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 49 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/presentation-verification-mechanics-2026-07-03.md|disbot/utils/command_resolution.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/presentation-verification-mechanics-2026-07-03.md|interaction_helpers.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/presentation-verification-mechanics-2026-07-03.md|views/base.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|migrations.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|ui_permissions.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/gate-v/SONNET-5-ULTRACODE-CORE-READINESS-REVIEW.md|db/karma.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/gate-v/SONNET-5-ULTRACODE-CORE-READINESS-REVIEW.md|disbot/services/treasury_service.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|cogs/admin_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 8 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|create_panel.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|governance/cleanup.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|utils/db/tickets.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|views/channels/create_panel.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|views/channels/delete_panel.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 2 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|views/channels/move_panel.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|views/channels/restrict_panel.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|views/channels/visibility_panel.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 3 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-B-economy.md|disbot/services/counter_service.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-B-economy.md|disbot/utils/db/games/farm.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-B-economy.md|disbot/views/farm/menu.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-B-economy.md|utils/db/treasury.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-C-games.md|_state.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 49 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-C-games.md|disbot/views/games/hub.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-D-knowledge-platform.md|btd6_ai_context_service.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 3 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/archive/cog-functionality-audit-2026-06-05.md|cogs/diagnostic/_helpers.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 311 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/audits/helper-debt-inventory.md|cogs/diagnostic/_platform_embeds.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 425 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/audits/helper-debt-inventory.md|disbot/utils/helpers.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 5 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/health/platform-consistency-ledger.md|core/resources/status.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 1 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/planning/feature-completion/units/creature.md|creature_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 27 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/platform-mapping-a-user-surface.md|disbot/cogs/btd6_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 18 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/platform-mapping-a-user-surface.md|disbot/cogs/btd6_events_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 39 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/platform-mapping-a-user-surface.md|disbot/cogs/btd6_ops_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 26 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/platform-mapping-a-user-surface.md|disbot/cogs/btd6_reference_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 22 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/platform-mapping-a-user-surface.md|disbot/cogs/btd6_strategy_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 50 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/platform-mapping-b-admin-surface.md|disbot/cogs/diagnostic_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 28 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/platform-mapping-b-admin-surface.md|disbot/cogs/help_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 315 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/production-readiness/health-diagnostics-production-readiness-map-2026-06-12.md|_platform_embeds.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 939 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/production-readiness/health-diagnostics-production-readiness-map-2026-06-12.md|diagnostic_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 474 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/rebuild-foundational-design-opus-brief-2026-07-03.md|command_tree_sync.py": {
+   "class": "eof-boundary-noise",
+   "reason": "cited end exceeds EOF by 2 line(s); part of a systematic off-by-one cluster in the audit docs (authoring-tool line counting) -- content is present, not a stale cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/planning/rebuild-stage2-subsystem-walk-2026-07-05.md|admin_cog.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 8 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/superbot-audit-consolidation-2026-06-05.md|session_gc.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 29 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/untapped-runtime-services-workflows-map-2026-06-10.md|disbot/cogs/diagnostic/_helpers.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 211 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/planning/untapped-runtime-services-workflows-map-2026-06-10.md|disbot/cogs/diagnostic/_platform_embeds.py": {
+   "class": "line-drift",
+   "reason": "cited end exceeds EOF by 1267 lines -- the file shrank/was refactored since authoring; the cite no longer points at the described code",
+   "verdict": "true-catch"
+  }
+ },
+ "rule_c_sample": {
+  "superbot|.sessions/2026-06-09-consolidated-productive-session-plan.md|settings_mutation.py": {
+   "class": "id-present-elsewhere",
+   "reason": "project_from_legacy_settings IS in disbot/services/settings_mutation.py (L391, verified) but 56 lines from the cited :335 -- drift/window noise, not a wrong cite",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/design/strand-2-runtime-durability/08-event-outbox.md|settings_mutation.py": {
+   "class": "id-misassociation",
+   "reason": "backticked ids (event_outbox, OutboxRelayLane) name the MISSING design concepts the row is about; the cite points at the existing emit-after-commit sites -- same-line pairing is wrong",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/presentation-verification-mechanics-2026-07-03.md|sweep.py": {
+   "class": "id-extraction-noise",
+   "reason": "same-line backticked tokens are generic words ('shipped', 'restart'), not identifiers of the cited file",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|disbot/bot1.py": {
+   "class": "id-misassociation",
+   "reason": "ids are discord.py concepts (CommandRegistrationError, add_cog -- 0 hits in bot1.py, verified); the prose describes library behavior, the cite anchors a different clause",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|disbot/services/ai_policy_mutation.py": {
+   "class": "identifier-absent",
+   "reason": "emit_audit_action / server_logging / SetupOperation: 0 hits ANYWHERE in the cited file (verified by grep) although the doc claims this mutation service 'calls the shared emit_audit_action' -- the one genuine rule-c catch in the sample",
+   "verdict": "true-catch"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|game_state.py": {
+   "class": "id-misassociation",
+   "reason": "runtime-lock ids (bot_runtime_lock, pg_advisory_lock) belong to the migration/runtime clause of the same line; 0 hits in games/game_state.py (verified) but that cite anchors a different clause",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/foundations/runtime-logic-mechanics-2026-07-03.md|settings_cog.py": {
+   "class": "id-misassociation",
+   "reason": "ids (RolloutPolicy, tier_gate, _tier_meets) live in core/runtime/feature_flags.py named on the same line; 0 hits in settings_cog.py (verified)",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/gate-v/SONNET-5-ULTRACODE-CORE-READINESS-REVIEW.md|views/roles/diagnostics_panel.py": {
+   "class": "id-misassociation",
+   "reason": "ids are DESIGN names (HelpEntrySpec row R-11); 0 hits in the cited shipped file (verified) -- the row cites shipped code the design would retire",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|disbot/views/server_management/hub.py": {
+   "class": "id-present-elsewhere",
+   "reason": "ChannelCog IS in hub.py (L51 registry tuple, verified) but ~140 lines from the cited 187-198 -- window noise",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-A-governance.md|utils/role_menu_render.py": {
+   "class": "id-present-elsewhere",
+   "reason": "welcome_render is in the module docstring (L4, verified), 58 lines from the cited :62 -- window noise",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/analysis/rebuild-discovery/new-bot-capability-audit/lanes/lane-C-games.md|utils/terminal_guard.py": {
+   "class": "id-misassociation",
+   "reason": "safe_defer / payout_tournament: 0 hits in terminal_guard.py (verified); they name OTHER files' seams listed on the same summary line",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/audits/repo-wide-audit-2026-05-29.md|services/setup_plan.py": {
+   "class": "id-present-elsewhere",
+   "reason": "_validate_against_schema IS in setup_plan.py (L274/L355, verified), 28 lines past the cited :246 -- drift just outside the +/-20 window",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/eap/fleet-quality-review-2026-07-09.md|engine.py": {
+   "class": "bare-name-misresolution",
+   "reason": "bare 'engine.py' means superbot-next's sb/kernel/workflow/engine.py; basename resolution uniquely hit superbot's only engine.py (disbot/utils/poker/engine.py, verified) -- wrong file entirely",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/planning/platform-mapping-a-user-surface.md|disbot/cogs/economy_cog.py": {
+   "class": "id-extraction-noise",
+   "reason": "backticked table VOCABULARY ('primary_entrypoint', 'keep' are column values) extracted as ids",
+   "verdict": "false-positive"
+  },
+  "superbot|docs/planning/rebuild-foundational-design-opus-brief-2026-07-03.md|pool.py": {
+   "class": "id-misassociation",
+   "reason": "mutation_id: 0 hits in disbot/utils/db/pool.py (verified); the id belongs to the mutation-ledger clause, the pool.py:117-182 cite anchors the read-path clause of the same line",
+   "verdict": "false-positive"
+  }
+ }
+}
