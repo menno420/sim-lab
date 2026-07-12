@@ -132,11 +132,11 @@ idea: subject repo read-only — menno420/websites @ 31cfd9f (four services enum
 method: (1) NUMERIC/MEASURED CRAWL SIMULATION (rung 1–2) for the 3 LIVE-crawled production Railway sites (control-plane/botsite/dashboard, 2 passes each, stdlib HTTP BFS, 80-page/depth-2 cap) + (2) MEASURED PROTOTYPE for the not-deployed review site (built + served locally, crawled at 127.0.0.1, Playwright local). Deterministic analyzer re-derives every number from the committed snapshots; byte-identical re-run; 243 self-checks.
 outcome: VERDICT 011 finalized → outbox (approve — serves-purpose on all four + ship named fixes; owner-action: deploy review). Report sims/owner-002-websites-purpose-nav/REPORT.md.
 
-## INTAKE 012 · 2026-07-12T00:58:00Z · status: finalized
+## INTAKE 010 · 2026-07-12T00:58:00Z · status: finalized
 source: idea-engine `control/outbox.md` → PROPOSAL 010 · 2026-07-11T19:41:38Z · status: sim-ready — internal handoff (merged Ideas Lab seat, Q-0264; pulled directly, not via public-raw poll)
 idea: https://github.com/menno420/idea-engine/blob/a9b41f6d51ce8aa34e16c65cb909a8d0ac3c8cf5/control/outbox.md (idea entry `ideas/superbot/rebuild-design-cite-checker-2026-07-10.md` @ a9b41f6d51ce8aa34e16c65cb909a8d0ac3c8cf5; canonical superbot `docs/ideas/rebuild-design-cite-checker-2026-07-04.md` @ b2b7fe0c)
 question: Which spec should `tools/check_doc_cites.py` ship with — sweeping the cite-rule ladder (file-exists / +line-range≤EOF / +identifier-near-cited-lines) and cite-grammar/scope variants over the two real doc corpora (superbot-next@2c62a099973a2ee384af51e9a33074d9cd411002, superbot@b2b7fe0ce02a2a68cc18eac5242ab160b7b4330f), measured by true catches vs false positives per variant? (carried from source `question:`)
 method: MEASURED PROTOTYPE/SPIKE (rung 2, with a numeric-sweep layer) — built the candidate extract-resolve-judge engine and ran the full 36-variant × 2-corpora grid + a 10-cite planted synthetic layer; handled this session (build subtree `sims/verdict-012-doc-cite-checker-spec/`).
 done-when / evidence: per-variant catch and false-positive counts on both corpora with the flagged cite lines listed, an explicit check that the known fabrication class (e.g. the `disbot/core/contracts.py:48-52` `WorkflowResult` case) is caught, and ONE ruling naming cite grammar (regex), doc-tree scope, and warn-vs-red gating — sized so the superbot-next lane build is a single file plus one ci.yml loop word.
-finalizes-as: VERDICT 012 (numbering by intake order — V009/V011 were owner-direct intakes; INTAKE number aligned to the verdict per the REPORT numbering note).
+finalizes-as: VERDICT 012.
 outcome: VERDICT 012 finalized → outbox (approve). Report sims/verdict-012-doc-cite-checker-spec/REPORT.md @ e3be974 (verdict PR #44).

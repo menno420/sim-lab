@@ -30,7 +30,7 @@ notes, hence the ruling's inline waiver token. **Verdict: approve** (evidence:
 prototype, gate PASS, strength moderate-strong) — full ruling + paste-ready
 VERDICT 012 outbox entry at the end of the sim's REPORT.md.
 
-Slice boundary honored: control/ appends (INTAKE 012, VERDICT 012 outbox entry,
+Slice boundary honored: control/ appends (INTAKE 010, VERDICT 012 outbox entry,
 status.md heartbeat) are deliberately LEFT TO THE COORDINATOR — this session
 touched only `sims/verdict-012-doc-cite-checker-spec/` and this card, and the PR
 is parked open (never merged by this worker).
