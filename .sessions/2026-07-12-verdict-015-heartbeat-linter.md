@@ -6,7 +6,41 @@
 
 ## What happened
 
-(in progress)
+Built `sims/verdict-015-heartbeat-contradiction-linter/` — a stdlib-only
+measured prototype (rung 2 with a numeric-sweep layer): the candidate
+detector engine run as a 27-cell grid (3 fact-key grammars × 3
+disposition normalizations × 3 comparison scopes) over the real committed
+corpus (all 23 revisions of idea-engine control/status.md, fc0bab6 →
+0cfe15e inclusive, sha256-pinned fixtures from a FULL-history clone — a
+shallow clone mis-follows this file, recorded in labels.json along with the
+proposal's 22-vs-23 count reconciliation: git-exclusive vs
+endpoint-inclusive range) plus 44 enumerated planted disposition flips
+(22 explicit-id + 22 alias-only, the real specimen's shape; no RNG).
+
+**Run output summary (final head):** `SELF-CHECKS: 229 passed, 0 failed`,
+exit 0, byte-identical stdout+results.json across two process runs
+(external diff). HEADLINE: the proposal's "one known live contradiction"
+premise is UNDERCOUNTED x30 — the carried ⚑ "being DISMANTLED with the
+chat archive" paragraph contradicts the phase line's live/armed/standing
+declaration about the SAME trig_01T83 failsafe in ALL 21 session-1-era
+revisions (+ the pacemaker chain in 9 of them): 30 hand-audited real
+intra-file contradictions from ONE carry+update seam, unnoticed ~19.7h,
+ended exactly by e66c78a's ad-hoc single-home fix. Winner cell
+**g3-id+alias × n3-attrib+quote-excl × s3-cross-block**: pinned specimen
+caught + 30/30 instances at 0 FP flags on all 23 revisions, e66c78a's
+quotation-negation carry correctly un-flagged, planted recall 44/44.
+Id-only grammars catch 0/30 (the carry names routines by noun phrase,
+never id — the grammar axis is load-bearing); the naive co-occurrence
+baseline flags the fix itself; pair-level precision at the flag site is
+0.52 (advisory-grade, not red-gate-grade). **Verdict: approve — ship BOTH
+halves (single-home rule + kit advisory linter, spec in REPORT.md)**
+(evidence: prototype, gate PASS, strength moderate).
+
+Slice boundary this cycle (per the dispatching order, changed from the
+V014 division of labor): this session carries the INTAKE 013 and VERDICT
+015 control/ appends itself; control/status.md stays coordinator-only and
+is untouched. No @codex step — suspended per the outbox codex-line
+escalation @ dedc12e (incidents #1-#3 fabricated).
 
 ## Run command
 
