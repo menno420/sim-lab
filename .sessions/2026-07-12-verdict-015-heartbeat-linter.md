@@ -1,6 +1,6 @@
 # Session — VERDICT 015 — heartbeat contradiction linter (idea-engine PROPOSAL 013)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: fable · 2026-07-12 · verdict-015 slice-worker session
 > Objective: settle idea-engine PROPOSAL 013 (control/outbox.md @ 2026-07-12T22:04:42Z, sim-ready; idea ideas/fleet/heartbeat-contradiction-linter-2026-07-12.md @ 0a9bfc8) — a measured detector-cell sweep over the real committed revisions of idea-engine control/status.md (fc0bab6 → 0cfe15e), answering: which (fact-key extraction grammar × disposition-vocabulary normalization × comparison scope) cell catches the known live intra-file contradiction at c77563c plus planted disposition-flip contradictions at near-zero false positives on the other clean revisions (the e66c78a quotation-negation carry must NOT flag) — and does the winning cell's TC/FP profile justify a kit advisory contradiction linter alongside the single-home grammar rule, or the single-home rule alone?
 
@@ -50,7 +50,19 @@ python3 sims/verdict-015-heartbeat-contradiction-linter/heartbeat_contradiction_
 
 ## 💡 Session idea
 
-(filled at close)
+When a sim's question pins "the one known instance" of a failure class,
+treat that pin as a HYPOTHESIS about the corpus, not a fact: run the
+candidate detector's most sensitive cell FIRST as a census, hand-label
+everything it raises, and only then score the grid against the labeled
+ground truth. This session's census overturned the premise (1 known
+contradiction turned out to be 30 instances of one carried paragraph) and
+the discovery flipped the evidence weight of the whole verdict — the
+strongest argument for the linter was found BY the linter, and a sweep
+that had trusted the proposal's clean/dirty split would have scored 29
+true catches as false positives and wrongly ruled "FP floor too high,
+rule only". Corollary worth keeping: an "FP" tally on real prose is only
+as honest as its label provenance — commit the labels with verbatim
+quoted evidence and make an unlabeled flag fail the run.
 
 ## ⟲ Previous-session review
 
