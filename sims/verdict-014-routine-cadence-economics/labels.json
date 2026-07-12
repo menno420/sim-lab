@@ -1,0 +1,112 @@
+{
+  "_audit_note": "Hand-transcribed trigger-arrival trace T for VERDICT 014 (idea-engine PROPOSAL 012 / INTAKE 012). This file is the analogue of the hand-audit ledger: every event carries the idea-engine evidence commit it was reconstructed from, a per-event reason string, and an honest uncertainty note. Reconstruction method: git log --reverse fc0bab6..531b109 -- control/status.md over menno420/idea-engine read at origin/main ff48c2fad809ce7704bb66aafee42335efd5c3fd, plus git show <sha>:control/status.md for all 14 status.md versions (the exclusive range yields 13 commits; including the named start commit fc0bab6 the window has 14 versions - flagged, not smoothed). Tagging rule: an arrival is 'webhook-visible' iff its channel could deliver a webhook wake to this seat (PR activity on a subscribed PR); ORDER-file appends and foreign-repo commits/merges are 'inbox-only'. The word 'webhook' appears ZERO times in all 14 heartbeat versions - every real arrival is inbox-only by channel inference; the webhook-visible class is EMPTY on the real trace. This is inference from absence-of-evidence in heartbeat prose, not an attested fact. The sim (cadence_economics_sim.py) reads this file and self-checks its embedded constants against it.",
+  "reconstruction": {
+    "source_repo": "menno420/idea-engine",
+    "read_at_origin_main": "ff48c2fad809ce7704bb66aafee42335efd5c3fd",
+    "commit_range": "fc0bab6..531b109",
+    "commit_count": "13 exclusive-range commits; 14 status.md versions including fc0bab6",
+    "window_span": "2026-07-12T00:03:19Z (fc0bab6 stamp) to 2026-07-12T12:12:43Z (531b109 commit) - ~12.2h, not the idea's rounded ~14h",
+    "proposal": "PROPOSAL 012, control/outbox.md @ ff48c2f, lines 82-86",
+    "idea_blob": "ideas/fleet/routine-cadence-economics-sim-2026-07-12.md @ 87f0dd2d0b0b9677302dd58fb24a2e3e3d39c9ff",
+    "probe_verdict": "idea-engine PR #259, head fc90d7f"
+  },
+  "events": [
+    {
+      "id": "E1",
+      "name": "fm roster generation #11 regenerated",
+      "t_arrival_utc": "2026-07-12T03:02:00Z",
+      "t_arrival_min": 182.0,
+      "t_caught_utc": "2026-07-12T06:00:00Z..2026-07-12T06:28:00Z",
+      "tag": "inbox-only",
+      "evidence_commit": "38f88576efcaf436fa80404816f791dff86672d5",
+      "reason": "Arrival time from 38f8857 heartbeat prose ('gen #11 regenerated 03:02Z'). Caught/priced at the 06:0x failsafe sweep together with E2 via the #253 honest-null reconcile. Latency ~3.0-3.4h observed. Sub-signal of the same catch as E2; the probe folds E1+E2 into one datapoint - carried here as a separate arrival with a fold sensitivity run."
+    },
+    {
+      "id": "E2",
+      "name": "fm 8-seat restructure merges",
+      "t_arrival_utc": "2026-07-12T03:15:00Z..2026-07-12T03:28:00Z",
+      "t_arrival_min": 195.0,
+      "t_arrival_min_late_bound": 208.0,
+      "tag": "inbox-only",
+      "evidence_commit": "38f88576efcaf436fa80404816f791dff86672d5",
+      "reason": "Arrival window as recorded in 38f8857 ('BEFORE the 03:15-03:28Z 8-seat restructure merges'). Primary replay uses the 03:15Z early bound (conservative: longest latencies); the 03:28Z late bound is a sensitivity run. Observed catch: 06:0x sweep, latency 2h32m-3h13m. LIVE PROOF used by the sim's chain model: the seat was AWAKE (pacemaker chain alive) during 03:15-03:28Z but did not see this foreign-repo signal until the next fm-sweeping wake - chain wakes do not equal coverage of inbox-only arrivals."
+    },
+    {
+      "id": "E3",
+      "name": "fm roster generation #12 (fm 4111da4, PR #105)",
+      "t_arrival_utc": "2026-07-12T06:33:00Z",
+      "t_arrival_min": 393.0,
+      "tag": "inbox-only",
+      "evidence_commit": "b5cc329038cf95ff5e373ff472b21b869f60ade2",
+      "reason": "Checked at the 08:00Z failsafe sweep (b5cc329). Observed latency ~1.5h. EXTRA real datapoint NOT among the probe's named pins - found in the heartbeat record; pure addition, no contradiction."
+    },
+    {
+      "id": "E4",
+      "name": "sim-lab ORDER 003 (first inbound ORDER to the merged seat)",
+      "t_arrival_utc": "2026-07-12T08:30:00Z",
+      "t_arrival_min": 510.0,
+      "tag": "inbox-only",
+      "evidence_commit": "65cd284a5c37e0b07a7012e3ed37f44671fa7c76",
+      "reason": "fm-filed 08:30Z (fm-side prose, not independently verified), caught at the 10:00Z failsafe sweep and EXECUTED same wake; done-when evidence merged 10:31:24Z (531b109 line 10). THE catch-definition fork: 90 min to sweep start vs 2h01m to done-when evidence - both definitions are run by the sim (def-A / def-B). Explicitly inbox-only per the probe ('ORDER 003 arrived inbox-only')."
+    },
+    {
+      "id": "E5",
+      "name": "fm roster generation #13 observed",
+      "t_arrival_utc": null,
+      "t_arrival_min": null,
+      "tag": "inbox-only",
+      "evidence_commit": "65cd284a5c37e0b07a7012e3ed37f44671fa7c76",
+      "reason": "'roster gen #13 still pre-cutover lanes (no reconcile)' among the 10:00Z sweep results. Arrival time NOT recorded anywhere in the heartbeat corpus - honestly null; EXCLUDED from latency replay (unusable), INCLUDED in the arrival-rate derivation (the event did occur within the window)."
+    },
+    {
+      "id": "N1",
+      "name": "06:0x failsafe sweep null result (beyond E1/E2)",
+      "t_arrival_utc": null,
+      "tag": "null-sweep",
+      "evidence_commit": "38f88576efcaf436fa80404816f791dff86672d5",
+      "reason": "'both repos unmoved, no ORDER 003+ anywhere, owner sitting not yet' - a paid sweep that caught only already-arrived signals. Evidence that sweep standing cost is real."
+    },
+    {
+      "id": "N2",
+      "name": "08:00Z failsafe sweep null result (beyond E3)",
+      "t_arrival_utc": null,
+      "tag": "null-sweep",
+      "evidence_commit": "b5cc329038cf95ff5e373ff472b21b869f60ade2",
+      "reason": "'idea-engine 38f8857 / sim-lab e857b24 unmoved, no ORDER 003+ anywhere; ...' - paid sweep, one catch (E3), otherwise null."
+    },
+    {
+      "id": "N3",
+      "name": "12:00Z failsafe sweep - fully null",
+      "t_arrival_utc": null,
+      "tag": "null-sweep",
+      "evidence_commit": "531b1098ef6d1d24d04ea9e111f2d74fc877caf8",
+      "reason": "'all resume triggers quiet ... no new ORDERs' - zero arrivals caught; pure standing cost. Motivates the empty-night variant."
+    }
+  ],
+  "observed_catches_for_comparison": {
+    "note": "What the REAL seat (nominally failsafe-2h + a work-window chain) actually delivered - used by the sim's observed-vs-idealized audit, NOT as replay input. The real 04:0xZ wake (0fd8b65) did not sweep fm, so E1/E2 were caught at 06:0x, not 04:00 - idealized replay understates real latency.",
+    "E1": {"caught_min": 360.0, "latency_min_defA": 178.0},
+    "E2": {"caught_min": 360.0, "latency_min_defA": 165.0},
+    "E3": {"caught_min": 480.0, "latency_min_defA": 87.0},
+    "E4": {"caught_min": 600.0, "latency_min_defA": 90.0, "latency_min_defB": 121.4}
+  },
+  "wake_log_summary": {
+    "heartbeat_overwrites": 14,
+    "failsafe_cron": "0 */2 * * * (trig_01T83UuVthszGBcENYwrTrm7); first next_run_at 2026-07-12T00:01:53Z; explicitly-attributed sweeps 06:0x, 08:00Z, 10:00Z, 12:00Z; 00/02/04Z fires during the ACTIVE window not separately recorded",
+    "pacemaker_armed_fires_utc": ["00:11 (never confirmed fired)", "00:43", "00:59", "01:32", "02:05", "02:54", "~03:26", "~03:28", "04:16 (prospective only, never confirmed)", "06:26 (during idle-period sweep turn)", "~10:32 (during ORDER-003 resume turn)"]
+  },
+  "gaps": [
+    "G1: commit count 13 (exclusive range) vs 14 (including named start commit fc0bab6) - probe prose implies 14, cites 13.",
+    "G2: 00:11-04:16Z chain endpoints not independently confirmable - 00:11Z armed 'NOT yet fired at verification', 04:16Z fire declared PROSPECTIVELY at 04:07:30Z and never confirmed; all chain-fire times are armed/declared, not logged fire events.",
+    "G3: chain verified-alive window wider than the probe states (heartbeats also attest ~03:26/~03:28 at f0ea577/ef46497).",
+    "G4: chain fires OUTSIDE the while-work-open window (06:26Z, ~10:32Z during sweep-resumed turns) - the idealized chain-15m-while-work-open policy does not exactly match observed behavior.",
+    "G5: E2 latency bound 2h32m-3h13m depending on where inside the 06:0x wake the catch is dated (probe said ~2.5-3h; upper bound slightly exceeds 3h).",
+    "G6: E4 latency depends on catch definition - 90 min to sweep start vs 2h01m to done-when evidence; can flip a p95<=2h cell (both definitions run).",
+    "G7: arrival times are second-hand heartbeat prose about foreign-repo events, not verified against those repos' history.",
+    "G8: E5 (gen #13) has no arrival time - unusable for latency.",
+    "G9: sweep start times are nominal ('06:0x'; round-hour labels); actual wake-to-read lag inside each sweep unrecorded (bounded by heartbeat stamps 11-36 min after nominal fire).",
+    "G10: ~14h idea framing vs ~12.2h actual status.md window span.",
+    "G11: webhook-visible class is EMPTY in the real trace - event-driven-only's real-trace row is catch-rate 0; only synthetic variants can differentiate it; webhook-visible fraction w is the load-bearing unknown (swept).",
+    "G12: fc0bab6 cron anomaly - first next_run_at 00:01:53Z, not a round :00; cron fires may drift ~2 min from nominal (phase sensitivity included)."
+  ]
+}

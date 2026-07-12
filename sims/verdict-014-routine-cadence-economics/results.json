@@ -1,0 +1,3384 @@
+{
+ "audit": {
+  "hand_derived_expectations": "see self-check battery in this script (real-trace latencies, turns, chain fire count, def-B flip)",
+  "observed_vs_idealized": {
+   "idealized_failsafe_2h_latencies_defA": {
+    "E1": 58.0,
+    "E2": 45.0,
+    "E3": 87.0,
+    "E4": 90.0
+   },
+   "note": "what the real night actually delivered under its nominal failsafe-2h posture (the 04:0xZ wake did not sweep fm): idealized replay understates real latency - the binding failure was sweep fidelity, not cadence",
+   "observed_latencies_defA": {
+    "E1": 178.0,
+    "E2": 165.0,
+    "E3": 87.0,
+    "E4": 90.0
+   },
+   "observed_p95_defA": 178.0
+  }
+ },
+ "determinism": {
+  "in_process_double_run": "byte-identical (self-checked)",
+  "note": "no wall clock, no unseeded randomness, no network; seeds are committed constants"
+ },
+ "dominance": {
+  "pairs": [
+   {
+    "dominated": "failsafe-2h+chain-15m",
+    "dominator": "failsafe-2h"
+   },
+   {
+    "dominated": "failsafe-2h",
+    "dominator": "hybrid(event+failsafe-2h)"
+   },
+   {
+    "dominated": "failsafe-2h+chain-15m",
+    "dominator": "hybrid(event+failsafe-2h)"
+   }
+  ],
+  "strictly_dominated_policies": [
+   "failsafe-2h",
+   "failsafe-2h+chain-15m"
+  ]
+ },
+ "grid": {
+  "defs": [
+   "defA",
+   "defB"
+  ],
+  "policies": [
+   "failsafe-2h",
+   "failsafe-1h",
+   "failsafe-30m",
+   "failsafe-2h+chain-15m",
+   "event-driven-only",
+   "hybrid(event+failsafe-2h)"
+  ],
+  "variants": [
+   "real",
+   "poisson-w0.00",
+   "poisson-w0.25",
+   "poisson-w0.50",
+   "poisson-w0.75",
+   "poisson-w1.00",
+   "burst-w0.00",
+   "burst-w0.25",
+   "burst-w0.50",
+   "burst-w0.75",
+   "burst-w1.00",
+   "empty"
+  ],
+  "w_grid": [
+   0.0,
+   0.25,
+   0.5,
+   0.75,
+   1.0
+  ]
+ },
+ "meta": {
+  "answers": "idea-engine PROPOSAL 012 (INTAKE 012, finalizes as VERDICT 014)",
+  "catch_definitions": {
+   "defA": "latency to the wake that reads the trigger (E4 -> 90 min)",
+   "defB": "latency to done-when evidence = wake + 31.4 min measured exec lag (E4 -> 121.4 min)"
+  },
+  "constraint": "p95 catch-latency <= 120 min, uncaught arrivals count as +inf",
+  "horizons_min": {
+   "real": 732.0,
+   "synthetic": 720.0
+  },
+  "lambda_derivation": "5 real arrivals (E1..E5; E5 timeless but real) / 732 min window = 0.41/h; alt 4/732 in S8",
+  "lambda_per_min": 0.0068,
+  "percentile_method": "nearest-rank on pooled latencies (all seeds pooled)",
+  "primary_assumptions": {
+   "chain_sweeps": false,
+   "webhook_wake_sweeps": true
+  },
+  "seeds": {
+   "alt_lambda": "BASE+3000+i",
+   "base": 20260712,
+   "burst": "BASE+2000+i",
+   "n": 40,
+   "poisson": "BASE+1000+i",
+   "tag_stream": "seed XOR 0x5EED7A65 (times identical across w)"
+  },
+  "sim": "verdict-014-routine-cadence-economics",
+  "units": "worker-turns (cost model C as-given: 1/sweep, 1/chain-re-arm, ~0/webhook wake)"
+ },
+ "pins": {
+  "event_evidence": {
+   "E1": "38f88576efcaf436fa80404816f791dff86672d5",
+   "E2": "38f88576efcaf436fa80404816f791dff86672d5",
+   "E3": "b5cc329038cf95ff5e373ff472b21b869f60ade2",
+   "E4": "65cd284a5c37e0b07a7012e3ed37f44671fa7c76",
+   "E5": "65cd284a5c37e0b07a7012e3ed37f44671fa7c76",
+   "N3": "531b1098ef6d1d24d04ea9e111f2d74fc877caf8"
+  },
+  "idea": "ideas/fleet/routine-cadence-economics-sim-2026-07-12.md @ 87f0dd2d0b0b9677302dd58fb24a2e3e3d39c9ff",
+  "probe_verdict": "idea-engine PR #259, head fc90d7f",
+  "proposal": "idea-engine PROPOSAL 012, control/outbox.md @ ff48c2fad809ce7704bb66aafee42335efd5c3fd (lines 82-86)",
+  "sim_lab_base": "055245e9c5a694fac07eb51681eb67728dd91429",
+  "trace_range": "idea-engine control/status.md history fc0bab6..531b109 (13 exclusive-range commits; 14 versions incl. fc0bab6)",
+  "trace_read_at": "idea-engine origin/main ff48c2fad809ce7704bb66aafee42335efd5c3fd"
+ },
+ "self_checks": {
+  "failed": 0,
+  "failures": [],
+  "passed": 272
+ },
+ "sensitivity": {
+  "S1_catch_definition_flips": [
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.00",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.25",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.50",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.75",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w1.00",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.00",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.25",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.50",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.75",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w1.00",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 90.0,
+    "defB_p95": 121.4,
+    "instance": "real",
+    "policy": "failsafe-2h"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.00",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.25",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.50",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.75",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w1.00",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.00",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.25",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.50",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.75",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w1.00",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 90.0,
+    "defB_p95": 121.4,
+    "instance": "real",
+    "policy": "failsafe-2h+chain-15m"
+   },
+   {
+    "defA_p95": 112.7853,
+    "defB_p95": 144.1853,
+    "instance": "burst-w0.00",
+    "policy": "hybrid(event+failsafe-2h)"
+   },
+   {
+    "defA_p95": 104.9696,
+    "defB_p95": 136.3696,
+    "instance": "burst-w0.25",
+    "policy": "hybrid(event+failsafe-2h)"
+   },
+   {
+    "defA_p95": 97.0838,
+    "defB_p95": 128.4838,
+    "instance": "burst-w0.50",
+    "policy": "hybrid(event+failsafe-2h)"
+   },
+   {
+    "defA_p95": 116.2362,
+    "defB_p95": 147.6362,
+    "instance": "poisson-w0.00",
+    "policy": "hybrid(event+failsafe-2h)"
+   },
+   {
+    "defA_p95": 110.9433,
+    "defB_p95": 142.3433,
+    "instance": "poisson-w0.25",
+    "policy": "hybrid(event+failsafe-2h)"
+   },
+   {
+    "defA_p95": 105.9891,
+    "defB_p95": 137.3891,
+    "instance": "poisson-w0.50",
+    "policy": "hybrid(event+failsafe-2h)"
+   },
+   {
+    "defA_p95": 88.6122,
+    "defB_p95": 120.0122,
+    "instance": "poisson-w0.75",
+    "policy": "hybrid(event+failsafe-2h)"
+   },
+   {
+    "defA_p95": 90.0,
+    "defB_p95": 121.4,
+    "instance": "real",
+    "policy": "hybrid(event+failsafe-2h)"
+   }
+  ],
+  "S2_chain_sweeps_true": {
+   "cells": {
+    "burst-w0.00": {
+     "arrivals": 202,
+     "catches": 202,
+     "defA": {
+      "median": 51.1238,
+      "missed_gt_2h": 0,
+      "p95": 104.6135,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 82.5238,
+      "missed_gt_2h": 30,
+      "p95": 136.0135,
+      "pass_p95_le_2h": false
+     },
+     "turns": 833,
+     "turns_per_catch": 4.1238,
+     "uncaught": 0
+    },
+    "burst-w0.25": {
+     "arrivals": 202,
+     "catches": 202,
+     "defA": {
+      "median": 51.1238,
+      "missed_gt_2h": 0,
+      "p95": 104.6135,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 82.5238,
+      "missed_gt_2h": 30,
+      "p95": 136.0135,
+      "pass_p95_le_2h": false
+     },
+     "turns": 833,
+     "turns_per_catch": 4.1238,
+     "uncaught": 0
+    },
+    "burst-w0.50": {
+     "arrivals": 202,
+     "catches": 202,
+     "defA": {
+      "median": 51.1238,
+      "missed_gt_2h": 0,
+      "p95": 104.6135,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 82.5238,
+      "missed_gt_2h": 30,
+      "p95": 136.0135,
+      "pass_p95_le_2h": false
+     },
+     "turns": 833,
+     "turns_per_catch": 4.1238,
+     "uncaught": 0
+    },
+    "burst-w0.75": {
+     "arrivals": 202,
+     "catches": 202,
+     "defA": {
+      "median": 51.1238,
+      "missed_gt_2h": 0,
+      "p95": 104.6135,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 82.5238,
+      "missed_gt_2h": 30,
+      "p95": 136.0135,
+      "pass_p95_le_2h": false
+     },
+     "turns": 833,
+     "turns_per_catch": 4.1238,
+     "uncaught": 0
+    },
+    "burst-w1.00": {
+     "arrivals": 202,
+     "catches": 202,
+     "defA": {
+      "median": 51.1238,
+      "missed_gt_2h": 0,
+      "p95": 104.6135,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 82.5238,
+      "missed_gt_2h": 30,
+      "p95": 136.0135,
+      "pass_p95_le_2h": false
+     },
+     "turns": 833,
+     "turns_per_catch": 4.1238,
+     "uncaught": 0
+    },
+    "empty": {
+     "arrivals": 0,
+     "catches": 0,
+     "defA": {
+      "median": 0.0,
+      "missed_gt_2h": 0,
+      "p95": 0.0,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 0.0,
+      "missed_gt_2h": 0,
+      "p95": 0.0,
+      "pass_p95_le_2h": true
+     },
+     "turns": 7,
+     "turns_per_catch": "inf",
+     "uncaught": 0
+    },
+    "poisson-w0.00": {
+     "arrivals": 190,
+     "catches": 190,
+     "defA": {
+      "median": 30.8072,
+      "missed_gt_2h": 0,
+      "p95": 105.9891,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 62.2072,
+      "missed_gt_2h": 31,
+      "p95": 137.3891,
+      "pass_p95_le_2h": false
+     },
+     "turns": 1036,
+     "turns_per_catch": 5.4526,
+     "uncaught": 0
+    },
+    "poisson-w0.25": {
+     "arrivals": 190,
+     "catches": 190,
+     "defA": {
+      "median": 30.8072,
+      "missed_gt_2h": 0,
+      "p95": 105.9891,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 62.2072,
+      "missed_gt_2h": 31,
+      "p95": 137.3891,
+      "pass_p95_le_2h": false
+     },
+     "turns": 1036,
+     "turns_per_catch": 5.4526,
+     "uncaught": 0
+    },
+    "poisson-w0.50": {
+     "arrivals": 190,
+     "catches": 190,
+     "defA": {
+      "median": 30.8072,
+      "missed_gt_2h": 0,
+      "p95": 105.9891,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 62.2072,
+      "missed_gt_2h": 31,
+      "p95": 137.3891,
+      "pass_p95_le_2h": false
+     },
+     "turns": 1036,
+     "turns_per_catch": 5.4526,
+     "uncaught": 0
+    },
+    "poisson-w0.75": {
+     "arrivals": 190,
+     "catches": 190,
+     "defA": {
+      "median": 30.8072,
+      "missed_gt_2h": 0,
+      "p95": 105.9891,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 62.2072,
+      "missed_gt_2h": 31,
+      "p95": 137.3891,
+      "pass_p95_le_2h": false
+     },
+     "turns": 1036,
+     "turns_per_catch": 5.4526,
+     "uncaught": 0
+    },
+    "poisson-w1.00": {
+     "arrivals": 190,
+     "catches": 190,
+     "defA": {
+      "median": 30.8072,
+      "missed_gt_2h": 0,
+      "p95": 105.9891,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 62.2072,
+      "missed_gt_2h": 31,
+      "p95": 137.3891,
+      "pass_p95_le_2h": false
+     },
+     "turns": 1036,
+     "turns_per_catch": 5.4526,
+     "uncaught": 0
+    },
+    "real": {
+     "arrivals": 4,
+     "catches": 4,
+     "defA": {
+      "median": 45.0,
+      "missed_gt_2h": 0,
+      "p95": 87.0,
+      "pass_p95_le_2h": true
+     },
+     "defB": {
+      "median": 76.4,
+      "missed_gt_2h": 0,
+      "p95": 118.4,
+      "pass_p95_le_2h": true
+     },
+     "turns": 25,
+     "turns_per_catch": 6.25,
+     "uncaught": 0
+    }
+   },
+   "note": "counterfactual: primary uses chain_sweeps=False per the E2 live proof (seat awake on chain during 03:15-03:28Z arrivals, caught only at 06:0x)"
+  },
+  "S3_webhook_wake_sweeps_false": {
+   "event-driven-only|burst-w0.00": {
+    "arrivals": 202,
+    "catches": 0,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 202,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 202,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": "inf",
+    "uncaught": 202
+   },
+   "event-driven-only|burst-w0.25": {
+    "arrivals": 202,
+    "catches": 53,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 149,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 149,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": 0.0,
+    "uncaught": 149
+   },
+   "event-driven-only|burst-w0.50": {
+    "arrivals": 202,
+    "catches": 95,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 107,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 107,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": 0.0,
+    "uncaught": 107
+   },
+   "event-driven-only|burst-w0.75": {
+    "arrivals": 202,
+    "catches": 151,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 51,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": 31.4,
+     "missed_gt_2h": 51,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": 0.0,
+    "uncaught": 51
+   },
+   "event-driven-only|burst-w1.00": {
+    "arrivals": 202,
+    "catches": 202,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 0.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 31.4,
+     "missed_gt_2h": 0,
+     "p95": 31.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 0,
+    "turns_per_catch": 0.0,
+    "uncaught": 0
+   },
+   "event-driven-only|empty": {
+    "arrivals": 0,
+    "catches": 0,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 0.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 0.0,
+     "pass_p95_le_2h": true
+    },
+    "turns": 0,
+    "turns_per_catch": "inf",
+    "uncaught": 0
+   },
+   "event-driven-only|poisson-w0.00": {
+    "arrivals": 190,
+    "catches": 0,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 190,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 190,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": "inf",
+    "uncaught": 190
+   },
+   "event-driven-only|poisson-w0.25": {
+    "arrivals": 190,
+    "catches": 35,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 155,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 155,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": 0.0,
+    "uncaught": 155
+   },
+   "event-driven-only|poisson-w0.50": {
+    "arrivals": 190,
+    "catches": 81,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 109,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 109,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": 0.0,
+    "uncaught": 109
+   },
+   "event-driven-only|poisson-w0.75": {
+    "arrivals": 190,
+    "catches": 132,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 58,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": 31.4,
+     "missed_gt_2h": 58,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": 0.0,
+    "uncaught": 58
+   },
+   "event-driven-only|poisson-w1.00": {
+    "arrivals": 190,
+    "catches": 190,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 0.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 31.4,
+     "missed_gt_2h": 0,
+     "p95": 31.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 0,
+    "turns_per_catch": 0.0,
+    "uncaught": 0
+   },
+   "event-driven-only|real": {
+    "arrivals": 4,
+    "catches": 0,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 4,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 4,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": "inf",
+    "uncaught": 4
+   },
+   "hybrid(event+failsafe-2h)|burst-w0.00": {
+    "arrivals": 202,
+    "catches": 202,
+    "defA": {
+     "median": 61.4641,
+     "missed_gt_2h": 0,
+     "p95": 112.7853,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 92.8641,
+     "missed_gt_2h": 54,
+     "p95": 144.1853,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.3861,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|burst-w0.25": {
+    "arrivals": 202,
+    "catches": 202,
+    "defA": {
+     "median": 47.4677,
+     "missed_gt_2h": 0,
+     "p95": 110.3103,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 78.8677,
+     "missed_gt_2h": 44,
+     "p95": 141.7103,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.3861,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|burst-w0.50": {
+    "arrivals": 202,
+    "catches": 202,
+    "defA": {
+     "median": 8.1993,
+     "missed_gt_2h": 0,
+     "p95": 107.235,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 39.5993,
+     "missed_gt_2h": 34,
+     "p95": 138.635,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.3861,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|burst-w0.75": {
+    "arrivals": 202,
+    "catches": 202,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 94.3475,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 31.4,
+     "missed_gt_2h": 15,
+     "p95": 125.7475,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.3861,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|burst-w1.00": {
+    "arrivals": 202,
+    "catches": 202,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 0.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 31.4,
+     "missed_gt_2h": 0,
+     "p95": 31.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 280,
+    "turns_per_catch": 1.3861,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|empty": {
+    "arrivals": 0,
+    "catches": 0,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 0.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 0.0,
+     "pass_p95_le_2h": true
+    },
+    "turns": 7,
+    "turns_per_catch": "inf",
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|poisson-w0.00": {
+    "arrivals": 190,
+    "catches": 190,
+    "defA": {
+     "median": 59.1258,
+     "missed_gt_2h": 0,
+     "p95": 116.2362,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 90.5258,
+     "missed_gt_2h": 54,
+     "p95": 147.6362,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.4737,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|poisson-w0.25": {
+    "arrivals": 190,
+    "catches": 190,
+    "defA": {
+     "median": 50.7982,
+     "missed_gt_2h": 0,
+     "p95": 113.8025,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 82.1982,
+     "missed_gt_2h": 44,
+     "p95": 145.2025,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.4737,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|poisson-w0.50": {
+    "arrivals": 190,
+    "catches": 190,
+    "defA": {
+     "median": 15.4931,
+     "missed_gt_2h": 0,
+     "p95": 110.5062,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 46.8931,
+     "missed_gt_2h": 35,
+     "p95": 141.9062,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.4737,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|poisson-w0.75": {
+    "arrivals": 190,
+    "catches": 190,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 101.6068,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 31.4,
+     "missed_gt_2h": 16,
+     "p95": 133.0068,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.4737,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|poisson-w1.00": {
+    "arrivals": 190,
+    "catches": 190,
+    "defA": {
+     "median": 0.0,
+     "missed_gt_2h": 0,
+     "p95": 0.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 31.4,
+     "missed_gt_2h": 0,
+     "p95": 31.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 280,
+    "turns_per_catch": 1.4737,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)|real": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 58.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 89.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 7,
+    "turns_per_catch": 1.75,
+    "uncaught": 0
+   }
+  },
+  "S4_chain_work_window": {
+   "work_min=240|poisson-w0.00": {
+    "arrivals": 190,
+    "catches": 190,
+    "defA": {
+     "median": 59.1258,
+     "missed_gt_2h": 0,
+     "p95": 116.2362,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 90.5258,
+     "missed_gt_2h": 54,
+     "p95": 147.6362,
+     "pass_p95_le_2h": false
+    },
+    "turns": 1512,
+    "turns_per_catch": 7.9579,
+    "uncaught": 0
+   },
+   "work_min=240|real": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 58.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 89.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 39,
+    "turns_per_catch": 9.75,
+    "uncaught": 0
+   },
+   "work_min=60|poisson-w0.00": {
+    "arrivals": 190,
+    "catches": 190,
+    "defA": {
+     "median": 59.1258,
+     "missed_gt_2h": 0,
+     "p95": 116.2362,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 90.5258,
+     "missed_gt_2h": 54,
+     "p95": 147.6362,
+     "pass_p95_le_2h": false
+    },
+    "turns": 712,
+    "turns_per_catch": 3.7474,
+    "uncaught": 0
+   },
+   "work_min=60|real": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 58.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 89.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 19,
+    "turns_per_catch": 4.75,
+    "uncaught": 0
+   }
+  },
+  "S5_E2_late_bound": {
+   "event-driven-only": {
+    "arrivals": 4,
+    "catches": 0,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 4,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 4,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": "inf",
+    "uncaught": 4
+   },
+   "failsafe-1h": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 30.0,
+     "missed_gt_2h": 0,
+     "p95": 58.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 61.4,
+     "missed_gt_2h": 0,
+     "p95": 89.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 13,
+    "turns_per_catch": 3.25,
+    "uncaught": 0
+   },
+   "failsafe-2h": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 58.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 89.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 7,
+    "turns_per_catch": 1.75,
+    "uncaught": 0
+   },
+   "failsafe-2h+chain-15m": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 58.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 89.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 31,
+    "turns_per_catch": 7.75,
+    "uncaught": 0
+   },
+   "failsafe-30m": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 2.0,
+     "missed_gt_2h": 0,
+     "p95": 28.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 33.4,
+     "missed_gt_2h": 0,
+     "p95": 59.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 25,
+    "turns_per_catch": 6.25,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 58.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 89.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 7,
+    "turns_per_catch": 1.75,
+    "uncaught": 0
+   }
+  },
+  "S6_fold_E1_E2": {
+   "event-driven-only": {
+    "arrivals": 3,
+    "catches": 0,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 3,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 3,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": "inf",
+    "uncaught": 3
+   },
+   "failsafe-1h": {
+    "arrivals": 3,
+    "catches": 3,
+    "defA": {
+     "median": 30.0,
+     "missed_gt_2h": 0,
+     "p95": 45.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 61.4,
+     "missed_gt_2h": 0,
+     "p95": 76.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 13,
+    "turns_per_catch": 4.3333,
+    "uncaught": 0
+   },
+   "failsafe-2h": {
+    "arrivals": 3,
+    "catches": 3,
+    "defA": {
+     "median": 87.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 118.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 7,
+    "turns_per_catch": 2.3333,
+    "uncaught": 0
+   },
+   "failsafe-2h+chain-15m": {
+    "arrivals": 3,
+    "catches": 3,
+    "defA": {
+     "median": 87.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 118.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 31,
+    "turns_per_catch": 10.3333,
+    "uncaught": 0
+   },
+   "failsafe-30m": {
+    "arrivals": 3,
+    "catches": 3,
+    "defA": {
+     "median": 15.0,
+     "missed_gt_2h": 0,
+     "p95": 27.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 46.4,
+     "missed_gt_2h": 0,
+     "p95": 58.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 25,
+    "turns_per_catch": 8.3333,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)": {
+    "arrivals": 3,
+    "catches": 3,
+    "defA": {
+     "median": 87.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 118.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 7,
+    "turns_per_catch": 2.3333,
+    "uncaught": 0
+   }
+  },
+  "S7_cron_phase_real": {
+   "failsafe-1h|phase=0": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 30.0,
+     "missed_gt_2h": 0,
+     "p95": 58.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 61.4,
+     "missed_gt_2h": 0,
+     "p95": 89.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 13,
+    "turns_per_catch": 3.25,
+    "uncaught": 0
+   },
+   "failsafe-1h|phase=30": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 15.0,
+     "missed_gt_2h": 0,
+     "p95": 57.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 46.4,
+     "missed_gt_2h": 0,
+     "p95": 88.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 12,
+    "turns_per_catch": 3.0,
+    "uncaught": 0
+   },
+   "failsafe-2h|phase=0": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 58.0,
+     "missed_gt_2h": 0,
+     "p95": 90.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 89.4,
+     "missed_gt_2h": 1,
+     "p95": 121.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 7,
+    "turns_per_catch": 1.75,
+    "uncaught": 0
+   },
+   "failsafe-2h|phase=30": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 75.0,
+     "missed_gt_2h": 0,
+     "p95": 117.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 106.4,
+     "missed_gt_2h": 1,
+     "p95": 148.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 6,
+    "turns_per_catch": 1.5,
+    "uncaught": 0
+   },
+   "failsafe-2h|phase=60": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 30.0,
+     "missed_gt_2h": 0,
+     "p95": 118.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 61.4,
+     "missed_gt_2h": 2,
+     "p95": 149.4,
+     "pass_p95_le_2h": false
+    },
+    "turns": 6,
+    "turns_per_catch": 1.5,
+    "uncaught": 0
+   },
+   "failsafe-2h|phase=90": {
+    "arrivals": 4,
+    "catches": 4,
+    "defA": {
+     "median": 28.0,
+     "missed_gt_2h": 0,
+     "p95": 60.0,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 59.4,
+     "missed_gt_2h": 0,
+     "p95": 91.4,
+     "pass_p95_le_2h": true
+    },
+    "turns": 6,
+    "turns_per_catch": 1.5,
+    "uncaught": 0
+   }
+  },
+  "S8_alt_lambda_4_over_732_w0": {
+   "event-driven-only": {
+    "arrivals": 146,
+    "catches": 0,
+    "defA": {
+     "median": "inf",
+     "missed_gt_2h": 146,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "defB": {
+     "median": "inf",
+     "missed_gt_2h": 146,
+     "p95": "inf",
+     "pass_p95_le_2h": false
+    },
+    "turns": 0,
+    "turns_per_catch": "inf",
+    "uncaught": 146
+   },
+   "failsafe-1h": {
+    "arrivals": 146,
+    "catches": 146,
+    "defA": {
+     "median": 29.3673,
+     "missed_gt_2h": 0,
+     "p95": 56.5232,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 60.7673,
+     "missed_gt_2h": 0,
+     "p95": 87.9232,
+     "pass_p95_le_2h": true
+    },
+    "turns": 520,
+    "turns_per_catch": 3.5616,
+    "uncaught": 0
+   },
+   "failsafe-2h": {
+    "arrivals": 146,
+    "catches": 146,
+    "defA": {
+     "median": 51.0394,
+     "missed_gt_2h": 0,
+     "p95": 112.0027,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 82.4394,
+     "missed_gt_2h": 25,
+     "p95": 143.4027,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.9178,
+    "uncaught": 0
+   },
+   "failsafe-2h+chain-15m": {
+    "arrivals": 146,
+    "catches": 146,
+    "defA": {
+     "median": 51.0394,
+     "missed_gt_2h": 0,
+     "p95": 112.0027,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 82.4394,
+     "missed_gt_2h": 25,
+     "p95": 143.4027,
+     "pass_p95_le_2h": false
+    },
+    "turns": 1024,
+    "turns_per_catch": 7.0137,
+    "uncaught": 0
+   },
+   "failsafe-30m": {
+    "arrivals": 146,
+    "catches": 146,
+    "defA": {
+     "median": 14.3509,
+     "missed_gt_2h": 0,
+     "p95": 28.4161,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 45.7509,
+     "missed_gt_2h": 0,
+     "p95": 59.8161,
+     "pass_p95_le_2h": true
+    },
+    "turns": 1000,
+    "turns_per_catch": 6.8493,
+    "uncaught": 0
+   },
+   "hybrid(event+failsafe-2h)": {
+    "arrivals": 146,
+    "catches": 146,
+    "defA": {
+     "median": 51.0394,
+     "missed_gt_2h": 0,
+     "p95": 112.0027,
+     "pass_p95_le_2h": true
+    },
+    "defB": {
+     "median": 82.4394,
+     "missed_gt_2h": 25,
+     "p95": 143.4027,
+     "pass_p95_le_2h": false
+    },
+    "turns": 280,
+    "turns_per_catch": 1.9178,
+    "uncaught": 0
+   }
+  }
+ },
+ "sweep": [
+  {
+   "arrivals": 4,
+   "catches": 4,
+   "defA": {
+    "median": 58.0,
+    "missed_gt_2h": 0,
+    "p95": 90.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 89.4,
+    "missed_gt_2h": 1,
+    "p95": 121.4,
+    "pass_p95_le_2h": false
+   },
+   "instance": "real",
+   "policy": "failsafe-2h",
+   "turns": 7,
+   "turns_per_catch": 1.75,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.00",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.25",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.50",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.75",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w1.00",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.00",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.25",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.50",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.75",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w1.00",
+   "policy": "failsafe-2h",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 0,
+   "catches": 0,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "instance": "empty",
+   "policy": "failsafe-2h",
+   "turns": 7,
+   "turns_per_catch": "inf",
+   "uncaught": 0
+  },
+  {
+   "arrivals": 4,
+   "catches": 4,
+   "defA": {
+    "median": 30.0,
+    "missed_gt_2h": 0,
+    "p95": 58.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 61.4,
+    "missed_gt_2h": 0,
+    "p95": 89.4,
+    "pass_p95_le_2h": true
+   },
+   "instance": "real",
+   "policy": "failsafe-1h",
+   "turns": 13,
+   "turns_per_catch": 3.25,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 31.1411,
+    "missed_gt_2h": 0,
+    "p95": 56.9436,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.5411,
+    "missed_gt_2h": 0,
+    "p95": 88.3436,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w0.00",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.7368,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 31.1411,
+    "missed_gt_2h": 0,
+    "p95": 56.9436,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.5411,
+    "missed_gt_2h": 0,
+    "p95": 88.3436,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w0.25",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.7368,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 31.1411,
+    "missed_gt_2h": 0,
+    "p95": 56.9436,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.5411,
+    "missed_gt_2h": 0,
+    "p95": 88.3436,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w0.50",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.7368,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 31.1411,
+    "missed_gt_2h": 0,
+    "p95": 56.9436,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.5411,
+    "missed_gt_2h": 0,
+    "p95": 88.3436,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w0.75",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.7368,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 31.1411,
+    "missed_gt_2h": 0,
+    "p95": 56.9436,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.5411,
+    "missed_gt_2h": 0,
+    "p95": 88.3436,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w1.00",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.7368,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 30.664,
+    "missed_gt_2h": 0,
+    "p95": 55.959,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.064,
+    "missed_gt_2h": 0,
+    "p95": 87.359,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.00",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.5743,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 30.664,
+    "missed_gt_2h": 0,
+    "p95": 55.959,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.064,
+    "missed_gt_2h": 0,
+    "p95": 87.359,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.25",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.5743,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 30.664,
+    "missed_gt_2h": 0,
+    "p95": 55.959,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.064,
+    "missed_gt_2h": 0,
+    "p95": 87.359,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.50",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.5743,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 30.664,
+    "missed_gt_2h": 0,
+    "p95": 55.959,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.064,
+    "missed_gt_2h": 0,
+    "p95": 87.359,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.75",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.5743,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 30.664,
+    "missed_gt_2h": 0,
+    "p95": 55.959,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 62.064,
+    "missed_gt_2h": 0,
+    "p95": 87.359,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w1.00",
+   "policy": "failsafe-1h",
+   "turns": 520,
+   "turns_per_catch": 2.5743,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 0,
+   "catches": 0,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "instance": "empty",
+   "policy": "failsafe-1h",
+   "turns": 13,
+   "turns_per_catch": "inf",
+   "uncaught": 0
+  },
+  {
+   "arrivals": 4,
+   "catches": 4,
+   "defA": {
+    "median": 15.0,
+    "missed_gt_2h": 0,
+    "p95": 28.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 46.4,
+    "missed_gt_2h": 0,
+    "p95": 59.4,
+    "pass_p95_le_2h": true
+   },
+   "instance": "real",
+   "policy": "failsafe-30m",
+   "turns": 25,
+   "turns_per_catch": 6.25,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 14.6352,
+    "missed_gt_2h": 0,
+    "p95": 28.009,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 46.0352,
+    "missed_gt_2h": 0,
+    "p95": 59.409,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w0.00",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 5.2632,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 14.6352,
+    "missed_gt_2h": 0,
+    "p95": 28.009,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 46.0352,
+    "missed_gt_2h": 0,
+    "p95": 59.409,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w0.25",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 5.2632,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 14.6352,
+    "missed_gt_2h": 0,
+    "p95": 28.009,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 46.0352,
+    "missed_gt_2h": 0,
+    "p95": 59.409,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w0.50",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 5.2632,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 14.6352,
+    "missed_gt_2h": 0,
+    "p95": 28.009,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 46.0352,
+    "missed_gt_2h": 0,
+    "p95": 59.409,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w0.75",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 5.2632,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 14.6352,
+    "missed_gt_2h": 0,
+    "p95": 28.009,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 46.0352,
+    "missed_gt_2h": 0,
+    "p95": 59.409,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w1.00",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 5.2632,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 15.7682,
+    "missed_gt_2h": 0,
+    "p95": 28.8765,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 47.1682,
+    "missed_gt_2h": 0,
+    "p95": 60.2765,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.00",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 4.9505,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 15.7682,
+    "missed_gt_2h": 0,
+    "p95": 28.8765,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 47.1682,
+    "missed_gt_2h": 0,
+    "p95": 60.2765,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.25",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 4.9505,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 15.7682,
+    "missed_gt_2h": 0,
+    "p95": 28.8765,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 47.1682,
+    "missed_gt_2h": 0,
+    "p95": 60.2765,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.50",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 4.9505,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 15.7682,
+    "missed_gt_2h": 0,
+    "p95": 28.8765,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 47.1682,
+    "missed_gt_2h": 0,
+    "p95": 60.2765,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.75",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 4.9505,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 15.7682,
+    "missed_gt_2h": 0,
+    "p95": 28.8765,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 47.1682,
+    "missed_gt_2h": 0,
+    "p95": 60.2765,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w1.00",
+   "policy": "failsafe-30m",
+   "turns": 1000,
+   "turns_per_catch": 4.9505,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 0,
+   "catches": 0,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "instance": "empty",
+   "policy": "failsafe-30m",
+   "turns": 25,
+   "turns_per_catch": "inf",
+   "uncaught": 0
+  },
+  {
+   "arrivals": 4,
+   "catches": 4,
+   "defA": {
+    "median": 58.0,
+    "missed_gt_2h": 0,
+    "p95": 90.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 89.4,
+    "missed_gt_2h": 1,
+    "p95": 121.4,
+    "pass_p95_le_2h": false
+   },
+   "instance": "real",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 31,
+   "turns_per_catch": 7.75,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.00",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 1144,
+   "turns_per_catch": 6.0211,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.25",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 1144,
+   "turns_per_catch": 6.0211,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.50",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 1144,
+   "turns_per_catch": 6.0211,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.75",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 1144,
+   "turns_per_catch": 6.0211,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w1.00",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 1144,
+   "turns_per_catch": 6.0211,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.00",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 920,
+   "turns_per_catch": 4.5545,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.25",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 920,
+   "turns_per_catch": 4.5545,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.50",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 920,
+   "turns_per_catch": 4.5545,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.75",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 920,
+   "turns_per_catch": 4.5545,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w1.00",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 920,
+   "turns_per_catch": 4.5545,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 0,
+   "catches": 0,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "instance": "empty",
+   "policy": "failsafe-2h+chain-15m",
+   "turns": 7,
+   "turns_per_catch": "inf",
+   "uncaught": 0
+  },
+  {
+   "arrivals": 4,
+   "catches": 0,
+   "defA": {
+    "median": "inf",
+    "missed_gt_2h": 4,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": "inf",
+    "missed_gt_2h": 4,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "real",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": "inf",
+   "uncaught": 4
+  },
+  {
+   "arrivals": 190,
+   "catches": 0,
+   "defA": {
+    "median": "inf",
+    "missed_gt_2h": 190,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": "inf",
+    "missed_gt_2h": 190,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.00",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": "inf",
+   "uncaught": 190
+  },
+  {
+   "arrivals": 190,
+   "catches": 82,
+   "defA": {
+    "median": "inf",
+    "missed_gt_2h": 134,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": "inf",
+    "missed_gt_2h": 136,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.25",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": 0.0,
+   "uncaught": 108
+  },
+  {
+   "arrivals": 190,
+   "catches": 125,
+   "defA": {
+    "median": 32.9528,
+    "missed_gt_2h": 82,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": 64.3528,
+    "missed_gt_2h": 84,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.50",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": 0.0,
+   "uncaught": 65
+  },
+  {
+   "arrivals": 190,
+   "catches": 166,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 36,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": 31.4,
+    "missed_gt_2h": 42,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.75",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": 0.0,
+   "uncaught": 24
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 31.4,
+    "missed_gt_2h": 0,
+    "p95": 31.4,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w1.00",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": 0.0,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 0,
+   "defA": {
+    "median": "inf",
+    "missed_gt_2h": 202,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": "inf",
+    "missed_gt_2h": 202,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.00",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": "inf",
+   "uncaught": 202
+  },
+  {
+   "arrivals": 202,
+   "catches": 134,
+   "defA": {
+    "median": 151.2199,
+    "missed_gt_2h": 104,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": 182.6199,
+    "missed_gt_2h": 107,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.25",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": 0.0,
+   "uncaught": 68
+  },
+  {
+   "arrivals": 202,
+   "catches": 174,
+   "defA": {
+    "median": 2.0693,
+    "missed_gt_2h": 58,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": 33.4693,
+    "missed_gt_2h": 60,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.50",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": 0.0,
+   "uncaught": 28
+  },
+  {
+   "arrivals": 202,
+   "catches": 188,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 23,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "defB": {
+    "median": 31.4,
+    "missed_gt_2h": 24,
+    "p95": "inf",
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.75",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": 0.0,
+   "uncaught": 14
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 31.4,
+    "missed_gt_2h": 0,
+    "p95": 31.4,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w1.00",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": 0.0,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 0,
+   "catches": 0,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "instance": "empty",
+   "policy": "event-driven-only",
+   "turns": 0,
+   "turns_per_catch": "inf",
+   "uncaught": 0
+  },
+  {
+   "arrivals": 4,
+   "catches": 4,
+   "defA": {
+    "median": 58.0,
+    "missed_gt_2h": 0,
+    "p95": 90.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 89.4,
+    "missed_gt_2h": 1,
+    "p95": 121.4,
+    "pass_p95_le_2h": false
+   },
+   "instance": "real",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 7,
+   "turns_per_catch": 1.75,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 59.1258,
+    "missed_gt_2h": 0,
+    "p95": 116.2362,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 90.5258,
+    "missed_gt_2h": 54,
+    "p95": 147.6362,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.00",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 46.5562,
+    "missed_gt_2h": 0,
+    "p95": 110.9433,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 77.9562,
+    "missed_gt_2h": 39,
+    "p95": 142.3433,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.25",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 12.2032,
+    "missed_gt_2h": 0,
+    "p95": 105.9891,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 43.6032,
+    "missed_gt_2h": 24,
+    "p95": 137.3891,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.50",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 88.6122,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 31.4,
+    "missed_gt_2h": 10,
+    "p95": 120.0122,
+    "pass_p95_le_2h": false
+   },
+   "instance": "poisson-w0.75",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 190,
+   "catches": 190,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 31.4,
+    "missed_gt_2h": 0,
+    "p95": 31.4,
+    "pass_p95_le_2h": true
+   },
+   "instance": "poisson-w1.00",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.4737,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 61.4641,
+    "missed_gt_2h": 0,
+    "p95": 112.7853,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 92.8641,
+    "missed_gt_2h": 54,
+    "p95": 144.1853,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.00",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 18.8669,
+    "missed_gt_2h": 0,
+    "p95": 104.9696,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 50.2669,
+    "missed_gt_2h": 28,
+    "p95": 136.3696,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.25",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 1.6305,
+    "missed_gt_2h": 0,
+    "p95": 97.0838,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 33.0305,
+    "missed_gt_2h": 17,
+    "p95": 128.4838,
+    "pass_p95_le_2h": false
+   },
+   "instance": "burst-w0.50",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 59.8953,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 31.4,
+    "missed_gt_2h": 4,
+    "p95": 91.2953,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w0.75",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 202,
+   "catches": 202,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 31.4,
+    "missed_gt_2h": 0,
+    "p95": 31.4,
+    "pass_p95_le_2h": true
+   },
+   "instance": "burst-w1.00",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 280,
+   "turns_per_catch": 1.3861,
+   "uncaught": 0
+  },
+  {
+   "arrivals": 0,
+   "catches": 0,
+   "defA": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "defB": {
+    "median": 0.0,
+    "missed_gt_2h": 0,
+    "p95": 0.0,
+    "pass_p95_le_2h": true
+   },
+   "instance": "empty",
+   "policy": "hybrid(event+failsafe-2h)",
+   "turns": 7,
+   "turns_per_catch": "inf",
+   "uncaught": 0
+  }
+ ],
+ "trace": {
+  "arrivals": [
+   {
+    "id": "E1",
+    "t_min": 182.0,
+    "webhook_visible": false
+   },
+   {
+    "id": "E2",
+    "t_min": 195.0,
+    "webhook_visible": false
+   },
+   {
+    "id": "E3",
+    "t_min": 393.0,
+    "webhook_visible": false
+   },
+   {
+    "id": "E4",
+    "t_min": 510.0,
+    "webhook_visible": false
+   }
+  ],
+  "excluded": {
+   "E5": "no recorded arrival time (labels.json G8) - rate-counted, not replayed"
+  },
+  "null_sweeps_observed": [
+   "N1 06:0x",
+   "N2 08:00Z",
+   "N3 12:00Z"
+  ],
+  "webhook_visible_class": "EMPTY on the real trace (labels.json G11)"
+ },
+ "winners": {
+  "burst-w0.00|defA": {
+   "margin_vs_next": 1.1881,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-2h+chain-15m",
+    "failsafe-30m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.3861
+  },
+  "burst-w0.00|defB": {
+   "margin_vs_next": 2.3762,
+   "survivors": [
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "failsafe-1h",
+   "winner_turns_per_catch": 2.5743
+  },
+  "burst-w0.25|defA": {
+   "margin_vs_next": 1.1881,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-2h+chain-15m",
+    "failsafe-30m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.3861
+  },
+  "burst-w0.25|defB": {
+   "margin_vs_next": 2.3762,
+   "survivors": [
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "failsafe-1h",
+   "winner_turns_per_catch": 2.5743
+  },
+  "burst-w0.50|defA": {
+   "margin_vs_next": 1.1881,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-2h+chain-15m",
+    "failsafe-30m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.3861
+  },
+  "burst-w0.50|defB": {
+   "margin_vs_next": 2.3762,
+   "survivors": [
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "failsafe-1h",
+   "winner_turns_per_catch": 2.5743
+  },
+  "burst-w0.75|defA": {
+   "margin_vs_next": 1.1881,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-2h+chain-15m",
+    "failsafe-30m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.3861
+  },
+  "burst-w0.75|defB": {
+   "margin_vs_next": 1.1881,
+   "survivors": [
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "hybrid(event+failsafe-2h)",
+   "winner_turns_per_catch": 1.3861
+  },
+  "burst-w1.00|defA": {
+   "margin_vs_next": 1.3861,
+   "survivors": [
+    "event-driven-only",
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-2h+chain-15m",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "event-driven-only",
+   "winner_turns_per_catch": 0.0
+  },
+  "burst-w1.00|defB": {
+   "margin_vs_next": 1.3861,
+   "survivors": [
+    "event-driven-only",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "event-driven-only",
+   "winner_turns_per_catch": 0.0
+  },
+  "empty|defA": {
+   "note": "no catches - standing cost/night: failsafe-2h=7, failsafe-1h=13, failsafe-30m=25, failsafe-2h+chain-15m=7, event-driven-only=0, hybrid(event+failsafe-2h)=7",
+   "survivors": [],
+   "winner": null
+  },
+  "empty|defB": {
+   "note": "no catches - standing cost/night: failsafe-2h=7, failsafe-1h=13, failsafe-30m=25, failsafe-2h+chain-15m=7, event-driven-only=0, hybrid(event+failsafe-2h)=7",
+   "survivors": [],
+   "winner": null
+  },
+  "poisson-w0.00|defA": {
+   "margin_vs_next": 1.2632,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m",
+    "failsafe-2h+chain-15m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.4737
+  },
+  "poisson-w0.00|defB": {
+   "margin_vs_next": 2.5263,
+   "survivors": [
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "failsafe-1h",
+   "winner_turns_per_catch": 2.7368
+  },
+  "poisson-w0.25|defA": {
+   "margin_vs_next": 1.2632,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m",
+    "failsafe-2h+chain-15m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.4737
+  },
+  "poisson-w0.25|defB": {
+   "margin_vs_next": 2.5263,
+   "survivors": [
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "failsafe-1h",
+   "winner_turns_per_catch": 2.7368
+  },
+  "poisson-w0.50|defA": {
+   "margin_vs_next": 1.2632,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m",
+    "failsafe-2h+chain-15m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.4737
+  },
+  "poisson-w0.50|defB": {
+   "margin_vs_next": 2.5263,
+   "survivors": [
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "failsafe-1h",
+   "winner_turns_per_catch": 2.7368
+  },
+  "poisson-w0.75|defA": {
+   "margin_vs_next": 1.2632,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m",
+    "failsafe-2h+chain-15m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.4737
+  },
+  "poisson-w0.75|defB": {
+   "margin_vs_next": 2.5263,
+   "survivors": [
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "failsafe-1h",
+   "winner_turns_per_catch": 2.7368
+  },
+  "poisson-w1.00|defA": {
+   "margin_vs_next": 1.4737,
+   "survivors": [
+    "event-driven-only",
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m",
+    "failsafe-2h+chain-15m"
+   ],
+   "ties": [],
+   "winner": "event-driven-only",
+   "winner_turns_per_catch": 0.0
+  },
+  "poisson-w1.00|defB": {
+   "margin_vs_next": 1.4737,
+   "survivors": [
+    "event-driven-only",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "event-driven-only",
+   "winner_turns_per_catch": 0.0
+  },
+  "real|defA": {
+   "margin_vs_next": 1.5,
+   "survivors": [
+    "failsafe-2h",
+    "hybrid(event+failsafe-2h)",
+    "failsafe-1h",
+    "failsafe-30m",
+    "failsafe-2h+chain-15m"
+   ],
+   "ties": [
+    "hybrid(event+failsafe-2h)"
+   ],
+   "winner": "failsafe-2h",
+   "winner_turns_per_catch": 1.75
+  },
+  "real|defB": {
+   "margin_vs_next": 3.0,
+   "survivors": [
+    "failsafe-1h",
+    "failsafe-30m"
+   ],
+   "ties": [],
+   "winner": "failsafe-1h",
+   "winner_turns_per_catch": 3.25
+  }
+ }
+}
