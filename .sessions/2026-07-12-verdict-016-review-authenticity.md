@@ -1,6 +1,6 @@
 # Session — VERDICT 016 — external-review authenticity gate (idea-engine PROPOSAL 014)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: fable · 2026-07-12 · verdict-016 slice-worker session
 > Objective: settle idea-engine PROPOSAL 014 (control/outbox.md @ 2026-07-12T22:29:25Z, sim-ready; idea ideas/fleet/external-review-authenticity-gate-2026-07-12.md @ 3d3e849) — a measured (citation-extraction grammar × mechanical validation set × decision rule) sweep over the recorded external-review corpus: the three verified-fabricated @codex replies (sim-lab PR #44 reply to comment 4949354456; PR #53 comments 4951675240 and 4951715384) as committed fixtures validated against pinned repo state, plus the verified-genuine set (the 17 accepted codex review comments on idea-engine PRs #264/#265, the seat's own cite-bearing @codex question comments, and the citation-free replies), answering: which cell catches all three recorded fabrications plus planted-fabrication mutations at near-zero false alarms on the genuine set, and does the winning cell's profile justify a mandatory pre-trust authenticity gate in the Q-0120 verify-never-obey ceremony over the escalation currently on the table (suspending the @codex step entirely)?
 
@@ -51,7 +51,18 @@ python3 sims/verdict-016-review-authenticity/review_authenticity_sweep.py
 
 ## 💡 Session idea
 
-(filled at close)
+When simming a validator against recorded incidents, snapshot the facts for
+the UNION of everything ANY candidate cell could ever ask — not just the
+claims the incident ledger named — and make an out-of-snapshot lookup fail
+the run. The union snapshot is what turned up the headline discovery here:
+incident #1's REPORT.mdL243-L245 cite lies past its 241-line blob, a
+mechanical failure the hand-written ledger never recorded (it pinned the
+incident on the fabricated PR title alone), and that single fact flipped
+the axis conclusion — line-range≤EOF alone catches 3/3, so the gate is
+robust to a fabricator who stops inventing commit SHAs. Corollary: a
+hand-verified incident ledger is itself a partial extraction pass by a
+tired grammar; re-derive the ledger's claims mechanically before treating
+its named failure modes as the failure surface.
 
 ## ⟲ Previous-session review
 
