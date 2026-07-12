@@ -1,0 +1,464 @@
+{
+ "sim": "verdict-015-heartbeat-contradiction-linter",
+ "source_idea": {
+  "proposal": "idea-engine PROPOSAL 013",
+  "outbox_entry": "menno420/idea-engine control/outbox.md, PROPOSAL 013 2026-07-12T22:04:42Z, status: sim-ready, read at origin/main 20c5abd",
+  "idea_file": "ideas/fleet/heartbeat-contradiction-linter-2026-07-12.md @ 0a9bfc8de70f83042dee443fe93864942a36d516 (landed via idea-engine PR #275, main 20c5abd)"
+ },
+ "corpus_note": {
+  "definition": "all committed revisions of idea-engine control/status.md from fc0bab6 (first wake, 2026-07-12T00:05:51Z) through 0cfe15e (#273), endpoints inclusive, git log --follow",
+  "count_reconciliation": "the proposal/probe says '22 committed revisions fc0bab6 -> 0cfe15e'; `git log fc0bab6..0cfe15e -- control/status.md` (git range semantics, EXCLUSIVE of the lower endpoint) returns exactly 22; endpoint-INCLUSIVE (fc0bab6^..0cfe15e) returns 23, and both named endpoints demonstrably touch the file. This sim commits and sweeps the 23 endpoint-inclusive revisions; clean-revision count is therefore 22 (23 minus the c77563c specimen), where the proposal's phrasing said 'the other 21'.",
+  "shallow_clone_hazard": "a depth-limited clone mis-follows this file's history (observed live this session: 22 entries INCLUDING a bogus a660bc9 -- a commit that does not touch control/status.md -- and MISSING 42f9642 and fc0bab6). Fixtures were extracted from a full-history clone; each is sha256-pinned below."
+ },
+ "specimen": {
+  "rev": "c77563c",
+  "commit": "c77563c92342be7ef56f0e927d572bf22d552729",
+  "line_3": "phase block: 'failsafe cron trig_01T83UuVthszGBcENYwrTrm7 \"Ideas Lab failsafe wake\" (0 */2 * * * -- even hours :00) STILL ENABLED and LEFT ARMED deliberately as the successor's dead-man bridge'",
+  "line_9": "needs-owner block: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'",
+  "key_fact": "line 9 does NOT contain the literal trig id -- the failsafe is named by noun phrase only, so the fact-key extraction grammar axis is load-bearing (id-only grammars cannot catch the real specimen)"
+ },
+ "hard_fp": {
+  "rev": "e66c78a",
+  "commit": "e66c78ab610f499652c4085b678eb2a9d1c1ee45",
+  "line_9": "quotation-negation carry: 'the stale Q-0265 \"must re-arm both / being dismantled\" paragraph is DROPPED as superseded -- routine state now lives ONLY in the phase line's routine-disposition block' -- must NOT flag",
+  "line_3": "same-class-different-key pair that must also not collide: NEW failsafe trig_01Kz3j5ECTZ29hNZCHukgCA1 ENABLED vs OLD failsafe trig_01T83UuVthszGBcENYwrTrm7 DELETED (distinct explicit ids)"
+ },
+ "vocabulary": {
+  "up": [
+   "enabled",
+   "re-enabled",
+   "armed",
+   "re-armed",
+   "live",
+   "alive",
+   "standing",
+   "stands"
+  ],
+  "down": [
+   "disabled",
+   "dismantled",
+   "deleted",
+   "retired",
+   "paused"
+  ],
+  "justification": "the writeup's own disposition classes (armed/enabled/live vs dismantled/deleted/disabled) plus this corpus's surface forms for the same states (standing/stands for the failsafe, alive for the pacemaker chain, paused/retired); deliberately excluded: 'active' (keyless phase labels like ACTIVE-IDLE), 'fired'/'expired'/'parked'/'dropped' (lifecycle words for non-routine objects; 'DROPPED' at e66c78a governs a paragraph, not a routine)"
+ },
+ "grid_justification": {
+  "grammar": "g1 trig-id tokens only / g2 +PR-number tokens / g3 +entity-alias noun phrases (failsafe*, pacemaker/send_later chain) -- the writeup's 'trigger-id tokens only / +PR numbers / +quoted routine names' axis; aliases map to entity classes, quoted routine names reach the same classes ('Ideas Lab failsafe wake' contains 'failsafe')",
+  "norm": "n1 raw antonym co-occurrence without attribution (the writeup's naive baseline) / n2 synonym-class mapping with per-key nearest-occurrence attribution (<=120 chars) and a distinct-id exemption for alias-class pairs / n3 = n2 + quotation-span masking + superseded-statement exclusion -- the writeup's 'raw antonym co-occurrence / antonym classes with per-key attribution / +quotation- and negation-span exclusion'",
+  "scope": "s1 same-line / s2 whole-file / s3 cross-block(line) only -- the writeup's 'whole file / cross-block only' plus the same-line control cell; in this file format one physical line is one field block"
+ },
+ "planting": {
+  "rule": "deterministic enumeration, no RNG: per clean revision, P1 = flip of the FIRST statement carrying a trig-id key plus an attributed disposition (explicit-id sentence appended to the last line); P2 = flip of the FIRST statement carrying an entity-alias key plus an attributed disposition (alias-only sentence, the real specimen's shape). Reference extraction config for eligibility: grammar g3, norm n2, MAX_ATTR_DIST 120.",
+  "templates": {
+   "flip_to_down": "is being DISMANTLED with the archive handoff",
+   "flip_to_up": "STILL ENABLED and LEFT ARMED as the dead-man bridge"
+  }
+ },
+ "gaps": [
+  "G1 n=1 real true positive: the corpus carries exactly one verified live contradiction (c77563c); planted-recall is load-bearing for generalization and is reported separately, never merged with real-TC",
+  "G2 keyed-facts-only boundary: the detector reads shared tokens (trig ids, PR refs, alias noun phrases); a contradiction stated in pure prose with no shared key is out of scope BY DESIGN",
+  "G3 clean-revision labels: the 22 non-specimen revisions are presumed contradiction-free from the probe's verify-first reads; every flag raised on them was hand-audited this session (see REPORT.md FP audit) rather than auto-labeled",
+  "G4 vocabulary is corpus-fitted: the UP/DOWN lists were chosen from the writeup plus this corpus's observed surface forms; a different repo's heartbeat idiom may need vocabulary extension (the kit advisory must ship the lists as config)",
+  "G5 fp counting units differ by norm: n1 counts flagged co-occurrence units (block pairs), n2/n3 count flagged (revision, key) conflicts; fp_revisions (revisions with >=1 flag) is the cross-norm comparable column"
+ ],
+ "corpus_manifest": [
+  {
+   "fixture": "01-fc0bab6.md",
+   "short": "fc0bab6",
+   "commit": "fc0bab692852cf5c1d862a22328187e80c928937",
+   "committed": "2026-07-12T00:05:51+00:00",
+   "subject": "heartbeat: first wake of new coordinator 2026-07-12 — routines re-armed (failsafe cron + pacemaker verified via list_triggers), boot recon a9b41f6/0622118 strict-green, check_sections LIVE BREAK flagged, 3 slices in flight (#220)",
+   "sha256": "7b57a4c3a5e6a64c6e21ca00e56e4ad356785f65f1704b350cf60526316efe91"
+  },
+  {
+   "fixture": "02-42f9642.md",
+   "short": "42f9642",
+   "commit": "42f9642262549cb2c324fdc674c0da87f87060e7",
+   "committed": "2026-07-12T02:34:22+02:00",
+   "subject": "heartbeat: TOP-5 fourth mint, routines live, in-flight roster (#224)",
+   "sha256": "26aaa74c13d93e01ccb6c8d0d54d8dd437ab480e08828a385e75c0c598440130"
+  },
+  {
+   "fixture": "03-0595466.md",
+   "short": "0595466",
+   "commit": "05954667f59608d52f1c9e2f6ba8ce731d5c6f44",
+   "committed": "2026-07-12T03:06:57+02:00",
+   "subject": "heartbeat: VERDICT 012 settled (P010 approve), fourth-mint status, in-flight roster (#229)",
+   "sha256": "7b6d14fb171522d34d87d2abcb57910cacc5c73cf15c54d6f15bdc242d4e6cde"
+  },
+  {
+   "fixture": "04-4f50cce.md",
+   "short": "4f50cce",
+   "commit": "4f50ccea5b819e45b782303f5aaa91a1b24f595b",
+   "committed": "2026-07-12T01:24:34+00:00",
+   "subject": "heartbeat: fourth mint FULLY CONSUMED same-day (#230-#233 parked), fifth mint pending on harvest sweep; ledger corrections recorded (#234)",
+   "sha256": "6665a69637e472c20166d6751a1245121da42212d26f22784bc397f6ad06c7c4"
+  },
+  {
+   "fixture": "05-d68ac2d.md",
+   "short": "d68ac2d",
+   "commit": "d68ac2dec58c9d72ec747065714db25fbc7e64b5",
+   "committed": "2026-07-12T02:02:01+00:00",
+   "subject": "heartbeat: fifth TOP-5 mint recorded (5 heads + alternate), harvest PRs #235/#236 + sim-lab #46 folded in; probe of mint #1 in flight (#237)",
+   "sha256": "7db100e9456730bb8d5b23d900f7ee8461f1380f2ab2a183d1e5169f6e83fd7e"
+  },
+  {
+   "fixture": "06-d7c74d1.md",
+   "short": "d7c74d1",
+   "commit": "d7c74d140f9678ed04c84e5b9cc8ec7efa6d21ec",
+   "committed": "2026-07-12T04:46:53+02:00",
+   "subject": "heartbeat: fifth mint FULLY CONSUMED same-day (#238-#243), slot 4 to first alternate; V013 sim in flight (#245)",
+   "sha256": "a2213ac89805d44ffe6fa145ee6b71de0072dd6eefdd84cbea4e24e88a2e9ac6"
+  },
+  {
+   "fixture": "07-f0ea577.md",
+   "short": "f0ea577",
+   "commit": "f0ea5774fbddec4bebbb9e6052033567066e11ff",
+   "committed": "2026-07-12T03:14:50+00:00",
+   "subject": "heartbeat: batch close — #244 groom + #246 alternate + #247 capture folded in; fifth mint + alternate ALL dispositioned; V013 sweep in flight, WIP 1/3 (#248)",
+   "sha256": "1280d0abb1972ec01ae1369be761f360040b912a83260ed8d68df18a0403908d"
+  },
+  {
+   "fixture": "08-ef46497.md",
+   "short": "ef46497",
+   "commit": "ef464979389cf275a75e5078f2fc3f9e3a247bea",
+   "committed": "2026-07-12T05:30:58+02:00",
+   "subject": "control: verdict-013 fan-in — sim-verdict note + README badge + heartbeat (#249)",
+   "sha256": "0feffa836942edd675cedb6416b972710f902ccd8e2d9a3cdbd04097eb530ebc"
+  },
+  {
+   "fixture": "09-0fd8b65.md",
+   "short": "0fd8b65",
+   "commit": "0fd8b65262c4614fcfa6e3b4ea962d7342e11322",
+   "committed": "2026-07-12T04:09:54+00:00",
+   "subject": "heartbeat: idle posture — queue drained, pacemaker paused per honesty guard, failsafe cron standing; #250 null harvest + #251 carried-watch probe folded in (#252)",
+   "sha256": "8215856280496539802fa7b497bab02431ff4890386d6967e6005849795c2748"
+  },
+  {
+   "fixture": "10-38f8857.md",
+   "short": "38f8857",
+   "commit": "38f88576efcaf436fa80404816f791dff86672d5",
+   "committed": "2026-07-12T06:29:01+00:00",
+   "subject": "heartbeat: idle posture re-priced 2026-07-12 — #253 gen-11 reconcile honest null folded in, post-cutover roster generation added as the sharpest resume trigger (#254)",
+   "sha256": "3a70a1bdcfba64f98ea8c43772a2d546f7a8aeea043df6b9b47b9486e0a322d7"
+  },
+  {
+   "fixture": "11-b5cc329.md",
+   "short": "b5cc329",
+   "commit": "b5cc329038cf95ff5e373ff472b21b869f60ade2",
+   "committed": "2026-07-12T08:13:03+00:00",
+   "subject": "heartbeat: 08:00Z failsafe sweep — repos unmoved, roster gen #12 pre-cutover, registry-vs-live drift flag on seat failsafes (#255)",
+   "sha256": "85fb1b8aa56389a2281e7ddb5d38a9f3dc8cb1a43a02121a1e927a1933bfaa84"
+  },
+  {
+   "fixture": "12-65cd284.md",
+   "short": "65cd284",
+   "commit": "65cd284a5c37e0b07a7012e3ed37f44671fa7c76",
+   "committed": "2026-07-12T10:39:40+00:00",
+   "subject": "heartbeat: 10:00Z failsafe sweep + RESUME — sim-lab ORDER 003 executed same wake (enabler e11ed40, evidence #51 zero agent merge calls) (#256)",
+   "sha256": "6768199042fcd92078151dc4c07b625a4a09c7af1bf3c2754f35444468f36f43"
+  },
+  {
+   "fixture": "13-f92bd26.md",
+   "short": "f92bd26",
+   "commit": "f92bd26b58337a94e9f291c7c95244aa1523a017",
+   "committed": "2026-07-12T10:50:10+00:00",
+   "subject": "heartbeat: ACTIVE-IDLE re-declared after ORDER 003 completion — queue drained, pacemaker paused per honesty guard, failsafe cron stands (#257)",
+   "sha256": "c04183eac8380544f177d3a7a9d25ffcead3442172ba36406c39f2b05397bc44"
+  },
+  {
+   "fixture": "14-531b109.md",
+   "short": "531b109",
+   "commit": "531b1098ef6d1d24d04ea9e111f2d74fc877caf8",
+   "committed": "2026-07-12T12:12:43+00:00",
+   "subject": "heartbeat: 12:00Z failsafe sweep overwrite — triggers quiet, kit v1.13.0 fleet-rollout watch added (#258)",
+   "sha256": "759aa98b35ebd9ea2d14633ddad09ea496489b6f981cf5a0608b91706dc2fc23"
+  },
+  {
+   "fixture": "15-ff48c2f.md",
+   "short": "ff48c2f",
+   "commit": "ff48c2fad809ce7704bb66aafee42335efd5c3fd",
+   "committed": "2026-07-12T16:26:26+02:00",
+   "subject": "control: PROPOSAL 012 — routine-cadence economics sim to sim-lab (coupled sim-ready flip) (#260)",
+   "sha256": "c2c91636b97a3615832b9345af74de35203ae5e4d9638e789889816ee1fbaa6a"
+  },
+  {
+   "fixture": "16-9d3b065.md",
+   "short": "9d3b065",
+   "commit": "9d3b065539f8709459c83697673615c5506c2de4",
+   "committed": "2026-07-12T15:31:21+00:00",
+   "subject": "heartbeat: VERDICT 014 fan-in — sim-verdict note + fleet badge + posture paste-ready (approve, keep hybrid) (#261)",
+   "sha256": "1587c148a25027e143d6937511ca868bbea7efabf79dd9af0728d3a84a2e4dec"
+  },
+  {
+   "fixture": "17-949fc0b.md",
+   "short": "949fc0b",
+   "commit": "949fc0bcdc15975448004d96f29d66543a8b6f76",
+   "committed": "2026-07-12T16:30:25+00:00",
+   "subject": "heartbeat: 16:00Z failsafe sweep settled — ACTIVE-IDLE re-declared, #262 window re-check + codex incident #3 escalation folded in (#263)",
+   "sha256": "ce9798068c073f377fbac2df8477cd76c30e4d9ea9493bdf0edb147c969ad453"
+  },
+  {
+   "fixture": "18-17674b5.md",
+   "short": "17674b5",
+   "commit": "17674b5479500a829b6bf15cea493f4d59dcb0f6",
+   "committed": "2026-07-12T18:02:47+00:00",
+   "subject": "heartbeat: 18:00Z gift-project captures folded in — #264 blueprint + #265 ecosystem dossier, phase ACTIVE, gift-repo owner-ask appended (#266)",
+   "sha256": "bb17b497c00fcd895caaba5fccb269b6bf8c0a0d6fb0a5f2a7bfbf6c414285c6"
+  },
+  {
+   "fixture": "19-fa38a95.md",
+   "short": "fa38a95",
+   "commit": "fa38a95c3a5b85c3be5760b41923930d1eaf63fe",
+   "committed": "2026-07-12T18:12:51+00:00",
+   "subject": "heartbeat: 18:00Z failsafe sweep — ACTIVE-IDLE re-declared, sweep quiet, watches carried (#267)",
+   "sha256": "2f55f01106a781e530c304ffee4d8dc194a1d1fac6608294bbce74de71152e67"
+  },
+  {
+   "fixture": "20-1adae9a.md",
+   "short": "1adae9a",
+   "commit": "1adae9a88f49cc98d73d05d314103e6197b9eeef",
+   "committed": "2026-07-12T19:04:37+00:00",
+   "subject": "heartbeat: 19:02Z codex fold-in — #268 shipped (17/17 line comments real), phase ACTIVE, codex-budget policy recorded (#269)",
+   "sha256": "685de5517a38e7b2561ee093ad3177846ef14672ef00cdffae09b347ee842b31"
+  },
+  {
+   "fixture": "21-c77563c.md",
+   "short": "c77563c",
+   "commit": "c77563c92342be7ef56f0e927d572bf22d552729",
+   "committed": "2026-07-12T19:51:09+00:00",
+   "subject": "close-out: seat session 1 — v3.3 universal session ender (card + close-out heartbeat) (#270)",
+   "sha256": "5562796ff62ded481f93239da6e3cf652211c6f78f0a0a37a54d5fae78115d28"
+  },
+  {
+   "fixture": "22-e66c78a.md",
+   "short": "e66c78a",
+   "commit": "e66c78ab610f499652c4085b678eb2a9d1c1ee45",
+   "committed": "2026-07-12T21:35:36+00:00",
+   "subject": "session 2 boot: routine cutover + heartbeat (Ideas Lab coordinator) (#271)",
+   "sha256": "b6a4a6137a0413a0c839be770cbf0ee8475b93c21a1549cd66575a038bf70110"
+  },
+  {
+   "fixture": "23-0cfe15e.md",
+   "short": "0cfe15e",
+   "commit": "0cfe15e91f11af90e78851c0c43de6ffedcb3ffc",
+   "committed": "2026-07-12T21:51:14+00:00",
+   "subject": "control: session-2 boot close-out heartbeat + kit-upstream ask (fast lane) (#273)",
+   "sha256": "4a3bea755bc7f2fa7164ea59fe023c767d9089a5058dcd137f3610b2b7426180"
+  }
+ ],
+ "ground_truth_contradictions": [
+  {
+   "rev": "fc0bab6",
+   "entity": "FAILSAFE",
+   "up_evidence": "ROUTINES RE-ARMED",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "42f9642",
+   "entity": "FAILSAFE",
+   "up_evidence": "trig_01T83UuVthszGBcENYwrTrm7 (0 */2 * * *) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "0595466",
+   "entity": "FAILSAFE",
+   "up_evidence": "trig_01T83UuVthszGBcENYwrTrm7 (0 */2 * * *) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "4f50cce",
+   "entity": "FAILSAFE",
+   "up_evidence": "trig_01T83UuVthszGBcENYwrTrm7 (0 */2 * * *) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "d68ac2d",
+   "entity": "FAILSAFE",
+   "up_evidence": "trig_01T83UuVthszGBcENYwrTrm7 (0 */2 * * *) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "d7c74d1",
+   "entity": "FAILSAFE",
+   "up_evidence": "trig_01T83UuVthszGBcENYwrTrm7 (0 */2 * * *) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "f0ea577",
+   "entity": "FAILSAFE",
+   "up_evidence": "trig_01T83UuVthszGBcENYwrTrm7 (0 */2 * * *) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "ef46497",
+   "entity": "FAILSAFE",
+   "up_evidence": "trig_01T83UuVthszGBcENYwrTrm7 (0 */2 * * *) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "0fd8b65",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "38f8857",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "b5cc329",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "65cd284",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) live",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "f92bd26",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) = the standing",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "531b109",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) = the standing",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "ff48c2f",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) = the standing",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "9d3b065",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) = the standing",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "949fc0b",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) = the standing",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "17674b5",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) = the standing",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "fa38a95",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) = the standing",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "1adae9a",
+   "entity": "FAILSAFE",
+   "up_evidence": "even hours :00) = the standing",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "c77563c",
+   "entity": "FAILSAFE",
+   "up_evidence": "STILL ENABLED and LEFT ARMED",
+   "down_evidence": "carried ⚑ paragraph: 'The archiving coordinator's failsafe cron trigger AND its 15-minute send_later chain are being DISMANTLED with the chat archive'"
+  },
+  {
+   "rev": "fc0bab6",
+   "entity": "PACEMAKER",
+   "up_evidence": "pacemaker send_later chain armed",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  },
+  {
+   "rev": "42f9642",
+   "entity": "PACEMAKER",
+   "up_evidence": "pacemaker send_later chain alive",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  },
+  {
+   "rev": "0595466",
+   "entity": "PACEMAKER",
+   "up_evidence": "pacemaker send_later chain alive",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  },
+  {
+   "rev": "4f50cce",
+   "entity": "PACEMAKER",
+   "up_evidence": "pacemaker send_later chain alive",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  },
+  {
+   "rev": "d68ac2d",
+   "entity": "PACEMAKER",
+   "up_evidence": "pacemaker send_later chain alive",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  },
+  {
+   "rev": "d7c74d1",
+   "entity": "PACEMAKER",
+   "up_evidence": "pacemaker send_later chain alive",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  },
+  {
+   "rev": "f0ea577",
+   "entity": "PACEMAKER",
+   "up_evidence": "pacemaker send_later chain alive",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  },
+  {
+   "rev": "ef46497",
+   "entity": "PACEMAKER",
+   "up_evidence": "pacemaker send_later chain alive",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  },
+  {
+   "rev": "65cd284",
+   "entity": "PACEMAKER",
+   "up_evidence": "Pacemaker send_later chain: ALIVE, re-armed",
+   "down_evidence": "same carried ⚑ paragraph (its send_later chain conjunct)"
+  }
+ ],
+ "ground_truth_note": "Hand-audited this session by reading every revision: the ⚑ ARCHIVE-HANDOFF paragraph written by the PREDECESSOR coordinator ('being DISMANTLED with the chat archive ... a fresh coordinator MUST RE-ARM BOTH') was carried VERBATIM through all 21 session-1-era revisions while the phase line declared the same trig_01T83 failsafe re-armed/live/standing (21 FAILSAFE instances) and, where the pacemaker chain was armed/alive rather than honestly PAUSED, the same for the chain (9 PACEMAKER instances: fc0bab6..ef46497 + 65cd284). idea-engine's own session-2 boot adjudicated this paragraph 'stale ... DROPPED as superseded' (e66c78a), confirming the disagreements were real. Revisions 0fd8b65/38f8857/b5cc329 + f92bd26..1adae9a declare the pacemaker PAUSED/pauses -- consistent with the carry, so NOT counted. The proposal's 'one known live contradiction' (c77563c) is the instance its probe noticed; ground truth is 30.",
+ "pair_label_patterns": {
+  "note": "every flagged pair in every attributed cell must match exactly one archetype; an UNLABELED pair fails the run (forces re-audit when the detector or corpus changes). FP archetypes take precedence over the carry rule: a pair whose UP side is a named non-disposition artifact is not evidence.",
+  "fp_up_prefixes": [
+   "fm registry drift RESOLVED LIVE",
+   "RESIDUAL FLAG: v3.2 failsafe-prompt spec",
+   "ideas-lab merged-seat cutover NOT executed",
+   "REGISTRY-VS-LIVE DRIFT FLAG",
+   "MANAGER-SWEEP FLAG ADDED"
+  ],
+  "fp_up_reasons": {
+   "fm registry drift RESOLVED LIVE": "'LIVE' is adverbial ('resolved against live state'), not a routine disposition",
+   "RESIDUAL FLAG: v3.2 failsafe-prompt spec": "'live' names the live cron VALUE (0 */2 * * *), not a disposition claim",
+   "ideas-lab merged-seat cutover NOT executed": "quoted+negated registry claim: failsafe \"NOT ARMED\" -- reported speech, not a disposition assertion",
+   "REGISTRY-VS-LIVE DRIFT FLAG": "'RESOLVED LIVE this wake' -- adverbial, same as fm-registry archetype",
+   "MANAGER-SWEEP FLAG ADDED": "quotes fm registry's \"NOT ARMED for this seat\" -- reported speech about a REGISTRY claim, plus other seats' trigger ids"
+  },
+  "fp_down_substrings": [
+   "old per-repo failsafes"
+  ],
+  "fp_down_reasons": {
+   "old per-repo failsafes": "'deleted' predicates OTHER seats' failsafe triggers (trig_0178q9Je / trig_01SHfnLv, explicit distinct ids) -- alias-class lumping, not the seat failsafe"
+  },
+  "true_up_prefixes": [
+   "LIVE TRUTH"
+  ],
+  "true_up_reasons": {
+   "LIVE TRUTH": "b5cc329 notes: 'LIVE TRUTH: the merged seat's failsafe ... trig_01T83 ... was armed ... verified via list_triggers' -- a genuine UP assertion about the seat failsafe"
+  },
+  "carry_true_rule": "any remaining pair whose DOWN side contains 'being DISMANTLED with the chat archive' is a true carry-vs-live contradiction (the specimen class)"
+ }
+}
