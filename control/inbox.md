@@ -149,3 +149,11 @@ method: MEASURED PROTOTYPE/SPIKE (rung 2, with a numeric-sweep layer) — built 
 done-when / evidence: per-cell TC/FP on the real corpora + planted-drift recall, the winning grammar + normalization + gating/waiver spec stated machine-readably, and the tournament.py:153 instance caught by the winning cell — the live drift citation the winning cell must re-find: superbot-next `sb/domain/rps/tournament.py:153` "You're already registered." (period) vs oracle "You're already registered!" @ superbot `1ecc211` `disbot/views/rps/registration.py:49` / `disbot/utils/tournaments.py:44`.
 finalizes-as: VERDICT 013 (proposal-aligned numbering per the INTAKE 009/010 / PR #46 rule; V009/V011 were owner-direct interleaves).
 outcome: VERDICT 013 finalized → outbox (reject — the one-line fix wins). Report sims/verdict-013-oracle-copy-drift-sweep/REPORT.md @ 4984069 (verdict PR #47).
+
+## ORDER 003 · 2026-07-12T08:30Z · status: new
+priority: P2
+owner: Ideas Lab coordinator (executor)
+provenance: filed by the fleet manager — relocation of startup-prompt v3.1 order 2 (prompts are STATELESS since v3.2, owner correction 2026-07-12; fleet-manager PR #108). Order 1 (handoff verification) is DEAD: sims/verdict-012-doc-cite-checker-spec/ exists at e857b24 and the chain has moved on (PROPOSAL 011 sim-ready, verdict-013 landed).
+do: Stand up a GITHUB_TOKEN merge-on-green workflow (or install the kit auto-merge enabler) so sim-lab PRs land without an agent merge call; until it exists, park PRs READY+green.
+why: verified at e857b24 2026-07-12: .github/workflows/ contains substrate-gate.yml only — no enabler, no merge-on-green path.
+done-when: a PR lands without an agent merge call, evidence cited in status.
