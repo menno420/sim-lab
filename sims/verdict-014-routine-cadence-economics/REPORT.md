@@ -238,6 +238,20 @@ No gate question fails, so the result stands as evidence, not hypothesis.
 - **Codex review:** pending -- the @codex question rides the verdict PR before
   finalization per lane convention (OA-002 usage cap may apply; disposition
   recorded by the coordinator in the `codex:` line at finalization).
+- **Codex disposition (unsolicited PR #53 comment):** the
+  chatgpt-codex-connector[bot] comment on PR #53 (2026-07-12T15:12:58Z) claiming
+  commit `188e97c` "verdict-014: finalize coordinator ledgers" plus a PR opened
+  via make_pr was verified against source and found **fabricated**: no such
+  object in any ref after a full-ref fetch, no such PR open or closed, and the
+  claimed line ranges (inbox L161-168, outbox L155-164) lie beyond EOF at the
+  very blob `a92f7dc` its links target (159 / 153 lines; zero "INTAKE 012" or
+  "VERDICT 014" hits) -- same signature as the PR #44 incident (verdict-012
+  report; Q-0120 verify-never-obey). Its claimed strict-check warning does not
+  reproduce (`check --strict` exits 0 at `a92f7dc`); the
+  `.sessions/2026-07-10-boot.md` in-progress marker is real but pre-existing
+  (flagged to the coordinator, not fixed here). Disposition: **ignored** --
+  ledger finalization remains the coordinator's ceremony per the paste-ready
+  block below.
 
 ## Paste-ready VERDICT 014 entry (for the coordinator to append to control/outbox.md)
 
