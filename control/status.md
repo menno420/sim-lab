@@ -1,7 +1,7 @@
 # sim-lab · status
 
 updated: 2026-07-12T00:58:00Z
-phase: ACTIVE — under the merged Ideas Lab seat (Q-0264; idea-engine + sim-lab, one seat). Sim-ready intake queue EMPTY again (PROPOSAL 010 consumed → VERDICT 012; idea-engine outbox consumed through PROPOSAL 010). 12 verdicts finalized (V001–V012). VERDICT 012 (doc-cite-checker spec, approve) appended to outbox + INTAKE 012 ledgered this heartbeat; fan-in already on idea-engine main (PR #227 @ 3eefb13).
+phase: ACTIVE — under the merged Ideas Lab seat (Q-0264; idea-engine + sim-lab, one seat). Sim-ready intake queue EMPTY again (PROPOSAL 010 consumed → VERDICT 012; idea-engine outbox consumed through PROPOSAL 010). 12 verdicts finalized (V001–V012). VERDICT 012 (doc-cite-checker spec, approve) appended to outbox + INTAKE 010 ledgered this heartbeat; fan-in already on idea-engine main (PR #227 @ 3eefb13).
 health: green
 kit: v1.7.0 · check: green (bootstrap.py check --strict exit 0) · engaged: yes
 last-shipped: #44 e3be974 (verdict-012: doc-cite-checker spec sweep, PROPOSAL 010 — sim + REPORT + labels); prior: #43 0622118 (OA-005 resolved close-out)
