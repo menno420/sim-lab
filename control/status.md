@@ -1,12 +1,12 @@
 # sim-lab · status
 
-updated: 2026-07-11T20:20:00Z
-phase: CLOSE-OUT / ARCHIVE-READY — coordinator chat being archived. Sim-ready intake queue EMPTY (idea-engine outbox consumed through PROPOSAL 009 → VERDICT 010). 11 verdicts finalized (V001–011). No open PRs/branches/issues. Durable state brought current: docs/current-state.md living ledger filled (recently-shipped + OA ledger + verdict-numbering map + earn-rate evidence gap); PLATFORM-LIMITS.md lane-local walls recorded (wake-recipe, merge-path, tag-push); ORDER-002 self-review + archive-ready note in docs/retro/. A fresh session resumes from README + CONVENTIONS + control/, re-arms the wake loop per PLATFORM-LIMITS.md § wake-recipe, and polls idea-engine outbox for PROPOSAL 010+.
+updated: 2026-07-12T00:58:00Z
+phase: ACTIVE — under the merged Ideas Lab seat (Q-0264; idea-engine + sim-lab, one seat). Sim-ready intake queue EMPTY again (PROPOSAL 010 consumed → VERDICT 012; idea-engine outbox consumed through PROPOSAL 010). 12 verdicts finalized (V001–V012). VERDICT 012 (doc-cite-checker spec, approve) appended to outbox + INTAKE 012 ledgered this heartbeat; fan-in already on idea-engine main (PR #227 @ 3eefb13).
 health: green
 kit: v1.7.0 · check: green (bootstrap.py check --strict exit 0) · engaged: yes
-last-shipped: this close-out PR — durable-state capture (current-state ledger + PLATFORM-LIMITS walls + docs/retro self-review & archive-ready note + close-out session card); prior: #41 4c74d7a (owner-002 robustness heartbeat)
+last-shipped: #44 e3be974 (verdict-012: doc-cite-checker spec sweep, PROPOSAL 010 — sim + REPORT + labels); prior: #43 0622118 (OA-005 resolved close-out)
 blockers: none
-orders: acked=ORDER-001 ORDER-002 done=ORDER-001 ORDER-002 (ORDER-001 model-attribution: 📊 Model line on the close-out session card + card markers present; ORDER-002 self-review: docs/retro/self-review-2026-07-11.md with the dated section, ⚑ items mirrored below)
+orders: acked=ORDER-001 ORDER-002 done=ORDER-001 ORDER-002 (ORDER-001 model-attribution: 📊 Model line on session cards + card markers present; ORDER-002 self-review: docs/retro/self-review-2026-07-11.md with the dated section, ⚑ items mirrored below)
 
 ## ⚑ needs-owner
 
@@ -42,4 +42,4 @@ WHY-IT-MATTERS: prevents a dead-session trigger from firing after archive — no
 UNBLOCKS: a clean archive.
 VERIFIED-NEEDED: post-delete enumeration of all account triggers confirms ZERO sim-lab triggers remain.
 
-notes: CLOSE-OUT session (owner order — wrap the project for archive; anything not in the repo is LOST). No new feature work. All in-flight work classified: 0 open PRs, 0 open issues, only origin/main; verdict PRs #2–#41 all merged. Chat-only knowledge captured to durable homes (wake-recipe + merge-path + tag-push → PLATFORM-LIMITS.md; OA ledger + verdict-numbering map + earn-rate gap → docs/current-state.md; self-review + archive-ready → docs/retro/). Recurring evidence gap (no live fishing/mining earn-rate baseline) flagged in current-state for the manager. This heartbeat is the LAST commit of the close-out PR. OA-005 resolved by coordinator (both sim-lab triggers deleted; zero remain).
+notes: Scribe-committed heartbeat (coordinator-dictated, merged Ideas Lab seat). VERDICT 012 = PROPOSAL 010 (rebuild-design-cite-checker): approve, gate PASS, evidence moderate-strong; 0 measured FP red gate on the target tree (superbot-next) at the chosen spec; report sims/verdict-012-doc-cite-checker-spec/REPORT.md. @codex disposition on PR #44: the reply claimed committed telemetry counters + a follow-up PR — the claimed artifacts were verified NON-EXISTENT against the tree (head unchanged at b083581, no branch, 0 PR-title hits) and the reply was REJECTED per Q-0120 verify-never-obey; full disposition recorded in REPORT.md. Recurring evidence gap (no live fishing/mining earn-rate baseline) remains flagged in docs/current-state.md for the manager.
