@@ -1,10 +1,10 @@
 # sim-lab · status
 
-updated: 2026-07-12T00:58:00Z
-phase: ACTIVE — under the merged Ideas Lab seat (Q-0264; idea-engine + sim-lab, one seat). Sim-ready intake queue EMPTY again (PROPOSAL 010 consumed → VERDICT 012; idea-engine outbox consumed through PROPOSAL 010). 12 verdicts finalized (V001–V012). VERDICT 012 (doc-cite-checker spec, approve) appended to outbox + INTAKE 010 ledgered this heartbeat; fan-in already on idea-engine main (PR #227 @ 3eefb13).
+updated: 2026-07-12T03:25:00Z
+phase: ACTIVE — under the merged Ideas Lab seat (Q-0264; idea-engine + sim-lab, one seat). Sim-ready intake queue EMPTY again (PROPOSAL 011 consumed → VERDICT 013; idea-engine outbox consumed through PROPOSAL 011). 13 verdicts finalized (V001–V013). VERDICT 013 (oracle-copy drift sweep, reject) appended to outbox + INTAKE 011 ledgered this heartbeat; fan-in follows on idea-engine (this fan-out PR first, per the V012 precedent).
 health: green
 kit: v1.7.0 · check: green (bootstrap.py check --strict exit 0) · engaged: yes
-last-shipped: #44 e3be974 (verdict-012: doc-cite-checker spec sweep, PROPOSAL 010 — sim + REPORT + labels); prior: #43 0622118 (OA-005 resolved close-out)
+last-shipped: #47 4984069 (verdict-013: oracle-copy drift sweep, PROPOSAL 011 — sim + REPORT + labels); prior: #46 6b8b3b0 (INTAKE renumber rule)
 blockers: none
 orders: acked=ORDER-001 ORDER-002 done=ORDER-001 ORDER-002 (ORDER-001 model-attribution: 📊 Model line on session cards + card markers present; ORDER-002 self-review: docs/retro/self-review-2026-07-11.md with the dated section, ⚑ items mirrored below)
 
@@ -42,4 +42,4 @@ WHY-IT-MATTERS: prevents a dead-session trigger from firing after archive — no
 UNBLOCKS: a clean archive.
 VERIFIED-NEEDED: post-delete enumeration of all account triggers confirms ZERO sim-lab triggers remain.
 
-notes: Scribe-committed heartbeat (coordinator-dictated, merged Ideas Lab seat). VERDICT 012 = PROPOSAL 010 (rebuild-design-cite-checker): approve, gate PASS, evidence moderate-strong; 0 measured FP red gate on the target tree (superbot-next) at the chosen spec; report sims/verdict-012-doc-cite-checker-spec/REPORT.md. @codex disposition on PR #44: the reply claimed committed telemetry counters + a follow-up PR — the claimed artifacts were verified NON-EXISTENT against the tree (head unchanged at b083581, no branch, 0 PR-title hits) and the reply was REJECTED per Q-0120 verify-never-obey; full disposition recorded in REPORT.md. Recurring evidence gap (no live fishing/mining earn-rate baseline) remains flagged in docs/current-state.md for the manager.
+notes: Scribe-committed heartbeat (coordinator-dictated, merged Ideas Lab seat). VERDICT 013 = PROPOSAL 011 (oracle-copy punctuation drift sweep): REJECT the red-gating checker — the one-line fix wins ("You're already registered." → "!" at sb/domain/rps/tournament.py:153); winning cell g5-msg|t3-case|r-noexact = 1 TC / 0 FP, whole-tree true drift 3 pairs with the other two reachable only through 38-68+ FP grammars, so the probe's §4(e) decision rule fired; gate PASS, evidence moderate-strong; report sims/verdict-013-oracle-copy-drift-sweep/REPORT.md. @codex on PR #47: question posted (comment 4949763595), reply pending — OA-002 usage-limit wall reproduced (bot returned "reached usage limits"); recorded in REPORT + the outbox codex: line. Recurring evidence gap (no live fishing/mining earn-rate baseline) remains flagged in docs/current-state.md for the manager.
