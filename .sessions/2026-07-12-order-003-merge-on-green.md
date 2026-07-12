@@ -1,6 +1,6 @@
 # Session — ORDER 003 — merge-on-green auto-merge enabler
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: fable-5 · 2026-07-12 · order-003 slice-worker session
 > Objective: execute ORDER 003 (control/inbox.md @ 27bdfb39a4d09080288cebd950a1b46f27a0bd7a — "Stand up a GITHUB_TOKEN merge-on-green workflow (or install the kit auto-merge enabler) so sim-lab PRs land without an agent merge call; until it exists, park PRs READY+green"): install the kit auto-merge enabler mirrored from the idea-engine reference, parked on a READY+green PR for the coordinator to land.
 
@@ -62,3 +62,10 @@ READY). Its "park READY, coordinator lands" discipline is exactly the shape
 this ORDER 003 slice retires for future PRs: after the enabler is on main,
 matching-prefix READY PRs arm themselves and merge on green with no agent
 merge call. Nothing to fix.
+
+## Close-out
+
+PR 1 (#50) merged to main @ `e11ed40d713f1c1f6a8a41bf478f60371e777811` —
+the enabler is live. This card flip is PR 2 (`fix/order-003-evidence`), the
+done-when observation run: opened READY, no agent merge call, expected to be
+landed by the auto-merge-enabler itself.
