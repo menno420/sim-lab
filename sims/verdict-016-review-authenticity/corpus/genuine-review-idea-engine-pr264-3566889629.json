@@ -1,0 +1,15 @@
+{
+  "id": 3566889629,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOY6c",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-gift-repo-blueprint-2026-07-12.md",
+  "line": 321,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Add a Day 0 Claude authorization step**\n\nThis first curriculum step assumes Claude can already respond in GitHub Issues, but the delivery plan and OWNER-ACTION only create the repo and invite the friend; they never have the friend authorize/install the Claude/GitHub integration or choose a copy-paste fallback. In the handed-over private repo, Day 1 can therefore stall before the “repo talks back” payoff. Add a Day 0 account/auth setup step, or rewrite Day 1 so it works through Claude chat plus manual issue comments.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:41:59Z",
+  "updated_at": "2026-07-12T18:41:59Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/264#discussion_r3566889629"
+}

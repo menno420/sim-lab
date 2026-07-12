@@ -1,0 +1,15 @@
+{
+  "id": 3566891106,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOZLo",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-ecosystem-research-2026-07-12.md",
+  "line": 174,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Caveat Pages for the private gift repo**\n\nThe companion blueprint makes the gift repo private, but this line presents GitHub Pages as a free gallery without the plan/visibility caveat: GitHub documents Pages for private repositories only on Pro/Team/Enterprise, and published Pages sites are public. Add either the paid/public caveat or a private alternative such as Releases/Actions artifacts for previews so the build plan doesn't depend on a feature the friend may not have ([GitHub Pages docs](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)).\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:42:56Z",
+  "updated_at": "2026-07-12T18:42:57Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/265#discussion_r3566891106"
+}

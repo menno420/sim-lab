@@ -1,0 +1,15 @@
+{
+  "id": 3566889631,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOY6e",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-gift-repo-blueprint-2026-07-12.md",
+  "line": 390,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Add the servo power supply to the shopping list**\n\nThe safety rules require an external 5–6 V servo supply and forbid powering six servos from the Arduino 5 V pin, but the paste-ready hardware add-on only mentions the PCA9685 driver. If the friend also lacks a suitable high-current supply/common-ground wiring parts, the Day 7 arm demo either stalls or nudges an unsafe workaround. Include the supply/capacitor/wiring in the add-on, or add a required confirmation that he already has them.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:41:59Z",
+  "updated_at": "2026-07-12T18:41:59Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/264#discussion_r3566889631"
+}

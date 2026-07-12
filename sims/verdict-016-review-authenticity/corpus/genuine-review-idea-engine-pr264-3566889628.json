@@ -1,0 +1,15 @@
+{
+  "id": 3566889628,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOY6b",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-gift-repo-blueprint-2026-07-12.md",
+  "line": 58,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Include the vendored kit license**\n\nWhen slice 1 follows this skeleton, it copies the MIT-licensed kit as only `bootstrap.py`, while the text earlier relies on the upstream LICENSE staying in the kit tree. That means the gift repo would contain a copied/substantial portion of the kit without the license/notice alongside it, especially if it is shared with the friend as a private collaborator repo. Add the kit LICENSE/NOTICE to the skeleton or vendor location so the copied bootstrap remains license-compliant.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:41:59Z",
+  "updated_at": "2026-07-12T18:41:59Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/264#discussion_r3566889628"
+}

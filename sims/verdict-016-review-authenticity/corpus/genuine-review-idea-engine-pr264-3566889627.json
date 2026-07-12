@@ -1,0 +1,15 @@
+{
+  "id": 3566889627,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOY6a",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-gift-repo-blueprint-2026-07-12.md",
+  "line": 383,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Add auto-merge setup to the owner ask**\n\nThis recommended owner reply only covers repo name, visibility, and project cut, but the week-one curriculum depends on Day 3’s “PR merges itself on green.” I checked the cited `.github/workflows/auto-merge-enabler.yml` in this repo: it says the enabler is inert until “Allow auto-merge” is enabled and a default-branch ruleset requires a status check, and its guard refuses to arm when zero required contexts exist. For the recommended new private repo, those repo-admin settings are not covered by slices 1–5 or this OWNER-ACTION, so following the blueprint leaves the auto-merge demo disabled. Add those setup clicks here, or explicitly drop self-merge from the curriculum.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:41:59Z",
+  "updated_at": "2026-07-12T18:41:59Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/264#discussion_r3566889627"
+}

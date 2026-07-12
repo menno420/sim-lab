@@ -1,0 +1,15 @@
+{
+  "id": 3566891090,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOZLa",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-ecosystem-research-2026-07-12.md",
+  "line": 193,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Include a USB servo-controller option**\n\nFor a no-controller six-servo arm, making PCA9685 the only hardware path misses a high-leverage alternative that directly fits the Claude/Python workflow: Pololu Micro/Mini Maestro controllers expose native USB/TTL serial, per-channel speed/acceleration, and scripting for 6+ servos ([product](https://www.pololu.com/product/1350), [serial commands](https://www.pololu.com/docs/0J40/5.e)). Even if the Arduino path remains the default, mentioning Maestro as an option prevents the build slice from overlooking the simpler host-driven controller route.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:42:56Z",
+  "updated_at": "2026-07-12T18:42:57Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/265#discussion_r3566891090"
+}

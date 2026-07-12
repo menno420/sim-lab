@@ -1,0 +1,15 @@
+{
+  "id": 3566891087,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOZLY",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-ecosystem-research-2026-07-12.md",
+  "line": 32,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Define where large 3D binaries live**\n\nThis tells the gift repo to store 3MF project files directly in git, but the dossier never adds the high-leverage storage rule a beginner needs for generated 3MF/STL/G-code/preview artifacts. Without a `.gitattributes`/Git LFS or Releases/Actions-artifact boundary, the repo can quickly accumulate large binary history; GitHub warns on regular files above 50 MiB and blocks larger pushes, while [Git LFS](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage) stores large files as pointers.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:42:56Z",
+  "updated_at": "2026-07-12T18:42:57Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/265#discussion_r3566891087"
+}

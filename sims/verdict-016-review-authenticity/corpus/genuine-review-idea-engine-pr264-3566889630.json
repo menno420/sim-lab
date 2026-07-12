@@ -1,0 +1,15 @@
+{
+  "id": 3566889630,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOY6d",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-gift-repo-blueprint-2026-07-12.md",
+  "line": 233,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Specify how firmware receives calibration limits**\n\nFor the likely Uno/Nano-style Arduino in this generic kit, the sketch cannot read `arm/calibration.json` from the Git repo at runtime, so this acceptance criterion is not implementable as written. After Day 7 writes new min/max values, the Python side can load them but the on-board clamp will still use defaults unless the blueprint adds a serial limit-upload handshake, generated header + reflash step, or another explicit path before pulses are emitted.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:41:59Z",
+  "updated_at": "2026-07-12T18:41:59Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/264#discussion_r3566889630"
+}

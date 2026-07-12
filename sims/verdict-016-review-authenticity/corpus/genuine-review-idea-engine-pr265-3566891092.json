@@ -1,0 +1,15 @@
+{
+  "id": 3566891092,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOZLb",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-ecosystem-research-2026-07-12.md",
+  "line": 192,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Simulate the actual PCA9685 control path**\n\nThis ranks Wokwi CI as the guard before arm hardware, but the arm firmware later standardizes on PCA9685-over-I2C; a serial-output Uno sim won't catch wrong I2C addresses/register writes or ServoEasing/PCA9685 integration errors. Add Wokwi's PCA9685 custom-chip model or a small Custom Chips fixture to the arm CI path so the dry run exercises the same driver stack the real arm uses ([Wokwi Custom Chips docs](https://docs.wokwi.com/chips-api/getting-started)).\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:42:56Z",
+  "updated_at": "2026-07-12T18:42:57Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/265#discussion_r3566891092"
+}

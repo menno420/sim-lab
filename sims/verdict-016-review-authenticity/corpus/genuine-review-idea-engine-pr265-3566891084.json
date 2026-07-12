@@ -1,0 +1,15 @@
+{
+  "id": 3566891084,
+  "comment_type": "pull_request_review_comment",
+  "thread_id": "PRRT_kwDOTUrebs6QOZLW",
+  "is_resolved": false,
+  "is_outdated": false,
+  "is_collapsed": false,
+  "author": "chatgpt-codex-connector",
+  "path": "ideas/venture-lab/maker-ecosystem-research-2026-07-12.md",
+  "line": 105,
+  "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Size and protect the servo supply for stall current**\n\nFor this exact six-servo arm, the dossier later cites ~2.5 A stall current per MG996R-class servo, so the suggested \"5V 10A class supply for six servos\" is undersized when several joints hit an end stop or lift load at once. That makes the top-10 claim that the supply \"prevents\" brownout too strong for the failure mode calibration is meant to avoid; add explicit headroom/fusing/current limiting or an e-stop/power-switch recommendation rather than pointing a beginner at a generic 10 A brick.\n\nUseful? React with 👍 / 👎.",
+  "created_at": "2026-07-12T18:42:56Z",
+  "updated_at": "2026-07-12T18:42:57Z",
+  "html_url": "https://github.com/menno420/idea-engine/pull/265#discussion_r3566891084"
+}

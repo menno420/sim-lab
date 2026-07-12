@@ -1,0 +1,26 @@
+{
+  "id": 4952201977,
+  "comment_type": "issue_comment",
+  "body": "You have reached your Codex usage limits for code reviews. You can see your limits in the [Codex usage dashboard](https://chatgpt.com/codex/cloud/settings/usage).\nTo continue using code reviews, you can upgrade your account or add credits to your account and enable them for code reviews in your [settings](https://chatgpt.com/codex/cloud/settings/code-review).",
+  "html_url": "https://github.com/menno420/idea-engine/pull/264#issuecomment-4952201977",
+  "user": {
+    "login": "chatgpt-codex-connector[bot]",
+    "id": 199175422,
+    "profile_url": "https://github.com/apps/chatgpt-codex-connector",
+    "avatar_url": "https://avatars.githubusercontent.com/in/1144995?v=4"
+  },
+  "author_association": "NONE",
+  "reactions": {
+    "total_count": 0,
+    "+1": 0,
+    "-1": 0,
+    "laugh": 0,
+    "confused": 0,
+    "heart": 0,
+    "hooray": 0,
+    "rocket": 0,
+    "eyes": 0
+  },
+  "created_at": "2026-07-12T18:02:50Z",
+  "updated_at": "2026-07-12T18:02:50Z"
+}
