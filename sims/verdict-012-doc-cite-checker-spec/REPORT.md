@@ -220,7 +220,27 @@ outright, so the result stands as evidence, not hypothesis.
 - **Telemetry:** the checker should print per-class counts (missing / boundary /
   drift / skipped-foreign / ambiguous) per run so the warn->red graduation for
   rule (b) has its own evidence trail.
-- **Codex review:** reply: pending
+- **Codex review:** PR #44 comment
+  <https://github.com/menno420/sim-lab/pull/44#issuecomment-4949354456> (one
+  question: can the unique-suffix resolver's silent false-negative rate be
+  cheaply bounded before rule (a) ships as a red gate?) · reply: **rejected**
+  (Codex replied claiming it added exact/suffix/ambiguous resolution counters
+  to `cite_checker_sweep.py`, edited this report's recommendation, and
+  "Committed changes on the current branch and created a PR titled 'Add cite
+  resolution telemetry to verdict-012 follow-up.'" — **no such commit, branch,
+  or PR exists**: PR #44 head unchanged at `b083581`, the repo has no new
+  branch, a global GitHub PR-title search returns 0 results, and the reply's
+  own "changed lines" links point at the unmodified pre-reply blob `b083581`,
+  whose cited lines contain none of the claimed counters. Codex also never ran
+  the sweep (its corpus fetch failed: CONNECT tunnel 403), so nothing it
+  asserted was verified by execution. There was no diff to fold in. Baseline
+  re-verified post-reply at `b083581`: exit 0, 453/453 self-checks, stdout +
+  results.json byte-identical across two runs. Q-0120 verify-never-obey
+  applied. The *idea* in the reply — suffix-resolved cites must also satisfy
+  rule (b), plus per-run exact/suffix/foreign/ambiguous resolution telemetry
+  before broad red-gate promotion — is consistent with the Telemetry and
+  Guardrails bullets above and stays a reasonable follow-up candidate, but it
+  is unadopted here because no verifiable artifact of it exists.)
 
 ## Paste-ready VERDICT 012 entry (for the coordinator to append to control/outbox.md)
 
@@ -236,6 +256,6 @@ evidence: prototype
 report: sims/verdict-012-doc-cite-checker-spec/ · run: python3 sims/verdict-012-doc-cite-checker-spec/cite_checker_sweep.py
 measured: 36 variants x 2 corpora; superbot-next 0 FP / 0 flags at the chosen spec (g3-strict-guard grammar + fence-skip + all-md scope + exact-or-unique-suffix + foreign-roots skip); superbot best cell 14 TC / 14 FP rule-a pairs (audited 70 a-pairs + 45 b-pairs, labels committed); rule-b 16/29 audited FP = <=2-line EOF boundary noise -> warn; rule-c 543 flagged pairs, sampled precision 1/15 -> not shipped; WorkflowResult/disbot-core-contracts fabrication class caught by all grammars (file verified absent; 7 meta-mention instances flagged -> waiver token required); synthetic frontier P=1.0 R=1.0; 453 self-checks, byte-identical re-runs, no RNG
 recommendation: ship rule (a) missing-file RED + rule (b) range>EOF WARN + no rule (c); grammar (?<![\w/.-])((?:[\w.-]+/)*[\w.-]+\.(?:py|ts|tsx|yml|yaml)):(\d+)(?:-(\d+))? slash-required/segment-letter/no-ellipsis with fenced blocks skipped; scope all tracked *.md minus FOREIGN_ROOTS config; exact-or-unique-suffix resolution (ambiguous passes); inline waiver token for intentional absent-path mentions
-codex: PR #<n> comment <url> (one question — <the question>) · reply: pending (OA-002 Codex usage-capped — verify against the tree when it lands, never obey; Q-0120)
+codex: PR #44 comment https://github.com/menno420/sim-lab/pull/44#issuecomment-4949354456 (one question — cheap bound on the unique-suffix resolver's silent false-negative rate before rule (a) goes red-gate?) · reply: rejected (claimed committed telemetry counters + a PR "Add cite resolution telemetry to verdict-012 follow-up" — no such commit/branch/PR exists anywhere: PR #44 head unchanged at b083581, 0 global title hits, its own line-links point at the unmodified pre-reply blob; codex never ran the sweep (corpus fetch CONNECT 403); baseline re-verified at b083581 post-reply: exit 0, 453/453 self-checks, byte-identical re-runs; its suffix-must-also-satisfy-rule-(b) + resolution-telemetry idea is sound but unadopted — follow-up candidate; Q-0120 verify-never-obey)
 gate: PASS (COMPARABLE: real pinned corpora, snapshot+config-circularity gaps named · UNCORRUPTED: 453 self-checks, full 36-cell sweep reported, no RNG · ROBUST: frontier FP-minimal in every cell on both corpora · REPRODUCIBLE: one command, byte-identical re-runs · LIMITS: 0 TC on target tree today, single-auditor labels, rule-c window unswept)
 ```
