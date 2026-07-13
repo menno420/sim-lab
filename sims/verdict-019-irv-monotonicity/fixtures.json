@@ -1,0 +1,60 @@
+{
+  "question": "Under the pinned 3-candidate IRV rule (candidates {A,B,C}, six strict ballot types, an election = a 6-vector of type counts summing to n; round 1 eliminates the fewest-first-place candidate, the winner is the pairwise majority winner of the remaining two on full ballots; any exact tie — round-1 lowest tie or final pairwise tie — excludes the election from numerator and denominator, counted and reported separately), what fraction of elections exhibit an upward monotonicity violation — defined exhaustively: exists candidate X != winner W, ballot type t in {X>W>Z, X>Z>W} (Z the third candidate), and integer k with 1 <= k <= count(t), such that converting exactly k ballots of type t to W>X>Z (raising W to the top, preserving X>Z) changes the IRV winner away from W — measured as V_all (all non-tied elections) and V_close (close := round-1 elimination margin, second-lowest minus lowest first-place tally, <= 5% of n) in BOTH Arm E (exhaustive IAC) and Arm S (seeded IC Monte Carlo) — and does the result land APPROVE, REJECT, or NULL per the pre-registered rule?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 017 · 2026-07-13T00:59:58Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 80baad5 (landed via idea-engine PR #281)",
+    "idea_entry": "ideas/fleet/irv-monotonicity-close-races-2026-07-13.md @ efc78ae857f7972b627ce5c4f39178a80f6c33a1",
+    "rotation_slot": "inbox ORDER 004 rule 3 — COMPLETELY-UNRELATED-domain rotation, first head (social choice theory); fully hermetic by design: zero repo/network reads in the verdict session, every fixture is integer combinatorics the sim constructs itself"
+  },
+  "ballot_types": ["ABC", "ACB", "BAC", "BCA", "CAB", "CBA"],
+  "irv_rule": {
+    "round_1": "eliminate the candidate with the fewest first-place votes; an exact tie for lowest (two- or three-way) excludes the election (TIE_R1)",
+    "final": "pairwise majority winner of the remaining two candidates on the FULL ballots; an exact pairwise tie excludes the election (TIE_PAIR)",
+    "tie_handling": "excluded from numerator AND denominator, counted and reported separately (no tie-break artifacts); all four committed legs use odd n, so TIE_PAIR must be 0 (self-checked)"
+  },
+  "violation_definition": {
+    "upward": "election with IRV winner W exhibits a violation iff there exist X != W, ballot type t in {X>W>Z, X>Z>W} (Z the third candidate), and integer k with 1 <= k <= count(t), such that converting exactly k ballots of type t to W>X>Z changes the IRV winner away from W — searched exhaustively over X, t, k",
+    "modified_election_tie": "a modified election that lands on an exact tie (round-1 lowest tie; pairwise ties cannot occur at odd n) has NO defined IRV winner under the pinned rule and is NOT counted as a winner change — conservative, consistent with the pre-registered lower-bound reading (single-type uplift only; mixed-type coalition raises could only find MORE violations)",
+    "k_scan": "exhaustive k-scan, early exit on the FIRST violating k per (X, t) — existence semantics identical to the full scan; the breakpoint-only optimization the proposal permits is NOT used, so the seed-20260715 spot check is NOT required (kept in this file for the record)"
+  },
+  "close_definition": "close := round-1 elimination margin (second-lowest minus lowest first-place tally) <= 5% of n; exact integer test margin * 20 <= n — no floats",
+  "arms": {
+    "E": {
+      "model": "exhaustive IAC — ALL anonymous profiles (compositions of n into 6 parts), each equally likely; exact fractions, seedless, platform-independent",
+      "legs": [
+        {"id": "E-n25", "n": 25, "profiles": 142506, "role": "decision leg (Arm E primary)"},
+        {"id": "E-n13", "n": 13, "profiles": 8568, "role": "size anchor — sensitivity only, cannot flip the decision"}
+      ]
+    },
+    "S": {
+      "model": "seeded IC Monte Carlo — each voter's ballot uniform over the 6 types via random.Random(seed).randrange(6); pinned loop order: elections outer (0..M-1), voters inner (0..n-1); pinned to a stated CPython minor version",
+      "legs": [
+        {"id": "S-n99", "n": 99, "M": 200000, "seed": 20260713, "role": "decision leg (Arm S primary)"},
+        {"id": "S-n1001", "n": 1001, "M": 20000, "seed": 20260714, "role": "size leg — sensitivity only, cannot flip the decision"}
+      ]
+    }
+  },
+  "spot_check": {"seed": 20260715, "elections": 1000, "required": "iff the breakpoint-only k-scan optimization is used — it is NOT used in this sim"},
+  "bands": {
+    "APPROVE": "monotonicity risk is material in close races — iff V_close >= 0.10 in BOTH arms (Arm E at n=25 AND Arm S at n=99) AND V_all >= 0.01 in both",
+    "REJECT": "edge-case curiosity even when close — iff V_close < 0.05 in both arms",
+    "NULL": "anything else (bands straddled, or the two arms disagree across a threshold) — a legitimate, reportable outcome: the finding is 'the material-risk claim is voter-model-dependent', stated with the per-arm numbers, and NO ruling issues",
+    "size_legs": "n=13 and n=1,001 are sensitivity reporting only — they cannot flip the decision; any sign-flip across sizes must be flagged in the verdict"
+  },
+  "band_constants": {
+    "V_CLOSE_APPROVE_MIN": "1/10",
+    "V_ALL_APPROVE_MIN": "1/100",
+    "V_CLOSE_REJECT_MAX": "1/20",
+    "CLOSE_MARGIN_FRACTION": "1/20",
+    "comparison": "exact integer cross-multiplication (num * band_den >= band_num * den), never floats"
+  },
+  "consequence_preregistered": {
+    "APPROVE": "any future memo/explainer touching ranked-choice adoption carries non-monotonicity as a first-order QUANTIFIED objection for competitive races citing these rates",
+    "REJECT": "the objection is demoted to a footnote and may not be presented as a practical anti-IRV argument without new evidence",
+    "NULL": "neither camp's soundbite may be cited as settled; the model-dependence itself is the citable finding"
+  },
+  "hand_pins": {
+    "HAND-1": {"counts": [8, 0, 0, 6, 7, 0], "n": 21, "derivation": "fully hand-derived before code ran: fp A=8 B=6 C=7, eliminate B, pairwise A(8) vs C(13) -> winner C, margin 7-6=1 (close at n=21: 20<=21); raising C on k=3 of the 8 A>B>C ballots (t = X>Z>W with X=A, Z=B) -> ABC=5, CAB=10: fp A=5 B=6 C=10, eliminate A, pairwise B(11) vs C(10) -> B wins, a violation; k=1 keeps C (A7 B6 C8, B out, C 14-7); k=2 is a round-1 lowest tie (A6=B6, no defined winner, not a change); X=B route (BCA->CBA) never changes the winner (B stays eliminated, A-vs-C untouched)", "expect": {"winner": "C", "margin": 1, "violation": true, "min_k": 3, "new_winner": "B", "combos": [["final_loser", "X>Z>W"]]}},
+    "HAND-2": {"counts": [15, 0, 0, 4, 2, 0], "n": 21, "derivation": "fully hand-derived: fp A=15 B=4 C=2, eliminate C, pairwise A(17) vs B(4) -> winner A, margin 4-2=2 (not close: 40>21); every raise of A (from BCA: k=1,3,4 keep A, k=2 is a B=C=2 round-1 tie; from CAB: k=1,2 keep A) leaves A winning", "expect": {"winner": "A", "margin": 2, "violation": false}}
+  }
+}
