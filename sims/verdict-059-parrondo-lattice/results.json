@@ -1,0 +1,299 @@
+{
+  "arm_A": {
+    "D_A": {
+      "den": 50,
+      "float": -0.02,
+      "num": -1
+    },
+    "D_B": {
+      "den": 87950,
+      "float": -0.017384877771461058,
+      "num": -1529
+    },
+    "D_mix": {
+      "den": 4429850,
+      "float": 0.006021197105996817,
+      "num": 26673
+    },
+    "approve_band": {
+      "den": 1000,
+      "float": 0.001,
+      "num": 1
+    },
+    "isolated_loss_gates": {
+      "D_A_negative": true,
+      "D_B_negative": true
+    },
+    "margin_over_band": {
+      "den": 88597000,
+      "float": 0.005021197105996817,
+      "num": 444863
+    },
+    "pi_A": [
+      {
+        "den": 3,
+        "float": 0.3333333333333333,
+        "num": 1
+      },
+      {
+        "den": 3,
+        "float": 0.3333333333333333,
+        "num": 1
+      },
+      {
+        "den": 3,
+        "float": 0.3333333333333333,
+        "num": 1
+      }
+    ],
+    "pi_B": [
+      {
+        "den": 1759,
+        "float": 0.3826037521318931,
+        "num": 673
+      },
+      {
+        "den": 10554,
+        "float": 0.15472806518855411,
+        "num": 1633
+      },
+      {
+        "den": 10554,
+        "float": 0.4626681826795528,
+        "num": 4883
+      }
+    ],
+    "pi_mix": [
+      {
+        "den": 88597,
+        "float": 0.3445827736830818,
+        "num": 30529
+      },
+      {
+        "den": 4663,
+        "float": 0.2543426978340124,
+        "num": 1186
+      },
+      {
+        "den": 88597,
+        "float": 0.40107452848290576,
+        "num": 35534
+      }
+    ]
+  },
+  "arm_B": {
+    "all_legs_within_4se": true,
+    "legs": [
+      {
+        "N": 200000,
+        "abs_dev": 0.0003988028940031833,
+        "draws": 400000,
+        "empirical_drift": {
+          "den": 50000,
+          "num": 321
+        },
+        "empirical_drift_float": 0.00642,
+        "exact_drift_float": 0.006021197105996817,
+        "final_capital": 1284,
+        "mode": "mixed",
+        "name": "mixed_headline",
+        "se": 0.0022360218956888594,
+        "seed": 20261329,
+        "tol_4se": 0.008944087582755438,
+        "within_4se": true
+      },
+      {
+        "N": 200000,
+        "abs_dev": 0.002360000000000001,
+        "draws": 200000,
+        "empirical_drift": {
+          "den": 25000,
+          "num": -441
+        },
+        "empirical_drift_float": -0.01764,
+        "exact_drift_float": -0.02,
+        "final_capital": -3528,
+        "mode": "A",
+        "name": "pure_A_control",
+        "se": 0.0022357200522426773,
+        "seed": 20261330,
+        "tol_4se": 0.008942880208970709,
+        "within_4se": true
+      },
+      {
+        "N": 200000,
+        "abs_dev": 0.0017248777714610579,
+        "draws": 200000,
+        "empirical_drift": {
+          "den": 50000,
+          "num": -783
+        },
+        "empirical_drift_float": -0.01566,
+        "exact_drift_float": -0.017384877771461058,
+        "final_capital": -3132,
+        "mode": "B",
+        "name": "pure_B_control",
+        "se": 0.002235793778951896,
+        "seed": 20261331,
+        "tol_4se": 0.008943175115807583,
+        "within_4se": true
+      },
+      {
+        "N": 200000,
+        "abs_dev": 0.002068802894003183,
+        "draws": 400000,
+        "empirical_drift": {
+          "den": 100000,
+          "num": 809
+        },
+        "empirical_drift_float": 0.00809,
+        "exact_drift_float": 0.006021197105996817,
+        "final_capital": 1618,
+        "mode": "mixed",
+        "name": "stability",
+        "se": 0.0022359948031021896,
+        "seed": 20261332,
+        "tol_4se": 0.008943979212408758,
+        "within_4se": true
+      }
+    ],
+    "rngs_constructed_in_order": [
+      20261329,
+      20261330,
+      20261331,
+      20261332
+    ],
+    "stability": {
+      "margin_reproduced": true,
+      "pass": true,
+      "sign_reproduced": true
+    }
+  },
+  "environment": {
+    "implementation": "CPython",
+    "version_major_minor": "3.11"
+  },
+  "reporting_only": {
+    "critical_EPS_sweep": [
+      {
+        "D_A_float": -0.02,
+        "D_B_float": -0.017384877771461058,
+        "D_mix": {
+          "den": 4429850,
+          "num": 26673
+        },
+        "D_mix_float": 0.006021197105996817,
+        "EPS": {
+          "den": 100,
+          "num": 1
+        },
+        "EPS_float": 0.01,
+        "sign_D_mix": "positive"
+      },
+      {
+        "D_A_float": -0.03,
+        "D_B_float": -0.02606904640610376,
+        "D_mix": {
+          "den": 2214800,
+          "num": -8109
+        },
+        "D_mix_float": -0.0036612786707603396,
+        "EPS": {
+          "den": 200,
+          "num": 3
+        },
+        "EPS_float": 0.015,
+        "sign_D_mix": "negative"
+      },
+      {
+        "D_A_float": -0.04,
+        "D_B_float": -0.03474806844575058,
+        "D_mix": {
+          "den": 738275,
+          "num": -9851
+        },
+        "D_mix_float": -0.013343266398022417,
+        "EPS": {
+          "den": 50,
+          "num": 1
+        },
+        "EPS_float": 0.02,
+        "sign_D_mix": "negative"
+      },
+      {
+        "D_A_float": -0.05,
+        "D_B_float": -0.04342222222222222,
+        "D_mix": {
+          "den": 2215,
+          "num": -51
+        },
+        "D_mix_float": -0.023024830699774266,
+        "EPS": {
+          "den": 40,
+          "num": 1
+        },
+        "EPS_float": 0.025,
+        "sign_D_mix": "negative"
+      },
+      {
+        "D_A_float": -0.08,
+        "D_B_float": -0.06941829042810412,
+        "D_mix": {
+          "den": 2216425,
+          "num": -115404
+        },
+        "D_mix_float": -0.05206763143350215,
+        "EPS": {
+          "den": 25,
+          "num": 1
+        },
+        "EPS_float": 0.04,
+        "sign_D_mix": "negative"
+      }
+    ],
+    "drafter_reference_match": {
+      "D_A": true,
+      "D_B": true,
+      "D_mix": true,
+      "pi_B": true,
+      "pi_mix": true
+    },
+    "periodic_AABB_comparator": {
+      "drift": {
+        "den": 12578166446889025,
+        "float": 0.00476160446368757,
+        "num": 59892253498512
+      },
+      "pattern": [
+        "A",
+        "A",
+        "B",
+        "B"
+      ],
+      "sign": "positive"
+    }
+  },
+  "rules_evaluated_in_registered_order": [
+    {
+      "fired": false,
+      "rule": "REJECT (checked FIRST): D_mix <= 0"
+    },
+    {
+      "fired": false,
+      "rule": "INVALID gate: D_A >= 0 or D_B >= 0 (a component game not individually losing)"
+    },
+    {
+      "fired": true,
+      "rule": "APPROVE: D_mix >= 1/1000 AND seed-20261332 stability reproduces sign and margin AND all Arm-B legs within 4*se"
+    },
+    {
+      "fired": false,
+      "rule": "NULL: 0 < D_mix < 1/1000 or a validity conjunct fails"
+    }
+  ],
+  "self_checks": {
+    "failed": 0,
+    "passed": 346
+  },
+  "verdict": "approve"
+}

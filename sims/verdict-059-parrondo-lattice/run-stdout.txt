@@ -1,0 +1,27 @@
+VERDICT 059 — Parrondo lattice pin (INTAKE 048)
+Arm A (exact, decision):
+  D_A   = -1/50 = -0.020000
+  D_B   = -1529/87950 = -0.017385
+  D_mix = 26673/4429850 = 0.006021
+  pi_B   = [Fraction(673, 1759), Fraction(1633, 10554), Fraction(4883, 10554)]
+  pi_mix = [Fraction(30529, 88597), Fraction(1186, 4663), Fraction(35534, 88597)]
+Arm B leg mixed_headline seed 20261329  D_hat = +0.006420  exact +0.006021  |dev| = 0.000399  4se = 0.008944  PASS
+Arm B leg pure_A_control seed 20261330  D_hat = -0.017640  exact -0.020000  |dev| = 0.002360  4se = 0.008943  PASS
+Arm B leg pure_B_control seed 20261331  D_hat = -0.015660  exact -0.017385  |dev| = 0.001725  4se = 0.008943  PASS
+Arm B leg stability      seed 20261332  D_hat = +0.008090  exact +0.006021  |dev| = 0.002069  4se = 0.008944  PASS
+Stability (seed 20261332): sign True, margin >= 1/1000 True -> PASS
+Rules (registered order):
+  no-fire   REJECT (checked FIRST): D_mix <= 0
+  no-fire   INVALID gate: D_A >= 0 or D_B >= 0 (a component game not individually losing)
+  FIRED     APPROVE: D_mix >= 1/1000 AND seed-20261332 stability reproduces sign and margin AND all Arm-B legs within 4*se
+  no-fire   NULL: 0 < D_mix < 1/1000 or a validity conjunct fails
+Critical-EPS sweep (reporting-only):
+  EPS = 1/100  D_mix = 26673/4429850 = +0.006021  (positive)
+  EPS = 3/200  D_mix = -8109/2214800 = -0.003661  (negative)
+  EPS = 1/50  D_mix = -9851/738275 = -0.013343  (negative)
+  EPS = 1/40  D_mix = -51/2215 = -0.023025  (negative)
+  EPS = 1/25  D_mix = -115404/2216425 = -0.052068  (negative)
+Periodic [A,A,B,B] comparator (reporting-only): D = 59892253498512/12578166446889025 = +0.004762 (positive)
+Drafter reference match (reporting-only): {"D_A": true, "D_B": true, "D_mix": true, "pi_B": true, "pi_mix": true}
+VERDICT: approve
+SELF-CHECKS: 346 passed, 0 failed
