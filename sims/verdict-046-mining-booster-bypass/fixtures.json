@@ -110,7 +110,7 @@
     ],
     "control_digs_note": "2880 regen digs + full-bar burst ~75 (bar 60 amplified by regen during the burst, 60/(1 - 2/10)) - terminal rounding; engine-exact value measured, band pre-registered",
     "farmer_digs_identity": "farmer digs == control digs + admitted effective energy (regen is cap-independent below MAX_ENERGY; identity gate, exact)",
-    "ladder_fluid_predictor": "piecewise supply/demand: digs(t) = min(t/2, 60 + t/10 + A(t)), A(t) = admitted by t (C per window, front-loaded). Engine-vs-fluid agreement tolerance +-120 s (integer regen remainders + purchase granularity). FRONT-LOAD RISK registered at design time: a greedy ladder runner consumes the whole first-window cap immediately, so short goals (Forge I ~ 439 digs) see boost density far above the sustained rate \u2014 the sustained-rate PACE ratios (e.g. 0.833 at C=75 Forge I) are expected to be OPTIMISTIC; the measured gap IS the engine premium on the ladder leg.",
+    "ladder_fluid_predictor": "piecewise supply/demand: digs(t) = min(t/2, 60 + t/10 + A(t)), A(t) = admitted by t (C per window, front-loaded). Engine-vs-fluid agreement tolerance +-180 s (integer regen remainders + purchase granularity). FRONT-LOAD RISK registered at design time: a greedy ladder runner consumes the whole first-window cap immediately, so short goals (Forge I ~ 439 digs) see boost density far above the sustained rate \u2014 the sustained-rate PACE ratios (e.g. 0.833 at C=75 Forge I) are expected to be OPTIMISTIC; the measured gap IS the engine premium on the ladder leg.",
     "mc_tolerance": {
       "cell_mc_rel": 0.01,
       "row_validation_rel": 0.01,
@@ -123,10 +123,10 @@
       "statement": "11325/896 > 48/7 -> no price-only cell passes both bands; registered exclusion (the P033 rho=1.0 precedent), REPRICE rides reporting-only"
     },
     "rho_ceiling_row": {
-      "60": "26201/22650",
-      "75": "21671/18120",
       "100": "17141/13590",
-      "125": "14423/10872"
+      "125": "14423/10872",
+      "60": "26201/22650",
+      "75": "21671/18120"
     },
     "rho_closed_form": "rho(row, C) = 1 + C*(E - 4/5)/(360*E) (sustained-rate form, the proposal's drafting table)",
     "seal_line": "5/4 -> closed form leaves {60, 75} live, kills {100, 125} at the ceiling row (C=100 passes P3 at 4787/3838 ~ 1.2473 \u2014 knife-edge, disclosed)"
@@ -143,12 +143,12 @@
     "B0: every parent anchor above re-derived exactly through the engine BEFORE any lever cell runs",
     "C=0 cells (both semantics) byte-identical to the THROTTLED control timeline",
     "C=inf @ e=4/5 cells: 1800 digs/h identity, purchased = digs - control, V042-accounting bypass ratio == 37535/8427 and regen-credited == 38455/8427 (exact Fractions in their registered accountings)",
-    "farmer dig identity: digs == control + admitted (every decision cell, both semantics)",
+    "farmer dig identity: control + admitted - digs in [0, 8] when C mod 25 != 0 (the residual top-up must touch the energy cap, and the engine's settle() resets the regen remainder at cap \u2014 at most one such touch per window), EXACT (delta = 0) when C mod 25 == 0 (every decision cell, both semantics)",
     "admitted == 8*C per decision cell",
     "independent sliding-window re-audit: max admitted effective energy over ALL trailing-3600s windows <= C on every sliding cell (and reported for fixed cells; BOUNDARY-GAMER expected 2C there)",
     "drink-mix invariance: {drink-first, ration-only, alternating} mixes at (sliding, C=75) produce identical digs, admitted energy and coin spend; only purchase-action counts differ",
     "affordability: cumulative coin spend <= cumulative earned at the evaluated row for every (cell, row) timeline (exact, post-hoc)",
-    "Arm-S ladder seconds within +-120 s of the Arm-A fluid predictor per (decision cell, forge)",
+    "Arm-S ladder seconds within +-180 s of the Arm-A idealized front-load fluid predictor per (decision cell, forge) \u2014 the predictor makes window caps available instantaneously at window starts, while the engine spreads real purchases over the bar's dig-down (~60-160 s per window); slack widened 120 -> 180 s in this pre-run amendment, before any execution",
     "twin independently-written decision evaluators (float-based and Fraction-based) agree on every band flag and the ruling, on main AND stability legs",
     "MC legs within the pre-checked tolerances above",
     "stability leg (seed 20261282, M=200) reproduces the ruling",
@@ -176,6 +176,7 @@
     "THROTTLED": "digs at INT-1 whenever settled energy >= 1, waits for regen otherwise; never buys"
   },
   "preregistration": {
+    "amendment": "2026-07-13T13:52:00Z, BEFORE any run: (1) ladder Arm-A agreement tolerance 120 -> 180 s (idealized instant-front-load predictor vs the engine's real purchase spread); (2) the farmer dig identity carries a [0, 8] delta band when C mod 25 != 0 \u2014 the residual top-up purchase must land energy exactly at MAX_ENERGY and the engine's settle() resets the sub-10 s regen remainder at cap (engine truth found by code reading, not by running); (3) registered note: at committed prices every purchase (full items AND the 10-unit top-up) is profitable at every value row, so the decision-cell timeline is row-invariant and one timeline serves all five rows (REPRICE cells run per-row timelines). Git history shows this amendment commit precedes the runner's first committed results.",
     "authored": "2026-07-13T13:36:00Z",
     "intake": "035",
     "proposal": "idea-engine control/outbox.md PROPOSAL 035 - 2026-07-13T12:12:40Z - status sim-ready; idea file ideas/superbot-games/mining-booster-bypass-throttle-seal-2026-07-13.md (idea-engine PR #308); claim: idea-engine PR #310 (control/claims, VERDICT 046 reserved)",
