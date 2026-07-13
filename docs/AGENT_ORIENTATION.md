@@ -28,7 +28,11 @@ The planted doc set (this router reaches every live doc — keep it that way):
 `docs/collaboration-model.md` · `docs/helper-policy.md` ·
 `docs/repo-navigation-map.md` · `docs/ai-project-workflow.md` ·
 `docs/owner-profile.md` · `docs/current-state.md` · `docs/decisions.md` ·
-`docs/question-router.md` · `docs/CAPABILITIES.md` · `docs/ideas/README.md` ·
+`docs/question-router.md` · `docs/CAPABILITIES.md` · `docs/SKILLS.md`
+(the kit skill index — check it before improvising a procedure) ·
+`docs/ROUTINES.md` (scheduled trigger/routine doctrine — read it before
+touching the trigger registry) · `docs/seat-digest.md` (the kit-generated
+seat digest) · `docs/ideas/README.md` ·
 `docs/retro/questions.md` (the fleet retro self-review set) — plus the root
 `CONSTITUTION.md` (the working agreement), the lane contract (root `README.md` +
 `CONVENTIONS.md`), and `.session-journal.md`.

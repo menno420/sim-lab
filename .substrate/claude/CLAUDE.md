@@ -18,29 +18,53 @@ sim-lab is built in ${primary_language}.
 
 ## Orientation — read first, in order
 
+0. **Preflight — land on origin's HEAD before reading anything else:**
+   `git fetch origin main && git reset --hard origin/main` (or
+   `git checkout -B main origin/main`). A warm container clone can lag
+   origin by dozens of commits, and a stale clone reads stale orders.
+   Mechanics + safety notes: `docs/AGENT_ORIENTATION.md` § "Start every
+   session".
 1. This file — the working agreement.
-2. `docs/current-state.md` — what is true right now.
-3. `docs/CAPABILITIES.md` — what sessions here CAN and CANNOT do (verified).
-   Never declare a wall or a missing credential without its discovery rule:
-   check the file → check the env → attempt once + capture the exact error →
-   append the finding same session.
-4. `docs/AGENT_ORIENTATION.md` — the task-specific reading router.
+2. `HANDOFF.md` at repo root (when present) — the previous session's trail:
+   newest session card + where to pick up. Regenerated at every session
+   boot, untracked by design — read it before re-deriving history from
+   `git log`/`git show`; never commit or edit it.
+3. `docs/current-state.md` — what is true right now.
+
+That is the whole boot set. Everything else is routed, **not front-loaded**
+(reading every planted doc up front buys ceremony, not context — measured):
+open `docs/AGENT_ORIENTATION.md` when a task needs its reading route,
+`docs/SKILLS.md` (the skill index) **before improvising a procedure for a
+recurring action**, and
+`docs/CAPABILITIES.md` (the verified can/cannot ledger) **before declaring
+any wall or missing credential** — its discovery rule: check the file →
+check the env → attempt once + capture the exact error → append the finding
+same session — and `docs/ROUTINES.md` (the wake-chain/trigger doctrine)
+**before arming, deleting, or auditing any scheduled trigger/routine**.
+
+## Kit machinery — search hygiene
+
+`bootstrap.py` (~12k generated lines) and `.substrate/` (kit state + a byte
+backup of the previous dist) are substrate-kit machinery, not project code.
+Exclude them from repo-wide searches: `grep -r --exclude=bootstrap.py
+--exclude-dir=.substrate …`, or ripgrep `rg -g '!bootstrap.py' -g
+'!.substrate' …`.
 
 ## Architecture — layers & import rules
 
-${architecture_layers}
+sims/<idea-slug>/ — one self-contained subtree per idea (seeded/deterministic, own README, one run command, results report); harness/ — the reusable template + tiny stdlib-only helpers (seeded runs, sweeps, report emission, validity-gate checklist), versioned by tags, consumed via raw/copy; control/ — inbox/outbox/status in kit ORDER grammar; docs/ — kit workflow docs. Rules: sims never import each other; harness never imports a sim; a sim may vendor-copy from harness/; a sim that needs a dependency pins it inside its own subtree, never repo-globally.
 
 ## Verifying a change
 
 Run before every push:
 
 ```
-${verify_command}
+python3 bootstrap.py check --strict (the substrate gate); plus each touched sim's own documented run command reproducing its committed result
 ```
 
 ## How the maintainer works
 
-${owner_profile}
+The owner designs and dispatches; he does not code. He reads control/status.md heartbeats and the claude.ai Routines screen and reacts to what he sees in the repos — never wait for him (decide-and-flag). He builds ideas iteratively in fragments: state back the fuller picture before substantive work. Family-level model names only; no secret values in any repo, ever.
 
 ## Workflow adoption
 
