@@ -1,0 +1,225 @@
+{
+  "arms": {
+    "FIXED_19": {
+      "net_per_sale": {
+        "gumroad_direct": {
+          "exact": "15749/1000",
+          "usd": 15.749
+        },
+        "gumroad_discover": {
+          "exact": "133/10",
+          "usd": 13.3
+        },
+        "kofi_free": {
+          "exact": "859/50",
+          "usd": 17.18
+        }
+      },
+      "unmeasured_parameters": 0
+    },
+    "PWYW": {
+      "core_frontier": "u * net(wbar) >= net(19) per channel; direct: u*(0.871*wbar - 0.80) >= 15.749",
+      "kernel_invariant_parity_bar_at_u1_usd": 19.0,
+      "u_min_landmarks_direct": {
+        "10": {
+          "exact": "15749/7910",
+          "value": 1.99102402022756
+        },
+        "15": {
+          "exact": "15749/12265",
+          "value": 1.2840603342845496
+        },
+        "19": {
+          "exact": "1/1",
+          "value": 1.0
+        },
+        "29": {
+          "exact": "15749/24459",
+          "value": 0.6438938631996403
+        },
+        "3": {
+          "exact": "15749/1813",
+          "value": 8.686707115278544
+        },
+        "5": {
+          "exact": "15749/3555",
+          "value": 4.430098452883263
+        }
+      },
+      "u_min_wbar5_discover": {
+        "exact": "19/5",
+        "value": 3.8
+      },
+      "u_min_wbar5_kofi": {
+        "exact": "859/215",
+        "value": 3.9953488372093022
+      },
+      "unmeasured_parameters": "u, wbar, z (G1 \u2014 no PWYW measurement exists anywhere in the packet)"
+    }
+  },
+  "band_render_direct_0_1_2_3_sales": {
+    "gross_usd": [
+      0.0,
+      19.0,
+      38.0,
+      57.0
+    ],
+    "net_exact": [
+      "0/1",
+      "15749/1000",
+      "15749/500",
+      "47247/1000"
+    ],
+    "net_usd": [
+      0.0,
+      15.749,
+      31.498,
+      47.247
+    ]
+  },
+  "decision_rule_evaluation": {
+    "R1_measured_pwyw_wins": "CANNOT FIRE \u2014 G1: no measured PWYW conversion, taker-rate, or mean-payment data exists anywhere in the repo; zero organic sales data for any product",
+    "R2_full_band_dominance": {
+      "fires": false,
+      "fixed_win_cells_decision_channel": 1026,
+      "note": "both regions non-empty \u2014 no arm dominates the registered band",
+      "pwyw_win_cells_decision_channel": 803
+    },
+    "R3_conditional_default": {
+      "default": "committed $19 one-time fixed (zero unmeasured parameters; intake + vetting \u00a73 + precedent chain $15 < $19 = template-packs rung < $29 SWTK live < $39 < $49)",
+      "fires": true,
+      "min19_variant": "PWYW with $19 minimum (= $19 fixed + voluntary overpay) cannot lose per paid sale (per-sale dominance proven on every grid payment >= $19, every channel); parked on conversion-side risk (u unmeasured, G1)",
+      "pwyw_parks_behind": "measured (u, wbar) clearing u*(0.871*wbar - 0.80) >= 15.749 on the decision channel; landmarks: u=1 needs wbar >= $19.00 exactly; wbar=$10 needs u >= 15749/7910 ~= 1.9910; wbar=$15 needs u >= 15749/12265 ~= 1.2841; the $3-floor variant needs u >= 15749/1813 ~= 8.6867"
+    },
+    "R4_null": "not reached",
+    "ruling": "R3-CONDITIONAL-DEFAULT"
+  },
+  "fee_floor": {
+    "fee_share_at_19": {
+      "exact": "4/95",
+      "value": 0.042105263157894736
+    },
+    "fee_share_at_3": {
+      "exact": "4/15",
+      "value": 0.26666666666666666
+    },
+    "fee_share_at_5": {
+      "exact": "4/25",
+      "value": 0.16
+    },
+    "packet_rule_crossing_usd": 3.2,
+    "zero_profit_payment_floor": {
+      "exact": "800/871",
+      "value": 0.9184845005740528
+    }
+  },
+  "grid": {
+    "cells_per_channel": 1829,
+    "channels": [
+      "gumroad_direct",
+      "kofi_free",
+      "gumroad_discover"
+    ],
+    "decision_channel": "gumroad_direct",
+    "floor_cell_counts_decision_channel": {
+      "0": 1829,
+      "19": 651,
+      "3": 1643,
+      "5": 1519
+    },
+    "floor_win_counts": {
+      "gumroad_direct": {
+        "0": 803,
+        "19": 473,
+        "3": 803,
+        "5": 803
+      },
+      "gumroad_discover": {
+        "0": 816,
+        "19": 472,
+        "3": 816,
+        "5": 816
+      },
+      "kofi_free": {
+        "0": 811,
+        "19": 472,
+        "3": 811,
+        "5": 811
+      }
+    },
+    "pwyw_win_counts": {
+      "gumroad_direct": 803,
+      "gumroad_discover": 816,
+      "kofi_free": 811
+    },
+    "u_grid": "0.0..3.0 step 0.1 (31)",
+    "wbar_grid": "0.0..29.0 step 0.5 (59)"
+  },
+  "processing_rate_bracket_direct": {
+    "2.3%": {
+      "net19_exact": "15863/1000",
+      "net19_usd": 15.863
+    },
+    "2.9%": {
+      "net19_exact": "15749/1000",
+      "net19_usd": 15.749
+    },
+    "3.5%": {
+      "net19_exact": "3127/200",
+      "net19_usd": 15.635
+    }
+  },
+  "reads_leg_bars": {
+    "z=0%": {
+      "downloads_per_baseline_buyer_at_u1": "1/1",
+      "u_needed_for_30_downloads_B1": "30/1",
+      "u_needed_for_30_downloads_B3": "10/1"
+    },
+    "z=25%": {
+      "downloads_per_baseline_buyer_at_u1": "4/3",
+      "u_needed_for_30_downloads_B1": "45/2",
+      "u_needed_for_30_downloads_B3": "15/2"
+    },
+    "z=50%": {
+      "downloads_per_baseline_buyer_at_u1": "2/1",
+      "u_needed_for_30_downloads_B1": "15/1",
+      "u_needed_for_30_downloads_B3": "5/1"
+    },
+    "z=75%": {
+      "downloads_per_baseline_buyer_at_u1": "4/1",
+      "u_needed_for_30_downloads_B1": "15/2",
+      "u_needed_for_30_downloads_B3": "5/2"
+    },
+    "z=90%": {
+      "downloads_per_baseline_buyer_at_u1": "10/1",
+      "u_needed_for_30_downloads_B1": "3/1",
+      "u_needed_for_30_downloads_B3": "1/1"
+    }
+  },
+  "self_checks": {
+    "failed": 0,
+    "passed": 5612
+  },
+  "split_ladder_direct_gross19": {
+    "1": {
+      "net_exact": "15749/1000",
+      "net_usd": 15.749
+    },
+    "2": {
+      "net_exact": "14949/1000",
+      "net_usd": 14.949
+    },
+    "3": {
+      "net_exact": "14149/1000",
+      "net_usd": 14.149
+    },
+    "4": {
+      "net_exact": "13349/1000",
+      "net_usd": 13.349
+    },
+    "5": {
+      "net_exact": "12549/1000",
+      "net_usd": 12.549
+    }
+  }
+}
