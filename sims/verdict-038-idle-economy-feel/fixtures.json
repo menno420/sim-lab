@@ -67,6 +67,7 @@
       "A5_s2_2h_first_prestige_t_s": 21600,
       "s3_reset_durations_1_to_3": [12573, 11536, 10475],
       "A7_min_levels_per_early_visit": {"N=2": 6, "N=8": 16},
+      "A7_anchor_mapping_amendment": "AMENDMENT 1 (disclosed, pre-results-commit; git trail shows order): the first driver run revealed V006's published A7 pin (6,16) is the harness's INCLUSIVE-of-prestige-visit minimum (the AMB-4 auxiliary), not its strictly-before gate value — the anchor check is therefore bound to auxiliary s2_visit_burst_minima[*].including_prestige_visit == (6,16); the strictly-before minima are reported in results.json and must still satisfy A7's own >= 2 band. Both readings pass the band; no registered rule or ruling is touched by this mapping correction.",
       "A8_s3_max_purchase_gap_s": 1215,
       "o6_awards_first_3": [1, 1, 1],
       "early_inert_purchases_of_first_12": 9,
