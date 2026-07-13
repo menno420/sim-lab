@@ -1,0 +1,111 @@
+{
+  "preregistration": {
+    "authored": "2026-07-13T10:32:19Z",
+    "statement": "This fixture file is the PRE-REGISTRATION for VERDICT 042. It was authored BEFORE the runner (mining_economy_sim.py) was written or executed; the results reference it. Commit order in this branch shows fixtures+engine before results.",
+    "intake": "simreq-006",
+    "verdict_number": 42,
+    "reserved_siblings": "VERDICT 040 (ship-it bundle) and VERDICT 041 (narrow-TAM cookbooks) are reserved sibling numbers per the coordinator dispatch; this slice never renumbers down."
+  },
+  "binding_spec": {
+    "order": "idea-engine control/inbox.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d, ORDER 006 (2026-07-13T09:02Z), SUPERBOT-GAMES BALANCE item 4",
+    "order_verbatim": "(4) MINING-ECONOMY-TUNING — (a) surface descend-gate shape: a fresh player with only an iron pickaxe has max_accessible_depth==0 and cannot descend until a torch (depth_access=1) / lantern (=2) is equipped (games/mining/core/world.py + equipment.py); (b) faucet/sink gap: base roll 1–2 ore/dig at 1–3 coin values vs iron sword 60 coins (market.GEAR_SHOP) and Forge I 3,000 coins + 25 iron + 15 stone / Forge II 8,000 + 20 gold + 10 iron (structures._FORGE_BUILD_LADDER);",
+    "packet": "menno420/superbot-games @ 57f69be34785afb427d608b207e7369025166e94, control/outbox.md § 'SIM-REQUEST · mining-economy-tuning · 2026-07-13' (status: open). The packet carries an inline self-correction on the Forge ladder ('a Forge I at 8 000 coins + 20 gold + 10 iron … correction: 3 000 coins + 25 iron + 15 stone for Forge I, 8 000 coins + 20 gold + 10 iron for Forge II') — the corrected values are the pinned ones and match ORDER 006 item 4.",
+    "packet_faucet_estimate": "the packet estimates 'on the order of ~22 coins per 8 digs' — a REPORTING-ONLY leg re-derives this figure and checks it against the exact faucet; it is a soft estimate, not a B0 anchor, and cannot flip the decision"
+  },
+  "b0_validity_anchors": {
+    "note": "Every anchor is driven through the byte-copied engine (engine/games/mining/core/*, sha256 MANIFEST.json @ pin 57f69be3). ANY mismatch = validity failure -> honest NULL, no probe result counts.",
+    "gate": {
+      "fresh_player_iron_pickaxe_only": {"equipped": {"tool": "iron pickaxe"}, "expect_depth_access": 0, "expect_max_accessible_depth": 0, "expect_can_descend_from_0": false},
+      "torch": {"expect_item_depth_access": 1, "expect_max_accessible_depth_when_equipped_with_iron_pickaxe": 1},
+      "lantern": {"expect_item_depth_access": 2, "expect_max_accessible_depth_when_equipped_with_iron_pickaxe": 2}
+    },
+    "faucet": {
+      "BASE_ROLL_MAX": 2,
+      "base_roll_support_with_multiplier_1": [1, 2],
+      "sell_values": {"stone": 1, "bronze": 2, "iron": 3, "silver": 4, "gold": 6, "diamond": 12},
+      "order_006_phrase": "1–3 coin values (stone 1 / bronze 2 / iron 3); the packet's own comment additionally pins silver 4 / gold 6 / diamond 12 which are checked as auxiliary anchors"
+    },
+    "sinks": {
+      "GEAR_SHOP_iron_sword": 60,
+      "FORGE_BUILD_LADDER": [
+        {"to": "Forge I", "coins": 3000, "materials": {"iron": 25, "stone": 15}},
+        {"to": "Forge II", "coins": 8000, "materials": {"gold": 20, "iron": 10}}
+      ]
+    }
+  },
+  "auxiliary_engine_pins": {
+    "note": "engine constants the probes READ live from the copied modules (not packet anchors; listed so drift is visible)",
+    "GEAR_SHOP_torch": 10,
+    "GEAR_SHOP_lantern": 40,
+    "GEAR_SHOP_ration": 20,
+    "GEAR_SHOP_energy_drink": 40,
+    "recipe_torch": {"wood": 2},
+    "energy": {"MAX_ENERGY": 60, "DIG_COST": 1, "REGEN_SECONDS": 10, "sustained_digs_per_hour": 360, "provenance": "energy.py's own docstring: 'sized to the sim-pinned ~360-digs-per-active-hour sustained throttle'"},
+    "energy_restore": {"ration": 25, "energy drink": 50},
+    "TOOL_POWER_GAIN": 0.0625,
+    "iron_pickaxe_mining_power": 4,
+    "grid_feature_weights": {"NORMAL": 70.0, "RICH": 10.0, "BARREN": 18.0, "TREASURE": 2.0},
+    "grid_richness": {"NORMAL": 1.0, "RICH": 2.0, "BARREN": 0.5, "TREASURE": 2.0}
+  },
+  "registered_profiles": {
+    "action_time_model": {
+      "sustained": "energy-bound: 1 dig / REGEN_SECONDS = 10 s -> 360 digs/hour (engine-pinned)",
+      "burst": "first MAX_ENERGY = 60 digs from a full bar at the interaction floor",
+      "INT-1": "interaction floor = 2 s per action (registered assumption; UI/latency, not an engine constant — flip axis: a slower floor scales burst times linearly, sustained times are engine-pinned)",
+      "INT-2": "non-dig actions (chop / craft / equip / sell / buy / descend) cost 0 energy and 1 interaction each in the pure core (the workflow layer may add costs; flip axis named)"
+    },
+    "P0_fresh_floor": {"equipped": {"tool": "iron pickaxe"}, "depth": 0, "cells": "NORMAL only (conservative floor — no grid bonus)"},
+    "P1_surface_roamer": {"equipped": {"tool": "iron pickaxe"}, "depth": 0, "cells": "i.i.d. per grid._FEATURE_WEIGHTS (abstraction GRID-1)"},
+    "P2_cavern_roamer": {"equipped": {"tool": "iron pickaxe", "light": "torch"}, "depth": 1, "cells": "i.i.d. per grid._FEATURE_WEIGHTS"},
+    "P3_deep_roamer": {"equipped": {"tool": "iron pickaxe", "light": "lantern"}, "depth": 2, "cells": "i.i.d. per grid._FEATURE_WEIGHTS"},
+    "NP1_natural_progression": "composite: start P0 -> dig to 10 coins, buy torch, descend (P2) -> dig to +40 coins, buy lantern, descend (P3) -> buy iron sword at +60 -> Forge I (3000 coins + 25 iron + 15 stone) -> Forge II (+8000 coins + 20 gold + 10 iron); fluid expectation accounting on exact per-dig means, materials tracked to check whether coins or materials bind",
+    "GRID-1": "roaming is modeled as i.i.d. cell-feature draws at engine weights; validated by an engine-exact MC leg sampling grid.cell_at over random coordinates (deterministic per (seed,x,y,z)) — if observed feature frequencies disagree with _FEATURE_WEIGHTS beyond MC tolerance, GRID-1 is marked broken and the NORMAL-only floor rules"
+  },
+  "probe_A_descend_gate_arms": {
+    "G0_current": "light-gated (the shipped shape). Two fresh-player paths measured: CHOP-CRAFT (chop randint(1,3) wood/action without axe -> craft torch at recipe {wood:2} -> equip -> descend; exact distribution) and DIG-SELL-BUY (dig at P0 -> sell -> buy torch at 10 coins -> equip -> descend; exact DP over the per-dig coin pmf for E[digs] and quantiles)",
+    "G1_pickaxe_grants_depth_1": "counterfactual: any pickaxe carries depth_access=1 -> first descend = 1 action; consequences priced (light slot loses its Cavern gate; lantern still gates Deep)",
+    "G2_torch_cheaper_earlier": "counterfactual: torch at 5 coins / recipe {wood:1} -> both paths recomputed",
+    "G3_unchanged": "ratify arm (identical to G0; present so the ruling names it explicitly)"
+  },
+  "probe_B_faucet_sink_measures": [
+    "exact E[coins/dig], E[stone/dig], E[iron/dig], E[gold/dig] per profile (Fraction arithmetic, engine constants read live)",
+    "coins/hour sustained (x360) and burst pacing per profile",
+    "digs-to-iron-sword (60 coins) at P0 and P1",
+    "NP-1 cumulative digs and wall-clock (sustained model) to torch, lantern, iron sword, Forge I, Forge II; binding-resource check (coins vs iron/stone/gold)",
+    "FAUCET-BYPASS reporting leg: rations/energy drinks convert coins->energy at 20/25 and 40/50 coins-per-dig equivalents; price the booster-fueled active path (digs at INT-1 pace, net coins/dig after booster cost) and its collapsed times-to-Forge — REPORTING + flag, cannot flip the primary ruling (primary = the engine's own sustained throttle)",
+    "TOOL-LADDER reporting leg: E[amount/dig] for bare hands / pickaxe / iron pickaxe / gold pickaxe / diamond pickaxe under BASE_ROLL_MAX=2 and round() — checks the rewards.py docstring claim that 'a better tool still pays' at every tier (closed-form prediction: pickaxe and iron pickaxe are amount-identical to bare hands on the {1,2} support; gold/diamond pay). REPORTING + candidate-row material, cannot flip the primary ruling",
+    "PACKET-ARITHMETIC reporting leg: reconstruct the packet's '~22 coins per 8 digs' (prediction: it is the stone/bronze/iron-only value average 28/15 x 1.5 amount = 2.8 coins/dig ~ 22.4/8digs, i.e. it ignores silver/gold/diamond; exact faucet is ~1.6-1.7x higher)"
+  ],
+  "acceptance_bands": {
+    "note": "registered judgment lines in DIGS/ACTIONS (the engine's native units — minutes depend only on the engine-pinned 360/hr map and INT-1); full tables ship so a re-drawn line re-reads, never re-runs",
+    "BAND-GATE": {"ratify_if": "worst-case DETERMINISTIC actions to first descend under G0 <= 20 AND <= 2.0 min at INT-1 pacing", "wall_if": "> 60 actions or > 10 min", "between": "conditional"},
+    "BAND-SWORD": {"ratify_if": "digs-to-iron-sword at P1 in [10, 200]", "too_cheap_if": "< 10", "wall_if": "> 200 (= >33 min sustained)"},
+    "BAND-FORGE1": {"ratify_if": "NP-1 cumulative digs to Forge I in [200, 2200] (~33 min – 6.1 h sustained)", "too_cheap_if": "< 200", "wall_if": "> 2200"},
+    "BAND-FORGE2": {"ratify_if": "NP-1 cumulative digs to Forge II in [500, 4400] (~1.4 – 12.2 h sustained)", "too_cheap_if": "< 500", "wall_if": "> 4400"}
+  },
+  "decision_rule": {
+    "order": "evaluated NULL-first, then per-ask",
+    "NULL": "if ANY b0_validity_anchor mismatches -> validity failure -> verdict NULL (needs-more-evidence), the mismatch IS the finding; no probe result counts",
+    "ask_a": "RATIFY current gate iff BAND-GATE ratify condition holds for G0; else recommend the cheapest arm (G1/G2) whose worst-case passes, with exact numbers",
+    "ask_b": "RATIFY current faucet/sink constants iff BAND-SWORD, BAND-FORGE1 and BAND-FORGE2 all land in their ratify ranges; if a band fails, recommend the smallest single-constant change (computed exactly) that re-enters it: BAND-SWORD -> GEAR_SHOP['iron sword']; BAND-FORGE1 -> _FORGE_BUILD_LADDER[0].coins; BAND-FORGE2 -> _FORGE_BUILD_LADDER[1].coins",
+    "overall": "approve (= ratify current constants, both asks) if ask_a and ask_b both ratify; conditional if exactly one ask needs a change; reject if both need changes; reporting legs (FAUCET-BYPASS, TOOL-LADDER, PACKET-ARITHMETIC) are flags/candidate rows and CANNOT flip the ruling"
+  },
+  "closed_form_predictions_pre_run": {
+    "note": "registered before the runner exists (V038 discipline); the run must confirm or the discrepancy is reported",
+    "E_value_per_ore_depth0": "64/21 ~ 3.0476 (weights 3/2.5/2/1.5/1/0.5 over values 1/2/3/4/6/12)",
+    "E_value_per_ore_depth1": "85/22 ~ 3.8636",
+    "E_value_per_ore_depth2": "106/23 ~ 4.6087",
+    "E_amount_NORMAL_iron_pickaxe": "3/2 (round(1*1.25)=1, round(2*1.25)=2 — banker's rounding makes the x1.25 amount-inert on the {1,2} support)",
+    "E_amount_grid_avg_iron_pickaxe": "1.59 (= 0.70*1.5 + 0.10*3 + 0.18*1 + 0.02*3)",
+    "E_coins_per_dig": {"P0": "32/7 ~ 4.5714", "P1": "~4.8457", "P2": "~6.1432", "P3": "~7.3278"},
+    "digs_to_iron_sword_P1_fluid": "~12.4",
+    "NP1_digs_to_forge_I_fluid": "~430 (~1.1 h sustained)",
+    "NP1_digs_to_forge_II_fluid": "~1520 (~4.1 h sustained)",
+    "gate_G0_chop_path": "E[chops]=4/3, worst-case deterministic 2 chops -> 5 actions total (chop,chop,craft,equip,descend); E[actions]=4/3+3=13/3~4.33"
+  },
+  "rng_policy": {
+    "primary": "ZERO decision-bearing RNG — every ruling number is exact Fraction arithmetic on engine constants read live from the byte-copied modules",
+    "mc_validation_legs": "seeded engine-driven Monte Carlo confirms the exact numbers within tolerance (self-check, not decision-bearing): seeds [20260792, 20260793, 20260794, 20260795] (strictly above the fleet high-water 20260791), N=200000 digs/profile, agreement gate |MC-exact|/exact <= 0.01; plus the GRID-1 engine-exact leg sampling grid.cell_at over 200000 random coords",
+    "reproducibility": "one command, stdlib-only; stdout + results.json byte-identical across two full process runs (external diff)"
+  }
+}
