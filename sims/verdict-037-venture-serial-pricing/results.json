@@ -1,0 +1,122 @@
+{
+  "delivery_fee_sensitivity_reporting_only": {
+    "0.00": {
+      "B_decimal": "0.668896",
+      "B_exact": "200/299"
+    },
+    "0.05": {
+      "B_decimal": "0.680272",
+      "B_exact": "100/147"
+    },
+    "0.10": {
+      "B_decimal": "0.692042",
+      "B_exact": "200/289"
+    },
+    "0.15": {
+      "B_decimal": "0.704225",
+      "B_exact": "50/71"
+    }
+  },
+  "exact_constants": {
+    "B_serial_breakeven": {
+      "decimal": "0.668896",
+      "exact": "200/299"
+    },
+    "full_carrythrough_advantage_net": {
+      "decimal": "1.797595",
+      "exact": "897/499"
+    },
+    "full_carrythrough_serial_net": {
+      "exact": "6279/1000",
+      "usd": "6.279"
+    },
+    "r_per_episode_net": {
+      "exact": "2093/1000",
+      "usd": "2.093"
+    },
+    "s_over_r_funnel_bar": {
+      "decimal": "1.668896",
+      "exact": "499/299"
+    },
+    "s_single_net": {
+      "exact": "3493/1000",
+      "usd": "3.493"
+    }
+  },
+  "funnel_frontier": {
+    "free_vs_serial_identity": "SERIAL - FREE == r exactly at equal rates, m=1 (free can only win via acquisition multiplier m)",
+    "m_star_at_symmetric_q": {
+      "0.25": {
+        "decimal": "5.340468",
+        "exact": "7984/1495"
+      },
+      "0.50": {
+        "decimal": "2.225195",
+        "exact": "1996/897"
+      },
+      "0.75": {
+        "decimal": "1.271540",
+        "exact": "7984/6279"
+      },
+      "1.00": {
+        "decimal": "0.834448",
+        "exact": "499/598"
+      }
+    },
+    "q2_at_q3_1_m1": {
+      "decimal": "0.834448",
+      "exact": "499/598"
+    },
+    "q2_symmetric_m1": {
+      "decimal_pm_1e15": "0.885242"
+    },
+    "win_cells_of_441_at_m1": 16
+  },
+  "recommendation": {
+    "default_publish_arm": "SINGLE volume at $4.99 (net $3.493/sale exact; the only arm with zero unmeasured parameters; vetted band $3.99-$5.99, fallback $3.99)",
+    "free_funnel_not_recommendable": "win bar m*q2*(1+q3) >= 499/299 (~1.6689) needs BOTH unmeasured behavior (>=83.4% conversion at m=1 even with perfect ep3 carry) AND an unpinned $0.00 platform mechanism (gap G3)",
+    "serial_parked_behind": "measured carry-through p2*(1+p3) >= 200/299 (~0.6689): e.g. p2 >= 33.4% if p3=100%, p2 >= 45.9% if p3=p2, p2 >= 66.9% if p3=0"
+  },
+  "ruling": "R3-CONDITIONAL-DEFAULT",
+  "self_checks": {
+    "failed": 0,
+    "passed": 934
+  },
+  "serial_frontier": {
+    "p2_at_p3_0": {
+      "decimal": "0.668896",
+      "exact": "200/299"
+    },
+    "p2_at_p3_1": {
+      "decimal": "0.334448",
+      "exact": "100/299"
+    },
+    "p2_at_p3_eq_p2": {
+      "decimal_pm_1e15": "0.458591"
+    },
+    "win_cells_of_441": 235,
+    "win_map_rows_p2_outer_p3_inner_step_0.05": [
+      ".....................",
+      ".....................",
+      ".....................",
+      ".....................",
+      ".....................",
+      ".....................",
+      ".....................",
+      "...................WW",
+      "..............WWWWWWW",
+      "..........WWWWWWWWWWW",
+      ".......WWWWWWWWWWWWWW",
+      ".....WWWWWWWWWWWWWWWW",
+      "...WWWWWWWWWWWWWWWWWW",
+      ".WWWWWWWWWWWWWWWWWWWW",
+      "WWWWWWWWWWWWWWWWWWWWW",
+      "WWWWWWWWWWWWWWWWWWWWW",
+      "WWWWWWWWWWWWWWWWWWWWW",
+      "WWWWWWWWWWWWWWWWWWWWW",
+      "WWWWWWWWWWWWWWWWWWWWW",
+      "WWWWWWWWWWWWWWWWWWWWW",
+      "WWWWWWWWWWWWWWWWWWWWW"
+    ]
+  }
+}
