@@ -1,0 +1,135 @@
+{
+  "_preregistration": {
+    "written": "2026-07-13T10:14:21Z (date -u), committed BEFORE the runner existed; the sim reads every constant from this file and touches no repo state, network, or wall clock",
+    "binding_spec_verbatim": {
+      "source": "menno420/idea-engine control/inbox.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d, ORDER 006 · 2026-07-13T09:02Z · status: new, SIM-REQUEST (2)",
+      "text": "(2) SHIP-IT BUNDLE — $59 vs $64/$68 anchor points;",
+      "order_packet_pointer_verbatim": "VENTURE PRICING (3 — packet: venture-lab control/outbox.md \"night-run MORNING TALLY\" ~05:00Z; listings/gates in venture-lab docs/publishing/OWNER-QUEUE.md)",
+      "battery_clause": "evidence per the idea-engine 8-question probe battery (idea-engine README.md § 'The probe battery (v0 — the core method)'), inherited from ORDER 005's 'deliver a verdict with evidence per your 8-question battery' — ORDER 006 sequences its items after ORDER 005's under the same intake rule"
+    },
+    "packet_request_verbatim": {
+      "source": "menno420/venture-lab control/outbox.md @ 6ecc46040ff20c418bd2b65c66a7b8d29c786a7c, section '2026-07-13 · night-run MORNING TALLY (coordinator → manager, ORDER 008)'",
+      "text": "SIM-REQUEST: photo packs PWYW-vs-$5 + $3 anchor + two-pack bundle · bundle $59 vs $64/$68 anchors · $19 fixed vs PWYW for narrow-TAM cookbooks · owner sandbox repo to production-verify merge-on-green.yml.",
+      "tally_hard_gate_line_verbatim": "HARD-GATED honest: $59 Ship-It Bundle (on ⚑B/⚑D clicks), photo packs (owner-held originals)."
+    },
+    "probe_battery_spec_verbatim": {
+      "source": "menno420/idea-engine README.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d, § 'The probe battery (v0 — the core method)'",
+      "questions": [
+        "1. What is this really?",
+        "2. What is the possibility space?",
+        "3. What is the most advanced capability reachable by the simplest implementation?",
+        "4. What breaks it?",
+        "5. What does it unlock?",
+        "6. What does it depend on?",
+        "7. Which lane should build it?",
+        "8. What is the smallest shippable slice?"
+      ]
+    }
+  },
+  "pinned_constants": {
+    "bundle_components": {
+      "value": {"membership_kit_usd": "49", "template_pack_usd": "19", "template_pack_mode": "PWYW suggested", "separate_total_usd": "68"},
+      "source_verbatim": "**$59** for the bundle — versus **$68** bought separately ($49 kit + $19 suggested for the pack). The $9 discount is a modest, honest nudge to take both rather than a manufactured \"50% off\" anchor; the pack is pay-what-you-want on its own, so the bundle simply removes a decision for buyers who want the whole build-with-discipline setup.",
+      "source": "venture-lab candidates/BUNDLE-LISTING.md @ 6ecc460, § Pricing"
+    },
+    "committed_bundle_price_usd": {
+      "value": "59",
+      "source_verbatim": "price set ($59 one-time fixed; $68-separate comparison cited in the copy)",
+      "source": "venture-lab docs/publishing/OWNER-QUEUE.md @ 6ecc460, § Ship-It Bundle click-run; same constant in docs/publishing/vetting/bundle-starter.md §3 ('**$59 one-time fixed** vs **$68 bought separately**') and §7 step 4 ('**$59 one-time, fixed** (not PWYW — §3)')"
+    },
+    "bundle_price_floor_coherence": {
+      "value": "49",
+      "source_verbatim": "The bundle price is FIXED even though the pack alone is PWYW — inheriting PWYW would let the bundle undercut the $49 kit alone, which is incoherent pricing.",
+      "source": "venture-lab docs/publishing/vetting/bundle-starter.md @ 6ecc460, §3"
+    },
+    "committed_saves_claim_verbatim": {
+      "text": "Yes — each is sold separately (kit $49, pack $19 PWYW). The bundle is only for people who want both; it saves $9 and one checkout.",
+      "source": "venture-lab candidates/BUNDLE-LISTING.md @ 6ecc460, § FAQ 'Can I buy just one?'"
+    },
+    "anti_fake_anchor_stance_verbatim": {
+      "text": "which frames the $9 off as \"a modest, honest nudge,\" not a manufactured discount anchor",
+      "source": "venture-lab docs/publishing/vetting/bundle-starter.md @ 6ecc460, §3 (citing candidates/BUNDLE-LISTING.md § Pricing)"
+    },
+    "gumroad_fee_schedule": {
+      "value": {"platform_rate": "0.10", "platform_flat_usd": "0.50", "processing_rate": "0.029", "processing_flat_usd": "0.30", "net_formula": "net(P) = P·(1 − 0.10 − 0.029) − (0.50 + 0.30) = P·871/1000 − 4/5"},
+      "source_verbatim": "**Gumroad:** flat **10% platform fee + $0.50 per transaction** on direct sales; payment processing (~2.9% + $0.30) brings the practical total to roughly **~12.9% + $0.80 per sale**.",
+      "source": "venture-lab candidates/photo-packs/MARKET-PLAN.md @ 6ecc460 (the packet's one committed Gumroad fee schedule, cited by docs/publishing/vetting/photo-packs.md §3 'Worked nets from the cited fee schedules'); approximation disclosed as gap G4"
+    },
+    "expected_sales_verbatim": {
+      "text": "Conservative expectation (Q-0259.4): 0–2 sales/month absent distribution, same as the components — the bundle adds a **price point**, not a new audience or channel.",
+      "source": "venture-lab docs/publishing/vetting/bundle-starter.md @ 6ecc460, §3"
+    },
+    "zero_evidence_verbatim": {
+      "text": "Honest null: no evidence exists on bundle-vs-separate conversion for this catalog (zero sales history on the components themselves); v2 scope (adding the $39 field manual for a three-product bundle) is deliberately deferred until the v1 bundle has any signal at all.",
+      "source": "venture-lab docs/publishing/vetting/bundle-starter.md @ 6ecc460, §3"
+    },
+    "hard_gate_verbatim": {
+      "text": "HARD-GATED: blocked until the ⚑B and ⚑D component publish clicks are executed. NO ungated bundle click is queued.",
+      "source": "venture-lab docs/publishing/vetting/bundle-starter.md @ 6ecc460, header"
+    },
+    "pwyw_minimum_unpinned": {
+      "source_verbatim": "price set ($19 pay-what-you-want suggested (default); minimum owner's choice)",
+      "source": "venture-lab docs/publishing/OWNER-QUEUE.md @ 6ecc460, § Agent-Workflow Template Pack click-run — the PWYW minimum is an owner choice with NO committed value (gap G2)"
+    },
+    "anchor_64_provenance": {
+      "value": "64",
+      "finding": "NOT MEASURED / NOT SOURCED — the $64 anchor appears ONLY in the SIM-REQUEST lines themselves (venture-lab control/outbox.md MORNING TALLY 'bundle $59 vs $64/$68 anchors' and NIGHT REPORT 'Ship-It Bundle $59 vs $64/$68 anchors', both @ 6ecc460); NO listing, packet, or vetting doc carries $64. As a charged price it is modelable (this sim does); as a displayed 'bought separately' comparison it would be arithmetically FALSE ($49 + $19 = $68) and would violate the packet's own committed anti-fake-anchor stance (gap G3)."
+    }
+  },
+  "recorded_gaps_feeding_null_or_conditional": [
+    "G1: ZERO measured conversion/sales data for the bundle or either component — the packet states this verbatim ('no evidence exists on bundle-vs-separate conversion for this catalog (zero sales history on the components themselves)'); every demand/retention quantity in this sim is therefore a FRONTIER (what a future measurement must clear), never an estimate.",
+    "G2: The template pack's PWYW minimum is 'owner's choice' with no committed value — the $68 separate-total anchor assumes the suggested $19 is actually paid; the true separate floor is $49 + PWYW-minimum (unpinned). Direction disclosed: any PWYW payment below $19 shrinks every bundle's buyer-savings claim.",
+    "G3: The $64 anchor has NO source in any venture-lab packet document — it exists only in the SIM-REQUEST lines; as a displayed comparison it is arithmetically false, as a charged price it carries zero committed support (no listing copy, no vetting row).",
+    "G4: The Gumroad fee schedule is cited-approximate ('~2.9% + $0.30', 'roughly ~12.9% + $0.80'); pinned as-cited into net(P) = 0.871·P − 0.80. Any affine fee aP+b with a < 1 preserves the per-sale net ordering net(68) > net(64) > net(59), so fee imprecision cannot flip per-sale ordering; the fee-free frontier bounds (59/64, 59/68, 16/17) ship as a sensitivity row.",
+    "G5: The bundle is HARD-GATED on the ⚑B/⚑D component publish clicks (a bundle references existing live products) — this pricing verdict is serveable now, publish timing stays owner-gated.",
+    "G6: Bundle-vs-component cannibalization is unmeasured (a bundle buyer's counterfactual — kit alone at $49, both separate, or nothing — is unknown; subset of G1). The per-buyer margin ladder ships as reporting: kit-alone net 41.879 < bundle@59 net 50.589 < bundle@64 net 54.944 < separate-both net 57.628 < bundle@68 net 58.428."
+  ],
+  "model": {
+    "frame": "expected net revenue per committed both-products buyer per anchor (the packet's own frame: 'The bundle is only for people who want both'); exact rational arithmetic (fractions of USD); the one seeded leg is validation-only",
+    "arms": {
+      "A59": "charge $59 (the committed listing price). net = 0.871·59 − 0.80 = 50589/1000.",
+      "A64": "charge $64 (the SIM-REQUEST's unsourced middle anchor). net = 0.871·64 − 0.80 = 54944/1000.",
+      "A68": "charge $68 (price at the separate-total; buyer discount $0). net = 0.871·68 − 0.80 = 58428/1000.",
+      "SEPARATE_REF": "reporting reference, not a bundle arm: both components bought separately at the suggested $19 paid = two transactions: net = 0.871·68 − 2·0.80 = 57628/1000; the bundle@68 nets exactly +0.80 more (one fixed fee saved)."
+    },
+    "sweep_grids": {
+      "retention_grid": "r ∈ {0.00, 0.01, …, 1.00} (101 points) for each ordered pair (higher vs lower anchor): WIN iff r·net(hi) ≥ net(lo); three pairs → 303 cells, each decided by TWIN independently-written evaluators (Fraction product comparison vs frontier-inequality lookup) which must agree on every cell",
+      "fee_sensitivity": "REPORTING-ONLY, cannot flip the decision: frontiers recomputed at the fee-free bound (net(P) = P) — r*(64v59) = 59/64, r*(68v59) = 59/68, r*(68v64) = 16/17 — bracketing the cited-fee frontiers; plus the ±flat-fee direction stated",
+      "materiality": "REPORTING-ONLY: monthly net delta bounds at the packet's own 0–2 sales/month expectation"
+    },
+    "seeded_validation_leg": {
+      "purpose": "VALIDATION-ONLY, cannot flip the decision: N = 10,000 uniform retention draws r ~ U[0,1] per pair (30,000 draws total), each classified by BOTH twin evaluators — any disagreement fails the run; also verifies the empirical win share converges on the exact frontier length",
+      "seed": 20260880,
+      "seed_note": "strictly above the visible fleet high-water 20260775 (V037 fixtures registry line) with a +105 buffer clearing any seed reservations by the in-flight V038/V039 sibling slices (ORDER 006 items 1 and 3, dirs not on main at this branch's base f4f934b)",
+      "N_per_pair": 10000
+    }
+  },
+  "decision_rule": {
+    "note": "pre-registered BEFORE the runner; evaluated strictly in order; outcomes map to {recommend $59 | recommend $64 | recommend $68 | NULL}; r*(hi vs lo) := net(lo)/net(hi) is the exact retention breakeven — the fraction of $-lo buyers the higher anchor must retain to win on expected net",
+    "order": [
+      "R1 MEASURED-DEMAND: iff the packet carries MEASURED per-anchor conversion/sales data (q̂59, q̂64, q̂68) → recommend argmax q̂(P)·net(P) among {59, 64, 68}. (Reachable only if measured demand exists — gap G1 says zero sales history verbatim; registered anyway so a re-run against a future packet re-reads.)",
+      "R2 DOMINANCE SCREEN: iff one anchor's expected net weakly dominates at EVERY retention r ∈ [0,1] (impossible here by arithmetic since net is strictly increasing in P while retention is free — registered to keep the screen explicit and falsifiable) → recommend the dominant anchor.",
+      "R3 CONDITIONAL-DEFAULT: iff NO measured demand datum exists (G1 open) → recommend the ONLY anchor with zero unmeasured parameters AND committed packet support: $59 (committed in BUNDLE-LISTING.md § Pricing, OWNER-QUEUE.md click row, bundle-starter.md §3/§7 — the click is already queued at it; charging $64 or $68 instead requires an unmeasured retention rate ≥ its frontier AND falsifies the committed 'saves $9 and one checkout' copy without a committed replacement, and $64 additionally has zero packet provenance, G3). PARK the higher anchors behind the named measurement: switch $59→$64 pays iff measured retention q64/q59 ≥ 50589/54944 ≈ 0.9207; $59→$68 iff q68/q59 ≥ 5621/6492 ≈ 0.8658 — frontier table ships, any future measured pair decides by lookup, no re-run.",
+      "R4 NULL: anything else — name the binding gap."
+    ],
+    "honest_null_note": "R3 and R4 are both honest outcomes; the frontier table is the citable pin either way. Never stretch: no sales projection is made anywhere (the packet's own 0–2 sales/month conservative expectation stands; materiality bound ships)."
+  },
+  "expected_exact_values_hand_derived": {
+    "net_59": "50589/1000 = 50.589",
+    "net_64": "54944/1000 = 54.944",
+    "net_68": "58428/1000 = 58.428",
+    "net_separate_both_at_19": "57628/1000 = 57.628 (two transactions)",
+    "net_kit_alone": "41879/1000 = 41.879",
+    "bundle68_minus_separate": "4/5 = 0.80 exactly (one fixed fee saved)",
+    "seller_cost_of_9_dollar_nudge": "net_separate − net_59 = 7039/1000 = 7.039 per both-buyer (equivalently 0.871·9 − 0.80)",
+    "retention_frontier_64_vs_59": "50589/54944 ≈ 0.920737 (i.e. $64 wins iff it retains ≥ 92.07% of $59's buyers)",
+    "retention_frontier_68_vs_59": "50589/58428 = 5621/6492 ≈ 0.865834",
+    "retention_frontier_68_vs_64": "54944/58428 = 13736/14607 ≈ 0.940370",
+    "uplift_frame_59_needs_vs_64": "54944/50589 ≈ 1.086085 (+8.61% more buyers to beat $64)",
+    "uplift_frame_59_needs_vs_68": "58428/50589 ≈ 1.154954 (+15.50% more buyers to beat $68)",
+    "fee_free_frontier_bounds": "59/64 = 0.921875 · 59/68 ≈ 0.867647 · 16/17 ≈ 0.941176 — each within 0.13 pp of its cited-fee frontier (fee imprecision is immaterial to the frontiers)",
+    "materiality_bound_monthly": "at the packet's 0–2 sales/month: max monthly net delta $59 vs $68 = 2·7839/1000 = 15.678; $59 vs $64 = 2·4355/1000 = 8.710",
+    "buyer_savings_by_anchor": "$9 at $59 (the committed copy's claim, TRUE) · $4 at $64 (copy claim FALSE) · $0 at $68 (copy claim FALSE; bundle's stated rationale void)"
+  },
+  "determinism_contract": "stdout and results.json byte-identical across two full process runs, proven by external diff; all JSON keys sorted; no timestamps inside results.json; single registered seed 20260880 used only by the validation leg"
+}
