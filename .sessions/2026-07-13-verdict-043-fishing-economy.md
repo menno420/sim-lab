@@ -42,3 +42,28 @@ PR: https://github.com/menno420/sim-lab/pull/90 (READY; merge-on-green owns
 the merge — zero agent merge calls). Worker session — no control/status.md
 or control/inbox.md writes anywhere; superbot-games and idea-engine
 untouched.
+
+## 💡 Session idea
+
+When two faucets share one resource pool (fishing casts and mining digs both
+debit the same energy engine), the packet's "pin a value curve" ask has a
+hidden canonical unit: value per shared-resource unit, not value per action
+or per hour. Registering coins-per-ENERGY as the parity frame made the whole
+verdict mechanical — the anchor (mining fresh depth-0 = 32/7) and the ceiling
+(mining's own geared-deep proxy) both already existed in source, so the "no
+evidence either way" trap the venture pricing verdicts kept hitting never
+opened. The portable rule: before declaring a balance question evidence-free,
+look for a sibling system on the same constrained resource — its committed
+constants ARE the missing value scale.
+
+## ⟲ Previous-session review
+
+VERDICT 042 (mining economy, the direct sibling, PR #89) byte-copied the
+engine with a sha256 MANIFEST and ruled NULL-first on pre-registered bands —
+applied here unchanged, plus two extensions its card suggested: the packet's
+own harness is driven through its public entry point instead of re-deriving
+distributions (the order's §5 "never hand-edit a weight" made that mandatory
+rather than stylistic), and V042's 4.571 coins/dig lands here as an
+independent cross-pin on the parity anchor (two verdicts, two derivations,
+one number). V038's feel-band discipline (early-feltness + long-tail hour
+scale) transferred to the progression arm as P1/P3.
