@@ -1,0 +1,91 @@
+{
+  "question": "Under the pinned never-idle lane model (discrete wakes H=2,000, backlog b0=6; per wake in pinned order: due replenishment lands (+R, R=4 primary), consumption demand fires w.p. p_c in {0.6, 1.0} — consuming 1 if backlog>0, counting a DRY WAKE if backlog=0; organic arrival w.p. q of batch g per regime A1 steady-small (q=0.30, g uniform {1,2,3}) / A2 bursty-real (q=0.10, g uniform on the observed multiset {2,4,5,11}) / A3 harvest-scarce (q=0.05, g uniform {2,3,4}); signal policy N in {0(off),1,2,3,4,6} — if backlog <= N and no replenishment in flight, emit a signal (one outstanding at a time) scheduling +R at t+L, routing latency L in {1,2,4} wakes; 18 cells = 3 regimes x 2 p_c x 3 L; M=300 seeded replications per (cell,N), random.Random(20260719), pinned loop order; sensitivity legs R in {2,8}, b0 in {3,12}, H=500, and a decision-stability leg M=50 seed 20260720, all reporting-only), what are D = dry wakes / demand wakes and S = signals per 100 wakes per (cell, N) — and with N*(cell) = the smallest N with D(N) <= 0.05 AND S(N) <= 25 and dD(cell) = D(0) - D(N*), does the result land REJECT-a / APPROVE / REJECT-b / NULL per the pre-registered rule, evaluated in that order?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 019 · 2026-07-13T01:34:28Z · status: sim-ready",
+    "proposal_pin": "idea-engine main f7906e5 (landed via idea-engine PR #284)",
+    "idea_entry": "ideas/fleet/backlog-low-water-signal-tuning-2026-07-13.md @ idea-engine main f7906e5 (proposal's own blob link @ e7aa1ddb55176560991cee470efffafce9243370)",
+    "rotation_slot": "inbox ORDER 004 rule 3 — FLEET-BACKLOGS rotation slot, restarting the cycle after 017 unrelated / 018 venture; fully hermetic (the PROPOSAL 017/018 precedent): every fixture is a pinned constant committed with the sim, zero repo/network reads in the verdict session",
+    "harvest_anchor": "websites docs/ideas/backlog.md @ 8f97654 (blob e14bb15), bullet quoted verbatim in the idea file; regime A2 anchored to the four measured re-pin intervals — births {2,5,4,11} / consumptions {5,9,4,3}, pins 144dfce -> 8c19e93 -> d862364 -> c81ce76 -> 8f97654"
+  },
+  "process": {
+    "wake_order": "per wake t = 1..H, in pinned order: (1) any in-flight replenishment due this wake lands (+R); (2) consumption — the wake demands backlog work with probability p_c; if it demands and b > 0, b -= 1; if it demands and b = 0, count a DRY WAKE; (3) organic arrival — with probability q, a batch of size g lands per regime; (4) signal policy — threshold N: if b <= N and no replenishment is in flight, emit a signal (one outstanding at a time — the wake-hygiene rule) and schedule +R to land at wake t + L",
+    "n_zero": "N = 0 means the signal policy is OFF (the no-signal baseline); no signal ever fires",
+    "end_of_horizon": "a signal scheduled to land past wake H simply never lands (counted as a signal; the outstanding flag persists to end of horizon)",
+    "draw_order": "per-wake RNG draw order, pinned: consumption (rng.random() < p_c, drawn every wake), arrival-fire (rng.random() < q, drawn every wake), batch-size (rng.randrange(len(multiset)) into the regime's multiset, drawn ONLY when the arrival fires) — note the draws are policy-independent (no draw depends on b, N, or L), so the stream is identical across N within a leg position",
+    "loop_order": "cells lexicographic (regime A1<A2<A3, then p_c 0.6<1.0, then L 1<2<4), N ascending (0,1,2,3,4,6), replications sequential (0..M-1); ONE random.Random(seed) stream flows through the whole leg in this pinned order",
+    "metrics": "per (cell, N), pooled over the M replications: D = total dry wakes / total demand wakes; S = total signals * 100 / (M*H); mean backlog = sum of end-of-wake backlog / (M*H) (bloat, reporting-only)"
+  },
+  "constants": {
+    "H": 2000,
+    "b0": 6,
+    "R": 4,
+    "p_c_grid": [0.6, 1.0],
+    "N_grid": [0, 1, 2, 3, 4, 6],
+    "L_grid": [1, 2, 4],
+    "M": 300,
+    "seed_primary": 20260719,
+    "seed_stability": 20260720,
+    "regimes": {
+      "A1": {"name": "steady-small", "q": 0.30, "batches": [1, 2, 3], "mean_inflow_per_wake": "0.60"},
+      "A2": {"name": "bursty-real (anchored to the four measured websites re-pin births)", "q": 0.10, "batches": [2, 4, 5, 11], "mean_inflow_per_wake": "0.55"},
+      "A3": {"name": "harvest-scarce", "q": 0.05, "batches": [2, 3, 4], "mean_inflow_per_wake": "0.15"}
+    },
+    "cells": "18 = 3 regimes x 2 p_c x 3 L"
+  },
+  "sensitivity_legs": {
+    "note": "reporting-only — cannot flip the decision (pre-registered)",
+    "legs": [
+      {"id": "sens-R2", "override": {"R": 2}},
+      {"id": "sens-R8", "override": {"R": 8}},
+      {"id": "sens-b3", "override": {"b0": 3}},
+      {"id": "sens-b12", "override": {"b0": 12}},
+      {"id": "sens-H500", "override": {"H": 500}}
+    ],
+    "sens_M": 50,
+    "sens_seed": 20260719,
+    "intake_time_decision": "the idea file pins M=300 for the decision grid and M=50 for the stability leg but leaves M for the R/b0/H sensitivity legs unpinned; committed HERE before any code ran: sensitivity legs run the full 18-cell x 6-N grid at M=50 (mirroring the stability leg's committed scale, consistent with the idea file's own '<40% on top' feasibility arithmetic), each leg on a fresh random.Random(20260719) stream through the same pinned loop order",
+    "stability_leg": {"id": "stability", "M": 50, "seed": 20260720, "requirement": "must reproduce the same ruling as the primary leg (done-when)"}
+  },
+  "band_constants": {
+    "D_MAX": "1/20",
+    "S_MAX_PER_100": "25",
+    "DELTA_D_APPROVE_MIN": "1/10",
+    "REJECT_A_CELL_SHARE": "4/5",
+    "APPROVE_EXISTS_SHARE": "4/5",
+    "REJECT_B_EXISTS_SHARE": "1/2",
+    "comparison": "exact Fraction arithmetic on pooled integer counts (num/den), never floats, in the decision path; share tests as integer cross-multiplication (count * share_den >= cells * share_num)"
+  },
+  "decision_rule": {
+    "evaluation_order": ["REJECT-a", "APPROVE", "REJECT-b", "NULL"],
+    "n_star": "per cell, N*(cell) = the smallest N in {1,2,3,4,6} with D(N) <= 0.05 AND S(N) <= 25 (per 100 wakes); it may not exist. dD(cell) = D(0) - D(N*) where N* exists",
+    "REJECT-a": "'organic refill suffices — retire the bullet, spend no grammar token' iff D(0) <= 0.05 in >= 80% of the 18 cells; checked FIRST",
+    "APPROVE": "'ship the signal; pin the threshold' iff N* exists in >= 80% of cells AND median dD >= 0.10; recommended threshold = grid-median N*; the verdict must state whether the bullet's own '~3' lies within +-1 of it",
+    "REJECT-b": "'no robust threshold exists' iff N* exists in < 50% of cells",
+    "NULL": "otherwise — a legitimate reportable outcome: the verdict names the flip axis (for each swept axis — regime, p_c, L — the N*-exists share and median dD at each of its values; largest spread = the named boundary; expected candidates: routing latency L and the A3 harvest-scarce regime), and the citable finding is the CONDITIONAL rule, not either camp's default",
+    "median": "median over the cells where the quantity exists; even count -> arithmetic mean of the two middle values (exact Fraction)",
+    "grid_median_n_star": "median of the per-cell N* values over cells where N* exists (even count -> mean of the two middles, may be non-integer); '~3 within +-1' test: |3 - grid-median N*| <= 1, exact"
+  },
+  "consequence_preregistered": {
+    "APPROVE": "substrate-kit gets the evidence row for declaring a `backlog:` token in the kit-owned heartbeat grammar with the sim-pinned threshold as planted default; the websites bullet graduates from '~3 by vibe' to the measured N* (relayed via the manager sweep — the lane is PARKED); idea-engine adopts the signal as consumer #1 (notes-line first, per the fold-in-over-declare rule)",
+    "REJECT": "either arm — the bullet is retired with the quantified reason routed to the manager sweep and NO kit grammar token is spent (undeclared keys measurably leak into `phase` through hand-kept parsers — the avoided line is a real win)",
+    "NULL": "the named-axis conditional rule is the citable finding and the cheapest live probe is named: idea-engine logs its own per-wake backlog depth + fired rung in heartbeat notes for ~a week (zero new tooling), locating this seat's real cell before any grammar decision"
+  },
+  "caveats_preregistered": {
+    "n4_anchor": "four observed intervals BRACKET regime A2, they do not fit a distribution; the anchor leg is reporting-only",
+    "latency_mapping": "L in {1,2,4} wakes spans same-sweep / next-sweep / overnight without asserting wall-clock; the mapping is stated, not measured",
+    "single_lane": "manager-side multi-lane signal contention is out of scope by design, named as the follow-up"
+  },
+  "cpython_pin": "3.11",
+  "hand_pins": {
+    "HAND-1": {
+      "params": {"p_c": 1.0, "q": 0.0, "N": 2, "L": 2, "R": 4, "b0": 3, "H": 10},
+      "derivation": "fully hand-derived before code ran (p_c=1 so every wake demands; q=0 so no arrivals): w1 demand 3->2, b=2<=2 no in-flight -> SIGNAL#1 lands t=3; w2 2->1 (in-flight, no signal); w3 LAND +4 -> 5, demand -> 4; w4 -> 3; w5 -> 2 -> SIGNAL#2 lands t=7; w6 -> 1; w7 LAND -> 5, demand -> 4; w8 -> 3; w9 -> 2 -> SIGNAL#3 lands t=11 > H (never lands); w10 -> 1. Conservation: 3 + 2*4 + 0 - 10 consumed = 1 = final b. End-of-wake backlogs 2,1,4,3,2,1,4,3,2,1 sum 23",
+      "expect": {"demand": 10, "dry": 0, "signals": 3, "landed": 2, "final_b": 1, "sum_b": 23}
+    },
+    "HAND-2": {
+      "params": {"p_c": 1.0, "q": 0.0, "N": 1, "L": 4, "R": 2, "b0": 1, "H": 8},
+      "derivation": "fully hand-derived: w1 demand 1->0, b=0<=1 no in-flight -> SIGNAL#1 lands t=5; w2 demand on b=0 -> DRY (in-flight, no signal); w3 DRY; w4 DRY; w5 LAND +2 -> 2, demand -> 1, b=1<=1 no in-flight -> SIGNAL#2 lands t=9 > H; w6 demand 1->0; w7 DRY; w8 DRY. dry=5, demand=8, D=5/8=0.625; signal gap w1->w5 = 4 = L (the min-spacing bound is tight). Conservation: 1 + 1*2 + 0 - 3 consumed = 0 = final b. End-of-wake backlogs 0,0,0,0,1,0,0,0 sum 1",
+      "expect": {"demand": 8, "dry": 5, "signals": 2, "landed": 1, "final_b": 0, "sum_b": 1}
+    }
+  }
+}
