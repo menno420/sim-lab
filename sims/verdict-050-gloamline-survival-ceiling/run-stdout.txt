@@ -1,0 +1,112 @@
+VERDICT 050 sim — Gloamline plateau survival ceiling (PROPOSAL 039)
+mirror sha256 OK: c86d950723b6fff1159a9c6cddb32822f6c8651e65376f2001a86f7372492892
+python: cpython-3.11 (pinned)
+stagger grid mean: 21638/86400 (band 3-sigma around 1/4)
+IDLE regression: 1024 every-spawn chases + 256 proof-2 chases, worst contact frame 258 (bound 400)
+press-dominance: proof-11d range green, worst pressed contact 186
+spawn identities: 30720 census spawns green
+twin engines: 32 cells + noise probe replay identical
+
+Arm D census (SURV = survivors/seeds; mdf = median death frame; gaps q1/q2/q3 subpx; conn = shove connects):
+  KITE-GRAD · DARK · 13: SURV 0/32 = 0 · mdf 261 · gaps [2386, 2432, 2492] · conn 0
+  KITE-GRAD · DARK · 24: SURV 0/32 = 0 · mdf 280 · gaps [2388, 2432, 2496] · conn 0
+  KITE-GRAD · LIT · 13: SURV 0/32 = 0 · mdf 311 · gaps [2404, 2432, 2464] · conn 0
+  KITE-GRAD · LIT · 24: SURV 0/32 = 0 · mdf 329 · gaps [2414, 2447, 2483] · conn 0
+  KITE-PERIM · DARK · 13: SURV 0/128 = 0 · mdf 139 · gaps [2209, 2332, 2471] · conn 0
+  KITE-PERIM · DARK · 16: SURV 0/128 = 0 · mdf 146 · gaps [2220, 2395, 2465] · conn 0
+  KITE-PERIM · DARK · 20: SURV 0/128 = 0 · mdf 139 · gaps [2197, 2289, 2448] · conn 0
+  KITE-PERIM · DARK · 24: SURV 0/128 = 0 · mdf 137 · gaps [2247, 2394, 2474] · conn 0
+  KITE-PERIM · LIT · 13: SURV 0/128 = 0 · mdf 155 · gaps [2205, 2321, 2462] · conn 0
+  KITE-PERIM · LIT · 16: SURV 0/128 = 0 · mdf 173 · gaps [2217, 2368, 2457] · conn 0
+  KITE-PERIM · LIT · 20: SURV 0/128 = 0 · mdf 154 · gaps [2194, 2304, 2457] · conn 0
+  KITE-PERIM · LIT · 24: SURV 0/128 = 0 · mdf 155 · gaps [2269, 2379, 2458] · conn 0
+  SHOVE-GRAD · DARK · 13: SURV 0/32 = 0 · mdf 328 · gaps [2405, 2450, 2496] · conn 44
+  SHOVE-GRAD · DARK · 24: SURV 0/32 = 0 · mdf 356 · gaps [2391, 2432, 2496] · conn 57
+  SHOVE-GRAD · LIT · 13: SURV 0/32 = 0 · mdf 441 · gaps [2392, 2432, 2496] · conn 51
+  SHOVE-GRAD · LIT · 24: SURV 0/32 = 0 · mdf 457 · gaps [2407, 2443, 2496] · conn 61
+  SHOVE-PERIM · DARK · 13: SURV 0/128 = 0 · mdf 269 · gaps [2269, 2401, 2479] · conn 223
+  SHOVE-PERIM · DARK · 16: SURV 0/128 = 0 · mdf 288 · gaps [2267, 2390, 2465] · conn 239
+  SHOVE-PERIM · DARK · 20: SURV 0/128 = 0 · mdf 255 · gaps [2274, 2383, 2467] · conn 225
+  SHOVE-PERIM · DARK · 24: SURV 0/128 = 0 · mdf 290 · gaps [2221, 2401, 2457] · conn 241
+  SHOVE-PERIM · LIT · 13: SURV 0/128 = 0 · mdf 284 · gaps [2281, 2401, 2473] · conn 236
+  SHOVE-PERIM · LIT · 16: SURV 0/128 = 0 · mdf 305 · gaps [2240, 2398, 2462] · conn 266
+  SHOVE-PERIM · LIT · 20: SURV 0/128 = 0 · mdf 274 · gaps [2284, 2409, 2484] · conn 234
+  SHOVE-PERIM · LIT · 24: SURV 0/128 = 0 · mdf 284 · gaps [2280, 2410, 2471] · conn 237
+
+Ramp leg (KITE-PERIM · LIT, reporting-only):
+  night 1: SURV 51/128 · mdf 111
+  night 2: SURV 15/128 · mdf 145
+  night 3: SURV 1/128 · mdf 220
+  night 4: SURV 0/128 · mdf 219
+  night 5: SURV 0/128 · mdf 341
+  night 6: SURV 0/128 · mdf 159
+  night 7: SURV 0/128 · mdf 159
+  night 8: SURV 0/128 · mdf 155
+  night 9: SURV 0/128 · mdf 182
+  night 10: SURV 0/128 · mdf 163
+  night 11: SURV 0/128 · mdf 156
+  night 12: SURV 0/128 · mdf 155
+
+Arm S noise legs — main 20261293 (M=32):
+  KITE-GRAD · DARK · 13 · 1/16: SURV 0/1024 = 0 (draws 264886)
+  KITE-GRAD · DARK · 13 · 1/4: SURV 0/1024 = 0 (draws 279989)
+  KITE-GRAD · DARK · 24 · 1/16: SURV 0/1024 = 0 (draws 272207)
+  KITE-GRAD · DARK · 24 · 1/4: SURV 0/1024 = 0 (draws 310155)
+  KITE-GRAD · LIT · 13 · 1/16: SURV 0/1024 = 0 (draws 324199)
+  KITE-GRAD · LIT · 13 · 1/4: SURV 0/1024 = 0 (draws 333319)
+  KITE-GRAD · LIT · 24 · 1/16: SURV 0/1024 = 0 (draws 336540)
+  KITE-GRAD · LIT · 24 · 1/4: SURV 0/1024 = 0 (draws 369652)
+  KITE-PERIM · DARK · 13 · 1/16: SURV 0/1024 = 0 (draws 162037)
+  KITE-PERIM · DARK · 13 · 1/4: SURV 0/1024 = 0 (draws 178324)
+  KITE-PERIM · DARK · 24 · 1/16: SURV 0/1024 = 0 (draws 204694)
+  KITE-PERIM · DARK · 24 · 1/4: SURV 0/1024 = 0 (draws 203439)
+  KITE-PERIM · LIT · 13 · 1/16: SURV 0/1024 = 0 (draws 178190)
+  KITE-PERIM · LIT · 13 · 1/4: SURV 0/1024 = 0 (draws 206397)
+  KITE-PERIM · LIT · 24 · 1/16: SURV 0/1024 = 0 (draws 225275)
+  KITE-PERIM · LIT · 24 · 1/4: SURV 0/1024 = 0 (draws 242250)
+
+Arm S noise legs — stability 20261294 (M=16):
+  KITE-GRAD · DARK · 13 · 1/16: SURV 0/512 = 0 (draws 132328)
+  KITE-GRAD · DARK · 13 · 1/4: SURV 0/512 = 0 (draws 139897)
+  KITE-GRAD · DARK · 24 · 1/16: SURV 0/512 = 0 (draws 135913)
+  KITE-GRAD · DARK · 24 · 1/4: SURV 0/512 = 0 (draws 153996)
+  KITE-GRAD · LIT · 13 · 1/16: SURV 0/512 = 0 (draws 161460)
+  KITE-GRAD · LIT · 13 · 1/4: SURV 0/512 = 0 (draws 167317)
+  KITE-GRAD · LIT · 24 · 1/16: SURV 0/512 = 0 (draws 168619)
+  KITE-GRAD · LIT · 24 · 1/4: SURV 0/512 = 0 (draws 184350)
+  KITE-PERIM · DARK · 13 · 1/16: SURV 0/512 = 0 (draws 81062)
+  KITE-PERIM · DARK · 13 · 1/4: SURV 0/512 = 0 (draws 91129)
+  KITE-PERIM · DARK · 24 · 1/16: SURV 0/512 = 0 (draws 101080)
+  KITE-PERIM · DARK · 24 · 1/4: SURV 0/512 = 0 (draws 98549)
+  KITE-PERIM · LIT · 13 · 1/16: SURV 0/512 = 0 (draws 89210)
+  KITE-PERIM · LIT · 13 · 1/4: SURV 0/512 = 0 (draws 104605)
+  KITE-PERIM · LIT · 24 · 1/16: SURV 0/512 = 0 (draws 112501)
+  KITE-PERIM · LIT · 24 · 1/4: SURV 0/512 = 0 (draws 123769)
+
+Arm S noise legs — reporting 20261295 (M=32):
+  KITE-GRAD · DARK · 13 · 1/16: SURV 0/1024 = 0 (draws 265370)
+  KITE-GRAD · DARK · 13 · 1/4: SURV 0/1024 = 0 (draws 280131)
+  KITE-GRAD · DARK · 24 · 1/16: SURV 0/1024 = 0 (draws 272089)
+  KITE-GRAD · DARK · 24 · 1/4: SURV 0/1024 = 0 (draws 308365)
+  KITE-GRAD · LIT · 13 · 1/16: SURV 0/1024 = 0 (draws 322449)
+  KITE-GRAD · LIT · 13 · 1/4: SURV 0/1024 = 0 (draws 332713)
+  KITE-GRAD · LIT · 24 · 1/16: SURV 0/1024 = 0 (draws 336123)
+  KITE-GRAD · LIT · 24 · 1/4: SURV 0/1024 = 0 (draws 371384)
+  KITE-PERIM · DARK · 13 · 1/16: SURV 0/1024 = 0 (draws 163218)
+  KITE-PERIM · DARK · 13 · 1/4: SURV 0/1024 = 0 (draws 177276)
+  KITE-PERIM · DARK · 24 · 1/16: SURV 0/1024 = 0 (draws 206590)
+  KITE-PERIM · DARK · 24 · 1/4: SURV 0/1024 = 0 (draws 199102)
+  KITE-PERIM · LIT · 13 · 1/16: SURV 0/1024 = 0 (draws 177515)
+  KITE-PERIM · LIT · 13 · 1/4: SURV 0/1024 = 0 (draws 205821)
+  KITE-PERIM · LIT · 24 · 1/16: SURV 0/1024 = 0 (draws 221487)
+  KITE-PERIM · LIT · 24 · 1/4: SURV 0/1024 = 0 (draws 243695)
+
+Arm D frames total: 1256927 (zero RNG); Arm S draws: main 4091553 / stability 2045785 / reporting 4083328; aux 20261296 draws: 0
+DARK zero-stagger-beyond-24px violations: 0 (must be 0)
+
+Decision (pre-registered order, REJECT first):
+  evaluator A main: approve · evaluator B main: approve
+  evaluator A stability: approve · evaluator B stability: approve
+RULING: APPROVE
+per-axis survival shares: {"night": {"13": "0", "16": "0", "20": "0", "24": "0"}, "oil": {"DARK": "0", "LIT": "0"}, "policy": {"KITE-GRAD": "0", "KITE-PERIM": "0", "SHOVE-GRAD": "0", "SHOVE-PERIM": "0"}}
+SELF-CHECKS: 8358 passed, 0 failed
