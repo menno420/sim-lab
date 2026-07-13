@@ -1,0 +1,323 @@
+{
+  "part_a": {
+    "R1_grinder_surplus_reporting": {
+      "h=1": {
+        "cas_a_currency_per_day": 10,
+        "honest_grinder_currency_per_day_ceiling": 30.31
+      },
+      "h=2": {
+        "cas_a_currency_per_day": 10,
+        "honest_grinder_currency_per_day_ceiling": 60.62
+      },
+      "h=4": {
+        "cas_a_currency_per_day": 10,
+        "honest_grinder_currency_per_day_ceiling": 121.24
+      },
+      "h=8": {
+        "cas_a_currency_per_day": 10,
+        "honest_grinder_currency_per_day_ceiling": 242.48
+      }
+    },
+    "R2_capability_gap_table": {
+      "tierII g=0.5/hr h=1h/day": "1/1",
+      "tierII g=0.5/hr h=2h/day": "2/1",
+      "tierII g=0.5/hr h=4h/day": "4/1",
+      "tierII g=0.5/hr h=8h/day": "8/1",
+      "tierII g=1.25/hr h=1h/day": "5/2",
+      "tierII g=1.25/hr h=2h/day": "5/1",
+      "tierII g=1.25/hr h=4h/day": "10/1",
+      "tierII g=1.25/hr h=8h/day": "20/1",
+      "tierII g=1/hr h=1h/day": "2/1",
+      "tierII g=1/hr h=2h/day": "4/1",
+      "tierII g=1/hr h=4h/day": "8/1",
+      "tierII g=1/hr h=8h/day": "16/1",
+      "tierII g=2/hr h=1h/day": "4/1",
+      "tierII g=2/hr h=2h/day": "8/1",
+      "tierII g=2/hr h=4h/day": "16/1",
+      "tierII g=2/hr h=8h/day": "32/1",
+      "tierIII g=0.5/hr h=1h/day": "2/1",
+      "tierIII g=0.5/hr h=2h/day": "4/1",
+      "tierIII g=0.5/hr h=4h/day": "8/1",
+      "tierIII g=0.5/hr h=8h/day": "16/1",
+      "tierIII g=1.25/hr h=1h/day": "5/1",
+      "tierIII g=1.25/hr h=2h/day": "10/1",
+      "tierIII g=1.25/hr h=4h/day": "20/1",
+      "tierIII g=1.25/hr h=8h/day": "40/1",
+      "tierIII g=1/hr h=1h/day": "4/1",
+      "tierIII g=1/hr h=2h/day": "8/1",
+      "tierIII g=1/hr h=4h/day": "16/1",
+      "tierIII g=1/hr h=8h/day": "32/1",
+      "tierIII g=2/hr h=1h/day": "8/1",
+      "tierIII g=2/hr h=2h/day": "16/1",
+      "tierIII g=2/hr h=4h/day": "32/1",
+      "tierIII g=2/hr h=8h/day": "64/1"
+    },
+    "d0_checks": {
+      "C1a_cas_a_daily": [
+        5,
+        25,
+        10
+      ],
+      "C1a_cas_b_weekly": [
+        20,
+        100,
+        40
+      ],
+      "C1b_pass": true,
+      "C1c_pass": true,
+      "C2_capability_per_currency": [
+        "1/2",
+        "2/5",
+        "2/5"
+      ],
+      "C3_pass": true
+    },
+    "global_max": [
+      20,
+      120,
+      50
+    ],
+    "honest_null": "the numeric-band import half of ask (a): NO canonical Q-0087 band constants exist in superbot @ 6d81488 (the bands are the future survival P0 harness's pinned outputs; D-0008) \u2014 reconciliation re-opens against the shipped capability-gap table when that artifact lands; the 'diminishing' half of curve 2 is likewise unscoreable from flat per-completion caps (host-gate property, G2)",
+    "ruling": "RATIFY-AS-PLACEHOLDERS + HONEST-NULL(numeric-band-import)",
+    "structural": {
+      "S1": true,
+      "S2": true,
+      "S3": true,
+      "S4": true
+    },
+    "tier_caps": {
+      "I": [
+        5,
+        25,
+        10
+      ],
+      "II": [
+        10,
+        60,
+        25
+      ],
+      "III": [
+        20,
+        120,
+        50
+      ]
+    },
+    "v033_rederived": {
+      "farmer_ceiling_III_currency_per_hr": "125/2",
+      "farmer_ceiling_II_currency_per_hr": "125/4",
+      "farmer_over_honest": "1.0310 <= 2.0",
+      "honest_published_ceiling_currency_per_hr": "30.31 (V033 measured, quoted)"
+    }
+  },
+  "part_b": {
+    "R3_superbot_d1_draft_note": "historical D1 draft Energy row (Medium cap 10 / regen ~10/hr, Hard cap 5) was re-baselined by D-0004 \u2014 the shipped gradient is 5x-8x more generous and anchored to the shipped mining bar; context only, not the reconciliation target",
+    "R4_booster_refill_share_by_difficulty": {
+      "cooked fish": {
+        "easy": "30/60 of the bar",
+        "hard": "30/40 of the bar",
+        "medium": "30/50 of the bar"
+      },
+      "energy drink": {
+        "easy": "50/60 of the bar",
+        "hard": "50/40 of the bar",
+        "medium": "50/50 of the bar"
+      },
+      "ration": {
+        "easy": "25/60 of the bar",
+        "hard": "25/40 of the bar",
+        "medium": "25/50 of the bar"
+      }
+    },
+    "crossover_beats_per_hr_where_energy_binds": {
+      "easy": 360,
+      "hard": 180,
+      "medium": 240
+    },
+    "gradient_ratios_sustained": {
+      "hard_over_easy": "1/2",
+      "hard_over_medium": "3/4",
+      "medium_over_easy": "2/3"
+    },
+    "harness_leg_B1": {
+      "easy": {
+        "burst": 60,
+        "capability_gap": 98.0,
+        "casual_per_day": 30,
+        "grinder_8h": 2940,
+        "sustained_per_hr": 360
+      },
+      "hard": {
+        "burst": 40,
+        "capability_gap": 49.333333333333336,
+        "casual_per_day": 30,
+        "grinder_8h": 1480,
+        "sustained_per_hr": 180
+      },
+      "medium": {
+        "burst": 50,
+        "capability_gap": 65.66666666666667,
+        "casual_per_day": 30,
+        "grinder_8h": 1970,
+        "sustained_per_hr": 240
+      }
+    },
+    "profile_leg_B2": {
+      "P-CAS-10": {
+        "easy": {
+          "attempted": 20,
+          "completed": 20,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 6,
+          "time_to_first_refusal_s": null
+        },
+        "hard": {
+          "attempted": 20,
+          "completed": 20,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 6,
+          "time_to_first_refusal_s": null
+        },
+        "medium": {
+          "attempted": 20,
+          "completed": 20,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 6,
+          "time_to_first_refusal_s": null
+        }
+      },
+      "P-CAS-15": {
+        "easy": {
+          "attempted": 30,
+          "completed": 30,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 10,
+          "time_to_first_refusal_s": null
+        },
+        "hard": {
+          "attempted": 30,
+          "completed": 30,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 10,
+          "time_to_first_refusal_s": null
+        },
+        "medium": {
+          "attempted": 30,
+          "completed": 30,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 10,
+          "time_to_first_refusal_s": null
+        }
+      },
+      "P-GRD-240": {
+        "easy": {
+          "attempted": 1440,
+          "completed": 1440,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 480,
+          "time_to_first_refusal_s": null
+        },
+        "hard": {
+          "attempted": 1440,
+          "completed": 759,
+          "refusal_fraction": "227/480",
+          "refusal_fraction_float": 0.47291666666666665,
+          "refused": 681,
+          "tier_I_completions_proxy_B3": 253,
+          "time_to_first_refusal_s": 790
+        },
+        "medium": {
+          "attempted": 1440,
+          "completed": 1009,
+          "refusal_fraction": "431/1440",
+          "refusal_fraction_float": 0.29930555555555555,
+          "refused": 431,
+          "tier_I_completions_proxy_B3": 336,
+          "time_to_first_refusal_s": 1480
+        }
+      },
+      "P-REG-60": {
+        "easy": {
+          "attempted": 180,
+          "completed": 180,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 60,
+          "time_to_first_refusal_s": null
+        },
+        "hard": {
+          "attempted": 180,
+          "completed": 180,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 60,
+          "time_to_first_refusal_s": null
+        },
+        "medium": {
+          "attempted": 180,
+          "completed": 180,
+          "refusal_fraction": "0/1",
+          "refusal_fraction_float": 0.0,
+          "refused": 0,
+          "tier_I_completions_proxy_B3": 60,
+          "time_to_first_refusal_s": null
+        }
+      },
+      "P-SAT-480": {
+        "easy": {
+          "attempted": 5760,
+          "completed": 2939,
+          "refusal_fraction": "2821/5760",
+          "refusal_fraction_float": 0.48975694444444445,
+          "refused": 2821,
+          "tier_I_completions_proxy_B3": 979,
+          "time_to_first_refusal_s": 595
+        },
+        "hard": {
+          "attempted": 5760,
+          "completed": 1479,
+          "refusal_fraction": "1427/1920",
+          "refusal_fraction_float": 0.7432291666666667,
+          "refused": 4281,
+          "tier_I_completions_proxy_B3": 493,
+          "time_to_first_refusal_s": 265
+        },
+        "medium": {
+          "attempted": 5760,
+          "completed": 1969,
+          "refusal_fraction": "3791/5760",
+          "refusal_fraction_float": 0.6581597222222222,
+          "refused": 3791,
+          "tier_I_completions_proxy_B3": 656,
+          "time_to_first_refusal_s": 370
+        }
+      }
+    },
+    "ruling": "RATIFY"
+  },
+  "seed_policy": {
+    "fleet_high_water_at_registration": 20261280,
+    "note": "ZERO decision-bearing RNG anywhere; leg B1 drives the packet harness's own internal DetRng spacing jitter over its __main__-default seeds=range(400) \u2014 packet-owned protocol constants (the V043 precedent), NOT registry draws; the harness's own docstring proves the jitter never changes the casual never-block outcome. The fleet high-water 20261280 (V043) is left untouched.",
+    "registry_draws": 0
+  },
+  "self_checks": {
+    "failed": 0,
+    "passed": 93
+  },
+  "verdict": "VERDICT 045"
+}

@@ -1,0 +1,27 @@
+{
+  "source_repo": "menno420/superbot-games",
+  "pinned_sha": "57f69be34785afb427d608b207e7369025166e94",
+  "copied": "byte-identical copies of the exploration quest catalog + survival difficulty modules and their full runtime import closure (catalog.py -> quest/models.py; difficulty.py -> games.mining.core.energy; games/exploration/survival/__init__.py executes survival/sim.py which imports quest/rng.py) plus the repo's own pinned-band test file as supporting evidence; closure verified self-contained (every remaining import is stdlib)",
+  "stubs": "NONE — no module was stubbed; the copied set is the full import closure of quest/catalog.py and survival/difficulty.py incl. the packet's own survival sim harness (survival/sim.py) driven through its public run() entry point",
+  "files": {
+    "games/__init__.py": "a77ce7891c2de8a242be89eb9eaea88319e8bda8be7cbabc78810b56cfbe412e",
+    "games/exploration/__init__.py": "6c7268633e875995ff7592e6a17d47cbc58c0dbfb75cfb0d47817de7b433aa06",
+    "games/exploration/quest/__init__.py": "4028531bf34336de2a7f6b2826b2abbc3d9b2cb8fc3b31f45897df1ef5cb8af4",
+    "games/exploration/quest/catalog.py": "008c6d3a1f9153e1b2bf6cd3e7ce62f56576d1f1779266c5c1bc6b9ddc1b6fa9",
+    "games/exploration/quest/models.py": "9aa5a46b220c687c46ea9e618e02d3873cffc7baf6ebd874ccb37ccf20861740",
+    "games/exploration/quest/rng.py": "74bbbbc776fb292ef5361fda3558a50ae0019bb2b1367c96aa1082975a71a2c1",
+    "games/exploration/survival/__init__.py": "ec39abf5cbe8b1b1c328ac9789461f4a2e3a0534221ae3edf95b81194063b5de",
+    "games/exploration/survival/difficulty.py": "be339f668141205439e0dcd01ce9d6508a4a4df5f3e3f2096fe0d2f9c1111e2d",
+    "games/exploration/survival/sim.py": "1d53a239096101f28073a7292f626769e69f717ea163c9b906d70934d4876d74",
+    "games/exploration/tests/test_survival_sim.py": "3bcea66748ca072411f5a35f57e27339274560afa4444304e381b3c1e8a3ddc7",
+    "games/mining/__init__.py": "8495edeba90fb32401ae92112c1532177c6534e2bb7eb4f644fe09e6e134101c",
+    "games/mining/core/__init__.py": "2e037d86909a7afa24d909b8d298926f2eca278f787d1a29f20e68a29ee29384",
+    "games/mining/core/energy.py": "9d13488609ae25084d1fef09459ac205170e79d09d6705395c7478167a264850"
+  },
+  "external_doc_pins": {
+    "note": "Q-0087 band-definition evidence lives in menno420/superbot (quoted verbatim in fixtures.json, not byte-copied — docs, not runtime code)",
+    "superbot_sha": "6d8148808e7965f61cd85625798252fe32e1a409",
+    "docs/owner/maintainer-question-router.md": "a8b9398cd1a86742cc252f36b12c3c72f382dd4afdf994452e4863ce6cc0675b",
+    "docs/planning/rpg-survival-difficulty-design-2026-06-10.md": "950493274744b2ff0e5b63a6e9c10b170dcbabfdadbf2a75a1af00e1ea833655"
+  }
+}

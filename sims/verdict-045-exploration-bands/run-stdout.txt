@@ -1,0 +1,30 @@
+VERDICT 045 — exploration reward bands (ORDER 006 item 7)
+========================================================================
+
+[B0] validity gate
+
+[A] TIER_CAPS vs Q-0087 band definitions + V018/V033 contracts
+  ruling (a): RATIFY-AS-PLACEHOLDERS + HONEST-NULL(numeric-band-import)
+  tier caps: {'I': (5, 25, 10), 'II': (10, 60, 25), 'III': (20, 120, 50)}  GLOBAL_MAX: (20, 120, 50)
+  V033 re-derived: {'farmer_ceiling_II_currency_per_hr': '125/4', 'farmer_ceiling_III_currency_per_hr': '125/2', 'honest_published_ceiling_currency_per_hr': '30.31 (V033 measured, quoted)', 'farmer_over_honest': '1.0310 <= 2.0'}
+  CAS_A daily (5, 25, 10) · weekly global_xp 35 >= 20 · CAS_B weekly (20, 100, 40)
+  capability/currency: ['1/2', '2/5', '2/5']
+
+[B1] packet's own survival harness (run(seeds=range(400)))
+  easy    sustained  360/hr  burst  60  casual/day  30  grind8h  2940  gap 98.00
+  medium  sustained  240/hr  burst  50  casual/day  30  grind8h  1970  gap 65.67
+  hard    sustained  180/hr  burst  40  casual/day  30  grind8h  1480  gap 49.33
+
+[B2] registered profile sweep (deterministic, NO RNG)
+  P-CAS-10   easy: 20/20 (refused 0, 0.000)  medium: 20/20 (refused 0, 0.000)  hard: 20/20 (refused 0, 0.000)
+  P-CAS-15   easy: 30/30 (refused 0, 0.000)  medium: 30/30 (refused 0, 0.000)  hard: 30/30 (refused 0, 0.000)
+  P-REG-60   easy: 180/180 (refused 0, 0.000)  medium: 180/180 (refused 0, 0.000)  hard: 180/180 (refused 0, 0.000)
+  P-GRD-240  easy: 1440/1440 (refused 0, 0.000)  medium: 1009/1440 (refused 431, 0.299)  hard: 759/1440 (refused 681, 0.473)
+  P-SAT-480  easy: 2939/5760 (refused 2821, 0.490)  medium: 1969/5760 (refused 3791, 0.658)  hard: 1479/5760 (refused 4281, 0.743)
+
+[B] gradient ruling
+  ruling (b): RATIFY
+  sustained ratios: {'medium_over_easy': '2/3', 'hard_over_easy': '1/2', 'hard_over_medium': '3/4'}
+
+SELF-CHECKS: 93 passed, 0 failed
+results.json written
