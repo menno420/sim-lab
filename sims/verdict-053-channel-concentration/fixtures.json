@@ -1,0 +1,76 @@
+{
+  "verdict": "053",
+  "proposal": "idea-engine PROPOSAL 042 · 2026-07-13T18:33:00Z · status: sim-ready (idea-engine control/outbox.md @ 94fd30c, landed via PR #333; idea doc ideas/venture-lab/channel-concentration-vs-diversification-2026-07-13.md @ 8aad290)",
+  "cpython_minor": "3.11",
+  "rate_grid": ["0", "1/50", "1/10", "1/4", "1/2"],
+  "priors": {
+    "SKEPTIC": ["1/2", "1/4", "1/8", "1/16", "1/16"],
+    "NEUTRAL": ["1/5", "1/5", "1/5", "1/5", "1/5"],
+    "HOPEFUL": ["1/10", "1/5", "3/10", "1/4", "3/20"]
+  },
+  "prior_order": ["SKEPTIC", "NEUTRAL", "HOPEFUL"],
+  "n_inc_axis": [7, 3, 1],
+  "cell_order_note": "cells iterate (SKEPTIC, NEUTRAL, HOPEFUL) x (n_inc = 7, 3, 1), pinned",
+  "K_untested": 3,
+  "budget": {
+    "T_tokens": 180000,
+    "c_inc": 60000,
+    "c_new": 90000,
+    "c_new_sensitivity": [60000, 120000],
+    "H_cycles": 4,
+    "H_sensitivity": [2, 8],
+    "unspent": "lost (no carryover)"
+  },
+  "policies": {
+    "CONCENTRATE": "every cycle: floor(T/c_inc) = 3 incumbent builds; 12 incumbent exposures over H = 4",
+    "SPLIT": "every cycle: floor(T/c_new) untested builds, assigned round-robin in the pinned order u1, u2, u3, u1, ...; at c_new = 90k and H = 4: 8 builds -> (u1, u2, u3) = (3, 3, 2); zero incumbent",
+    "ETC": "cycle 1: u1 + u2 (2 x 90k = 180k); cycle 2: u3 (90k) + one incumbent build (60k), 30k lost; then commit cycles 3..H wholly to the argmax posterior-mean channel on ALL evidence (incumbent n_inc + 1 exposures, u's 1 each); ties broken incumbent -> u1 -> u2 -> u3 (status-quo-first); no re-switch; committed incumbent = 3 builds/cycle, committed untested = floor(T/c_new) builds/cycle",
+    "ETC_generalized_note": "for the reporting-only sensitivity legs (c_new in {60k, 120k}, H in {2, 8}) the pinned schedule is generalized deterministically: probe queue = [u1, u2, u3, inc]; each cycle launches queue items in order, skipping any that does not fit the remaining cycle budget; once the queue is empty, commit from the NEXT cycle to the argmax posterior-mean channel on all probe evidence; remaining probe-cycle budget is lost; H = 2 leaves zero commit cycles. At the registered base (c_new = 90k, H = 4) this reproduces the pinned schedule EXACTLY (cycle 1: u1+u2; cycle 2: u3+inc, 30k lost; commit cycles 3-4). Implementation choice on reporting-only legs, disclosed; it cannot flip the decision."
+  },
+  "metric": {
+    "primary": "P_any = P(>= 1 launched product records >= 1 organic sale by horizon end) per (cell, policy) -- decision-bearing, Arm A exact",
+    "secondary": "E_hits = expected successful-product count -- reported, NEVER decision-bearing"
+  },
+  "decision_rule": {
+    "order": ["REJECT", "APPROVE", "NULL"],
+    "CON": "P_any(CONCENTRATE)",
+    "DIV": "max(P_any(SPLIT), P_any(ETC))",
+    "margin": "1/100",
+    "REJECT": "DIV - CON < 1/100 in >= 7 of the 9 cells (checked FIRST)",
+    "APPROVE": "DIV - CON >= 1/100 in >= 7 of the 9 cells AND in >= 2 of the 3 n_inc = 1 cells, AND the seed-20261306 stability leg reproduces the ruling",
+    "NULL": "anything else; pre-registered axes: (i) prior-straddle, (ii) evidence-straddle, (iii) margin-thin, (iv) arm disagreement, (v) sensitivity straddle"
+  },
+  "seeds": {
+    "main": 20261305,
+    "stability": 20261306,
+    "reporting": 20261307,
+    "aux_never_read": 20261308,
+    "high_water_prev": 20261304
+  },
+  "trajectories": {
+    "main_per_cell": 200000,
+    "stability_per_cell": 20000,
+    "reporting_per_cell": 20000
+  },
+  "agreement_gates": {
+    "main_abs": "5/1000",
+    "stability_abs": "15/1000",
+    "reporting_abs": "15/1000"
+  },
+  "hand_fixture": {
+    "F1_skeptic_n1_posterior": ["800/1497", "392/1497", "180/1497", "75/1497", "50/1497"],
+    "F2_neutral_2exp": {"P_none": "35829/50000", "P_any": "14171/50000"},
+    "F3_committer_tie": "incumbent",
+    "F4_split_counts_H4": [3, 3, 2],
+    "F5_budget": {"builds_inc_per_cycle": 3, "builds_new_per_cycle": 2, "etc_cycle2_spend": 150000, "etc_cycle2_lost": 30000},
+    "F6_point_prior_conc": "1 - (9/10)^12 at point mass p = 1/10"
+  },
+  "harvest_quotes_citation_only": {
+    "pin": "menno420/venture-lab @ be6c75d4e3379efc108f27d17f2c8ff5adb9a74f",
+    "kill_rule_2": "all three ride the same saturated agent-ops/dev-article funnel that has produced 0 organic sales across 7 click-queued products so far — the batch does not diversify channel risk, it deepens a channel whose first proof point (SWTK T+7 checkpoint, 2026-07-19) has not yet arrived",
+    "zero_sales": "SWTK, the only LIVE product, has 0 organic sales as of 2026-07-13",
+    "build_caps_tokens": [70000, 60000, 50000],
+    "kill_clocks": "T+7 funnel checkpoint 2026-07-19, T+14 kill-rule 2026-07-26",
+    "source_files": ["docs/products/ideas-2026-07-13.md", "docs/current-state.md"]
+  }
+}
