@@ -1,0 +1,119 @@
+{
+  "question": "Under the pinned endogenous migration-race model (migration-bearing PRs arrive Poisson lambda in {1, 4, 12} per day, develop W = 8 h from number-pick to push, validate V in {0.25, 2, 24} h, collision fix latency d = 0.5 h, horizon H = 2,000 h per run with the first 200 h discarded as warm-up, M = 40 seeded replications per cell-policy, random.Random(20260723), pinned loop order; policies by number-pick time — P0 picks at open and at each fix start (round-1 exposure W+V, later rounds d+V), P1 re-picks at every push (every round's exposure = V exactly), P3 assigns at the merge instant (exposure 0 — must measure exactly zero collisions, a built-in control); Arm A exact and seedless: P(N>=1) = p(w1), P(N>=2) = p(w1)*p(w2), E[N] = p(w1)*e^(lambda*w2) with p(w) = 1 - e^(-lambda*w); Arm S re-run in exogenous mode (external Poisson appends, one focal PR, M = 20,000 per cell-policy, seed 20260726) must agree with Arm A within 1.0 percentage point absolute on P(N>=1) and P(N>=2) in every covered cell or the run is invalid; reporting-only legs: sensitivity d in {0.25, 2} and W in {1, 24}, jitter leg seed 20260725, stability leg M = 8 seed 20260724, the per-cell endogenous/exogenous amplification ratio, latency inflation vs P3, and the #1279 anchor leg), what are R (renumbers per merged PR) and T (share of merged PRs with >= 2 renumbers) per endogenous (lambda, V) cell under P1 — and does the result land APPROVE / REJECT / NULL per the pre-registered rule, evaluated in that order?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 021 · 2026-07-13T02:36:37Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 8022a9d (landed via idea-engine PR #287)",
+    "idea_entry": "ideas/superbot/migration-renumber-treadmill-residual-2026-07-13.md @ idea-engine main 8022a9d (proposal's own blob link @ e575260dc326e2dc5f49be33fc271d73a3ee16a5)",
+    "rotation_slot": "inbox ORDER 004 rule 3 — FLEET-BACKLOGS rotation slot, round 2 (round 1: 019 fleet-backlogs / 018 venture / 020 game-mechanics / 017 unrelated); fully hermetic (the PROPOSAL 017/018/019/020 precedent): every fixture is a pinned constant committed with the sim, zero repo/network reads in the verdict session",
+    "harvest_anchor": "superbot docs/ideas/migration-number-collision-guard-2026-06-22.md @ fd638e3 (byte-same at live HEAD 4522522, Option-1 checker answering 200) — the recorded incident: reaction-roles PR #1279, a held PR renumbered four times (085 -> 086 -> 088 -> 089) in one afternoon; the doc's open fork: Option 1 (shipped re-pick-at-push checker) vs Option 3 (assign-number-at-merge)"
+  },
+  "process": {
+    "lifecycle": "a PR opens at its Poisson arrival instant, develops for W hours (open -> push), then validates for V hours (push -> merge attempt); at the merge attempt, if the PR's held number has meanwhile been merged by another PR, that is a COLLISION: the PR renumbers (fix latency d hours), then re-validates (another V) and re-attempts; otherwise it merges and its number lands on main",
+    "number_arithmetic": "main is a single shared append point: a pick takes max(main) + 1 at the pick instant; a successful merge appends the held number to main (main stays contiguous by construction: a merge attempt with held <= max(main) is a collision, so every successful merge lands exactly max+1 — checked as an invariant); collision test at attempt: held <= max(main)",
+    "policies": "pick times only — P0: picks at open and at each fix START (round-1 exposure W+V, later rounds d+V; the fix-start pick happens at the collision-detection instant); P1: re-picks at every PUSH, i.e. at the start of every validation window (round-1 pick at open+W, after a fix at attempt+d; every round's exposure = V exactly — the shipped Option-1 checker's semantics); P3: assigns at the merge instant (exposure 0; the sim MUST measure exactly zero collisions — the built-in control)",
+    "event_order": "continuous-time event queue; events processed in (time, PR id) ascending order (ties broken by PR id, per the pre-registration); a pick processed at the same instant as an earlier-processed merge sees the incremented main",
+    "horizon": "arrivals over [0, H], H = 2,000 h; events after H are not processed; PRs unmerged at H are censored out of the merged population",
+    "warmup_population": "metrics per (cell, policy) are computed on the merged-PR population after warm-up: PRs whose merge instant t > 200 h; each such PR contributes its FULL renumber count and FULL open->merge duration (even if parts predate warm-up); pooled over the M replications",
+    "metrics": "R = total renumbers / merged PRs (exact Fraction on pooled integer counts); T = merged PRs with >= 2 renumbers / merged PRs (exact Fraction); reporting-only: mean and p95 open->merge duration and their inflation ratios vs the same cell's measured P3 leg, max simultaneous holders of one number (per (cell, policy) max over reps), and the endogenous/exogenous amplification ratio R_endo / E[N]_ArmA per cell for P0 and P1",
+    "draw_order_fixed_legs": "per replication, the ONLY randomness is the Poisson arrival sequence: rng.expovariate(lambda_per_hour) gaps drawn until the cumulative arrival time exceeds H (the final overshoot draw is consumed, its arrival discarded); everything else is deterministic given the arrivals",
+    "loop_order": "cells lexicographic (lambda ascending 1 < 4 < 12 per day, then V ascending 0.25 < 2 < 24 h), policy P0, P1, P3, replications sequential 0..M-1; ONE random.Random(seed) stream flows through the whole leg in this pinned order",
+    "exogenous_mode": "the same engine re-run with appends = an external Poisson process at rate lambda and ONE focal PR (id 0, arrival at t = 0) under the policy on test; appends are modeled as instant-merge external PRs (P3 semantics, W = V = 0) at Poisson times drawn as expovariate gaps on [0, W+V+d+V] per focal PR (gaps drawn until cumulative exceeds that horizon; draws per focal = appends + 1); loop order: cells lexicographic, policy P0 then P1, focal PRs sequential 0..19,999, one Random(20260726) stream",
+    "p95": "sorted pooled durations, index ceil(0.95*n) - 1 (the smallest value >= 95% of the sample)"
+  },
+  "constants": {
+    "lambda_grid_per_day": [1, 4, 12],
+    "lambda_grid_per_hour": ["1/24", "1/6", "1/2"],
+    "V_grid_hours": [0.25, 2, 24],
+    "W_hours": 8,
+    "d_hours": 0.5,
+    "H_hours": 2000,
+    "warmup_hours": 200,
+    "M_primary": 40,
+    "seed_primary": 20260723,
+    "seed_stability": 20260724,
+    "M_stability": 8,
+    "seed_jitter": 20260725,
+    "seed_exogenous": 20260726,
+    "M_exogenous_focal": 20000,
+    "policies": ["P0", "P1", "P3"],
+    "cells": "9 = 3 lambda x 3 V; cell key format lam%02d|V%05.2f (zero-padded so lexicographic string order == the pinned numeric order)"
+  },
+  "arm_a": {
+    "definition": "exact, seedless exogenous single-PR closed forms per cell x {P0, P1}: with p(w) = 1 - e^(-lambda*w) and per-policy windows (w1, w2): P(N>=1) = p(w1); P(N>=2) = p(w1)*p(w2); E[N] = p(w1)*e^(lambda*w2); P0: w1 = W+V, w2 = d+V; P1: w1 = w2 = V",
+    "self_check": "each quantity computed twice by independent float paths (1-exp vs -expm1; p(w1)*exp(lambda*w2) vs p(w1)/(1-p(w2))) agreeing within 1e-9 relative"
+  },
+  "validation_gate": {
+    "exogenous_agreement": "|ArmS_exogenous - ArmA| <= 1.0 percentage point ABSOLUTE on P(N>=1) and P(N>=2) in every covered cell (9 cells x {P0, P1} = 36 comparisons)",
+    "p3_zero_collisions": "every endogenous P3 leg (primary, stability, all sensitivity legs, jitter) must report exactly ZERO collisions",
+    "on_failure": "the run is INVALID — a failed gate is a sim bug by construction; debug, never ship"
+  },
+  "band_constants": {
+    "R_MAX": "1/10",
+    "T_APPROVE_MAX": "1/100",
+    "T_REJECT_MIN": "1/20",
+    "APPROVE_CELLS_MIN": 8,
+    "REJECT_CELLS_MIN": 5,
+    "N_CELLS": 9,
+    "comparison": "exact Fraction arithmetic on pooled integer counts (renumbers, treadmill count, merged count) in the decision path — never floats; the twin evaluator uses integer cross-multiplication (10*renumbers <= merged; 100*tread2 <= merged; 20*tread2 > merged)"
+  },
+  "decision_rule": {
+    "population": "the ENDOGENOUS P1 cells of the primary leg (9 cells)",
+    "evaluation_order": ["APPROVE", "REJECT", "NULL"],
+    "APPROVE": "'Option 1 suffices fleet-wide — retire Options 2/3 with the quantified reason' iff R <= 0.10 AND T <= 0.01 in >= 8 of the 9 cells, with the validation gate passed; checked FIRST — the build-nothing arm, so an eager build recommendation cannot shadow it (the PROPOSAL 019 evaluation-order discipline)",
+    "REJECT": "'the shared append point must go — route the Option-3 assign-at-merge build' iff T > 0.05 in >= 5 of the 9 cells; the verdict must attach the per-cell residual-tax table {R, T, latency inflation vs P3} as the Option-3 plan's evidence row",
+    "NULL": "otherwise — a legitimate and here EXPECTED-USEFUL outcome: the verdict names the flip axis (for each of lambda and V, the APPROVE-pass share and median T at each of its values; largest spread = the named boundary — the idea file's expected candidate: V, because the checker cannot shrink the push->merge window and lambda*V is the collision pressure per round), and the citable finding is the CONDITIONAL per-PR-class rule",
+    "median": "median over the 3 cells at each axis value; odd count so the middle value (exact Fraction)"
+  },
+  "reporting_only_legs": {
+    "note": "reporting-only — none can flip the decision (pre-registered)",
+    "sensitivity": [
+      {"id": "sens-d0.25", "override": {"d": 0.25}},
+      {"id": "sens-d2", "override": {"d": 2}},
+      {"id": "sens-W1", "override": {"W": 1}},
+      {"id": "sens-W24", "override": {"W": 24}}
+    ],
+    "sens_M": 8,
+    "sens_seed": 20260723,
+    "stability_leg": {"id": "stability", "M": 8, "seed": 20260724, "requirement": "must reproduce the same ruling as the primary leg (done-when)"},
+    "jitter_leg": {"id": "jitter", "M": 8, "seed": 20260725, "definition": "W, V, d redrawn exponentially at the pinned means (tests fixed-window knife-edging): W once per PR at open, V at the start of every validation round, d at every fix"},
+    "anchor_leg": "#1279 anchor — under (lambda = 12/day, V = 2 h, d = 0.5 h, P0): report Arm A's exact E[N], P(N>=3), P(N>=4) plus the endogenous measured counterparts from the primary leg at that cell; a plausibility report against an n=1 anecdote (four renumbers in one afternoon), NEVER a fit"
+  },
+  "intake_time_decisions": {
+    "note": "committed HERE before the runner was written; each is reporting-only or implementation-level — the model, grids, seeds, M for the decision and gate legs, bands, and the decision rule are untouched",
+    "1_sens_and_jitter_M": "the idea file pins M=40 (primary), M=20,000 (exogenous), M=8 (stability) but leaves M for the d/W sensitivity legs and the jitter leg unpinned; pinned at M=8, mirroring the stability leg's committed scale (the VERDICT 021 precedent); each sensitivity leg runs on a fresh random.Random(20260723) stream, the jitter leg on its own pinned random.Random(20260725)",
+    "2_jitter_draw_semantics": "the idea file says 'redrawing W, V, d exponentially with the pinned means' without pinning the redraw granularity; pinned: W once per PR, V per validation round, d per fix, via rng.expovariate(1/mean); draw order: arrival gaps for the whole replication first, then event-time draws in event order — at open (W, V_round1), at each collision (d, V_next); draw-count identity: jitter draws per rep = arrivals(W) + arrivals + collisions(V) + collisions(d)",
+    "3_exogenous_truncation": "each exogenous focal PR is simulated only through its first TWO merge-attempt rounds (N recorded as 0, 1, or >=2) — sufficient for the gate metrics P(N>=1) and P(N>=2), which are all the gate reads; necessitated by the closed form's own arithmetic (E[N] = p(w1)*e^(lambda*w2) ~ 2.1e5 rounds per focal PR at the harshest cell — infeasible and irrelevant to the gate); E[N] is Arm A's exact output, and R_exo in the amplification ratio = Arm A's E[N] (the idea file's own 'measured against the exact exogenous closed form')",
+    "4_warmup_population": "'merged-PR population after warm-up' pinned as merge instant strictly > 200 h, full per-PR attributes (see process.warmup_population)",
+    "5_p95_convention": "index ceil(0.95*n) - 1 on the sorted pooled durations",
+    "6_inflation_convention": "latency inflation vs P3 = mean-duration ratio and p95-duration ratio against the same cell's measured P3 leg (same leg, same seed stream) — reporting-only floats",
+    "7_amplification_scope": "R_endo/R_exo reported per cell for BOTH P0 and P1 (the decision reads neither; the deliverable is the P1 row)"
+  },
+  "consequence_preregistered": {
+    "APPROVE": "the canonical doc's remaining Options 2/3 are retired with the quantified reason (routed lane-side via the manager sweep, Q-0260 — the doc is superbot's, never edited from here); the only remaining slice is the doc's own unfinished ask, wiring the shipped checker into the Stop hook / pre-pr step",
+    "REJECT": "the Option-3 assign-at-merge design (the doc's 'own plan') gets its evidence row: the measured residual treadmill UNDER the shipped guard, per cell, plus the latency tax — the priced difference between 'we have a checker' and 'the race is gone'",
+    "NULL": "the conditional per-PR-class rule ships, and the cheapest LIVE probe is named: superbot's REAL (lambda, V, W, d) from one git log pass over migrations/ merge timestamps and PR open/push/merge times, locating the repo's actual cell before anyone spends an infra build on a corner of the grid it does not occupy"
+  },
+  "boundaries_preregistered": {
+    "poisson_arrivals": "real fleet merges bunch; the endogenous mode generates bunching from the mechanism itself and the jitter leg redraws all windows, but exogenous burst processes are out of scope by design",
+    "uniform_compliance": "every simulated author runs the checker on every push under P1; real compliance is <= that, so P1's simulated residual is a FLOOR — an APPROVE is the fragile direction, a REJECT is conservative",
+    "one_repo_one_sequence": "cross-repo or per-directory sequences are not modeled",
+    "models_are_models": "lambda, V, W, d are pinned dials, not measurements — the NULL consequence names the git-history probe that locates superbot's real cell"
+  },
+  "cpython_pin": "3.11",
+  "hand_pins": {
+    "HAND-1": {
+      "params": {"policy": "P1", "W": 8, "V": 2, "d": 0.5, "H": 100, "warmup": 0, "arrivals": [0, 1]},
+      "derivation": "fully hand-derived before code ran (P1 picks at push). PR0 opens t=0, picks at push t=8: max=0 -> holds 1. PR1 opens t=1, picks at push t=9: max still 0 -> ALSO holds 1 (simultaneous holders of number 1 = 2, the race made visible). PR0 attempts t=10: held 1 > max 0 -> MERGE, max=1, duration 10, N=0. PR1 attempts t=11: held 1 <= max 1 -> COLLISION (N=1; PR0's merge at t=10 sits inside PR1's exposure window (9, 11] of length V=2 exactly); fix until 11.5, re-pick at push 11.5: max=1 -> holds 2; attempts 13.5: 2 > 1 -> MERGE, max=2, duration 12.5, N=1. Totals: merged 2, renumbers 1, treadmill(>=2) 0, collisions 1, max_main 2, max simultaneous holders 2, duration sum 23.5, R = 1/2, T = 0.",
+      "expect": {"merged": 2, "renumbers": 1, "tread2": 0, "collisions": 1, "max_main": 2, "max_holders": 2, "dur_sum": 23.5},
+      "expect_p3": {"merged": 2, "renumbers": 0, "collisions": 0, "max_main": 2, "max_holders": 1, "dur_sum": 20.0}
+    },
+    "HAND-2": {
+      "params": {"policy": "P0", "W": 8, "V": 2, "d": 0.5, "H": 100, "warmup": 0, "arrivals": [0, 1, 2]},
+      "derivation": "fully hand-derived (P0 picks at open and at each fix start; a three-way pile shows the chained treadmill). Picks at open: PR0 t=0 holds 1, PR1 t=1 holds 1, PR2 t=2 holds 1 (simultaneous holders of number 1 = 3). PR0 attempts t=10 (window W+V=10): merge, max=1, dur 10, N=0. PR1 attempts t=11: held 1 <= 1 -> COLLISION (N=1), picks AT FIX START t=11: max=1 -> holds 2; attempts t=11+0.5+2=13.5: 2 > 1 -> merge, max=2, dur 12.5, N=1. PR2 attempts t=12: held 1 <= 2 -> COLLISION (N=1), picks t=12: max=1 -> holds 2 (PR1 still holds 2 until 13.5: simultaneous holders of 2 = 2); attempts t=14.5: held 2 <= max 2 (PR1 merged 2 at 13.5, inside PR2's round-2 window (12, 14.5] of length d+V=2.5 exactly) -> COLLISION (N=2), picks t=14.5: holds 3; attempts t=17: 3 > 2 -> merge, max=3, dur 15, N=2. Totals at warmup=0: merged 3, renumbers 3, treadmill 1 (PR2), collisions 3, max_main 3, max_holders 3, dur sum 37.5, R = 1, T = 1/3. Re-scored at warmup=10.5 (tests the merge-instant filter): merged = {PR1@13.5, PR2@17} = 2, renumbers 3, treadmill 1, dur sum 27.5, R = 3/2, T = 1/2.",
+      "expect": {"merged": 3, "renumbers": 3, "tread2": 1, "collisions": 3, "max_main": 3, "max_holders": 3, "dur_sum": 37.5},
+      "expect_warmup_10_5": {"merged": 2, "renumbers": 3, "tread2": 1, "dur_sum": 27.5},
+      "expect_p3": {"merged": 3, "renumbers": 0, "collisions": 0, "max_main": 3, "max_holders": 1, "dur_sum": 30.0}
+    }
+  },
+  "seed_registry_note": "seeds 20260723-26 fresh per the idea file (the registry swept across prior heads 20260713-22 before picking; the PROPOSAL 020 card's collision warning heeded)"
+}
