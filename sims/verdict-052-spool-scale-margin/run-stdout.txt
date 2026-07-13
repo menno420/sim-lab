@@ -1,0 +1,77 @@
+VERDICT 052 — spool-scale go/no-go margin error budget (PROPOSAL 041)
+frame: F ~ U{0..1000} · W = F + E + eps_s, eps_s ~ U{-5..+5} · Fhat = W - Ehat · START iff Fhat >= Jhat + M · M grid {0,5,10,15,25,40,60,100} g · regimes R-OWN / R-TABLE / R-GUESS
+
+GATES
+  hand-fixture-six-scenarios: OK (all 7 outputs per scenario)
+  zero-error-identity: OK (RUNOUT == 0 all M, FORGONE(0) == 0 — exact)
+  convolution-spot-check: OK (48 cells, collapsed == direct, exact equality)
+  monotonicity (both arms, 25 tables): OK
+  arm agreement (main, 24+24 cells): PASS — max |dRUNOUT| 0.000951 <= 0.003, max |dFORGONE| 0.001283 <= 0.01
+  draw sentinels: main 4000000 · stability 400000 · reporting 2220000 · aux 0 (never read)
+
+ARM A (decision arm, exact) — R-OWN   [feasible share 0.8444]
+  M     RUNOUT       FORGONE      start-rate   (ArmS RUNOUT / FORGONE @200k)
+    0   0.005758     0.000813     0.8487       (0.005873 / 0.000912)
+    5   0.002674     0.003611     0.8437       (0.002650 / 0.003872)
+   10   0.001433     0.008278     0.8387       (0.001461 / 0.008513)
+   15   0.000838     0.013598     0.8337       (0.000858 / 0.013806)
+   25   0.000232     0.024827     0.8237       (0.000237 / 0.024687)
+   40   0.000005     0.042350     0.8087       (0.000000 / 0.042205)
+   60   0.000000     0.066006     0.7887       (0.000000 / 0.065194)
+  100   0.000000     0.113327     0.7488       (0.000000 / 0.112680)
+
+ARM A (decision arm, exact) — R-TABLE   [feasible share 0.8444]
+  M     RUNOUT       FORGONE      start-rate   (ArmS RUNOUT / FORGONE @200k)
+    0   0.008084     0.003262     0.8486       (0.008422 / 0.003109)
+    5   0.005027     0.005989     0.8436       (0.005167 / 0.005969)
+   10   0.002786     0.009624     0.8387       (0.002719 / 0.009817)
+   15   0.001410     0.014162     0.8337       (0.001290 / 0.014294)
+   25   0.000397     0.024987     0.8237       (0.000425 / 0.025189)
+   40   0.000041     0.042385     0.8087       (0.000068 / 0.042656)
+   60   0.000000     0.066006     0.7887       (0.000000 / 0.066098)
+  100   0.000000     0.113327     0.7488       (0.000000 / 0.114610)
+
+ARM A (decision arm, exact) — R-GUESS   [feasible share 0.8444]
+  M     RUNOUT       FORGONE      start-rate   (ArmS RUNOUT / FORGONE @200k)
+    0   0.026062     0.031264     0.8399       (0.026828 / 0.030920)
+    5   0.024350     0.034177     0.8359       (0.025242 / 0.033612)
+   10   0.022674     0.037220     0.8319       (0.023624 / 0.036548)
+   15   0.021035     0.040394     0.8278       (0.021986 / 0.039774)
+   25   0.017877     0.047132     0.8193       (0.018607 / 0.046647)
+   40   0.013460     0.058217     0.8061       (0.013951 / 0.057748)
+   60   0.008244     0.074820     0.7878       (0.008420 / 0.074638)
+  100   0.001065     0.114280     0.7487       (0.001124 / 0.114340)
+
+FEAS / M* (bands: RUNOUT <= 1/100 AND FORGONE <= 1/5)
+  Feas(R-OWN)   = [0, 5, 10, 15, 25, 40, 60, 100]  ->  M*(R-OWN)   = 0
+  Feas(R-TABLE) = [0, 5, 10, 15, 25, 40, 60, 100]  ->  M*(R-TABLE) = 0
+  Feas(R-GUESS) = [60, 100]  ->  M*(R-GUESS) = 60   (control row)
+
+DRIFT LEG (reporting-only, W' = W + d, d ~ U{0..8} — cannot flip)
+  R-OWN: Feas = [0, 5, 10, 15, 25, 40, 60, 100] -> M* = 0
+  R-TABLE: Feas = [5, 10, 15, 25, 40, 60, 100] -> M* = 5
+  R-GUESS: Feas = [60, 100] -> M* = 60
+
+SENSITIVITY LEGS (Arm A exact, reporting-only — name the axis, never flip)
+  eps_t-{0..0}           M*(R-OWN) = 0
+  eps_t-{-5..5}          M*(R-OWN) = 0
+  delta-{-8..8}          M*(R-TABLE) = 0
+  delta-{-30..30}        M*(R-TABLE) = 5
+  u-{0..2}               M*(R-OWN) = 0 · M*(R-TABLE) = 0
+  u-{0..10}              M*(R-OWN) = 5 · M*(R-TABLE) = 5
+  jobmix-large-heavy     M*(R-OWN) = 5 · M*(R-TABLE) = 5
+  straddles vs primary conjuncts: NONE
+
+STABILITY LEG (seed 20261302, 20k/regime): class = null · within the main agreement gate: YES · reproduces Arm A: YES
+
+DECISION (pre-registered, evaluated IN ORDER)
+  0. agreement gate: PASS
+  1. REJECT (Feas(R-OWN) = empty, checked FIRST): does not fire (Feas(R-OWN) = [0, 5, 10, 15, 25, 40, 60, 100])
+  2. APPROVE (M*(R-OWN) <= 25 AND (Feas(R-TABLE) = empty OR M*(R-TABLE) >= M*(R-OWN) + 15) AND stability reproduction): does not fire
+     pocket conjunct M*(R-OWN) <= 25: True (M*(R-OWN) = 0)
+     habit conjunct (Feas(R-TABLE) = empty OR M*(R-TABLE) >= M*(R-OWN) + 15): False (M*(R-TABLE) = 0)
+     stability reproduction: True
+  3. RULING: NULL — binding axis: table-parity
+
+SELF-CHECKS: 15 passed, 0 failed
+results.json written
