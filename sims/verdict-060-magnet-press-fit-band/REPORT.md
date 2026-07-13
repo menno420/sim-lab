@@ -50,8 +50,8 @@ above. Two in-process Arm-A computations produced identical rationals; the
 two full process runs are byte-identical (below).
 
 Per-H conditional `FAIL(15 | H)` (which printers the default fails): zero for
-`H ∈ {10..25}` (the calibrated middle), rising to `5/21 ≈ 0.238` at `H = 0`
-(loose printers → DROP) and `10/21 ≈ 0.476` at `H = 40` (tight printers →
+`H ∈ {10..20}` (the calibrated middle), rising to `5/21 ≈ 0.238` at `H = 0`
+(loose printers → DROP) and `5/7 ≈ 0.714` at `H = 40` (tight printers →
 UNSEAT); the full 41-point curve is in `results.json` / `run-stdout.txt`.
 
 ## Controls gate (INVALID if any fails) — all PASS
