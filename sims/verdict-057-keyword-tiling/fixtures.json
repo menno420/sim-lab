@@ -1,0 +1,53 @@
+{
+  "verdict": "057",
+  "intake": "046",
+  "proposal_header_verbatim": "## PROPOSAL 046 · 2026-07-13T21:02:48Z · status: sim-ready",
+  "proposal_source": "idea-engine control/outbox.md @ main 09b38677df0363a7947e1cb2f8b1fb14cbc7fa61 (landed via idea-engine PR #348); idea doc ideas/venture-lab/keyword-tiling-vs-independent-picks-2026-07-13.md @ the same main",
+  "harvest_source": "menno420/venture-lab docs/publishing/keyword-map.md @ be6c75d4e3379efc108f27d17f2c8ff5adb9a74f (citation only — the runner is fully hermetic, zero repo/network reads)",
+  "harvested_sentences_verbatim": {
+    "header_theory": "vetting packets draft \"2 categories + 7 keywords\" in isolation, so with 14 titles heading for the same storefront several will converge on the same high-value phrases and cannibalize each other's placement",
+    "header_cure": "This map makes each packet CLAIM its phrases at vetting time — the way `control/claims/` claims work — so the catalog deliberately tiles the KDP search space instead of piling onto the same shelf",
+    "hard_rule": "First claim on `main` wins a collision.",
+    "c1_also_boughts": "Two catalog titles occupying the same second node compete with each other for the same also-boughts and category ranking instead of covering two shelves",
+    "c2_revisit_protocol": "revisit only if live search results ever show the two listings landing on the same results page"
+  },
+  "universes": {
+    "keyword": {"size": 120, "zipf": "w_k = (1/k)/H_120", "mass": "3/5"},
+    "category": {"size": 30, "zipf": "v_c = (1/c)/H_30", "mass": "2/5"}
+  },
+  "mass_split_sensitivity_pairs": [["1/2", "1/2"], ["4/5", "1/5"]],
+  "catalog": {"titles": 14, "keyword_quota": 7, "category_quota": 2},
+  "fit_windows": {"keyword": 24, "category": 10, "rule": "fit = (L - d)/L for d = |k - home| < L else 0"},
+  "overlap_rows": {
+    "LOW":  {"keyword_homes": [1,9,17,25,33,41,49,57,65,73,81,89,97,105], "category_homes": [1,3,5,7,9,11,13,15,17,19,21,23,25,27], "formulas": "h_t = 8t-7; g_t = 2t-1"},
+    "MED":  {"keyword_homes": [1,6,11,16,21,26,31,36,41,46,51,56,61,66], "category_homes": [1,2,3,4,5,6,7,8,9,10,11,12,13,14], "formulas": "h_t = 5t-4; g_t = t"},
+    "HIGH": {"keyword_homes": [1,4,7,10,13,16,19,22,25,28,31,34,37,40], "category_homes": [1,1,2,2,3,3,4,4,5,5,6,6,7,7], "formulas": "h_t = 3t-2; g_t = ceil(t/2)"}
+  },
+  "externals": {
+    "fit_pool": ["4/5", "3/5", "2/5", "1/5"],
+    "keyword_counts": {"k<=20": 4, "21<=k<=60": 3, "k>=61": 2},
+    "category_counts": {"c<=10": 4, "c>=11": 3},
+    "note": "shelf carries the first E of the fit pool; externals are never diluted"
+  },
+  "shelf": {"positions": 5, "beta": ["1/2", "1/4", "1/8", "1/16", "1/16"], "beta_flat_reporting": ["1/3", "4/15", "1/5", "2/15", "1/15"], "empty_position_mass": "lost"},
+  "dilution": {"rule": "j >= 2 catalog claimants of one cell: each effective fit = f/(1 + gamma*(j-1)); externals never diluted", "gamma_grid": ["0", "1/4", "1", "4"]},
+  "tie_order": "externals-first at equal effective fit, then lower title index; TILE claim order t = 1..14",
+  "policies": {
+    "GREEDY": "each title independently takes its top-7 keyword / top-2 category cells by SOLO expected traffic (insert own fit among externals-only shelf, externals-first on ties; score = universe_weight * beta_position), ties by lower cell index; collisions allowed",
+    "TILE": "identical solo scoring; claims in pinned order t = 1..14 restricted to UNCLAIMED cells; on exhaustion the C4 fallback: claim the best already-claimed cell (same score order, excluding own picks); fallback shares counted and reported"
+  },
+  "metric": "R = (T_TILE - T_GREEDY)/T_GREEDY per grid cell, exact Fraction; T = sum_u mass_u * sum_cells weight_cell * catalog click mass on that shelf",
+  "decision_bands": {"margin": "1/50", "reject": "R < 1/50 in ALL 12 cells (checked FIRST)", "approve": "R >= 1/50 in >= 9 of 12 cells AND in >= 2 of the 3 gamma=1/4 cells AND the seed-20261322 stability leg reproduces the ruling through the twin evaluators", "null": "anything else; pre-registered axes: gamma-conditional / overlap-conditional / arm disagreement / sensitivity straddle", "margin_sweep_reporting": ["1/100", "1/25"]},
+  "arm_s": {"events_per_cell_main": 200000, "events_per_cell_stability": 20000, "events_per_cell_reporting": 20000, "draw_order": "universe coin (keyword w.p. keyword mass) -> phrase index by the universe popularity pmf -> click position by beta; 3 draws per event; SAME draws score both worlds (CRN)", "cell_order": "(LOW, MED, HIGH) x (gamma = 0, 1/4, 1, 4)", "agreement_gate_main": "5/1000", "agreement_gate_stability": "15/1000", "reporting_scenario_order": ["mass_split_1_2", "mass_split_4_5", "beta_flat"]},
+  "seeds": {"main": 20261321, "stability": 20261322, "reporting": 20261323, "aux_never_read": 20261324, "high_water_below": 20261320},
+  "cpython_minor_pin": [3, 11],
+  "hand_fixture_F2": {
+    "shelf_weights": ["2/3", "1/3"],
+    "external_fits_per_shelf": [["3/4"], ["3/4"]],
+    "title_fits": [["1", "0"], ["1", "1/2"]],
+    "quota": 1,
+    "mass": "keyword-only (1, 0)",
+    "expected": {"T_GREEDY_gamma1": "1/4", "T_GREEDY_gamma0": "1/2", "T_TILE_all_gamma": "5/12"}
+  },
+  "gates": ["F1 popularity normalization (sums exactly 1; w1/w2 = 2)", "F2 two-title hand world exact values", "F3 tie order (external 3/4 above catalog 3/4; claim order 1..14)", "F4 beta sums to 1, non-increasing, single-occupant shelf <= 1/2 mass", "F5 dilution identities (j=1 -> f; gamma=1,j=2 -> f/2; gamma=4,j=3 -> f/9)", "F6 theorem gates (T_TILE gamma-invariant in zero-fallback rows / non-increasing with fallback; T_GREEDY non-increasing in gamma every row; degenerate all-fits-zero -> T = 0)", "allocation sanity (exactly 7+2 claims per title both worlds; TILE same-cell pairs only counted fallback shares; GREEDY collisions LOW <= MED <= HIGH expected-direction reporting anomaly flag)", "arm agreement gate", "per-leg draw-count sentinels", "twin independently-written decision evaluators", "two-process byte identity", "cpython minor pinned"]
+}
