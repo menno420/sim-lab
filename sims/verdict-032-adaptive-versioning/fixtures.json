@@ -1,0 +1,134 @@
+{
+  "sim": "verdict-032-adaptive-versioning",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 030 · 2026-07-13T07:25:14Z · status: sim-ready",
+    "idea_file": "ideas/venture-lab/adaptive-versioning-early-signal-2026-07-13.md @ idea-engine ddfd637/9b24977 (PR #298)",
+    "parent": "sim-lab sims/verdict-020-book-versioning @ 76dc487ff15ad564156d4309ff76ed0253532f9b (PROPOSAL 018 -> VERDICT 020, null)",
+    "note": "Every constant below is copied verbatim from the idea file / the parent's committed files. This file was committed BEFORE the runner was written. The sim reads exactly this one file; zero repo/network reads at run time."
+  },
+  "model": {
+    "B_headline": 12,
+    "B_reporting": 6,
+    "B4_headline": 48,
+    "B4_reporting": 24,
+    "title_cost_units": 1,
+    "title_cost_qu": 4,
+    "c_grid": [0.25, 0.5, 0.75],
+    "c4_grid_qu": [1, 2, 3],
+    "sigma_v_grid": [0.2, 0.5, 1.0],
+    "sigma_m_grid": [0.5, 1.5, 2.5],
+    "f_grid": [0.2, 0.6, 1.0],
+    "s_grid": [0.0, 0.5, 1.0],
+    "sigma_e_grid": [0.25, 1.0],
+    "sigma_e_perfect_reporting": 0.0,
+    "omega_grid": [0.5, 0.75],
+    "K_cap": 4,
+    "K_cap_reporting": 6,
+    "K_grid_static": [1, 2, 3, 4, 6],
+    "theta": "N(0,1)", "eps": "N(0, sigma_v^2)", "L": "N(-sigma_m^2/2, sigma_m^2) so E[exp(L)] = 1 exactly",
+    "signal": "y = theta + eps_1 + eta, eta ~ N(0, sigma_e^2), read on a title's FIRST version",
+    "mode_P": "publish 1 of K: true-best version picked with prob f, else uniform over the K",
+    "mode_A": "publish all K: R_title = (1-s)*max_i r_i + s*sum_i r_i, r_i = exp(theta+eps_i+L_i)",
+    "adaptive_policy": "AD(omega): stage 1 produces T1 = round(omega*B) one-version titles (cost 1 each); observe y per title; stage 2 spends the remaining budget on extra versions at cost c each by repeated passes over titles in y-descending order (one extra version per title per pass, cap K_cap versions per title) until the budget cannot buy one more version; remainder discarded and reported",
+    "static_policy": "S(K): floor(B4/(4+4c(K-1))) full K-version titles + one partial title from the remainder (1 version + as many extras as it affords, automatically < K-1 extra); sub-version-cost remainder discarded",
+    "metric": "mean night revenue per unit budget: E[sum_titles R_title]/B, the divisor ALWAYS the full budget B (discarded budget is wasted budget)",
+    "decision_cells": "Mode P c x sigma_v x sigma_m x f x sigma_e = 162; Mode A c x sigma_v x sigma_m x s x sigma_e = 162; total 324"
+  },
+  "M": { "main": 8000, "stability": 2000, "reporting": 8000, "anchor_titles": 8000, "degeneracy": 8000 },
+  "seeds": {
+    "main": 20260760, "stability": 20260761, "reporting": 20260762, "aux": 20260763,
+    "registry_note": "allocated strictly above the P029 registry high-water 20260759; anchor + degeneracy legs ride the aux stream 20260763 (intake decision 1)"
+  },
+  "bands": {
+    "reject_median_max": 0.02,
+    "approve_median_min": 0.10,
+    "oracle_floor": -0.02,
+    "oracle_pass_share": 0.80,
+    "evaluation_order": "REJECT checked FIRST, then APPROVE, else NULL",
+    "REJECT": "for EVERY omega and BOTH sigma_e: median-over-81-cells Delta_cond <= +0.02 in BOTH modes (all 8 (mode, omega, sigma_e) group medians)",
+    "APPROVE": "EXISTS ONE omega (same across all cells, both modes, both sigma_e) with median Delta_cond >= +0.10 in all four (mode, sigma_e) groups AND Delta_or >= -0.02 in >= 80% of cells in each of the four mode x sigma_e quadrants at that omega; stability-reproduced",
+    "NULL": "anything else - flip axis named via per-axis median Delta_cond and pass shares over {mode, sigma_e, c, sigma_v, sigma_m, f/s}",
+    "median_definition": "sorted ascending, element at 0-based index 40 of the 81 per-cell values (81 odd - exact; the parent's convention)",
+    "comparisons": "Delta_cond = R_AD/R_cond - 1 with R_cond = static default per V020's conditional rule (Mode P: S(1); Mode A: S(6)); Delta_or = R_AD/R_or - 1 with R_or = max_K R_S(K) in-cell"
+  },
+  "chained_anchor_row_verbatim": {
+    "source": "sims/verdict-020-book-versioning/results.json `ruling` block @ sim-lab 76dc487ff15ad564156d4309ff76ed0253532f9b",
+    "mode_P_share_kstar_eq1": 0.851851852,
+    "mode_P_median_dR": 0.0,
+    "mode_A_share_kstar_ge2": 0.888888889,
+    "mode_A_median_dR": 0.40621411
+  },
+  "v020_arm_A_f1_slice_verbatim": {
+    "source": "sims/verdict-020-book-versioning/results.json `arm_A_f1_slice` @ 76dc487 - the parent's committed Arm A quadrature values, fractional T_eff convention value = e^{1/2}*I(K,sigma_v)/(1+c(K-1)), rounded %.9g",
+    "rows": [
+      {"c": 0.25, "sigma_v": 0.2, "by_K": {"1": 1.68202765, "2": 1.49695471, "3": 1.31666562, "4": 1.16908086, "6": 0.952134693}},
+      {"c": 0.25, "sigma_v": 0.5, "by_K": {"1": 1.86824596, "2": 1.9075933, "3": 1.80320436, "4": 1.67957593, "6": 1.45736632}},
+      {"c": 0.25, "sigma_v": 1.0, "by_K": {"1": 2.71828183, "2": 3.30651775, "3": 3.44516151, "4": 3.42989035, "6": 3.25733435}},
+      {"c": 0.5, "sigma_v": 0.2, "by_K": {"1": 1.68202765, "2": 1.24746226, "3": 0.987499214, "4": 0.818356599, "6": 0.612086588}},
+      {"c": 0.5, "sigma_v": 0.5, "by_K": {"1": 1.86824596, "2": 1.58966108, "3": 1.35240327, "4": 1.17570315, "6": 0.936878347}},
+      {"c": 0.5, "sigma_v": 1.0, "by_K": {"1": 2.71828183, "2": 2.75543146, "3": 2.58387113, "4": 2.40092324, "6": 2.09400065}},
+      {"c": 0.75, "sigma_v": 0.2, "by_K": {"1": 1.68202765, "2": 1.06925336, "3": 0.789999371, "4": 0.629505076, "6": 0.45101117}},
+      {"c": 0.75, "sigma_v": 0.5, "by_K": {"1": 1.86824596, "2": 1.36256664, "3": 1.08192262, "4": 0.90438704, "6": 0.690331414}},
+      {"c": 0.75, "sigma_v": 1.0, "by_K": {"1": 2.71828183, "2": 2.36179839, "3": 2.06709691, "4": 1.84686403, "6": 1.54294785}}
+    ]
+  },
+  "quadrature": { "lo": -10.0, "hi": 10.0, "step": 0.001, "note": "the parent's Simpson quadrature of exp(sigma*x)*K*phi(x)*Phi(x)^(K-1), code inherited verbatim (I(K,sigma) = E[exp(sigma*M_K)])" },
+  "estimators": {
+    "discipline": "unbiased conditional-expectation / control-variate estimators over exactly the pinned draws (the V020 disclosure inherited); the raw exp(q+L) sample mean cannot meet tight gates at sigma_m = 2.5, measured by the parent. Per-leg MC SE ships alongside every mean.",
+    "static_mode_P_per_title": "X = e^{1/2} * (f*A(eps) + (1-f)*Ev), Ev = e^{sigma_v^2/2}, A(eps) = 1/2*[(K*Ev - (sum_i e^{eps_i} - max_i e^{eps_i})) + (K*Ev - (sum_i e^{-eps_i} - max_i e^{-eps_i}))] - the parent's sign-flip-antithetic loser-sum CV (theta, the pick draw, the uniform branch and L integrated out analytically; zero-variance at K=1)",
+    "static_mode_A_per_title": "X = e^{1/2} * (K*Ev - (1-s)*(sum_i g_i - max_i g_i)), g_i = e^{eps_i + L_i} - the parent's beta=1 CV on E[sum g] = K*Ev (theta integrated out; zero-variance at K=1 and at s=1)",
+    "adaptive_mode_P_per_title": "X_t = e^{theta_t} * (f*Mhat_t + (1-f)*Uhat_t); Uhat_t = (1/K_t)*(e^{eps_t1} + (K_t-1)*Ev) (exact CE of the uniform branch given eps_t1); Mhat_t = e^{eps_t1} + (K_t-1)*Ev - 1/2*[ls(eps) + ls(eps with eps_2..K sign-flipped)], ls = sum_i e^{eps_i} - max_i e^{eps_i} - the parent's antithetic loser-sum CV conditioned on eps_t1 (eps_t1 is NEVER flipped: its sign correlates with the allocation through y; flip validity is conditional N(0,sigma_v) symmetry of eps_2..K). Unbiased given (theta_t, eps_t1, K_t); pick and L integrated out; at K_t=1 X_t = e^{theta_t + eps_t1} exactly",
+    "adaptive_mode_A_per_title": "X_t = e^{theta_t} * (e^{eps_t1} + (K_t-1)*Ev - (1-s)*(sum_i g_i - max_i g_i)), g_i = e^{eps_ti + L_ti} - the parent's CV with the CONDITIONAL mean E[sum g | eps_t1] = e^{eps_t1} + (K_t-1)*Ev (unbiased given (theta_t, eps_t1, K_t); at K_t=1 X_t = e^{theta_t + eps_t1} exactly)",
+    "adaptive_night_theta_cv": "R_hat = [sum_t X_t - beta_cell*(sum_t e^{theta_t} - T1*e^{1/2})]/B; E[sum_t e^{theta_t}] = T1*e^{1/2} exactly REGARDLESS of allocation (all stage-1 titles iid), so the estimator is unbiased for ANY deterministic beta; beta_cell = sum_r m_mode(1+k_r)/(T1*e^{1/2}) pinned from the analytic layer (m_P(K) = e^{1/2}(f*I(K,sigma_v)+(1-f)*Ev), m_A(K) = e^{1/2}((1-s)e^{-sigma_m^2/2}I(K,sigma_c)+s*K*Ev), sigma_c = sqrt(sigma_v^2+sigma_m^2)) over the deterministic per-rank allocation {k_r}",
+    "static_night": "R_hat = [sum over the night's titles of X]/B (theta-CV not needed: theta is integrated out of every static per-title estimator)"
+  },
+  "analytic_layer": {
+    "note": "self-check layer only - arms and ruling unchanged (the parent's discipline). m_P/m_A closed forms as above; static night analytic value = [n_full*m(K) + (m(k_p) if the partial title has k_p >= 1 versions else 0)]/B",
+    "static_diag_tol": "per static leg: |MC/analytic - 1| <= max(0.01, 6*se_rel) (the parent's tolerance)",
+    "signal_free_ad_diag": "AD legs whose allocation is provably signal-free (n_extras a multiple of T1, or n_extras == 0: every title gets the same K) have the same closed form; |MC/analytic - 1| <= max(0.01, 6*se_rel) asserted on every such leg - the unbiasedness check of the full AD machinery including the theta-CV"
+  },
+  "pre_checked_tolerances": {
+    "rule": "every tolerance below is >= 2.5 sigma of its registered-M estimator, sized BEFORE any run (the P029 design rule); SE inputs from committed parent numbers plus a design-time scratchpad pilot at throwaway seed 990001/990002 (disclosed; no committed number was read from the pilot)",
+    "anchor_mode_P_share_tol": 0.006,
+    "anchor_mode_P_share_derivation": "share flips require a K=1-vs-best-K>=2 rank flip; the parent's committed Mode P grid has min |bestK>=2/value(1) - 1| = 0.0131 across all 81 cells; our anchor estimator worst se_rel at M=8000 measured <= 0.0024 (pilot), the parent's committed values carry <= ~0.0015 of their own MC noise (M=20000) -> worst-cell margin >= 4.6 sigma_diff, expected flips < 1e-4, sigma_share ~ 0.0001; tol 0.006 (< half a cell: requires the exact committed count 69/81) >> 2.5 sigma",
+    "anchor_mode_P_median_dR": "must equal 0.0 EXACTLY: dR = value(K*)/value(1) - 1 = 0 whenever K* = 1, and the median is 0 whenever >= 41 of 81 cells have K* = 1; the committed count is 69 and 28 simultaneous flips are impossible under the margin arithmetic above",
+    "anchor_mode_A_share_tol": 0.0185,
+    "anchor_mode_A_share_derivation": "1.5 cells / 81 - allows AT MOST ONE boundary flip. The parent's committed Mode A grid has K=1-vs-bestK>=2 margins {0.0101, 0.0189, 0.0205, ...}; our anchor worst se_rel at M=8000 measured <= 0.0064 (pilot; worst cell sigma_v=1.0, sigma_m=0.5, s=0, K=6), parent's own noise <= ~0.004 -> sigma_diff <= 0.0075; worst boundary cell sits at ~1.3 sigma (flip prob <= ~0.10), second-worst at ~2.5 sigma -> E[flips] <= 0.12, P(>= 2 flips) < 0.01, sigma_share <= 0.0043 -> 2.5 sigma = 0.0107 <= 0.0185",
+    "anchor_mode_A_median_dR_tol": 0.07,
+    "anchor_mode_A_median_dR_derivation": "the parent's committed sorted dR values at ranks 39/40/41 are 0.3858 / 0.40621411 / 0.4631 (spacing >= 0.02 everywhere near the median) vs per-cell dR noise <= ~0.014 (se_rel <= 0.0064 on value(K*), value(1) exact, x(1+dR)) -> rank shifts beyond +-1 negligible; a +-1 shift moves the median by <= 0.0577; sigma_median <= ~0.02 -> 2.5 sigma = 0.05 <= 0.07. The parent's OWN M=2000 stability leg median was 0.404457322 - inside this tolerance",
+    "anchor_analytic_subgate": "seedless: the analytic (quadrature) grid must reproduce share counts 69/81 (Mode P K*=1) and 72/81 (Mode A K*>=2) EXACTLY, Mode P analytic median dR = 0.0 exactly, and |Mode A analytic median dR - 0.40621411| <= 0.005 (deterministic; design-time value 0.404859)",
+    "degeneracy_tol": 0.015,
+    "degeneracy_derivation": "two independent M=8000 legs at the pinned mid cell; per-leg se_rel measured <= 0.004 at M=2000 (pilot) -> <= 0.002 at M=8000, sigma_diff <= 0.003 -> 2.5 sigma = 0.0075 <= 0.015 (bound doubled for conservatism)",
+    "f1_slice_gate": "our quadrature values, rounded with the parent's %.9g convention, must EQUAL the 45 committed v020_arm_A_f1_slice_verbatim values (same algorithm, same platform arithmetic - exact match after identical rounding)",
+    "k1_identity_tol_rel": 1e-12,
+    "s1_additivity_tol_rel": 1e-12,
+    "quadrature_identity_tol_rel": 1e-09
+  },
+  "intake_time_decisions": [
+    "1. Stream assignment: seed 20260760 = decision legs (static B12 both modes, then AD both modes); 20260761 = stability re-run of the decision legs at M=2000; 20260762 = reporting legs (sigma_e=0, K_cap=6, B=6); 20260763 = aux (chained-anchor leg + signal-degeneracy check). One CountingRandom per seed, legs sequential in the pinned loop order.",
+    "2. sigma_e does not enter any static leg's law, so static grids run ONCE per base cell (81 per mode) and their values serve both sigma_e rows of the comparisons; Delta noise is therefore correlated across the two sigma_e rows of a base cell (disclosed).",
+    "3. Static and anchor legs draw ONLY what their estimators read (eps; plus L in Mode A): theta / pick / L-in-Mode-P uniforms are integrated out analytically and never drawn; draw-count sentinels audit the exact reduced counts. The anchor leg uses THIS sim's one-uniform-per-normal discipline at its fresh seed - it reproduces the parent's NUMBERS within pre-checked tolerances, not the parent's byte stream.",
+    "4. T1 = round(omega*B) uses Python 3 banker's rounding: B=12 -> T1 = 6 (omega=0.5) / 9 (0.75); B=6 -> T1 = 3 (omega=0.5) / 4 (omega=0.75, round(4.5) = 4).",
+    "5. eta is drawn always, one uniform per normal, even on the sigma_e=0 leg (eta = 0.0*z): per-night draw counts are sigma_e-invariant.",
+    "6. y ties broken by title index ascending (measure-zero; pinned).",
+    "7. Allocation closed form: n_extras = min(floor(rem_qu/c4), T1*(K_cap-1)); rank r (0-based, y-descending) gets k_r = q + (1 if r < rmd else 0) with q, rmd = divmod(n_extras, T1); discarded_qu = rem_qu - n_extras*c4 (all deterministic per (B, omega, c, K_cap) - the multiset {k_r} is deterministic, only its assignment to titles is random).",
+    "8. Pinned night draw order - AD: for t in 0..T1-1: theta_t, eps_t1, eta_t; then for t in 0..T1-1: eps_t2..eps_tK_t (original index order, NOT y order); then (Mode A only) for t: L_t1..L_tK_t. Static: per title (full titles then the partial): eps_1..eps_K, then (Mode A) L_1..L_K. Anchor: per title: eps_1..eps_K, then (Mode A) L_1..L_K.",
+    "9. Night value divides by the FULL budget B (discarded budget is wasted, both policies).",
+    "10. K_cap=6 changes the allocation ONLY at (omega=0.5, c=0.25) - at B=12 (the run slice) and at B=6, where no K_cap=6 leg runs (pre-run correction: the first wording said B=12 only; the difference map is asserted in-sim for BOTH B; no constant changed); the K_cap=6 reporting leg runs only that slice (27 base cells per mode; its allocation is uniform K=5, signal-free). B=6 reporting AD legs run the full 162-cell sigma_e grids per mode, both omega; B=6 static runs 81 base cells x 5 K per mode. sigma_e=0 AD legs run 81 base cells x 2 omega per mode.",
+    "11. Degeneracy check (aux): pinned cells Mode P (c=0.5, sigma_v=0.5, sigma_m=1.5, f=0.6) and Mode A (c=0.5, sigma_v=0.5, sigma_m=1.5, s=0.5), omega=0.75, sigma_e=0.25, M=8000: variant (a) y replaced by pure noise (y_t = eta_t alone) vs variant (b) uniform-order allocation (extras assigned in title-index order); |R_a/R_b - 1| <= degeneracy_tol per mode.",
+    "12. If rng.random() returns exactly 0.0 (prob ~2^-53 per draw), it is replaced by 2^-53 before inv_cdf (still one uniform per normal; sentinel counts unaffected).",
+    "13. Per-axis NULL-naming tables: for each axis in {mode, sigma_e, c, sigma_v, sigma_m, f (Mode P only), s (Mode A only)} and each axis value: median Delta_cond and the two pass shares (share of rows with Delta_cond >= +0.10; share with Delta_or >= -0.02) over all (cell, omega) rows in that slice, pooled over omega (and over modes for shared axes); per-(mode, omega, sigma_e) group medians ship separately.",
+    "14. Twin decision evaluator: the band rule is implemented twice, independently styled, both applied to the same results table; rulings must agree (run invalid otherwise).",
+    "15. Prefix replay: the first two legs of the main stream are re-run from a fresh Random(main seed) and must be bit-identical (the parent's prefix-replay discipline).",
+    "16. Output floats rounded with the parent's %.9g convention; results.json dumped with sort_keys; stdout and results.json byte-identical across two full process runs by external diff; CPython minor pinned to 3.11 and asserted.",
+    "17. Design-time scratchpad pilot disclosed: throwaway seeds 990001/990002 measured estimator SE ranges and confirmed the analytic layer reproduces the parent's share counts; no committed number derives from it (the P027/P029 scratchpad-probe disclosure precedent).",
+    "18. The stability leg re-runs the decision legs only (static B12 + AD, both modes) at M=2000 on seed 20260761 and re-applies the full rule; it must reproduce the main ruling (run invalid otherwise)."
+  ],
+  "loop_order": [
+    "main stream 20260760: [1] static B12 Mode P: base cells lexicographic (c, sigma_v, sigma_m, f ascending) x K ascending; [2] static B12 Mode A: (c, sigma_v, sigma_m, s) x K; [3] AD Mode P: cells (c, sigma_v, sigma_m, f, sigma_e ascending) x omega ascending; [4] AD Mode A: same with s",
+    "reporting stream 20260762: [5] sigma_e=0 AD: Mode P base cells x omega, then Mode A; [6] K_cap=6 AD: Mode P c=0.25 base cells x omega=0.5, then Mode A; [7] B=6 static: Mode P 81 x K, Mode A 81 x K; [8] B=6 AD: Mode P 162 sigma_e-cells x omega, Mode A 162 x omega",
+    "aux stream 20260763: [9] anchor Mode P 81 cells x K (M=8000 titles per (cell,K)); [10] anchor Mode A 81 x K; [11] degeneracy Mode P variant a, variant b; degeneracy Mode A variant a, variant b",
+    "stability stream 20260761: [12] legs [1]-[4] at M=2000"
+  ],
+  "reporting_only_note": "B=6, K_cap=6, sigma_e=0 (the adaptation upper bound), and the discarded-budget fractions are sensitivity legs that CANNOT flip the decision; the decision reads only the B=12, K_cap=4 sigma_e-grid tables."
+}
