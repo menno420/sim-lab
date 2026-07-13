@@ -127,7 +127,7 @@
     "retention_frontier_68_vs_64": "54944/58428 = 13736/14607 ≈ 0.940370",
     "uplift_frame_59_needs_vs_64": "54944/50589 ≈ 1.086085 (+8.61% more buyers to beat $64)",
     "uplift_frame_59_needs_vs_68": "58428/50589 ≈ 1.154954 (+15.50% more buyers to beat $68)",
-    "fee_free_frontier_bounds": "59/64 = 0.921875 · 59/68 ≈ 0.867647 · 16/17 ≈ 0.941176 — each within 0.13 pp of its cited-fee frontier (fee imprecision is immaterial to the frontiers)",
+    "fee_free_frontier_bounds": "59/64 = 0.921875 · 59/68 ≈ 0.867647 · 16/17 ≈ 0.941176 — each within 0.19 pp of its cited-fee frontier (fee imprecision is immaterial to the frontiers). CORRECTION NOTE, disclosed: the first committed version of this reporting-only pin said 0.13 pp — an arithmetic slip caught by the runner's own self-check on the 68v59 pair (actual gap 0.18 pp); corrected post-first-run with the git trail as the record. No decision band, frontier, net, or rule was touched — this pin is sensitivity reporting only.",
     "materiality_bound_monthly": "at the packet's 0–2 sales/month: max monthly net delta $59 vs $68 = 2·7839/1000 = 15.678; $59 vs $64 = 2·4355/1000 = 8.710",
     "buyer_savings_by_anchor": "$9 at $59 (the committed copy's claim, TRUE) · $4 at $64 (copy claim FALSE) · $0 at $68 (copy claim FALSE; bundle's stated rationale void)"
   },
