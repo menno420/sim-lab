@@ -1,0 +1,14 @@
+{
+  "pins": {
+    "idea-engine": "d1d1b6b5575c2dce084a41325fd2a3a9a9e5ab66 (PROPOSAL 016 · 2026-07-13T00:37:54Z landed via PR #279; idea blob 3ddaea8fd732d5108a303432ba019d88f5d52709)",
+    "sim-lab_parents_at": "2e28767b86f1d807fa83ddd7e5474274be7ada26 (main HEAD at intake; both parent sims committed there)",
+    "superbot-games": "64b3371b5ca240bcbaea3833acba6fdd2d627ef6 (live HEAD == the proposal's pin at 2026-07-13T00:45:05Z; games/shared/encounter/interface.py byte-copied below; grep for cooldown|rate|throttle|debounce over it returns nothing — the pacing layer is uncontracted at the seam)",
+    "superbot": "cdb26804ea4a61c5c1d09ddaea46a4c535175dc5 (live HEAD by git ls-remote at 2026-07-13T00:45:05Z; the proposal pinned 0f991a8442690c765037d48b37fefcbd95bfa0ee and the delta 0f991a8..cdb2680 is docs-only — 3 files, 360 insertions, zero code: the coexistence window is still OPEN, premise verified this session via blobless clone)"
+  },
+  "sha256": {
+    "fixtures/games_shared_encounter_interface.py": "79aef51ec59e403d8ba4982070fb73af3651e85e34391d05f2262c3b92dae39a",
+    "../intake-003-wild-encounter-spawn-tuning/wild_encounter_spawn_sim.py": "6057bee2e4751dd40af2ba3b6061085373e9e7542e7828b742fae2e699947aac",
+    "../verdict-008-mining-grid-encounters/mining_grid_encounter_sim.py": "8dd1d7e8b62cb6bb07ea02c82f783512c519cea90ef7e979243683b78d81e0ac"
+  },
+  "note": "The two parent sim files are the committed trace models this sim composes (vendor-copied semantics, per the sims-never-import-each-other layout contract); their hashes are re-verified by self-check before any leg runs, so a silent parent edit fails this sim loudly. The interface fixture is the shared seam whose missing cooldown surface is the premise."
+}

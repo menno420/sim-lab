@@ -1,0 +1,653 @@
+{
+  "arb_ratio_max": 2.0,
+  "cells": {
+    "A-per-source": {
+      "arb-farmer": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 155,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 151.4
+        },
+        "channel_spawns_hr": [
+          4.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          4.0,
+          0.0
+        ],
+        "combined_hr": [
+          8.875,
+          0.079057
+        ],
+        "grid_fires_hr": [
+          4.875,
+          0.079057
+        ],
+        "grid_mint_share": [
+          0.54926,
+          0.004016
+        ]
+      },
+      "mixed-casual": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 0
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          0.375,
+          0.316228
+        ],
+        "grid_fires_hr": [
+          0.05,
+          0.061237
+        ],
+        "grid_mint_share": [
+          0.066667,
+          0.08165
+        ]
+      },
+      "mixed-deep": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 23.4
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          3.275,
+          0.520817
+        ],
+        "grid_fires_hr": [
+          2.95,
+          0.31225
+        ],
+        "grid_mint_share": [
+          0.909594,
+          0.064673
+        ]
+      }
+    },
+    "B-shared-600": {
+      "arb-farmer": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 184.2,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 69.4,
+          "grid_own": 96.4
+        },
+        "channel_spawns_hr": [
+          3.925,
+          0.1
+        ],
+        "chat_claims_hr": [
+          2.075,
+          0.322102
+        ],
+        "combined_hr": [
+          5.15,
+          0.05
+        ],
+        "grid_fires_hr": [
+          3.075,
+          0.31225
+        ],
+        "grid_mint_share": [
+          0.597213,
+          0.061844
+        ]
+      },
+      "mixed-casual": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 0
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          0.375,
+          0.316228
+        ],
+        "grid_fires_hr": [
+          0.05,
+          0.061237
+        ],
+        "grid_mint_share": [
+          0.066667,
+          0.08165
+        ]
+      },
+      "mixed-deep": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 2.4,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 2,
+          "grid_own": 22.4
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.175,
+          0.187083
+        ],
+        "combined_hr": [
+          3.0,
+          0.353553
+        ],
+        "grid_fires_hr": [
+          2.825,
+          0.280624
+        ],
+        "grid_mint_share": [
+          0.945823,
+          0.057905
+        ]
+      }
+    },
+    "B-shared-900": {
+      "arb-farmer": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 15.2,
+          "chat_own": 146.8,
+          "grid_cap": 0,
+          "grid_cross": 179,
+          "grid_own": 9.6
+        },
+        "channel_spawns_hr": [
+          3.975,
+          0.05
+        ],
+        "chat_claims_hr": [
+          3.775,
+          0.093541
+        ],
+        "combined_hr": [
+          4.0,
+          0.0
+        ],
+        "grid_fires_hr": [
+          0.225,
+          0.093541
+        ],
+        "grid_mint_share": [
+          0.05625,
+          0.023385
+        ]
+      },
+      "mixed-casual": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 0
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          0.375,
+          0.316228
+        ],
+        "grid_fires_hr": [
+          0.05,
+          0.061237
+        ],
+        "grid_mint_share": [
+          0.066667,
+          0.08165
+        ]
+      },
+      "mixed-deep": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 3,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 1.4,
+          "grid_own": 28
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.1,
+          0.122474
+        ],
+        "combined_hr": [
+          2.3,
+          0.187083
+        ],
+        "grid_fires_hr": [
+          2.2,
+          0.187083
+        ],
+        "grid_mint_share": [
+          0.957778,
+          0.051831
+        ]
+      }
+    },
+    "C-cap-4": {
+      "arb-farmer": {
+        "blocked": {
+          "chat_cap": 132.2,
+          "chat_cross": 0,
+          "chat_own": 68.8,
+          "grid_cap": 101.2,
+          "grid_cross": 0,
+          "grid_own": 71.2
+        },
+        "channel_spawns_hr": [
+          3.825,
+          0.061237
+        ],
+        "chat_claims_hr": [
+          1.75,
+          0.344601
+        ],
+        "combined_hr": [
+          4.0,
+          0.0
+        ],
+        "grid_fires_hr": [
+          2.25,
+          0.344601
+        ],
+        "grid_mint_share": [
+          0.5625,
+          0.08615
+        ]
+      },
+      "mixed-casual": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 0
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          0.375,
+          0.316228
+        ],
+        "grid_fires_hr": [
+          0.05,
+          0.061237
+        ],
+        "grid_mint_share": [
+          0.066667,
+          0.08165
+        ]
+      },
+      "mixed-deep": {
+        "blocked": {
+          "chat_cap": 1.4,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 3.4,
+          "grid_cross": 0,
+          "grid_own": 22.2
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.2,
+          0.169558
+        ],
+        "combined_hr": [
+          2.875,
+          0.25
+        ],
+        "grid_fires_hr": [
+          2.675,
+          0.257391
+        ],
+        "grid_mint_share": [
+          0.931499,
+          0.058202
+        ]
+      }
+    },
+    "C-cap-6": {
+      "arb-farmer": {
+        "blocked": {
+          "chat_cap": 52.2,
+          "chat_cross": 0,
+          "chat_own": 115.2,
+          "grid_cap": 73,
+          "grid_cross": 0,
+          "grid_own": 93.2
+        },
+        "channel_spawns_hr": [
+          3.975,
+          0.05
+        ],
+        "chat_claims_hr": [
+          2.975,
+          0.254951
+        ],
+        "combined_hr": [
+          6.0,
+          0.0
+        ],
+        "grid_fires_hr": [
+          3.025,
+          0.254951
+        ],
+        "grid_mint_share": [
+          0.504167,
+          0.042492
+        ]
+      },
+      "mixed-casual": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 0
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          0.375,
+          0.316228
+        ],
+        "grid_fires_hr": [
+          0.05,
+          0.061237
+        ],
+        "grid_mint_share": [
+          0.066667,
+          0.08165
+        ]
+      },
+      "mixed-deep": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 23.4
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          3.275,
+          0.520817
+        ],
+        "grid_fires_hr": [
+          2.95,
+          0.31225
+        ],
+        "grid_mint_share": [
+          0.909594,
+          0.064673
+        ]
+      }
+    },
+    "C-cap-8": {
+      "arb-farmer": {
+        "blocked": {
+          "chat_cap": 13.2,
+          "chat_cross": 0,
+          "chat_own": 144,
+          "grid_cap": 29.8,
+          "grid_cross": 0,
+          "grid_own": 127.6
+        },
+        "channel_spawns_hr": [
+          4.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          3.725,
+          0.145774
+        ],
+        "combined_hr": [
+          7.85,
+          0.05
+        ],
+        "grid_fires_hr": [
+          4.125,
+          0.176777
+        ],
+        "grid_mint_share": [
+          0.525397,
+          0.020327
+        ]
+      },
+      "mixed-casual": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 0
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          0.375,
+          0.316228
+        ],
+        "grid_fires_hr": [
+          0.05,
+          0.061237
+        ],
+        "grid_mint_share": [
+          0.066667,
+          0.08165
+        ]
+      },
+      "mixed-deep": {
+        "blocked": {
+          "chat_cap": 0,
+          "chat_cross": 0,
+          "chat_own": 0,
+          "grid_cap": 0,
+          "grid_cross": 0,
+          "grid_own": 23.4
+        },
+        "channel_spawns_hr": [
+          3.0,
+          0.0
+        ],
+        "chat_claims_hr": [
+          0.325,
+          0.257391
+        ],
+        "combined_hr": [
+          3.275,
+          0.520817
+        ],
+        "grid_fires_hr": [
+          2.95,
+          0.31225
+        ],
+        "grid_mint_share": [
+          0.909594,
+          0.064673
+        ]
+      }
+    }
+  },
+  "passing_cells": [
+    "B-shared-900",
+    "C-cap-4"
+  ],
+  "regression_legs": {
+    "status": "all reproduced exactly (self-check-enforced)",
+    "v001_farmer": 4.0,
+    "v001_visibility": {
+      "high": 4.38,
+      "low": 0.93,
+      "med": 3.0
+    },
+    "v008_1h": {
+      "casual": 0.2,
+      "deep-runner": 2.8,
+      "fastmine": 5.2
+    },
+    "v008_8h": {
+      "casual": 0.05,
+      "deep-runner": 2.95,
+      "fastmine": 4.88
+    }
+  },
+  "scores": {
+    "A-per-source": {
+      "analytic_ceiling_hr": 10.0,
+      "arb_vs_honest_ratio": 2.709924,
+      "fails": [
+        "P4(arb-farmer combined 8.88/hr > 4.0 stricter solo ceiling)",
+        "P5(arb/honest ratio 2.71 > 2.0)"
+      ],
+      "honest_distortion": 0.0,
+      "pass": false,
+      "preserves_pinned_defaults": true
+    },
+    "B-shared-600": {
+      "analytic_ceiling_hr": 6.0,
+      "arb_vs_honest_ratio": 1.716667,
+      "fails": [
+        "P4(arb-farmer combined 5.15/hr > 4.0 stricter solo ceiling)"
+      ],
+      "honest_distortion": 0.275,
+      "pass": false,
+      "preserves_pinned_defaults": false
+    },
+    "B-shared-900": {
+      "analytic_ceiling_hr": 4.0,
+      "arb_vs_honest_ratio": 1.73913,
+      "fails": [],
+      "honest_distortion": 0.975,
+      "pass": true,
+      "preserves_pinned_defaults": false
+    },
+    "C-cap-4": {
+      "analytic_ceiling_hr": 4.0,
+      "arb_vs_honest_ratio": 1.391304,
+      "fails": [],
+      "honest_distortion": 0.4,
+      "pass": true,
+      "preserves_pinned_defaults": true
+    },
+    "C-cap-6": {
+      "analytic_ceiling_hr": 6.0,
+      "arb_vs_honest_ratio": 1.832061,
+      "fails": [
+        "P4(arb-farmer combined 6.00/hr > 4.0 stricter solo ceiling)"
+      ],
+      "honest_distortion": 0.0,
+      "pass": false,
+      "preserves_pinned_defaults": true
+    },
+    "C-cap-8": {
+      "analytic_ceiling_hr": 8.0,
+      "arb_vs_honest_ratio": 2.396947,
+      "fails": [
+        "P4(arb-farmer combined 7.85/hr > 4.0 stricter solo ceiling)",
+        "P5(arb/honest ratio 2.40 > 2.0)"
+      ],
+      "honest_distortion": 0.0,
+      "pass": false,
+      "preserves_pinned_defaults": true
+    }
+  },
+  "solo_8h_anchors": {
+    "chat": {
+      "farmer": 4.0,
+      "med-author0": 0.325
+    },
+    "grid": {
+      "casual": 0.05,
+      "deep-runner": 2.95,
+      "fastmine": 4.875
+    }
+  },
+  "stricter_solo_ceiling_hr": 4.0,
+  "winner": "C-cap-4"
+}
