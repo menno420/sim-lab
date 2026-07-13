@@ -1,0 +1,21 @@
+{
+  "source_repo": "menno420/superbot-games",
+  "pinned_sha": "57f69be34785afb427d608b207e7369025166e94",
+  "copied": "byte-identical copies of the pure mining core needed to drive the sim; import closure verified self-contained (stdlib + games.mining.core only)",
+  "stubs": "NONE \u2014 no module was stubbed; the copied set is the full import closure of world/equipment/rewards/market/structures plus the action-pacing (energy), grid-cell (grid), crafting (recipes), catalog (items), and biome (exploration) modules they reference",
+  "files": {
+    "games/__init__.py": "a77ce7891c2de8a242be89eb9eaea88319e8bda8be7cbabc78810b56cfbe412e",
+    "games/mining/__init__.py": "8495edeba90fb32401ae92112c1532177c6534e2bb7eb4f644fe09e6e134101c",
+    "games/mining/core/__init__.py": "2e037d86909a7afa24d909b8d298926f2eca278f787d1a29f20e68a29ee29384",
+    "games/mining/core/energy.py": "9d13488609ae25084d1fef09459ac205170e79d09d6705395c7478167a264850",
+    "games/mining/core/equipment.py": "34eabf4bfbeb8491fafba354092c0a714ccd3dee46b86c6bf1832345a54c984a",
+    "games/mining/core/exploration.py": "dc7d1eaae68c4c4e2c97969cf2f0cc8ca9dc1f52ffa51a55caab0c389a22611c",
+    "games/mining/core/grid.py": "51b1e7fbe8278868a7828a1adc82a7a84150fd09e2bf804c9deae77b746a1db6",
+    "games/mining/core/items.py": "107fbd855506d1a74678c0a19c57577bb4e1aacd62955d25536a40a98610649e",
+    "games/mining/core/market.py": "a43c4b9b9944111acb84d20a7d3029127090ee996926e2b78a145e48db2a43c7",
+    "games/mining/core/recipes.py": "371ef4af8f528e58898046f418b226821de8f8db1ad654e815a120c2169cf358",
+    "games/mining/core/rewards.py": "3c050d6728e336d76e1d3e9a5eb5edaf25e76f68c4402c5a2f60ec6410f48dd6",
+    "games/mining/core/structures.py": "3e7b349d5431b46f3798bd1a404ce50c4c62c451d20b3dd8596c20f75222b407",
+    "games/mining/core/world.py": "fb59243510174ee93f6ec2798eb25f5beabaa3294a4e5fd7d98af9968b238fe8"
+  }
+}

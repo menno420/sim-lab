@@ -1,0 +1,14 @@
+VERDICT 042 mining-economy-tuning @ 57f69be3
+B0 validity gate: PASS
+  P0_fresh_floor: E[coins/dig] = 32/7 = 4.5714 -> 1645.7/h sustained
+  P1_surface_roamer: E[coins/dig] = 848/175 = 4.8457 -> 1744.5/h sustained
+  P2_cavern_roamer: E[coins/dig] = 2703/440 = 6.1432 -> 2211.5/h sustained
+  P3_deep_roamer: E[coins/dig] = 8427/1150 = 7.3278 -> 2638.0/h sustained
+gate G0 worst-case: 5 actions / 10s (chop-craft); dig-sell-buy E[digs]=2.985 worst 10
+sword@P1 E[digs]=13.313; NP-1 forge I 438.6 digs (1.08h), forge II 1550.8 digs (4.17h)
+bands: BAND-GATE=RATIFY, BAND-SWORD=RATIFY, BAND-FORGE1=RATIFY, BAND-FORGE2=RATIFY
+tool ladder E[amount]: bare hands=3/2, pickaxe=3/2, iron pickaxe=3/2, gold pickaxe=2, diamond pickaxe=5/2
+booster bypass: net 6.5278 coins/dig boosted, forge I in 15.8 min boosted
+packet arithmetic: 22.4 per 8 digs reconstructed vs exact 36.6 (P0) / 38.8 (P1)
+RULING: approve
+SELF-CHECKS: 67 passed, 0 failed
