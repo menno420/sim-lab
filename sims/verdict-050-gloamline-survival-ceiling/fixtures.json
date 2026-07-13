@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "verdict": "VERDICT 050 (INTAKE 039)",
+    "proposal": "idea-engine control/outbox.md — ## PROPOSAL 039 · 2026-07-13T16:33:11Z · status: sim-ready",
+    "idea": "https://github.com/menno420/idea-engine/blob/3c7628c44e14cf85f7792be9f4d9e52b65ed0556/ideas/gba-homebrew/gloamline-survival-ceiling-2026-07-13.md",
+    "claim": "idea-engine PR #323 -> main ab66463 (control/claims/claude-verdict-050-gloamline-survival-ceiling.md)",
+    "source_repo": "menno420/gba-homebrew @ d87f9ad7d283465c5bc8d26ea47b8cbffb307cc1",
+    "source_of_truth": "the PROPOSAL 039 block + the idea file (identical constants); every constant below copied verbatim from them"
+  },
+  "engine": {
+    "mirror_file": "check_gloam_mirror.py",
+    "mirror_sha256": "c86d950723b6fff1159a9c6cddb32822f6c8651e65376f2001a86f7372492892",
+    "mirror_source": "tools/check-gloam.py @ d87f9ad (byte-copied whole file; the V042/V043 byte-reuse precedent; sha256 re-verified before import, run invalid on mismatch)",
+    "functions_used": ["gl_hash", "gl_spawn_of_night", "gl_player_step", "gl_shambler_staggers", "gl_shambler_stride", "gl_shambler_step", "gl_chebyshev", "gl_contact", "gl_wave_count", "gl_spawn_frame", "gl_shove", "gl_dark_press", "gl_light_radius"],
+    "per_frame_loop_order": "spawn due indices (gl_spawn_frame; spawn_due main.c:509) -> player step (keys -> gl_player_step) -> shove verb (do_shove_verb main.c:620) -> the dead's step (step_the_dead, main.c:737 - stun decrement -> stagger unless pressed -> stride) -> contact check ends the run; barricades carry no decision role here; each night fresh at the lamppost with an empty crowd (start_night, main.c:521, which runs spawn_due once so index 0 stands before the first frame)",
+    "constants": {
+      "GL_ONE": 256,
+      "arena_px": "16..239 x 32..175",
+      "GL_ARENA_X_MIN": 4096, "GL_ARENA_X_MAX": 61184,
+      "GL_ARENA_Y_MIN": 8192, "GL_ARENA_Y_MAX": 44800,
+      "lamppost_px": [128, 104],
+      "GL_PLAYER_START_X": 32768, "GL_PLAYER_START_Y": 26624,
+      "GL_PLAYER_SPEED": 384, "GL_PLAYER_DIAG": 271,
+      "GL_SHAMBLER_SPEED": 192, "GL_SHAMBLER_DIAG": 135,
+      "GL_AXIS_DEADZONE": 128,
+      "GL_CONTACT_RANGE": 2560,
+      "GL_SAFE_RADIUS": 16384,
+      "GL_ZOMBIE_CAP": 24,
+      "GL_WAVE_SPAWN_SPAN": 2400,
+      "GL_NIGHT_FRAMES": 3600,
+      "GL_SHOVE_RANGE": 6144, "GL_SHOVE_PUSH": 10240,
+      "GL_SHOVE_STUN": 45, "GL_SHOVE_COOLDOWN": 90,
+      "GL_OIL_MAX": 10800, "GL_OIL_LOW": 3000,
+      "GL_LIGHT_R_MIN": 6144, "GL_LIGHT_R_MAX": 20480,
+      "stagger_rule": "(gl_hash(id, frame) & 3) == 0, rate 1/4; zombie_id = crowd index",
+      "wave_rule": "gl_wave_count(n) = min(2n-1, 24); gl_spawn_frame(n, i) = i*2400 // gl_wave_count(n)"
+    }
+  },
+  "policies": {
+    "family": ["IDLE", "KITE-PERIM", "KITE-GRAD", "SHOVE-PERIM", "SHOVE-GRAD"],
+    "IDLE": "regression leg only (proof 2's bound and range reproduced exactly); not a census policy",
+    "KITE_PERIM": {
+      "waypoints_px": [[40, 56], [215, 56], [215, 151], [40, 151]],
+      "waypoints_note": "clockwise loop on the 24 px-inset rectangle; initial target = waypoint index 0 = (40,56)",
+      "move_rule": "per-axis signed move toward the current waypoint, deadzone GL_ONE/2 = 128 subpx per axis",
+      "advance_rule": "waypoint advances (one step, checked once per frame before key choice) when Chebyshev(player, waypoint) <= 2 px = 512 subpx"
+    },
+    "KITE_GRAD": {
+      "rule": "myopic evader: all 9 key-sets scored through gl_player_step; score = min over live Shamblers of Chebyshev to the moved point; max wins",
+      "tie_order": ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "stay"],
+      "keyset_deltas": {"N": [0, -1], "NE": [1, -1], "E": [1, 0], "SE": [1, 1], "S": [0, 1], "SW": [-1, 1], "W": [-1, 0], "NW": [-1, -1], "stay": [0, 0]}
+    },
+    "SHOVE_variants": "SHOVE-PERIM / SHOVE-GRAD = the same movement plus A whenever the observed cooldown is 0 and the observed nearest Shambler is within GL_SHOVE_RANGE (Chebyshev <= 6144); an attempt arms the cooldown hit or whiff (main.c do_shove_verb: cooldown pre-decremented each frame before the press check; nearest = lowest index at strictly smallest Chebyshev)",
+    "observation_timing": "policies (and the noise layer) read the frame-start state: positions/stun/cooldown as of the end of the previous frame, BEFORE this frame's spawn_due - the keys-scanned-at-loop-top semantics of main.c; one key-set per frame, exactly the input surface the ROM accepts"
+  },
+  "oil_legs": {
+    "LIT": "oil_for_press = GL_OIL_MAX = 10800: gl_dark_press identically 0 - the pre-slice-7 chase",
+    "DARK": "oil_for_press = 0: any Shambler beyond gl_light_radius(0) = GL_LIGHT_R_MIN = 6144 subpx (24 px) never staggers (press cancels the stagger); press distance measured on pre-stride positions, exactly step_the_dead's own read"
+  },
+  "arm_d": {
+    "note": "deterministic census, ZERO RNG; game seeds are enumerated fixture inputs, NOT registry seeds",
+    "perim_grid": {"policies": ["KITE-PERIM", "SHOVE-PERIM"], "oil": ["LIT", "DARK"], "nights": [13, 16, 20, 24], "game_seeds": "0..127"},
+    "grad_grid": {"policies": ["KITE-GRAD", "SHOVE-GRAD"], "oil": ["LIT", "DARK"], "nights": [13, 24], "game_seeds": "0..31"},
+    "ramp_leg": {"policy": "KITE-PERIM", "oil": "LIT", "nights": "1..12", "game_seeds": "0..127", "role": "reporting-only"},
+    "metrics_per_cell": ["SURV (fraction of seeds surviving the full 3600-frame night)", "median death frame among deaths", "min-gap quartiles", "shove connects"],
+    "loop_order": "policy (family order as listed), oil (LIT, DARK), night ascending, seed ascending"
+  },
+  "arm_s": {
+    "note": "seeded execution noise - the human-hands bracket; A press unperturbed (kite policies carry no A)",
+    "noise_rule": "each frame w.p. eps the policy's chosen key-set is replaced by a uniform draw over the 9 key-sets; ONE random.random() per frame (drawn every frame, frame order): fires iff u < eps; replacement index = min(8, int(u / eps * 9)) into keyset_deltas tie_order indexing (u/eps is uniform on [0,1) given fire)",
+    "grid": {"policies": ["KITE-PERIM", "KITE-GRAD"], "oil": ["LIT", "DARK"], "nights": [13, 24], "eps": ["1/16", "1/4"], "game_seeds": "0..31"},
+    "M_main": 32, "M_stability": 16, "M_reporting": 32,
+    "loop_order": "policy, oil, night, eps, seed, replication - one sequential stream per registry seed, consumed in exactly this order",
+    "metrics": "survival share per (policy, oil, night, eps) leg"
+  },
+  "registry_seeds": {
+    "main": 20261293,
+    "stability": 20261294,
+    "stability_rule": "M = 16, must reproduce the ruling",
+    "reporting": 20261295,
+    "aux": 20261296,
+    "aux_rule": "never read by any decision number; ZERO draws asserted",
+    "prior_high_water": 20261292,
+    "note": "allocated strictly above the P038 registry high-water 20261292; nothing above 20261296 drawn"
+  },
+  "decision": {
+    "evaluation_order": ["REJECT", "APPROVE", "NULL"],
+    "REJECT": "KITE-PERIM at LIT survives >= 99/100 of census seeds at EVERY decision night {13, 16, 20, 24} AND the eps = 1/16 noisy KITE-PERIM at night 24 LIT survives >= 90/100 of replications (main leg, 32 seeds x M = 32 = 1024 replications)",
+    "APPROVE": "EVERY swept policy (KITE-PERIM, SHOVE-PERIM, KITE-GRAD, SHOVE-GRAD - incl. SHOVE-GRAD) posts SURV < 50/100 at some decision night (within its own swept night set) in BOTH oil legs, stability-reproduced",
+    "NULL": "anything else - the conditional finding is the citable pin; flip axes named via per-axis survival shares; cheapest live probe named: the lane's own committed route files plus the battery's EARNED best-nights record (proof 20: best = 1, seed 118)",
+    "bands": {"reject_census": "99/100", "reject_noise": "90/100", "approve_surv": "50/100"},
+    "decision_nights": {"KITE-PERIM": [13, 16, 20, 24], "SHOVE-PERIM": [13, 16, 20, 24], "KITE-GRAD": [13, 24], "SHOVE-GRAD": [13, 24]},
+    "comparisons": "exact fractions.Fraction on survival counts - no float touches any decision comparison"
+  },
+  "gates": {
+    "mirror_sha256": "re-verified before import; run invalid on mismatch",
+    "cpython_minor": "3.11 pinned, asserted",
+    "constants_cross_check": "every engine constant above asserted equal to the imported mirror's module constant",
+    "idle_regression": "proof 2's own bound and range reproduced exactly (seeds 0..63 x nights 1..4, index-0 spawn, zombie_id 0, contact-before-step, monotone non-increasing Chebyshev, contact within 400 frames) PLUS the registered every-spawn extension (every scheduled index of those nights, zombie_id = index): monotone non-increasing Chebyshev and contact within 400 frames from every spawn",
+    "spawn_identities": "on every census spawn: fence-perimeter membership, >= 64 px (16384 subpx) from the lamppost (proof 1's predicate), gl_wave_count == min(2n-1, 24) exact, spawn frames non-decreasing and < 2400",
+    "stagger_rate": "mean over the pinned (id, frame) grid ids 0..23 x frames 0..3599 (86400 cells) within 3 sigma of 1/4, sigma = sqrt((1/4)(3/4)/86400); AND zero no-stride (stagger) events among DARK-leg unstunned steps with pre-stride distance > 24 px, counted on every leg",
+    "press_dominance": "proof 11d reproduced exactly on its committed range (seeds 0..63 x nights 1..4, index-0 spawn, zombie_id 0, oil 0 vs lit, 400-frame bound): the pressed chase never reaches contact later than the lit chase from the same spawn, both monotone and bounded",
+    "sentinels": "per-leg frame-count and draw-count sentinels: Arm S draws counted by an independent wrapper == sum of per-run executed frames per leg; aux seed ZERO draws; Arm D total frames recorded",
+    "twin_engines": "the optimized census engine reproduces the mirror-functions-only reference engine (independently written, structured line-for-line on main.c) exactly - death frame, min-gap, shove connects, final crowd positions - on the pinned subsample: every (policy, oil) at night 13 seeds {0, 17, 31} and night 24 seed {5}, plus noise replay equivalence at (KITE-PERIM, LIT, 24, eps 1/16, seed 0, fixed probe stream)",
+    "twin_evaluators": "two independently-written decision evaluators agree on the class, on both the main and the stability input sets",
+    "byte_identity": "stdout + results.json byte-identical across two full process runs by external diff (no wall-clock in any output)"
+  },
+  "conventions": {
+    "death_frame": "frames elapsed at contact = frame index f (0-based) + 1, in 1..3600; survival recorded as death_frame 0",
+    "median_rule": "median of the sorted death-frame list = element at index (n-1)//2 (lower middle for even n)",
+    "quartile_rule": "min-gap quartiles q1/q2/q3 = sorted per-run min-gap values at indices (n-1)//4, (n-1)//2, (3*(n-1))//4; all runs of the cell included (deaths and survivals)",
+    "min_gap": "per run: minimum over frames of the minimum over the crowd of Chebyshev(player, Shambler), measured post-step at the contact-check point, in subpixels",
+    "surv": "exact Fraction survivors/n_seeds (Arm D) or survivors/(seeds*M) (Arm S)"
+  }
+}
