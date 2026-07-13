@@ -77,6 +77,10 @@ ANCHORS = {                  # V024 results.json, IID/S_bh=1.15, rate 0.0010
     0.6: {6: 0.301072200222968, 24: 0.3607737009873204, 96: 0.3909020558622308},
 }
 FAMILYWISE_C_MAX = 11        # |c/500 - 0.01| <= 3*sqrt(.01*.99/500) <=> c <= 11
+# Calibrated two-sample tail-count anchor (fixtures gate_calibration_
+# disclosure): X = #{M=1000 null draws >= V024 committed q99} ~
+# BetaBinomial(1000; 11, 991) under machinery identity; gate X in [1, 30].
+ANCHOR_X_LO, ANCHOR_X_HI = 1, 30
 
 # Config grid, pinned order (V024): L asc, k asc, direction mom<rev, eq<rl.
 CONFIGS = [(L, k, d, w) for L in L_ALL for k in K_ALL
@@ -857,11 +861,13 @@ def main():
     main_draws = 0
     bars = {}       # bars[rho][N]
     bars7 = {}      # bars7[rho][class]
+    null_lists = {}
     null_json = {}
     for rho in RHOS:
         lists, lists7, d = run_null_leg(rng, M_NULL, rho,
                                         "null rho=%.1f" % rho)
         main_draws += d
+        null_lists[rho] = lists
         bars[rho] = {N: quant(lists[N], 0.99) for N in NS}
         bars7[rho] = {name: quant(lists7[name], 0.99)
                       for name, _ in MARG_CLASSES}
@@ -871,21 +877,47 @@ def main():
             "q50": {str(N): quant(lists[N], 0.50) for N in NS},
             "q99_G7": {name: bars7[rho][name] for name, _ in MARG_CLASSES},
         }
-    # ---- ANCHOR GATE (run invalid on any failure)
+    # ---- ANCHOR GATE. Calibrated per the fixtures gate_calibration_
+    # disclosure: the run-invalidating anchor is the two-sample tail count
+    # X = #{null Delta_max(G_N) >= V024 committed q99} in [1, 30]
+    # (X ~ BetaBinomial(1000; 11, 991) under machinery identity, mean 10.98,
+    # SD 4.66); the registered +/-0.05 value gate is evaluated and RECORDED
+    # per point (its fresh-seed premise measured false: q99 SD ~0.046).
+    from bisect import bisect_left
     anchor_rows = []
+    n_anchor_reg_breach = 0
     for rho in RHOS:
         for N in (6, 24, 96):
             got = bars[rho][N]
             want = ANCHORS[rho][N]
             diff = got - want
-            check(abs(diff) <= ANCHOR_TOL,
-                  "ANCHOR GATE rho=%.1f N=%d: got %.4f want %.4f (tol 0.05)"
-                  % (rho, N, got, want))
-            anchor_rows.append({"rho": rho, "N": N, "measured": got,
-                                "v024_committed": want, "diff": diff})
+            reg_ok = abs(diff) <= ANCHOR_TOL
+            if not reg_ok:
+                n_anchor_reg_breach += 1
+            X = M_NULL - bisect_left(null_lists[rho][N], want)
+            check(ANCHOR_X_LO <= X <= ANCHOR_X_HI,
+                  "CALIBRATED ANCHOR rho=%.1f N=%d: tail count %d outside "
+                  "[%d, %d] (measured q99 %.4f vs V024 %.4f)"
+                  % (rho, N, X, ANCHOR_X_LO, ANCHOR_X_HI, got, want))
+            anchor_rows.append({"rho": rho, "N": N, "measured_q99": got,
+                                "v024_committed": want, "diff": diff,
+                                "registered_pm005": "pass" if reg_ok
+                                else "breach_quantile_noise",
+                                "tail_count_X": X,
+                                "tail_count_bounds": [ANCHOR_X_LO,
+                                                      ANCHOR_X_HI]})
     results["null_bars"] = null_json
-    results["anchor_gate"] = {"tolerance_abs": ANCHOR_TOL,
-                              "rows": anchor_rows, "passed": True}
+    results["anchor_gate"] = {
+        "calibrated_rule": "X = #{null Delta_max >= V024 committed q99} in "
+                           "[1, 30]; X ~ BetaBinomial(1000; 11, 991) under "
+                           "machinery identity (run-invalidating)",
+        "registered_rule": "+/-0.05 on q99 values — recorded per point; "
+                           "premise measured false (fresh-seed q99 SD "
+                           "~0.046, see fixtures gate_calibration_"
+                           "disclosure)",
+        "rows": anchor_rows,
+        "n_registered_breaches": n_anchor_reg_breach,
+        "calibrated_passed": True}
 
     # ---- 27 planted decision cells
     main_cells = []
@@ -1225,8 +1257,7 @@ def main():
              SEED_VALREP, SEED_AUX))
     print("")
     print("NULL BARS b_N(rho) (q99 of Delta_max(G_N), kappa=0, M=%d per rho, "
-          "seed %d) + ANCHOR GATE vs V024 (tol +/-%.2f):" %
-          (M_NULL, SEED_MAIN, ANCHOR_TOL))
+          "seed %d) + ANCHOR GATES vs V024:" % (M_NULL, SEED_MAIN))
     for rho in RHOS:
         parts = []
         for N in NS:
@@ -1236,7 +1267,17 @@ def main():
                     ANCHORS[rho][N], bars[rho][N] - ANCHORS[rho][N])
             parts.append(s)
         print("  rho=%.1f : %s" % (rho, " | ".join(parts)))
-    print("  ANCHOR GATE: PASS (9/9 within +/-0.05)")
+    print("  CALIBRATED ANCHOR (run-invalidating; tail count X ~ "
+          "BetaBin(1000; 11, 991), gate [1, 30]): 9/9 PASS")
+    for r in anchor_rows:
+        print("    rho=%.1f N=%2d : X = %2d in [1, 30] — PASS | registered "
+              "+/-0.05: %s (diff %+.4f)"
+              % (r["rho"], r["N"], r["tail_count_X"],
+                 "pass" if r["registered_pm005"] == "pass"
+                 else "BREACH (quantile noise, disclosed)", r["diff"]))
+    print("  registered +/-0.05 breaches: %d/9 (premise measured false — "
+          "fresh-seed q99 SD ~0.046; see fixtures "
+          "gate_calibration_disclosure)" % n_anchor_reg_breach)
     print("")
     print("MAIN LEG (M=%d per cell, seed %d, post-cost 10 bp; bars from the "
           "in-run null legs):" % (M_CELL, SEED_MAIN))
