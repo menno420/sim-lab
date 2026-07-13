@@ -1,0 +1,154 @@
+{
+  "_preregistration": {
+    "written": "2026-07-13T11:14:17Z (date -u), committed BEFORE the runner existed; the sim reads every constant from this file and touches no repo state, network, or wall clock",
+    "binding_spec_verbatim": {
+      "source": "menno420/idea-engine control/inbox.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d, ORDER 006 · 2026-07-13T09:02Z · status: new, SIM-REQUEST (3)",
+      "text": "(3) NARROW-TAM COOKBOOKS — $19 fixed vs PWYW (canonical case: Merge-Wall Cookbook $19)."
+    },
+    "packet_request_verbatim": {
+      "source": "menno420/venture-lab control/outbox.md @ f15e9f187b41f7f968f67e22200f18d4a89dfcde, section '2026-07-13 · night-run MORNING TALLY'",
+      "text": "SIM-REQUEST: photo packs PWYW-vs-$5 + $3 anchor + two-pack bundle · bundle $59 vs $64/$68 anchors · $19 fixed vs PWYW for narrow-TAM cookbooks · owner sandbox repo to production-verify merge-on-green.yml."
+    },
+    "canonical_case_status_verbatim": {
+      "source": "menno420/venture-lab control/outbox.md @ f15e9f1, MORNING TALLY products line",
+      "text": "PRODUCTS publish-READY: 6 — membership-kit $49 · template-packs $19 PWYW · Agent Fleet Field Manual $39 · kill-rule-intake-kit $15 · False-Green Test Trap $15 · Merge-Wall Cookbook $19 (each: built, priced, listing drafted, verification executed, sha pinned, click queued — docs/publishing/OWNER-QUEUE.md, 106 clicks/18 sequences).",
+      "scope": "the cookbook is publish-ready up to the owner gate; this verdict prices, it does not publish"
+    },
+    "kernel_lineage_note": "the fee kernel below is the V037/V039/V040 lineage kernel (same requesting seat, same catalog); VERDICT 039's target line pre-named this inheritance verbatim: 'the cookbook PWYW question inherits this verdict's PWYW frontier form directly' (sim-lab control/outbox.md, VERDICT 039 · 2026-07-13T10:06:56Z)"
+  },
+  "pinned_constants": {
+    "committed_price_usd": {
+      "value": "19",
+      "source_verbatim": "Price **$19 one-time** — set at intake ([`INTAKE.md`](../../../candidates/merge-wall-cookbook/INTAKE.md): \"Conservative revenue estimate: $19 one-time\") and recorded identically in the listing copy, the click-script, and here.",
+      "source": "venture-lab docs/publishing/vetting/merge-wall-cookbook.md @ f15e9f1, §3"
+    },
+    "price_chain": {
+      "value": "$15 < $19 = template-packs $19 PWYW < SWTK $29 live < $39 < $49",
+      "source_verbatim": "Chain: $15 (kill-rule kit, false-green) < **$19** = template-packs $19 PWYW < SWTK $29 live (PR #86) < field-manual $39 (PR #110) < membership-kit $49 (PR #106).",
+      "source": "venture-lab docs/publishing/vetting/merge-wall-cookbook.md @ f15e9f1, §3"
+    },
+    "pwyw_precedent_in_catalog": {
+      "value": "template-packs is the ONLY in-catalog PWYW listing ($19 suggested) and it is NOT live (publish click queued, PR #108)",
+      "source_verbatim": "Price **$19 pay-what-you-want (suggested)** — precedent recorded in [`owner-actions.md`](../../launch/template-packs/owner-actions.md) ⚑D and [`candidates/template-packs/LISTING.md`](../../../candidates/template-packs/LISTING.md) (\"**Pay-what-you-want, $19 suggested** (one-time, free updates to the v0.x line)\").",
+      "source": "venture-lab docs/publishing/vetting/template-packs.md @ f15e9f1, §3",
+      "not_live_note": "OWNER-QUEUE.md @ f15e9f1 still carries the unchecked click '⚑D template-packs ($19 PWYW) publish click must be executed first' — no live PWYW listing exists anywhere in the catalog, hence no PWYW measurement can exist (G1)"
+    },
+    "gumroad_direct_fees": {
+      "platform": "0.10 of price + 0.50 USD per transaction",
+      "processing": "0.029 of price + 0.30 USD",
+      "net_formula": "net(p) = p - (0.50 + 0.10p) - (0.029p + 0.30) = 0.871p - 0.80",
+      "source_verbatim": "Gumroad: flat 10% platform fee + $0.50 per transaction on direct sales; payment processing (~2.9% + $0.30) brings the practical total to roughly ~12.9% + $0.80 per sale.",
+      "source": "venture-lab candidates/photo-packs/MARKET-PLAN.md @ f15e9f1, §(a)",
+      "decision_channel_note": "the DECISION is taken on Gumroad direct — the cookbook's own §7 default ('⚑ Storefront pick: Gumroad (default — the click-script's HOW is written against it; same account as the SWTK live listing) or Lemon Squeezy'); Ko-fi and Discover frontiers ship as reporting columns; no Lemon Squeezy fee schedule exists in the packet (G4)"
+    },
+    "gumroad_discover_fees": {
+      "flat": "0.30 of price, processing included",
+      "net_formula": "net(p) = 0.70p",
+      "source_verbatim": "Products surfaced via Gumroad's Discover marketplace are charged 30% (processing included).",
+      "source": "venture-lab candidates/photo-packs/MARKET-PLAN.md @ f15e9f1, §(a)"
+    },
+    "kofi_free_fees": {
+      "platform": "0.05 of price (Shop, free plan)",
+      "processing": "0.03 of price + 0.30 USD",
+      "net_formula": "net(p) = p - 0.05p - (0.03p + 0.30) = 0.92p - 0.30",
+      "source_verbatim": "Ko-fi: 0% on tips; 5% on Shop / Memberships / Commissions on the free plan (plus normal ~3% + $0.30 processor fee).",
+      "source": "venture-lab candidates/photo-packs/MARKET-PLAN.md @ f15e9f1, §(a)"
+    },
+    "fee_floor_rule": {
+      "source_verbatim": "Below ~$3 the fixed fees ($0.50 + ~$0.30) eat >25% of price — do not price under $3.",
+      "source": "venture-lab docs/publishing/vetting/photo-packs.md @ f15e9f1, §3",
+      "reconciliation_note": "exact: fixed fees 0.80/p > 25% iff p < 3.20 (16/5); a zero-minimum PWYW listing admits payments below the packet's own floor, and a payment nets NEGATIVE below p = 800/871 ≈ $0.9185 — the m = 3 floor variant honors the rule by construction"
+    },
+    "demand_expectation": {
+      "source_verbatim": "Conservative revenue estimate: $19 one-time. Conservative first-90-day: 0–3 sales ($0–$57). Zero distribution = $0.",
+      "source": "venture-lab candidates/merge-wall-cookbook/INTAKE.md @ f15e9f1, kill-rule fields",
+      "scale_note": "no sales projection is made anywhere in this verdict; the committed 0–3 band is rendered per arm as reporting only"
+    },
+    "kill_rule": {
+      "source_verbatim": "Validation signal: within 30 days, ≥1 sale OR ≥30 reads from the agent-builder audience. Else ledgered negative.",
+      "source": "venture-lab candidates/merge-wall-cookbook/INTAKE.md @ f15e9f1, kill-rule fields",
+      "model_note": "$0-takers on a zero-minimum PWYW earn nothing and cost nothing but may serve the ≥30-reads leg — modeled as a separate measured output (taker counts), never as revenue (A4)"
+    },
+    "tam_and_wtp": {
+      "tam_verbatim": "High-intent but small TAM (people building self-merging agent fleets); rides the same owner-gated r/ClaudeAI-type community funnel as the Field Manual — does not diversify channel risk.",
+      "wtp_verbatim": "Narrow but real pain; those who have it have few alternatives, so moderate WTP + some moat.",
+      "source": "venture-lab candidates/merge-wall-cookbook/INTAKE.md @ f15e9f1, scoring table (Distribution / WTP rows)"
+    },
+    "no_sales_data_anywhere": {
+      "source_verbatim": "Payback-time estimate: unverified until first sale; owner-gated distribution.",
+      "source": "venture-lab candidates/merge-wall-cookbook/INTAKE.md @ f15e9f1, kill-rule fields",
+      "corroboration": "vetting §7 verdict line @ f15e9f1: 'a live purchase remains unverified until the owner's own test purchase'; the only live listing in the catalog is SWTK $29 (fixed price) with no reported sales; the only PWYW listing (template-packs) is not live — G1 is total"
+    }
+  },
+  "assumed_not_packet_pinned": [
+    "A1 PWYW MECHANICS: a PWYW taker either pays w ≥ minimum or takes at $0 (zero-minimum variant only); per-transaction fees apply only to paid transactions; a $0 take nets exactly $0 (no fee owed on a $0 transaction — not packet-pinned, marked ASSUMED; identical to V039 A3).",
+    "A2 PROCESSOR RATE FIXED at the packet's own cited values (~2.9% + $0.30 direct; ~3% + $0.30 Ko-fi). The packet itself says 'per-sale net is exact only for a given processor rate' — a ±0.6pp processing-rate bracket ships as reporting.",
+    "A3 GRID SPANS ARE REGISTERED BANDS, NOT MEASUREMENTS: u ∈ [0, 3] (paid PWYW transactions per baseline $19-fixed buyer), w̄ ∈ [0, 29] (mean paid amount; upper bound = the catalog's next price rung, SWTK $29 live), z ∈ {0, 0.25, 0.5, 0.75, 0.9} ($0-taker share, reads-leg reporting only) bracket every packet-plausible value; no probability mass is claimed anywhere on them.",
+    "A4 DOWNLOADS-AS-READS: whether a $0 PWYW download counts toward the intake's '≥30 reads' validation leg is the seat's call — the sim reports exact taker-count arithmetic, never asserts the equivalence.",
+    "A5 MECHANISM-NEUTRAL TRAFFIC: switching the listing's price mechanism does not itself change listing traffic; any PWYW-side entry-rate lift IS the unmeasured u — no double-counting."
+  ],
+  "recorded_gaps_feeding_null_or_conditional": [
+    "G1 (CRITICAL): NO measured PWYW conversion, taker-rate, or mean-payment data exists anywhere in the repo, and zero organic sales data exists for ANY product (intake verbatim 'unverified until first sale'; the catalog's only PWYW listing, template-packs $19 suggested, is NOT live). The exact mirror of V039's G1, verified again at f15e9f1.",
+    "G2: NO absolute demand data — the packet's own scale is the intake's '0–3 sales ($0–$57)' first-90-day band with 'Zero distribution = $0'; no sales projection is made anywhere in this verdict.",
+    "G3: processor rates are cited approximations ('~2.9%', '~3%') — the packet's own exactness caveat; bracketed in a reporting column (A2).",
+    "G4: the storefront pick is an owner call (Gumroad default vs Lemon Squeezy, vetting §7 step 2); NO Lemon Squeezy fee schedule exists in the packet — if the owner picks it, every frontier recomputes from its schedule with the same affine form; Ko-fi/Discover kernels are committed and ship as reporting columns.",
+    "G5: the product is publish-ready but NOT live — the $19 was set at intake and the publish click is owner-gated (vetting §7); this verdict prices, it does not publish and cannot unblock any click.",
+    "G6: no reads/downloads telemetry exists for the kill rule's ≥30-reads leg — the reads-leg arithmetic ships as exact bars on unmeasured quantities (A4)."
+  ],
+  "model": {
+    "frame": "expected net revenue per committed baseline buyer (one buyer who would buy the cookbook at the committed $19 fixed on the decision channel — the V039 frame with the cookbook's constants) over the intake's first-90-day window; exact rational arithmetic (fractions of USD) on every decision quantity",
+    "arms": {
+      "FIXED_19": "the committed default: $19 one-time fixed. E[net] = net(19) per baseline buyer = 15749/1000 = $15.749 exact on Gumroad direct. Zero unmeasured parameters on a given channel.",
+      "PWYW_MIN0": "pay-what-you-want, $19 suggested, minimum $0: u = paid PWYW transactions per baseline buyer, w̄ = mean paid amount, z = $0-taker share. E[net] = u·net(w̄) by linearity of the affine kernel over the paid-payment distribution ($0 takes net $0, A1; the linearity step is exact for ANY payment mix with mean w̄, not an approximation). u, w̄, z all unmeasured (G1).",
+      "PWYW_MIN3": "PWYW with minimum floor $3 (the smallest floor honoring the packet's own fee-floor rule): same form with w̄ ≥ 3 enforced by the listing.",
+      "PWYW_MIN5": "PWYW with minimum floor $5: same form with w̄ ≥ 5.",
+      "PWYW_MIN19": "PWYW with minimum floor $19 (= $19 fixed with voluntary overpay): net per paid sale ≥ net(19) for every payment, so it weakly dominates FIXED_19 PER PAID SALE by construction; its entire risk is conversion-side (u < 1 if the 'minimum $19' framing deters vs a plain $19 price) — u unmeasured (G1). The mirror of V039's parked PWYW-with-$5-floor."
+    },
+    "core_frontier": "PWYW ≥ FIXED_19 on a channel with kernel net(·) ⇔ u·net(w̄) ≥ net(19) (paying takers only; z drops out of revenue entirely). On Gumroad direct: u·(0.871·w̄ − 0.80) ≥ 15.749.",
+    "kernel_invariance_theorem": "for ANY affine kernel net(p) = a·p − b with a > 0: at u = 1 the flip requires a·w̄ − b ≥ a·19 − b ⇔ w̄ ≥ $19.00 EXACTLY — the parity bar is kernel-invariant, identical on direct/Ko-fi/Discover/any future channel; PWYW can only win via u > 1 outrunning both the sub-$19 payment mix and the per-transaction fixed-fee drag (each extra paid transaction costs exactly b more; direct b = $0.80)",
+    "sweep_grids": {
+      "pwyw_grid": "u ∈ 0.00..3.00 step 0.10 (31) × w̄ ∈ 0.00..29.00 step 0.50 (59) = 1829 cells, WIN map PWYW vs FIXED_19, all three committed channels (decision column: Gumroad direct); twin evaluators per cell (Fraction expected-value comparison vs integer cross-multiplication inequality)",
+      "floor_masks": "for m ∈ {0, 3, 5, 19}: the pwyw_grid restricted to w̄ ≥ m — per-floor exact minimum-u bar u_min(m) = net(19)/net(m) and constrained win-region count",
+      "split_ladder": "k ∈ 1..5 paid takers gross-splitting one $19 (equal payments 19/k, all above the active floor where applicable): total net = 0.871·19 − k·0.80 on direct — the exact per-transaction fee drag, REPORTING (it is the mechanism behind the frontier, not a separate decision)",
+      "reads_leg": "z ∈ {0, 0.25, 0.5, 0.75, 0.9} × the committed 0–3 baseline-buyer band: total downloads per baseline buyer = u/(1−z); exact bar for the kill rule's ≥30-reads leg: B baseline buyers in the 30-day window need u/(1−z) ≥ 30/B — REPORTING only (A4, G6)",
+      "processing_sensitivity": "REPORTING-ONLY, cannot flip (kernel-invariance: the u = 1 bar is w̄ = $19 at ANY affine kernel): direct processing rate ∈ {2.3%, 2.9%, 3.5%} — re-renders net(19) per rate",
+      "scale_scenarios": "REPORTING-ONLY: the intake's own first-90-day band rendered per arm — n19 ∈ {0, 1, 2, 3} baseline buyers (gross $0/$19/$38/$57)"
+    }
+  },
+  "decision_rule": {
+    "note": "pre-registered BEFORE the runner; evaluated strictly in order; all breakevens exact fractions on the Gumroad-direct decision channel",
+    "order": [
+      "R1 MEASURED-PWYW-WINS: iff the packet carries a MEASURED pair (û, ŵ̄) with û·net(ŵ̄) ≥ 15749/1000 on the decision channel → replace the committed $19 fixed with PWYW. (Registered though unreachable by the packet's own text — G1 says no PWYW measurement exists anywhere; kept so a future packet re-reads.)",
+      "R2 FULL-BAND-DOMINANCE: iff one arm weakly dominates the other across the ENTIRE registered (u, w̄) band on the decision channel → approve the dominant arm outright. (Expected structurally FALSE for every unmeasured-u variant — both win regions non-empty; the runner must prove it by exact count. PWYW_MIN19 dominates per PAID SALE but not per baseline buyer — its u is free on [0, 3] — so it cannot fire R2 either.)",
+      "R3 CONDITIONAL-DEFAULT: iff NO measured PWYW/conversion datum exists (G1 open) AND no arm full-band dominates → keep the committed **$19 one-time fixed** (the only arm with zero unmeasured parameters, committed at intake + vetting §3 + the precedent chain, and holding the catalog's $19 rung shared with template-packs); PWYW (any sub-$19 floor) PARKS behind the exact measured frontier u·net(w̄) ≥ 15.749 with named measurement bars; PWYW_MIN19 ships as the one variant that cannot lose per paid sale, parked on its conversion-side risk (G1).",
+      "R4 NULL: anything else — name the binding gap."
+    ],
+    "honest_null_note": "R3 and R4 are both honest outcomes; the frontier tables are the citable pin either way. No sales projection is made anywhere (the intake's '0–3 sales ($0–$57) / Zero distribution = $0' stands)."
+  },
+  "expected_exact_values_hand_derived": {
+    "net19_direct": "15749/1000 = 15.749 (0.871·19 = 16.549 minus 0.80)",
+    "net19_kofi": "859/50 = 17.18 (0.92·19 = 17.48 minus 0.30)",
+    "net19_discover": "133/10 = 13.30",
+    "band_nets_direct_0_to_3_sales": "0 · 15.749 · 31.498 · 47.247 (gross 0/19/38/57)",
+    "pwyw_parity_wbar_at_u1_all_channels": "w̄* = 19 EXACTLY on direct, Ko-fi, and Discover (kernel-invariance theorem — same affine kernel on both sides)",
+    "u_min_direct_general": "u_min(w̄) = 15749/(871·w̄ − 800) for w̄ > 800/871",
+    "u_min_at_wbar3_direct": "15749/1813 ≈ 8.6867 (PWYW averaging the $3 floor needs ~8.69× taker volume)",
+    "u_min_at_wbar5_direct": "15749/3555 ≈ 4.4301",
+    "u_min_at_wbar10_direct": "15749/7910 ≈ 1.9910",
+    "u_min_at_wbar15_direct": "15749/12265 ≈ 1.2841",
+    "u_min_at_wbar19_direct": "15749/15749 = 1 EXACTLY",
+    "u_min_at_wbar29_direct": "15749/24459 ≈ 0.6439",
+    "u_min_at_wbar5_kofi": "859/215 ≈ 3.9953",
+    "u_min_at_wbar5_discover": "19/5 = 3.8 EXACTLY",
+    "split_ladder_direct": "k paid takers gross-splitting $19 net 16.549 − 0.80k: k=1 → 15.749 · k=2 → 14.949 · k=3 → 14.149 · k=4 → 13.349 · k=5 → 12.549 (each extra transaction costs exactly $0.80 — the fee drag PWYW's u > 1 must outrun)",
+    "zero_profit_payment_floor_direct": "a paid PWYW take nets POSITIVE only above p = 800/871 ≈ 0.9185; the packet's own fee-floor rule crossing is p = 16/5 = 3.20 (fixed-fee share 0.80/p = 25%); at $3 the share is 4/15 ≈ 26.67%, at $5 16%, at $19 4/95 ≈ 4.21%",
+    "processing_bracket_net19_direct": "2.3% → 15.863 · 2.9% → 15.749 · 3.5% → 15.635 (the u = 1 parity bar stays $19.00 at every rate — cannot flip)",
+    "reads_leg_bars": "downloads per baseline buyer = u/(1−z); ≥30 downloads in the 30-day kill window from B baseline buyers needs u/(1−z) ≥ 30/B — at the band's full 3 buyers and u = 1 that is z ≥ 0.9 (a 10× download multiplier); at 1 buyer, z ≥ 29/30 ≈ 0.9667 (30×)"
+  },
+  "seeds": {
+    "registered": {},
+    "allocation_note": "ZERO seeds drawn — every decision quantity and every gate in this sim is a closed-form exact Fraction (the V037/V038 degenerate-case precedent: 'if fully exact, zero seed draws is the honest choice'); the fleet seed high-water stands at 20261280 (claimed by VERDICT 043's robustness leg, recorded at origin/main 68c9317) and is UNTOUCHED by this verdict. Recorded honestly: this slice's dispatch brief named high-water 20260791 (V039); VERDICT 040 (20260880) and VERDICT 043 (20261280) superseded it before this slice branched — re-read at the ledger, not trusted from the brief.",
+    "scope": "with no RNG anywhere, byte-identity across runs is by construction and is still proven by external diff per the determinism contract"
+  },
+  "determinism_contract": "stdout and results.json byte-identical across two full process runs, proven by external diff; all JSON keys sorted; no timestamps inside results.json; stdlib-only; the sim reads exactly ONE file (this fixtures.json)"
+}
