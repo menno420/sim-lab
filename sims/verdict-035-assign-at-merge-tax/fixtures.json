@@ -1,0 +1,187 @@
+{
+  "question": "Under the pinned migration-race frame inherited from PROPOSAL 021 / VERDICT 023 verbatim (migration-bearing PRs arrive Poisson lambda in {1, 4, 12}/day — per-hour 1/24, 1/6, 1/2; develop W = 8 h open->push; validate V in {0.25, 2, 24} h; horizon H = 2,000 h per replication, warm-up 200 h discarded, M = 40 replications per (cell, V_q); non-migration PRs never touch the shared sequence, out of scope by construction), what is the per-cell re-validation budget V_q*(cell) — the largest V_q in {0.1, 0.5, 2} h at which the REAL Option-3 mechanism P3Q (after validation completes a PR enters a FIFO queue for the shared migration sequence; one PR served at a time; service = one deterministic re-validation of duration V_q; number assigned at merge, so zero collisions and zero renumbers by construction, which the sim must MEASURE on every leg — the V023 P3-control discipline; arrivals to the queue exactly Poisson lambda since the open->entry delay W + V is constant) beats the parent's committed P1 mean open->merge latency — WIN(cell, V_q) := Arm-A-exact W + V + lambda*V_q^2/(2*(1 - rho)) + V_q <= committed P1 mean AND rho = lambda*V_q < 0.9 — across the FIVE treadmill cells V023's REJECT bound, in BOTH Arm A (exact, seedless M/D/1 Pollaczek-Khinchine closed form) and Arm S (seeded event-driven MC of the whole queue), and does the result land (evaluated REJECT first) REJECT / APPROVE / NULL per the pre-registered rule?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 033 · 2026-07-13T08:43:05Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 11c5a1f (landed via idea-engine PR #303)",
+    "idea_entry": "ideas/superbot/assign-at-merge-queue-tax-2026-07-13.md @ idea-engine main 11c5a1f (proposal's own blob link @ 76997c0ab0b382dfe2305fb85036aae37fbb10d5)",
+    "rotation_slot": "standing ORDER 003 FLEET-BACKLOGS rotation slot, round 5 — round 2's own verdict-opened thread (V023 REJECT routed the Option-3 assign-at-merge build while stating verbatim 'nothing here prices Option 3's build cost'); successor-move precedent P023<-V022 / P026<-V024 / P029<-V027 / P030<-V020 applied to the fleet slot's superbot line for the first time; fully hermetic (the PROPOSAL 017-032 precedent): every fixture is a pinned constant committed with the sim, zero repo/network reads in the verdict session",
+    "parent": "sim-lab VERDICT 023 (sims/verdict-023-renumber-treadmill/) — its committed results.json is the anchor home; its answered question (does the shipped Option-1 checker suffice? REJECT, T > 0.05 in 5/9 cells) is settled and NOT re-asked"
+  },
+  "process": {
+    "lifecycle_p3q": "a PR opens at its Poisson arrival instant, develops for W hours (open -> push), validates for V hours (push -> queue entry), then enters a FIFO queue for the shared migration sequence at t_entry = open + W + V; the queue serves ONE PR at a time; service = one deterministic re-validation of duration V_q (the assigned number lands in tested content, so 'CI tested exactly what merged' forces a re-run against current main); at service completion the number is assigned (max(main) + 1 at the merge instant) and the PR merges",
+    "queue_arithmetic": "because every PR's open->entry delay is the constant W + V, the queue's arrival process is exactly Poisson lambda; utilization rho = lambda * V_q; FIFO single-server with deterministic service = M/D/1",
+    "number_arithmetic": "main is a single shared append point; under P3Q a PR holds NO number until its merge instant, where it is assigned max(main) + 1 and appended — zero collisions and zero renumbers BY CONSTRUCTION, which the sim must MEASURE as exactly zero on every leg (the V023 P3-control discipline: assert assigned == max(main) + 1, count collisions (assigned <= max(main)) and renumbers, both must be 0)",
+    "service_recursion": "FIFO single-server Lindley recursion on arrival-ordered entries: start_i = max(entry_i, finish_(i-1)); finish_i = start_i + service_i; wait_i = start_i - entry_i; open->merge duration = W + V + wait_i + service_i; verified against an independently-written heap-based event-driven engine (exact per-PR equality) on the hand pins and on replication 0 of every main-leg point",
+    "horizon": "arrivals over [0, H], H = 2,000 h; the recursion computes service for every arrival (keeps the draw-count identity exact); a PR whose merge lands > H is censored out of the merged population (the V023 censoring convention); window metrics are clipped to (200, 2000]",
+    "warmup_population": "metrics per point are computed on the merged-PR population with merge instant t in (200 h, H]; each such PR contributes its FULL open->merge duration; pooled over the M replications",
+    "draw_order": "per replication: arrival gaps rng.expovariate(lambda_per_hour) drawn until the cumulative arrival time exceeds H (the final overshoot draw is consumed, its arrival discarded — the V023 convention); jitter leg only: then one service duration rng.expovariate(1/V_q) per arrival, drawn in arrival order; draws per rep = arrivals + 1 (deterministic-service legs) or 2*arrivals + 1 (jitter leg) — asserted per replication (draw-count sentinels)",
+    "loop_order": "legs in order main (seed 20260768) -> stability (20260769) -> reporting (20260770: p95 table, then jitter, then stress) -> aux (20260771: the two pre-registered 16x diagnostics); within a leg: cells lexicographic (cell key format lam%02d|V%05.2f, zero-padded so lexicographic string order == the pinned numeric order — inherited from V023), V_q ascending, replications sequential 0..M-1; ONE random.Random(seed) stream flows through each whole leg in this pinned order",
+    "p95": "sorted pooled durations, index ceil(0.95*n) - 1 (the V023 convention)"
+  },
+  "constants": {
+    "lambda_grid_per_day": [1, 4, 12],
+    "lambda_grid_per_hour": ["1/24", "1/6", "1/2"],
+    "V_grid_hours": [0.25, 2, 24],
+    "W_hours": 8,
+    "H_hours": 2000,
+    "warmup_hours": 200,
+    "M_primary": 40,
+    "M_stability": 20,
+    "M_jitter": 8,
+    "M_stress": 8,
+    "M_p95_leg": 40,
+    "M_aux_16x": 640,
+    "seed_main": 20260768,
+    "seed_stability": 20260769,
+    "seed_reporting": 20260770,
+    "seed_aux": 20260771,
+    "seed_registry_note": "seeds 20260768-71 allocated strictly above the PROPOSAL 031 registry high-water 20260767 (PROPOSAL 032 drew zero, per its own card)",
+    "Vq_decision_grid_hours": [0.1, 0.5, 2],
+    "Vq_control_hours": 0,
+    "Vq_stress_hours": 8,
+    "cells": "9 = 3 lambda x 3 V; cell key format lam%02d|V%05.2f",
+    "treadmill_cells": ["lam01|V24.00", "lam04|V02.00", "lam04|V24.00", "lam12|V02.00", "lam12|V24.00"],
+    "calm_cells": ["lam01|V00.25", "lam01|V02.00", "lam04|V00.25", "lam12|V00.25"]
+  },
+  "stability_rule": {
+    "rho_bound": "9/10",
+    "rule": "a (lambda, V_q) point with rho = lambda*V_q >= 0.9 is UNSTABLE and fails WIN by rule (no steady state to compare); unstable points are excluded from Arm-S simulation and printed as such",
+    "precomputed_exclusions_decision_grid": {"lam12 x V_q=2": "rho = 1/2 * 2 = 1 exactly — the only decision-grid member (the P029 theta_r = 168 precedent: a pre-computable arithmetic exclusion)"},
+    "precomputed_max_rho_elsewhere_decision_grid": "1/3 (lam04 x V_q=2); every other decision point has rho <= 1/3",
+    "precomputed_stress_rho": {"lam01": "1/3 (stable, simulated M=8)", "lam04": "4/3 (unstable by arithmetic, printed, not simulated)", "lam12": "4 (unstable by arithmetic, printed, not simulated)"}
+  },
+  "anchors_v023": {
+    "pin": "sims/verdict-023-renumber-treadmill/results.json @ sim-lab c7340aeb330f2b05655f55e8b542b0e62c71d061",
+    "head_check": "results.json at origin/main HEAD cd47c06 verified byte-identical to the c7340ae version before this fixture was written (sha256 53c633b11f30340c6a5b7b9ce608580f187ee7fb6fe33b303b22a4cecfad2a90)",
+    "out_of_sim_rerun": "the parent's committed runner re-run once out-of-sim in a scratchpad copy BEFORE this build (the V031 precedent): exit 0, SELF-CHECKS 16857 passed 0 failed, results.json byte-identical to the committed file (same sha256) — recorded in REPORT.md; no anchor is used without this gate",
+    "verbatim_note": "values below are quoted verbatim from the committed results.json float reprs (the proposal's zero-padded spellings 493.583020 / 8.361490 are numerically identical decimal strings)",
+    "P1_mean_dur_f": {
+      "lam01|V00.25": "8.257576",
+      "lam01|V02.00": "10.259473",
+      "lam01|V24.00": "183.525239",
+      "lam04|V00.25": "8.283372",
+      "lam04|V02.00": "11.416983",
+      "lam04|V24.00": "493.58302",
+      "lam12|V00.25": "8.36149",
+      "lam12|V02.00": "121.019534",
+      "lam12|V24.00": "493.408451"
+    },
+    "P1_p95_dur_f": {
+      "lam01|V00.25": "8.25",
+      "lam01|V02.00": "12.5",
+      "lam01|V24.00": "473.0",
+      "lam04|V00.25": "8.25",
+      "lam04|V02.00": "17.5",
+      "lam04|V24.00": "1379.5",
+      "lam12|V00.25": "9.0",
+      "lam12|V02.00": "440.0",
+      "lam12|V24.00": "1355.0"
+    },
+    "P3_mean_by_V_column": {"V00.25": "8.25", "V02.00": "10.0", "V24.00": "32.0"},
+    "P3_mean_identity": "exactly W + V per column (8 + 0.25 = 8.25, 8 + 2 = 10.0, 8 + 24 = 32.0 — exact in binary floating point); the V_q = 0 control leg must reproduce these EXACTLY (float equality), the chained regression gate tying the two grids",
+    "treadmill_T_committed": {
+      "lam01|V24.00": {"frac": "1938/2615", "float": "0.741109"},
+      "lam04|V02.00": {"frac": "2/15", "float": "0.133333"},
+      "lam04|V24.00": {"frac": "2470/2921", "float": "0.845601"},
+      "lam12|V02.00": {"frac": "28713/33020", "float": "0.869564"},
+      "lam12|V24.00": {"frac": "1262/1491", "float": "0.846412"}
+    }
+  },
+  "arm_a": {
+    "definition": "exact, seedless, platform-independent: M/D/1 Pollaczek-Khinchine mean wait W_q = lambda*V_q^2 / (2*(1 - rho)) with rho = lambda*V_q; P3Q mean open->merge = W + V + W_q + V_q, evaluated at EVERY decision/control/stress point with zero sampling error; the P1 comparison side enters as V023's COMMITTED measured numbers quoted verbatim above (the P023/P027 chained-anchor pattern)",
+    "decision_arithmetic": "the ruling rides Arm A evaluated in EXACT rational arithmetic (fractions.Fraction: lambda, V_q, W, V exact rationals; committed P1 means as Fraction(decimal string)); the independently-written float evaluator is the twin — both must agree on every WIN cell (run invalid on disagreement)",
+    "mm1_jitter_form": "exponential service at mean V_q makes the queue M/M/1: W_q = rho*V_q/(1 - rho) — the jitter leg's own exact check"
+  },
+  "decision_rule": {
+    "WIN": "WIN(cell, V_q) := (rho = lambda*V_q < 9/10) AND (Arm-A-exact P3Q mean = W + V + lambda*V_q^2/(2*(1-rho)) + V_q <= the cell's committed P1 mean)",
+    "Vq_star": "V_q*(cell) := the largest decision-grid V_q in {0.1, 0.5, 2} with WIN(cell, V_q), or none",
+    "population": "the FIVE treadmill cells V023's REJECT bound (lam01|V24.00, lam04|V02.00, lam04|V24.00, lam12|V02.00, lam12|V24.00 — committed T 0.741109/0.133333/0.845601/0.869564/0.846412); the four calm cells ride reporting-only (the build was never routed for them)",
+    "evaluation_order": ["REJECT", "APPROVE", "NULL"],
+    "REJECT": "'the queue tax eats the routed win — descope the naive build before spend' iff V_q* exists in <= 2 of the 5 treadmill cells (even the 0.1 h re-check loses in >= 3); checked FIRST — the costly error is an infra build that measurably re-creates the latency it was routed to remove",
+    "APPROVE": "'the build wins with full-CI headroom — the routed row stands, now priced' iff V_q* >= 2 h in >= 4 of the 5 treadmill cells, with the stability leg reproducing the ruling and every gate passing (an effective-gate breach BARS APPROVE per the pinned breach protocol)",
+    "NULL": "anything else — a legitimate and here plausible outcome: the per-cell V_q* frontier table IS the citable pin; flip axes named via per-axis WIN shares (per lambda value and per V value over the treadmill-cell decision points, exact fractions); expected candidates lambda (the serialization ceiling rho = lambda*V_q) and the V = 2 same-day-review column (P1's committed mean 11.416983 h vs the free 10.0 h leaves the queue only ~1.42 h of headroom); the CONDITIONAL rule is the finding: the build pays wherever the repo's real (lambda, V_q) sits inside the frontier",
+    "band_constants": {"REJECT_CELLS_MAX": 2, "APPROVE_CELLS_MIN": 4, "N_TREADMILL": 5, "VQ_DAGGER_HOURS": 2}
+  },
+  "validation_gates": {
+    "on_failure": "the run is INVALID — a failed gate is a sim bug by construction; debug, never ship (subject to the pinned breach protocol for the familywise SE gates ONLY)",
+    "G1_vq0_control": "the V_q = 0 control leg (all 9 cells, main seed, M = 40) reproduces V023's committed P3 means {8.25, 10.0, 32.0} EXACTLY (float equality — durations are W + V exactly when wait = service = 0)",
+    "G2_zero_renumbers": "zero renumbers AND zero collisions under P3Q measured on every leg (every simulated point, every replication); assigned numbers strictly contiguous max+1 at every merge",
+    "G3_armS_armA_familywise": "per covered stable point with V_q > 0, |ArmS pooled mean - ArmA exact mean| <= tol(point) with tol = max(3.5 * SE_pred(point), 0.02 h); SE_pred = sqrt(Var_dur(point) * IF(rho) / n_pred); covered points = main (24) + stability (13) + p95 leg (24) + jitter (13, vs the M/M/1 form) + stress (3) = 77 gates; expected familywise breach count 77 * 4.65e-4 ~= 0.036 << 1 (the V027/V031 two-datapoint lesson applied at design time)",
+    "G4_littles_law": "on every simulated stable point with V_q > 0: |Lbar - lambda_hat * What| <= max(0.02, 0.05 * lambda * E_Wq_ArmA) where Lbar = clipped waiting-time integral over (200, 2000] / (1800*M), lambda_hat = queue entries in window / (1800*M), What = mean wait of the entering population (boundary clipping is the only mismatch source)",
+    "G5_busy_fraction": "on every simulated stable point with V_q > 0: |busy_frac - rho| <= max(0.005, 3.5 * V_q * sqrt(lambda * 1800 * M) / (1800 * M))",
+    "G6_mm1_jitter": "the jitter leg's pooled means agree with the M/M/1 closed form W + V + V_q + rho*V_q/(1-rho) under the same G3 tolerance formula with the M/M/1 variance",
+    "G7_draw_sentinels": "per replication: RNG draws == arrivals + 1 (deterministic-service legs) or 2*arrivals + 1 (jitter leg); per leg: total draws == the sum of the per-rep identities",
+    "G8_twin_evaluators": "two independently-written decision evaluators (exact-Fraction path vs float path) agree on every WIN cell, every V_q*, and the ruling",
+    "G9_twin_engines": "the Lindley-recursion engine and the independently-written heap-based event-driven engine agree EXACTLY (per-PR waits and merges) on both hand pins and on replication 0 of every main-leg point",
+    "G10_stability_ruling": "the stability leg (seed 20260769, M = 20, decision points only) — the decision rule applied to its Arm-S measured means must reproduce the primary ruling",
+    "G11_fixture_crosscheck": "the runner recomputes every pre-run SE/tolerance below and the stability-rule exclusions from the pinned formulas and asserts agreement (the fixture is the only file read)"
+  },
+  "se_arithmetic_preregistered": {
+    "var_dur_md1": "Var_dur = Var(W_q) = E[W_q]^2 + lambda*V_q^3/(3*(1-rho)) with E[W_q] = lambda*V_q^2/(2*(1-rho)) (M/G/1 waiting-time moments, deterministic service: E[S^2] = V_q^2, E[S^3] = V_q^3; duration adds only constants)",
+    "var_dur_mm1_jitter": "Var_dur = Var(W_q) + V_q^2 with E[W_q] = rho*V_q/(1-rho), Var(W_q) = E[W_q]^2 + 2*lambda*V_q^3/(1-rho) (exponential service: E[S^2] = 2*V_q^2, E[S^3] = 6*V_q^3; own service independent of own wait)",
+    "n_pred": "lambda_per_hour * 1800 * M_leg (expected merged population in the window)",
+    "IF": "((1+rho)/(1-rho))^2 — pinned autocorrelation inflation on the effective sample size; conservative at every gated rho <= 1/3 (true M/G/1 mean-estimator inflation ~ 1 + 2*sum(autocorr) ~= 2 at rho = 1/3; IF = 4 there)",
+    "floor_rationale": "the 0.02 h floor absorbs the censoring-boundary bias (pre-run bound: at-risk arrival fraction ~ max-wait/1800 times E[W_q] <= ~0.006 h at every gated decision/calm point; the stress point's bias ~0.03 h sits far inside its 3.5*SE = 1.094 h)",
+    "worked_examples_pre_run": {
+      "lam04|V02.00_Vq0.5_main": {"rho": "1/12", "E_Wq": "1/44 ~= 0.022727", "Var_dur": 0.008092, "IF": 1.396694, "n_pred": 12000, "SE_pred": 0.000971, "tol": 0.02},
+      "lam12|V24.00_Vq0.5_main": {"rho": "1/4", "E_Wq": "1/12 ~= 0.083333", "Var_dur": 0.034722, "IF": 2.777778, "n_pred": 36000, "SE_pred": 0.001637, "tol": 0.02},
+      "lam01|V00.25_Vq8_stress": {"rho": "1/3", "E_Wq": "2.0", "Var_dur": 14.666667, "IF": 4.0, "n_pred": 600, "SE_pred": 0.312687, "tol": 1.094404}
+    },
+    "breach_protocol_pinned_before_any_draw": "any G3/G6 breach -> re-measure that point at 16x M on the aux stream (seed 20260771); residual within the same tolerance => sampling noise, disclosed with z-scores, BARS APPROVE and can neither create nor destroy REJECT/NULL; residual persists => run INVALID (sim bug — debug, never ship); the V031 protocol verbatim"
+  },
+  "reporting_only_legs": {
+    "note": "reporting-only — none can flip the decision (pre-registered)",
+    "calm_cells": "the four calm cells at every decision V_q (expected and worth printing: P3Q strictly worse there at any realistic V_q — V023's 'the checker was worth shipping' restated with numbers; whatever the measured sign, it is reported honestly)",
+    "stress_column": "V_q = 8 h: rho in {1/3, 4/3, 4} — lam01 simulated (M = 8, gated), lam04/lam12 unstable by arithmetic, printed as such, not simulated",
+    "jitter_leg": "service redrawn exponential at mean V_q (M/M/1; treadmill cells x stable decision V_q, M = 8, seed stream 20260770) — brackets real CI variance between deterministic and memoryless",
+    "p95_table": "P3Q p95 per stable decision-grid point (all 9 cells x {0.1, 0.5, 2} stable, M = 40, seed stream 20260770) vs P1's committed p95 column — the decision is on means, stated; shipped with a nonparametric rank CI (z = 1.96) as the MC uncertainty",
+    "traces": "per stable main-leg point {Lbar, busy_frac, max_qlen (waiting PRs only, measured just after each entry)}; an 18-bucket (100 h) pooled queue-length trace for the two closest-frontier points (lam04|V02.00 x V_q=0.5, lam12|V00.25 x V_q=0.1)",
+    "churn_column": "P3Q R = T = 0 (measured zero on every leg) vs the five treadmill cells' committed T values — the free win the latency-parity metric deliberately does not count (Model basis (3): a cell that narrowly misses WIN may still be worth building for churn alone; the registered ruling stays on the latency metric)",
+    "aux_16x_diagnostics": "the two closest-frontier points re-measured at M = 640 on the aux stream (seed 20260771), pre-registered as reporting-only machinery diagnostics (and the breach-protocol instrument if triggered)"
+  },
+  "model_basis_declared": {
+    "1_statistical_assumptions": "Poisson migration-PR arrivals; deterministic W, V, and service V_q (the jitter leg brackets service variance between deterministic and memoryless); one shared sequence; FIFO, one-at-a-time service; only migration-bearing PRs queue; model hours, not wall-clock — the parent's boundary inherited verbatim",
+    "2_most_likely_flip": "the repo's REAL (lambda, V_q) cell — deliberately the same measurement as the NULL-case live probes (git history for lambda/V; Actions history for V_q); second-order: re-validation FAILURES at the queue head are out of registered scope — one-sided, they only worsen P3Q, so APPROVE is the fragile direction and a REJECT is conservative",
+    "3_latency_parity_conservatism": "WIN counts only mean latency; P3Q's churn elimination (R = T = 0 vs committed T up to 0.869564) rides free and un-scored — the churn column ships so a reader can re-weigh; the pre-registered ruling stays on the latency metric",
+    "4_out_of_scope_named": "the P1->P3Q transition window (both mechanisms coexisting); batching/merge-train service disciplines (the named rescue design if REJECT lands); cross-repo sequences"
+  },
+  "hand_pins": {
+    "HAND-A_queue_mechanics": {
+      "params": {"W": 1, "V": 1, "Vq": 2, "arrivals": [0, 1, 1.5], "H": 100, "warmup": 0},
+      "derivation": "fully hand-derived before code ran. Entries = arrival + W + V: 2, 3, 3.5. PR0: start 2, finish 4, wait 0, dur 4. PR1: start max(3, 4) = 4, finish 6, wait 1, dur 5. PR2: start max(3.5, 6) = 6, finish 8, wait 2.5, dur 6.5. merged 3, dur_sum 15.5, wait_sum 3.5, busy_time 6, waiting-time integral 3.5, max simultaneous waiting = 2 (PR1 and PR2 during [3.5, 4)), numbers assigned 1/2/3 at merges 4/6/8, collisions 0, renumbers 0",
+      "expect": {"merged": 3, "dur_sum": 15.5, "wait_sum": 3.5, "busy_time": 6.0, "q_integral": 3.5, "max_qlen": 2, "collisions": 0, "renumbers": 0, "max_main": 3}
+    },
+    "HAND-B_vq0_control": {
+      "params": {"W": 1, "V": 1, "Vq": 0, "arrivals": [0, 1, 1.5], "H": 100, "warmup": 0},
+      "derivation": "V_q = 0: wait = 0 and service = 0 for every PR (entries are arrival-ordered, prev finish = prev entry <= this entry); every duration = W + V = 2 exactly; merges at 2, 3, 3.5",
+      "expect": {"merged": 3, "dur_sum": 6.0, "wait_sum": 0.0, "busy_time": 0.0, "q_integral": 0.0, "max_qlen": 0, "collisions": 0, "renumbers": 0, "max_main": 3}
+    },
+    "HAND-C_armA_exact": {
+      "lam04|V02.00_Vq2": {"rho": "1/3", "Wq": "1/2", "mean_exact": "25/2", "mean_f": 12.5, "vs_committed_P1": "11.416983 -> LOSE (12.5 > 11.416983)"},
+      "lam04|V02.00_Vq0.5": {"rho": "1/12", "Wq": "1/44", "mean_exact": "463/44", "mean_f": 10.522727, "vs_committed_P1": "11.416983 -> WIN (463/44 <= Fraction('11.416983'))"}
+    },
+    "HAND-D_mm1_identity": {"rho_1/3_Vq2": "M/M/1 W_q = (1/3 * 2)/(2/3) = 1 exactly"}
+  },
+  "intake_time_decisions": {
+    "note": "committed HERE before the runner was written; each is reporting-only or implementation-level — the model, grids, seeds, M for the decision and gate legs, bands, and the decision rule are untouched (all inherited verbatim from the idea file / P021)",
+    "1_p95_seed_home": "the p95 table rides the reporting seed 20260770 at M = 40 per the registration's own seed assignment ('20260770 reporting (jitter, V_q = 8 stress, p95 legs)'); one canonical p95 per point — the main leg's pooled p95 is not separately re-reported",
+    "2_censoring": "the FIFO recursion computes service for every arrival in [0, H] (keeps the draw-count identity exact and the stream aligned); censoring (merge > H dropped from the merged population) applied afterward — the V023 convention read for a queue",
+    "3_littles_population": "L via the clipped waiting-interval integral over (200, 2000]; lambda_hat and What on the population ENTERING the queue in (200, 2000] (unclipped waits); tolerance formula in G4 — boundary clipping is the only mismatch source and is absorbed by the 0.02 floor",
+    "4_IF_choice": "IF = ((1+rho)/(1-rho))^2 pinned as a deliberately conservative inflation (arithmetic in se_arithmetic_preregistered)",
+    "5_leg_M_choices": "M_jitter = M_stress = 8 mirroring the V023 reporting-leg scale; M_stability = 20 (half-M, the registration's own value); aux 16x diagnostics M = 640 on the two closest-frontier points",
+    "6_p95_ci": "p95 MC uncertainty shipped as the nonparametric rank CI: order statistics at ranks ceil(n*(0.95 -+ 1.96*sqrt(0.95*0.05/n))) clamped to [1, n]",
+    "7_max_qlen": "max_qlen counts WAITING PRs only (in-service excluded), evaluated just after each queue entry",
+    "8_trace_buckets": "18 buckets of 100 h over (200, 2000], pooled across replications, frontier points only",
+    "9_stress_scope": "only the three lam01 cells are simulated at V_q = 8 (rho = 1/3); lam04/lam12 stress points are printed UNSTABLE with their exact rho — no steady state exists to estimate",
+    "10_decision_exact_arithmetic": "the ruling rides the exact-Fraction evaluator; the float evaluator is the independently-written twin (G8); committed P1 means enter as Fraction(decimal string) of the verbatim reprs",
+    "11_stability_gating": "the stability leg is ALSO covered by the G3 familywise mean gates at its own n_pred (M = 20) — 13 additional gates included in the 77-gate count",
+    "12_calm_cells_gated": "calm-cell main-leg points are simulated and G3-gated like decision points (they are 'covered points'); they remain reporting-only for the decision"
+  },
+  "consequence_preregistered": {
+    "APPROVE": "the Option-3 plan proceeds with the queue-discipline row attached (FIFO + re-validate-at-head; the frontier table names the CI budget per cell) and V023's evidence row gains its build-side price",
+    "REJECT": "the NAIVE serial-queue build is descoped before spend with the quantified reason; V023's interim mitigation (keep held migration-bearing PRs off the hot path) stays the standing rule; any future Option-3 proposal must be a batching/merge-train design carrying its own sim (a REJECT rules on the simplest build only, stated)",
+    "NULL": "the conditional frontier ships and the TWO zero-tooling live probes locate superbot's real cell before any spend: V023's already-named git-history probe for (lambda, V, W, d) plus the NEW probe this head names — the repo's real V_q measured as CI wall-time on migration-touching PRs from its committed Actions history"
+  },
+  "cpython_pin": "3.11",
+  "output_conventions": "floats in results.json rounded to 6 dp; json sort_keys + indent 1; progress to stderr only; stdout deterministic; stdout + results.json byte-identical across two full process runs by external diff"
+}
