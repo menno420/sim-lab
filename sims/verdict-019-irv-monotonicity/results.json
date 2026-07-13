@@ -1,0 +1,192 @@
+{
+  "breakpoint_optimization_used": false,
+  "decision": {
+    "detail": {
+      "E-n25": {
+        "V_all>=0.01": true,
+        "V_close<0.05": true,
+        "V_close>=0.10": false
+      },
+      "S-n99": {
+        "V_all>=0.01": true,
+        "V_close<0.05": false,
+        "V_close>=0.10": true
+      }
+    },
+    "lower_bound_caveat": "single-type uplift only \u2014 mixed-type coalition raises could only find MORE violations, so every V above is a lower bound; an APPROVE is safe and a REJECT would rule on the standard definition only",
+    "rule": {
+      "APPROVE": "monotonicity risk is material in close races \u2014 iff V_close >= 0.10 in BOTH arms (Arm E at n=25 AND Arm S at n=99) AND V_all >= 0.01 in both",
+      "NULL": "anything else (bands straddled, or the two arms disagree across a threshold) \u2014 a legitimate, reportable outcome: the finding is 'the material-risk claim is voter-model-dependent', stated with the per-arm numbers, and NO ruling issues",
+      "REJECT": "edge-case curiosity even when close \u2014 iff V_close < 0.05 in both arms",
+      "size_legs": "n=13 and n=1,001 are sensitivity reporting only \u2014 they cannot flip the decision; any sign-flip across sizes must be flagged in the verdict"
+    },
+    "ruling": "NULL"
+  },
+  "legs": [
+    {
+      "V_all": {
+        "exact": "1464/130716",
+        "value": 0.0112
+      },
+      "V_close": {
+        "exact": "984/20880",
+        "note": null,
+        "value": 0.047126
+      },
+      "breakdown_all": {
+        "X=final_loser|t=X>W>Z": 732,
+        "X=final_loser|t=X>Z>W": 732,
+        "X=first_eliminated|t=X>W>Z": 0,
+        "X=first_eliminated|t=X>Z>W": 0
+      },
+      "breakdown_close": {
+        "X=final_loser|t=X>W>Z": 492,
+        "X=final_loser|t=X>Z>W": 492,
+        "X=first_eliminated|t=X>W>Z": 0,
+        "X=first_eliminated|t=X>Z>W": 0
+      },
+      "close_count": 20880,
+      "close_margin_max_counted": 1,
+      "elections": 142506,
+      "leg": "E-n25",
+      "n": 25,
+      "non_tied": 130716,
+      "tie_fraction": {
+        "exact": "11790/142506",
+        "value": 0.082733
+      },
+      "ties_pairwise": 0,
+      "ties_round1": 11790,
+      "violations_all": 1464,
+      "violations_close": 984
+    },
+    {
+      "V_all": {
+        "exact": "0/7278",
+        "value": 0.0
+      },
+      "V_close": {
+        "exact": null,
+        "note": "close set EMPTY at n=13: the smallest non-tied margin (1) already exceeds 5% of n",
+        "value": null
+      },
+      "breakdown_all": {
+        "X=final_loser|t=X>W>Z": 0,
+        "X=final_loser|t=X>Z>W": 0,
+        "X=first_eliminated|t=X>W>Z": 0,
+        "X=first_eliminated|t=X>Z>W": 0
+      },
+      "breakdown_close": {
+        "X=final_loser|t=X>W>Z": 0,
+        "X=final_loser|t=X>Z>W": 0,
+        "X=first_eliminated|t=X>W>Z": 0,
+        "X=first_eliminated|t=X>Z>W": 0
+      },
+      "close_count": 0,
+      "close_margin_max_counted": 0,
+      "elections": 8568,
+      "leg": "E-n13",
+      "n": 13,
+      "non_tied": 7278,
+      "tie_fraction": {
+        "exact": "1290/8568",
+        "value": 0.15056
+      },
+      "ties_pairwise": 0,
+      "ties_round1": 1290,
+      "violations_all": 0,
+      "violations_close": 0
+    },
+    {
+      "V_all": {
+        "exact": "20532/185680",
+        "value": 0.110577
+      },
+      "V_close": {
+        "exact": "16583/98983",
+        "note": null,
+        "value": 0.167534
+      },
+      "breakdown_all": {
+        "X=final_loser|t=X>W>Z": 20529,
+        "X=final_loser|t=X>Z>W": 2359,
+        "X=first_eliminated|t=X>W>Z": 0,
+        "X=first_eliminated|t=X>Z>W": 0
+      },
+      "breakdown_close": {
+        "X=final_loser|t=X>W>Z": 16580,
+        "X=final_loser|t=X>Z>W": 2356,
+        "X=first_eliminated|t=X>W>Z": 0,
+        "X=first_eliminated|t=X>Z>W": 0
+      },
+      "close_count": 98983,
+      "close_margin_max_counted": 4,
+      "elections": 200000,
+      "leg": "S-n99",
+      "n": 99,
+      "non_tied": 185680,
+      "tie_fraction": {
+        "exact": "14320/200000",
+        "value": 0.0716
+      },
+      "ties_pairwise": 0,
+      "ties_round1": 14320,
+      "violations_all": 20532,
+      "violations_close": 16583
+    },
+    {
+      "V_all": {
+        "exact": "2373/19533",
+        "value": 0.121487
+      },
+      "V_close": {
+        "exact": "2373/19259",
+        "note": null,
+        "value": 0.123215
+      },
+      "breakdown_all": {
+        "X=final_loser|t=X>W>Z": 2373,
+        "X=final_loser|t=X>Z>W": 499,
+        "X=first_eliminated|t=X>W>Z": 0,
+        "X=first_eliminated|t=X>Z>W": 0
+      },
+      "breakdown_close": {
+        "X=final_loser|t=X>W>Z": 2373,
+        "X=final_loser|t=X>Z>W": 499,
+        "X=first_eliminated|t=X>W>Z": 0,
+        "X=first_eliminated|t=X>Z>W": 0
+      },
+      "close_count": 19259,
+      "close_margin_max_counted": 50,
+      "elections": 20000,
+      "leg": "S-n1001",
+      "n": 1001,
+      "non_tied": 19533,
+      "tie_fraction": {
+        "exact": "467/20000",
+        "value": 0.02335
+      },
+      "ties_pairwise": 0,
+      "ties_round1": 467,
+      "violations_all": 2373,
+      "violations_close": 2373
+    }
+  ],
+  "pinned_interpreter": "cpython-3.11",
+  "self_checks": {
+    "failed": 0,
+    "passed": 19494
+  },
+  "sensitivity_flags": [
+    "E-n13: V_close undefined \u2014 at n=13 the smallest non-tied round-1 margin (1) already exceeds 5% of n, so the close set is empty by construction; sensitivity leg cannot be read on the close axis",
+    "SIGN-FLIP V_all E-n13 vs E-n25 @0.01: primary 122/10893 vs sensitivity 0 straddle the band"
+  ],
+  "sim": "verdict-019-irv-monotonicity",
+  "source": {
+    "idea_entry": "ideas/fleet/irv-monotonicity-close-races-2026-07-13.md @ efc78ae857f7972b627ce5c4f39178a80f6c33a1",
+    "proposal": "idea-engine control/outbox.md PROPOSAL 017 \u00b7 2026-07-13T00:59:58Z \u00b7 status: sim-ready",
+    "proposal_pin": "idea-engine main 80baad5 (landed via idea-engine PR #281)",
+    "rotation_slot": "inbox ORDER 004 rule 3 \u2014 COMPLETELY-UNRELATED-domain rotation, first head (social choice theory); fully hermetic by design: zero repo/network reads in the verdict session, every fixture is integer combinatorics the sim constructs itself"
+  },
+  "spot_check_seed_20260715": "not required \u2014 the breakpoint-only k-scan optimization is not used (exhaustive k-scan with early exit on first violating k; existence semantics identical)"
+}
