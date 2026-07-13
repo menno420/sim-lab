@@ -1,0 +1,113 @@
+{
+  "_source": "idea-engine control/outbox.md PROPOSAL 040 · 2026-07-13T17:19:39Z · status: sim-ready (the source of truth; idea doc ideas/fleet/schelling-mild-preference-tipping-2026-07-13.md @ idea-engine main 25b1798). Every constant below copied verbatim from the block. Committed BEFORE the runner (git-trail discipline). Fully hermetic: the runner reads ONLY this file.",
+  "cpython_minor_pinned": [3, 11],
+  "grid": {
+    "N": 40,
+    "cells": 1600,
+    "indexing": "row-major, cell (r, c) -> 40r + c",
+    "topology": "torus (both axes wrap)",
+    "neighborhood": "Moore 8-neighborhood with toroidal wraparound (Chebyshev distance 1)"
+  },
+  "population": {
+    "type_a": 720,
+    "type_b": 720,
+    "vacant": 160,
+    "composition": "45/45/10, conservation of all three counts recounted at every sweep end"
+  },
+  "satisfaction": {
+    "rule": "SATISFIED iff like-fraction among OCCUPIED neighbors >= tau, tested in exact integers as like * tau_den >= tau_num * occ",
+    "zero_occupied_neighbors": "SATISFIED (vacuous contentment - the convention that biases AGAINST amplification)"
+  },
+  "tau_grid": [[1, 8], [1, 4], [3, 10], [3, 8], [1, 2], [5, 8], [3, 4]],
+  "decision_tau": [3, 10],
+  "initialization": "the pinned 1,600-entry label list in construction order [720 x A, then 720 x B, then 160 x vacant], then ONE rng.shuffle -> the starting grid",
+  "dynamics": {
+    "sweep": "(a) collect currently occupied cell indices ASCENDING and rng.shuffle them; (b) process agents in that order, each evaluating against the LIVE grid at its turn; (c) an unsatisfied agent relocates to a uniformly random vacant cell - destination = the current vacant-cell list in ASCENDING index order, position drawn by rng.randrange(len(vacancies)) - its old cell becomes vacant immediately",
+    "rng": "stdlib random.Random(seed), ONE generator per leg, pinned draw order: init shuffle -> per-sweep order shuffle -> one randrange per relocation; per-leg draw counts sentinel-checked"
+  },
+  "termination": {
+    "fixation": "a full sweep with zero relocations, independently re-certified by a separately written satisfaction scan (zero unsatisfied required)",
+    "sweep_cap": 500,
+    "cap_censoring": "a cap-terminated run's s is recorded but CAP-CENSORED for decision purposes via the validity conjunct - never silently averaged in"
+  },
+  "runs": {
+    "M_main": 32,
+    "M_stability": 16,
+    "M_reporting": 16,
+    "loop_order": "tau ascending, run index 0..M-1, all runs of a leg drawn from that leg's single generator in pinned order"
+  },
+  "metric": "s(tau) = per-run exact-Fraction mean, over agents with >= 1 occupied neighbor, of like/occ at termination; decision number = MEDIAN of the 32 main-leg run values at tau = 3/10 = mean of the 16th/17th order statistics (exact rational)",
+  "seeds": {
+    "main": 20261297,
+    "stability": 20261298,
+    "reporting": 20261299,
+    "aux_reserved_never_drawn": 20261300,
+    "registry_note": "allocated strictly above the P039 high-water 20261296; new registry high-water 20261300"
+  },
+  "decision_rule": {
+    "order": "evaluated IN THIS ORDER, REJECT FIRST; bands exact rationals, disjoint by construction; BOTH bands carry the validity conjunct",
+    "validity_conjunct": "fewer than 1/4 of the 32 decision-cell runs are cap-censored (cap_count * 4 < 32); a band whose conjunct fails cannot fire and the outcome falls through to NULL with non-convergence the named binding axis",
+    "validity_fraction": [1, 4],
+    "reject": "median s(3/10) < 11/20 (checked FIRST)",
+    "reject_band": [11, 20],
+    "approve": "median s(3/10) >= 7/10 AND the seed-20261298 stability leg reproduces the SAME ruling under the identical rule (its own median >= 7/10 and its own validity conjunct passing)",
+    "approve_band": [7, 10],
+    "null": "anything else - binding axis named from the pre-registered four: (i) band straddle, median in [11/20, 7/10); (ii) non-convergence (validity conjunct failed at the decision cell); (iii) stability non-reproduction; (iv) vacancy-sensitivity flip (reporting-only - names the axis, cannot flip the decision)",
+    "null_probe_pre_priced": "re-run ONLY the tau = 3/10 cell at sweep cap 2,000 on the reserved aux seed 20261300 - one cell, zero new tooling"
+  },
+  "control_leg_tau0": {
+    "seed": 20261297,
+    "M": 32,
+    "tau": [0, 1],
+    "expect": "EXACTLY zero relocations (no agent is ever unsatisfied at tau = 0), and every run's initial-placement s inside the baseline band",
+    "baseline_band": [[47, 100], [53, 100]]
+  },
+  "reporting_leg": {
+    "seed": 20261299,
+    "tau": [3, 10],
+    "M": 16,
+    "cells_in_pinned_order": [
+      {"name": "vacancy-1/20", "N": 40, "type_a": 760, "type_b": 760, "vacant": 80},
+      {"name": "vacancy-1/5", "N": 40, "type_a": 640, "type_b": 640, "vacant": 320},
+      {"name": "grid-N25", "N": 25, "type_a": 281, "type_b": 281, "vacant": 63, "rounding": "floor(0.45 * N^2) = 281 each, remainder 63 to vacancies"}
+    ],
+    "status": "reporting-only - CANNOT flip the decision; the vacancy pair landing on opposite sides of a band edge names vacancy supply as the binding axis"
+  },
+  "monotonicity_audit": {
+    "expectation": "main-leg mean s(tau) non-decreasing in tau across {1/8, 1/4, 3/10, 3/8, 1/2}",
+    "on_violation": "does NOT invalidate (high-tau non-convergence can bend it) but is printed as a first-class anomaly line"
+  },
+  "hand_fixture_4x4": {
+    "note": "pinned 4x4 torus configuration with HAND-computed occupied/like counts for all 16 cells (derived by hand at fixture-commit time, before the runner exists); guards neighborhood + wraparound arithmetic. Labels: A / B / V(acant), row-major.",
+    "grid_rows": [
+      ["A", "A", "B", "V"],
+      ["B", "V", "V", "A"],
+      ["B", "B", "A", "A"],
+      ["V", "B", "A", "B"]
+    ],
+    "expected_occ_like_per_cell": [
+      {"idx": 0, "label": "A", "occ": 5, "like": 2},
+      {"idx": 1, "label": "A", "occ": 5, "like": 2},
+      {"idx": 2, "label": "B", "occ": 5, "like": 2},
+      {"idx": 3, "label": "V", "occ": 6, "like": null},
+      {"idx": 4, "label": "B", "occ": 6, "like": 2},
+      {"idx": 5, "label": "V", "occ": 7, "like": null},
+      {"idx": 6, "label": "V", "occ": 6, "like": null},
+      {"idx": 7, "label": "A", "occ": 6, "like": 3},
+      {"idx": 8, "label": "B", "occ": 6, "like": 4},
+      {"idx": 9, "label": "B", "occ": 5, "like": 3},
+      {"idx": 10, "label": "A", "occ": 6, "like": 3},
+      {"idx": 11, "label": "A", "occ": 6, "like": 3},
+      {"idx": 12, "label": "V", "occ": 7, "like": null},
+      {"idx": 13, "label": "B", "occ": 7, "like": 3},
+      {"idx": 14, "label": "A", "occ": 7, "like": 3},
+      {"idx": 15, "label": "B", "occ": 6, "like": 2}
+    ]
+  },
+  "reporting_only_columns": "satisfied-agent fraction; interface density (unlike occupied-adjacent pairs / all occupied-adjacent pairs) at termination; sweeps-to-fixation quartiles and cap-hit counts per cell; every main-leg tau cell except 3/10",
+  "boundaries": {
+    "family_of_dynamics": "results rule on THIS update rule/grid/composition only: live random-serial order, uniform-random vacant destinations, 40x40 Moore-8 torus, 45/45/10; the satisfying-destination flip is the named most-likely-to-flip follow-up; graded utilities, unequal groups, von Neumann neighborhoods, open boundaries, noise/swap dynamics all out of scope",
+    "termination": "s measured at fixation or cap; cap-censoring handled by the validity conjunct, never silently averaged in",
+    "measurement": "s is a LOCAL mixing metric - 'strong segregation' is operationalized as s >= 7/10 on this metric; global cluster indices ride reporting-only as interface density"
+  }
+}

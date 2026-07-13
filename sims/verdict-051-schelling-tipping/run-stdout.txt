@@ -1,0 +1,40 @@
+VERDICT 051 — Schelling segregation tipping at tau = 3/10 (PROPOSAL 040)
+frame: 40x40 Moore-8 torus · 720/720/160 A/B/vacant · live random-serial sweeps · uniform-random vacant relocation · fixation or cap 500
+
+GATES
+  hand-fixture-4x4: engine + independent scan verified (16 cells)
+  tau=0 control: relocations=0 (expect 0), init s range [585107/1209600, 206239/403200] inside [47/100, 53/100]
+  conservation: 0 violations across all legs (9315 sweeps recounted)
+  fixation re-certification: 0 failures (320 fixations independently re-certified)
+  draw sentinels: control 64sh/0rr · main 8684sh/1100095rr · stability 205sh/9243rr · reporting 682sh/21430rr · aux 0 (never drawn)
+
+MAIN LEG (seed 20261297, M = 32 per cell) — s(tau)
+  tau      median s        mean s     cap-hits  sweeps-to-fix (q1/med/q3)
+  1/8      0.511477      0.511187    0/32     2/2/3
+  1/4      0.571263      0.572055    0/32     5/6/7
+  3/10     0.751248      0.748497    0/32     11/12/15  <- DECISION CELL
+  3/8      0.764036      0.764693    0/32     11/12/13
+  1/2      0.867491      0.868683    0/32     14/16/18
+  5/8      0.978002      0.977307    0/32     59/69/83
+  3/4      0.995602      0.995490    0/32     109/130/163
+
+MONOTONICITY (reporting): mean s non-decreasing over tau 1/8..1/2: OK
+
+STABILITY LEG (seed 20261298, M = 16, tau = 3/10)
+  median s = 21511/28800 = 0.746910 · cap-hits 0/16 · validity conjunct PASS
+
+REPORTING LEG (seed 20261299, M = 16 each, tau = 3/10 — cannot flip the decision)
+  vacancy-1/20   median s = 50597/67200 = 0.752932 · cap-hits 0/16
+  vacancy-1/5    median s = 99061/134400 = 0.737061 · cap-hits 0/16
+  grid-N25       median s = 125/168 = 0.744048 · cap-hits 0/16
+  vacancy-sensitivity flip across a band edge: NO
+
+DECISION (pre-registered, REJECT first; both bands carry the < 1/4-cap-censored validity conjunct)
+  median s(3/10) main = 90871/120960 = 0.751248
+  cap-censored main = 0/32 -> validity conjunct PASS
+  REJECT (< 11/20 = 0.55): does not fire
+  APPROVE (>= 7/10 = 0.70 AND stability reproduction): FIRES (stability-reproduced)
+  RULING: APPROVE
+
+SELF-CHECKS: 32 passed, 0 failed
+results.json written
