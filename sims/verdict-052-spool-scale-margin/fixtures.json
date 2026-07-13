@@ -1,0 +1,162 @@
+{
+  "_source": "idea-engine control/outbox.md PROPOSAL 041 · 2026-07-13T18:01:18Z · status: sim-ready (the source of truth, @ idea-engine main 65dcf3ac3f89a8b5e7dd5f777b8ed54544d1a6e7, landed via idea-engine PR #331; idea doc ideas/fleet/spool-scale-go-no-go-margin-2026-07-13.md). Every constant below copied verbatim from the block. Committed BEFORE the runner (git-trail discipline). Fully hermetic: the runner reads ONLY this file.",
+  "cpython_minor_pinned": [3, 11],
+  "units": "integer grams throughout; all probabilities exact rationals",
+  "spool": {
+    "F_lattice": [0, 1000],
+    "note": "true filament remaining F ~ uniform integer {0..1000} (a 1 kg spool)"
+  },
+  "scale": {
+    "eps_s_lattice": [-5, 5],
+    "note": "W = F + E + eps_s; eps_s ~ uniform integer {-5..+5} - the cited ±5 g practical resolution, the one constant in this model with a source, held fixed across regimes"
+  },
+  "estimate": "Fhat = W - Ehat (may be negative; no clamping)",
+  "regimes": {
+    "order_pinned": ["R-OWN", "R-TABLE", "R-GUESS"],
+    "R-OWN": {
+      "E_lattice": [80, 306],
+      "tare": "Ehat = E + eps_t",
+      "eps_t_lattice": [-2, 2],
+      "eps_t_sensitivity_pairs": [[0, 0], [-5, 5]],
+      "note": "the Stage-2 habit - weighed it empty yourself, once; eps_t width INVENTED, pinned, disclosed; sensitivity pairs reporting-only"
+    },
+    "R-TABLE": {
+      "brand_seeds": [201, 256, 225, 224],
+      "tare": "brand ~ uniform over the four seeds; Ehat = the seed; E = seed + delta",
+      "delta_lattice": [-15, 15],
+      "delta_sensitivity_pairs": [[-8, 8], [-30, 30]],
+      "note": "the seeded brand table, unverified; delta width INVENTED, pinned, disclosed; sensitivity pairs reporting-only"
+    },
+    "R-GUESS": {
+      "Ehat_fixed": 193,
+      "E_lattice": [80, 306],
+      "note": "control - no tare knowledge; Ehat = 193 the 80-306 catalog midpoint"
+    }
+  },
+  "job": {
+    "mix_pinned": [
+      {"class": "small", "weight": [1, 2], "J_lattice": [5, 50]},
+      {"class": "medium", "weight": [3, 10], "J_lattice": [51, 200]},
+      {"class": "large", "weight": [1, 5], "J_lattice": [201, 800]}
+    ],
+    "mix_sensitivity_large_heavy": [[1, 4], [1, 4], [1, 2]],
+    "u_lattice": [0, 5],
+    "u_sensitivity_pairs": [[0, 2], [0, 10]],
+    "consumption": "U = Jhat + ceil(Jhat*u/100) with u ~ uniform integer percent; integer ceiling pinned as ceil(a/b) = -(-a//b)",
+    "note": "job mix and u INVENTED, pinned, disclosed; sensitivities reporting-only"
+  },
+  "drift_leg": {
+    "d_lattice": [0, 8],
+    "note": "reporting-only: W' = W + d, d ~ uniform integer {0..+8} - prices a skipped fresh tare after a warm hour; CANNOT flip the decision"
+  },
+  "decision_rule_tau_M": "START the print iff Fhat >= Jhat + M",
+  "margin_grid": [0, 5, 10, 15, 25, 40, 60, 100],
+  "outcome_conventions": {
+    "run_out": "RUN-OUT iff started AND U > F (U = F exactly - finishing with zero grams spare - is NOT a run-out)",
+    "feasible": "FEASIBLE iff F >= U",
+    "forgone": "FORGONE iff declined AND feasible"
+  },
+  "metrics": "per (regime, M): RUNOUT = P(run-out | started) and FORGONE = P(declined | feasible), both exact fractions.Fraction in the decision arm; reporting per cell: start rate, feasible share, unconditional run-out",
+  "bands": {
+    "runout_max": [1, 100],
+    "forgone_max": [1, 5],
+    "approve_pocket_max_g": 25,
+    "approve_habit_min_delta_g": 15,
+    "feas_definition": "Feas(R) = {M in the grid : RUNOUT(R, M) <= 1/100 AND FORGONE(R, M) <= 1/5}; M*(R) = min Feas(R) (undefined iff Feas(R) = empty)"
+  },
+  "arms": {
+    "arm_a": "DECISION arm - exact, seedless: enumerate (Jhat, u, tare-term, eps_s) with exact weights and count the F values in the implied integer intervals - closed-form exact rationals, platform-independent, no RNG. A convolution collapse (pre-summing eps_s - eps_t, or eps_s + delta, into one net-error pmf) is PERMITTED iff it reproduces the direct product enumeration EXACTLY (not within tolerance) on the pinned spot-check sub-grid. The ruling rides Arm A alone.",
+    "spot_check_subgrid": {
+      "Jhat": [20, 100, 400, 800],
+      "u": [0, 5],
+      "regimes": "all three",
+      "M": [0, 25]
+    },
+    "arm_s": {
+      "n_main_per_regime": 200000,
+      "n_stability_per_regime": 20000,
+      "n_reporting_per_cell": 20000,
+      "rng": "stdlib random.Random(seed), ONE generator per leg; all integer draws via rng.randrange (never randint), counted for the sentinels",
+      "draw_order_pinned": "regime by regime in the order R-OWN, R-TABLE, R-GUESS; per scenario: F -> tare term(s) -> eps_s -> job class -> Jhat -> u. Tare term(s): R-OWN = E then eps_t; R-TABLE = brand index then delta; R-GUESS = E. Drift sub-leg inserts d immediately after eps_s. A sensitivity lattice of width one ({0}) is still drawn (rng.randrange(0, 1)) to keep the scenario shape.",
+      "class_draw_encoding": "job class = rng.randrange(10): 0-4 small, 5-7 medium, 8-9 large (exactly the pinned 1/2 / 3/10 / 1/5 mix); large-heavy sensitivity mix = rng.randrange(4): 0 small, 1 medium, 2-3 large (exactly 1/4 / 1/4 / 1/2)",
+      "common_random_numbers": "one scenario set per regime, all eight M evaluated on it"
+    },
+    "agreement_gate": {
+      "runout_abs_tolerance": [3, 1000],
+      "forgone_abs_tolerance": [1, 100],
+      "cells": "every (regime, M) cell of the main confirmation leg",
+      "on_breach": "any breach invalidates the run - NULL axis (iii) arm disagreement, no ruling issues"
+    }
+  },
+  "seeds": {
+    "main": 20261301,
+    "stability": 20261302,
+    "reporting": 20261303,
+    "aux_reserved_never_read": 20261304,
+    "registry_note": "allocated strictly above the P040/VERDICT-051 high-water 20261300; new registry high-water 20261304; aux reserved for the named NULL probe, NEVER read by any decision number"
+  },
+  "stability_leg": "seed 20261302, 20,000 scenarios per regime - the twin evaluators must reproduce the Arm-A ruling on it within the same gate",
+  "reporting_leg_seed_20261303": {
+    "note": "the drift and sensitivity Arm-S confirmations, 20,000 scenarios per (sub-leg, affected regime) cell, all drawn sequentially from the single seed-20261303 generator; reporting-only - CANNOT flip the decision",
+    "sub_legs_in_pinned_order": [
+      {"name": "drift", "regimes": ["R-OWN", "R-TABLE", "R-GUESS"]},
+      {"name": "eps_t-{0}", "regimes": ["R-OWN"]},
+      {"name": "eps_t-{-5..5}", "regimes": ["R-OWN"]},
+      {"name": "delta-{-8..8}", "regimes": ["R-TABLE"]},
+      {"name": "delta-{-30..30}", "regimes": ["R-TABLE"]},
+      {"name": "u-{0..2}", "regimes": ["R-OWN", "R-TABLE", "R-GUESS"]},
+      {"name": "u-{0..10}", "regimes": ["R-OWN", "R-TABLE", "R-GUESS"]},
+      {"name": "jobmix-large-heavy", "regimes": ["R-OWN", "R-TABLE", "R-GUESS"]}
+    ]
+  },
+  "decision_rule_registered": {
+    "order": "evaluated IN THIS ORDER, REJECT FIRST; all band constants exact rationals; a main-leg agreement-gate breach invalidates the run before any ruling issues (NULL axis iii)",
+    "reject": "Feas(R-OWN) = empty - no swept margin gets the MEASURED-tare regime to <= 1/100 run-out without declining > 1/5 of feasible prints. Checked FIRST.",
+    "approve": "M*(R-OWN) <= 25 AND (Feas(R-TABLE) = empty OR M*(R-TABLE) >= M*(R-OWN) + 15). Both conjuncts on Arm-A exact numbers; the seed-20261302 stability leg must reproduce the ruling.",
+    "null": "anything else - a legitimate, reportable outcome with four pre-registered axes: (i) big-pocket, M*(R-OWN) in (25, 100]; (ii) table-parity, M*(R-TABLE) < M*(R-OWN) + 15 ('beats the seeded table, every time' overstated for go/no-go purposes at the pinned spreads); (iii) arm disagreement (the agreement gate fails - a model/implementation defect is the finding, no ruling issues); (iv) sensitivity straddle (a reporting-only sensitivity pair lands the primary conjuncts on opposite sides of a band edge - the named axis is the finding; reporting legs CANNOT flip the decision, they name the axis)",
+    "null_probe_named": "on the real bench: weigh ONE spool ten times with a fresh tare each time (pins eps_s), and weigh three empty spools of one brand (pins delta) - zero new tooling, the lane's own try-it loop"
+  },
+  "hand_fixture_six_scenarios": {
+    "columns": "(F, E, Ehat, eps_s, Jhat, u, M) -> (W, Fhat, U, started, run_out, feasible, forgone)",
+    "scenarios": [
+      {"n": 1, "F": 500, "E": 225, "Ehat": 225, "eps_s": 0, "Jhat": 100, "u": 0, "M": 25,
+       "W": 725, "Fhat": 500, "U": 100, "started": true, "run_out": false, "feasible": true, "forgone": false},
+      {"n": 2, "F": 100, "E": 201, "Ehat": 201, "eps_s": 5, "Jhat": 100, "u": 3, "M": 0,
+       "W": 306, "Fhat": 105, "U": 103, "started": true, "run_out": true, "feasible": false, "forgone": false,
+       "discrepancy_note": "the idea doc's trailing tag for this scenario reads 'feasible'; under the PROPOSAL 041 block's own pinned convention (FEASIBLE iff F >= U) F = 100 < U = 103 is INFEASIBLE - a started run-out is definitionally infeasible (run-out = started AND U > F). The pinned convention in the outbox block (the source of truth) wins; disclosed in REPORT.md."},
+      {"n": 3, "F": 110, "E": 256, "Ehat": 271, "eps_s": -5, "Jhat": 100, "u": 0, "M": 10,
+       "W": 361, "Fhat": 90, "U": 100, "started": false, "run_out": false, "feasible": true, "forgone": true},
+      {"n": 4, "F": 0, "E": 80, "Ehat": 95, "eps_s": 5, "Jhat": 5, "u": 0, "M": 0,
+       "W": 85, "Fhat": -10, "U": 5, "started": false, "run_out": false, "feasible": false, "forgone": false},
+      {"n": 5, "F": 800, "E": 306, "Ehat": 306, "eps_s": -5, "Jhat": 800, "u": 5, "M": 0,
+       "W": 1101, "Fhat": 795, "U": 840, "started": false, "run_out": false, "feasible": false, "forgone": false},
+      {"n": 6, "F": 850, "E": 224, "Ehat": 224, "eps_s": 5, "Jhat": 800, "u": 5, "M": 25,
+       "W": 1079, "Fhat": 855, "U": 840, "started": true, "run_out": false, "feasible": true, "forgone": false}
+    ]
+  },
+  "zero_error_identity_leg": "Arm A, exact: with eps_s = eps_t = delta = u = 0 and Ehat = E, RUNOUT(R, M) = 0 for every regime and every M >= 0, and FORGONE(R, 0) = 0 - exact zeros, not tolerances",
+  "monotonicity_gate": "exact, both arms: RUNOUT non-increasing and FORGONE non-decreasing in M within every regime - a theorem under shared enumeration/common random numbers, so any violation is an implementation defect: hard gate",
+  "r_guess_control_expectation": {
+    "expectation": "M*(R-GUESS) is expected to be much larger than M*(R-TABLE) or absent - the measured content of the docs' 'guessing is useless'",
+    "operationalized_surprise": "surprise iff Feas(R-GUESS) is non-empty AND NOT (Feas(R-TABLE) non-empty AND M*(R-GUESS) >= M*(R-TABLE) + 15); a surprise is printed as a first-class anomaly line, never silently absorbed (reporting-only)"
+  },
+  "sensitivity_straddle_check": "for each reporting-only variant (eps_t pair, delta pair, u pair, job mix, drift), recompute the three primary conjunct booleans on Arm-A exact numbers - REJECT conjunct Feas(R-OWN) = empty; pocket conjunct M*(R-OWN) <= 25; habit conjunct Feas(R-TABLE) = empty OR M*(R-TABLE) >= M*(R-OWN) + 15 (a variant touching only one regime pairs with the baseline tables of the other) - a variant flipping any primary conjunct relative to baseline is a straddle: it NAMES the axis, it never flips the decision",
+  "harvested_doc_lines_verbatim": {
+    "pin": "menno420/curious-research @ a9fd5faa6a10b4d1364d205dbeac7a8678e1bd73 (citation only - the runner reads nothing outside this file)",
+    "line_1": {
+      "file": "projects/spool-weight-scale/README.md",
+      "section": "Honest expectations",
+      "text": "**±5 g resolution on a 5 kg cell.** \"Roughly half a spool left\" is trustworthy. \"Exactly enough to finish this print\" is not — leave yourself margin."
+    },
+    "line_2": {
+      "file": "projects/spool-weight-scale/README.md",
+      "section": "Stage 2",
+      "text": "**Your own measured empty weight beats the seeded table, every time.**"
+    }
+  },
+  "boundaries": {
+    "invented_widths": "eps_t, delta, u, and the job mix carry NO bench datapoint anywhere in the fleet (the source repo's own sketch has never compiled), so the sweeps bracket scale not shape; the named live probe measures eps_s and delta directly",
+    "independence": "a shared calibration-gain bias would partially cancel in Fhat = W - Ehat under R-OWN, making the real measured-tare regime BETTER than modeled - independence is conservative against APPROVE's habit-pays conjunct",
+    "pinned_world": "1 kg spools, uniform F; 250 g / 2.3 kg spools and clustered shelves are named out of registered scope"
+  }
+}
