@@ -1,0 +1,522 @@
+{
+ "b0": {
+  "B0.1_empty_progression": true,
+  "B0.2_species_table": true,
+  "B0.3_catch_shape": true,
+  "B0.4_economy_constants": true,
+  "pass": true
+ },
+ "calibration": {
+  "chosen_c": 8,
+  "rows": [
+   {
+    "c": 1,
+    "eligible": true,
+    "fresh_dock_cpe": [
+     "4541/8000",
+     0.567625
+    ],
+    "sells": {
+     "bass": 2,
+     "legend_carp": 10,
+     "minnow": 1,
+     "pike": 3
+    }
+   },
+   {
+    "c": 2,
+    "eligible": true,
+    "fresh_dock_cpe": [
+     "35033/32000",
+     1.09478125
+    ],
+    "sells": {
+     "bass": 3,
+     "legend_carp": 20,
+     "minnow": 2,
+     "pike": 7
+    }
+   },
+   {
+    "c": 3,
+    "eligible": true,
+    "fresh_dock_cpe": [
+     "53197/32000",
+     1.66240625
+    ],
+    "sells": {
+     "bass": 5,
+     "legend_carp": 30,
+     "minnow": 3,
+     "pike": 10
+    }
+   },
+   {
+    "c": 4,
+    "eligible": true,
+    "fresh_dock_cpe": [
+     "71361/32000",
+     2.23003125
+    ],
+    "sells": {
+     "bass": 7,
+     "legend_carp": 40,
+     "minnow": 4,
+     "pike": 13
+    }
+   },
+   {
+    "c": 5,
+    "eligible": true,
+    "fresh_dock_cpe": [
+     "8823/3200",
+     2.7571875
+    ],
+    "sells": {
+     "bass": 8,
+     "legend_carp": 50,
+     "minnow": 5,
+     "pike": 17
+    }
+   },
+   {
+    "c": 6,
+    "eligible": true,
+    "fresh_dock_cpe": [
+     "53197/16000",
+     3.3248125
+    ],
+    "sells": {
+     "bass": 10,
+     "legend_carp": 60,
+     "minnow": 6,
+     "pike": 20
+    }
+   },
+   {
+    "c": 7,
+    "eligible": true,
+    "fresh_dock_cpe": [
+     "62279/16000",
+     3.8924375
+    ],
+    "sells": {
+     "bass": 12,
+     "legend_carp": 70,
+     "minnow": 7,
+     "pike": 23
+    }
+   },
+   {
+    "c": 8,
+    "eligible": true,
+    "fresh_dock_cpe": [
+     "141427/32000",
+     4.41959375
+    ],
+    "sells": {
+     "bass": 13,
+     "legend_carp": 80,
+     "minnow": 8,
+     "pike": 27
+    }
+   },
+   {
+    "c": 9,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "159591/32000",
+     4.98721875
+    ],
+    "sells": {
+     "bass": 15,
+     "legend_carp": 90,
+     "minnow": 9,
+     "pike": 30
+    }
+   },
+   {
+    "c": 10,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "35551/6400",
+     5.55484375
+    ],
+    "sells": {
+     "bass": 17,
+     "legend_carp": 100,
+     "minnow": 10,
+     "pike": 33
+    }
+   },
+   {
+    "c": 11,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "3041/500",
+     6.082
+    ],
+    "sells": {
+     "bass": 18,
+     "legend_carp": 110,
+     "minnow": 11,
+     "pike": 37
+    }
+   },
+   {
+    "c": 12,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "53197/8000",
+     6.649625
+    ],
+    "sells": {
+     "bass": 20,
+     "legend_carp": 120,
+     "minnow": 12,
+     "pike": 40
+    }
+   },
+   {
+    "c": 13,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "28869/4000",
+     7.21725
+    ],
+    "sells": {
+     "bass": 22,
+     "legend_carp": 130,
+     "minnow": 13,
+     "pike": 43
+    }
+   },
+   {
+    "c": 14,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "247821/32000",
+     7.74440625
+    ],
+    "sells": {
+     "bass": 23,
+     "legend_carp": 140,
+     "minnow": 14,
+     "pike": 47
+    }
+   },
+   {
+    "c": 15,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "53197/6400",
+     8.31203125
+    ],
+    "sells": {
+     "bass": 25,
+     "legend_carp": 150,
+     "minnow": 15,
+     "pike": 50
+    }
+   },
+   {
+    "c": 16,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "284149/32000",
+     8.87965625
+    ],
+    "sells": {
+     "bass": 27,
+     "legend_carp": 160,
+     "minnow": 16,
+     "pike": 53
+    }
+   },
+   {
+    "c": 17,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "150509/16000",
+     9.4068125
+    ],
+    "sells": {
+     "bass": 28,
+     "legend_carp": 170,
+     "minnow": 17,
+     "pike": 57
+    }
+   },
+   {
+    "c": 18,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "159591/16000",
+     9.9744375
+    ],
+    "sells": {
+     "bass": 30,
+     "legend_carp": 180,
+     "minnow": 18,
+     "pike": 60
+    }
+   },
+   {
+    "c": 19,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "168673/16000",
+     10.5420625
+    ],
+    "sells": {
+     "bass": 32,
+     "legend_carp": 190,
+     "minnow": 19,
+     "pike": 63
+    }
+   },
+   {
+    "c": 20,
+    "eligible": false,
+    "fresh_dock_cpe": [
+     "70843/6400",
+     11.06921875
+    ],
+    "sells": {
+     "bass": 33,
+     "legend_carp": 200,
+     "minnow": 20,
+     "pike": 67
+    }
+   }
+  ]
+ },
+ "decision": "APPROVE-WITH-CONSTANTS",
+ "main_leg": {
+  "bands": {
+   "A1": true,
+   "A2": true,
+   "A3": true,
+   "A4": true,
+   "A5": true,
+   "P1": true,
+   "P2": true,
+   "P3": true
+  },
+  "coins_per_energy": {
+   "deep_water/fresh": [
+    "45279/8000",
+    5.659875
+   ],
+   "deep_water/geared": [
+    "1843/256",
+    7.19921875
+   ],
+   "deep_water/master": [
+    "40797/4000",
+    10.19925
+   ],
+   "dock/fresh": [
+    "141427/32000",
+    4.41959375
+   ],
+   "dock/geared": [
+    "178367/32000",
+    5.57396875
+   ],
+   "dock/master": [
+    "123751/16000",
+    7.7344375
+   ],
+   "tide_pool/fresh": [
+    "60601/16000",
+    3.7875625
+   ],
+   "tide_pool/geared": [
+    "142869/32000",
+    4.46465625
+   ],
+   "tide_pool/master": [
+    "93643/16000",
+    5.8526875
+   ]
+  },
+  "hours_to_level25_master_deep": [
+   "4000000/85077",
+   47.01623235422029
+  ],
+  "two_burst_xp_fresh_dock": [
+   "22989/400",
+   57.4725
+  ],
+  "xp_per_hour": {
+   "deep_water/fresh": [
+    "4779/25",
+    191.16
+   ],
+   "deep_water/geared": [
+    "93627/400",
+    234.0675
+   ],
+   "deep_water/master": [
+    "255231/800",
+    319.03875
+   ],
+   "dock/fresh": [
+    "68967/400",
+    172.4175
+   ],
+   "dock/geared": [
+    "20943/100",
+    209.43
+   ],
+   "dock/master": [
+    "56223/200",
+    281.115
+   ],
+   "tide_pool/fresh": [
+    "136899/800",
+    171.12375
+   ],
+   "tide_pool/geared": [
+    "79623/400",
+    199.0575
+   ],
+   "tide_pool/master": [
+    "41031/160",
+    256.44375
+   ]
+  }
+ },
+ "mining_grounding": {
+  "ceiling_proxy_coins_per_energy": "755/56",
+  "coins_per_hour_sustained": "11520/7",
+  "parity_anchor_coins_per_energy": "32/7"
+ },
+ "packet_sha": "57f69be34785afb427d608b207e7369025166e94",
+ "progression_arm_pass": true,
+ "recommended": {
+  "level_threshold_xp_to_next": "50 * L",
+  "milestone_levels": [
+   10,
+   25
+  ],
+  "sell_curve_coins": {
+   "bass": 13,
+   "legend_carp": 80,
+   "minnow": 8,
+   "pike": 27
+  },
+  "xp_per_catch_game_xp": {
+   "bass": 2,
+   "legend_carp": 4,
+   "minnow": 1,
+   "pike": 3
+  }
+ },
+ "robustness_leg": {
+  "bands": {
+   "A1": true,
+   "A2": true,
+   "A3": true,
+   "A4": true,
+   "P1": true,
+   "P2": true,
+   "P3": true
+  },
+  "coins_per_energy": {
+   "deep_water/fresh": [
+    "2839/500",
+    5.678
+   ],
+   "deep_water/geared": [
+    "114763/16000",
+    7.1726875
+   ],
+   "deep_water/master": [
+    "163923/16000",
+    10.2451875
+   ],
+   "dock/fresh": [
+    "141367/32000",
+    4.41771875
+   ],
+   "dock/geared": [
+    "1091/200",
+    5.455
+   ],
+   "dock/master": [
+    "49087/6400",
+    7.66984375
+   ],
+   "tide_pool/fresh": [
+    "121133/32000",
+    3.78540625
+   ],
+   "tide_pool/geared": [
+    "70979/16000",
+    4.4361875
+   ],
+   "tide_pool/master": [
+    "18687/3200",
+    5.8396875
+   ]
+  },
+  "hours_to_level25_master_deep": [
+   "4000000/84789",
+   47.175930840085385
+  ],
+  "two_burst_xp_fresh_dock": [
+   "23223/400",
+   58.0575
+  ],
+  "xp_per_hour": {
+   "deep_water/fresh": [
+    "38007/200",
+    190.035
+   ],
+   "deep_water/geared": [
+    "92871/400",
+    232.1775
+   ],
+   "deep_water/master": [
+    "254367/800",
+    317.95875
+   ],
+   "dock/fresh": [
+    "69669/400",
+    174.1725
+   ],
+   "dock/geared": [
+    "166329/800",
+    207.91125
+   ],
+   "dock/master": [
+    "112527/400",
+    281.3175
+   ],
+   "tide_pool/fresh": [
+    "68463/400",
+    171.1575
+   ],
+   "tide_pool/geared": [
+    "158751/800",
+    198.43875
+   ],
+   "tide_pool/master": [
+    "205011/800",
+    256.26375
+   ]
+  }
+ },
+ "seeds": {
+  "main_leg": "packet \u00a75 protocol seeds 0-399 (packet-owned constants, not registry draws)",
+  "robustness_leg": "range(20260881, 20261281) \u2014 400 fresh seeds, new fleet high-water 20261280"
+ },
+ "self_checks": {
+  "failed": 0,
+  "passed": 59
+ },
+ "sell_arm_pass": true,
+ "verdict": "VERDICT 043"
+}

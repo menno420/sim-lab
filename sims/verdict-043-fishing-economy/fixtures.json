@@ -1,0 +1,89 @@
+{
+  "registration": {
+    "verdict": "VERDICT 043 — fishing economy tuning (per-species sell/reward curve + fishing progression curve)",
+    "registered_at_utc": "2026-07-13T10:43:10Z",
+    "order": {
+      "source": "idea-engine control/inbox.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d, ORDER 006 · 2026-07-13T09:02Z, SUPERBOT-GAMES BALANCE item 5",
+      "verbatim": "(5) FISHING-ECONOMY-TUNING — (a) pin a per-species sell/reward curve (a catch grants NO XP/currency today — games/fishing/inventory/adapter.py catch_to_grant leaves ProgressionDelta empty; key the curve on species.py size_rank/rarity_weight); (b) pin a fishing progression curve (no fishing-owned skill/level axis). Fishing is IN-REPO sim-pinned: re-run games/fishing/sim/catch_sim.py under new targets per docs/design/fishing-catch-skeleton.md §5 — never hand-edit a weight;",
+      "requesting_seat": "superbot-games"
+    },
+    "packet": {
+      "repo": "menno420/superbot-games",
+      "sha": "57f69be34785afb427d608b207e7369025166e94",
+      "read_mode": "READ-ONLY blob-filtered clone; superbot-games untouched",
+      "key_file_sha256": {
+        "games/fishing/core/species.py": "7b501821b6b8eed5f5027b1d68af64756e4fb28d603d6001bfd98c550ce4dcf9",
+        "games/fishing/core/catch.py": "58fe865f6c8e227966fb312868b2c76e2a94b7094c0acd30616f1942d3c8ab77",
+        "games/fishing/sim/catch_sim.py": "40ed65d04d6fc4a5ea2dd29a1a6a8ff72e0d2b9bc34a206760de1260e972f7ad",
+        "games/fishing/inventory/adapter.py": "375cb1b8cc4bb8e06535028e08fd6987c7ae289e9f0b525bed2dcff07d0a9432",
+        "games/mining/core/energy.py": "9d13488609ae25084d1fef09459ac205170e79d09d6705395c7478167a264850",
+        "games/mining/core/rewards.py": "3c050d6728e336d76e1d3e9a5eb5edaf25e76f68c4402c5a2f60ec6410f48dd6",
+        "games/mining/core/items.py": "107fbd855506d1a74678c0a19c57577bb4e1aacd62955d25536a40a98610649e",
+        "games/mining/core/market.py": "a43c4b9b9944111acb84d20a7d3029127090ee996926e2b78a145e48db2a43c7",
+        "docs/design/fishing-catch-skeleton.md": "51ee962ad4c97d25aa2dac410dee44a2df7bc586056d7c18ade4ddfd17fcfc70"
+      }
+    },
+    "b0_validity_gate": {
+      "rule": "ALL B0 checks must pass against the byte-copied code BEFORE any tuning arm is evaluated; any B0 failure ends the verdict there (it rules on the failed premise and stops).",
+      "checks": {
+        "B0.1_empty_progression": "adapter.catch_to_grant(Catch(species_id, size)).progression == ProgressionDelta() for every species; ProgressionDelta() defaults are global_xp=0, game_xp=0, currency=0, capability=None; and the adapter docstring carries verbatim 'Progression is left EMPTY: fishing's resolver defines no XP/currency for a catch today' (packet quote).",
+        "B0.2_species_table": "species.py rows exactly: minnow size_rank=1 rarity_weight=50.0 · bass 2/30.0 · pike 3/15.0 · legend_carp 4/5.0; MAX_SIZE_RANK==4 (packet: 'key the curve on species.py size_rank/rarity_weight').",
+        "B0.3_catch_shape": "Catch dataclass fields exactly (species_id, size) — packet: 'The frozen Catch carries only species_id + size'.",
+        "B0.4_economy_constants": "catch.CAST_COST==2; energy.DIG_COST==1, energy.REGEN_SECONDS==10, energy.MAX_ENERGY==60; rewards.BASE_ROLL_MAX==2; rewards.ORE_WEIGHTS=={stone:3,bronze:2.5,iron:2,silver:1.5,gold:1,diamond:0.5}; items values stone 1/bronze 2/iron 3/silver 4/gold 6/diamond 12 (market.sell_price reads items.value for RESOURCE)."
+      }
+    },
+    "mining_faucet_grounding": {
+      "cite": "games/mining/core/energy.py (MAX_ENERGY=60, DIG_COST=1, REGEN_SECONDS=10 → 360 energy/hour sustained) + games/mining/core/rewards.py (BASE_ROLL_MAX=2 → base roll randint(1,2); ORE_WEIGHTS at depth 0; mine_multiplier fresh=1.0, diamond-tool ceiling ×1.5 per its own comment) + games/mining/core/items.py sell values via games/mining/core/market.py sell_price — all @ 57f69be",
+      "shared_energy_pool": "fishing casts debit the SAME energy engine (catch.py: 'A cast spends this through the reused games.mining.core.energy engine, so fishing shares the one energy economy'); therefore the comparable unit is COINS PER ENERGY, not coins per action.",
+      "derived_exact": {
+        "mining_fresh_depth0_expected_value_per_ore": "64/21 (= (3*1+2.5*2+2*3+1.5*4+1*6+0.5*12)/10.5)",
+        "mining_fresh_depth0_expected_ore_per_dig": "3/2 (max(1, round(randint(1,2)*1.0)))",
+        "mining_fresh_depth0_coins_per_energy": "32/7 ≈ 4.5714 (the parity anchor; a fresh player is depth-0-locked per ORDER 006 item 4a: max_accessible_depth==0 until a torch)",
+        "mining_fresh_depth0_coins_per_hour_sustained": "11520/7 ≈ 1645.7 (360 digs/h × 32/7)",
+        "mining_ceiling_proxy_coins_per_energy": "755/56 ≈ 13.482 (diamond tool ×1.5 → E[ore/dig]=(round(1.5)+round(3.0))/2=5/2; depth-4 weights {stone .5,bronze .5,iron 4,silver 3.5,gold 3,diamond 2.5} → E[value]=151/28)",
+        "house_style_note": "mining's own table is near-constant weight×value (3,5,6,6,6,6) — 'commonness is the inverse of worth' (rewards.py comment); the candidate fishing curve adopts exactly this inverse-rarity shape.",
+        "design_cue": "catch.py CAST_COST comment verbatim: 'Kept modest — fishing is a slower, calmer faucet than digging' → the parity band is centered at-or-below 1.0× mining, never above."
+      }
+    },
+    "candidate_sell_curve": {
+      "family": "sell(species) = round_half_even(c × 50 / rarity_weight) — pure inverse-rarity (the mining house style), keyed on the B0.2 table; monotone in size_rank because rarity_weight is inversely ordered with size_rank in the pinned table",
+      "candidate_c": 8,
+      "candidate_values": { "minnow": 8, "bass": 13, "pike": 27, "legend_carp": 80 },
+      "calibration_rule": "c is the integer in [1..20] whose fresh@dock coins/energy (measured on the main-leg re-run) is closest to the parity anchor 32/7 WITHOUT exceeding 1.05×32/7; ties break low (the calmer-faucet cue). The runner evaluates this rule mechanically; if the rule's pick differs from candidate_c the RULE wins and the discrepancy is disclosed.",
+      "semantics": "sell values are per-fish COIN SELL PRICES for a future market/sell leg (the mining-parity shape: ore mints nothing at dig, coins enter at market.sell_price = items.value) — i.e. the future fish ItemDef rows' value field via the documented items.register_fish_species injection point; catch_to_grant currency stays 0 at catch time.",
+      "acceptance_bands": {
+        "A1_parity_anchor": "fresh tier @ dock (the pinned neutral identity spot) coins/energy ∈ [0.85, 1.05] × 32/7 = [3.885714..., 4.8]",
+        "A2_gear_gradient": "coins/energy strictly increasing fresh < geared < master at EVERY spot (gear must pay on the coin axis)",
+        "A3_ceiling_containment": "max over all 9 (spot, tier) cells of coins/energy ≤ 755/56 (fishing's best case never out-earns mining's own diamond-tool depth-4 ceiling — the shared energy pool stays allocation-stable)",
+        "A4_place_gradient": "per tier, coins/energy tide_pool < dock < deep_water (the stingy/rare biome pays per energy — risk/patience is rewarded, mirroring §5b's ordered gradients)",
+        "A5_integer_sanity": "all four sell values are integers ≥ 1, strictly increasing in size_rank"
+      }
+    },
+    "candidate_progression_curve": {
+      "xp_per_catch": "game_xp = size_rank (1/2/3/4) carried in ProgressionDelta.game_xp — the magnitude the adapter already relays as ItemMeta.value=size_rank; global_xp stays 0 (quest-owned per the exploration TIER_CAPS pattern); currency stays 0 at catch (see sell-curve semantics)",
+      "level_thresholds": "xp_to_next(L) = 50 × L for L ≥ 1 (arithmetic ladder); cumulative XP to reach level L = 25 × L × (L−1)",
+      "milestones": "fishing level 10 and level 25 as title-surface milestones — mirrors games/mining/core/titles.py _VETERAN_LEVEL=10 / _LEGEND_LEVEL=25 @ 57f69be",
+      "stat_neutrality": "levels grant NO fishing_power/bite_luck — the pinned gear caps (MAX_FISHING_POWER 6 / MAX_BITE_LUCK 3) and every §5 sim bound stay untouched; progression is a recognition/milestone axis, stat growth stays gear-only (no-pay-to-win preserved, zero re-tuning of pinned weights)",
+      "acceptance_bands": {
+        "P1_first_felt_level": "cumulative XP of TWO full 60-energy bursts (2 × 30 casts) fresh @ dock ≥ threshold_1 = 50 (first level-up inside two sessions — the V038 F-probe early-feltness spirit)",
+        "P2_xp_gear_gradient": "XP/hour strictly increasing fresh < geared < master at every spot",
+        "P3_longtail_sanity": "hours to level 25 sustained master @ deep_water ∈ [24, 120] (the V038 idle-scale long tail: its measured award-20 sat at ≈39 h)"
+      }
+    },
+    "decision_rule": {
+      "order": "B0 first (any fail → verdict rules on the failed premise, STOP). Then: (i) sell arm APPROVES with constants iff A1–A5 all pass on the main leg AND A1–A4 reproduce on the robustness leg; (ii) progression arm APPROVES with constants iff P1–P3 all pass on the main leg AND P1–P3 reproduce on the robustness leg; (iii) any band failure → that arm goes NULL naming the failed band and the missing design input; (iv) verdict = approve-with-constants if both arms approve, conditional if exactly one, null if neither.",
+      "no_weight_edits": "the runner drives games/fishing/sim/catch_sim.py ONLY through its public entry point run(seeds=…, spots=…, casts_per_spot=…) per skeleton §5; ZERO edits to any weight/constant in the copied modules — the curves are a fold over the sim's output distributions, exactly the 'new targets' §5 re-run the order names."
+    },
+    "run_protocol": {
+      "main_leg": "catch_sim.run() at the packet's own pinned §5 protocol — seeds range(0,400), all three spots, 40 casts/spot (48,000 casts/tier). These seed values are the packet's committed protocol constants (skeleton §5: 'seeds 0–399'), re-run verbatim per the order; they are NOT fresh registry draws.",
+      "robustness_leg": "catch_sim.run(seeds=range(20260881, 20261281)) — 400 FRESH cast-seeds drawn by this verdict, every value strictly above the fleet seed high-water 20260880 (V040); new high-water 20261280. Bands A1–A4 and P1–P3 must reproduce their main-leg pass/fail verdicts; c is NOT re-fit here.",
+      "byte_identity": "the full runner executes twice as separate processes; stdout and results.json must be byte-identical by external diff (sha256 recorded)."
+    },
+    "gaps_disclosed": {
+      "G1": "no live fishing earn-rate telemetry exists anywhere (sim-lab's standing recurring-evidence gap, docs/current-state.md) — the parity frame is model-true engine arithmetic, not measured player behaviour",
+      "G2": "the sell leg does not exist in code yet (no fish ItemDef rows, no fishing sell action) — these constants are the sim-backed numbers the seam will wire VERBATIM per the packet's own ask",
+      "G3": "what a fishing LEVEL gates is a design decision deliberately NOT made here (stat-neutral proposal); if the seat later wants levels to grant stats, that change re-opens the pinned §5 bounds and needs its own sim",
+      "G4": "cooked-fish energy refill (energy.py: 'cooked fish' tops the bar) creates a potential energy-loop coupling once fish are sellable vs cookable — flagged as the named follow-up axis, out of this verdict's registered scope"
+    }
+  }
+}
