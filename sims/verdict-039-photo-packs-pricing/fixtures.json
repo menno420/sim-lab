@@ -1,0 +1,148 @@
+{
+  "_preregistration": {
+    "written": "2026-07-13T09:59:07Z (date -u), committed BEFORE the runner existed; the sim reads every constant from this file and touches no repo state, network, or wall clock",
+    "binding_spec_verbatim": {
+      "source": "menno420/idea-engine control/inbox.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d, ORDER 006 · 2026-07-13T09:02Z · status: new, SIM-REQUEST (1)",
+      "text": "(1) PHOTO PACKS — PWYW-vs-$5, a $3 anchor, and a two-pack bundle (the packs themselves are hard-gated on owner-held originals; the pricing verdict is serveable now);"
+    },
+    "packet_request_verbatim": {
+      "source": "menno420/venture-lab control/outbox.md @ 847b636f174d439949afeffac55025dde814514b, section '2026-07-13 · night-run MORNING TALLY (coordinator → manager, ORDER 008)'",
+      "text": "SIM-REQUEST: photo packs PWYW-vs-$5 + $3 anchor + two-pack bundle · bundle $59 vs $64/$68 anchors · $19 fixed vs PWYW for narrow-TAM cookbooks · owner sandbox repo to production-verify merge-on-green.yml."
+    },
+    "packet_question_verbatim": {
+      "source": "menno420/venture-lab docs/publishing/vetting/photo-packs.md @ 847b636f174d439949afeffac55025dde814514b, §3",
+      "text": "Genuine uncertainty flagged as SIM-REQUEST (via outbox lane, not this packet): (1) PWYW vs fixed $5 conversion for cold wallpaper packs; (2) whether saturated golden-hours should anchor at $3 instead; (3) two-pack bundle price. No cited evidence either way — defaults above stand until simulated or measured."
+    },
+    "hard_gate_note_verbatim": {
+      "source": "menno420/venture-lab control/outbox.md @ 847b636, MORNING TALLY line 1",
+      "text": "HARD-GATED honest: $59 Ship-It Bundle (on ⚑B/⚑D clicks), photo packs (owner-held originals).",
+      "scope": "the ORDER 006 item itself states 'the packs themselves are hard-gated on owner-held originals; the pricing verdict is serveable now' — this verdict prices, it does not publish"
+    }
+  },
+  "pinned_constants": {
+    "default_price_usd": {
+      "value": "5",
+      "source_verbatim": "Recommendation: $5 fixed per pack, both packs, Gumroad direct (packs.json `price_usd: 5`; MARKET-PLAN channel (a) range $3-10).",
+      "source": "venture-lab docs/publishing/vetting/photo-packs.md @ 847b636, §3"
+    },
+    "owner_queue_price_default": {
+      "value": "$5 fixed per pack; floor $3",
+      "source_verbatim": "⚑ Price: $5 fixed per pack (default — §3 evidence; floor $3; PWYW is an open SIM-REQUEST, not tonight's default).",
+      "source": "venture-lab docs/publishing/OWNER-QUEUE.md @ 847b636, D7"
+    },
+    "gumroad_direct_fees": {
+      "platform": "0.10 of price + 0.50 USD per transaction",
+      "processing": "0.029 of price + 0.30 USD",
+      "net_formula": "net(p) = p - (0.50 + 0.10p) - (0.029p + 0.30) = 0.871p - 0.80",
+      "source_verbatim": "Gumroad: flat 10% platform fee + $0.50 per transaction on direct sales; payment processing (~2.9% + $0.30) brings the practical total to roughly ~12.9% + $0.80 per sale.",
+      "source": "venture-lab candidates/photo-packs/MARKET-PLAN.md @ 847b636, §(a)"
+    },
+    "gumroad_discover_fees": {
+      "flat": "0.30 of price, processing included",
+      "net_formula": "net(p) = 0.70p",
+      "source_verbatim": "Products surfaced via Gumroad's Discover marketplace are charged 30% (processing included).",
+      "source": "venture-lab candidates/photo-packs/MARKET-PLAN.md @ 847b636, §(a)"
+    },
+    "kofi_free_fees": {
+      "platform": "0.05 of price (Shop, free plan)",
+      "processing": "0.03 of price + 0.30 USD",
+      "net_formula": "net(p) = p - 0.05p - (0.03p + 0.30) = 0.92p - 0.30",
+      "source_verbatim": "Ko-fi: 0% on tips; 5% on Shop / Memberships / Commissions on the free plan (plus normal ~3% + $0.30 processor fee).",
+      "source": "venture-lab candidates/photo-packs/MARKET-PLAN.md @ 847b636, §(a)"
+    },
+    "packet_worked_nets": {
+      "values": "$5 Gumroad direct ≈ $3.56 · Gumroad Discover $3.50 · Ko-fi free ≈ $4.30",
+      "source_verbatim": "Worked nets from the cited fee schedules: $5 on Gumroad direct ≈ $3.56/sale; Gumroad Discover ≈ $3.50; Ko-fi free plan ≈ $4.30.",
+      "source": "venture-lab docs/publishing/vetting/photo-packs.md @ 847b636, §3",
+      "reconciliation_note": "exact fractions: direct net(5) = 711/200 = 3.555 (the packet's $3.56 rounds up); Discover 7/2 = 3.50 exact; Ko-fi 43/10 = 4.30 exact — the sim decides on the exact values and reports both"
+    },
+    "fee_floor_rule": {
+      "source_verbatim": "Below ~$3 the fixed fees ($0.50 + ~$0.30) eat >25% of price — do not price under $3.",
+      "source": "venture-lab docs/publishing/vetting/photo-packs.md @ 847b636, §3",
+      "reconciliation_note": "exact: fixed fees 0.80/p > 25% iff p < 3.20 (16/5); at the $3 anchor itself the fixed-fee share is 4/15 = 26.67% — already above the packet's own 25% line"
+    },
+    "demand_expectation": {
+      "source_verbatim": "Conservative expectation stays $0–30 / first 90 days cold (MARKET-PLAN header; the cited $10-total creator anecdote is the realistic anchor, not the $1000-with-audience one).",
+      "source": "venture-lab docs/publishing/vetting/photo-packs.md @ 847b636, §3"
+    },
+    "pack_lineup": {
+      "value": "2 packs with committed previews: dutch-skies (3 samples) leads, golden-hours (4 samples) most-saturated theme ('do not lead with it'); registry price_usd: 5 on every pack",
+      "source": "venture-lab docs/publishing/vetting/photo-packs.md §3 + candidates/photo-packs/packs.json, both @ 847b636"
+    },
+    "storefront_default": {
+      "value": "Gumroad (default) or Ko-fi",
+      "source_verbatim": "⚑ Storefront pick: Gumroad (default — MARKET-PLAN channel (a) default; Discover gives audience-free category browse) or Ko-fi (better per-sale net ≈ $4.30 vs $3.56, no marketplace browse) — owner's call.",
+      "source": "venture-lab docs/publishing/OWNER-QUEUE.md @ 847b636, D6",
+      "decision_channel_note": "the DECISION is taken on Gumroad direct (the D6 default); Ko-fi and Discover frontiers ship as reporting columns"
+    }
+  },
+  "assumed_not_packet_pinned": [
+    "A1 BUNDLE WEAK-DOMINANCE FRAME: offering a bundle listing does not reduce the total buyer count (no choice-overload effect); buyers partition into would-buy-both / would-buy-one / would-not-buy, and adding an option only moves buyers between options. Rationale: standard discrete-choice monotonicity; no packet datum either way — flagged, and the conservative fresh-buyer rate f = 0 is used for the decision leg.",
+    "A2 PROCESSOR RATE FIXED at the packet's own cited values (2.9% + $0.30 direct; 3% + $0.30 Ko-fi). The packet itself says 'per-sale net is exact only for a given processor rate' — a ±0.6pp processing-rate sensitivity column ships as reporting.",
+    "A3 PWYW MECHANICS: a PWYW taker either pays w ≥ floor or takes at $0; per-transaction fees apply only to paid transactions; a $0 take nets exactly $0 (no fee owed on a $0 transaction — not packet-pinned, marked ASSUMED).",
+    "A4 GRID SPANS ARE REGISTERED BANDS, NOT MEASUREMENTS: u ∈ [0,3], w̄ ∈ [0,10], ρ ∈ [1,3], t,g ∈ [0,1], b ∈ [7,10] are sweep bounds chosen to bracket every packet-plausible value (price band $3–10 is the packet's own channel (a) range); no probability mass is claimed anywhere on them."
+  ],
+  "recorded_gaps_feeding_null_or_conditional": [
+    "G1: NO measured PWYW conversion rate, taker rate, or mean voluntary payment for cold wallpaper packs — the packet says verbatim 'No cited evidence either way'.",
+    "G2: NO measured price-elasticity datum between $3 and $5 (the anchor question) — same packet sentence.",
+    "G3: NO measured bundle mix (share of two-pack buyers, upgrade propensity, fresh-buyer pull) — same packet sentence ('(3) two-pack bundle price').",
+    "G4: NO absolute demand data — the packet's own scale is '$0–30 / first 90 days cold' with the $10-total anecdote as the realistic anchor; no sales projection is made anywhere in this verdict.",
+    "G5: processor rates are cited approximations ('~2.9%', '~3%') — the packet's own exactness caveat; direction and magnitude bracketed in a reporting column.",
+    "G6: the sellable artifact does not exist (owner-held originals, PACK-SPEC safety rule) — pricing is serveable now per the order text; nothing here unblocks the hard gate."
+  ],
+  "model": {
+    "frame": "expected net revenue per committed baseline buyer (one visitor who would buy exactly one pack at the $5 default on the picked channel — the packet's own per-sale frame extended one step); exact rational arithmetic (fractions of USD) on every decision quantity",
+    "arms": {
+      "FIXED_5": "the packet default D7: $5 fixed per pack. E[net] = net(5) per baseline buyer. Zero unmeasured parameters on a given channel.",
+      "PWYW": "pay-what-you-want listing: u = paid PWYW transactions per baseline $5 buyer (taker-multiplier × paid-conversion, folded), w̄ = mean paid amount. E[net] = u · net(w̄) by linearity of net(·) over paid transactions ($0 takes net $0, A3). Both u and w̄ unmeasured (G1).",
+      "ANCHOR_3": "price the pack at $3 (the golden-hours anchor question, §3 SIM-REQUEST (2)). E[net] = ρ · net(3), ρ = n3/n5 = unit-sales ratio at $3 vs $5. ρ unmeasured (G2).",
+      "BUNDLE_2PACK": "add a two-pack bundle listing at price b alongside the $5 singles. Per baseline buyer with mix (t = share who would buy both packs anyway, g = share of remaining one-pack buyers who upgrade, f = fresh buyers per baseline buyer): ΔE[net] vs no-bundle = t·(net(b) − 2·net(5)) + (1−t)·g·(net(b) − net(5)) + f·net(b). Mix unmeasured (G3); decision leg at the conservative f = 0."
+    },
+    "sweep_grids": {
+      "pwyw_grid": "u ∈ 0.00..3.00 step 0.10 (31) × w̄ ∈ 0.00..10.00 step 0.50 (21) = 651 cells, WIN map PWYW vs FIXED_5, all three channels (decision column: Gumroad direct)",
+      "anchor_grid": "ρ ∈ 1.00..3.00 step 0.05 (41 points), WIN iff ρ·net(3) ≥ net(5), all three channels",
+      "bundle_grid": "b ∈ {8.00, 8.50, 9.00, 9.50, 9.99, 10.00} × t ∈ 0.00..1.00 step 0.05 (21) × g ∈ 0.00..1.00 step 0.05 (21) at f = 0 → WIN map ΔE[net] ≥ 0, Gumroad direct decision + Ko-fi/Discover reporting",
+      "processing_sensitivity": "REPORTING-ONLY, cannot flip the decision: direct-processing rate ∈ {2.3%, 2.9%, 3.5%} — re-renders net(5), net(3), b* per rate",
+      "scale_scenarios": "REPORTING-ONLY: 90-day units n5 ∈ {0, 2, 6} (the packet's $0 / $10-anchor / $30-cap gross band at $5) rendered per arm"
+    }
+  },
+  "decision_rule": {
+    "note": "pre-registered BEFORE the runner; evaluated strictly in order; all breakevens exact fractions on the Gumroad-direct decision channel",
+    "order": [
+      "R1 PWYW-WINS: iff the packet carries a MEASURED pair (û, ŵ) with û·net(ŵ) ≥ net(5) → replace the $5 default with PWYW. (Registered though unreachable by the packet's own text — G1 says no such measurement exists; kept so a future packet re-reads.)",
+      "R2 ANCHOR-WINS: iff the packet carries a MEASURED unit-sales ratio ρ̂ = n3/n5 with ρ̂·net(3) ≥ net(5) (exact bar: ρ̂ ≥ 3555/1813 ≈ 1.9608) → drop the anchor pack to $3. (Registered though unreachable — G2.)",
+      "R3 CONDITIONAL-DEFAULT: iff NO measured conversion/elasticity/mix datum exists in the packet (G1/G2/G3 all open) AND the bundle dominance band [b*, 10] is non-empty on the decision channel (b* := price where net(b*) = 2·net(5)) → keep the packet's own $5-fixed default (the only arm with zero unmeasured parameters) AND additionally offer the two-pack bundle priced INSIDE [b*, $10] (weak dominance under A1 at f = 0: every mix cell (t, g) is non-losing, and the saved second per-transaction fixed fee is a strict gain on every two-pack buyer); PWYW parks behind the measured (u, w̄) frontier; the $3 anchor parks behind the measured ρ bar; any bundle price BELOW b* parks behind the measured mix frontier.",
+      "R4 NULL: anything else — name the binding gap."
+    ],
+    "honest_null_note": "R3 and R4 are both honest outcomes; the frontier tables are the citable pin either way. No sales projection is made anywhere (the packet's own '$0–30 / first 90 days cold' stands)."
+  },
+  "expected_exact_values_hand_derived": {
+    "net5_direct": "711/200 = 3.555",
+    "net3_direct": "1813/1000 = 1.813",
+    "net5_kofi": "43/10 = 4.30",
+    "net5_discover": "7/2 = 3.50",
+    "anchor_ratio_bar_direct": "net(5)/net(3) = 3555/1813 ≈ 1.960838 (the $3 anchor needs +96.1% unit sales to tie)",
+    "anchor_ratio_bar_kofi": "215/123 ≈ 1.747967",
+    "anchor_ratio_bar_discover": "5/3 ≈ 1.666667",
+    "per_unit_net_cut_3_vs_5_direct": "1 − 1813/3555 = 1742/3555 ≈ 49.0% (price −40%, net-per-sale −49%)",
+    "pwyw_parity_wbar_at_u1_direct": "w̄* = 5 exactly (linearity: u = 1 and mean payment $5 ties the $5 default)",
+    "pwyw_u_bar_at_wbar3_direct": "3555/1813 ≈ 1.9608 (identical to the anchor bar — PWYW averaging the $3 floor IS $3 pricing)",
+    "pwyw_u_bar_at_wbar4_direct": "3555/2684 ≈ 1.324516",
+    "bundle_bstar_direct": "7910/871 ≈ 9.081515 (net(b*) = 2·net(5) = 7.11)",
+    "bundle_bstar_kofi": "445/46 ≈ 9.673913",
+    "bundle_bstar_discover": "10 exactly (no fixed fee on Discover → zero demand-free discount room)",
+    "bundle_net_at_9.99_direct": "790129/100000 = 7.90129 (+0.79129 vs two singles = the saved fixed fee minus the 1-cent discount's 0.871 share)",
+    "bundle_net_at_10_direct": "791/100 = 7.91 (+0.80 exactly = the saved second per-transaction fixed fee)",
+    "bundle_net_at_8_direct": "771/125 = 6.168 (−0.942 per cannibalized two-pack buyer; +2.613 per upgraded one-pack buyer; frontier g ≥ 0.942·t / (2.613·(1−t)))",
+    "fee_floor_crossing": "fixed-fee share 0.80/p = 25% at p = 16/5 = 3.20; at the $3 anchor the share is 4/15 ≈ 26.67% — the packet's own do-not-price-under line, reproduced exactly"
+  },
+  "seeds": {
+    "registered": {
+      "20260790": "robustness leg A — 2,000 uniform draws (u, w̄) over the registered PWYW bands; gate: expected-value evaluator and frontier-inequality evaluator must agree in sign on every draw",
+      "20260791": "robustness leg B — 2,000 uniform draws (b, t, g) over the registered bundle bands; same twin-evaluator sign-agreement gate"
+    },
+    "allocation_note": "strictly above the recorded fleet high-water 20260775 (VERDICT 037's registration line: 'the seed high-water mark 20260775 is therefore untouched'); a deliberate +14 gap is left below 20260790 for the two in-flight sibling slices holding RESERVED numbers VERDICT 036 and VERDICT 038, so no sibling seed collision is possible; new high-water claimed: 20260791",
+    "scope": "the robustness legs are GATES on the exact frontier logic, reporting-only — the decision arm is exact Fraction arithmetic and no seed can move the ruling"
+  },
+  "determinism_contract": "stdout and results.json byte-identical across two full process runs, proven by external diff; all JSON keys sorted; no timestamps inside results.json; stdlib-only; the sim reads exactly ONE file (this fixtures.json)"
+}
