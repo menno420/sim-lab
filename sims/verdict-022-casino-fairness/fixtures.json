@@ -1,0 +1,98 @@
+{
+  "question": "Under the pinned bankroll-walk model (B0 = 1,000 integer chips, min stake 1; game archetypes by payout multiplier k with win probability p = (1-e)/(k+1) so EV per unit staked = -e exactly: G1 even-money k=1, G2 mid-variance k=5, G3 jackpot k=19; house-edge grid e in {0.01, 0.02, 0.05, 0.10} plus an e=0 control leg (reporting-only); table rule MAXBET = m*B0, m in {0.05, 0.25, 1.0}, clipping every policy; betting policies, stakes clipped to [1, MAXBET] and the current bankroll: F-beta fixed-fraction stake max(1, floor(beta*bankroll)) beta in {0.01, 0.05, 0.10}, C constant stake 50, M capped-martingale base 10 doubling on loss / resetting on win; FUN's reference leg a sixth analytic-only policy, constant stake 10, under which a 100-bet session cannot ruin mid-path; profiles: CASUAL one session = 100 bets or bankroll < 1 chip, metrics P_ahead = P(final > B0) and P_wipe = P(final <= 0.1*B0); GRINDER play to >= 2*B0 or <= 0.5*B0 hard-capped at 4,000 bets, metric P_double, cap-hits counted separately with > 1% in any decision cell marking it indeterminate (a NULL path, never silently absorbed); COMPULSIVE reporting-only, C policy, to ruin or 20,000 bets, median bets-to-ruin; 36 envelope cells = 3 archetypes x 4 edges x 3 caps), in BOTH Arm A (analytic, seedless: exact binomial FUN tails via math.comb for every archetype x edge — ahead iff wins*(k+1) > 100; exact two-boundary gambler's-ruin closed forms for GRINDER on G1 x C, unit steps of 50, start 10 units above the lower boundary, span 30; the e=0 control must give P_double = 1/3 exactly by optional stopping) and Arm S (seeded MC: random.Random(20260721), pinned loop order — archetype, e ascending, m ascending, policy F/C/M with beta ascending, profile casual -> grinder -> compulsive, replications sequential; M = 5,000 casual / 2,000 grinder / 500 compulsive per cell-policy; Arm S must agree with Arm A within 1.0 percentage point absolute on every Arm-A-covered cell or the run is invalid; a half-M decision-stability leg, seed 20260722, must reproduce the same ruling), for which (e, m) cells do FUN (reference-leg P_ahead >= 0.25), SAFE (max P_wipe over all 5 swept policies <= 0.05), and SINK (max P_double over all 5 swept policies <= 0.10) hold simultaneously per archetype — E*(g, m) — and does the result land (evaluated in this pre-registered order) REJECT / APPROVE / NULL per the pre-registered rule?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 020 · 2026-07-13T02:04:02Z · status: sim-ready",
+    "proposal_pin": "idea-engine main da20713 (landed via idea-engine PR #286)",
+    "idea_entry": "ideas/superbot/casino-house-edge-fairness-envelope-2026-07-13.md @ idea-engine main da20713 (proposal's own blob link @ c7c999b8162aa1c81e1f7a1b4c3cb4651f73f5f9)",
+    "rotation_slot": "inbox ORDER 004 rule 3 — GAME-MECHANICS rotation slot, taken early because the consumer window (tonight's superbot minigame/casino consolidation, ORDER 004 'World's balance pins') closes tonight; fully hermetic (the PROPOSAL 017/018/019 precedent): every fixture is a pinned constant committed with the sim, zero repo/network reads in the verdict session"
+  },
+  "constants": {
+    "B0": 1000,
+    "min_stake": 1,
+    "archetypes": {"G1": 1, "G2": 5, "G3": 19},
+    "win_probability": "p = (1 - e) / (k + 1), exact Fraction; EV per unit staked = p*k - (1-p) = -e exactly (asserted per (k, e))",
+    "e_grid": [0.01, 0.02, 0.05, 0.1],
+    "e_grid_exact": ["1/100", "1/50", "1/20", "1/10"],
+    "e_control": 0.0,
+    "e_control_note": "e=0 control leg is reporting-only: swept in the pinned loop (ascending order puts it first) but NEVER a member of the envelope e-grid or any decision number; it feeds the martingale-fair and P_double = 1/3 self-checks",
+    "m_grid": [0.05, 0.25, 1.0],
+    "maxbet_chips": [50, 250, 1000],
+    "policies": {
+      "F-0.01": "fixed-fraction, raw stake = max(1, floor(0.01 * bankroll)) computed in exact integer arithmetic as max(1, bankroll * 1 // 100)",
+      "F-0.05": "fixed-fraction, raw stake = max(1, floor(0.05 * bankroll)) = max(1, bankroll * 5 // 100)",
+      "F-0.10": "fixed-fraction, raw stake = max(1, floor(0.10 * bankroll)) = max(1, bankroll * 10 // 100)",
+      "C": "constant raw stake floor(0.05 * B0) = 50",
+      "M": "capped martingale: target starts at base floor(0.01 * B0) = 10; after a loss target doubles; after a win target resets to base; raw stake = target"
+    },
+    "stake_clip": "stake = min(raw, MAXBET, bankroll) — raw is >= 1 by construction for every policy, MAXBET >= 50, and the session has already stopped if bankroll < 1, so the clipped stake is always in [1, MAXBET] and <= bankroll",
+    "reference_policy": "constant stake 10 (1% of B0), analytic-only (Arm A): a 100-bet session cannot ruin mid-path (99 losses leave bankroll 10, the 100th bet is placeable; 100 losses leave exactly 0 and the session is over anyway), so P_ahead is the exact binomial tail P(wins*(k+1) > 100)",
+    "profiles": {
+      "casual": "one session = 100 bets, stopping early only when bankroll < 1 chip (integer chips: bankroll == 0); metrics per (cell, policy): P_ahead = P(final > B0), P_wipe = P(final <= 0.1*B0 = 100)",
+      "grinder": "play until bankroll >= 2*B0 = 2000 (double) or <= 0.5*B0 = 500 (half), hard cap 4,000 bets; metric P_double = doubles / M (a cap-hit counts as neither double nor half and stays in the denominator, reported separately as cap_frac); any decision cell with cap_frac > 0.01 on ANY swept policy is marked INDETERMINATE — a NULL path, never silently absorbed",
+      "compulsive": "reporting-only, C policy only: play to ruin (bankroll < 1) or 20,000 bets; median bets-to-ruin (the harm-context number) + ruin fraction"
+    },
+    "M_casual": 5000,
+    "M_grinder": 2000,
+    "M_compulsive": 500,
+    "seed_primary": 20260721,
+    "seed_stability": 20260722,
+    "stability_leg": "half M (2,500 casual / 1,000 grinder / 250 compulsive), seed 20260722, identical pinned loop order; must reproduce the same ruling",
+    "bands": {
+      "FUN": "reference-leg P_ahead >= 0.25 (= 1/4, exact Fraction comparison; Arm A analytic, cap-independent)",
+      "SAFE": "max P_wipe over all 5 swept policies <= 0.05 (= 1/20; integer cross-multiplication: 20 * wipes <= M)",
+      "SINK": "max P_double over all 5 swept policies <= 0.10 (= 1/10; integer cross-multiplication: 10 * doubles <= M)"
+    },
+    "agreement_gate_pp": 1.0,
+    "python": "cpython-3.11 (minor version pinned in results.json and asserted at start)"
+  },
+  "process": {
+    "bet_step": "per bet, in pinned order: compute raw stake from the policy state; clip stake = min(raw, MAXBET, bankroll); draw r = rng.random() (exactly ONE draw per bet); win iff r < p; on win bankroll += stake*k (martingale target resets to base); on loss bankroll -= stake (martingale target doubles, clipped — see disclosure 2)",
+    "loop_order": "ONE random.Random(seed) stream flows through the whole arm in this pinned order: archetype G1 < G2 < G3 (k ascending), then e ascending over [0.0 (control), 0.01, 0.02, 0.05, 0.10], then m ascending over [0.05, 0.25, 1.0], then policy [F-0.01, F-0.05, F-0.10, C, M] (F/C/M with beta ascending), then profile casual -> grinder -> compulsive (compulsive exists only under policy C), replications sequential (0..M-1)",
+    "metrics_pooling": "per (archetype, e, m, policy): casual {P_ahead = aheads/M, P_wipe = wipes/M, mean final}; grinder {P_double = doubles/M, P_half = halves/M, cap_frac = caphits/M, mean bets}; compulsive {ruin_frac, median bets-to-ruin per disclosure 4}",
+    "envelope": "E*(g, m) = the set of e in the 4-edge grid where FUN(g, e) AND SAFE(g, e, m) AND SINK(g, e, m) all hold; FUN comes from Arm A (exact); SAFE and SINK from Arm S measured maxima over the 5 swept policies",
+    "decision_rule_evaluated_in_this_order": [
+      "REJECT ('odds cannot do the job') iff in >= 2 of the 3 archetypes, E*(g, m) = EMPTY for EVERY cap m, in both arms where covered — the fun/sink tension is inherent; the verdict quantifies the gap (the FUN value at the smallest SINK-passing edge, per archetype) and names the non-odds levers (rake-only PvP framing, session comp/stipend, entry-fee-with-prize)",
+      "APPROVE ('one shared house rule') iff there exists a cap m* such that the intersection over archetypes of E*(g, m*) contains >= 2 CONSECUTIVE grid edges (a band, not a knife-edge) and the stability leg reproduces it -> recommended row: shared MAXBET = m* * B0 + the shared house-edge band, per-archetype tables attached",
+      "NULL otherwise — a legitimate and constructive outcome: the per-archetype envelope table IS the deliverable (per-shape odds rows instead of one house rule), with the flip axis named via per-axis envelope shares (expected candidate: payout multiplier k), and even-money games routed to the PvP/rake lane via the stated identity: even-money PvP with pot-rake r is G1 at e = r for each symmetric player (analytic, no extra sim). Indeterminate cells (grinder cap-hits > 1%) route to NULL, never to APPROVE."
+    ],
+    "indeterminacy_soundness": "failure is always definitive, passes are what indeterminacy can spoil: FUN is analytic (exact); SAFE sessions are 100 bets and always complete (no cap); measured P_double = doubles/M is a LOWER bound on the uncapped quantity (a cap-hit session could still have doubled), so a SINK failure (P_double > 0.10) stands regardless of cap-hits. Therefore: E*-emptiness (REJECT's input) is sound under indeterminacy; envelope MEMBERSHIP used for APPROVE requires the cell determinate (cap_frac <= 0.01 on all 5 policies). If an indeterminate cell passes all three bands on measured numbers, it is reported as indeterminate-pass and cannot support APPROVE; if such cells are load-bearing for the ruling, the ruling is NULL."
+  },
+  "arm_a": {
+    "fun_tail": "P_ahead_ref(g, e) = sum over w = w_min..100 of C(100, w) * p^w * (1-p)^(100-w), exact Fraction with p = (1-e)/(k+1); ahead iff wins*(k+1) > 100, i.e. w_min = floor(100/(k+1)) + 1 (G1: 51, G2: 17, G3: 6); platform-independent exact arithmetic",
+    "ruin_form": "GRINDER on G1 x C: stake fixed at 50 (= min(50, MAXBET, bankroll) always, since 50 <= every MAXBET in the grid and bankroll stays in [500+50, 2000-50] multiples of 50 mid-session), so the bankroll walks in exact unit steps of 50: start 1000 = 10 units above the lower boundary 500, upper boundary 2000 = 30 units above; two-boundary gambler's ruin, exact Fraction: P_double = (1 - r^10) / (1 - r^30) with r = (1-p)/p for p != 1/2, and = 10/30 = 1/3 exactly at p = 1/2 (e = 0, optional stopping); boundaries are hit exactly (no overshoot); the closed form ignores the 4,000-bet cap (cap-hits in this leg are negligible and reported)",
+    "ruin_form_independent_check": "the same 31-state absorbing chain is also solved by exact-Fraction forward elimination of the tridiagonal hitting-probability system (an independently coded second derivation); both must agree exactly, and at e=0 both must equal 1/3 exactly",
+    "covered_cells": "FUN reference cells (every archetype x edge incl. e=0) — analytic-only, Arm S does not sweep the reference policy; G1 x C GRINDER P_double (every edge incl. the e=0 control) — Arm S sweeps this leg at each cap"
+  },
+  "intake_time_decisions_disclosed": [
+    "1. AGREEMENT-GATE GRANULARITY: the G1 x C grinder process is cap-independent by construction (raw stake 50 <= every MAXBET in the grid), so the three per-cap Arm-S legs at a given edge measure the IDENTICAL quantity on independent draws. The pre-registered 1.0 pp gate at the pre-registered M = 2,000 equals ~1.0 MC standard error per cap-leg at P ~ 0.27 (a per-cap reading would fail on pure noise with ~98% probability across the 15 legs — it cannot be the registered intent). The gate is therefore applied per Arm-A-covered CELL read as the per-edge quantity: pooled across the three cap-legs (M = 6,000, SE ~ 0.57 pp) for each e in {0, 0.01, 0.02, 0.05, 0.10} — 5 gate comparisons; the 15 per-cap deviations are ADDITIONALLY computed and reported, any > 1.0 pp disclosed in the report. Committed here BEFORE the runner was written.",
+    "2. MARTINGALE TARGET CLIP: after a loss the target updates as target = min(2 * target, MAXBET). This is stake-identical to unbounded doubling (stake = min(target, MAXBET, bankroll), and a win resets the target to base either way) and keeps integers bounded across long loss streaks; pinned as an implementation identity.",
+    "3. P_DOUBLE DENOMINATOR: P_double = doubles / M with cap-hit sessions remaining in the denominator ('a cap-hit counts as neither and is reported' — the carried source text); cap_frac = caphits / M reported per leg.",
+    "4. COMPULSIVE MEDIAN CONVENTION: median bets-to-ruin = the average of the two middle order statistics (M = 500 even) with censored sessions (alive at 20,000 bets) ordered as +infinity; if either middle statistic is censored the median reports '>20000'. Ruin fraction reported alongside.",
+    "5. AUX SELF-CHECK STREAM: random.Random(20260723) feeds ONLY self-check MC legs — the analytic-only reference policy simulated at M = 5,000 per (archetype, edge) for kernel-vs-closed-form corroboration — and is never read by any decision number. Self-check tolerances that are not pre-registered gates use 4 MC standard errors.",
+    "6. CASUAL STOP: 'bankroll < 1 chip' with integer chips means bankroll == 0.",
+    "7. E=0 CONTROL POSITION: the control leg rides the pinned e-ascending sweep in first position (0.0 < 0.01); reporting-only per the proposal.",
+    "8. GRINDER MEAN-FINAL FAIRNESS CHECK AT E=0: optional stopping applies to the capped grinder too (bounded stopping time), so |mean final - B0| <= 4*SD/sqrt(M) is asserted for every e=0 casual AND grinder leg (martingale-fair control)."
+  ],
+  "hand_derived_pins": [
+    {
+      "name": "pin-1: capped-martingale seven-loss wipe (policy M, G1, e = 0.05, m = 1.0, casual)",
+      "draws": [0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99],
+      "derivation": "p = (1-0.05)/2 = 0.475; every draw 0.99 >= p is a loss. Start 1000, target 10. Bet 1: stake min(10,1000,1000)=10, lose -> 990, target 20. Bet 2: 20 -> 970, target 40. Bet 3: 40 -> 930, target 80. Bet 4: 80 -> 850, target 160. Bet 5: 160 -> 690, target 320. Bet 6: 320 -> 370, target 640. Bet 7: stake min(640,1000,370)=370, lose -> 0; bankroll < 1 stops the session after 7 bets. EXPECT: final = 0, bets = 7, wipe (0 <= 100), not ahead.",
+      "expect": {"final": 0, "bets": 7, "ahead": false, "wipe": true}
+    },
+    {
+      "name": "pin-2: jackpot two-win double under the tight cap (policy F-0.10, G3, e = 0.10, m = 0.05, grinder)",
+      "draws": [0.0, 0.0],
+      "derivation": "p = (1-0.10)/20 = 0.045; every draw 0.0 < p is a win. MAXBET = 50. Start 1000. Bet 1: raw = max(1, 1000*10//100) = 100, stake = min(100, 50, 1000) = 50; win +50*19 = +950 -> 1950 (< 2000, continue). Bet 2: raw = max(1, 1950*10//100) = 195, stake = min(195, 50, 1950) = 50; win +950 -> 2900 >= 2000: DOUBLE after 2 bets. EXPECT: final = 2900, bets = 2, outcome double.",
+      "expect": {"final": 2900, "bets": 2, "outcome": "double"}
+    }
+  ],
+  "boundaries_restated": [
+    "bankroll-RELATIVE: chips normalized to B0; nothing here prices the casino sink against fishing/mining faucet mint in absolute chips/hr — that needs the live earn-rate baseline whose absence VERDICTs 001 and 008 both named, and their telemetry caveat applies verbatim: no live fishing/mining earn-rate baseline exists in source, so reward-VALUE conclusions stay provisional until the named telemetry slice (per-spawn/per-claim/per-channel mint + the fishing/mining earn-rate baseline) exists upstream",
+    "i.i.d. bets: no skill edge or card-counting; a game's strategy-spread edge is folded into the e-grid as the REALIZED edge against the table's actual player mix",
+    "FUN proxy: P_ahead >= 0.25 is a pre-registered, disputable band — the full P_ahead curves ship in the results table so a re-drawn line re-reads, never re-runs",
+    "reporting-only legs that cannot flip the decision: compulsive harm context, e=0 control, PvP-rake identity (even-money PvP with pot-rake r is G1 at e = r for each symmetric player), per-policy P_ahead curves",
+    "three archetypes, not every game: k in {1, 5, 19} brackets the payout-shape axis; a mixed-payout game lands between brackets and interpolation is on the consumer"
+  ],
+  "honest_null": "a NULL lands as a finalized verdict naming the binding axis, not a re-run request"
+}
