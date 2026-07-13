@@ -1,0 +1,80 @@
+{
+  "question": "Under the pinned Bradley-Terry model (P(i beats j) = s_i/(s_i+s_j), matches independent, strengths constant across rounds, no draws) with four committed strictly-decreasing integer strength profiles spanning the shape space -- F1 linear (8,7,6,5,4,3,2,1), F2 geometric (128,64,32,16,8,4,2,1), F3 top-heavy one-star (100,8,7,6,5,4,3,2), F4 near-flat (107,106,105,104,103,102,101,100), plus the F0 flat control (100 x8, reporting-only: every bracket must give P(each wins) = 1/8 and P(a split pair meets in the final) = 1/16 exactly, closed forms asserted) -- is the STANDARD seeding, the bracket class of (1,8,4,5 | 3,6,2,7), exactly optimal among ALL 315 distinct 8-team single-elimination bracket assignments (8!/2^7; the census enumerated from all 8! leaf orders via recursive min-sort canonicalization and self-checked to EXACTLY 315 classes x 128 preimages) for BOTH stated folk objectives -- (a) P(team 1 wins the tournament) and (b) P(the final is 1-vs-2) -- measured per profile as exact-rational gaps Delta_a and Delta_b (per objective: max over all 315 brackets minus the standard bracket's value; plus the argmax bracket and the standard's rank with ties counted), every number computed in exact fractions.Fraction by TWO structurally independent algorithms that must agree by EXACT RATIONAL EQUALITY on every (bracket, profile, objective) cell -- Arm A the winner-distribution recursion, Arm B the 2^7 = 128 complete outcome-path enumeration -- with self-checks (run invalid on any failure): the 315x128 partition audit, sum_i W_root(i) = 1 per cell, the two-team identity p_12 = s1/(s1+s2), the F0 closed forms, and bracket-relabeling invariance; ZERO RNG, seeds, or floats anywhere -- landing (evaluated in this pre-registered order) REJECT ('folk belief EXACTLY right -- skip the audit': Delta_a = 0 AND Delta_b = 0 by exact rational equality in ALL four profiles; checked FIRST as the strictest claim), APPROVE ('bracket audit warranted -- the standard seeding is measurably suboptimal at its own stated goals': Delta_a >= 1/200 (0.5 pp) in >= 1 profile OR Delta_b >= 1/100 (1.0 pp) in >= 1 profile), or NULL (the straddle, a legitimate reportable outcome)?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 028 · 2026-07-13T06:25:48Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 535c232 (landed via idea-engine PR #295)",
+    "idea_entry": "ideas/fleet/tournament-seeding-bracket-optimality-2026-07-13.md @ idea-engine main 535c232 (proposal's own blob link @ e87b6d86b75de2ec5075a3fdd1c96b97b9fd080d)",
+    "rotation_slot": "ORDER 004 rule-3 COMPLETELY-UNRELATED-domain rotation slot, round 3 -- sports statistics / tournament-format design (single-elimination bracket seeding under a Bradley-Terry win-probability model), a THIRD fleet-external domain after round 1's social choice (PROPOSAL 017 -> VERDICT 019) and round 2's congestion routing (PROPOSAL 024 -> VERDICT 026); fully hermetic AND fully exact: the entire world (tree topology, the 315-class census, four committed strength profiles, band constants) is constructed in-sim from the pinned constants below, zero repo/network reads in the verdict session, zero RNG/seeds/floats"
+  },
+  "topology": {
+    "tree": "balanced 8-leaf binary tree: quarterfinal pairs (L1,L2), (L3,L4), (L5,L6), (L7,L8); semifinal 1 between the first two pair-winners, semifinal 2 between the last two; one final",
+    "bracket_equivalence": "two leaf assignments are the SAME bracket iff related by the tree's automorphism group (swap within any QF pair, swap the two pairs within a half, swap the two halves -- order 2^7 = 128); distinct brackets = 8!/2^7 = 315 exactly",
+    "canonicalization": "recursive min-sort: a subtree is a nested pair; sort each pair by minimum contained team; census over all 8! leaf orders must find EXACTLY 315 equivalence classes of EXACTLY 128 assignments each (committed partition self-check, not an assumption)",
+    "standard_bracket_class": [1, 8, 4, 5, 3, 6, 2, 7],
+    "standard_bracket_canonical_form_note": "the idea file names the standard class by its conventional presentation (1,8,4,5 | 3,6,2,7); under the registered recursive min-sort canonicalization the SAME class's canonical representative is (1,8,4,5 | 2,7,3,6) -- the second half's QF pairs reorder because min(2,7) = 2 < min(3,6) = 3; the sim canonicalizes the pinned presentation and uses the resulting canonical tuple everywhere (identical class, zero ambiguity)",
+    "standard_bracket_noncanonical_representative_for_relabeling_check": [7, 2, 6, 3, 5, 4, 8, 1]
+  },
+  "model": {
+    "win_probability": "Bradley-Terry: P(i beats j) = s_i/(s_i + s_j); matches independent; strengths constant across rounds; no draws",
+    "arithmetic": "fractions.Fraction end to end -- every probability, gap, and quartile an exact rational; NO RNG, NO seeds, NO floats anywhere; byte-identical re-run by construction, platform-independent",
+    "seed_registry_note": "this sim draws ZERO seeds -- the PROPOSAL 027 registry high-water 20260755 is left unchanged; the next seeded head continues from there"
+  },
+  "strength_profiles": {
+    "F0_flat_control_reporting_only": [100, 100, 100, 100, 100, 100, 100, 100],
+    "F1_linear": [8, 7, 6, 5, 4, 3, 2, 1],
+    "F2_geometric": [128, 64, 32, 16, 8, 4, 2, 1],
+    "F3_top_heavy_one_star": [100, 8, 7, 6, 5, 4, 3, 2],
+    "F4_near_flat": [107, 106, 105, 104, 103, 102, 101, 100],
+    "decision_profiles": ["F1_linear", "F2_geometric", "F3_top_heavy_one_star", "F4_near_flat"],
+    "F0_closed_forms_asserted": "under F0 every bracket must yield P(each team wins) = 1/8 EXACTLY and P(teams 1 and 2 meet in the final) = 1/16 exactly when the pair is split across halves, 0 when it shares a half; never a decision input"
+  },
+  "objectives": {
+    "a": "P_best = P(team 1 wins the tournament) = W_root(team 1)",
+    "b": "P_12 = P(the final is 1-vs-2) = W_half1(1)*W_half2(2) + W_half1(2)*W_half2(1) (automatically 0 when teams 1 and 2 share a half)"
+  },
+  "measured_quantities": {
+    "Delta_a": "max over all 315 brackets of P_best minus P_best(standard) -- Delta_a = 0 iff standard is exactly optimal; plus the argmax bracket and the standard's rank among 315 (ties counted)",
+    "Delta_b": "max over all 315 brackets of P_12 minus P_12(standard) -- same reporting"
+  },
+  "arms": {
+    "arm_A": "winner-distribution recursion: for a subtree with halves L and R, W_subtree(i) = W_L(i)*sum_{j in R} W_R(j)*p_ij + W_R(i)*sum_{j in L} W_L(j)*p_ij; objectives read off W_root and the two half-distributions",
+    "arm_B": "independent 2^7 = 128 complete outcome-path enumeration (round by round; a path's probability is the product of its 7 match probabilities), both objectives read off the paths; iterative bitmask loop, a structurally different decomposition from Arm A's subtree recursion",
+    "agreement_gate": "Arm A == Arm B by EXACT RATIONAL EQUALITY on every (bracket, profile, objective) cell -- all 315 x 5 x 2 cells (F0 included); any inequality invalidates the run"
+  },
+  "self_checks_run_invalid_on_failure": [
+    "315 x 128 partition audit: the census over all 8! = 40320 leaf orders yields exactly 315 canonical classes, each with exactly 128 preimages",
+    "sum_i W_root(i) = 1 exactly on every (bracket, profile) cell, both arms",
+    "two-team identity: on the degenerate 2-team fixture, the recursion returns p_12 = s1/(s1+s2) exactly",
+    "F0 flat-control closed forms: P(each wins) = 1/8 on all 315 brackets; P_12 = 1/16 when 1 and 2 are split across halves, 0 when they share a half",
+    "bracket-relabeling invariance: the non-canonical representative (7,2,6,3,5,4,8,1) of the standard class reproduces the canonical (1,8,4,5,3,6,2,7) numbers exactly on every profile and both objectives"
+  ],
+  "decision_rule": {
+    "bands_registered_before_any_code": "in the idea file ideas/fleet/tournament-seeding-bracket-optimality-2026-07-13.md, verbatim; evaluated in this order",
+    "REJECT": "('folk belief EXACTLY right -- skip the audit') iff Delta_a = 0 AND Delta_b = 0 in ALL four profiles (exact rational equality); checked FIRST: it is the strictest claim",
+    "APPROVE": "('bracket audit warranted -- standard seeding measurably suboptimal') iff Delta_a >= 1/200 (0.5 pp) in >= 1 profile OR Delta_b >= 1/100 (1.0 pp) in >= 1 profile",
+    "NULL": "the straddle -- a legitimate reportable outcome: suboptimality exists but every gap is sub-material; the exact per-profile gap table is the citable pin and neither camp may cite 'settled'",
+    "band_constant_a": "1/200",
+    "band_constant_b": "1/100"
+  },
+  "reporting_only_legs_cannot_flip": [
+    "the full 315-bracket distribution of both objectives per profile (min / quartiles / max), including the WORST bracket (how much adversarial mis-seeding can suppress the favorite or the dream final)",
+    "whether objectives (a) and (b) pick DIFFERENT argmax brackets per profile",
+    "the F0 flat control",
+    "P(final is 1-vs-2) under the standard bracket as a plain table (spectator-facing context)"
+  ],
+  "intake_time_decisions_disclosed": [
+    "quartile convention (reporting-only): Q1/median/Q3 of the sorted 315 values by the exact linear-interpolation method (position p = (n-1)*q; value = v[floor(p)] + frac(p)*(v[floor(p)+1]-v[floor(p)]), all in Fraction) -- exact rationals, no floats",
+    "bracket identity in outputs: a bracket class is named by its canonical leaf tuple (L1..L8) as a string like '1,8,4,5|2,7,3,6' (halves separated by |; note the standard class's canonical form is '1,8,4,5|2,7,3,6', see topology.standard_bracket_canonical_form_note)",
+    "rank convention: standard's rank = 1 + #{brackets with value strictly greater than standard's}; ties counted = #{brackets with value exactly equal to standard's} (standard included)",
+    "argmax tie convention: ALL brackets attaining the exact max are listed; the lexicographically-smallest canonical tuple is the named argmax in summary lines",
+    "decimal approximations in the report are display-only (computed from the exact Fraction for readability); every decision comparison is an exact Fraction comparison",
+    "non-canonical relabeling representative pinned above: (7,2,6,3,5,4,8,1) -- derived from the standard class by swapping within all four QF pairs, swapping the pairs within each half, and swapping the two halves (all 3 automorphism layers exercised)",
+    "the two-team degenerate fixture for the identity check uses strengths (s1, s2) = (128, 64) from F2 (expected p_12 = 128/192 = 2/3) and (107, 100) from F4 (expected 107/207)",
+    "runtime python is recorded in the REPORT but NOT asserted in-sim: the sim is exact-rational and platform-independent by construction (no floats, no dict-order dependence -- all output orderings explicitly sorted)"
+  ],
+  "model_basis": {
+    "declared_assumption": "Bradley-Terry pairwise win probabilities with strengths COMMITTED per profile, constant across rounds, independent matches, no draws; the measured gaps are properties of THIS model on THESE four strength shapes -- dials spanning the shape space, not measurements of any real league",
+    "single_most_likely_to_flip_alternative": "an upset-heavy non-Bradley-Terry model (e.g. a floor on upset probability regardless of strength gap, or round-dependent strengths -- fatigue/momentum), under which the value of 'protection' changes and the argmax bracket can move; a softer flip is the OBJECTIVE itself -- an organizer maximizing expected match competitiveness or total spectator value instead of (a)/(b) is outside this verdict's registered scope",
+    "boundary": "n=8 single-elimination only; reseeding-after-each-round formats and larger fields out of scope by design, named as follow-up heads (16 teams already means 16!/2^15 ~ 6.4e8 brackets -- argmax search, not census)"
+  }
+}
