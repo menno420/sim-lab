@@ -1,0 +1,147 @@
+{
+  "question": "Under the pinned silence-expiry race model (one claim per replication; an alive lane emits M+1 visible-activity events separated by i.i.d. gaps from a two-component exponential mixture — R1 burst (w 0.9 on mean 1.5 h + 0.1 on 12 h, M=6), R2 daily (0.7 on 6 h + 0.3 on 24 h, M=4), R3 weekend (0.6 on 12 h + 0.4 on 48 h, M=3); with probability p_d = 0.10 the lane instead dies silent forever after a uniformly chosen intermediate event; contender sessions check at Poisson rate lambda_c in {1/4, 1/12, 1/48} per hour (C4/C12/C48) and take over any claim silent past theta in {6, 12, 24, 48, 72, 168} h — BOTH kit-planted constants in-grid by design; 9 decision cells = 3 regimes x 3 check rates), what are T (false-takeover probability for alive-throughout claims — the twin-work risk) and O95 (p95 death->takeover latency for dead claims — the deadlock cost) per (cell, theta) — in BOTH Arm A (seedless exact closed forms: per-gap steal q_i(theta) = e^(-theta/m_i) * lambda_c*m_i/(1+lambda_c*m_i) by memorylessness, T_A = 1 - (1 - sum_i w_i*q_i(theta))^M; O95_A = theta + ln(20)/lambda_c — Arm A covers ALL 54 decision points with zero sampling error) and Arm S (seeded event-driven MC: M_S = 4,000 claims per (cell, theta), random.Random(20260744), pinned loop order; gates: |T_S - T_A| <= 1.0 pp and |O95_S - O95_A| <= max(4 h, 5% relative) on every point; decision-stability leg seed 20260745 M_S = 1,000 must reproduce the ruling; reporting-only legs seed 20260746: p_d in {0.02, 0.30}, takeover-chain time-to-done, wasted-sessions, multi-steal counts; aux self-check stream 20260747 never read by any decision number) — and with Feas(cell) = {theta in grid : T(theta) <= 0.05 AND O95(theta) <= 120 h} and theta*(cell) = min Feas(cell), does the result land (evaluated in this pre-registered order) APPROVE ('silence horizons work — pin ONE fleet-wide': exists a single theta-dagger feasible in >= 8 of 9 cells, stability-reproduced -> recommended row = the smallest such theta-dagger, the verdict stating whether the planted WORK_CLAIM_STALE_HOURS = 72 lies within one grid step of theta-dagger and where the 24 h order-class reading falls), REJECT ('silence is the wrong signal — route the lease-renewal slice': Feas(cell) = empty in >= 5 of 9 cells; the routed build is an explicit renewed: <ISO8601> stamp re-stamped each working wake, claims-stale keyed on missed renewals — a signal an alive-but-quiet lane CAN send and a dead lane CANNOT — with the measured per-cell infeasibility table as the evidence row), or NULL (anything else — the flip axis named via per-axis feasible-cell shares and per-axis median theta*, expected candidates the R3 weekend tail and the C48 sparse-check column, the CONDITIONAL per-regime/per-tempo rule the citable finding)?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 025 · 2026-07-13T04:49:44Z · status: sim-ready",
+    "proposal_pin": "idea-engine main a123fda9e83b11a7ab7e4fdf6b7a6bfe5093d81c (landed via idea-engine PR #291)",
+    "idea_entry": "ideas/substrate-kit/claim-expiry-horizon-lane-death-2026-07-13.md @ idea-engine main a123fda (proposal's own blob link @ 400177c95c41cf3c0baeeba3b679aef80edb9070)",
+    "rotation_slot": "ORDER 004 rule-3 FLEET-BACKLOGS rotation slot, round 3 — round 1 websites backlog (P019 -> V021 approve), round 2 superbot backlog (P021 -> V023 reject), round 3 the kit-planted claims doctrine; fully hermetic per the PROPOSAL 017-024 precedent: every fixture below is a pinned constant committed with the sim, zero repo/network reads in the verdict session"
+  },
+  "premise_pins_quoted_at_drafting": {
+    "kit_head": "substrate-kit HEAD 917261b3c49b465690031a97676131dea3b1f2c8 (anonymous blobless clone at drafting, per the idea file)",
+    "constants": "src/engine/checks/check_claims.py:95 CLAIM_STALE_HOURS = 24 (order claims); :102 WORK_CLAIM_STALE_HOURS = 72 (work claims)",
+    "kit_comment_97_101": "long sessions and weekend gaps are real, so the horizon is deliberately looser than the order-claim 24h. Seeded at 72h; revisable by data like every horizon constant.",
+    "planted_prose": "idea-engine control/README.md § 'Claiming an order' ('a claim with no visible build activity ... after ~24h may be treated as abandoned') and control/claims/README.md § 'Arbitration + expiry' ('older than ~72h with no visible build activity may be treated as abandoned — prune it on sight')",
+    "realized_failure_modes": "twin execution: substrate-kit PRs #50/#51 (two lanes executed the same ORDER 005 the same day); dead-lane deadlock: product-forge archived with triggers disarmed @ 4fdfa8a, the 2026-07-11 coordinator-archive event"
+  },
+  "anchor_multisets_reporting_only": {
+    "inter_claim_creation_gaps_hours_018_to_023": [0.26, 0.31, 0.56, 0.47, 1.28],
+    "prune_event": "idea-engine control/claims/claude-proposal-017.md pruned 15.1 min after creation (added 80baad5 01:02:33Z, deleted d0dca70 01:17:40Z) while claude-proposal-018.md-023.md sit UNDELETED 1.5-5.5 h after their sessions merged, at idea-engine HEAD b11e2584 (idea-file drafting time)",
+    "note": "anchors locate tonight's fleet on the grid (sub-hour claim tempo brackets C4 from below); they enter NO computation — reporting-only by registration"
+  },
+  "model": {
+    "lane": "a lane claims at t=0 (a visible-activity event) and works through M further visible-activity events separated by i.i.d. gaps G from a two-component exponential mixture (component i chosen with probability w_i, then G ~ Exp(mean m_i)); work completes at the final event t_M; with probability p_d the lane instead dies immediately after a uniformly chosen intermediate event and is silent forever",
+    "observer": "contender sessions check the claim at Poisson rate lambda_c; at a check, if silence = (now - last visible activity) > theta, the claim is treated as abandoned and TAKEN OVER (pruned + re-claimed) — the doctrine's 'prune on sight'; first-check-wins",
+    "regimes": {
+      "R1_burst": {"w": [0.9, 0.1], "m_hours": [1.5, 12.0], "M": 6},
+      "R2_daily": {"w": [0.7, 0.3], "m_hours": [6.0, 24.0], "M": 4},
+      "R3_weekend": {"w": [0.6, 0.4], "m_hours": [12.0, 48.0], "M": 3, "note": "P(G > 72 h) ~= 0.089 — alive silences really exceed the planted work horizon"}
+    },
+    "check_rates_per_hour": {"C4": 0.25, "C12": 0.08333333333333333, "C48": 0.020833333333333332},
+    "check_rates_exact": "lambda_c = 1/4, 1/12, 1/48 (computed as 1.0/4.0, 1.0/12.0, 1.0/48.0 in IEEE double)",
+    "theta_grid_hours": [6.0, 12.0, 24.0, 48.0, 72.0, 168.0],
+    "p_d_pinned": 0.10,
+    "p_d_sensitivity_reporting_only": [0.02, 0.30],
+    "decision_cells": "9 = {R1,R2,R3} x {C4,C12,C48}; p_d is deliberately NOT a decision axis — neither decision metric depends on it (T conditions on alive claims, O95 on dead ones; p_d only weights how often each mode is paid)",
+    "metrics": {
+      "T": "false-takeover probability: P(an alive-throughout claim is stolen at least once before completion) — the twin-work risk",
+      "O95": "p95 orphan latency: 95th percentile of (takeover time - death time) for dead claims — the deadlock cost"
+    }
+  },
+  "arm_A": {
+    "name": "seedless exact closed forms (platform-independent; covers all 54 decision points with zero sampling error)",
+    "T_A": "per-gap steal q_i(theta) = e^(-theta/m_i) * (lambda_c*m_i)/(1 + lambda_c*m_i) by memorylessness (P(G>theta)=e^(-theta/m_i); given G>theta the excess is Exp(m_i) and P(>=1 Poisson check in an Exp(m_i) window) = lambda_c*m_i/(1+lambda_c*m_i)); mixture q(theta) = sum_i w_i*q_i(theta); over M independent gaps with Poisson checks on disjoint windows T_A = 1 - (1 - q(theta))^M exactly",
+    "O95_A": "a dead claim is taken at the first Poisson check after silence crosses theta; by memorylessness the wait past t_death+theta is Exp(lambda_c), so O95_A = theta + ln(20)/lambda_c exactly",
+    "arithmetic": "IEEE double via math.exp/math.log on the pinned CPython minor version (asserted at start); the decision comparisons (T_A <= 0.05, O95_A <= 120) are float comparisons whose margins at every grid point are orders of magnitude above double rounding error except where reported otherwise"
+  },
+  "arm_S": {
+    "name": "seeded event-driven MC (validates Arm A and adds the richer mechanics)",
+    "M_S": 4000,
+    "seed": 20260744,
+    "loop_order": "cells lexicographic R1->R3 then C4->C48; theta ascending; replications sequential; per claim: death coin, death position, gaps in order, contender checks by inter-arrival draws",
+    "gates_registered": {
+      "T_gate": "|T_S - T_A| <= 1.0 pp on every (cell, theta) point",
+      "O95_gate": "|O95_S - O95_A| <= max(4 h, 5% relative to O95_A) on every point",
+      "on_failure": "the proposal registers 'run invalid on failure'; see gate_calibration_disclosure below — the handling protocol is pinned HERE, before any run"
+    },
+    "stability_leg": {"seed": 20260745, "M_S": 1000, "contract": "applying the identical decision machinery to the stability leg's measured (T_S, O95_S) tables must reproduce the same APPROVE/REJECT/NULL ruling"},
+    "reporting_only_legs": {
+      "seed": 20260746,
+      "contract": "cannot flip the decision — registered as reporting-only",
+      "legs_in_stream_order": [
+        "leg R1: p_d = 0.02, M_rep = 1000 per (cell, theta): T_S, O95_S (n_dead reported — small by design), multi-steal buckets",
+        "leg R2: p_d = 0.30, M_rep = 1000 per (cell, theta): same outputs",
+        "leg R3: p_d = 0.10, M_rep = 1000 per (cell, theta): multi-steal buckets + wasted-sessions count (= alive-throughout claims suffering >= 1 false takeover; each spawns a duplicate worker session)",
+        "leg R4: takeover chains, p_d = 0.10, M_rep = 1000 per (cell, theta): the taker can itself die; chain continues until a lane completes; total time-to-done from t=0 (mean + p95), mean chain length, false-takeover count on alive segments (first steal per segment); chain depth safety cap 200 (structurally unreachable at p_d = 0.10, checked)"
+      ]
+    },
+    "aux_stream": {
+      "seed": 20260747,
+      "contract": "never read by any decision number",
+      "legs_in_stream_order": [
+        "aux A1: p_d = 0 leg (theta = 24, M_aux = 500 per cell, 9 cells) — must produce ZERO orphan events (exact: the death coin u < 0.0 is impossible)",
+        "aux A2: theta -> infinity leg (theta = math.inf, p_d = 0.10, M_aux = 500 per cell) — must produce T = 0 exactly (silence > inf is impossible); dead claims are never taken over, so no orphan latency is simulated in this leg by construction",
+        "aux A3: gate-diagnostic re-measure — every (cell, theta) point that fails a registered gate in the main leg is re-measured on this stream at M_diag = 64,000 claims (16x), in the standard lexicographic point order; reported next to the registered result; REPORTING-ONLY: the registered gate verdict stands as measured at M_S = 4,000 — the diagnostic only distinguishes sampling noise (16x re-measure lands within the same tolerance) from model disagreement (it does not)"
+      ]
+    },
+    "seed_registry_note": "seeds 20260744-47 allocated strictly above the P024 registry high-water 20260743"
+  },
+  "gate_calibration_disclosure": {
+    "written": "BEFORE any simulation ran (closed-form arithmetic only, no draws)",
+    "arithmetic": "the registered per-point tolerances sit inside the sampling error of the registered M_S = 4,000 estimator on a large fraction of points: (a) T gate — T_S is a binomial fraction over n_alive ~= 3,600 with SE up to sqrt(0.25/3600) ~= 0.83 pp against a 1.0 pp tolerance (~1.2 sigma at mid-range T; ~30 grid points have T_A in the mid range); (b) O95 gate — O95_S is an empirical p95 over n_dead ~= 400 with SE ~= sqrt(0.95*0.05/400)/(0.05*lambda_c) ~= 0.218/lambda_c = 10.5 h at C48 against tolerances of 7.5-15.6 h (0.7-1.5 sigma on all 18 C48 points), so P(all C48 points pass) ~= 3e-4 by construction",
+    "consequence_pinned_before_running": "registered-gate breaches are EXPECTED by construction at the registered M_S; they are therefore handled as follows, pinned here before any run: (1) every per-point gate result is reported as measured, with the closed-form predicted SE and z-score beside it; (2) each failing point is re-measured at 16x on the aux stream (aux A3) to distinguish sampling noise from model disagreement; (3) the ruling applies the proposal's own registered evaluation order (APPROVE -> REJECT -> NULL) to the Arm A exact values — the proposal's APPROVE clause alone conditions on 'Arm S gates passed' (plus stability), so a gate breach bars APPROVE but does not create or destroy a REJECT, whose registered condition ('Feas(cell) = empty in >= 5 of 9 cells') is evaluated on the exact arm that carries zero sampling error; (4) the conflict between the proposal's global 'run invalid on failure' phrase and its own done-when ('the verdict issues exactly ONE of APPROVE/REJECT/NULL') is disclosed verbatim in the REPORT rather than silently resolved, together with the M_S a re-registration would need for satisfiable gates"
+  },
+  "decision_rule": {
+    "bands_registered_before_any_code": "in the idea file ideas/substrate-kit/claim-expiry-horizon-lane-death-2026-07-13.md, verbatim",
+    "feasibility": "Feas(cell) = {theta in grid : T(theta) <= 0.05 AND O95(theta) <= 120 h} (twin risk at most 1-in-20 alive claims; a dead lane blocks at most 5 days at p95); theta*(cell) = min Feas(cell)",
+    "band_constants": {"T_max": 0.05, "O95_max_hours": 120.0, "approve_cells": "8 of 9", "reject_cells": "5 of 9"},
+    "evaluation_order": "APPROVE, then REJECT, then NULL — registered order",
+    "APPROVE": "exists a single theta-dagger in the grid with theta-dagger in Feas(cell) in >= 8 of 9 cells (Arm A exact values, Arm S gates passed, stability leg reproducing) -> recommended row = the smallest such theta-dagger; the verdict MUST state whether the planted WORK_CLAIM_STALE_HOURS = 72 lies within one grid step of theta-dagger, and where the order-claim 24 h reading falls",
+    "REJECT": "Feas(cell) = empty (no theta in the grid satisfies both bounds) in >= 5 of 9 cells -> route the lease-renewal slice: claim bullets carry a renewed: <ISO8601> field re-stamped each working wake, claims-stale keys on missed renewals (a signal an alive-but-quiet lane CAN send and a dead lane CANNOT), with the measured per-cell infeasibility table as the evidence row",
+    "NULL": "anything else — the flip axis named via per-axis feasible-cell shares and per-axis median theta* (expected candidates: the R3 weekend tail and the C48 sparse-check column), the CONDITIONAL per-regime/per-tempo rule the citable finding, plus the named zero-tooling live probe",
+    "consequences_pre_registered": {
+      "APPROVE": "the substrate-kit lane gets the evidence row for pinning CLAIM_STALE_HOURS / WORK_CLAIM_STALE_HOURS (check_claims.py:95/:102) at theta-dagger — routed lane-side via the manager sweep (Q-0260; idea-engine never edits kit files)",
+      "REJECT": "horizon tuning is abandoned as the fix; the routed build is the explicit lease-renewal renewed: stamp slice with the infeasibility table attached",
+      "NULL": "the per-regime conditional table ships and the cheapest LIVE probe is named: one git log --diff-filter=AD pass over control/claims/ plus heartbeat updated: stamps per adopted repo measures that repo's REAL (gap-tail, check-tempo) cell — zero new tooling"
+    }
+  },
+  "boundaries_registered": {
+    "p_d_free_decision_metrics": "T conditions on alive claims, O95 on dead ones; p_d only weights how often each mode is PAID — a reporting dial, not a decision axis",
+    "cooperative_lanes": "adversarial silence (a lane gaming the horizon) out of scope — claims are cooperative machinery among honest lanes",
+    "single_claim_independence": "no contention among contenders for the same steal; first-check-wins is the doctrine's own rule and the steal TIMING is what matters, not the winner; the storage-layout half is already-measured art (superbot tools/sim/claim_layout_sim.py)",
+    "order_claim_reading_not_sweep": "the sim models the work-claim class; the 24 h order constant is READ against the burst-regime columns (order execution gaps are contractually short: 'claim FIRST, build second'), never claimed as a separate sweep",
+    "model_basis": {
+      "behavioral_assumption": "alive-lane silences follow a two-component exponential-mixture gap model and contender checks a Poisson process — standard neutral choices; the memoryless components are what make Arm A exact; the measured feasibility of any theta is a property of THESE tails at THESE check tempos (which is exactly why gap regime and check rate are the decision axes, bracketed wide)",
+      "most_likely_to_flip": "empirically measured gap distributions — real lane activity bunches at wake boundaries and weekends harder than any exponential mixture; that flip is not a rival model to argue about — it is the named NULL-case live probe (one git-log pass per repo), which converts this question from modeling to measurement at zero tooling cost"
+    }
+  },
+  "intake_time_decisions_disclosed": [
+    "1. death-position convention: 'a uniformly chosen intermediate event' = uniform over event indices 0..M-1 (every event after which the lane still has work remaining — index 0 is the claim event itself, the claimed-then-died archived-lane class; index M is completion, after which death is moot). k = int(u*M). PROVABLY decision-free: T conditions on alive claims (no death position) and O95's latency = theta + Exp(lambda_c) is independent of t_death by Poisson memorylessness — the convention moves only reporting-leg numbers (chain time-to-done)",
+    "2. draw layout, pinned for exact auditability: every claim consumes exactly 2 + 2M uniforms in fixed order (death coin; death position — ALWAYS consumed, used only if dead; then per gap: component uniform u1 (u1 < w_1 -> component 1) and magnitude uniform u2 with G = -m*ln(1-u2)), followed by a variable number of check inter-arrival uniforms (each -ln(1-u)/lambda_c): alive claims draw checks to the completion horizon t_M REGARDLESS of earlier steals (uniform stream layout; steal = >= 1 qualifying check); dead claims draw checks until the first check strictly past t_death + theta (that check IS the takeover). Per-leg draw counts are audited by a fresh-Random(seed) stream-rejoin sentinel",
+    "3. empirical p95 convention: sorted ascending, value at index ceil(0.95*n) - 1 (0-based; the smallest order statistic with empirical CDF >= 0.95)",
+    "4. dead-claim takeover = the first check strictly after t_death + theta, matching the closed form exactly by Poisson memorylessness; a pre-death false steal of an eventually-dying lane belongs to NEITHER registered metric (T is alive-throughout-conditional; O95 is death->takeover) and is not tracked in the decision stream",
+    "5. alive-claim exposure window: checks c with 0 < c < t_M (strictly before completion); silence at a check = c - (latest event time <= c); steal iff silence > theta strictly (all boundary cases measure-zero)",
+    "6. reporting-leg sizes and definitions (cannot flip, registered above): M_rep = 1,000 per point per sub-leg; wasted-sessions = count of alive-throughout claims with >= 1 false takeover; multi-steal buckets = qualifying-check counts {0, 1, 2, >= 3} per alive claim; chain rules as in arm_S.reporting_only_legs",
+    "7. aux-leg sizes: M_aux = 500 per cell for A1/A2; A1 runs at theta = 24 (mid-grid, arbitrary — the assertion is structural); M_diag = 64,000 for A3 re-measures",
+    "8. predicted-SE columns ship per point (closed-form: SE_T = sqrt(T_A(1-T_A)/n_alive); SE_O95 = sqrt(0.95*0.05/n_dead)/(0.05*lambda_c)) with z-scores, so every gate result is readable against its own sampling error",
+    "9. DISCLOSURE: a scratchpad feasibility probe (this runner, run in a staging directory) ran BEFORE this file was committed, to time the run and to surface the gate-calibration arithmetic above; every decision constant (regimes, grids, p_d, M_S, seeds, bands, cell counts) was already pinned by the idea file and every convention in this list was written down BEFORE the probe ran, so no free parameter remained tunable by that peek"
+  ],
+  "hand_derived_pins": [
+    {
+      "name": "pin_1_T_A_R1_C4_theta12",
+      "derivation": "q = 0.9*e^(-12/1.5)*((0.25*1.5)/(1+0.25*1.5)) + 0.1*e^(-12/12)*((0.25*12)/(1+0.25*12)) = 0.9*e^-8*(0.375/1.375) + 0.1*e^-1*(3/4); T = 1-(1-q)^6; derived independently of the runner's code path",
+      "expected": {"q": 0.027673298914706976, "T_A": 0.15496777191148836},
+      "tolerance": 1e-12
+    },
+    {
+      "name": "pin_2_O95_A_C12_theta24",
+      "derivation": "O95_A = 24 + 12*ln(20) = 24 + 12*2.995732273553991 = 59.94878728264789",
+      "expected": {"O95_A": 59.94878728264789},
+      "tolerance": 1e-12
+    },
+    {
+      "name": "pin_3_C48_structural_infeasibility",
+      "derivation": "at lambda_c = 1/48, O95_A = theta + 48*ln(20) = theta + 143.79514913059157 > 120 for EVERY theta >= 0 — the entire C48 column fails the O95 band structurally, before T is even read (the proposal's own expected NULL/REJECT candidate axis)",
+      "expected": {"ln20_times_48": 143.79514913059157, "column_infeasible": true},
+      "tolerance": 1e-12
+    }
+  ],
+  "outputs_registered": [
+    "the full {T, O95} x (cell, theta) table, BOTH arms (54 points each)",
+    "Feas(cell) sets, theta*(cell), per-axis feasible-cell shares and per-axis median theta*",
+    "single-theta coverage counts (cells covered per theta) and theta-dagger if any",
+    "per-point gate results with predicted SEs and z-scores; aux A3 diagnostics for failing points",
+    "stability-leg table + its reproduced ruling; reporting legs (p_d sensitivity, chains, wasted-sessions, multi-steal)",
+    "the APPROVE/REJECT/NULL ruling per the registered evaluation order, with the planted-constant readings (72 h work-claim, 24 h order-class)",
+    "self-check count; stdout + results.json byte-identical across two process runs (external diff); CPython minor pinned and asserted"
+  ]
+}
