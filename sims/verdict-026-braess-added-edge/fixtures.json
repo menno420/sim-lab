@@ -1,0 +1,110 @@
+{
+  "question": "Under the pinned Braess diamond (nodes s,a,b,t; base edges e1=s->a, e2=a->t, e3=s->b, e4=b->t; optional bridge e5=a->b enabling route s->a->b->t; unit demand D=1 routed to the UNIQUE Wardrop user-equilibrium under affine non-decreasing latencies l_e(x)=a_e*x+b_e with a_e>=0, equilibrium and total cost C=sum_e x_e*(a_e*x_e+b_e) computed exactly), how OFTEN and by HOW MUCH does adding the bridge edge RAISE the selfish-equilibrium total travel cost across the pre-registered affine-latency census — measured as f_A, the paradox frequency (cost_with > cost_without) over the exhaustive integer census (a_e,b_e) in {0,1,2}^2 on the four base edges and (a5,b5) in {0,1}^2 on the bridge, 9^4*4 = 26,244 raw fixtures with 0-cost-without fixtures excluded and the effective N reported (exact fractions.Fraction, no PRNG), together with median-r and max-r among the paradox fixtures (r = cost_with/cost_without), AND f_S, the pooled paradox frequency over the seeded continuous-coefficient robustness arm (a_e,b_e ~ U[0,2], random.Random seeds 20260740/20260741/20260742/20260743, documented float tolerance on the comparison) — and does that clear the APPROVE band? Bands, registered BEFORE any code: APPROVE ('an added-edge Braess audit is warranted') iff f_A >= 0.15 OR median-r-among-paradox >= 1.15; REJECT ('added edges safe-by-default in this class') iff f_A <= 0.03 AND max-r <= 1.05; NULL (the straddle) otherwise — and NULL-by-arm-disagreement if the arm-agreement gate (|f_S - f_A| <= 1.0 pp AND both arms yield the SAME APPROVE/REJECT/NULL call) is not met.",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 024 · 2026-07-13T04:21:12Z · status: sim-ready",
+    "proposal_pin": "idea-engine main b11e258 (landed via idea-engine PR #290)",
+    "idea_entry": "ideas/fleet/braess-paradox-added-edge-2026-07-13.md @ idea-engine main b11e258 (proposal's own blob link @ f1733830a5bd9070e84374e4a6c3accbbf7652a1)",
+    "rotation_slot": "ORDER 004 rule-3 COMPLETELY-UNRELATED-domain rotation slot, round 2 — transportation / congestion routing games (Wardrop selfish-user equilibrium), a fresh fleet-external domain DIFFERENT from round 1's social choice (PROPOSAL 017 -> VERDICT 019); fully hermetic per the PROPOSAL 017-023 precedent: both arms construct their entire world in-sim, zero repo/network reads in the verdict session, every fixture below is a pinned constant committed with the sim"
+  },
+  "topology": {
+    "nodes": ["s", "a", "b", "t"],
+    "base_edges": {"e1": "s->a", "e2": "a->t", "e3": "s->b", "e4": "b->t"},
+    "bridge_edge": {"e5": "a->b"},
+    "routes_without_bridge": {"R1": ["e1", "e2"], "R2": ["e3", "e4"]},
+    "routes_with_bridge": {"R1": ["e1", "e2"], "R2": ["e3", "e4"], "R3": ["e1", "e5", "e4"]},
+    "demand": 1,
+    "latency": "l_e(x) = a_e*x + b_e, a_e >= 0 (non-decreasing affine); route flows (f1, f2, f3) >= 0 with f1+f2+f3 = 1; edge flows x1 = f1+f3, x2 = f1, x3 = f2, x4 = f2+f3, x5 = f3",
+    "equilibrium": "Wardrop user equilibrium = minimizer of the convex Beckmann potential Phi = sum_e (a_e*x_e^2/2 + b_e*x_e) over feasible unit s->t flows; every used route's latency equals the minimum route latency (verified exactly per fixture); for monotone affine latencies ALL equilibria share every edge latency and the total cost (essential uniqueness), so any verified equilibrium yields THE equilibrium cost",
+    "total_cost": "C = sum_e x_e*(a_e*x_e + b_e) = the common equilibrium route latency times demand"
+  },
+  "arm_A": {
+    "name": "exhaustive integer census (exact, no PRNG)",
+    "coefficient_grid_base_edges": "(a_e, b_e) in {0,1,2} x {0,1,2} independently for e1..e4",
+    "coefficient_grid_bridge": "(a5, b5) in {0,1} x {0,1}",
+    "raw_fixture_count": 26244,
+    "census_order": "itertools.product over (e1, e2, e3, e4, e5) coefficient pairs, each pair in lexicographic (a, b) order — pinned enumeration order",
+    "degenerate_skip": "fixtures with cost_without == 0 are excluded from numerator and denominator; the skip count and effective N are reported",
+    "arithmetic": "fractions.Fraction end to end — f_A, median-r, max-r are platform-independent exact rationals",
+    "statistics": "f_A = (# fixtures with cost_with > cost_without) / N; among paradox fixtures r = cost_with / cost_without; median-r (even count: arithmetic mean of the two middle values, exact) and max-r"
+  },
+  "arm_S": {
+    "name": "seeded continuous-coefficient robustness (floats, pinned seeds)",
+    "distribution": "a_e = 2*rng.random(), b_e = 2*rng.random() for all five edges — U[0,2] each, 10 uniforms per draw in edge order e1(a,b), e2(a,b), e3(a,b), e4(a,b), e5(a,b)",
+    "seeds": [20260740, 20260741, 20260742, 20260743],
+    "n_draws_per_seed": 25000,
+    "pooled_draws": 100000,
+    "float_tolerance": "a draw counts as a paradox iff cost_with > cost_without*(1 + 1e-9) + 1e-12 (relative + absolute guard, so knife-edge float noise cannot inflate f_S); Wardrop-condition verification tolerance 1e-9; degenerate skip cost_without <= 1e-12 (measure zero under continuous draws; counted and reported)",
+    "statistic": "f_S = pooled paradox frequency across the four seeds (per-seed counts also reported)"
+  },
+  "decision_rule": {
+    "bands_registered_before_any_code": "in the idea file ideas/fleet/braess-paradox-added-edge-2026-07-13.md, verbatim",
+    "APPROVE": "f_A >= 0.15 OR median-r-among-paradox >= 1.15  ('an added-edge Braess audit is warranted')",
+    "REJECT": "f_A <= 0.03 AND max-r <= 1.05  ('added edges safe-by-default in this class')",
+    "NULL": "anything not fully meeting APPROVE or REJECT (the straddle), OR NULL-by-arm-disagreement",
+    "band_exclusivity": "APPROVE and REJECT are mutually exclusive: REJECT's f_A <= 0.03 < 0.15 blocks APPROVE's first leg and REJECT's max-r <= 1.05 forces median-r <= 1.05 < 1.15, blocking the second — so no evaluation-order ambiguity exists",
+    "arm_agreement_gate": "non-NULL ruling requires |f_S - f_A| <= 1.0 pp AND both arms yield the SAME APPROVE/REJECT/NULL call; otherwise NULL-by-arm-disagreement (a legitimate finalized outcome, not a retry)",
+    "band_comparisons": "exact in Arm A (Fraction vs Fraction: f_A vs 3/100 and 15/100, r vs 23/20 and 21/20); Arm S comparisons in float against the same constants",
+    "consequences_pre_registered": {
+      "APPROVE": "when adding a shortcut/extra link to any selfishly-routed system, run a Braess check before shipping it, citing this class's measured rate — added capacity is NOT monotonically good",
+      "REJECT": "treat added edges as safe-by-default in this class and skip the design-time Braess audit",
+      "NULL": "the honest outcome — the risk is real but not common/large enough for a blanket rule; audit only high-stakes networks case-by-case, and neither 'real design hazard' nor 'textbook curiosity' may be cited as settled"
+    }
+  },
+  "model_basis": {
+    "behavioral_assumption": "selfish Wardrop user equilibrium (each user minimizes own latency) over affine latencies with coefficients from a uniform grid/range ({0,1,2} integers in Arm A, U[0,2] in Arm S); the measured frequency is a property of THIS routing behavior on THIS coefficient distribution",
+    "most_likely_to_flip": "system-optimal routing (minimize TOTAL latency): under it Braess's paradox cannot occur at all (adding an edge weakly lowers the system optimum), so f -> 0; a softer flip is any non-uniform coefficient prior concentrated away from the paradox-prone corners"
+  },
+  "analytic_gates_run_invalid_on_failure": {
+    "g1_wardrop_vi": "at every computed equilibrium (both networks, every Arm A fixture exactly; every Arm S draw within tolerance): flows feasible and every route with positive flow has latency equal to the minimum route latency",
+    "g2_affine_braess_bound": "every Arm A paradox ratio satisfies r <= 4/3 EXACTLY — the known worst-case Braess/affine bound; any violation is a solver bug by theorem",
+    "g3_reversal_symmetry": "the reversal involution sigma(e1,e2,e3,e4,e5) = (e4,e3,e2,e1,e5) (reverse all edges, swap s and t, relabel a'=b) preserves cost_without and cost_with on every census fixture — asserted pairwise over the full census",
+    "g4_unused_bridge_invariance": "cost_with != cost_without implies x5 > 0 at the with-bridge equilibrium; and if the without-bridge equilibrium already satisfies the with-bridge Wardrop conditions (R3 latency >= common latency), cost_with == cost_without — both exact",
+    "g5_reproducibility": "CPython minor pinned to 3.11 and asserted; stdout + results.json byte-identical across two complete process runs by external diff",
+    "g6_draw_count_sentinel": "Arm S consumes exactly 10 uniforms per draw; after each seed's leg, a fresh random.Random(seed) advanced 10*n_draws times must produce the same next random() as the leg's stream"
+  },
+  "twin_evaluator": {
+    "arm_A": "an independently written support-enumeration solver (enumerate nonempty route-support patterns; solve the latency-equalization linear system in exact Fractions; screen by feasibility and the Wardrop conditions; degenerate/underdetermined systems are skipped because every extreme equilibrium then lies on a smaller support, and singleton supports are always solvable) runs on the FULL census, both networks; asserts (i) it finds at least one equilibrium per fixture-network and (ii) EVERY equilibrium it finds has cost exactly equal to the primary solver's (essential uniqueness makes this the correctness contract)",
+    "arm_S": "the same twin in float arithmetic on every draw with index % 199 == 0 within each seed, agreement within 1e-6 on both costs",
+    "primary_solver": "Beckmann candidate enumeration: the 3 simplex vertices, up to 3 clamped edge-minimizers (each edge's directional derivative is affine; a root is a candidate only when the quadratic coefficient is positive), and the interior stationary point when the exact 2x2 gradient system is nonsingular and lands inside the simplex; the Phi-argmin is then VERIFIED against the Wardrop conditions (gate g1) — the verification, not the construction, carries the proof"
+  },
+  "hand_derived_pins": [
+    {
+      "name": "pin_A_canonical_braess",
+      "fixture": {"e1": [1, 0], "e2": [0, 1], "e3": [0, 1], "e4": [1, 0], "e5": [0, 0]},
+      "derivation_without": "L1(f1) = l1(f1) + l2(f1) = f1 + 1; L2 = l3 + l4 = 1 + (1 - f1); equalize: f1 + 1 = 2 - f1 -> f1 = 1/2; common latency 3/2; cost_without = 3/2",
+      "derivation_with": "all flow on R3: x1 = x5 = x4 = 1; L3 = 1 + 0 + 1 = 2; check L1 = l1(1) + l2(0) = 1 + 1 = 2 >= 2 and L2 = 1 + 1 = 2 >= 2 — Wardrop holds; cost_with = 2",
+      "expected": {"cost_without": "3/2", "cost_with": "2", "paradox": true, "r": "4/3"},
+      "note": "this in-census fixture realizes the affine worst case r = 4/3 exactly, so REJECT's max-r <= 1.05 leg is decidable from the census alone"
+    },
+    {
+      "name": "pin_B_constant_no_paradox",
+      "fixture": {"e1": [0, 1], "e2": [0, 1], "e3": [0, 1], "e4": [0, 1], "e5": [0, 0]},
+      "derivation": "all edge latencies constant 1; without: L1 = L2 = 2 for every split, cost_without = 2; with: L3 = 1 + 0 + 1 = 2 as well, every route constant 2, cost_with = 2; equal costs -> NOT a paradox (strict > required)",
+      "expected": {"cost_without": "2", "cost_with": "2", "paradox": false}
+    },
+    {
+      "name": "pin_C_bridge_helps",
+      "fixture": {"e1": [0, 0], "e2": [0, 2], "e3": [0, 2], "e4": [0, 0], "e5": [0, 1]},
+      "derivation": "without: L1 = 0 + 2 = 2, L2 = 2 + 0 = 2 for every split, cost_without = 2; with: R3 latency = 0 + 1 + 0 = 1 constant < 2, all flow on R3, L1 = 0 + 2 = 2 >= 1, L2 = 2 + 0 = 2 >= 1 — Wardrop holds; cost_with = 1",
+      "expected": {"cost_without": "2", "cost_with": "1", "paradox": false, "note": "bridge strictly HELPS here — the sim must measure improvement as readily as harm"}
+    }
+  ],
+  "intake_time_decisions_disclosed": [
+    "1. n_draws_per_seed = 25,000 (pooled 100,000): at plausible f ~ 0.03 the binomial SE on f_S is ~0.05 pp, two orders inside the 1.0 pp arm-agreement gate. DISCLOSURE: a throwaway scratchpad feasibility probe (not this runner, not committed) ran the census and the pinned seeds at this n BEFORE this file was committed, to time the exact-Fraction solve and validate the solver approach; every decision constant above (grids, seeds, bands, gate) was already pinned by the idea file, so no free parameter remained tunable by that peek, and n_draws cannot move f_S materially (it only shrinks an SE already 20x inside the gate)",
+    "2. float tolerance (Arm S): paradox iff cost_with > cost_without*(1 + 1e-9) + 1e-12; VI tolerance 1e-9; degenerate skip at cost_without <= 1e-12 — Arm A is float-free so the headline census numbers carry no tolerance at all",
+    "3. Arm S call convention: the proposal's arm-agreement gate requires each arm's APPROVE/REJECT/NULL call; Arm S's call applies the SAME registered band constants to its own pooled statistics (f_S, median-r_S, max-r_S)",
+    "4. median convention: even paradox count -> arithmetic mean of the two middle r values (exact Fraction in Arm A)",
+    "5. equilibrium method: Beckmann candidate enumeration + exact per-fixture Wardrop verification (see twin_evaluator.primary_solver); correctness rests on the verification plus essential uniqueness of equilibrium cost for monotone latencies, NOT on trusting the construction",
+    "6. twin stride (Arm S): every 199th draw per seed — the full-census exact twin already covers the decision-carrying arm end to end",
+    "7. reporting-only breakdown: f_A conditional on each bridge cell (a5,b5) is reported for reading, cannot flip any band (the registered statistics pool the census)"
+  ],
+  "outputs_registered": [
+    "N (effective census after the 0-cost-without skip) and the skip count",
+    "f_A exact (Fraction string) + float",
+    "median-r and max-r among Arm A paradox fixtures, exact + float",
+    "f_S pooled + per-seed counts (and Arm S median-r_S/max-r_S for its call)",
+    "arm-agreement check: |f_S - f_A| <= 1.0 pp AND same call",
+    "the APPROVE/REJECT/NULL call per arm and the final ruling against the registered bands",
+    "model-basis caveat restated in the verdict"
+  ]
+}
