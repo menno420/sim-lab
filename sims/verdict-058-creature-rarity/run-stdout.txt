@@ -1,0 +1,30 @@
+VERDICT 058 — creature-PvP rarity vs skill (PROPOSAL 047)
+cpython 3.11 | seeds 20261325/20261326/20261327 (aux 20261328 never read)
+-- 9-cell W grid (P(Common side wins), main leg, N=20000/cell) --
+  BAL: BEGINNER: 0/1 (0.0000)  MID: 0/1 (0.0000)  SKILLED: 0/1 (0.0000)
+  ATK: BEGINNER: 0/1 (0.0000)  MID: 0/1 (0.0000)  SKILLED: 0/1 (0.0000)
+  MIX: BEGINNER: 0/1 (0.0000)  MID: 0/1 (0.0000)  SKILLED: 0/1 (0.0000)
+-- reporting legs (N=20000 each) --
+  mirror_BAL_vs_BAL_max_skill: 4977/10000 (0.4977)
+  naive_vs_naive_BAL_vs_Epic: 0/1 (0.0000)
+  rare_gradient_BEGINNER: 0/1 (0.0000)
+  rare_gradient_SKILLED: 0/1 (0.0000)
+-- stability grid (seed 20261326, N=5000/cell) --
+  BAL: BEGINNER: 0.0000  MID: 0.0000  SKILLED: 0.0000
+  ATK: BEGINNER: 0.0000  MID: 0.0000  SKILLED: 0.0000
+  MIX: BEGINNER: 0.0000  MID: 0.0000  SKILLED: 0.0000
+-- sensitivity grids (seed 20261327, N=5000/cell, reporting-only) --
+  jitter_wide: BAL/BEGINNER: 0.000 | BAL/SKILLED: 0.000 | ATK/BEGINNER: 0.000 | ATK/SKILLED: 0.000 | MIX/BEGINNER: 0.000 | MIX/SKILLED: 0.000
+  jitter_degenerate: BAL/BEGINNER: 0.000 | BAL/SKILLED: 0.000 | ATK/BEGINNER: 0.000 | ATK/SKILLED: 0.000 | MIX/BEGINNER: 0.000 | MIX/SKILLED: 0.000
+  buff_cap_75: BAL/BEGINNER: 0.000 | BAL/SKILLED: 0.000 | ATK/BEGINNER: 0.000 | ATK/SKILLED: 0.000 | MIX/BEGINNER: 0.000 | MIX/SKILLED: 0.000
+  level_5: BAL/BEGINNER: 0.000 | BAL/SKILLED: 0.000 | ATK/BEGINNER: 0.000 | ATK/SKILLED: 0.000 | MIX/BEGINNER: 0.000 | MIX/SKILLED: 0.000
+-- Arm E (exact stakes) --
+  E_epic = 7693/4 = 1923.25
+  E_common(BAL) = 23079/475 = 48.58736842105263
+  TP = 475/12 = 39.5833
+-- decision --
+  main class: REJECT (axes: [])
+  stability class: REJECT (reproduced: True)
+  fired sensitivity straddles: none
+  RULING: REJECT
+SELF-CHECKS: 104 passed, 0 failed

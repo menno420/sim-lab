@@ -1,0 +1,400 @@
+{
+ "arm_e": {
+  "E_common_BAL": {
+   "exact": "23079/475",
+   "float": 48.58736842105263
+  },
+  "E_epic": {
+   "exact": "7693/4",
+   "float": 1923.25
+  },
+  "TP": {
+   "exact": "475/12",
+   "float": 39.583333333333336
+  },
+  "anchors": {
+   "equal_p_identity": "E == (1/p) * 49/20",
+   "markov_twin_equality": "exact",
+   "single_specific_epic": 785
+  },
+  "p_specific": {
+   "Common": "95/1884",
+   "Epic": "1/785",
+   "Rare": "9/1570",
+   "Uncommon": "51/2512"
+  }
+ },
+ "arm_s": {
+  "main_grid_W": {
+   "ATK/BEGINNER": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "ATK/MID": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "ATK/SKILLED": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "BAL/BEGINNER": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "BAL/MID": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "BAL/SKILLED": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "MIX/BEGINNER": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "MIX/MID": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "MIX/SKILLED": {
+    "exact": "0/1",
+    "float": 0.0
+   }
+  },
+  "mirror_deviation_from_half": "23/10000",
+  "naive_direction_ok": true,
+  "reporting_legs_W": {
+   "mirror_BAL_vs_BAL_max_skill": {
+    "exact": "4977/10000",
+    "float": 0.4977
+   },
+   "naive_vs_naive_BAL_vs_Epic": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "rare_gradient_BEGINNER": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "rare_gradient_SKILLED": {
+    "exact": "0/1",
+    "float": 0.0
+   }
+  },
+  "sensitivity_grids_W": {
+   "buff_cap_75": {
+    "ATK/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "ATK/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "ATK/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    }
+   },
+   "jitter_degenerate": {
+    "ATK/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "ATK/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "ATK/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    }
+   },
+   "jitter_wide": {
+    "ATK/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "ATK/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "ATK/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    }
+   },
+   "level_5": {
+    "ATK/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "ATK/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "ATK/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "BAL/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/BEGINNER": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/MID": {
+     "exact": "0/1",
+     "float": 0.0
+    },
+    "MIX/SKILLED": {
+     "exact": "0/1",
+     "float": 0.0
+    }
+   }
+  },
+  "sentinels": {
+   "main": {
+    "battles": 260000,
+    "damage_events": 36564003,
+    "jitter_draws": 36564003,
+    "stall_hits": 0,
+    "tie_draws": 1877073,
+    "tie_events": 1877073
+   },
+   "sensitivity": {
+    "battles": 180000,
+    "jitter_draws": 13395265,
+    "stall_hits": 0,
+    "tie_draws": 0
+   },
+   "stability": {
+    "battles": 45000,
+    "jitter_draws": 5562017,
+    "stall_hits": 0,
+    "tie_draws": 0
+   }
+  },
+  "stability_grid_W": {
+   "ATK/BEGINNER": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "ATK/MID": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "ATK/SKILLED": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "BAL/BEGINNER": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "BAL/MID": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "BAL/SKILLED": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "MIX/BEGINNER": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "MIX/MID": {
+    "exact": "0/1",
+    "float": 0.0
+   },
+   "MIX/SKILLED": {
+    "exact": "0/1",
+    "float": 0.0
+   }
+  }
+ },
+ "buff_cap_inertness_note": "derived disclosure: the committed policy family buffs at most once (policy_setup requires atk_stage == 0.0), so buff stages never exceed 0.25 and this lever is inert by construction \u2014 run and reported anyway per the registration",
+ "cpython": "3.11",
+ "decision": {
+  "fired_sensitivity_straddles": [],
+  "main_axes": [],
+  "main_class": "REJECT",
+  "rule": {
+   "approve_rule": "W(c, BEGINNER) >= 1/2 in ALL 3 compositions AND W(c, SKILLED) < 1/2 in >= 2 of 3 AND the seed-20261326 stability leg reproduces the ruling through both twin evaluators",
+   "evaluation_order": "REJECT first, then APPROVE, else NULL",
+   "even_money_threshold": "1/2",
+   "null_axes": [
+    "composition-straddle (BEGINNER row mixes >= 1/2 and < 2/5)",
+    "margin-band (BEGINNER row lives in [2/5, 1/2))",
+    "budget-inert (W(c, SKILLED) >= 1/2 in >= 2 of 3)",
+    "stability non-reproduction",
+    "sensitivity straddle (reporting legs name the axis, never flip the decision)"
+   ],
+   "reject_rule": "W(c, BEGINNER) < 2/5 in >= 2 of 3 Common compositions \u2014 checked FIRST",
+   "reject_threshold": "2/5",
+   "se_precheck": "SE at N = 20000 is <= 1/283; the decision bands (2/5 vs 1/2) sit >= 14 SE apart"
+  },
+  "ruling": "REJECT",
+  "ruling_axes": [],
+  "stability_axes": [],
+  "stability_class": "REJECT",
+  "stability_reproduced": true
+ },
+ "derived_stats_reporting": {
+  "Rare/attacker": [
+   58,
+   84,
+   46,
+   72
+  ],
+  "Rare/balanced": [
+   65,
+   65,
+   65,
+   65
+  ],
+  "Rare/speedster": [
+   52,
+   78,
+   46,
+   84
+  ],
+  "Rare/tank": [
+   84,
+   52,
+   84,
+   39
+  ]
+ },
+ "evaluators": {
+  "main": {
+   "fraction": [
+    true,
+    false,
+    3,
+    3
+   ],
+   "integer": [
+    true,
+    false,
+    3,
+    3
+   ]
+  },
+  "stability": {
+   "fraction": [
+    true,
+    false,
+    3,
+    3
+   ],
+   "integer": [
+    true,
+    false,
+    3,
+    3
+   ]
+  }
+ },
+ "harvest_source": "menno420/superbot @ 1cc553651a19016a4b1439f048b49e7baa28dfb1",
+ "intake": "INTAKE 047",
+ "proposal_header_verbatim": "## PROPOSAL 047 \u00b7 2026-07-13T21:28:33Z \u00b7 status: sim-ready",
+ "seeds": {
+  "aux_never_read": 20261328,
+  "main": 20261325,
+  "registry_note": "20261325\u2013328 strictly above the P046/V057 high-water 20261324; aux is registered-never-drawn \u2014 no RNG may be constructed with it (asserted)",
+  "sensitivity_reporting": 20261327,
+  "stability": 20261326
+ },
+ "self_checks": {
+  "failed": 0,
+  "failures": [],
+  "passed": 104
+ },
+ "verdict": "VERDICT 058"
+}
