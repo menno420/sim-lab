@@ -1,0 +1,86 @@
+{
+  "question": "Under the pinned fair-coin Penney frame (i.i.d. fair flips; both players commit distinct words of the SAME length L over {H,T}; the first word to appear as a run of consecutive flips wins -- ties impossible for distinct equal-length words, the race ends w.p. 1, so every P(B before A) is a well-defined exact rational), what is the responder's guaranteed edge V(L) = min_A max_{B!=A} P(B before A) at L in {3, 4, 5} -- every number an exact rational computed over the FULL ordered-pair census (56 / 240 / 992 cells, 1,288 total, plus a 12-cell L=2 anchor leg reporting-only) by TWO structurally independent exact algorithms that must agree by EXACT RATIONAL EQUALITY on every cell: Arm A Conway leading numbers (correlation L(X,Y) = sum_k delta_k*2^(k-1), delta_k = 1 iff the last k chars of X equal the first k of Y; odds B over A = (L(A,A)-L(A,B)) : (L(B,B)-L(B,A))) and Arm B first-step absorption analysis on the two-word prefix automaton (<= 2L-1 states, longest-suffix transitions, exact fractions.Fraction Gaussian elimination) -- with gates (run invalid on any failure): the classic published anchors P(TH before HH) = 3/4 (L=2 leg), P(THH before HHH) = 7/8, and V(3) = 2/3 (the Gardner-table floor); complement invariance P(comp(B) before comp(A)) = P(B before A) on every cell; the antisymmetry identity P(B before A) + P(A before B) = 1 on every unordered pair with both sides computed independently, never by definition; strictly positive Conway denominators; the automaton state-count audit; sigma(A) != A asserted on every word; ZERO RNG/seeds/floats anywhere -- and does the result land (bands DISJOINT by construction, 13/25 < 3/5; REJECT stated first) REJECT ('the never-go-first maxim is an L=3 curiosity -- longer words are the cheap fairness fix'): V(5) <= 13/25, APPROVE ('the responder edge is structural -- first-order at every swept length'): V(L) >= 3/5 at ALL L in {3, 4, 5}, or NULL (anything else -- a legitimate reportable outcome: the measured decay curve {V(3), V(4), V(5)} is the citable pin, including any non-monotone surprise, and neither camp's soundbite may be cited as settled)?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 032 · 2026-07-13T08:17:09Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 2e5d73f (landed via idea-engine PR #302)",
+    "idea_entry": "ideas/fleet/penney-game-responder-edge-decay-2026-07-13.md @ idea-engine main 2e5d73f (proposal's own blob link @ 3859ef45984d9f067b7f22de8067e73417d4ddbb)",
+    "rotation_slot": "ORDER 003/004 rule-3 COMPLETELY-UNRELATED-domain rotation slot, round 4 -- recreational probability / sequential pattern-race games (Penney's game over fair-coin words), a FOURTH fleet-external domain after round 1's social choice (PROPOSAL 017 -> VERDICT 019), round 2's congestion routing (PROPOSAL 024 -> VERDICT 026), and round 3's tournament seeding (PROPOSAL 028 -> VERDICT 030); fully hermetic AND fully exact: the entire world (the word census, both algorithms, band constants, the three classic anchor rationals) is constructed in-sim from the pinned constants below, zero repo/network reads in the verdict session, zero RNG/seeds/floats"
+  },
+  "game_frame": {
+    "coin": "fair i.i.d., P(H) = P(T) = 1/2 per flip",
+    "words": "both players commit distinct words of the SAME length L over {H,T}; the first word to appear as a run of consecutive flips wins",
+    "degeneracy_note": "ties impossible for distinct equal-length words (two different length-L words cannot both complete on the same flip); the race ends with probability 1, so P(B before A) is a well-defined exact rational and P(B before A) + P(A before B) = 1",
+    "arithmetic": "fractions.Fraction end to end -- every probability, share, and shortfall an exact rational; NO RNG, NO seeds, NO floats anywhere; byte-identical re-run by construction, platform-independent",
+    "seed_registry_note": "this sim draws ZERO seeds -- the PROPOSAL 031 registry high-water 20260767 is left unchanged; the next seeded head continues from there"
+  },
+  "census": {
+    "L_grid_decision": [3, 4, 5],
+    "L_anchor_leg_reporting_only": 2,
+    "expected_ordered_pair_cells": {"2": 12, "3": 56, "4": 240, "5": 992},
+    "expected_total_decision_cells": 1288,
+    "expected_total_cells_with_anchor_leg": 1300
+  },
+  "arms": {
+    "arm_A": "Conway leading numbers: for words X, Y the correlation L(X,Y) = sum_{k=1..L} delta_k * 2^(k-1), where delta_k = 1 iff the last k characters of X equal the first k characters of Y; the odds that B beats A are (L(A,A) - L(A,B)) : (L(B,B) - L(B,A)), so P(B before A) = (AA-AB) / ((AA-AB) + (BB-BA)) -- integer arithmetic, exact by construction",
+    "arm_B": "independent first-step absorption solve: build the two-word prefix automaton (transient states = the proper prefixes of A and of B including the empty string, <= 2L-1 states; the transition on a flip c sends state s to s+c if s+c is A or B (absorbing), else to the longest suffix of s+c that is a proper prefix of A or B) and solve the absorption probabilities into B by first-step analysis -- exact Gaussian elimination over fractions.Fraction; a structurally different computation from Arm A's correlation integers",
+    "agreement_gate": "Arm A == Arm B by EXACT RATIONAL EQUALITY on every ordered-pair cell -- all 1,288 decision cells plus the 12-cell L=2 leg (1,300 total); any inequality invalidates the run"
+  },
+  "classic_anchors_run_invalid_on_failure": {
+    "P_TH_before_HH": "3/4",
+    "P_THH_before_HHH": "7/8",
+    "V_3": "2/3"
+  },
+  "self_checks_run_invalid_on_failure": [
+    "the three classic published anchors: P(TH before HH) = 3/4 (the L=2 leg), P(THH before HHH) = 7/8, and V(3) = 2/3 (the Gardner-table floor)",
+    "complement invariance P(comp(B) before comp(A)) = P(B before A) on every cell (flip every bit of both words)",
+    "the antisymmetry identity P(B before A) + P(A before B) = 1 on every unordered pair, both sides computed independently (each ordered cell computed on its own by both arms), never by definition",
+    "strictly positive Conway leading-number differences: L(A,A) - L(A,B) > 0 AND L(B,B) - L(B,A) > 0 on every cell (hence a strictly positive odds denominator)",
+    "the automaton state-count audit: transient states <= 2L-1 with the empty string present, absorbing states exactly 2 (the two full words), every transition lands in a known state",
+    "sigma(A) != A verified on every word (true by construction: sigma(A) = A would force a2 = not-a2)",
+    "census size audit: exactly 2^L words and exactly 2^L * (2^L - 1) ordered-pair cells per L"
+  ],
+  "measured_quantities": {
+    "V_L": "V(L) = min_A max_{B!=A} P(B before A) for L in {3, 4, 5} -- the responder's guaranteed win probability under best play by BOTH sides; plus the argmin (safest first-pick) words and each argmin's optimal response",
+    "O_L": "the folk-rule optimality share: the fraction of the 2^L first picks A for which sigma(A) attains max_{B!=A} P(B before A) exactly",
+    "S_L": "the worst shortfall max_A [max_B P(B before A) - P(sigma(A) before A)] -- the price of trusting the popularized rule where it is not optimal",
+    "f_2to1_L": "the share of first picks beatable at >= 2:1 (max_B P(B before A) >= 2/3) -- the popularization's 'never worse than 2:1' claim read against longer words",
+    "full_matrix": "the full 2^L x 2^L exact matrix per L and the trap table (max_B P per A, including the famous 7/8 row) -- the census everything above is read from"
+  },
+  "folk_rule": {
+    "definition": "sigma(A) = (complement of a2) + a1 a2 ... a_(L-1) -- prepend the complement of the opponent word's SECOND character to its first L-1 characters",
+    "scored_at": [3, 4, 5],
+    "role": "reporting-only -- cannot flip the decision"
+  },
+  "decision_rule": {
+    "bands_registered_before_any_code": "in the idea file ideas/fleet/penney-game-responder-edge-decay-2026-07-13.md, verbatim; evaluated in this order; the two decision bands are DISJOINT by construction (13/25 < 3/5), so the order is stated for form, not load-bearing",
+    "REJECT": "('the never-go-first maxim is an L=3 curiosity -- longer words are the cheap fairness fix') iff V(5) <= 13/25 (52%); checked FIRST",
+    "APPROVE": "('the responder edge is structural -- first-order at every swept length') iff V(L) >= 3/5 (60%) at ALL of L in {3, 4, 5}",
+    "NULL": "anything else (the straddle -- a legitimate reportable outcome): the finding is the measured decay curve {V(3), V(4), V(5)} itself, and neither camp's soundbite may be cited as settled",
+    "band_constant_reject": "13/25",
+    "band_constant_approve": "3/5"
+  },
+  "reporting_only_legs_cannot_flip": [
+    "the L=2 anchor leg (4 words, 12 ordered cells: the 3/4 classic plus the fair HT-vs-TH cell)",
+    "O(L), S(L), and the per-word folk-rule table",
+    "f_2to1(L)",
+    "the trap table (max_B P per A, including the famous 7/8 row) and both distributions' quartiles per L (the trap distribution max_B P per A, and the folk-rule distribution P(sigma(A) before A) per A)",
+    "whether the safest first pick and the biggest trap are complements/reverses of each other (pattern-structure context, prose only)"
+  ],
+  "intake_time_decisions_disclosed": [
+    "word encoding: strings over the alphabet ('H', 'T'); the census enumerates itertools.product in the fixed alphabet order, so all output orderings are explicit and deterministic",
+    "matrix orientation: matrix[A][B] = P(B appears before A) -- the RESPONDER B's win probability against first pick A; diagonal cells (A = A) do not exist (distinct words only)",
+    "quartile convention (reporting-only): Q1/median/Q3 of the sorted per-A values by the exact linear-interpolation method (position p = (n-1)*q; value = v[floor(p)] + frac(p)*(v[floor(p)+1]-v[floor(p)]), all in Fraction) -- exact rationals, no floats; the same convention as verdict-030",
+    "'both distributions' in the reporting leg is read as: (i) the trap distribution {max_B P(B before A) : A} and (ii) the folk-rule distribution {P(sigma(A) before A) : A}, quartiled per L over the 2^L first picks",
+    "argmin/argmax tie convention: ALL words attaining the exact min/max are listed, sorted lexicographically (H < T); the lexicographically-smallest is the named representative in summary lines",
+    "the folk-rule legs O(L)/S(L)/per-word table are scored at L in {3, 4, 5} only -- the registered scope; the L=2 leg carries only its census, the 3/4 anchor, and the fair HT-vs-TH cell",
+    "antisymmetry-independence implementation: every ordered cell (A, B) is computed standalone by BOTH arms (no cell's value is ever derived as 1 minus another cell); the antisymmetry check then sums the two independently produced values",
+    "the Conway positivity check asserts BOTH differences L(A,A)-L(A,B) > 0 and L(B,B)-L(B,A) > 0 (each is a strictly positive integer for distinct equal-length words), which implies the odds denominator is strictly positive",
+    "decimal approximations in the report and stdout are display-only (computed from the exact Fraction, correctly rounded to 6 places); every decision comparison is an exact Fraction comparison",
+    "runtime python is recorded in the REPORT but NOT asserted in-sim: the sim is exact-rational and platform-independent by construction (no floats, no dict-order dependence -- all output orderings explicitly sorted)"
+  ],
+  "model_basis": {
+    "declared_assumption": "a FAIR i.i.d. coin (p = 1/2 per flip) and both players restricted to words of the SAME length L -- the game's own canonical frame, the one every popularization uses; the measured curve is a property of THIS frame",
+    "single_most_likely_to_flip_alternative": "a BIASED coin (p != 1/2), under which the whole table deforms -- the Conway leading-number arm is fair-coin-specific while the automaton arm generalizes to any p, so 'V(L) under bias' is the named follow-up head with one arm already built; a softer flip is the RESPONSE SPACE -- allowing the responder a SHORTER or LONGER word changes the game (unequal-length races are out of this verdict's registered scope by design, named)",
+    "boundary": "L <= 5 only: L=6 doubles the census to 4,032 pairs -- a feasible follow-up, not a blocker; the swept range is where the folk tables live"
+  }
+}
