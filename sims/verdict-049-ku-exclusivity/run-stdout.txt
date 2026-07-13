@@ -1,0 +1,24 @@
+VERDICT 049 — KU-exclusivity fork (PROPOSAL 038): 288-cell dual-arm sweep
+cpython 3.11 (pinned) · seeds 20261289/20261290/20261291 (aux 20261292 never drawn) · M=50000 main, 25000 stability
+
+Arm A (exact): W = 101/288 = 0.3507 · $4.99 tier W = 4/72 = 0.0556
+Arm S main   (seed 20261289): W_S = 102/288, $4.99 W_S = 5/72 → reject
+Arm S stab   (seed 20261290): W_S = 104/288, $4.99 W_S = 5/72 → reject
+max |z| main 2.755 / stability 3.147 / reporting 2.606 (gate at z = 5)
+
+Per-axis win shares (Arm A exact):
+  title ultramarine: 46/144 · the-weigh-house: 55/144
+  b     1/2: 19/72 · 1: 23/72 · 2: 27/72 · 4: 32/72
+  rt    7/20: 24/96 · 3/5: 33/96 · 17/20: 44/96
+  rate  7/2000: 29/96 · 9/2000: 33/96 · 11/2000: 39/96
+  p     99/100: 72/72 · 299/100: 25/72 · 499/100: 4/72 · 699/100: 0/72
+
+Sensitivity sweeps, W/288 (reporting-only, Arm A exact):
+  gamma {'1/20': 150, '3/20': 101, '3/10': 78} · kappa {'1/10': 118, '1/5': 101, '7/20': 91}
+  words-per-KENP {'150': 125, '190': 101, '230': 89} · file-size-MB {'1/2': 100, '1': 101, '5/2': 112}
+
+b* crossover: 40/72 rows have NO swept b at which KU wins; full table in results.json
+
+RULING: REJECT  (pre-registered order REJECT -> APPROVE -> NULL; the rules decide, not the drafting prediction)
+
+SELF-CHECKS: 31 passed, 0 failed

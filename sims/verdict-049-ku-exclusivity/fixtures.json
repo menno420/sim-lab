@@ -1,0 +1,135 @@
+{
+  "identity": {
+    "verdict": "049",
+    "intake": "038",
+    "proposal": "idea-engine control/outbox.md — ## PROPOSAL 038 · 2026-07-13T15:36:37Z · status: sim-ready",
+    "idea_file": "https://github.com/menno420/idea-engine/blob/3f41b429eb46a31685941e6de1c89b5cd40f52b0/ideas/venture-lab/ku-exclusivity-fork-2026-07-13.md (a disclosed CONDENSATION — the proposal block is the source of truth; every constant below is copied verbatim from the block)",
+    "target_document": "https://github.com/menno420/venture-lab/blob/79a1987f0cb89a801c1a30d02a692aaf3a44ae6a/docs/publishing/PUBLISHING-PLAN.md (§4 'KDP Select: Yes' OWNER-ACTION rows + every verified royalty/word-count constant, all @ 79a1987; venture-lab walled this session — 'Access denied: repository menno420/venture-lab is not configured' — so the rows are pinned here via the block, which quotes them @ 79a1987)",
+    "claim": "idea-engine PR #321 → main 3f1c955 (claim-first ritual; number RESERVES, never the position — P037 → V048 rides sim-lab PR #99, untouched)",
+    "title": "KU-exclusivity fork — does the plan's blanket 'KDP Select: Yes' survive its own royalty arithmetic?"
+  },
+  "frame": {
+    "statement": "Each of a title's reader-contacts is a would-be BORROWER w.p. beta = b/(1+b) — a KU subscriber who borrows when the title is enrolled — else a would-be BUYER. Both arms are priced at the SAME p per cell: the exclusivity fork isolated from the pricing fork. Per-contact revenue comparison, never absolute earnings (the plan's §6 'base case ≈ $0' forecast discipline and Q-0259 r.4 untouched).",
+    "arm_KU": "per-contact revenue = (1-beta)*((1-kappa)*roy(p) + kappa*rate*KENP*rt) + beta*rate*KENP*rt  — would-be buyers cannibalize to a borrow w.p. kappa",
+    "arm_WIDE": "per-contact revenue = (1-beta)*roy(p) + beta*gamma*roy(p)  — the title is NOT enrolled; would-be borrowers buy anyway w.p. gamma",
+    "decision_quantities": "per-cell sign of Delta(cell) = KU - WIDE and the KU-win share W = #{Delta > 0}/288",
+    "model_basis": "gamma and kappa are invented, pinned, the disclosed weakest joints — NO fleet datapoint on borrow-vs-buy behavior exists, zero titles published; the sweeps bracket scale, not shape; reader-contacts held EQUAL across arms by construction (KU visibility boost and wide multi-store reach BOTH out of scope — the metric prices royalty mechanics, not discoverability); KENP rate is Amazon-set and monthly-varying (grid brackets the historically cited range); words-per-KENP is Amazon-computed per book, pinned here; fractional-page payout is a stated simplification; static single-title single-90-day-term economics (series spillover, term renewal, mid-term price switching out of scope)"
+  },
+  "titles": [
+    {"name": "ultramarine", "words": 27865, "KENP": 147},
+    {"name": "the-weigh-house", "words": 36434, "KENP": 192}
+  ],
+  "kenp_rule": "KENP = round(words / words_per_kenp); at the pinned 190: round(27865/190) = round(146.657...) = 147, round(36434/190) = round(191.757...) = 192",
+  "royalty": {
+    "rule": "roy(p) = 7/10*p - 15/100 for 2.99 <= p <= 9.99 (the per-MB delivery fee at a pinned flat 1 MB ebook, inside the 15/100) else 35/100*p",
+    "band_70": {"low": "299/100", "high": "999/100", "multiplier": "7/10", "delivery_fee_per_mb": "15/100", "file_size_mb_pinned": "1"},
+    "band_35": {"multiplier": "35/100"},
+    "anchor_identities": {
+      "roy(99/100)": "693/2000",
+      "roy(299/100)": "1943/1000",
+      "roy(499/100)": "3343/1000",
+      "roy(699/100)": "4743/1000"
+    },
+    "anchor_note": "roy($0.99) = $0.3465 / roy($2.99) = $1.943 / roy($4.99) = $3.343 / roy($6.99) = $4.743 — pinned Fractions, gate-checked before any run"
+  },
+  "grids": {
+    "b": ["1/2", "1", "2", "4"],
+    "beta_rule": "beta = b/(1+b)",
+    "rt": ["7/20", "3/5", "17/20"],
+    "rate": ["35/10000", "45/10000", "55/10000"],
+    "p": ["99/100", "299/100", "499/100", "699/100"],
+    "cells_total": 288,
+    "grid_note": "2 titles × 4 b × 3 rt × 3 rate × 4 price tiers = 288 decision cells; the plan's own Tier-1 novella price $4.99 flagged as THE default 72-cell slice",
+    "loop_order": "cells lexicographic: title, b, rt, rate, p (pinned); per cell arm order KU then WIDE (runner pin, disclosed)"
+  },
+  "pinned_constants": {
+    "kappa": "1/5",
+    "kappa_sensitivity_pair": ["1/10", "7/20"],
+    "gamma": "3/20",
+    "gamma_sensitivity_pair": ["1/20", "3/10"],
+    "words_per_kenp": 190,
+    "words_per_kenp_sensitivity_pair": [150, 230],
+    "file_size_mb_sensitivity_pair": ["1/2", "5/2"],
+    "sensitivity_note": "all four pairs REPORTING-ONLY — they cannot flip the decision; file-size enters the 70%-band royalty as roy(p) = 7/10*p - 15/100*size_mb"
+  },
+  "arm_S": {
+    "M_main": 50000,
+    "M_stability": 25000,
+    "read_through_draw": "per-borrower read-through ~ Uniform(rt - 3/20, rt + 3/20) — mean exactly rt at every swept rt; fractional-page payout a disclosed simplification",
+    "seeds": {
+      "main": 20261289,
+      "stability": 20261290,
+      "reporting": 20261291,
+      "aux": 20261292
+    },
+    "seed_registry_note": "allocated strictly above the P037-registered high-water 20261288 (sim-lab committed high-water 20261284 @ 4173377; V047 zero-seed per its own card); NEW REGISTRY HIGH-WATER: 20261292; aux 20261292 registered, never drawn by any leg (reserved)",
+    "draws_per_contact": {"KU": 3, "WIDE": 2},
+    "draws_note": "runner pin, disclosed: every KU contact consumes exactly 3 random() draws (type, cannibalize, read-through — drawn unconditionally so sentinel counts are exact) and every WIDE contact exactly 2 (type, buy-anyway); per-leg draw-count sentinels assert the exact totals"
+  },
+  "agreement_gate": {
+    "rule": "per-cell |KU_S - KU_A| <= tol(cell, arm, M_leg) and |WIDE_S - WIDE_A| <= tol(cell, arm, M_leg), main and stability legs; run INVALID on any failure",
+    "tolerance_rule": "tol(cell, arm, M) = z_familywise * sigma(cell, arm) / sqrt(M), sigma the EXACT closed-form per-contact revenue standard deviation derived from the same Fractions as Arm A",
+    "z_familywise": 5,
+    "precheck": "z_familywise >= 2.5 asserted, and every tolerance computed and pinned, BEFORE any RNG draw (the P029/P030 design rule: tolerances >= 2.5*sigma of the registered-M estimators, pre-checked); familywise: 2*288 comparisons/leg × 2 seeded decision legs + the reporting spot-leg, z=5 puts the familywise false-fail odds ~1e-3",
+    "variance_closed_forms": "KU: E[X] = (1-beta)*((1-kappa)*roy + kappa*rate*KENP*rt) + beta*rate*KENP*rt; E[X^2] = ((1-beta)*kappa + beta)*(rate*KENP)^2*(rt^2 + 3/400) + (1-beta)*(1-kappa)*roy^2  (Uniform(rt-3/20, rt+3/20) has E[U^2] = rt^2 + 3/400); WIDE: E[X] = (1-beta+beta*gamma)*roy; E[X^2] = (1-beta+beta*gamma)*roy^2; Var = E[X^2] - E[X]^2"
+  },
+  "control_legs": {
+    "kappa0_gamma0": "exact-identity leg (Arm A Fractions, all 288 cells): with kappa=0 and gamma=0, Delta = beta*rate*KENP*rt EXACTLY and KU wins every cell",
+    "rate0_kappa0_gamma0": "exact-identity leg (Arm A Fractions, all 288 cells): with rate=0, kappa=0, gamma=0, the arms are identical — Delta == 0 on every cell"
+  },
+  "monotonicity_audits": {
+    "delta_in_rate": "Delta nondecreasing in rate per cell (all other coordinates fixed)",
+    "delta_in_rt": "Delta nondecreasing in rt per cell (all other coordinates fixed)",
+    "W_in_gamma": "W nonincreasing in gamma across its sensitivity pair: W(1/20) >= W(3/20) >= W(3/10)"
+  },
+  "other_gates": [
+    "royalty-band anchor identities as pinned Fractions (see royalty.anchor_identities) checked before any run",
+    "per-leg draw-count sentinels (exact totals from draws_per_contact × contacts per leg; control/reporting-exact legs draw ZERO)",
+    "TWIN independently-written decision evaluators (Fraction-comparison logic vs integer-arithmetic logic) must agree on the main table AND both seeded legs' reproductions",
+    "stdout + results.json byte-identical across TWO full process runs, verified by EXTERNAL diff",
+    "CPython minor version pinned and asserted: 3.11",
+    "seed-20261290 half-M stability leg must reproduce the RULING (same class as the exact Arm A decision); the seed-20261289 main MC leg must also reproduce it (runner pin, stricter than registered, disclosed)"
+  ],
+  "decision_rules": {
+    "evaluation_order": ["REJECT", "APPROVE", "NULL"],
+    "W_source": "the decision W is Arm A's EXACT count #{Delta > 0} over the 288 cells (zero sampling error); Arm S main + stability legs must reproduce the resulting class from their own per-cell Delta signs (stability-reproduced)",
+    "REJECT": {
+      "label": "the convention default fails its own arithmetic — strike the blanket 'KDP Select: Yes' §4 rows",
+      "rule": "W < 2/5 of the 288 cells, stability-reproduced; checked FIRST — the costly error is an unmeasured 90-day exclusivity default executing on owner clicks, so the protect-against-lock-in arm cannot be shadowed",
+      "threshold": "W < 2/5 * 288 = 576/5 = 115.2, exact Fraction comparison"
+    },
+    "APPROVE": {
+      "label": "ratify the default with its evidence row",
+      "rule": "W >= 4/5 of all 288 cells AND KU wins >= 4/5 of the 72 cells at the plan's own $4.99 tier, stability-reproduced",
+      "thresholds": "W >= 4/5 * 288 = 1152/5 = 230.4 AND W_499 >= 4/5 * 72 = 288/5 = 57.6, exact Fraction comparisons"
+    },
+    "NULL": {
+      "label": "anything else — the flip axes named via per-axis win shares and the b* crossover map; the conditional rule is the citable finding",
+      "expected_flip_axes": "the PRICE-TIER axis (KU pays where the 35% band makes sales cheap, never at $6.99) and the BORROW-TO-SALE ratio b (the demand-mixture axis only a live measurement can pin)"
+    },
+    "drafting_liveness": "drafting arithmetic, disclosed, NOT decision-binding — the rules decide, not the prediction: closed form gives W = 101/288 ≈ 0.351 overall, 4/72 ≈ 0.056 at the $4.99 tier, 72/72 at the $0.99 35%-band tier, per-b shares 19/72 → 32/72 rising in b — REJECT the expected landing, APPROVE and NULL both reachable under the pinned grid",
+    "consequences_preregistered": {
+      "APPROVE": "the §4 'KDP Select: Yes' rows get their evidence row (ratified with the pinned table), routed lane-side via the manager sweep, Q-0260 — this repo never edits venture-lab files, and enrollment stays an OWNER action per the lane's hard rails",
+      "REJECT": "the blanket 'Yes' is struck from the recommendation posture — enrollment becomes a per-title decision gated on the verdict's crossover table, the quantified reason riding the manager sweep to the §4 rows, vetting packets, and OWNER-QUEUE before any enrollment click",
+      "NULL": "the conditional rule ships and the cheapest LIVE probe is named: 90 days of KDP dashboard data on ONE enrolled title (orders vs KENP pages read on the same dashboard → the real b and the real rate*KENP*rt per borrow at zero new tooling), locating the catalog's actual cell before the default is re-litigated"
+    }
+  },
+  "reporting_only": {
+    "note": "seed 20261291; these legs CANNOT flip the decision",
+    "legs": [
+      "gamma sensitivity sweep {1/20, 3/10} — full 288-cell W recomputed, Arm A exact",
+      "kappa sensitivity sweep {1/10, 7/20} — full 288-cell W recomputed, Arm A exact",
+      "words-per-KENP sensitivity sweep {150, 230} — KENP re-derived by the kenp_rule, full 288-cell W recomputed, Arm A exact",
+      "file-size sensitivity sweep {1/2, 5/2} MB — 70%-band royalty re-derived, full 288-cell W recomputed, Arm A exact",
+      "per-(title, rt, rate, p) crossover b* table — the smallest swept b at which KU wins, 72 rows, Arm A exact",
+      "Delta_rel = KU/WIDE - 1 distributions (overall + per price tier quartiles), Arm A exact",
+      "per-axis win shares over {title, b, rt, rate, p}, Arm A exact",
+      "seeded MC spot-replication (seed 20261291, M = 50000) of the kappa and gamma sensitivity ENDPOINTS on the affected arm over the 72-cell $4.99 tier, agreement-checked at the same tolerance rule — a runner design choice (scope: the flagged default slice), disclosed; gives the reporting seed real draws and its own sentinel"
+    ]
+  },
+  "runtime": {
+    "cpython_minor": [3, 11],
+    "hermetic": "stdlib-only; the runner reads ONLY this fixtures.json; zero repo/network reads; one command, no flags",
+    "outputs": ["results.json", "run-stdout.txt", "README.md", "REPORT.md"]
+  }
+}
