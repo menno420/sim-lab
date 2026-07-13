@@ -1,0 +1,9 @@
+# Session — VERDICT 039 — Photo-packs pricing: PWYW vs $5 fixed, a $3 anchor, and a two-pack bundle (idea-engine ORDER 006 SIM-REQUEST 1, requesting seat venture-lab)
+
+> **Status:** in-progress
+> 📊 Model: fable (Claude Fable 5 family) · 2026-07-13 · verdict-039 slice-worker session
+> Objective: serve SIM-REQUEST 1 of idea-engine `control/inbox.md` ORDER 006 @ 8218d66 — "(1) PHOTO PACKS — PWYW-vs-$5, a $3 anchor, and a two-pack bundle (the packs themselves are hard-gated on owner-held originals; the pricing verdict is serveable now);" Packet read read-only at venture-lab @ 847b636f174d439949afeffac55025dde814514b (blob-filtered clone): control/outbox.md "night-run MORNING TALLY" + docs/publishing/OWNER-QUEUE.md D6/D7 + docs/publishing/vetting/photo-packs.md §3/§7 + candidates/photo-packs/MARKET-PLAN.md (a) fee schedules. Build a fully hermetic pre-registered pricing sim (rung 1 — exact Fraction decision arms; a small seeded robustness leg, seeds strictly above the fleet high-water 20260775) in `sims/verdict-039-photo-packs-pricing/`: fixtures.json (constants quoted verbatim with source path@SHA + decision bands + decision rule + seeds) committed BEFORE the runner; four arms (PWYW, FIXED_5, ANCHOR_3, BUNDLE_2PACK) on the packet's cited Gumroad/Ko-fi/Discover fee arithmetic; exact breakeven frontiers; twin evaluators; byte-identical double run proven by external diff. Land INTAKE simreq-003 + VERDICT 039 in `control/outbox.md` (append-only; VERDICT 036 and VERDICT 038 are RESERVED for in-flight sibling slices — tail re-verified at origin/main HEAD immediately before the append). Worker session — no control/status.md or control/inbox.md writes anywhere; venture-lab and idea-engine untouched.
+
+## What happened
+
+(in progress — flipped to complete with the close-out as the deliberate last commit)
