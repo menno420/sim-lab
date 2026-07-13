@@ -1,0 +1,95 @@
+{
+  "arm_A": {
+    "N_effective": 25600,
+    "call": "NULL",
+    "f_A": 0.0333984375,
+    "f_A_exact": "171/5120",
+    "improved_count_reporting_only": 3913,
+    "max_r": 1.3333333333333333,
+    "max_r_exact": "4/3",
+    "median_r": 1.0389610389610389,
+    "median_r_exact": "80/77",
+    "paradox_by_bridge_cell_reporting_only": {
+      "a5=0,b5=0": {
+        "f": "7/128",
+        "f_float": 0.0546875,
+        "n": 6400,
+        "paradox": 350
+      },
+      "a5=0,b5=1": {
+        "f": "9/800",
+        "f_float": 0.01125,
+        "n": 6400,
+        "paradox": 72
+      },
+      "a5=1,b5=0": {
+        "f": "361/6400",
+        "f_float": 0.05640625,
+        "n": 6400,
+        "paradox": 361
+      },
+      "a5=1,b5=1": {
+        "f": "9/800",
+        "f_float": 0.01125,
+        "n": 6400,
+        "paradox": 72
+      }
+    },
+    "paradox_count": 855,
+    "raw_census": 26244,
+    "skipped_zero_cost_without": 644,
+    "unchanged_count_reporting_only": 20832
+  },
+  "arm_S": {
+    "call": "NULL",
+    "degenerate_skipped": 0,
+    "f_S": 0.02908,
+    "max_r_S": 1.0944225223491928,
+    "median_r_S": 1.0050667942446916,
+    "per_seed": [
+      {
+        "n": 25000,
+        "paradox": 761,
+        "seed": 20260740
+      },
+      {
+        "n": 25000,
+        "paradox": 712,
+        "seed": 20260741
+      },
+      {
+        "n": 25000,
+        "paradox": 730,
+        "seed": 20260742
+      },
+      {
+        "n": 25000,
+        "paradox": 705,
+        "seed": 20260743
+      }
+    ],
+    "pooled_n": 100000,
+    "pooled_paradox": 2908,
+    "twin_draws_checked": 504
+  },
+  "arm_agreement": {
+    "abs_gap": 0.0043184375,
+    "abs_gap_exact": "13819/3200000",
+    "gap_within_1pp": true,
+    "met": true,
+    "same_call": true
+  },
+  "bands": {
+    "APPROVE": "f_A >= 0.15 OR median-r >= 1.15",
+    "NULL": "the straddle, or arm disagreement",
+    "REJECT": "f_A <= 0.03 AND max-r <= 1.05"
+  },
+  "model_basis": {
+    "behavioral_assumption": "selfish Wardrop user equilibrium (each user minimizes own latency) over affine latencies with coefficients from a uniform grid/range ({0,1,2} integers in Arm A, U[0,2] in Arm S); the measured frequency is a property of THIS routing behavior on THIS coefficient distribution",
+    "most_likely_to_flip": "system-optimal routing (minimize TOTAL latency): under it Braess's paradox cannot occur at all (adding an edge weakly lowers the system optimum), so f -> 0; a softer flip is any non-uniform coefficient prior concentrated away from the paradox-prone corners"
+  },
+  "proposal": "idea-engine control/outbox.md PROPOSAL 024 \u00b7 2026-07-13T04:21:12Z \u00b7 status: sim-ready",
+  "ruling": "NULL",
+  "ruling_label": "NULL (the straddle, arms agreeing)",
+  "self_checks_passed": 358476
+}
