@@ -1,0 +1,3406 @@
+{
+ "anomalies": [],
+ "cell_summaries": [
+  {
+   "A": 27,
+   "M": 32,
+   "POOLED": {
+    "max_drain_end_tick": 20012,
+    "max_queue_len": 20,
+    "mean_of_cohort_means": "404058186489927039116250918758238501850430953891795047422898026494371658304466966299/261790680887696047644381694485809984713413124338096409771593983415727032811526092800",
+    "mean_of_cohort_means_decimal": "1.543440",
+    "median_p95": 6,
+    "median_utilization": "108103/120036"
+   },
+   "SPLIT_JSQ": {
+    "max_drain_end_tick": 20013,
+    "max_queue_len": 8,
+    "mean_of_cohort_means": "95970691927713858753863136245103416788145625425031931942251165435333266652968895271/53700652489783804645001373227858458402751410120635160978788509418610673397236121600",
+    "mean_of_cohort_means_decimal": "1.787142",
+    "median_p95": 6,
+    "median_utilization": "108103/120036"
+   },
+   "SPLIT_RANDOM": {
+    "max_drain_end_tick": 20088,
+    "max_queue_len": 36,
+    "mean_of_cohort_means": "7399449935596402922713810034950291702392453419889477718746038750249905909409680756051/523581361775392095288763388971619969426826248676192819543187966831454065623052185600",
+    "mean_of_cohort_means_decimal": "14.132378",
+    "median_p95": 45,
+    "median_utilization": "5834531/6486156"
+   },
+   "decision_cell": true,
+   "invalid": 0,
+   "leg": "main",
+   "median_R": "9017678143/967484332",
+   "median_R_decimal": "9.320749",
+   "median_R_jsq": "258322669/223446082",
+   "median_R_jsq_decimal": "1.156085",
+   "rho": "27/30",
+   "seed": 20261313
+  },
+  {
+   "A": 27,
+   "M": 16,
+   "POOLED": {
+    "max_drain_end_tick": 20010,
+    "max_queue_len": 15,
+    "mean_of_cohort_means": "267246343800156928166612376665757936515359207940015282352491/174883337192389996723095292845745849649811050617016344147200",
+    "mean_of_cohort_means_decimal": "1.528141",
+    "median_p95": 6,
+    "median_utilization": "1079824951/1200300018"
+   },
+   "SPLIT_JSQ": {
+    "max_drain_end_tick": 20011,
+    "max_queue_len": 6,
+    "mean_of_cohort_means": "1239156556445143830281261403292022541555444568492135203909373/699533348769559986892381171382983398599244202468065376588800",
+    "mean_of_cohort_means_decimal": "1.771405",
+    "median_p95": 7,
+    "median_utilization": "1079824951/1200300018"
+   },
+   "SPLIT_RANDOM": {
+    "max_drain_end_tick": 20050,
+    "max_queue_len": 49,
+    "mean_of_cohort_means": "85772524715114852102547329710395707115609022687714661683027/6136257445347017428880536591078801742098633354983029619200",
+    "mean_of_cohort_means_decimal": "13.977987",
+    "median_p95": 44,
+    "median_utilization": "2161464893/2404681488"
+   },
+   "decision_cell": false,
+   "invalid": 0,
+   "leg": "stability",
+   "median_R": "7786058125/841026576",
+   "median_R_decimal": "9.257803",
+   "median_R_jsq": "322336247/278227430",
+   "median_R_jsq_decimal": "1.158535",
+   "rho": "27/30",
+   "seed": 20261314
+  },
+  {
+   "A": 21,
+   "M": 16,
+   "POOLED": {
+    "max_drain_end_tick": 20006,
+    "max_queue_len": 7,
+    "mean_of_cohort_means": "1445853051524608741769417929861732507252292242319/4618329909778810854427843672082594367532984244565",
+    "mean_of_cohort_means_decimal": "0.313068",
+    "median_p95": 2,
+    "median_utilization": "55957663/80020000"
+   },
+   "SPLIT_JSQ": {
+    "max_drain_end_tick": 20006,
+    "max_queue_len": 3,
+    "mean_of_cohort_means": "408811178420309480603147708932752247008123039299/990194687523765141317862629860254738767541010560",
+    "mean_of_cohort_means_decimal": "0.412859",
+    "median_p95": 3,
+    "median_utilization": "55957663/80020000"
+   },
+   "SPLIT_RANDOM": {
+    "max_drain_end_tick": 20016,
+    "max_queue_len": 15,
+    "mean_of_cohort_means": "23526536242959371618299634625534962338430326523677/6496112400567997685349054835456836033452988827520",
+    "mean_of_cohort_means_decimal": "3.621633",
+    "median_p95": 14,
+    "median_utilization": "419734915/600300036"
+   },
+   "decision_cell": false,
+   "invalid": 0,
+   "leg": "reporting",
+   "median_R": "3244973/280308",
+   "median_R_decimal": "11.576455",
+   "median_R_jsq": "31730153/24004836",
+   "median_R_jsq_decimal": "1.321823",
+   "rho": "21/30",
+   "seed": 20261315
+  },
+  {
+   "A": 24,
+   "M": 16,
+   "POOLED": {
+    "max_drain_end_tick": 20005,
+    "max_queue_len": 10,
+    "mean_of_cohort_means": "158550650049101974778371184502497794527958695859782479/249811306931451180020363655629793708793427707055326560",
+    "mean_of_cohort_means_decimal": "0.634682",
+    "median_p95": 3,
+    "median_utilization": "160031668/200050003"
+   },
+   "SPLIT_JSQ": {
+    "max_drain_end_tick": 20006,
+    "max_queue_len": 4,
+    "mean_of_cohort_means": "34089446342146669387323721264743224799018931397533649/43070914988181237934545457867205811860935811561263200",
+    "mean_of_cohort_means_decimal": "0.791473",
+    "median_p95": 4,
+    "median_utilization": "960238013/1200420036"
+   },
+   "SPLIT_RANDOM": {
+    "max_drain_end_tick": 20046,
+    "max_queue_len": 20,
+    "mean_of_cohort_means": "3826669486733025166297718548058981479187716996613085671/624528267328627950050909139074484271983569267638316400",
+    "mean_of_cohort_means_decimal": "6.127296",
+    "median_p95": 21,
+    "median_utilization": "640270687/800560066"
+   },
+   "decision_cell": false,
+   "invalid": 0,
+   "leg": "reporting",
+   "median_R": "1222092061/125975920",
+   "median_R_decimal": "9.700997",
+   "median_R_jsq": "145959563/117583676",
+   "median_R_jsq_decimal": "1.241325",
+   "rho": "24/30",
+   "seed": 20261315
+  },
+  {
+   "A": 30,
+   "M": 16,
+   "POOLED": {
+    "max_drain_end_tick": 20180,
+    "max_queue_len": 165,
+    "mean_of_cohort_means": "42451693434819459572730648988974907391168393856852697/1159312372463588039391710841294588435409960123645440",
+    "mean_of_cohort_means_decimal": "36.617994",
+    "median_p95": 62,
+    "median_utilization": "2396188799/2406843936"
+   },
+   "SPLIT_JSQ": {
+    "max_drain_end_tick": 20200,
+    "max_queue_len": 55,
+    "mean_of_cohort_means": "2352917730475537601687934095608784656032093524388829891/63762180485497342166544096271202363947547806800499200",
+    "mean_of_cohort_means_decimal": "36.901463",
+    "median_p95": 63,
+    "median_utilization": "30727271/30870840"
+   },
+   "SPLIT_RANDOM": {
+    "max_drain_end_tick": 20623,
+    "max_queue_len": 177,
+    "mean_of_cohort_means": "1347481653721938995207710453044015494358450392232837341/10627030080916223694424016045200393991257967800083200",
+    "mean_of_cohort_means_decimal": "126.797576",
+    "median_p95": 267,
+    "median_utilization": "2425576709/2464142508"
+   },
+   "decision_cell": false,
+   "invalid": 0,
+   "leg": "reporting",
+   "median_R": "1634156540691/409489781642",
+   "median_R_decimal": "3.990714",
+   "median_R_jsq": "20958452894/20785608955",
+   "median_R_jsq_decimal": "1.008316",
+   "rho": "30/30",
+   "seed": 20261315
+  }
+ ],
+ "decision": {
+  "binding_axis": null,
+  "class": "APPROVE",
+  "evaluators_agree": true,
+  "median_R_main": "9017678143/967484332",
+  "median_R_main_decimal": "9.320749",
+  "median_R_stability": "7786058125/841026576",
+  "median_R_stability_decimal": "9.257803",
+  "rule": {
+   "APPROVE": "median R >= 2 AND the seed-20261314 stability leg reproduces the same ruling (own median >= 2, own validity conjunct passing)",
+   "NULL_axes": [
+    "band straddle R in [3/2, 2)",
+    "settlement failure via the validity conjunct",
+    "stability non-reproduction",
+    "load-sensitivity flip (reporting-only, names the axis, cannot flip the decision)"
+   ],
+   "REJECT": "median R < 3/2",
+   "bands": {
+    "approve_ge": "2",
+    "reject_lt": "3/2",
+    "validity_fraction": "1/4"
+   },
+   "cohort": "arrivals with arrival tick in [2000, 20000), then drain to empty; run INVALID iff non-empty at absolute tick 80000 or POOLED cohort mean exactly 0",
+   "evaluation_order": "REJECT FIRST, then APPROVE, else NULL",
+   "metric": "median over the valid main-leg runs of the per-run cohort mean-wait ratio R = W(SPLIT_RANDOM)/W(POOLED), exact Fractions; median of an even count = mean of the two middle order statistics",
+   "validity_conjunct": "fewer than 1/4 of the leg's runs invalid (both bands carry it; a failed conjunct falls through to NULL settlement-failure)"
+  }
+ },
+ "legs": {
+  "aux": {
+   "draws": 0,
+   "note": "reserved - never read",
+   "seed": 20261316
+  },
+  "control": {
+   "A": 0,
+   "M": 4,
+   "runs": [
+    {
+     "arrivals": 0,
+     "draws": 20000,
+     "run": 0,
+     "valid": true
+    },
+    {
+     "arrivals": 0,
+     "draws": 20000,
+     "run": 1,
+     "valid": true
+    },
+    {
+     "arrivals": 0,
+     "draws": 20000,
+     "run": 2,
+     "valid": true
+    },
+    {
+     "arrivals": 0,
+     "draws": 20000,
+     "run": 3,
+     "valid": true
+    }
+   ],
+   "seed": 20261313
+  },
+  "main": {
+   "cells": {
+    "27": [
+     {
+      "R": "113961/10903",
+      "R_jsq": "25203/21806",
+      "arrivals": 15518,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "10903/6968",
+        "drain_end_tick": 20012,
+        "max_queue_len": 10,
+        "p95": 6,
+        "utilization": "27151/30018"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "25203/13936",
+        "drain_end_tick": 20013,
+        "max_queue_len": 4,
+        "p95": 6,
+        "utilization": "54302/60039"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "113961/6968",
+        "drain_end_tick": 20022,
+        "max_queue_len": 27,
+        "p95": 52,
+        "utilization": "27151/30033"
+       }
+      },
+      "draws": 51036,
+      "invalid_reasons": [],
+      "run": 0,
+      "valid": true
+     },
+     {
+      "R": "175457/18672",
+      "R_jsq": "10871/9336",
+      "arrivals": 15356,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "6224/4605",
+        "drain_end_tick": 20006,
+        "max_queue_len": 11,
+        "p95": 5,
+        "utilization": "53525/60018"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "21742/13815",
+        "drain_end_tick": 20005,
+        "max_queue_len": 4,
+        "p95": 6,
+        "utilization": "10705/12003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "175457/13815",
+        "drain_end_tick": 20017,
+        "max_queue_len": 29,
+        "p95": 42,
+        "utilization": "53525/60051"
+       }
+      },
+      "draws": 50712,
+      "invalid_reasons": [],
+      "run": 1,
+      "valid": true
+     },
+     {
+      "R": "234125/22579",
+      "R_jsq": "25912/22579",
+      "arrivals": 15418,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "22579/13877",
+        "drain_end_tick": 20003,
+        "max_queue_len": 16,
+        "p95": 6,
+        "utilization": "17953/20003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "25912/13877",
+        "drain_end_tick": 20005,
+        "max_queue_len": 6,
+        "p95": 7,
+        "utilization": "17953/20005"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "234125/13877",
+        "drain_end_tick": 20013,
+        "max_queue_len": 35,
+        "p95": 59,
+        "utilization": "17953/20013"
+       }
+      },
+      "draws": 50836,
+      "invalid_reasons": [],
+      "run": 2,
+      "valid": true
+     },
+     {
+      "R": "78773/6929",
+      "R_jsq": "8148/6929",
+      "arrivals": 15500,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "20787/13946",
+        "drain_end_tick": 20001,
+        "max_queue_len": 11,
+        "p95": 5,
+        "utilization": "54560/60003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "12222/6973",
+        "drain_end_tick": 20001,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "54560/60003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "236319/13946",
+        "drain_end_tick": 20042,
+        "max_queue_len": 27,
+        "p95": 53,
+        "utilization": "2480/2733"
+       }
+      },
+      "draws": 51000,
+      "invalid_reasons": [],
+      "run": 3,
+      "valid": true
+     },
+     {
+      "R": "191981/23107",
+      "R_jsq": "26391/23107",
+      "arrivals": 15500,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "23107/13978",
+        "drain_end_tick": 20003,
+        "max_queue_len": 11,
+        "p95": 6,
+        "utilization": "54353/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "26391/13978",
+        "drain_end_tick": 20003,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "54353/60009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "191981/13978",
+        "drain_end_tick": 20009,
+        "max_queue_len": 25,
+        "p95": 46,
+        "utilization": "54353/60027"
+       }
+      },
+      "draws": 51000,
+      "invalid_reasons": [],
+      "run": 4,
+      "valid": true
+     },
+     {
+      "R": "234662/22703",
+      "R_jsq": "26698/22703",
+      "arrivals": 15462,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "22703/13926",
+        "drain_end_tick": 20002,
+        "max_queue_len": 14,
+        "p95": 6,
+        "utilization": "27107/30003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "13349/6963",
+        "drain_end_tick": 20002,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "27107/30003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "117331/6963",
+        "drain_end_tick": 20008,
+        "max_queue_len": 32,
+        "p95": 68,
+        "utilization": "27107/30012"
+       }
+      },
+      "draws": 50924,
+      "invalid_reasons": [],
+      "run": 5,
+      "valid": true
+     },
+     {
+      "R": "179867/23349",
+      "R_jsq": "27289/23349",
+      "arrivals": 15517,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "7783/4652",
+        "drain_end_tick": 20008,
+        "max_queue_len": 18,
+        "p95": 6,
+        "utilization": "54281/60024"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "27289/13956",
+        "drain_end_tick": 20008,
+        "max_queue_len": 7,
+        "p95": 7,
+        "utilization": "54281/60024"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "179867/13956",
+        "drain_end_tick": 20019,
+        "max_queue_len": 23,
+        "p95": 37,
+        "utilization": "54281/60057"
+       }
+      },
+      "draws": 51034,
+      "invalid_reasons": [],
+      "run": 6,
+      "valid": true
+     },
+     {
+      "R": "205602/19753",
+      "R_jsq": "22829/19753",
+      "arrivals": 15435,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "19753/13885",
+        "drain_end_tick": 20004,
+        "max_queue_len": 10,
+        "p95": 5,
+        "utilization": "54419/60012"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "22829/13885",
+        "drain_end_tick": 20004,
+        "max_queue_len": 4,
+        "p95": 6,
+        "utilization": "54419/60012"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "205602/13885",
+        "drain_end_tick": 20023,
+        "max_queue_len": 36,
+        "p95": 45,
+        "utilization": "54419/60069"
+       }
+      },
+      "draws": 50870,
+      "invalid_reasons": [],
+      "run": 7,
+      "valid": true
+     },
+     {
+      "R": "207123/22382",
+      "R_jsq": "25887/22382",
+      "arrivals": 15487,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "22382/13911",
+        "drain_end_tick": 20006,
+        "max_queue_len": 16,
+        "p95": 6,
+        "utilization": "18101/20006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "8629/4637",
+        "drain_end_tick": 20006,
+        "max_queue_len": 6,
+        "p95": 7,
+        "utilization": "18101/20006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "69041/4637",
+        "drain_end_tick": 20009,
+        "max_queue_len": 29,
+        "p95": 46,
+        "utilization": "18101/20009"
+       }
+      },
+      "draws": 50974,
+      "invalid_reasons": [],
+      "run": 8,
+      "valid": true
+     },
+     {
+      "R": "88657/10376",
+      "R_jsq": "24137/20752",
+      "arrivals": 15490,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "10376/6963",
+        "drain_end_tick": 20004,
+        "max_queue_len": 13,
+        "p95": 5,
+        "utilization": "54073/60012"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "24137/13926",
+        "drain_end_tick": 20004,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "54073/60012"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "88657/6963",
+        "drain_end_tick": 20014,
+        "max_queue_len": 22,
+        "p95": 38,
+        "utilization": "54073/60042"
+       }
+      },
+      "draws": 50980,
+      "invalid_reasons": [],
+      "run": 9,
+      "valid": true
+     },
+     {
+      "R": "179177/23000",
+      "R_jsq": "2649/2300",
+      "arrivals": 15461,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "5750/3483",
+        "drain_end_tick": 20003,
+        "max_queue_len": 11,
+        "p95": 6,
+        "utilization": "54220/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4415/2322",
+        "drain_end_tick": 20005,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "10844/12003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "179177/13932",
+        "drain_end_tick": 20072,
+        "max_queue_len": 21,
+        "p95": 39,
+        "utilization": "13555/15054"
+       }
+      },
+      "draws": 50922,
+      "invalid_reasons": [],
+      "run": 10,
+      "valid": true
+     },
+     {
+      "R": "83836/10529",
+      "R_jsq": "24053/21058",
+      "arrivals": 15415,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "21058/13867",
+        "drain_end_tick": 20003,
+        "max_queue_len": 15,
+        "p95": 6,
+        "utilization": "17970/20003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "24053/13867",
+        "drain_end_tick": 20004,
+        "max_queue_len": 6,
+        "p95": 6,
+        "utilization": "2995/3334"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "167672/13867",
+        "drain_end_tick": 20028,
+        "max_queue_len": 23,
+        "p95": 40,
+        "utilization": "2995/3338"
+       }
+      },
+      "draws": 50830,
+      "invalid_reasons": [],
+      "run": 11,
+      "valid": true
+     },
+     {
+      "R": "183281/18787",
+      "R_jsq": "22173/18787",
+      "arrivals": 15325,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "18787/13811",
+        "drain_end_tick": 20001,
+        "max_queue_len": 13,
+        "p95": 5,
+        "utilization": "53507/60003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "22173/13811",
+        "drain_end_tick": 20003,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "53507/60009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "26183/1973",
+        "drain_end_tick": 20035,
+        "max_queue_len": 24,
+        "p95": 46,
+        "utilization": "53507/60105"
+       }
+      },
+      "draws": 50650,
+      "invalid_reasons": [],
+      "run": 12,
+      "valid": true
+     },
+     {
+      "R": "24032/3011",
+      "R_jsq": "24047/21077",
+      "arrivals": 15393,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "21077/13849",
+        "drain_end_tick": 20005,
+        "max_queue_len": 10,
+        "p95": 6,
+        "utilization": "17934/20005"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "24047/13849",
+        "drain_end_tick": 20005,
+        "max_queue_len": 4,
+        "p95": 6,
+        "utilization": "17934/20005"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "168224/13849",
+        "drain_end_tick": 20011,
+        "max_queue_len": 21,
+        "p95": 38,
+        "utilization": "17934/20011"
+       }
+      },
+      "draws": 50786,
+      "invalid_reasons": [],
+      "run": 13,
+      "valid": true
+     },
+     {
+      "R": "217991/21270",
+      "R_jsq": "12448/10635",
+      "arrivals": 15523,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "21270/13979",
+        "drain_end_tick": 20000,
+        "max_queue_len": 19,
+        "p95": 5,
+        "utilization": "13553/15000"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "24896/13979",
+        "drain_end_tick": 20000,
+        "max_queue_len": 7,
+        "p95": 6,
+        "utilization": "13553/15000"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "217991/13979",
+        "drain_end_tick": 20037,
+        "max_queue_len": 30,
+        "p95": 51,
+        "utilization": "54212/60111"
+       }
+      },
+      "draws": 51046,
+      "invalid_reasons": [],
+      "run": 14,
+      "valid": true
+     },
+     {
+      "R": "195017/24258",
+      "R_jsq": "9187/8086",
+      "arrivals": 15440,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "12129/6947",
+        "drain_end_tick": 20006,
+        "max_queue_len": 16,
+        "p95": 6,
+        "utilization": "18015/20006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "27561/13894",
+        "drain_end_tick": 20006,
+        "max_queue_len": 6,
+        "p95": 7,
+        "utilization": "18015/20006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "195017/13894",
+        "drain_end_tick": 20019,
+        "max_queue_len": 25,
+        "p95": 44,
+        "utilization": "6005/6673"
+       }
+      },
+      "draws": 50880,
+      "invalid_reasons": [],
+      "run": 15,
+      "valid": true
+     },
+     {
+      "R": "9139/998",
+      "R_jsq": "22997/19960",
+      "arrivals": 15381,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "2495/1728",
+        "drain_end_tick": 20008,
+        "max_queue_len": 17,
+        "p95": 6,
+        "utilization": "17899/20008"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "22997/13824",
+        "drain_end_tick": 20010,
+        "max_queue_len": 7,
+        "p95": 6,
+        "utilization": "17899/20010"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "45695/3456",
+        "drain_end_tick": 20017,
+        "max_queue_len": 28,
+        "p95": 46,
+        "utilization": "17899/20017"
+       }
+      },
+      "draws": 50762,
+      "invalid_reasons": [],
+      "run": 16,
+      "valid": true
+     },
+     {
+      "R": "180311/18718",
+      "R_jsq": "11202/9359",
+      "arrivals": 15363,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "9359/6900",
+        "drain_end_tick": 20004,
+        "max_queue_len": 12,
+        "p95": 5,
+        "utilization": "13453/15003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1867/1150",
+        "drain_end_tick": 20007,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "53812/60021"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "180311/13800",
+        "drain_end_tick": 20015,
+        "max_queue_len": 25,
+        "p95": 40,
+        "utilization": "53812/60045"
+       }
+      },
+      "draws": 50726,
+      "invalid_reasons": [],
+      "run": 17,
+      "valid": true
+     },
+     {
+      "R": "182578/19043",
+      "R_jsq": "22691/19043",
+      "arrivals": 15436,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "19043/13890",
+        "drain_end_tick": 20007,
+        "max_queue_len": 10,
+        "p95": 5,
+        "utilization": "2836/3159"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "22691/13890",
+        "drain_end_tick": 20009,
+        "max_queue_len": 4,
+        "p95": 6,
+        "utilization": "53884/60027"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "91289/6945",
+        "drain_end_tick": 20073,
+        "max_queue_len": 27,
+        "p95": 41,
+        "utilization": "53884/60219"
+       }
+      },
+      "draws": 50872,
+      "invalid_reasons": [],
+      "run": 18,
+      "valid": true
+     },
+     {
+      "R": "43339/4806",
+      "R_jsq": "27521/24030",
+      "arrivals": 15458,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "801/463",
+        "drain_end_tick": 20006,
+        "max_queue_len": 18,
+        "p95": 6,
+        "utilization": "54179/60018"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "27521/13890",
+        "drain_end_tick": 20008,
+        "max_queue_len": 7,
+        "p95": 7,
+        "utilization": "54179/60024"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "43339/2778",
+        "drain_end_tick": 20028,
+        "max_queue_len": 36,
+        "p95": 48,
+        "utilization": "54179/60084"
+       }
+      },
+      "draws": 50916,
+      "invalid_reasons": [],
+      "run": 19,
+      "valid": true
+     },
+     {
+      "R": "177212/19825",
+      "R_jsq": "23263/19825",
+      "arrivals": 15396,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "19825/13846",
+        "drain_end_tick": 20002,
+        "max_queue_len": 13,
+        "p95": 6,
+        "utilization": "53923/60006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "541/322",
+        "drain_end_tick": 20002,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "53923/60006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "12658/989",
+        "drain_end_tick": 20019,
+        "max_queue_len": 31,
+        "p95": 43,
+        "utilization": "53923/60057"
+       }
+      },
+      "draws": 50792,
+      "invalid_reasons": [],
+      "run": 20,
+      "valid": true
+     },
+     {
+      "R": "114365/11949",
+      "R_jsq": "27607/23898",
+      "arrivals": 15548,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "23898/14003",
+        "drain_end_tick": 20004,
+        "max_queue_len": 12,
+        "p95": 6,
+        "utilization": "4534/5001"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1453/737",
+        "drain_end_tick": 20004,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "4534/5001"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "228730/14003",
+        "drain_end_tick": 20012,
+        "max_queue_len": 34,
+        "p95": 52,
+        "utilization": "4534/5003"
+       }
+      },
+      "draws": 51096,
+      "invalid_reasons": [],
+      "run": 21,
+      "valid": true
+     },
+     {
+      "R": "93878/10247",
+      "R_jsq": "23699/20494",
+      "arrivals": 15418,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "10247/6929",
+        "drain_end_tick": 20001,
+        "max_queue_len": 15,
+        "p95": 6,
+        "utilization": "53741/60003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1823/1066",
+        "drain_end_tick": 20001,
+        "max_queue_len": 6,
+        "p95": 6,
+        "utilization": "53741/60003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "93878/6929",
+        "drain_end_tick": 20005,
+        "max_queue_len": 23,
+        "p95": 45,
+        "utilization": "53741/60015"
+       }
+      },
+      "draws": 50836,
+      "invalid_reasons": [],
+      "run": 22,
+      "valid": true
+     },
+     {
+      "R": "38571/5173",
+      "R_jsq": "29889/25865",
+      "arrivals": 15508,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "5173/2795",
+        "drain_end_tick": 20004,
+        "max_queue_len": 20,
+        "p95": 7,
+        "utilization": "27149/30006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "29889/13975",
+        "drain_end_tick": 20007,
+        "max_queue_len": 8,
+        "p95": 8,
+        "utilization": "54298/60021"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "69/5",
+        "drain_end_tick": 20014,
+        "max_queue_len": 36,
+        "p95": 44,
+        "utilization": "27149/30021"
+       }
+      },
+      "draws": 51016,
+      "invalid_reasons": [],
+      "run": 23,
+      "valid": true
+     },
+     {
+      "R": "162621/17111",
+      "R_jsq": "20106/17111",
+      "arrivals": 15402,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "17111/13878",
+        "drain_end_tick": 20002,
+        "max_queue_len": 10,
+        "p95": 5,
+        "utilization": "8923/10001"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1117/771",
+        "drain_end_tick": 20002,
+        "max_queue_len": 4,
+        "p95": 6,
+        "utilization": "8923/10001"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "6023/514",
+        "drain_end_tick": 20010,
+        "max_queue_len": 22,
+        "p95": 36,
+        "utilization": "8923/10005"
+       }
+      },
+      "draws": 50804,
+      "invalid_reasons": [],
+      "run": 24,
+      "valid": true
+     },
+     {
+      "R": "233327/26538",
+      "R_jsq": "29515/26538",
+      "arrivals": 15528,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "13269/6983",
+        "drain_end_tick": 20003,
+        "max_queue_len": 20,
+        "p95": 7,
+        "utilization": "54356/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "29515/13966",
+        "drain_end_tick": 20004,
+        "max_queue_len": 7,
+        "p95": 8,
+        "utilization": "13589/15003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "233327/13966",
+        "drain_end_tick": 20008,
+        "max_queue_len": 34,
+        "p95": 65,
+        "utilization": "13589/15006"
+       }
+      },
+      "draws": 51056,
+      "invalid_reasons": [],
+      "run": 25,
+      "valid": true
+     },
+     {
+      "R": "200413/23143",
+      "R_jsq": "26682/23143",
+      "arrivals": 15502,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "23143/13964",
+        "drain_end_tick": 20005,
+        "max_queue_len": 17,
+        "p95": 7,
+        "utilization": "54188/60015"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "13341/6982",
+        "drain_end_tick": 20005,
+        "max_queue_len": 6,
+        "p95": 7,
+        "utilization": "54188/60015"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "200413/13964",
+        "drain_end_tick": 20088,
+        "max_queue_len": 28,
+        "p95": 48,
+        "utilization": "437/486"
+       }
+      },
+      "draws": 51004,
+      "invalid_reasons": [],
+      "run": 26,
+      "valid": true
+     },
+     {
+      "R": "208536/20893",
+      "R_jsq": "24180/20893",
+      "arrivals": 15427,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "20893/13862",
+        "drain_end_tick": 20006,
+        "max_queue_len": 11,
+        "p95": 5,
+        "utilization": "27029/30009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "12090/6931",
+        "drain_end_tick": 20006,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "27029/30009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "104268/6931",
+        "drain_end_tick": 20021,
+        "max_queue_len": 28,
+        "p95": 51,
+        "utilization": "54058/60063"
+       }
+      },
+      "draws": 50854,
+      "invalid_reasons": [],
+      "run": 27,
+      "valid": true
+     },
+     {
+      "R": "201028/21303",
+      "R_jsq": "24368/21303",
+      "arrivals": 15368,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "7101/4606",
+        "drain_end_tick": 20004,
+        "max_queue_len": 15,
+        "p95": 6,
+        "utilization": "53927/60012"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "12184/6909",
+        "drain_end_tick": 20005,
+        "max_queue_len": 6,
+        "p95": 6,
+        "utilization": "53927/60015"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "100514/6909",
+        "drain_end_tick": 20022,
+        "max_queue_len": 30,
+        "p95": 43,
+        "utilization": "53927/60066"
+       }
+      },
+      "draws": 50736,
+      "invalid_reasons": [],
+      "run": 28,
+      "valid": true
+     },
+     {
+      "R": "151801/19948",
+      "R_jsq": "23433/19948",
+      "arrivals": 15359,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "4987/3453",
+        "drain_end_tick": 20005,
+        "max_queue_len": 16,
+        "p95": 5,
+        "utilization": "10733/12003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "7811/4604",
+        "drain_end_tick": 20006,
+        "max_queue_len": 6,
+        "p95": 6,
+        "utilization": "53665/60018"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "151801/13812",
+        "drain_end_tick": 20017,
+        "max_queue_len": 20,
+        "p95": 33,
+        "utilization": "53665/60051"
+       }
+      },
+      "draws": 50718,
+      "invalid_reasons": [],
+      "run": 29,
+      "valid": true
+     },
+     {
+      "R": "202892/21613",
+      "R_jsq": "24744/21613",
+      "arrivals": 15348,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "21613/13811",
+        "drain_end_tick": 20003,
+        "max_queue_len": 14,
+        "p95": 6,
+        "utilization": "53845/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "24744/13811",
+        "drain_end_tick": 20005,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "10769/12003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "202892/13811",
+        "drain_end_tick": 20037,
+        "max_queue_len": 32,
+        "p95": 50,
+        "utilization": "53845/60111"
+       }
+      },
+      "draws": 50696,
+      "invalid_reasons": [],
+      "run": 30,
+      "valid": true
+     },
+     {
+      "R": "192034/18531",
+      "R_jsq": "21746/18531",
+      "arrivals": 15385,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "18531/13819",
+        "drain_end_tick": 20003,
+        "max_queue_len": 10,
+        "p95": 5,
+        "utilization": "53561/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "21746/13819",
+        "drain_end_tick": 20004,
+        "max_queue_len": 4,
+        "p95": 6,
+        "utilization": "53561/60012"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "192034/13819",
+        "drain_end_tick": 20040,
+        "max_queue_len": 24,
+        "p95": 45,
+        "utilization": "53561/60120"
+       }
+      },
+      "draws": 50770,
+      "invalid_reasons": [],
+      "run": 31,
+      "valid": true
+     }
+    ]
+   },
+   "seed": 20261313
+  },
+  "reporting": {
+   "cells": {
+    "21": [
+     {
+      "R": "34459/2982",
+      "R_jsq": "4037/2982",
+      "arrivals": 11822,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "1491/5308",
+        "drain_end_tick": 20002,
+        "max_queue_len": 6,
+        "p95": 2,
+        "utilization": "13813/20002"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4037/10616",
+        "drain_end_tick": 20002,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "13813/20002"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "34459/10616",
+        "drain_end_tick": 20004,
+        "max_queue_len": 10,
+        "p95": 12,
+        "utilization": "13813/20004"
+       }
+      },
+      "draws": 43644,
+      "invalid_reasons": [],
+      "run": 0,
+      "valid": true
+     },
+     {
+      "R": "19281/1723",
+      "R_jsq": "4547/3446",
+      "arrivals": 12071,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "1723/5420",
+        "drain_end_tick": 20002,
+        "max_queue_len": 7,
+        "p95": 2,
+        "utilization": "7055/10001"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4547/10840",
+        "drain_end_tick": 20002,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "7055/10001"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "19281/5420",
+        "drain_end_tick": 20016,
+        "max_queue_len": 9,
+        "p95": 13,
+        "utilization": "7055/10008"
+       }
+      },
+      "draws": 44142,
+      "invalid_reasons": [],
+      "run": 1,
+      "valid": true
+     },
+     {
+      "R": "37293/3146",
+      "R_jsq": "2103/1573",
+      "arrivals": 12006,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3146/10815",
+        "drain_end_tick": 20003,
+        "max_queue_len": 5,
+        "p95": 2,
+        "utilization": "14061/20003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1402/3605",
+        "drain_end_tick": 20003,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "14061/20003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "12431/3605",
+        "drain_end_tick": 20014,
+        "max_queue_len": 10,
+        "p95": 13,
+        "utilization": "14061/20014"
+       }
+      },
+      "draws": 44012,
+      "invalid_reasons": [],
+      "run": 2,
+      "valid": true
+     },
+     {
+      "R": "39283/3605",
+      "R_jsq": "4658/3605",
+      "arrivals": 11998,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "515/1544",
+        "drain_end_tick": 20000,
+        "max_queue_len": 6,
+        "p95": 2,
+        "utilization": "2099/3000"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "2329/5404",
+        "drain_end_tick": 20000,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "2099/3000"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "39283/10808",
+        "drain_end_tick": 20000,
+        "max_queue_len": 9,
+        "p95": 13,
+        "utilization": "2099/3000"
+       }
+      },
+      "draws": 43996,
+      "invalid_reasons": [],
+      "run": 3,
+      "valid": true
+     },
+     {
+      "R": "10139/871",
+      "R_jsq": "2291/1742",
+      "arrivals": 11993,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "1742/5407",
+        "drain_end_tick": 20005,
+        "max_queue_len": 7,
+        "p95": 2,
+        "utilization": "41948/60015"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "2291/5407",
+        "drain_end_tick": 20005,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "41948/60015"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "20278/5407",
+        "drain_end_tick": 20006,
+        "max_queue_len": 10,
+        "p95": 14,
+        "utilization": "20974/30009"
+       }
+      },
+      "draws": 43986,
+      "invalid_reasons": [],
+      "run": 4,
+      "valid": true
+     },
+     {
+      "R": "19598/1547",
+      "R_jsq": "2075/1547",
+      "arrivals": 11845,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3094/10637",
+        "drain_end_tick": 20005,
+        "max_queue_len": 5,
+        "p95": 2,
+        "utilization": "41393/60015"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4150/10637",
+        "drain_end_tick": 20005,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "41393/60015"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "39196/10637",
+        "drain_end_tick": 20010,
+        "max_queue_len": 12,
+        "p95": 14,
+        "utilization": "41393/60030"
+       }
+      },
+      "draws": 43690,
+      "invalid_reasons": [],
+      "run": 5,
+      "valid": true
+     },
+     {
+      "R": "39893/3483",
+      "R_jsq": "4612/3483",
+      "arrivals": 11987,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3483/10780",
+        "drain_end_tick": 20002,
+        "max_queue_len": 5,
+        "p95": 2,
+        "utilization": "21041/30003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1153/2695",
+        "drain_end_tick": 20002,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "21041/30003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "5699/1540",
+        "drain_end_tick": 20002,
+        "max_queue_len": 10,
+        "p95": 14,
+        "utilization": "21041/30003"
+       }
+      },
+      "draws": 43974,
+      "invalid_reasons": [],
+      "run": 6,
+      "valid": true
+     },
+     {
+      "R": "40465/3098",
+      "R_jsq": "4179/3098",
+      "arrivals": 12158,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3098/10945",
+        "drain_end_tick": 20000,
+        "max_queue_len": 7,
+        "p95": 2,
+        "utilization": "20989/30000"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "21/55",
+        "drain_end_tick": 20000,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "20989/30000"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "8093/2189",
+        "drain_end_tick": 20004,
+        "max_queue_len": 12,
+        "p95": 14,
+        "utilization": "20989/30006"
+       }
+      },
+      "draws": 44316,
+      "invalid_reasons": [],
+      "run": 7,
+      "valid": true
+     },
+     {
+      "R": "43095/3389",
+      "R_jsq": "4559/3389",
+      "arrivals": 12081,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3389/10842",
+        "drain_end_tick": 20006,
+        "max_queue_len": 6,
+        "p95": 2,
+        "utilization": "2015/2858"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4559/10842",
+        "drain_end_tick": 20006,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "2015/2858"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1105/278",
+        "drain_end_tick": 20010,
+        "max_queue_len": 15,
+        "p95": 14,
+        "utilization": "2821/4002"
+       }
+      },
+      "draws": 44162,
+      "invalid_reasons": [],
+      "run": 8,
+      "valid": true
+     },
+     {
+      "R": "37096/3349",
+      "R_jsq": "4294/3349",
+      "arrivals": 12022,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3349/10820",
+        "drain_end_tick": 20002,
+        "max_queue_len": 6,
+        "p95": 2,
+        "utilization": "41891/60006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "2147/5410",
+        "drain_end_tick": 20002,
+        "max_queue_len": 2,
+        "p95": 3,
+        "utilization": "41891/60006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "9274/2705",
+        "drain_end_tick": 20002,
+        "max_queue_len": 9,
+        "p95": 12,
+        "utilization": "41891/60006"
+       }
+      },
+      "draws": 44044,
+      "invalid_reasons": [],
+      "run": 9,
+      "valid": true
+     },
+     {
+      "R": "5948/495",
+      "R_jsq": "787/594",
+      "arrivals": 12063,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "2970/10843",
+        "drain_end_tick": 20002,
+        "max_queue_len": 5,
+        "p95": 2,
+        "utilization": "41725/60006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "3935/10843",
+        "drain_end_tick": 20002,
+        "max_queue_len": 2,
+        "p95": 3,
+        "utilization": "41725/60006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "35688/10843",
+        "drain_end_tick": 20010,
+        "max_queue_len": 11,
+        "p95": 13,
+        "utilization": "8345/12006"
+       }
+      },
+      "draws": 44126,
+      "invalid_reasons": [],
+      "run": 10,
+      "valid": true
+     },
+     {
+      "R": "9895/824",
+      "R_jsq": "2167/1648",
+      "arrivals": 11979,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3296/10781",
+        "drain_end_tick": 20002,
+        "max_queue_len": 7,
+        "p95": 2,
+        "utilization": "41809/60006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4334/10781",
+        "drain_end_tick": 20002,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "41809/60006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "39580/10781",
+        "drain_end_tick": 20005,
+        "max_queue_len": 12,
+        "p95": 14,
+        "utilization": "41809/60015"
+       }
+      },
+      "draws": 43958,
+      "invalid_reasons": [],
+      "run": 11,
+      "valid": true
+     },
+     {
+      "R": "38700/3337",
+      "R_jsq": "4486/3337",
+      "arrivals": 11956,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3337/10756",
+        "drain_end_tick": 20004,
+        "max_queue_len": 6,
+        "p95": 2,
+        "utilization": "13999/20004"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "2243/5378",
+        "drain_end_tick": 20004,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "13999/20004"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "9675/2689",
+        "drain_end_tick": 20004,
+        "max_queue_len": 13,
+        "p95": 14,
+        "utilization": "13999/20004"
+       }
+      },
+      "draws": 43912,
+      "invalid_reasons": [],
+      "run": 12,
+      "valid": true
+     },
+     {
+      "R": "19397/1808",
+      "R_jsq": "579/452",
+      "arrivals": 11836,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "1808/5319",
+        "drain_end_tick": 20000,
+        "max_queue_len": 6,
+        "p95": 2,
+        "utilization": "41597/60000"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "772/1773",
+        "drain_end_tick": 20000,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "41597/60000"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "19397/5319",
+        "drain_end_tick": 20006,
+        "max_queue_len": 13,
+        "p95": 14,
+        "utilization": "41597/60018"
+       }
+      },
+      "draws": 43672,
+      "invalid_reasons": [],
+      "run": 13,
+      "valid": true
+     },
+     {
+      "R": "36799/3782",
+      "R_jsq": "4923/3782",
+      "arrivals": 11966,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3782/10795",
+        "drain_end_tick": 20003,
+        "max_queue_len": 7,
+        "p95": 2,
+        "utilization": "41923/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4923/10795",
+        "drain_end_tick": 20003,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "41923/60009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "36799/10795",
+        "drain_end_tick": 20005,
+        "max_queue_len": 9,
+        "p95": 12,
+        "utilization": "41923/60015"
+       }
+      },
+      "draws": 43932,
+      "invalid_reasons": [],
+      "run": 14,
+      "valid": true
+     },
+     {
+      "R": "46147/3997",
+      "R_jsq": "5175/3997",
+      "arrivals": 12170,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3997/10968",
+        "drain_end_tick": 20002,
+        "max_queue_len": 6,
+        "p95": 2,
+        "utilization": "21307/30003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1725/3656",
+        "drain_end_tick": 20002,
+        "max_queue_len": 3,
+        "p95": 3,
+        "utilization": "21307/30003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "46147/10968",
+        "drain_end_tick": 20012,
+        "max_queue_len": 14,
+        "p95": 16,
+        "utilization": "21307/30018"
+       }
+      },
+      "draws": 44340,
+      "invalid_reasons": [],
+      "run": 15,
+      "valid": true
+     }
+    ],
+    "24": [
+     {
+      "R": "82089/8455",
+      "R_jsq": "10672/8455",
+      "arrivals": 13718,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "8455/12383",
+        "drain_end_tick": 20001,
+        "max_queue_len": 9,
+        "p95": 3,
+        "utilization": "48167/60003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "368/427",
+        "drain_end_tick": 20001,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "48167/60003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "11727/1769",
+        "drain_end_tick": 20008,
+        "max_queue_len": 18,
+        "p95": 24,
+        "utilization": "48167/60024"
+       }
+      },
+      "draws": 47436,
+      "invalid_reasons": [],
+      "run": 0,
+      "valid": true
+     },
+     {
+      "R": "74339/7807",
+      "R_jsq": "9637/7807",
+      "arrivals": 13724,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "7807/12346",
+        "drain_end_tick": 20001,
+        "max_queue_len": 9,
+        "p95": 3,
+        "utilization": "48178/60003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "9637/12346",
+        "drain_end_tick": 20001,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "48178/60003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "74339/12346",
+        "drain_end_tick": 20010,
+        "max_queue_len": 14,
+        "p95": 21,
+        "utilization": "24089/30015"
+       }
+      },
+      "draws": 47448,
+      "invalid_reasons": [],
+      "run": 1,
+      "valid": true
+     },
+     {
+      "R": "74817/7274",
+      "R_jsq": "4625/3637",
+      "arrivals": 13677,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "7274/12295",
+        "drain_end_tick": 20000,
+        "max_queue_len": 8,
+        "p95": 3,
+        "utilization": "1909/2400"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1850/2459",
+        "drain_end_tick": 20000,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "1909/2400"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "74817/12295",
+        "drain_end_tick": 20046,
+        "max_queue_len": 16,
+        "p95": 21,
+        "utilization": "47725/60138"
+       }
+      },
+      "draws": 47354,
+      "invalid_reasons": [],
+      "run": 2,
+      "valid": true
+     },
+     {
+      "R": "35122/4277",
+      "R_jsq": "10601/8554",
+      "arrivals": 13777,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "8554/12407",
+        "drain_end_tick": 20000,
+        "max_queue_len": 9,
+        "p95": 3,
+        "utilization": "48187/60000"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "10601/12407",
+        "drain_end_tick": 20000,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "48187/60000"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "70244/12407",
+        "drain_end_tick": 20012,
+        "max_queue_len": 15,
+        "p95": 19,
+        "utilization": "48187/60036"
+       }
+      },
+      "draws": 47554,
+      "invalid_reasons": [],
+      "run": 3,
+      "valid": true
+     },
+     {
+      "R": "14603/1286",
+      "R_jsq": "4043/3215",
+      "arrivals": 13699,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3215/6162",
+        "drain_end_tick": 20005,
+        "max_queue_len": 8,
+        "p95": 3,
+        "utilization": "9553/12003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "311/474",
+        "drain_end_tick": 20005,
+        "max_queue_len": 3,
+        "p95": 4,
+        "utilization": "9553/12003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "73015/12324",
+        "drain_end_tick": 20005,
+        "max_queue_len": 19,
+        "p95": 20,
+        "utilization": "9553/12003"
+       }
+      },
+      "draws": 47398,
+      "invalid_reasons": [],
+      "run": 4,
+      "valid": true
+     },
+     {
+      "R": "70341/7061",
+      "R_jsq": "8952/7061",
+      "arrivals": 13708,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "7061/12323",
+        "drain_end_tick": 20005,
+        "max_queue_len": 7,
+        "p95": 3,
+        "utilization": "47816/60015"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "8952/12323",
+        "drain_end_tick": 20006,
+        "max_queue_len": 3,
+        "p95": 4,
+        "utilization": "23908/30009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "70341/12323",
+        "drain_end_tick": 20018,
+        "max_queue_len": 14,
+        "p95": 20,
+        "utilization": "23908/30027"
+       }
+      },
+      "draws": 47416,
+      "invalid_reasons": [],
+      "run": 5,
+      "valid": true
+     },
+     {
+      "R": "78287/7660",
+      "R_jsq": "4843/3830",
+      "arrivals": 13703,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "383/615",
+        "drain_end_tick": 20004,
+        "max_queue_len": 7,
+        "p95": 3,
+        "utilization": "4004/5001"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4843/6150",
+        "drain_end_tick": 20004,
+        "max_queue_len": 3,
+        "p95": 4,
+        "utilization": "4004/5001"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "78287/12300",
+        "drain_end_tick": 20004,
+        "max_queue_len": 20,
+        "p95": 22,
+        "utilization": "4004/5001"
+       }
+      },
+      "draws": 47406,
+      "invalid_reasons": [],
+      "run": 6,
+      "valid": true
+     },
+     {
+      "R": "24633/2624",
+      "R_jsq": "1601/1312",
+      "arrivals": 13643,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "2624/4097",
+        "drain_end_tick": 20002,
+        "max_queue_len": 10,
+        "p95": 3,
+        "utilization": "23812/30003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "3202/4097",
+        "drain_end_tick": 20002,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "23812/30003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1449/241",
+        "drain_end_tick": 20005,
+        "max_queue_len": 18,
+        "p95": 20,
+        "utilization": "47624/60015"
+       }
+      },
+      "draws": 47286,
+      "invalid_reasons": [],
+      "run": 7,
+      "valid": true
+     },
+     {
+      "R": "36258/3941",
+      "R_jsq": "9781/7882",
+      "arrivals": 13737,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "3941/6189",
+        "drain_end_tick": 20002,
+        "max_queue_len": 8,
+        "p95": 3,
+        "utilization": "24001/30003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "9781/12378",
+        "drain_end_tick": 20004,
+        "max_queue_len": 3,
+        "p95": 4,
+        "utilization": "24001/30006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "12086/2063",
+        "drain_end_tick": 20011,
+        "max_queue_len": 13,
+        "p95": 20,
+        "utilization": "48002/60033"
+       }
+      },
+      "draws": 47474,
+      "invalid_reasons": [],
+      "run": 8,
+      "valid": true
+     },
+     {
+      "R": "40762/4335",
+      "R_jsq": "10717/8670",
+      "arrivals": 13818,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "255/367",
+        "drain_end_tick": 20003,
+        "max_queue_len": 9,
+        "p95": 3,
+        "utilization": "16099/20003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "10717/12478",
+        "drain_end_tick": 20005,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "16099/20005"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "40762/6239",
+        "drain_end_tick": 20009,
+        "max_queue_len": 17,
+        "p95": 23,
+        "utilization": "947/1177"
+       }
+      },
+      "draws": 47636,
+      "invalid_reasons": [],
+      "run": 9,
+      "valid": true
+     },
+     {
+      "R": "73163/7459",
+      "R_jsq": "9262/7459",
+      "arrivals": 13648,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "7459/12289",
+        "drain_end_tick": 20004,
+        "max_queue_len": 8,
+        "p95": 3,
+        "utilization": "47525/60012"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "9262/12289",
+        "drain_end_tick": 20004,
+        "max_queue_len": 3,
+        "p95": 4,
+        "utilization": "47525/60012"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "73163/12289",
+        "drain_end_tick": 20020,
+        "max_queue_len": 14,
+        "p95": 21,
+        "utilization": "9505/12012"
+       }
+      },
+      "draws": 47296,
+      "invalid_reasons": [],
+      "run": 10,
+      "valid": true
+     },
+     {
+      "R": "681/76",
+      "R_jsq": "10245/8284",
+      "arrivals": 13701,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "8284/12327",
+        "drain_end_tick": 20003,
+        "max_queue_len": 7,
+        "p95": 3,
+        "utilization": "48005/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "3415/4109",
+        "drain_end_tick": 20003,
+        "max_queue_len": 3,
+        "p95": 4,
+        "utilization": "48005/60009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "24743/4109",
+        "drain_end_tick": 20003,
+        "max_queue_len": 12,
+        "p95": 20,
+        "utilization": "48005/60009"
+       }
+      },
+      "draws": 47402,
+      "invalid_reasons": [],
+      "run": 11,
+      "valid": true
+     },
+     {
+      "R": "76877/7928",
+      "R_jsq": "10011/7928",
+      "arrivals": 13806,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "7928/12411",
+        "drain_end_tick": 20003,
+        "max_queue_len": 7,
+        "p95": 3,
+        "utilization": "48470/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "3337/4137",
+        "drain_end_tick": 20003,
+        "max_queue_len": 3,
+        "p95": 4,
+        "utilization": "48470/60009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "76877/12411",
+        "drain_end_tick": 20033,
+        "max_queue_len": 17,
+        "p95": 21,
+        "utilization": "48470/60099"
+       }
+      },
+      "draws": 47612,
+      "invalid_reasons": [],
+      "run": 12,
+      "valid": true
+     },
+     {
+      "R": "79191/7741",
+      "R_jsq": "9844/7741",
+      "arrivals": 13710,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "7741/12326",
+        "drain_end_tick": 20004,
+        "max_queue_len": 8,
+        "p95": 3,
+        "utilization": "4016/5001"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "4922/6163",
+        "drain_end_tick": 20004,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "4016/5001"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "79191/12326",
+        "drain_end_tick": 20017,
+        "max_queue_len": 14,
+        "p95": 22,
+        "utilization": "16064/20017"
+       }
+      },
+      "draws": 47420,
+      "invalid_reasons": [],
+      "run": 13,
+      "valid": true
+     },
+     {
+      "R": "77107/7945",
+      "R_jsq": "9823/7945",
+      "arrivals": 13667,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "227/351",
+        "drain_end_tick": 20004,
+        "max_queue_len": 9,
+        "p95": 3,
+        "utilization": "47909/60012"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "9823/12285",
+        "drain_end_tick": 20004,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "47909/60012"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "77107/12285",
+        "drain_end_tick": 20018,
+        "max_queue_len": 17,
+        "p95": 22,
+        "utilization": "47909/60054"
+       }
+      },
+      "draws": 47334,
+      "invalid_reasons": [],
+      "run": 14,
+      "valid": true
+     },
+     {
+      "R": "26132/2777",
+      "R_jsq": "10147/8331",
+      "arrivals": 13711,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "8331/12313",
+        "drain_end_tick": 20001,
+        "max_queue_len": 9,
+        "p95": 3,
+        "utilization": "47864/60003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "10147/12313",
+        "drain_end_tick": 20005,
+        "max_queue_len": 4,
+        "p95": 4,
+        "utilization": "47864/60015"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "78396/12313",
+        "drain_end_tick": 20024,
+        "max_queue_len": 19,
+        "p95": 23,
+        "utilization": "5983/7509"
+       }
+      },
+      "draws": 47422,
+      "invalid_reasons": [],
+      "run": 15,
+      "valid": true
+     }
+    ],
+    "30": [
+     {
+      "R": "3350878/1496983",
+      "R_jsq": "1507756/1496983",
+      "arrivals": 17199,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "1496983/15501",
+        "drain_end_tick": 20127,
+        "max_queue_len": 131,
+        "p95": 139,
+        "utilization": "20098/20127"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1507756/15501",
+        "drain_end_tick": 20131,
+        "max_queue_len": 45,
+        "p95": 142,
+        "utilization": "20098/20131"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "3350878/15501",
+        "drain_end_tick": 20538,
+        "max_queue_len": 162,
+        "p95": 472,
+        "utilization": "10049/10269"
+       }
+      },
+      "draws": 54398,
+      "invalid_reasons": [],
+      "run": 0,
+      "valid": true
+     },
+     {
+      "R": "1656634/402665",
+      "R_jsq": "14016/13885",
+      "arrivals": 17138,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "80533/3085",
+        "drain_end_tick": 20021,
+        "max_queue_len": 52,
+        "p95": 49,
+        "utilization": "59743/60063"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "406464/15425",
+        "drain_end_tick": 20020,
+        "max_queue_len": 18,
+        "p95": 51,
+        "utilization": "59743/60060"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1656634/15425",
+        "drain_end_tick": 20164,
+        "max_queue_len": 72,
+        "p95": 203,
+        "utilization": "59743/60492"
+       }
+      },
+      "draws": 54276,
+      "invalid_reasons": [],
+      "run": 1,
+      "valid": true
+     },
+     {
+      "R": "2009402/566799",
+      "R_jsq": "572246/566799",
+      "arrivals": 17055,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "566799/15371",
+        "drain_end_tick": 20031,
+        "max_queue_len": 80,
+        "p95": 79,
+        "utilization": "6646/6677"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "572246/15371",
+        "drain_end_tick": 20034,
+        "max_queue_len": 28,
+        "p95": 79,
+        "utilization": "3323/3339"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "105758/809",
+        "drain_end_tick": 20422,
+        "max_queue_len": 130,
+        "p95": 357,
+        "utilization": "9969/10211"
+       }
+      },
+      "draws": 54110,
+      "invalid_reasons": [],
+      "run": 2,
+      "valid": true
+     },
+     {
+      "R": "739168/277265",
+      "R_jsq": "834458/831795",
+      "arrivals": 17150,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "831795/15448",
+        "drain_end_tick": 20034,
+        "max_queue_len": 110,
+        "p95": 105,
+        "utilization": "59903/60102"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "417229/7724",
+        "drain_end_tick": 20038,
+        "max_queue_len": 37,
+        "p95": 107,
+        "utilization": "59903/60114"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "277188/1931",
+        "drain_end_tick": 20274,
+        "max_queue_len": 120,
+        "p95": 315,
+        "utilization": "59903/60822"
+       }
+      },
+      "draws": 54300,
+      "invalid_reasons": [],
+      "run": 3,
+      "valid": true
+     },
+     {
+      "R": "1317481/319531",
+      "R_jsq": "326874/319531",
+      "arrivals": 17089,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "319531/15324",
+        "drain_end_tick": 20011,
+        "max_queue_len": 58,
+        "p95": 53,
+        "utilization": "19888/20011"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "54479/2554",
+        "drain_end_tick": 20013,
+        "max_queue_len": 20,
+        "p95": 54,
+        "utilization": "19888/20013"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1317481/15324",
+        "drain_end_tick": 20218,
+        "max_queue_len": 98,
+        "p95": 228,
+        "utilization": "904/919"
+       }
+      },
+      "draws": 54178,
+      "invalid_reasons": [],
+      "run": 4,
+      "valid": true
+     },
+     {
+      "R": "1723816/421051",
+      "R_jsq": "423765/421051",
+      "arrivals": 17073,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "421051/15376",
+        "drain_end_tick": 20034,
+        "max_queue_len": 49,
+        "p95": 45,
+        "utilization": "19987/20034"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "423765/15376",
+        "drain_end_tick": 20037,
+        "max_queue_len": 17,
+        "p95": 48,
+        "utilization": "19987/20037"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "215477/1922",
+        "drain_end_tick": 20247,
+        "max_queue_len": 100,
+        "p95": 267,
+        "utilization": "19987/20247"
+       }
+      },
+      "draws": 54146,
+      "invalid_reasons": [],
+      "run": 5,
+      "valid": true
+     },
+     {
+      "R": "286338/37931",
+      "R_jsq": "76857/75862",
+      "arrivals": 17156,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "227586/15443",
+        "drain_end_tick": 20056,
+        "max_queue_len": 45,
+        "p95": 37,
+        "utilization": "19933/20056"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "230571/15443",
+        "drain_end_tick": 20060,
+        "max_queue_len": 16,
+        "p95": 36,
+        "utilization": "19933/20060"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1718028/15443",
+        "drain_end_tick": 20317,
+        "max_queue_len": 95,
+        "p95": 273,
+        "utilization": "19933/20317"
+       }
+      },
+      "draws": 54312,
+      "invalid_reasons": [],
+      "run": 6,
+      "valid": true
+     },
+     {
+      "R": "2178552/789137",
+      "R_jsq": "794632/789137",
+      "arrivals": 17149,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "789137/15432",
+        "drain_end_tick": 20070,
+        "max_queue_len": 91,
+        "p95": 95,
+        "utilization": "30071/30105"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "99329/1929",
+        "drain_end_tick": 20070,
+        "max_queue_len": 31,
+        "p95": 97,
+        "utilization": "30071/30105"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "90773/643",
+        "drain_end_tick": 20235,
+        "max_queue_len": 93,
+        "p95": 255,
+        "utilization": "60142/60705"
+       }
+      },
+      "draws": 54298,
+      "invalid_reasons": [],
+      "run": 7,
+      "valid": true
+     },
+     {
+      "R": "1409251/162877",
+      "R_jsq": "167370/162877",
+      "arrivals": 17057,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "871/82",
+        "drain_end_tick": 20010,
+        "max_queue_len": 31,
+        "p95": 23,
+        "utilization": "9931/10005"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "83685/7667",
+        "drain_end_tick": 20012,
+        "max_queue_len": 11,
+        "p95": 24,
+        "utilization": "9931/10006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1409251/15334",
+        "drain_end_tick": 20136,
+        "max_queue_len": 104,
+        "p95": 246,
+        "utilization": "9931/10068"
+       }
+      },
+      "draws": 54114,
+      "invalid_reasons": [],
+      "run": 8,
+      "valid": true
+     },
+     {
+      "R": "2172415/311551",
+      "R_jsq": "314959/311551",
+      "arrivals": 17175,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "311551/15448",
+        "drain_end_tick": 20032,
+        "max_queue_len": 53,
+        "p95": 43,
+        "utilization": "4987/5008"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "314959/15448",
+        "drain_end_tick": 20038,
+        "max_queue_len": 18,
+        "p95": 45,
+        "utilization": "9974/10019"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "2172415/15448",
+        "drain_end_tick": 20382,
+        "max_queue_len": 135,
+        "p95": 411,
+        "utilization": "9974/10191"
+       }
+      },
+      "draws": 54350,
+      "invalid_reasons": [],
+      "run": 9,
+      "valid": true
+     },
+     {
+      "R": "1403752/262469",
+      "R_jsq": "270612/262469",
+      "arrivals": 17081,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "262469/15362",
+        "drain_end_tick": 20041,
+        "max_queue_len": 55,
+        "p95": 46,
+        "utilization": "19952/20041"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "135306/7681",
+        "drain_end_tick": 20046,
+        "max_queue_len": 20,
+        "p95": 47,
+        "utilization": "9976/10023"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "701876/7681",
+        "drain_end_tick": 20181,
+        "max_queue_len": 74,
+        "p95": 207,
+        "utilization": "19952/20181"
+       }
+      },
+      "draws": 54162,
+      "invalid_reasons": [],
+      "run": 10,
+      "valid": true
+     },
+     {
+      "R": "1947013/803451",
+      "R_jsq": "808552/803451",
+      "arrivals": 17189,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "267817/5168",
+        "drain_end_tick": 20093,
+        "max_queue_len": 86,
+        "p95": 86,
+        "utilization": "20048/20093"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "101069/1938",
+        "drain_end_tick": 20104,
+        "max_queue_len": 30,
+        "p95": 88,
+        "utilization": "358/359"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1947013/15504",
+        "drain_end_tick": 20385,
+        "max_queue_len": 127,
+        "p95": 295,
+        "utilization": "20048/20385"
+       }
+      },
+      "draws": 54378,
+      "invalid_reasons": [],
+      "run": 11,
+      "valid": true
+     },
+     {
+      "R": "2989115/1296388",
+      "R_jsq": "1296845/1296388",
+      "arrivals": 17228,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "1296388/15493",
+        "drain_end_tick": 20180,
+        "max_queue_len": 165,
+        "p95": 176,
+        "utilization": "60427/60540"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1296845/15493",
+        "drain_end_tick": 20200,
+        "max_queue_len": 55,
+        "p95": 179,
+        "utilization": "60427/60600"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "2989115/15493",
+        "drain_end_tick": 20623,
+        "max_queue_len": 177,
+        "p95": 514,
+        "utilization": "60427/61869"
+       }
+      },
+      "draws": 54456,
+      "invalid_reasons": [],
+      "run": 12,
+      "valid": true
+     },
+     {
+      "R": "1857068/258707",
+      "R_jsq": "263001/258707",
+      "arrivals": 17097,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "258707/15392",
+        "drain_end_tick": 20016,
+        "max_queue_len": 43,
+        "p95": 41,
+        "utilization": "59783/60048"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "263001/15392",
+        "drain_end_tick": 20020,
+        "max_queue_len": 15,
+        "p95": 39,
+        "utilization": "59783/60060"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "464267/3848",
+        "drain_end_tick": 20181,
+        "max_queue_len": 83,
+        "p95": 229,
+        "utilization": "59783/60543"
+       }
+      },
+      "draws": 54194,
+      "invalid_reasons": [],
+      "run": 13,
+      "valid": true
+     },
+     {
+      "R": "1450625/408368",
+      "R_jsq": "102385/102092",
+      "arrivals": 17065,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "408368/15357",
+        "drain_end_tick": 20076,
+        "max_queue_len": 74,
+        "p95": 62,
+        "utilization": "949/956"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "409540/15357",
+        "drain_end_tick": 20076,
+        "max_queue_len": 26,
+        "p95": 63,
+        "utilization": "949/956"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1450625/15357",
+        "drain_end_tick": 20257,
+        "max_queue_len": 78,
+        "p95": 202,
+        "utilization": "19929/20257"
+       }
+      },
+      "draws": 54130,
+      "invalid_reasons": [],
+      "run": 14,
+      "valid": true
+     },
+     {
+      "R": "1890305/486271",
+      "R_jsq": "487885/486271",
+      "arrivals": 17114,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "486271/15384",
+        "drain_end_tick": 20047,
+        "max_queue_len": 65,
+        "p95": 62,
+        "utilization": "59819/60141"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "487885/15384",
+        "drain_end_tick": 20048,
+        "max_queue_len": 23,
+        "p95": 63,
+        "utilization": "59819/60144"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "1890305/15384",
+        "drain_end_tick": 20229,
+        "max_queue_len": 101,
+        "p95": 266,
+        "utilization": "59819/60687"
+       }
+      },
+      "draws": 54228,
+      "invalid_reasons": [],
+      "run": 15,
+      "valid": true
+     }
+    ]
+   },
+   "seed": 20261315
+  },
+  "stability": {
+   "cells": {
+    "27": [
+     {
+      "R": "260719/25175",
+      "R_jsq": "28471/25175",
+      "arrivals": 15425,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "25175/13904",
+        "drain_end_tick": 20005,
+        "max_queue_len": 11,
+        "p95": 7,
+        "utilization": "54257/60015"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "28471/13904",
+        "drain_end_tick": 20003,
+        "max_queue_len": 5,
+        "p95": 8,
+        "utilization": "54257/60009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "260719/13904",
+        "drain_end_tick": 20023,
+        "max_queue_len": 49,
+        "p95": 66,
+        "utilization": "54257/60069"
+       }
+      },
+      "draws": 50850,
+      "invalid_reasons": [],
+      "run": 0,
+      "valid": true
+     },
+     {
+      "R": "181097/19461",
+      "R_jsq": "7509/6487",
+      "arrivals": 15381,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "19461/13825",
+        "drain_end_tick": 20003,
+        "max_queue_len": 11,
+        "p95": 5,
+        "utilization": "53689/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "22527/13825",
+        "drain_end_tick": 20003,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "53689/60009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "25871/1975",
+        "drain_end_tick": 20006,
+        "max_queue_len": 30,
+        "p95": 42,
+        "utilization": "53689/60018"
+       }
+      },
+      "draws": 50762,
+      "invalid_reasons": [],
+      "run": 1,
+      "valid": true
+     },
+     {
+      "R": "168077/19048",
+      "R_jsq": "22505/19048",
+      "arrivals": 15406,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "9524/6937",
+        "drain_end_tick": 20001,
+        "max_queue_len": 12,
+        "p95": 5,
+        "utilization": "53702/60003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "3215/1982",
+        "drain_end_tick": 20001,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "53702/60003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "24011/1982",
+        "drain_end_tick": 20012,
+        "max_queue_len": 21,
+        "p95": 37,
+        "utilization": "26851/30018"
+       }
+      },
+      "draws": 50812,
+      "invalid_reasons": [],
+      "run": 2,
+      "valid": true
+     },
+     {
+      "R": "90093/11192",
+      "R_jsq": "25581/22384",
+      "arrivals": 15464,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "1399/868",
+        "drain_end_tick": 20002,
+        "max_queue_len": 13,
+        "p95": 6,
+        "utilization": "9017/10001"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "25581/13888",
+        "drain_end_tick": 20005,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "18034/20005"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "90093/6944",
+        "drain_end_tick": 20050,
+        "max_queue_len": 22,
+        "p95": 39,
+        "utilization": "9017/10025"
+       }
+      },
+      "draws": 50928,
+      "invalid_reasons": [],
+      "run": 3,
+      "valid": true
+     },
+     {
+      "R": "109320/10613",
+      "R_jsq": "12408/10613",
+      "arrivals": 15403,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "10613/6941",
+        "drain_end_tick": 20002,
+        "max_queue_len": 12,
+        "p95": 6,
+        "utilization": "8994/10001"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "1128/631",
+        "drain_end_tick": 20002,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "8994/10001"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "109320/6941",
+        "drain_end_tick": 20049,
+        "max_queue_len": 28,
+        "p95": 54,
+        "utilization": "5996/6683"
+       }
+      },
+      "draws": 50806,
+      "invalid_reasons": [],
+      "run": 4,
+      "valid": true
+     },
+     {
+      "R": "190057/18650",
+      "R_jsq": "22589/18650",
+      "arrivals": 15410,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "18650/13861",
+        "drain_end_tick": 20001,
+        "max_queue_len": 11,
+        "p95": 5,
+        "utilization": "18008/20001"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "22589/13861",
+        "drain_end_tick": 20002,
+        "max_queue_len": 4,
+        "p95": 6,
+        "utilization": "9004/10001"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "190057/13861",
+        "drain_end_tick": 20021,
+        "max_queue_len": 25,
+        "p95": 44,
+        "utilization": "18008/20021"
+       }
+      },
+      "draws": 50820,
+      "invalid_reasons": [],
+      "run": 5,
+      "valid": true
+     },
+     {
+      "R": "195035/20066",
+      "R_jsq": "23431/20066",
+      "arrivals": 15358,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "20066/13813",
+        "drain_end_tick": 20004,
+        "max_queue_len": 11,
+        "p95": 5,
+        "utilization": "53531/60012"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "23431/13813",
+        "drain_end_tick": 20004,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "53531/60012"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "10265/727",
+        "drain_end_tick": 20008,
+        "max_queue_len": 28,
+        "p95": 48,
+        "utilization": "53531/60024"
+       }
+      },
+      "draws": 50716,
+      "invalid_reasons": [],
+      "run": 6,
+      "valid": true
+     },
+     {
+      "R": "175759/20659",
+      "R_jsq": "23829/20659",
+      "arrivals": 15371,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "20659/13829",
+        "drain_end_tick": 20002,
+        "max_queue_len": 11,
+        "p95": 6,
+        "utilization": "26890/30003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "23829/13829",
+        "drain_end_tick": 20002,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "26890/30003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "175759/13829",
+        "drain_end_tick": 20020,
+        "max_queue_len": 31,
+        "p95": 40,
+        "utilization": "2689/3003"
+       }
+      },
+      "draws": 50742,
+      "invalid_reasons": [],
+      "run": 7,
+      "valid": true
+     },
+     {
+      "R": "170273/21308",
+      "R_jsq": "24601/21308",
+      "arrivals": 15500,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "5327/3482",
+        "drain_end_tick": 20002,
+        "max_queue_len": 12,
+        "p95": 6,
+        "utilization": "54121/60006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "24601/13928",
+        "drain_end_tick": 20002,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "54121/60006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "170273/13928",
+        "drain_end_tick": 20031,
+        "max_queue_len": 26,
+        "p95": 38,
+        "utilization": "54121/60093"
+       }
+      },
+      "draws": 51000,
+      "invalid_reasons": [],
+      "run": 8,
+      "valid": true
+     },
+     {
+      "R": "105661/12336",
+      "R_jsq": "9341/8224",
+      "arrivals": 15478,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "24672/13933",
+        "drain_end_tick": 20008,
+        "max_queue_len": 15,
+        "p95": 7,
+        "utilization": "2259/2501"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "28023/13933",
+        "drain_end_tick": 20009,
+        "max_queue_len": 6,
+        "p95": 8,
+        "utilization": "18072/20009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "211322/13933",
+        "drain_end_tick": 20047,
+        "max_queue_len": 23,
+        "p95": 48,
+        "utilization": "18072/20047"
+       }
+      },
+      "draws": 50956,
+      "invalid_reasons": [],
+      "run": 9,
+      "valid": true
+     },
+     {
+      "R": "31399/3289",
+      "R_jsq": "1036/897",
+      "arrivals": 15448,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "19734/13891",
+        "drain_end_tick": 20001,
+        "max_queue_len": 13,
+        "p95": 5,
+        "utilization": "53935/60003"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "22792/13891",
+        "drain_end_tick": 20001,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "53935/60003"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "188394/13891",
+        "drain_end_tick": 20009,
+        "max_queue_len": 27,
+        "p95": 41,
+        "utilization": "53935/60027"
+       }
+      },
+      "draws": 50896,
+      "invalid_reasons": [],
+      "run": 10,
+      "valid": true
+     },
+     {
+      "R": "44137/4587",
+      "R_jsq": "5327/4587",
+      "arrivals": 15518,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "22935/13963",
+        "drain_end_tick": 20010,
+        "max_queue_len": 13,
+        "p95": 6,
+        "utilization": "18077/20010"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "26635/13963",
+        "drain_end_tick": 20011,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "18077/20011"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "220685/13963",
+        "drain_end_tick": 20043,
+        "max_queue_len": 40,
+        "p95": 54,
+        "utilization": "18077/20043"
+       }
+      },
+      "draws": 51036,
+      "invalid_reasons": [],
+      "run": 11,
+      "valid": true
+     },
+     {
+      "R": "176987/18486",
+      "R_jsq": "21511/18486",
+      "arrivals": 15404,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "18486/13843",
+        "drain_end_tick": 20004,
+        "max_queue_len": 14,
+        "p95": 5,
+        "utilization": "53801/60012"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "21511/13843",
+        "drain_end_tick": 20004,
+        "max_queue_len": 5,
+        "p95": 6,
+        "utilization": "53801/60012"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "176987/13843",
+        "drain_end_tick": 20029,
+        "max_queue_len": 28,
+        "p95": 42,
+        "utilization": "53801/60087"
+       }
+      },
+      "draws": 50808,
+      "invalid_reasons": [],
+      "run": 12,
+      "valid": true
+     },
+     {
+      "R": "182628/21445",
+      "R_jsq": "24866/21445",
+      "arrivals": 15449,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "21445/13911",
+        "drain_end_tick": 20002,
+        "max_queue_len": 12,
+        "p95": 6,
+        "utilization": "53963/60006"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "24866/13911",
+        "drain_end_tick": 20002,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "53963/60006"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "60876/4637",
+        "drain_end_tick": 20008,
+        "max_queue_len": 32,
+        "p95": 42,
+        "utilization": "53963/60024"
+       }
+      },
+      "draws": 50898,
+      "invalid_reasons": [],
+      "run": 13,
+      "valid": true
+     },
+     {
+      "R": "186626/22667",
+      "R_jsq": "26168/22667",
+      "arrivals": 15434,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "22667/13901",
+        "drain_end_tick": 20004,
+        "max_queue_len": 15,
+        "p95": 6,
+        "utilization": "54113/60012"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "26168/13901",
+        "drain_end_tick": 20004,
+        "max_queue_len": 6,
+        "p95": 7,
+        "utilization": "54113/60012"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "186626/13901",
+        "drain_end_tick": 20029,
+        "max_queue_len": 27,
+        "p95": 46,
+        "utilization": "54113/60087"
+       }
+      },
+      "draws": 50868,
+      "invalid_reasons": [],
+      "run": 14,
+      "valid": true
+     },
+     {
+      "R": "199009/21608",
+      "R_jsq": "12611/10804",
+      "arrivals": 15440,
+      "configs": {
+       "POOLED": {
+        "cohort_mean": "10804/6949",
+        "drain_end_tick": 20003,
+        "max_queue_len": 12,
+        "p95": 6,
+        "utilization": "54005/60009"
+       },
+       "SPLIT_JSQ": {
+        "cohort_mean": "12611/6949",
+        "drain_end_tick": 20003,
+        "max_queue_len": 5,
+        "p95": 7,
+        "utilization": "54005/60009"
+       },
+       "SPLIT_RANDOM": {
+        "cohort_mean": "199009/13898",
+        "drain_end_tick": 20031,
+        "max_queue_len": 29,
+        "p95": 50,
+        "utilization": "54005/60093"
+       }
+      },
+      "draws": 50880,
+      "invalid_reasons": [],
+      "run": 15,
+      "valid": true
+     }
+    ]
+   },
+   "seed": 20261314
+  }
+ },
+ "load_monotonicity_table": {
+  "POOLED": [
+   [
+    21,
+    "1445853051524608741769417929861732507252292242319/4618329909778810854427843672082594367532984244565"
+   ],
+   [
+    24,
+    "158550650049101974778371184502497794527958695859782479/249811306931451180020363655629793708793427707055326560"
+   ],
+   [
+    27,
+    "404058186489927039116250918758238501850430953891795047422898026494371658304466966299/261790680887696047644381694485809984713413124338096409771593983415727032811526092800"
+   ]
+  ],
+  "SPLIT_JSQ": [
+   [
+    21,
+    "408811178420309480603147708932752247008123039299/990194687523765141317862629860254738767541010560"
+   ],
+   [
+    24,
+    "34089446342146669387323721264743224799018931397533649/43070914988181237934545457867205811860935811561263200"
+   ],
+   [
+    27,
+    "95970691927713858753863136245103416788145625425031931942251165435333266652968895271/53700652489783804645001373227858458402751410120635160978788509418610673397236121600"
+   ]
+  ],
+  "SPLIT_RANDOM": [
+   [
+    21,
+    "23526536242959371618299634625534962338430326523677/6496112400567997685349054835456836033452988827520"
+   ],
+   [
+    24,
+    "3826669486733025166297718548058981479187716996613085671/624528267328627950050909139074484271983569267638316400"
+   ],
+   [
+    27,
+    "7399449935596402922713810034950291702392453419889477718746038750249905909409680756051/523581361775392095288763388971619969426826248676192819543187966831454065623052185600"
+   ]
+  ]
+ },
+ "proposal": {
+  "claim": "idea-engine PR #340 (merged) \u00b7 control/claims/2026-07-13-verdict-055.md \u00b7 work branch claude/verdict-055-pooling-sim",
+  "header_verbatim": "## PROPOSAL 044 \u00b7 2026-07-13T19:47:09Z \u00b7 status: sim-ready",
+  "idea_doc": "https://github.com/menno420/idea-engine/blob/3f38420896ca80d70c5824d09a860320e5594b32/ideas/fleet/checkout-pooling-single-line-2026-07-13.md",
+  "location": "idea-engine control/outbox.md @ main 1bc22e8 (landed via idea-engine PR #339)"
+ },
+ "python_minor": "3.11",
+ "self_checks_passed": 1111,
+ "verdict": "VERDICT 055"
+}

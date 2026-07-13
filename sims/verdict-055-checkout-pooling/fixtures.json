@@ -1,0 +1,75 @@
+{
+  "verdict": "VERDICT 055",
+  "proposal": {
+    "header_verbatim": "## PROPOSAL 044 · 2026-07-13T19:47:09Z · status: sim-ready",
+    "location": "idea-engine control/outbox.md @ main 1bc22e8 (landed via idea-engine PR #339)",
+    "idea_doc": "https://github.com/menno420/idea-engine/blob/3f38420896ca80d70c5824d09a860320e5594b32/ideas/fleet/checkout-pooling-single-line-2026-07-13.md",
+    "claim": "idea-engine PR #340 (merged) · control/claims/2026-07-13-verdict-055.md · work branch claude/verdict-055-pooling-sim"
+  },
+  "hermeticity_note": "every constant below is copied VERBATIM from the idea doc; the runner reads ONLY this file - zero repo/network reads at run time",
+  "python_minor": "3.11",
+  "frame": {
+    "c": 3,
+    "T": 20000,
+    "warmup": 2000,
+    "drain_cap": 80000,
+    "arrival_denominator": 35,
+    "load_grid_A": [21, 24, 27, 30],
+    "decision_A": 27,
+    "utilization_identity": "rho = (A/35)*(7/2)/3 = A/30 exactly; decision cell A=27 -> rho = 9/10",
+    "service_pmf": {"2": 3, "3": 3, "4": 2, "6": 2},
+    "service_pmf_denominator": 10,
+    "service_lookup": "u = randrange(10): u<3 -> 2, u<6 -> 3, u<8 -> 4, else 6",
+    "service_mean": "7/2",
+    "service_E_S2": "143/10",
+    "service_variance": "41/20",
+    "service_SCV": "41/245",
+    "label_draw": "randrange(3), consumed by EVERY arrival, used only by SPLIT-RANDOM",
+    "tick_semantics": "per tick t: (1) COMPLETIONS - a customer starting at tick s with service S occupies its server for ticks s..s+S-1, server free to pull from s+S; (2) ARRIVAL appended to its queue; (3) STARTS - idle servers scanned index order 0,1,2 pull queue heads; WAIT = t - arrival_tick, same-tick start = 0",
+    "draw_order": "per tick: arrival draw -> (if arrival) service draw -> label draw; one random.Random(seed) per leg; runs sequential in pinned loop order (cells ascending A, run index 0..M-1)",
+    "draw_sentinel": "exactly T + 2*arrivals randrange calls per run (control leg: exactly T)"
+  },
+  "configurations": {
+    "POOLED": "one shared FIFO queue; any idle server pulls its head (decision arm)",
+    "SPLIT_RANDOM": "three FIFO queues joined by stream label; no jockeying (decision arm)",
+    "SPLIT_JSQ": "three FIFO queues; join shortest counting the one in service, ties lowest index; label ignored (REPORTING-ONLY - cannot flip the decision)"
+  },
+  "legs": {
+    "main":      {"seed": 20261313, "A": [27],         "M": 32, "role": "decision"},
+    "stability": {"seed": 20261314, "A": [27],         "M": 16, "role": "must reproduce the ruling for any APPROVE"},
+    "reporting": {"seed": 20261315, "A": [21, 24, 30], "M": 16, "role": "load sweep, REPORTING-ONLY"},
+    "control":   {"seed": 20261313, "A": [0],          "M": 4,  "role": "A=0 gate: zero starts, zero busy ticks, sentinel exactly T (own generator instance on the main seed)"},
+    "aux":       {"seed": 20261316, "role": "RESERVED - never read by any decision number; pre-priced NULL probe: A=27 alone at T=100000, cohort [10000,100000), drain cap 400000"}
+  },
+  "seed_registry_note": "seeds 20261313-20261316 strictly above the P043/V054-claim high-water 20261312; new registry high-water 20261316",
+  "decision_rule": {
+    "metric": "median over the valid main-leg runs of the per-run cohort mean-wait ratio R = W(SPLIT_RANDOM)/W(POOLED), exact Fractions; median of an even count = mean of the two middle order statistics",
+    "cohort": "arrivals with arrival tick in [2000, 20000), then drain to empty; run INVALID iff non-empty at absolute tick 80000 or POOLED cohort mean exactly 0",
+    "validity_conjunct": "fewer than 1/4 of the leg's runs invalid (both bands carry it; a failed conjunct falls through to NULL settlement-failure)",
+    "evaluation_order": "REJECT FIRST, then APPROVE, else NULL",
+    "REJECT": "median R < 3/2",
+    "APPROVE": "median R >= 2 AND the seed-20261314 stability leg reproduces the same ruling (own median >= 2, own validity conjunct passing)",
+    "NULL_axes": ["band straddle R in [3/2, 2)", "settlement failure via the validity conjunct", "stability non-reproduction", "load-sensitivity flip (reporting-only, names the axis, cannot flip the decision)"],
+    "bands": {"reject_lt": "3/2", "approve_ge": "2", "validity_fraction": "1/4"}
+  },
+  "hand_fixture": {
+    "arrival_ticks": [0, 1, 2, 3, 5, 7],
+    "services":      [4, 3, 2, 6, 2, 3],
+    "labels":        [0, 0, 1, 0, 2, 1],
+    "no_warmup": true,
+    "expected": {
+      "POOLED_waits":       [0, 0, 0, 1, 0, 0],
+      "POOLED_mean":        "1/6",
+      "SPLIT_RANDOM_waits": [0, 3, 0, 4, 0, 0],
+      "SPLIT_RANDOM_mean":  "7/6",
+      "SPLIT_JSQ_waits":    [0, 0, 0, 1, 0, 0],
+      "SPLIT_JSQ_mean":     "1/6",
+      "SPLIT_JSQ_routes":   [0, 1, 2, 0, 1, 1],
+      "ratio_R": "7"
+    }
+  },
+  "reporting_only": {
+    "p95": "the ceil(0.95*n)-th smallest cohort wait, an integer order statistic",
+    "audits": "pooled-dominance (per run, W(POOLED) <= W(SPLIT_RANDOM)) and load-monotonicity (per configuration, mean cohort wait non-decreasing in A across {21,24,27}) print as first-class ANOMALY lines - reporting, never invalidating"
+  }
+}

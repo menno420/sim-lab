@@ -1,0 +1,33 @@
+VERDICT 055 - checkout pooling folk law at rho = 9/10 (idea-engine PROPOSAL 044)
+frame: c=3 T=20000 warmup=2000 drain_cap=80000 arrivals randrange(35)<A service pmf {2:3,3:3,4:2,6:2}/10 (E[S]=7/2, SCV=41/245)
+hermetic: reads fixtures.json only; CPython 3.11 asserted; exact Fractions at every decision point
+
+GATES
+  hand fixture (8-tick): POOLED (0,0,0,1,0,0) mean 1/6 | SPLIT-RANDOM (0,3,0,4,0,0) mean 7/6 | SPLIT-JSQ (0,0,0,1,0,0) mean 1/6, routes (0,1,2,0,1,1) | ratio R=7 ... PASS
+  tick-engine cross-check (literal completions->arrival->index-order-starts semantics) on the hand fixture + run 0 of every (leg, cell), per-customer equality, all three configurations ... PASS
+  A=0 control leg (M=4, own generator on the main seed): zero arrivals, zero starts, zero busy ticks, per-run sentinel exactly T ... PASS
+  work conservation (started service sum == busy server-ticks), stream identity across configurations, cohort conservation, per-run + per-leg draw sentinels (T + 2*arrivals) ... PASS
+  aux seed 20261316 reserved - never constructed, never drawn ... PASS
+  twin decision evaluators (Fraction comparisons vs pure-integer cross-multiplication): ('APPROVE', None) == ('APPROVE', None) ... PASS
+
+RESULTS (per cell; per-run tables in results.json)
+  leg        A    rho    M(inv)   medianR   meanW-POOL  meanW-SPLIT medR-JSQ  p95P/S/J  maxq P/S util-med
+  main       27   27/30  32(0)    9.320749  1.543440    14.132378   1.156085  6/45/6    20/36    108103/120036
+  stability  27   27/30  16(0)    9.257803  1.528141    13.977987   1.158535  6/44/7    15/49    1079824951/1200300018
+  reporting  21   21/30  16(0)    11.576455 0.313068    3.621633    1.321823  2/14/3    7/15     55957663/80020000
+  reporting  24   24/30  16(0)    9.700997  0.634682    6.127296    1.241325  3/21/4    10/20    160031668/200050003
+  reporting  30   30/30  16(0)    3.990714  36.617994   126.797576  1.008316  62/267/63 165/177  2396188799/2406843936
+
+AUDITS (reporting-only, never invalidating)
+  pooled-dominance: W(POOLED) <= W(SPLIT_RANDOM) on every valid run of every leg - no anomaly
+  load-monotonicity across A in {21,24,27}: POOLED A21 0.3131 <= A24 0.6347 <= A27 1.5434; SPLIT_RANDOM A21 3.6216 <= A24 6.1273 <= A27 14.1324; SPLIT_JSQ A21 0.4129 <= A24 0.7915 <= A27 1.7871
+
+DECISION (pre-registered, applied IN ORDER - REJECT first; bands 3/2 and 2; both bands carry the <1/4-invalid validity conjunct)
+  validity conjunct (main): 0 invalid of 32 (< 1/4) ... PASS
+  median R (main, seed 20261313, A=27, valid M=32) = 9017678143/967484332 = 9.320749
+  REJECT iff median R < 3/2: does NOT fire
+  APPROVE iff median R >= 2 AND stability reproduces: median >= 2 is True; stability (seed 20261314, M=16, 0 invalid) median R = 7786058125/841026576 = 9.257803 -> reproduces
+
+  VERDICT: APPROVE
+
+SELF-CHECKS: 1111 passed, 0 failed
