@@ -1,0 +1,204 @@
+{
+  "M_replications": {
+    "main": 400,
+    "row_validation_N": 200000,
+    "stability": 200
+  },
+  "admission_accounting": {
+    "granularity_note": "committed items restore 25 (ration) / 50 (energy drink) nominal; under effective accounting a deliberate top-up purchase below full restore value is admissible (e.g. a ration at energy 50 gains 10), so a greedy adversary can exhaust any C. Its coin cost is the full item price \u2014 cost is tracked per item bought, never per effective unit. Engine-truth risk registered at design time.",
+    "reason": "the registered drink-mix invariance gate ('cap accounted in energy units \u2014 mix moves purchase-action count only') holds only under effective-energy accounting: nominal accounting makes waste count against the cap and mixes inequivalent. Intake-time decision, registered before the runner.",
+    "unit": "EFFECTIVE energy (min(restore_value, MAX_ENERGY - current))",
+    "windows": {
+      "fixed-hour": "admit iff (sum of admitted effective energy at times in [floor(t/3600)*3600, t]) + gain <= C",
+      "sliding-3600s": "admit iff (sum of admitted effective energy at times in (t-3600, t]) + gain <= C"
+    }
+  },
+  "b0_parent_anchors": {
+    "INT_1_note": "registered assumption inherited from V042 (UI/latency floor, not an engine constant). Cap-family robustness stated: once C binds, sustained digs/h = 360 + C regardless of the interaction floor.",
+    "INT_1_seconds": 2,
+    "bypass_leg": {
+      "bypass_ratio_regen_credited": "38455/8427",
+      "bypass_ratio_v042_accounting": "37535/8427",
+      "coins_per_energy_committed": "4/5",
+      "digs_per_hour_INT1": 1800,
+      "net_coins_per_dig_P3": "7507/1150",
+      "net_coins_per_hour_boosted_P3": "270252/23"
+    },
+    "ceiling_row_755_56": {
+      "derivation": "diamond tool x1.5 -> E[amount] = (round(1.5)+round(3.0))/2 = 5/2; ore_weights_for_depth(4) {stone .5, bronze .5, iron 4, silver 3.5, gold 3, diamond 2.5} -> E[value] = 151/28; product 755/56 \u2014 the V043 hand-pin, reproduced through the engine at B0",
+      "value": "755/56"
+    },
+    "depth_row_E_coins_per_dig": {
+      "P0": "32/7",
+      "P1": "848/175",
+      "P2": "2703/440",
+      "P3": "8427/1150"
+    },
+    "fishing_reporting_max_coins_per_energy": {
+      "note": "V043 committed grid max (deep_water/master). 40797/4000 = 10.19925 < 755/56 = 13.482... by arithmetic, so every fishing row is less binding than the ceiling row; fishing rides reporting-only.",
+      "value": "40797/4000"
+    },
+    "note": "Every anchor re-derived through the byte-copied engine (engine/games/mining/core/*, sha256 MANIFEST re-verified before import; same subtree as the parent, pin 57f69be3). ANY mismatch = validity failure -> honest NULL; no lever cell counts.",
+    "np1_anchors": {
+      "forge_II_digs": "3554578865/2292144",
+      "forge_II_seconds": "17222779765/1146072",
+      "forge_I_digs": "1005258865/2292144",
+      "forge_I_seconds": "4476179765/1146072",
+      "time_model": "the parent's own digs_time: first 60 digs @ INT-1 (2 s), rest @ 10 s/dig => seconds = 10*D - 480 for D > 60 (identity checked at B0)"
+    },
+    "pin": "57f69be34785afb427d608b207e7369025166e94",
+    "shop_energy": {
+      "DIG_COST": 1,
+      "GEAR_SHOP_energy_drink": 40,
+      "GEAR_SHOP_ration": 20,
+      "MAX_ENERGY": 60,
+      "REGEN_SECONDS": 10,
+      "restore_energy_drink": 50,
+      "restore_ration": 25,
+      "sustained_digs_per_hour": 360
+    }
+  },
+  "bands": {
+    "PACE": {
+      "rule": "engine-measured boosted NP-1 ladder seconds >= 0.8 x the parent's committed throttled anchors, for BOTH Forge I (4476179765/1146072 s) and Forge II (17222779765/1146072 s)",
+      "threshold": "0.8"
+    },
+    "REFILL": {
+      "coin_threshold": "2880/7",
+      "rule": "the cap admits >= one full-bar emergency refill per window (0 -> MAX_ENERGY = 60 effective within a single window, i.e. C >= 60) AND that refill at the cell's prices costs <= 2880/7 coins (committed items: drink+ration = 60 coins). REPRICE cells score refill cost as 60e (the registered divisible-restore arithmetic that produced the 48/7 bound); the committed-granularity cost (75e nominal) ships as a reporting column."
+    },
+    "SEAL": {
+      "rule": "engine-measured BOOST-FARMER mean net coins/h over the 8 h horizon <= 5/4 x the SAME cell-horizon's measured THROTTLED control net coins/h, at EVERY committed value row {P0, P1, P2, P3, 755/56}. Denominator = the measured C=0 control (identical horizon + initial full bar, so the shared bar burst cancels; the parent's 360E/h sustained rate is a B0 anchor, not the denominator). Fishing rows reporting-only (max 40797/4000 < 755/56 by arithmetic).",
+      "threshold": "5/4"
+    },
+    "note": "registered judgment lines; full tables ship so a re-drawn line re-reads, never re-runs (the parent's own rule)."
+  },
+  "cells": {
+    "committed_e_coins_per_nominal_energy": "4/5",
+    "controls": {
+      "C0": "cap 0 admits nothing == throttled control (identity gate)",
+      "Cinf": "no cap at committed e = 4/5 == the parent's bypass anchor (identity gate)"
+    },
+    "decision_C_grid": [
+      60,
+      75,
+      100,
+      125
+    ],
+    "hybrid": {
+      "C": 75,
+      "e": "2",
+      "semantics": "sliding-3600s"
+    },
+    "note": "18 registered cells. Enumeration (intake-time decision, disclosed): 1 B0-regression cell (throttled control, no cap layer) + C=0 and C=inf identity cells under EACH semantics (4) + 8 decision cells (C x semantics) + 4 REPRICE cells (C=inf, e-grid) + 1 HYBRID = 18. Only the 8 decision cells can decide; all others are gates or reporting.",
+    "reprice_e_grid": [
+      "2",
+      "32/7",
+      "48/7",
+      "11325/896"
+    ],
+    "semantics": [
+      "sliding-3600s",
+      "fixed-hour"
+    ]
+  },
+  "closed_form_predictions_pre_run": {
+    "admitted_per_decision_cell": "8*C over the 8 h horizon in BOTH semantics (admissions at ~0, 3600, ..., 25200; sliding has no extra fencepost inside 28800 s)",
+    "control_digs_8h_band": [
+      2930,
+      2950
+    ],
+    "control_digs_note": "2880 regen digs + full-bar burst ~75 (bar 60 amplified by regen during the burst, 60/(1 - 2/10)) - terminal rounding; engine-exact value measured, band pre-registered",
+    "farmer_digs_identity": "farmer digs == control digs + admitted effective energy (regen is cap-independent below MAX_ENERGY; identity gate, exact)",
+    "ladder_fluid_predictor": "piecewise supply/demand: digs(t) = min(t/2, 60 + t/10 + A(t)), A(t) = admitted by t (C per window, front-loaded). Engine-vs-fluid agreement tolerance +-180 s (integer regen remainders + purchase granularity). FRONT-LOAD RISK registered at design time: a greedy ladder runner consumes the whole first-window cap immediately, so short goals (Forge I ~ 439 digs) see boost density far above the sustained rate \u2014 the sustained-rate PACE ratios (e.g. 0.833 at C=75 Forge I) are expected to be OPTIMISTIC; the measured gap IS the engine premium on the ladder leg.",
+    "mc_tolerance": {
+      "cell_mc_rel": 0.01,
+      "row_validation_rel": 0.01,
+      "se_arithmetic": "per-dig coin sd/mean <= ~0.75 at every row (finite support {1..3 amounts} x {1..12 values}); cell MC at M=400 x >=3000 digs -> SE/mean <= 0.75/sqrt(1.2e6) ~ 0.0007; row MC at N=200000 -> ~0.0017. A 0.01 relative gate is >= 5.9 sigma per comparison, familywise-safe over the 13 MC gate points (expected false-failure probability < 1e-7)."
+    },
+    "note": "registered before the runner exists; the run must confirm or the discrepancy is reported as the engine premium",
+    "repice_exclusion_pair": {
+      "refill_needs_e_leq": "48/7",
+      "seal_needs_e_geq": "11325/896",
+      "statement": "11325/896 > 48/7 -> no price-only cell passes both bands; registered exclusion (the P033 rho=1.0 precedent), REPRICE rides reporting-only"
+    },
+    "rho_ceiling_row": {
+      "100": "17141/13590",
+      "125": "14423/10872",
+      "60": "26201/22650",
+      "75": "21671/18120"
+    },
+    "rho_closed_form": "rho(row, C) = 1 + C*(E - 4/5)/(360*E) (sustained-rate form, the proposal's drafting table)",
+    "seal_line": "5/4 -> closed form leaves {60, 75} live, kills {100, 125} at the ceiling row (C=100 passes P3 at 4787/3838 ~ 1.2473 \u2014 knife-edge, disclosed)"
+  },
+  "decision_rule": {
+    "APPROVE": ">= 2 decision cells within ONE window semantics pass all three bands, stability-reproduced (the P031 two-consecutive-cells rule; a band, not a knife-edge point) -> recommend the cheapest-diff passing cell (registered expectation: sliding C=75 by closed form, margin 0.054 at the binding row \u2014 must survive the engine premium)",
+    "NULL": "anything else (semantics-conditional or single-cell passes) -> the conditional rule is the citable finding, with the measured engine premium as the number; name the cheapest LIVE probe: shop telemetry (booster purchases/player/h + purchase-time energy level)",
+    "REJECT": "no decision cell passes SEAL+REFILL+PACE, stability-reproduced -> 'no committed-shape cap seals the sink \u2014 redesign, not retune'; rescue family named (diminishing restore / boost-fatigue, its own future sim); the V042/V043/V045 ledger carries the measured boosted-column caveat meanwhile",
+    "intent_boundary": "this verdict PRICES the menu, never rules intended-vs-not \u2014 V042's 'possibly intended per the shop's own comment' restated verbatim; the seat's/owner's call with the table in hand",
+    "order": "REJECT checked FIRST, then APPROVE, else NULL (pre-registered; the fragile direction is APPROVE)"
+  },
+  "gates_run_invalid_on_failure": [
+    "MANIFEST sha256 re-verified on all 13 engine files before import",
+    "B0: every parent anchor above re-derived exactly through the engine BEFORE any lever cell runs",
+    "C=0 cells (both semantics) byte-identical to the THROTTLED control timeline",
+    "C=inf @ e=4/5 cells: 1800 digs/h identity, purchased = digs - control, V042-accounting bypass ratio == 37535/8427 and regen-credited == 38455/8427 (exact Fractions in their registered accountings)",
+    "farmer dig identity: control + admitted - digs in [0, 8] when C mod 25 != 0 (the residual top-up must touch the energy cap, and the engine's settle() resets the regen remainder at cap \u2014 at most one such touch per window), EXACT (delta = 0) when C mod 25 == 0 (every decision cell, both semantics)",
+    "admitted == 8*C per decision cell",
+    "independent sliding-window re-audit: max admitted effective energy over ALL trailing-3600s windows <= C on every sliding cell (and reported for fixed cells; BOUNDARY-GAMER expected 2C there)",
+    "drink-mix invariance: {drink-first, ration-only, alternating} mixes at (sliding, C=75) produce identical digs, admitted energy and coin spend; only purchase-action counts differ",
+    "affordability: cumulative coin spend <= cumulative earned at the evaluated row for every (cell, row) timeline (exact, post-hoc)",
+    "Arm-S ladder seconds within +-180 s of the Arm-A idealized front-load fluid predictor per (decision cell, forge) \u2014 the predictor makes window caps available instantaneously at window starts, while the engine spreads real purchases over the bar's dig-down (~60-160 s per window); slack widened 120 -> 180 s in this pre-run amendment, before any execution",
+    "twin independently-written decision evaluators (float-based and Fraction-based) agree on every band flag and the ruling, on main AND stability legs",
+    "MC legs within the pre-checked tolerances above",
+    "stability leg (seed 20261282, M=200) reproduces the ruling",
+    "stdout + results.json byte-identical across two full process runs (external diff)",
+    "CPython minor pinned: cpython-3.11 asserted at runtime"
+  ],
+  "horizon_seconds": 28800,
+  "liveness_pre_registered": {
+    "APPROVE": "sliding {60, 75} clear every sustained-rate closed form with >= 0.054 margin at the binding row \u2014 reachable iff the measured engine premium (burst front-load, granularity, boundary gaming) does not eat that margin",
+    "NULL": "expected candidate axes: the semantics fork (fixed-hour gaming premium) AND the ladder front-load premium registered above \u2014 a single-cell or semantics-conditional pass set lands NULL by the two-cells rule",
+    "REJECT": "reachable iff the measured premium exceeds the margin on BOTH semantics at every C"
+  },
+  "out_of_scope": [
+    "intent (priced, not ruled \u2014 the seat's/owner's call)",
+    "fun/retention, multiplayer/trade (parent LIMITS inherited)",
+    "the amount-inert pickaxe flag (V042's OTHER row \u2014 named runner-up with its own future sim)",
+    "cross-session cap persistence (host territory, the V044 per-session precedent)",
+    "diminishing-restore / boost-fatigue mechanism changes (the REJECT-case rescue family, its own sim)"
+  ],
+  "policies": {
+    "BOOST-FARMER": "greedy registered adversary: digs at INT-1; when energy = 0 buys the largest committed item admissible under the cell's window (drink 50 first, ration 25, then a top-up ration if the residual cap and profitability allow), only while an item's coin cost is < its effective energy gain x the evaluated row's E[coins/dig] (strict) and the remaining horizon can dig the gain; otherwise waits for the earlier of regen or window-free",
+    "BOUNDARY-GAMER": "fixed-hour-only reporting variant: defers each fixed window's purchases to the window's last admissible instant, then buys the next window's immediately \u2014 measures the worst trailing-3600s admitted energy (expected 2C) and the peak-window rate premium; cannot flip the decision (means are unchanged or worse)",
+    "HONEST-CASUAL": "plays [h*3600, h*3600+1800) each hour h = 0..7; digs at INT-1; at most ONE full-bar refill per hour (drink+ration bought at energy 0, if admissible); convenience-preservation reporting row",
+    "NP1-LADDER": "boosted ladder run per decision cell: BOOST-FARMER purchase logic, unbounded horizon, stops at the parent's committed NP-1 dig anchors (ceil applied to the fluid fractions). Booster coin spend's extra dig need is IGNORED \u2014 conservative against APPROVE (fewer digs = faster boosted ladder = harsher PACE); the cost-inflated closed-form variant ships as a reporting column.",
+    "THROTTLED": "digs at INT-1 whenever settled energy >= 1, waits for regen otherwise; never buys"
+  },
+  "preregistration": {
+    "amendment": "2026-07-13T13:52:00Z, BEFORE any run: (1) ladder Arm-A agreement tolerance 120 -> 180 s (idealized instant-front-load predictor vs the engine's real purchase spread); (2) the farmer dig identity carries a [0, 8] delta band when C mod 25 != 0 \u2014 the residual top-up purchase must land energy exactly at MAX_ENERGY and the engine's settle() resets the sub-10 s regen remainder at cap (engine truth found by code reading, not by running); (3) registered note: at committed prices every purchase (full items AND the 10-unit top-up) is profitable at every value row, so the decision-cell timeline is row-invariant and one timeline serves all five rows (REPRICE cells run per-row timelines). Git history shows this amendment commit precedes the runner's first committed results.",
+    "authored": "2026-07-13T13:36:00Z",
+    "intake": "035",
+    "proposal": "idea-engine control/outbox.md PROPOSAL 035 - 2026-07-13T12:12:40Z - status sim-ready; idea file ideas/superbot-games/mining-booster-bypass-throttle-seal-2026-07-13.md (idea-engine PR #308); claim: idea-engine PR #310 (control/claims, VERDICT 046 reserved)",
+    "statement": "This fixture file is the PRE-REGISTRATION for VERDICT 046. It was authored BEFORE the runner (booster_bypass_sim.py) was written or executed; the results reference it. Commit order in this branch shows engine+fixtures before the runner and results. Every parent anchor below was MACHINE-READ from the committed sims/verdict-042-mining-economy/{results,fixtures}.json and sims/verdict-043-fishing-economy/results.json at the branch base (origin/main c2c90f64c195a7bbda1747a490826db6387f996c; the proposal pinned the same values at ledger pin afe18f3) by a build-time extractor, never transcribed by hand; the derived constants were re-derived from those reads and asserted against the proposal's drafting arithmetic.",
+    "verdict_number": 46
+  },
+  "seeds": {
+    "aux": 20261284,
+    "main": 20261281,
+    "policy": "allocated strictly above the fleet high-water 20261280 (V043's robustness leg, re-read at the ledger); new high-water 20261284",
+    "reporting": 20261283,
+    "stability": 20261282
+  },
+  "value_rows": {
+    "binding_row": "ceiling_755_56",
+    "note": "coin outcomes never feed back into the timeline (policies condition only on profitability e < E_row, a per-(cell,row) constant), and the engine's energy/admission dynamics contain ZERO RNG (energy.py is deterministic; verified at B0). Each (cell, row) timeline is therefore deterministic; decision numbers are exact Fractions on its integer dig/purchase counts (the parent's zero-decision-bearing-RNG discipline). The seeded MC legs validate the per-dig coin means through the engine's own roll path (self-checks, cannot flip).",
+    "rows": [
+      "P0",
+      "P1",
+      "P2",
+      "P3",
+      "ceiling_755_56"
+    ]
+  }
+}
