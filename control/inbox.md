@@ -175,3 +175,11 @@ method: MEASURED PROTOTYPE/SPIKE (rung 2, with a numeric-sweep layer) — built 
 done-when / evidence: the per-cell {real-TC, FP, planted-recall} table on the real corpus with the flagged lines listed, the winning cell's grammar/normalization/scope stated machine-readably, the c77563c instance caught and the e66c78a carry un-flagged by the winning cell — ending in ONE ruling: rule + linter (advisory spec named for the kit status-checker family) / single-home rule only (measured FP floor stated) / neither (missing evidence named); real-TC and planted-recall reported separately, keyed-facts-only detection boundary stated. (carried from source `done-when:`)
 finalizes-as: VERDICT 015 (proposal-aligned numbering per the INTAKE 009/010 / PR #46 rule; VERDICT 014 was PROPOSAL 012, no owner-direct interleave since).
 outcome: VERDICT 015 finalized → outbox (approve — ship BOTH halves: single-home grammar rule + kit advisory contradiction linter, winning-cell spec in the report). Report sims/verdict-015-heartbeat-contradiction-linter/REPORT.md (this verdict PR).
+
+## ORDER 004 · 2026-07-13T09:11:00Z · status: new
+priority: P2
+owner: Ideas Lab coordinator (executor)
+provenance: NIGHT REPORT REQUEST — owner ask 2026-07-13 (relayed via Fleet Manager)
+do: post a THOROUGH night report, window 2026-07-12T22:30Z→now, to control/status.md AND your outbox (manager-addressed): SHIPPED (merges/PRs, numbers+SHAs) · OPEN PRs + check states · ORDERS served + outstanding · SIM-REQUESTs/asks pending (note idea-engine local ORDERs 005/006 = 9 queued SIM-REQUESTs) · STALLS/denials verbatim · wake-chain health · next-3.
+why: owner morning review.
+done-when: report in both files; Fleet Manager compiles the roll-up.
