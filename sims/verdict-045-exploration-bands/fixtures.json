@@ -1,0 +1,139 @@
+{
+  "registration": {
+    "verdict": "VERDICT 045 — exploration reward bands (TIER_CAPS vs Q-0087 dual-track bands + survival Medium/Hard gradient)",
+    "registered_at_utc": "2026-07-13T11:27:39Z",
+    "committed_before": "the runner (exploration_bands_sim.py) and any results — git trail is the record",
+    "order": {
+      "source": "idea-engine control/inbox.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d, ORDER 006 · 2026-07-13T09:02Z, SUPERBOT-GAMES BALANCE item 7",
+      "verbatim": "(7) EXPLORATION-REWARD-BANDS — (a) reconcile games/exploration/quest/catalog.py TIER_CAPS (tier I 5/25/10 · II 10/60/25 · III 20/120/50, conservative placeholders per D-0008) against the real superbot Q-0087 dual-track bands; (b) ratify/tune the survival Medium/Hard gradient (games/exploration/survival/difficulty.py: Medium 50/15s/1, Hard 40/20s/1; Easy is byte-identical to the mining bar per D-0004).",
+      "requesting_seat": "superbot-games"
+    },
+    "packet_pins": {
+      "idea_engine": "8218d6630f53633461d993d9a3caa4ad54ab251d",
+      "sim_lab_branch_base": "59d1a0c (VERDICT 044 tail at branch cut)",
+      "superbot_games": "57f69be34785afb427d608b207e7369025166e94",
+      "superbot": "6d8148808e7965f61cd85625798252fe32e1a409",
+      "superbot_doc_sha256": {
+        "docs/owner/maintainer-question-router.md": "a8b9398cd1a86742cc252f36b12c3c72f382dd4afdf994452e4863ce6cc0675b",
+        "docs/planning/rpg-survival-difficulty-design-2026-06-10.md": "950493274744b2ff0e5b63a6e9c10b170dcbabfdadbf2a75a1af00e1ea833655"
+      },
+      "read_mode": "READ-ONLY recon packet (byte-copies + sha256 manifest); superbot-games, superbot, idea-engine untouched"
+    },
+    "seed_policy": {
+      "registry_draws": 0,
+      "fleet_high_water_at_registration": 20261280,
+      "note": "ZERO decision-bearing RNG anywhere; leg B1 drives the packet harness's own internal DetRng spacing jitter over its __main__-default seeds=range(400) — packet-owned protocol constants (the V043 precedent), NOT registry draws; the harness's own docstring proves the jitter never changes the casual never-block outcome. The fleet high-water 20261280 (V043) is left untouched."
+    }
+  },
+
+  "b0_validity_gate": {
+    "rule": "b0_check.py must exit 0 (sha256 manifest + every quoted constant re-derived from the byte-copied modules) BEFORE any arm is evaluated, and the runner re-asserts the same checks in-process; any B0 failure ends the verdict there (NULL-INVALID — it rules on the failed premise and stops).",
+    "checks": "B0.0 sha256 manifest (13 files) · B0.1 TIER_CAPS exactly I (5,25,10) / II (10,60,25) / III (20,120,50), capability=None on every bundle · B0.2 GLOBAL_MAX exactly (20,120,50) · B0.3 catalog docstring carries the D-0005/D-0008 placeholder note + the play-only-capability line verbatim · B0.4 TUNABLES exactly Easy (60,10,1) / Medium (50,15,1) / Hard (40,20,1) AND Easy ≡ mining bar BY IMPORT (D-0004) · B0.5 energy bar (60,10,1) · B0.6 RewardBundle fields (global_xp, game_xp, currency, capability) · B0.7 tier semantics I casual / II standard / III prestige"
+  },
+
+  "q0087_band_definitions": {
+    "key_fact": "Q-0087 defines a dual-track PHILOSOPHY plus an approved sim METHODOLOGY; the 'bands' are the survival P0 harness's FUTURE sim-output pinned tests — NO numeric band constants exist in superbot at pin 6d81488 (verified by the recon worker; D-0008 says reconciliation waits on that upstream artifact). Therefore the numeric-import half of ask (a) is registered as an EXPECTED HONEST NULL; what IS decidable now is whether the placeholders satisfy the band DEFINITIONS and the existing V018/V033 contracts.",
+    "owner_statement_verbatim": "that would be a great way to test if my game idea would be fun and playable for everyone, we can decide a perfect balance between gaining items and spending them, so users could just play for a few minutes a day and gain real progress, but there should also be a reward for grinders who play for a long time and achieve certain goals, tho it should never feel like those goals are mandatory to increase your level and the things you can do.",
+    "three_curves_verbatim": "casual progress/day (must stay meaningful at every level) · grinder surplus per extra hour (real but diminishing) · the mandatory-feel metric — the core-capability gap between a pure-casual and a grinder at the same calendar week (must stay inside a pinned band; prestige/surplus gap may grow, capability gap may not — D0)",
+    "d0_hard_rule_verbatim": "A number that gates a core capability behind grind-hours violates D0 and fails review.",
+    "track_ownership": "casual track owns capability (levels, unlocks, story); grind track owns prestige and surplus (records, cosmetics-class rewards, leaderboard standing, faster-but-never-exclusive paths)",
+    "d1_draft_note": "the superbot D1 draft Energy row (Medium cap 10 / regen ~10/hr, Hard cap 5) is HISTORICAL context re-baselined downstream by D-0004 — NOT the reconciliation target"
+  },
+
+  "contract_anchors_quoted": {
+    "v018_c_cap_4": "per-source cooldown clocks CHAT_ACTIVITY 900 s / GRID_ROAM 600 s + MANDATORY combined per-player cap K=4 encounters per player per sliding 3600 s across ALL triggers (the stricter solo ceiling, the Q-0087 never-mandatory bound); ARB_RATIO_MAX = 2.0; EXPLORE_ACTION joins the same combined window",
+    "v033_ruling": "EXPLORE_ACTION encounters JOIN the K=4 window but quest PROGRESS must NOT be admission-gated (free coupling is the contract line); the lane's per-completion host gate is the ONLY mint control on that channel (free-coupling farmer 64-66x honest without it)",
+    "v033_mint_ceilings": "honest quest-focused <= 30.31 currency/hr (c_E=0, B=3, tier II — V033's published measured ceiling on TIER_CAPS @ 5aec110, identical values at 57f69be per B0); gated farmer <= 31.25 (II) / 62.50 (III) currency/hr; the farmer ceilings are exactly re-derivable: Fraction(floor(K*8/B), 8) * currency at K=4, B=3, 8 h",
+    "v033_b_grid": "B in {3, 5, 8} beats per completion; honest quest-focused attempt rate r_E = 12 beats/hr (V033's registered honest profile)"
+  },
+
+  "part_a_tier_caps": {
+    "semantics_from_source": "RewardBundle(global_xp, game_xp, currency, capability=None) — the three TIER_CAPS numbers per tier are global-XP (the cross-game capability-track axis), game-XP (the per-game axis), currency; capability unlocks are play-only (tier III completion), never bought with currency (catalog docstring, B0.3)",
+    "structural_checks": {
+      "S1_in_band": "TIER_CAPS[t] <= GLOBAL_MAX component-wise for every tier (the D-0005 'in-band' claim, exact integers)",
+      "S2_monotone": "strict component-wise increase I < II < III on all three components",
+      "S3_ceiling_binds": "GLOBAL_MAX == TIER_CAPS[III] exactly component-wise (the catalog's own ceiling is achieved, not slack)",
+      "S4_v033_consistency": "bundle-cap identity reproduces V033's published gated-farmer ceilings EXACTLY: Fraction(floor(4*8/3), 8)*25 == 125/4 (31.25, tier II) and Fraction(floor(4*8/3), 8)*50 == 125/2 (62.50, tier III); the published honest ceiling 30.31 <= the farmer ceiling 31.25; farmer/honest 31.25/30.31 <= ARB_RATIO_MAX 2.0"
+    },
+    "computable_d0_checks": {
+      "C1a_casual_meaningful": "under BOTH registered casual profiles the daily/weekly grant is strictly positive on every component (casual progress/day exists at the floor tier)",
+      "C1b_casual_week_vs_largest_grant": "casual weekly global_xp >= GLOBAL_MAX.global_xp (20) — a casual week out-earns the single largest possible grant on the capability axis, so no single grind grant dwarfs a casual week",
+      "C1c_casual_never_energy_blocked": "the casual day's quest-beat energy cost (beats_per_day * cost = 3 * 1) <= Hard burst capacity 40 — difficulty never gates the casual quest day on ANY difficulty (couples part a to part b)",
+      "C2_capability_per_currency_non_increasing": "global_xp/currency across tiers I,II,III = 1/2, 2/5, 2/5 must be non-increasing — grind-tier completions can never convert currency-surplus play into capability at a PREMIUM rate; the capability:currency exchange flattens, it never steepens",
+      "C3_capability_play_only": "no RewardBundle in TIER_CAPS carries a capability grant (capability=None everywhere) and the catalog docstring pins play-only tier-III unlocks (B0.1 + B0.3) — currency cannot buy capability, the D0 hard rule's purchase channel is structurally closed"
+    },
+    "registered_casual_profiles": {
+      "CAS_A": "15 min/day quest-focused at V033's honest r_E = 12 beats/hr -> exactly 3 beats/day; tier I, B=3 -> exactly 1 completion/day",
+      "CAS_B": "10 min/day at r_E = 12 -> 2 beats/day -> floor(14/3) = 4 tier-I completions per week"
+    },
+    "closed_form_predictions": {
+      "CAS_A_daily": [5, 25, 10],
+      "CAS_A_weekly": [35, 175, 70],
+      "CAS_B_weekly": [20, 100, 40],
+      "capability_per_currency": ["1/2", "2/5", "2/5"],
+      "game_xp_per_global_xp": [5, 6, 6],
+      "farmer_ceiling_II_currency_per_hr": "125/4",
+      "farmer_ceiling_III_currency_per_hr": "125/2"
+    },
+    "capability_gap_table_spec": "ship (reporting, not a pass/fail band — the band VALUE is the upstream NULL): weekly capability-gap ratio grinder/casual = (7*h*g*global_xp[tier]) / CAS_A_weekly_global_xp(35) over h in {1,2,4,8} grind-hours/day x g in {0.5, 1, 1.25, 2} host-gate completions/hr x tier in {II, III}; at tier III this reduces exactly to ratio = 4*h*g; the g=1.25 column is the V033 gated-farmer ceiling frame; under free coupling g is bounded ONLY by the unbuilt host gate (G2) — the table is the instrument the future P0 band scores",
+    "decision_rule_in_order": [
+      "RULE-A0: B0 fails -> NULL-INVALID (stop; no ruling).",
+      "RULE-A1: any structural check S1-S4 fails -> TUNE, with the concrete arithmetic fix named (e.g. S3 slack -> lower GLOBAL_MAX to the tier-III bundle; S2 inversion -> reorder the failing component to restore strict monotonicity).",
+      "RULE-A2: any computable D0 check C1a-C3 fails -> TUNE, with the concrete cap adjustment named (e.g. C1b fails -> raise tier-I global_xp to ceil(20/7) = 3-per-completion-equivalent so a 7-completion casual week reaches 20; C2 fails -> lower the failing tier's currency or raise its global_xp to restore non-increasing ratios).",
+      "RULE-A3: all of S1-S4 + C1a-C3 pass -> RATIFY-AS-PLACEHOLDERS: keep TIER_CAPS/GLOBAL_MAX exactly as pinned (the D-0005/D-0008 mechanism unchanged, catalog.py stays the single source of truth) AND declare the numeric-band import an HONEST NULL — no canonical Q-0087 band constants exist upstream at pin 6d81488; reconciliation re-opens when superbot's survival P0 harness ships its pinned bands (D-0008), scored against the shipped capability-gap table by lookup.",
+      "REGISTERED EXPECTATION: the numeric-import half of (a) is NULL at this pin BY CONSTRUCTION (D-0008 verified by recon); this expectation is registered BEFORE the runner so the NULL cannot be read as a post-hoc dodge."
+    ]
+  },
+
+  "part_b_survival_gradient": {
+    "legs": {
+      "B1_packet_harness": "drive the packet's OWN pinned harness games/exploration/survival/sim.py through its public entry point run(seeds=range(400)) (its __main__ default sweep) — zero edits; read the three Q-0087 curves back out per difficulty (sustained_digs_per_hour, casual_per_day, grinder_8h, capability_gap, burst_capacity)",
+      "B2_profile_sweep": "drive the byte-copied energy engine DIRECTLY (energy.settle/can_dig/spend through each difficulty's tunables, the same call shape as the harness) under the registered attempt-paced play profiles below; second-exact, deterministic, ZERO RNG; count completed actions, refused attempts (attrition events), refusal fraction, time-to-first-refusal, and floor(completed/3) tier-I-completion proxy (B=3, each quest beat = one bounded action debiting cost — the seam's own contract: 'The seam debits cost per bounded action and seeds energy from max_energy, both VERBATIM')"
+    },
+    "registered_play_profiles": {
+      "P-CAS-10": {"session_seconds": 600, "attempt_spacing_seconds": 30, "attempts": 20, "start": "full bar", "models": "casual few-minutes-a-day player"},
+      "P-CAS-15": {"session_seconds": 900, "attempt_spacing_seconds": 30, "attempts": 30, "start": "full bar", "models": "casual quarter-hour player (matches the harness's 30-action casual day)"},
+      "P-REG-60": {"session_seconds": 3600, "attempt_spacing_seconds": 20, "attempts": 180, "start": "full bar", "models": "regular one-hour player"},
+      "P-GRD-240": {"session_seconds": 14400, "attempt_spacing_seconds": 10, "attempts": 1440, "start": "full bar", "models": "grinder pressing at Easy's sustained rate for 4 h"},
+      "P-SAT-480": {"session_seconds": 28800, "attempt_spacing_seconds": 5, "attempts": 5760, "start": "full bar", "models": "saturating adversary pressing at 2x Easy's sustained rate for 8 h"}
+    },
+    "closed_form_predictions": {
+      "sustained_per_hr": {"easy": 360, "medium": 240, "hard": 180},
+      "burst": {"easy": 60, "medium": 50, "hard": 40},
+      "casual_per_day_harness": {"easy": 30, "medium": 30, "hard": 30},
+      "grinder_8h_harness": {"easy": 2940, "medium": 1970, "hard": 1480},
+      "capability_gap_harness": "grinder_8h / 30 recomputed identically (98.0 / 65.67 / 49.33)",
+      "P-GRD-240_completed": {"easy": 1440, "medium": "50 + floor(14390/15) ± 1 = 1009 ± 1", "hard": "40 + floor(14390/20) ± 1 = 759 ± 1"},
+      "P-SAT-480_completed": {"easy": "60 + floor(28795/10) ± 1 = 2939 ± 1", "medium": "50 + floor(28795/15) ± 1 = 1969 ± 1", "hard": "40 + floor(28795/20) ± 1 = 1479 ± 1"}
+    },
+    "bands": {
+      "GB0_easy_identity": "Easy ≡ mining bar by import (B0.4) — the D-0004 anchor",
+      "GB1_harness_pins": "leg B1 reproduces the repo's own pinned bands EXACTLY (sustained 360/240/180, burst 60/50/40, casual 30 on every difficulty — games/exploration/tests/test_survival_sim.py values) AND matches the closed-form grinder_8h {2940, 1970, 1480} and gap = grinder_8h/casual; any miss -> NULL-INVALID (the packet harness premise is broken)",
+      "GB2_casual_immunity": "P-CAS-10, P-CAS-15 AND P-REG-60 complete 100% of attempts with ZERO refusals on ALL THREE difficulties — difficulty must never gate casual/regular capability (the D0 dual-track core)",
+      "GB3_gradient_orders": "sustained/hr strictly decreasing Easy > Medium > Hard; P-SAT-480 completed strictly decreasing E > M > H; P-SAT-480 refusal fraction strictly increasing E < M < H; P-GRD-240 refusal fraction strictly increasing E < M < H (Easy exactly 0)",
+      "GB4_gradient_magnitude": "sustained Medium/Easy ∈ [0.55, 0.80] (exact 2/3) · Hard/Easy ∈ [0.40, 0.60] (exact 1/2) · Hard/Medium ∈ [0.60, 0.90] (exact 3/4); AND P-SAT-480 completed ratios within ±0.05 of the sustained ratios (the opening burst must not distort the long-run gradient)",
+      "GB5_quest_loop_never_bound": "the honest quest loop never touches the gradient: V033's honest r_E = 12 beats/hr costs 12 energy/hr, <= Hard's sustained 180/hr with >= 15x headroom; exact crossover shipped: energy binds quest throughput only when beats/hr > 3600/regen_seconds (Easy 360 / Medium 240 / Hard 180)"
+    },
+    "decision_rule_in_order": [
+      "RULE-B0: B0 fails OR GB1 fails -> NULL-INVALID (stop).",
+      "RULE-B1: GB2 fails on any difficulty D -> TUNE: raise D's max_energy to >= the largest registered casual-session attempt count (30) plus zero-regen margin, or shorten D's regen_seconds until GB2 passes; concrete failing numbers shipped.",
+      "RULE-B2: GB3 or GB4 fails -> TUNE: re-derive regen_seconds against the registered ratio bands (sustained = 3600/regen_seconds exactly, so regen_M solves 3600/regen_M ∈ [0.55, 0.80]x360 and regen_H ∈ [0.40, 0.60]x360); concrete replacement gradient shipped with arithmetic.",
+      "RULE-B3: GB0 + GB1 + GB2 + GB3 + GB4 + GB5 ALL pass -> RATIFY the Medium/Hard gradient exactly as pinned (Medium 50/15s/1, Hard 40/20s/1; Easy stays the by-import mining-bar identity)."
+    ]
+  },
+
+  "reporting_only_legs": [
+    "R1 grinder-surplus/day table: honest V033 ceiling 30.31 currency/hr x h in {1,2,4,8} vs the CAS_A 10 currency/day — the 'surplus is real' evidence line; the 'diminishing' half of curve 2 is NOT scorable from flat per-completion caps (it is the host gate's / P0 harness's property) — registered as part of the honest NULL, cannot flip any rule",
+    "R2 capability-gap table per part_a spec — reporting-only, the future P0 band scores it by lookup",
+    "R3 superbot D1 draft Energy row (Medium cap 10, Hard cap 5) vs the shipped gradient — historical context only (D-0004 re-baselined it), cannot flip any rule",
+    "R4 booster interaction: RESTORE_VALUES are difficulty-independent (the repo's own test_no_pay_to_win); restore economics per difficulty shipped as context, cannot flip any rule"
+  ],
+
+  "gaps_registered_before_runner": {
+    "G1_upstream_artifact": "superbot's survival P0 harness (the canonical Q-0087 numeric bands) does not exist at pin 6d81488 — the numeric reconciliation is the registered honest NULL (D-0008)",
+    "G2_host_gate_unbuilt": "the per-completion host gate g (V033's only mint control under free coupling) has no pinned value — every grinder-side ceiling is stated per-g or under the V033 gated frame",
+    "G3_no_live_telemetry": "the standing fleet gap — no live earn-rate/beat-rate telemetry; r_E = 12/hr is V033's registered honest bracket, not a measurement",
+    "G4_tier_selection_policy": "which players get OFFERED tier III is DM/catalog policy outside TIER_CAPS — the capability-gap table brackets it by shipping both tiers",
+    "G5_beat_cost_coupling": "each quest beat = one bounded action debiting cost (the SIM-REQUEST's own seam contract line, quoted) — if a future seam prices beats differently, GB5 re-runs by table lookup on the shipped crossover formula"
+  }
+}
