@@ -1,0 +1,3506 @@
+{
+  "M": {
+    "main": 10,
+    "stability": 5
+  },
+  "admission_K4_main": {
+    "0|beat-steer-farmer": {
+      "admitted_hr": [
+        3.875,
+        0.0
+      ],
+      "attempted_hr": [
+        720.0,
+        0.0
+      ],
+      "chat_grid_hr": [
+        0.125,
+        0.0
+      ],
+      "chat_hr": [
+        0.125,
+        0.0
+      ],
+      "combined_hr": [
+        4.0,
+        0.0
+      ],
+      "comp_free_hr": {
+        "3": [
+          240.0,
+          0.0
+        ],
+        "5": [
+          144.0,
+          0.0
+        ],
+        "8": [
+          90.0,
+          0.0
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.25,
+          0.0
+        ],
+        "5": [
+          0.75,
+          0.0
+        ],
+        "8": [
+          0.375,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.994618,
+      "denied_own_frac": 0.0,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.03125,
+        "explore": 0.96875,
+        "grid": 0.0
+      }
+    },
+    "0|mixed-triple-casual": {
+      "admitted_hr": [
+        3.125,
+        0.167705
+      ],
+      "attempted_hr": [
+        5.8625,
+        0.703673
+      ],
+      "chat_grid_hr": [
+        0.2,
+        0.203101
+      ],
+      "chat_hr": [
+        0.175,
+        0.178536
+      ],
+      "combined_hr": [
+        3.325,
+        0.195256
+      ],
+      "comp_free_hr": {
+        "3": [
+          1.9125,
+          0.250312
+        ],
+        "5": [
+          1.125,
+          0.147902
+        ],
+        "8": [
+          0.6625,
+          0.080039
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.0,
+          0.079057
+        ],
+        "5": [
+          0.5875,
+          0.057282
+        ],
+        "8": [
+          0.35,
+          0.05
+        ]
+      },
+      "denied_cap_frac": 0.466951,
+      "denied_own_frac": 0.0,
+      "grid_hr": [
+        0.025,
+        0.05
+      ],
+      "steer_share": {
+        "chat": 0.052632,
+        "explore": 0.93985,
+        "grid": 0.007519
+      }
+    },
+    "0|mixed-triple-deep": {
+      "admitted_hr": [
+        2.725,
+        0.272718
+      ],
+      "attempted_hr": [
+        11.4625,
+        0.98115
+      ],
+      "chat_grid_hr": [
+        1.1875,
+        0.275284
+      ],
+      "chat_hr": [
+        0.175,
+        0.178536
+      ],
+      "combined_hr": [
+        3.9125,
+        0.1125
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.8,
+          0.331662
+        ],
+        "5": [
+          2.275,
+          0.192029
+        ],
+        "8": [
+          1.375,
+          0.125
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.85,
+          0.093541
+        ],
+        "5": [
+          0.4875,
+          0.067315
+        ],
+        "8": [
+          0.2625,
+          0.0375
+        ]
+      },
+      "denied_cap_frac": 0.762268,
+      "denied_own_frac": 0.0,
+      "grid_hr": [
+        1.0125,
+        0.189159
+      ],
+      "steer_share": {
+        "chat": 0.044728,
+        "explore": 0.696486,
+        "grid": 0.258786
+      }
+    },
+    "0|quest-focused": {
+      "admitted_hr": [
+        3.8125,
+        0.139754
+      ],
+      "attempted_hr": [
+        11.3875,
+        1.148981
+      ],
+      "chat_grid_hr": [
+        0.0,
+        0.0
+      ],
+      "chat_hr": [
+        0.0,
+        0.0
+      ],
+      "combined_hr": [
+        3.8125,
+        0.139754
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.75,
+          0.399218
+        ],
+        "5": [
+          2.2375,
+          0.233519
+        ],
+        "8": [
+          1.3625,
+          0.1625
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.2125,
+          0.057282
+        ],
+        "5": [
+          0.7125,
+          0.057282
+        ],
+        "8": [
+          0.4,
+          0.05
+        ]
+      },
+      "denied_cap_frac": 0.665203,
+      "denied_own_frac": 0.0,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.0,
+        "explore": 1.0,
+        "grid": 0.0
+      }
+    },
+    "300|beat-steer-farmer": {
+      "admitted_hr": [
+        2.5,
+        0.111803
+      ],
+      "attempted_hr": [
+        720.0,
+        0.0
+      ],
+      "chat_grid_hr": [
+        1.5,
+        0.111803
+      ],
+      "chat_hr": [
+        0.875,
+        0.158114
+      ],
+      "combined_hr": [
+        4.0,
+        0.0
+      ],
+      "comp_free_hr": {
+        "3": [
+          240.0,
+          0.0
+        ],
+        "5": [
+          144.0,
+          0.0
+        ],
+        "8": [
+          90.0,
+          0.0
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.8,
+          0.061237
+        ],
+        "5": [
+          0.45,
+          0.061237
+        ],
+        "8": [
+          0.25,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.791667,
+      "denied_own_frac": 0.204861,
+      "grid_hr": [
+        0.625,
+        0.262202
+      ],
+      "steer_share": {
+        "chat": 0.21875,
+        "explore": 0.625,
+        "grid": 0.15625
+      }
+    },
+    "300|mixed-triple-casual": {
+      "admitted_hr": [
+        2.975,
+        0.248747
+      ],
+      "attempted_hr": [
+        5.8625,
+        0.703673
+      ],
+      "chat_grid_hr": [
+        0.225,
+        0.192029
+      ],
+      "chat_hr": [
+        0.2,
+        0.169558
+      ],
+      "combined_hr": [
+        3.2,
+        0.257391
+      ],
+      "comp_free_hr": {
+        "3": [
+          1.9125,
+          0.250312
+        ],
+        "5": [
+          1.125,
+          0.147902
+        ],
+        "8": [
+          0.6625,
+          0.080039
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.95,
+          0.1
+        ],
+        "5": [
+          0.5375,
+          0.057282
+        ],
+        "8": [
+          0.3,
+          0.061237
+        ]
+      },
+      "denied_cap_frac": 0.253731,
+      "denied_own_frac": 0.238806,
+      "grid_hr": [
+        0.025,
+        0.05
+      ],
+      "steer_share": {
+        "chat": 0.0625,
+        "explore": 0.929688,
+        "grid": 0.007812
+      }
+    },
+    "300|mixed-triple-deep": {
+      "admitted_hr": [
+        2.525,
+        0.3
+      ],
+      "attempted_hr": [
+        11.4625,
+        0.98115
+      ],
+      "chat_grid_hr": [
+        1.3625,
+        0.323313
+      ],
+      "chat_hr": [
+        0.15,
+        0.183712
+      ],
+      "combined_hr": [
+        3.8875,
+        0.103833
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.8,
+          0.331662
+        ],
+        "5": [
+          2.275,
+          0.192029
+        ],
+        "8": [
+          1.375,
+          0.125
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.8,
+          0.1
+        ],
+        "5": [
+          0.45,
+          0.061237
+        ],
+        "8": [
+          0.25,
+          0.055902
+        ]
+      },
+      "denied_cap_frac": 0.565976,
+      "denied_own_frac": 0.21374,
+      "grid_hr": [
+        1.2125,
+        0.330955
+      ],
+      "steer_share": {
+        "chat": 0.038585,
+        "explore": 0.649518,
+        "grid": 0.311897
+      }
+    },
+    "300|quest-focused": {
+      "admitted_hr": [
+        3.6875,
+        0.128087
+      ],
+      "attempted_hr": [
+        11.3875,
+        1.148981
+      ],
+      "chat_grid_hr": [
+        0.0,
+        0.0
+      ],
+      "chat_hr": [
+        0.0,
+        0.0
+      ],
+      "combined_hr": [
+        3.6875,
+        0.128087
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.75,
+          0.399218
+        ],
+        "5": [
+          2.2375,
+          0.233519
+        ],
+        "8": [
+          1.3625,
+          0.1625
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.1875,
+          0.0625
+        ],
+        "5": [
+          0.6875,
+          0.0625
+        ],
+        "8": [
+          0.375,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.358946,
+      "denied_own_frac": 0.317234,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.0,
+        "explore": 1.0,
+        "grid": 0.0
+      }
+    },
+    "600|beat-steer-farmer": {
+      "admitted_hr": [
+        2.15,
+        0.145774
+      ],
+      "attempted_hr": [
+        720.0,
+        0.0
+      ],
+      "chat_grid_hr": [
+        1.85,
+        0.145774
+      ],
+      "chat_hr": [
+        0.925,
+        0.23184
+      ],
+      "combined_hr": [
+        4.0,
+        0.0
+      ],
+      "comp_free_hr": {
+        "3": [
+          240.0,
+          0.0
+        ],
+        "5": [
+          144.0,
+          0.0
+        ],
+        "8": [
+          90.0,
+          0.0
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.675,
+          0.061237
+        ],
+        "5": [
+          0.375,
+          0.0
+        ],
+        "8": [
+          0.25,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.641667,
+      "denied_own_frac": 0.355347,
+      "grid_hr": [
+        0.925,
+        0.127475
+      ],
+      "steer_share": {
+        "chat": 0.23125,
+        "explore": 0.5375,
+        "grid": 0.23125
+      }
+    },
+    "600|mixed-triple-casual": {
+      "admitted_hr": [
+        2.775,
+        0.272718
+      ],
+      "attempted_hr": [
+        5.8625,
+        0.703673
+      ],
+      "chat_grid_hr": [
+        0.275,
+        0.248747
+      ],
+      "chat_hr": [
+        0.225,
+        0.192029
+      ],
+      "combined_hr": [
+        3.05,
+        0.280624
+      ],
+      "comp_free_hr": {
+        "3": [
+          1.9125,
+          0.250312
+        ],
+        "5": [
+          1.125,
+          0.147902
+        ],
+        "8": [
+          0.6625,
+          0.080039
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.875,
+          0.096825
+        ],
+        "5": [
+          0.5125,
+          0.067315
+        ],
+        "8": [
+          0.2875,
+          0.057282
+        ]
+      },
+      "denied_cap_frac": 0.098081,
+      "denied_own_frac": 0.428571,
+      "grid_hr": [
+        0.05,
+        0.061237
+      ],
+      "steer_share": {
+        "chat": 0.07377,
+        "explore": 0.909836,
+        "grid": 0.016393
+      }
+    },
+    "600|mixed-triple-deep": {
+      "admitted_hr": [
+        2.4125,
+        0.321374
+      ],
+      "attempted_hr": [
+        11.4625,
+        0.98115
+      ],
+      "chat_grid_hr": [
+        1.425,
+        0.302076
+      ],
+      "chat_hr": [
+        0.1625,
+        0.158607
+      ],
+      "combined_hr": [
+        3.8375,
+        0.097628
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.8,
+          0.331662
+        ],
+        "5": [
+          2.275,
+          0.192029
+        ],
+        "8": [
+          1.375,
+          0.125
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.775,
+          0.122474
+        ],
+        "5": [
+          0.425,
+          0.061237
+        ],
+        "8": [
+          0.25,
+          0.055902
+        ]
+      },
+      "denied_cap_frac": 0.392585,
+      "denied_own_frac": 0.396947,
+      "grid_hr": [
+        1.2625,
+        0.303367
+      ],
+      "steer_share": {
+        "chat": 0.042345,
+        "explore": 0.628664,
+        "grid": 0.32899
+      }
+    },
+    "600|quest-focused": {
+      "admitted_hr": [
+        3.5625,
+        0.100778
+      ],
+      "attempted_hr": [
+        11.3875,
+        1.148981
+      ],
+      "chat_grid_hr": [
+        0.0,
+        0.0
+      ],
+      "chat_hr": [
+        0.0,
+        0.0
+      ],
+      "combined_hr": [
+        3.5625,
+        0.100778
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.75,
+          0.399218
+        ],
+        "5": [
+          2.2375,
+          0.233519
+        ],
+        "8": [
+          1.3625,
+          0.1625
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.1375,
+          0.0375
+        ],
+        "5": [
+          0.6375,
+          0.0375
+        ],
+        "8": [
+          0.375,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.108672,
+      "denied_own_frac": 0.578485,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.0,
+        "explore": 1.0,
+        "grid": 0.0
+      }
+    },
+    "900|beat-steer-farmer": {
+      "admitted_hr": [
+        1.7,
+        0.1
+      ],
+      "attempted_hr": [
+        720.0,
+        0.0
+      ],
+      "chat_grid_hr": [
+        2.3,
+        0.1
+      ],
+      "chat_hr": [
+        1.125,
+        0.136931
+      ],
+      "combined_hr": [
+        4.0,
+        0.0
+      ],
+      "comp_free_hr": {
+        "3": [
+          240.0,
+          0.0
+        ],
+        "5": [
+          144.0,
+          0.0
+        ],
+        "8": [
+          90.0,
+          0.0
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.5,
+          0.0
+        ],
+        "5": [
+          0.25,
+          0.0
+        ],
+        "8": [
+          0.125,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.575,
+      "denied_own_frac": 0.422639,
+      "grid_hr": [
+        1.175,
+        0.169558
+      ],
+      "steer_share": {
+        "chat": 0.28125,
+        "explore": 0.425,
+        "grid": 0.29375
+      }
+    },
+    "900|mixed-triple-casual": {
+      "admitted_hr": [
+        2.3125,
+        0.203485
+      ],
+      "attempted_hr": [
+        5.8625,
+        0.703673
+      ],
+      "chat_grid_hr": [
+        0.3125,
+        0.245268
+      ],
+      "chat_hr": [
+        0.2625,
+        0.189159
+      ],
+      "combined_hr": [
+        2.625,
+        0.353553
+      ],
+      "comp_free_hr": {
+        "3": [
+          1.9125,
+          0.250312
+        ],
+        "5": [
+          1.125,
+          0.147902
+        ],
+        "8": [
+          0.6625,
+          0.080039
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.725,
+          0.075
+        ],
+        "5": [
+          0.4125,
+          0.057282
+        ],
+        "8": [
+          0.25,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.031983,
+      "denied_own_frac": 0.573561,
+      "grid_hr": [
+        0.05,
+        0.061237
+      ],
+      "steer_share": {
+        "chat": 0.1,
+        "explore": 0.880952,
+        "grid": 0.019048
+      }
+    },
+    "900|mixed-triple-deep": {
+      "admitted_hr": [
+        2.0625,
+        0.170018
+      ],
+      "attempted_hr": [
+        11.4625,
+        0.98115
+      ],
+      "chat_grid_hr": [
+        1.6875,
+        0.1875
+      ],
+      "chat_hr": [
+        0.15,
+        0.156125
+      ],
+      "combined_hr": [
+        3.75,
+        0.079057
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.8,
+          0.331662
+        ],
+        "5": [
+          2.275,
+          0.192029
+        ],
+        "8": [
+          1.375,
+          0.125
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.6375,
+          0.067315
+        ],
+        "5": [
+          0.3625,
+          0.0375
+        ],
+        "8": [
+          0.225,
+          0.05
+        ]
+      },
+      "denied_cap_frac": 0.288986,
+      "denied_own_frac": 0.53108,
+      "grid_hr": [
+        1.5375,
+        0.250312
+      ],
+      "steer_share": {
+        "chat": 0.04,
+        "explore": 0.55,
+        "grid": 0.41
+      }
+    },
+    "900|quest-focused": {
+      "admitted_hr": [
+        3.0125,
+        0.103833
+      ],
+      "attempted_hr": [
+        11.3875,
+        1.148981
+      ],
+      "chat_grid_hr": [
+        0.0,
+        0.0
+      ],
+      "chat_hr": [
+        0.0,
+        0.0
+      ],
+      "combined_hr": [
+        3.0125,
+        0.103833
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.75,
+          0.399218
+        ],
+        "5": [
+          2.2375,
+          0.233519
+        ],
+        "8": [
+          1.3625,
+          0.1625
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.9625,
+          0.057282
+        ],
+        "5": [
+          0.55,
+          0.061237
+        ],
+        "8": [
+          0.3375,
+          0.057282
+        ]
+      },
+      "denied_cap_frac": 0.0,
+      "denied_own_frac": 0.735456,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.0,
+        "explore": 1.0,
+        "grid": 0.0
+      }
+    }
+  },
+  "admission_K6_main": {
+    "0|beat-steer-farmer": {
+      "admitted_hr": [
+        5.875,
+        0.0
+      ],
+      "attempted_hr": [
+        720.0,
+        0.0
+      ],
+      "chat_grid_hr": [
+        0.125,
+        0.0
+      ],
+      "chat_hr": [
+        0.125,
+        0.0
+      ],
+      "combined_hr": [
+        6.0,
+        0.0
+      ],
+      "comp_free_hr": {
+        "3": [
+          240.0,
+          0.0
+        ],
+        "5": [
+          144.0,
+          0.0
+        ],
+        "8": [
+          90.0,
+          0.0
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.875,
+          0.0
+        ],
+        "5": [
+          1.125,
+          0.0
+        ],
+        "8": [
+          0.625,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.99184,
+      "denied_own_frac": 0.0,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.020833,
+        "explore": 0.979167,
+        "grid": 0.0
+      }
+    },
+    "0|mixed-triple-casual": {
+      "admitted_hr": [
+        4.2625,
+        0.240117
+      ],
+      "attempted_hr": [
+        5.8625,
+        0.703673
+      ],
+      "chat_grid_hr": [
+        0.275,
+        0.248747
+      ],
+      "chat_hr": [
+        0.225,
+        0.192029
+      ],
+      "combined_hr": [
+        4.5375,
+        0.321374
+      ],
+      "comp_free_hr": {
+        "3": [
+          1.9125,
+          0.250312
+        ],
+        "5": [
+          1.125,
+          0.147902
+        ],
+        "8": [
+          0.6625,
+          0.080039
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.375,
+          0.096825
+        ],
+        "5": [
+          0.8,
+          0.061237
+        ],
+        "8": [
+          0.5,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.272921,
+      "denied_own_frac": 0.0,
+      "grid_hr": [
+        0.05,
+        0.061237
+      ],
+      "steer_share": {
+        "chat": 0.049587,
+        "explore": 0.939394,
+        "grid": 0.011019
+      }
+    },
+    "0|mixed-triple-deep": {
+      "admitted_hr": [
+        4.15,
+        0.402337
+      ],
+      "attempted_hr": [
+        11.4625,
+        0.98115
+      ],
+      "chat_grid_hr": [
+        1.575,
+        0.419076
+      ],
+      "chat_hr": [
+        0.2125,
+        0.185826
+      ],
+      "combined_hr": [
+        5.725,
+        0.175
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.8,
+          0.331662
+        ],
+        "5": [
+          2.275,
+          0.192029
+        ],
+        "8": [
+          1.375,
+          0.125
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.325,
+          0.139194
+        ],
+        "5": [
+          0.7875,
+          0.080039
+        ],
+        "8": [
+          0.475,
+          0.05
+        ]
+      },
+      "denied_cap_frac": 0.63795,
+      "denied_own_frac": 0.0,
+      "grid_hr": [
+        1.3625,
+        0.323313
+      ],
+      "steer_share": {
+        "chat": 0.037118,
+        "explore": 0.724891,
+        "grid": 0.237991
+      }
+    },
+    "0|quest-focused": {
+      "admitted_hr": [
+        5.5,
+        0.201556
+      ],
+      "attempted_hr": [
+        11.3875,
+        1.148981
+      ],
+      "chat_grid_hr": [
+        0.0,
+        0.0
+      ],
+      "chat_hr": [
+        0.0,
+        0.0
+      ],
+      "combined_hr": [
+        5.5,
+        0.201556
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.75,
+          0.399218
+        ],
+        "5": [
+          2.2375,
+          0.233519
+        ],
+        "8": [
+          1.3625,
+          0.1625
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.8,
+          0.061237
+        ],
+        "5": [
+          1.05,
+          0.061237
+        ],
+        "8": [
+          0.625,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.517014,
+      "denied_own_frac": 0.0,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.0,
+        "explore": 1.0,
+        "grid": 0.0
+      }
+    },
+    "300|beat-steer-farmer": {
+      "admitted_hr": [
+        3.575,
+        0.127475
+      ],
+      "attempted_hr": [
+        720.0,
+        0.0
+      ],
+      "chat_grid_hr": [
+        2.425,
+        0.127475
+      ],
+      "chat_hr": [
+        1.225,
+        0.289396
+      ],
+      "combined_hr": [
+        6.0,
+        0.0
+      ],
+      "comp_free_hr": {
+        "3": [
+          240.0,
+          0.0
+        ],
+        "5": [
+          144.0,
+          0.0
+        ],
+        "8": [
+          90.0,
+          0.0
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.15,
+          0.05
+        ],
+        "5": [
+          0.65,
+          0.05
+        ],
+        "8": [
+          0.375,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.702083,
+      "denied_own_frac": 0.292951,
+      "grid_hr": [
+        1.2,
+        0.280624
+      ],
+      "steer_share": {
+        "chat": 0.204167,
+        "explore": 0.595833,
+        "grid": 0.2
+      }
+    },
+    "300|mixed-triple-casual": {
+      "admitted_hr": [
+        3.6375,
+        0.372701
+      ],
+      "attempted_hr": [
+        5.8625,
+        0.703673
+      ],
+      "chat_grid_hr": [
+        0.325,
+        0.263391
+      ],
+      "chat_hr": [
+        0.275,
+        0.207666
+      ],
+      "combined_hr": [
+        3.9625,
+        0.521566
+      ],
+      "comp_free_hr": {
+        "3": [
+          1.9125,
+          0.250312
+        ],
+        "5": [
+          1.125,
+          0.147902
+        ],
+        "8": [
+          0.6625,
+          0.080039
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.1625,
+          0.1375
+        ],
+        "5": [
+          0.6875,
+          0.083853
+        ],
+        "8": [
+          0.4,
+          0.05
+        ]
+      },
+      "denied_cap_frac": 0.081023,
+      "denied_own_frac": 0.298507,
+      "grid_hr": [
+        0.05,
+        0.061237
+      ],
+      "steer_share": {
+        "chat": 0.069401,
+        "explore": 0.917981,
+        "grid": 0.012618
+      }
+    },
+    "300|mixed-triple-deep": {
+      "admitted_hr": [
+        3.6625,
+        0.316475
+      ],
+      "attempted_hr": [
+        11.4625,
+        0.98115
+      ],
+      "chat_grid_hr": [
+        1.9625,
+        0.321374
+      ],
+      "chat_hr": [
+        0.1875,
+        0.195656
+      ],
+      "combined_hr": [
+        5.625,
+        0.096825
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.8,
+          0.331662
+        ],
+        "5": [
+          2.275,
+          0.192029
+        ],
+        "8": [
+          1.375,
+          0.125
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.1875,
+          0.115244
+        ],
+        "5": [
+          0.7,
+          0.082916
+        ],
+        "8": [
+          0.375,
+          0.055902
+        ]
+      },
+      "denied_cap_frac": 0.365322,
+      "denied_own_frac": 0.315158,
+      "grid_hr": [
+        1.775,
+        0.254951
+      ],
+      "steer_share": {
+        "chat": 0.033333,
+        "explore": 0.651111,
+        "grid": 0.315556
+      }
+    },
+    "300|quest-focused": {
+      "admitted_hr": [
+        5.075,
+        0.195256
+      ],
+      "attempted_hr": [
+        11.3875,
+        1.148981
+      ],
+      "chat_grid_hr": [
+        0.0,
+        0.0
+      ],
+      "chat_hr": [
+        0.0,
+        0.0
+      ],
+      "combined_hr": [
+        5.075,
+        0.195256
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.75,
+          0.399218
+        ],
+        "5": [
+          2.2375,
+          0.233519
+        ],
+        "8": [
+          1.3625,
+          0.1625
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.6625,
+          0.080039
+        ],
+        "5": [
+          0.975,
+          0.05
+        ],
+        "8": [
+          0.6,
+          0.05
+        ]
+      },
+      "denied_cap_frac": 0.139407,
+      "denied_own_frac": 0.414929,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.0,
+        "explore": 1.0,
+        "grid": 0.0
+      }
+    },
+    "600|beat-steer-farmer": {
+      "admitted_hr": [
+        2.9,
+        0.278388
+      ],
+      "attempted_hr": [
+        720.0,
+        0.0
+      ],
+      "chat_grid_hr": [
+        3.1,
+        0.278388
+      ],
+      "chat_hr": [
+        1.65,
+        0.266927
+      ],
+      "combined_hr": [
+        6.0,
+        0.0
+      ],
+      "comp_free_hr": {
+        "3": [
+          240.0,
+          0.0
+        ],
+        "5": [
+          144.0,
+          0.0
+        ],
+        "8": [
+          90.0,
+          0.0
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.9,
+          0.122474
+        ],
+        "5": [
+          0.525,
+          0.05
+        ],
+        "8": [
+          0.275,
+          0.05
+        ]
+      },
+      "denied_cap_frac": 0.516667,
+      "denied_own_frac": 0.479306,
+      "grid_hr": [
+        1.45,
+        0.127475
+      ],
+      "steer_share": {
+        "chat": 0.275,
+        "explore": 0.483333,
+        "grid": 0.241667
+      }
+    },
+    "600|mixed-triple-casual": {
+      "admitted_hr": [
+        3.0,
+        0.290474
+      ],
+      "attempted_hr": [
+        5.8625,
+        0.703673
+      ],
+      "chat_grid_hr": [
+        0.375,
+        0.316228
+      ],
+      "chat_hr": [
+        0.325,
+        0.257391
+      ],
+      "combined_hr": [
+        3.375,
+        0.521416
+      ],
+      "comp_free_hr": {
+        "3": [
+          1.9125,
+          0.250312
+        ],
+        "5": [
+          1.125,
+          0.147902
+        ],
+        "8": [
+          0.6625,
+          0.080039
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.9625,
+          0.1125
+        ],
+        "5": [
+          0.5625,
+          0.0625
+        ],
+        "8": [
+          0.325,
+          0.061237
+        ]
+      },
+      "denied_cap_frac": 0.010661,
+      "denied_own_frac": 0.477612,
+      "grid_hr": [
+        0.05,
+        0.061237
+      ],
+      "steer_share": {
+        "chat": 0.096296,
+        "explore": 0.888889,
+        "grid": 0.014815
+      }
+    },
+    "600|mixed-triple-deep": {
+      "admitted_hr": [
+        3.175,
+        0.263391
+      ],
+      "attempted_hr": [
+        11.4625,
+        0.98115
+      ],
+      "chat_grid_hr": [
+        2.3125,
+        0.232177
+      ],
+      "chat_hr": [
+        0.175,
+        0.15
+      ],
+      "combined_hr": [
+        5.4875,
+        0.130504
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.8,
+          0.331662
+        ],
+        "5": [
+          2.275,
+          0.192029
+        ],
+        "8": [
+          1.375,
+          0.125
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.0125,
+          0.0875
+        ],
+        "5": [
+          0.575,
+          0.061237
+        ],
+        "8": [
+          0.35,
+          0.05
+        ]
+      },
+      "denied_cap_frac": 0.187568,
+      "denied_own_frac": 0.535442,
+      "grid_hr": [
+        2.1375,
+        0.1625
+      ],
+      "steer_share": {
+        "chat": 0.031891,
+        "explore": 0.578588,
+        "grid": 0.389522
+      }
+    },
+    "600|quest-focused": {
+      "admitted_hr": [
+        4.025,
+        0.266927
+      ],
+      "attempted_hr": [
+        11.3875,
+        1.148981
+      ],
+      "chat_grid_hr": [
+        0.0,
+        0.0
+      ],
+      "chat_hr": [
+        0.0,
+        0.0
+      ],
+      "combined_hr": [
+        4.025,
+        0.266927
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.75,
+          0.399218
+        ],
+        "5": [
+          2.2375,
+          0.233519
+        ],
+        "8": [
+          1.3625,
+          0.1625
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          1.3,
+          0.114564
+        ],
+        "5": [
+          0.7375,
+          0.067315
+        ],
+        "8": [
+          0.45,
+          0.061237
+        ]
+      },
+      "denied_cap_frac": 0.0,
+      "denied_own_frac": 0.646542,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.0,
+        "explore": 1.0,
+        "grid": 0.0
+      }
+    },
+    "900|beat-steer-farmer": {
+      "admitted_hr": [
+        2.475,
+        0.145774
+      ],
+      "attempted_hr": [
+        720.0,
+        0.0
+      ],
+      "chat_grid_hr": [
+        3.525,
+        0.145774
+      ],
+      "chat_hr": [
+        1.875,
+        0.136931
+      ],
+      "combined_hr": [
+        6.0,
+        0.0
+      ],
+      "comp_free_hr": {
+        "3": [
+          240.0,
+          0.0
+        ],
+        "5": [
+          144.0,
+          0.0
+        ],
+        "8": [
+          90.0,
+          0.0
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.775,
+          0.05
+        ],
+        "5": [
+          0.425,
+          0.061237
+        ],
+        "8": [
+          0.25,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.38125,
+      "denied_own_frac": 0.615313,
+      "grid_hr": [
+        1.65,
+        0.145774
+      ],
+      "steer_share": {
+        "chat": 0.3125,
+        "explore": 0.4125,
+        "grid": 0.275
+      }
+    },
+    "900|mixed-triple-casual": {
+      "admitted_hr": [
+        2.375,
+        0.223607
+      ],
+      "attempted_hr": [
+        5.8625,
+        0.703673
+      ],
+      "chat_grid_hr": [
+        0.375,
+        0.316228
+      ],
+      "chat_hr": [
+        0.325,
+        0.257391
+      ],
+      "combined_hr": [
+        2.75,
+        0.460977
+      ],
+      "comp_free_hr": {
+        "3": [
+          1.9125,
+          0.250312
+        ],
+        "5": [
+          1.125,
+          0.147902
+        ],
+        "8": [
+          0.6625,
+          0.080039
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.7375,
+          0.067315
+        ],
+        "5": [
+          0.4375,
+          0.0625
+        ],
+        "8": [
+          0.25,
+          0.0
+        ]
+      },
+      "denied_cap_frac": 0.0,
+      "denied_own_frac": 0.594883,
+      "grid_hr": [
+        0.05,
+        0.061237
+      ],
+      "steer_share": {
+        "chat": 0.118182,
+        "explore": 0.863636,
+        "grid": 0.018182
+      }
+    },
+    "900|mixed-triple-deep": {
+      "admitted_hr": [
+        2.675,
+        0.160078
+      ],
+      "attempted_hr": [
+        11.4625,
+        0.98115
+      ],
+      "chat_grid_hr": [
+        2.55,
+        0.238485
+      ],
+      "chat_hr": [
+        0.175,
+        0.178536
+      ],
+      "combined_hr": [
+        5.225,
+        0.23585
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.8,
+          0.331662
+        ],
+        "5": [
+          2.275,
+          0.192029
+        ],
+        "8": [
+          1.375,
+          0.125
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.85,
+          0.075
+        ],
+        "5": [
+          0.5,
+          0.0
+        ],
+        "8": [
+          0.2625,
+          0.0375
+        ]
+      },
+      "denied_cap_frac": 0.075245,
+      "denied_own_frac": 0.691385,
+      "grid_hr": [
+        2.375,
+        0.25
+      ],
+      "steer_share": {
+        "chat": 0.033493,
+        "explore": 0.511962,
+        "grid": 0.454545
+      }
+    },
+    "900|quest-focused": {
+      "admitted_hr": [
+        3.0125,
+        0.103833
+      ],
+      "attempted_hr": [
+        11.3875,
+        1.148981
+      ],
+      "chat_grid_hr": [
+        0.0,
+        0.0
+      ],
+      "chat_hr": [
+        0.0,
+        0.0
+      ],
+      "combined_hr": [
+        3.0125,
+        0.103833
+      ],
+      "comp_free_hr": {
+        "3": [
+          3.75,
+          0.399218
+        ],
+        "5": [
+          2.2375,
+          0.233519
+        ],
+        "8": [
+          1.3625,
+          0.1625
+        ]
+      },
+      "comp_gated_hr": {
+        "3": [
+          0.9625,
+          0.057282
+        ],
+        "5": [
+          0.55,
+          0.061237
+        ],
+        "8": [
+          0.3375,
+          0.057282
+        ]
+      },
+      "denied_cap_frac": 0.0,
+      "denied_own_frac": 0.735456,
+      "grid_hr": [
+        0.0,
+        0.0
+      ],
+      "steer_share": {
+        "chat": 0.0,
+        "explore": 1.0,
+        "grid": 0.0
+      }
+    }
+  },
+  "aux_4xM_margins": {
+    "0": {
+      "md_admitted_hr_4xM": 2.778125,
+      "md_chat_grid_hr_4xM": 1.140625,
+      "qf_admitted_hr_4xM": 3.771875
+    },
+    "300": {
+      "md_admitted_hr_4xM": 2.6,
+      "md_chat_grid_hr_4xM": 1.284375,
+      "qf_admitted_hr_4xM": 3.7
+    },
+    "600": {
+      "md_admitted_hr_4xM": 2.34375,
+      "md_chat_grid_hr_4xM": 1.475,
+      "qf_admitted_hr_4xM": 3.54375
+    },
+    "900": {
+      "md_admitted_hr_4xM": 2.153125,
+      "md_chat_grid_hr_4xM": 1.609375,
+      "qf_admitted_hr_4xM": 3.053125
+    }
+  },
+  "bands": {
+    "arb_ratio_max": 2.0,
+    "fair_beats_min": 1.0,
+    "fair_chat_grid_min": 2.375,
+    "flow_fraction": 0.8,
+    "tier_III_currency": 50,
+    "tier_II_currency": 25
+  },
+  "cells_K4_decision": {
+    "cE0|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 2.725,
+      "md_chat_grid_hr": 1.1875,
+      "md_clip_vs_v018_K4": 1.6875,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.8125,
+      "qf_completions_hr": 3.75,
+      "qf_currency_hr_II": 93.75
+    },
+    "cE0|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 1.25,
+      "farmer_currency_hr_II": 31.25,
+      "farmer_currency_hr_III": 62.5,
+      "md_admitted_hr": 2.725,
+      "md_chat_grid_hr": 1.1875,
+      "md_clip_vs_v018_K4": 1.6875,
+      "mint_ratio_adversarial_IIIvsII": 2.061856,
+      "mint_ratio_center": 1.030928,
+      "qf_admitted_hr": 3.8125,
+      "qf_completions_hr": 1.2125,
+      "qf_currency_hr_II": 30.3125
+    },
+    "cE0|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 2.725,
+      "md_chat_grid_hr": 1.1875,
+      "md_clip_vs_v018_K4": 1.6875,
+      "mint_ratio_adversarial_IIIvsII": 128.715084,
+      "mint_ratio_center": 64.357542,
+      "qf_admitted_hr": 3.8125,
+      "qf_completions_hr": 2.2375,
+      "qf_currency_hr_II": 55.9375
+    },
+    "cE0|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.75,
+      "farmer_currency_hr_II": 18.75,
+      "farmer_currency_hr_III": 37.5,
+      "md_admitted_hr": 2.725,
+      "md_chat_grid_hr": 1.1875,
+      "md_clip_vs_v018_K4": 1.6875,
+      "mint_ratio_adversarial_IIIvsII": 2.105263,
+      "mint_ratio_center": 1.052632,
+      "qf_admitted_hr": 3.8125,
+      "qf_completions_hr": 0.7125,
+      "qf_currency_hr_II": 17.8125
+    },
+    "cE0|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 2.725,
+      "md_chat_grid_hr": 1.1875,
+      "md_clip_vs_v018_K4": 1.6875,
+      "mint_ratio_adversarial_IIIvsII": 132.110092,
+      "mint_ratio_center": 66.055046,
+      "qf_admitted_hr": 3.8125,
+      "qf_completions_hr": 1.3625,
+      "qf_currency_hr_II": 34.0625
+    },
+    "cE0|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.375,
+      "farmer_currency_hr_II": 9.375,
+      "farmer_currency_hr_III": 18.75,
+      "md_admitted_hr": 2.725,
+      "md_chat_grid_hr": 1.1875,
+      "md_clip_vs_v018_K4": 1.6875,
+      "mint_ratio_adversarial_IIIvsII": 1.875,
+      "mint_ratio_center": 0.9375,
+      "qf_admitted_hr": 3.8125,
+      "qf_completions_hr": 0.4,
+      "qf_currency_hr_II": 10.0
+    },
+    "cE300|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 2.525,
+      "md_chat_grid_hr": 1.3625,
+      "md_clip_vs_v018_K4": 1.5125,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.6875,
+      "qf_completions_hr": 3.75,
+      "qf_currency_hr_II": 93.75
+    },
+    "cE300|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.8,
+      "farmer_currency_hr_II": 20.0,
+      "farmer_currency_hr_III": 40.0,
+      "md_admitted_hr": 2.525,
+      "md_chat_grid_hr": 1.3625,
+      "md_clip_vs_v018_K4": 1.5125,
+      "mint_ratio_adversarial_IIIvsII": 1.347368,
+      "mint_ratio_center": 0.673684,
+      "qf_admitted_hr": 3.6875,
+      "qf_completions_hr": 1.1875,
+      "qf_currency_hr_II": 29.6875
+    },
+    "cE300|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 2.525,
+      "md_chat_grid_hr": 1.3625,
+      "md_clip_vs_v018_K4": 1.5125,
+      "mint_ratio_adversarial_IIIvsII": 128.715084,
+      "mint_ratio_center": 64.357542,
+      "qf_admitted_hr": 3.6875,
+      "qf_completions_hr": 2.2375,
+      "qf_currency_hr_II": 55.9375
+    },
+    "cE300|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.45,
+      "farmer_currency_hr_II": 11.25,
+      "farmer_currency_hr_III": 22.5,
+      "md_admitted_hr": 2.525,
+      "md_chat_grid_hr": 1.3625,
+      "md_clip_vs_v018_K4": 1.5125,
+      "mint_ratio_adversarial_IIIvsII": 1.309091,
+      "mint_ratio_center": 0.654545,
+      "qf_admitted_hr": 3.6875,
+      "qf_completions_hr": 0.6875,
+      "qf_currency_hr_II": 17.1875
+    },
+    "cE300|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 2.525,
+      "md_chat_grid_hr": 1.3625,
+      "md_clip_vs_v018_K4": 1.5125,
+      "mint_ratio_adversarial_IIIvsII": 132.110092,
+      "mint_ratio_center": 66.055046,
+      "qf_admitted_hr": 3.6875,
+      "qf_completions_hr": 1.3625,
+      "qf_currency_hr_II": 34.0625
+    },
+    "cE300|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.25,
+      "farmer_currency_hr_II": 6.25,
+      "farmer_currency_hr_III": 12.5,
+      "md_admitted_hr": 2.525,
+      "md_chat_grid_hr": 1.3625,
+      "md_clip_vs_v018_K4": 1.5125,
+      "mint_ratio_adversarial_IIIvsII": 1.333333,
+      "mint_ratio_center": 0.666667,
+      "qf_admitted_hr": 3.6875,
+      "qf_completions_hr": 0.375,
+      "qf_currency_hr_II": 9.375
+    },
+    "cE600|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 2.4125,
+      "md_chat_grid_hr": 1.425,
+      "md_clip_vs_v018_K4": 1.45,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.5625,
+      "qf_completions_hr": 3.75,
+      "qf_currency_hr_II": 93.75
+    },
+    "cE600|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.675,
+      "farmer_currency_hr_II": 16.875,
+      "farmer_currency_hr_III": 33.75,
+      "md_admitted_hr": 2.4125,
+      "md_chat_grid_hr": 1.425,
+      "md_clip_vs_v018_K4": 1.45,
+      "mint_ratio_adversarial_IIIvsII": 1.186813,
+      "mint_ratio_center": 0.593407,
+      "qf_admitted_hr": 3.5625,
+      "qf_completions_hr": 1.1375,
+      "qf_currency_hr_II": 28.4375
+    },
+    "cE600|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 2.4125,
+      "md_chat_grid_hr": 1.425,
+      "md_clip_vs_v018_K4": 1.45,
+      "mint_ratio_adversarial_IIIvsII": 128.715084,
+      "mint_ratio_center": 64.357542,
+      "qf_admitted_hr": 3.5625,
+      "qf_completions_hr": 2.2375,
+      "qf_currency_hr_II": 55.9375
+    },
+    "cE600|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.375,
+      "farmer_currency_hr_II": 9.375,
+      "farmer_currency_hr_III": 18.75,
+      "md_admitted_hr": 2.4125,
+      "md_chat_grid_hr": 1.425,
+      "md_clip_vs_v018_K4": 1.45,
+      "mint_ratio_adversarial_IIIvsII": 1.176471,
+      "mint_ratio_center": 0.588235,
+      "qf_admitted_hr": 3.5625,
+      "qf_completions_hr": 0.6375,
+      "qf_currency_hr_II": 15.9375
+    },
+    "cE600|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 2.4125,
+      "md_chat_grid_hr": 1.425,
+      "md_clip_vs_v018_K4": 1.45,
+      "mint_ratio_adversarial_IIIvsII": 132.110092,
+      "mint_ratio_center": 66.055046,
+      "qf_admitted_hr": 3.5625,
+      "qf_completions_hr": 1.3625,
+      "qf_currency_hr_II": 34.0625
+    },
+    "cE600|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.25,
+      "farmer_currency_hr_II": 6.25,
+      "farmer_currency_hr_III": 12.5,
+      "md_admitted_hr": 2.4125,
+      "md_chat_grid_hr": 1.425,
+      "md_clip_vs_v018_K4": 1.45,
+      "mint_ratio_adversarial_IIIvsII": 1.333333,
+      "mint_ratio_center": 0.666667,
+      "qf_admitted_hr": 3.5625,
+      "qf_completions_hr": 0.375,
+      "qf_currency_hr_II": 9.375
+    },
+    "cE900|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 2.0625,
+      "md_chat_grid_hr": 1.6875,
+      "md_clip_vs_v018_K4": 1.1875,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 3.75,
+      "qf_currency_hr_II": 93.75
+    },
+    "cE900|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.5,
+      "farmer_currency_hr_II": 12.5,
+      "farmer_currency_hr_III": 25.0,
+      "md_admitted_hr": 2.0625,
+      "md_chat_grid_hr": 1.6875,
+      "md_clip_vs_v018_K4": 1.1875,
+      "mint_ratio_adversarial_IIIvsII": 1.038961,
+      "mint_ratio_center": 0.519481,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 0.9625,
+      "qf_currency_hr_II": 24.0625
+    },
+    "cE900|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 2.0625,
+      "md_chat_grid_hr": 1.6875,
+      "md_clip_vs_v018_K4": 1.1875,
+      "mint_ratio_adversarial_IIIvsII": 128.715084,
+      "mint_ratio_center": 64.357542,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 2.2375,
+      "qf_currency_hr_II": 55.9375
+    },
+    "cE900|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.25,
+      "farmer_currency_hr_II": 6.25,
+      "farmer_currency_hr_III": 12.5,
+      "md_admitted_hr": 2.0625,
+      "md_chat_grid_hr": 1.6875,
+      "md_clip_vs_v018_K4": 1.1875,
+      "mint_ratio_adversarial_IIIvsII": 0.909091,
+      "mint_ratio_center": 0.454545,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 0.55,
+      "qf_currency_hr_II": 13.75
+    },
+    "cE900|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 2.0625,
+      "md_chat_grid_hr": 1.6875,
+      "md_clip_vs_v018_K4": 1.1875,
+      "mint_ratio_adversarial_IIIvsII": 132.110092,
+      "mint_ratio_center": 66.055046,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 1.3625,
+      "qf_currency_hr_II": 34.0625
+    },
+    "cE900|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.125,
+      "farmer_currency_hr_II": 3.125,
+      "farmer_currency_hr_III": 6.25,
+      "md_admitted_hr": 2.0625,
+      "md_chat_grid_hr": 1.6875,
+      "md_clip_vs_v018_K4": 1.1875,
+      "mint_ratio_adversarial_IIIvsII": 0.740741,
+      "mint_ratio_center": 0.37037,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 0.3375,
+      "qf_currency_hr_II": 8.4375
+    }
+  },
+  "cells_K4_stability": {
+    "cE0|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 2.55,
+      "md_chat_grid_hr": 1.375,
+      "md_clip_vs_v018_K4": 1.5,
+      "mint_ratio_adversarial_IIIvsII": 126.315789,
+      "mint_ratio_center": 63.157895,
+      "qf_admitted_hr": 3.75,
+      "qf_completions_hr": 3.8,
+      "qf_currency_hr_II": 95.0
+    },
+    "cE0|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 1.25,
+      "farmer_currency_hr_II": 31.25,
+      "farmer_currency_hr_III": 62.5,
+      "md_admitted_hr": 2.55,
+      "md_chat_grid_hr": 1.375,
+      "md_clip_vs_v018_K4": 1.5,
+      "mint_ratio_adversarial_IIIvsII": 2.083333,
+      "mint_ratio_center": 1.041667,
+      "qf_admitted_hr": 3.75,
+      "qf_completions_hr": 1.2,
+      "qf_currency_hr_II": 30.0
+    },
+    "cE0|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 2.55,
+      "md_chat_grid_hr": 1.375,
+      "md_clip_vs_v018_K4": 1.5,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.75,
+      "qf_completions_hr": 2.25,
+      "qf_currency_hr_II": 56.25
+    },
+    "cE0|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.75,
+      "farmer_currency_hr_II": 18.75,
+      "farmer_currency_hr_III": 37.5,
+      "md_admitted_hr": 2.55,
+      "md_chat_grid_hr": 1.375,
+      "md_clip_vs_v018_K4": 1.5,
+      "mint_ratio_adversarial_IIIvsII": 2.142857,
+      "mint_ratio_center": 1.071429,
+      "qf_admitted_hr": 3.75,
+      "qf_completions_hr": 0.7,
+      "qf_currency_hr_II": 17.5
+    },
+    "cE0|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 2.55,
+      "md_chat_grid_hr": 1.375,
+      "md_clip_vs_v018_K4": 1.5,
+      "mint_ratio_adversarial_IIIvsII": 130.909091,
+      "mint_ratio_center": 65.454545,
+      "qf_admitted_hr": 3.75,
+      "qf_completions_hr": 1.375,
+      "qf_currency_hr_II": 34.375
+    },
+    "cE0|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.375,
+      "farmer_currency_hr_II": 9.375,
+      "farmer_currency_hr_III": 18.75,
+      "md_admitted_hr": 2.55,
+      "md_chat_grid_hr": 1.375,
+      "md_clip_vs_v018_K4": 1.5,
+      "mint_ratio_adversarial_IIIvsII": 2.0,
+      "mint_ratio_center": 1.0,
+      "qf_admitted_hr": 3.75,
+      "qf_completions_hr": 0.375,
+      "qf_currency_hr_II": 9.375
+    },
+    "cE300|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 2.4,
+      "md_chat_grid_hr": 1.45,
+      "md_clip_vs_v018_K4": 1.425,
+      "mint_ratio_adversarial_IIIvsII": 126.315789,
+      "mint_ratio_center": 63.157895,
+      "qf_admitted_hr": 3.675,
+      "qf_completions_hr": 3.8,
+      "qf_currency_hr_II": 95.0
+    },
+    "cE300|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.8,
+      "farmer_currency_hr_II": 20.0,
+      "farmer_currency_hr_III": 40.0,
+      "md_admitted_hr": 2.4,
+      "md_chat_grid_hr": 1.45,
+      "md_clip_vs_v018_K4": 1.425,
+      "mint_ratio_adversarial_IIIvsII": 1.361702,
+      "mint_ratio_center": 0.680851,
+      "qf_admitted_hr": 3.675,
+      "qf_completions_hr": 1.175,
+      "qf_currency_hr_II": 29.375
+    },
+    "cE300|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 2.4,
+      "md_chat_grid_hr": 1.45,
+      "md_clip_vs_v018_K4": 1.425,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.675,
+      "qf_completions_hr": 2.25,
+      "qf_currency_hr_II": 56.25
+    },
+    "cE300|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.45,
+      "farmer_currency_hr_II": 11.25,
+      "farmer_currency_hr_III": 22.5,
+      "md_admitted_hr": 2.4,
+      "md_chat_grid_hr": 1.45,
+      "md_clip_vs_v018_K4": 1.425,
+      "mint_ratio_adversarial_IIIvsII": 1.333333,
+      "mint_ratio_center": 0.666667,
+      "qf_admitted_hr": 3.675,
+      "qf_completions_hr": 0.675,
+      "qf_currency_hr_II": 16.875
+    },
+    "cE300|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 2.4,
+      "md_chat_grid_hr": 1.45,
+      "md_clip_vs_v018_K4": 1.425,
+      "mint_ratio_adversarial_IIIvsII": 130.909091,
+      "mint_ratio_center": 65.454545,
+      "qf_admitted_hr": 3.675,
+      "qf_completions_hr": 1.375,
+      "qf_currency_hr_II": 34.375
+    },
+    "cE300|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.25,
+      "farmer_currency_hr_II": 6.25,
+      "farmer_currency_hr_III": 12.5,
+      "md_admitted_hr": 2.4,
+      "md_chat_grid_hr": 1.45,
+      "md_clip_vs_v018_K4": 1.425,
+      "mint_ratio_adversarial_IIIvsII": 1.333333,
+      "mint_ratio_center": 0.666667,
+      "qf_admitted_hr": 3.675,
+      "qf_completions_hr": 0.375,
+      "qf_currency_hr_II": 9.375
+    },
+    "cE600|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 2.125,
+      "md_chat_grid_hr": 1.675,
+      "md_clip_vs_v018_K4": 1.2,
+      "mint_ratio_adversarial_IIIvsII": 126.315789,
+      "mint_ratio_center": 63.157895,
+      "qf_admitted_hr": 3.55,
+      "qf_completions_hr": 3.8,
+      "qf_currency_hr_II": 95.0
+    },
+    "cE600|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.675,
+      "farmer_currency_hr_II": 16.875,
+      "farmer_currency_hr_III": 33.75,
+      "md_admitted_hr": 2.125,
+      "md_chat_grid_hr": 1.675,
+      "md_clip_vs_v018_K4": 1.2,
+      "mint_ratio_adversarial_IIIvsII": 1.2,
+      "mint_ratio_center": 0.6,
+      "qf_admitted_hr": 3.55,
+      "qf_completions_hr": 1.125,
+      "qf_currency_hr_II": 28.125
+    },
+    "cE600|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 2.125,
+      "md_chat_grid_hr": 1.675,
+      "md_clip_vs_v018_K4": 1.2,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.55,
+      "qf_completions_hr": 2.25,
+      "qf_currency_hr_II": 56.25
+    },
+    "cE600|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.375,
+      "farmer_currency_hr_II": 9.375,
+      "farmer_currency_hr_III": 18.75,
+      "md_admitted_hr": 2.125,
+      "md_chat_grid_hr": 1.675,
+      "md_clip_vs_v018_K4": 1.2,
+      "mint_ratio_adversarial_IIIvsII": 1.2,
+      "mint_ratio_center": 0.6,
+      "qf_admitted_hr": 3.55,
+      "qf_completions_hr": 0.625,
+      "qf_currency_hr_II": 15.625
+    },
+    "cE600|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 2.125,
+      "md_chat_grid_hr": 1.675,
+      "md_clip_vs_v018_K4": 1.2,
+      "mint_ratio_adversarial_IIIvsII": 130.909091,
+      "mint_ratio_center": 65.454545,
+      "qf_admitted_hr": 3.55,
+      "qf_completions_hr": 1.375,
+      "qf_currency_hr_II": 34.375
+    },
+    "cE600|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.25,
+      "farmer_currency_hr_II": 6.25,
+      "farmer_currency_hr_III": 12.5,
+      "md_admitted_hr": 2.125,
+      "md_chat_grid_hr": 1.675,
+      "md_clip_vs_v018_K4": 1.2,
+      "mint_ratio_adversarial_IIIvsII": 1.333333,
+      "mint_ratio_center": 0.666667,
+      "qf_admitted_hr": 3.55,
+      "qf_completions_hr": 0.375,
+      "qf_currency_hr_II": 9.375
+    },
+    "cE900|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 1.95,
+      "md_chat_grid_hr": 1.775,
+      "md_clip_vs_v018_K4": 1.1,
+      "mint_ratio_adversarial_IIIvsII": 126.315789,
+      "mint_ratio_center": 63.157895,
+      "qf_admitted_hr": 3.05,
+      "qf_completions_hr": 3.8,
+      "qf_currency_hr_II": 95.0
+    },
+    "cE900|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.5,
+      "farmer_currency_hr_II": 12.5,
+      "farmer_currency_hr_III": 25.0,
+      "md_admitted_hr": 1.95,
+      "md_chat_grid_hr": 1.775,
+      "md_clip_vs_v018_K4": 1.1,
+      "mint_ratio_adversarial_IIIvsII": 1.025641,
+      "mint_ratio_center": 0.512821,
+      "qf_admitted_hr": 3.05,
+      "qf_completions_hr": 0.975,
+      "qf_currency_hr_II": 24.375
+    },
+    "cE900|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 1.95,
+      "md_chat_grid_hr": 1.775,
+      "md_clip_vs_v018_K4": 1.1,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.05,
+      "qf_completions_hr": 2.25,
+      "qf_currency_hr_II": 56.25
+    },
+    "cE900|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.25,
+      "farmer_currency_hr_II": 6.25,
+      "farmer_currency_hr_III": 12.5,
+      "md_admitted_hr": 1.95,
+      "md_chat_grid_hr": 1.775,
+      "md_clip_vs_v018_K4": 1.1,
+      "mint_ratio_adversarial_IIIvsII": 0.909091,
+      "mint_ratio_center": 0.454545,
+      "qf_admitted_hr": 3.05,
+      "qf_completions_hr": 0.55,
+      "qf_currency_hr_II": 13.75
+    },
+    "cE900|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 1.95,
+      "md_chat_grid_hr": 1.775,
+      "md_clip_vs_v018_K4": 1.1,
+      "mint_ratio_adversarial_IIIvsII": 130.909091,
+      "mint_ratio_center": 65.454545,
+      "qf_admitted_hr": 3.05,
+      "qf_completions_hr": 1.375,
+      "qf_currency_hr_II": 34.375
+    },
+    "cE900|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.125,
+      "farmer_currency_hr_II": 3.125,
+      "farmer_currency_hr_III": 6.25,
+      "md_admitted_hr": 1.95,
+      "md_chat_grid_hr": 1.775,
+      "md_clip_vs_v018_K4": 1.1,
+      "mint_ratio_adversarial_IIIvsII": 0.769231,
+      "mint_ratio_center": 0.384615,
+      "qf_admitted_hr": 3.05,
+      "qf_completions_hr": 0.325,
+      "qf_currency_hr_II": 8.125
+    }
+  },
+  "cells_K6_reporting": {
+    "cE0|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 4.15,
+      "md_chat_grid_hr": 1.575,
+      "md_clip_vs_v018_K4": 1.3,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 5.5,
+      "qf_completions_hr": 3.75,
+      "qf_currency_hr_II": 93.75
+    },
+    "cE0|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 1.875,
+      "farmer_currency_hr_II": 46.875,
+      "farmer_currency_hr_III": 93.75,
+      "md_admitted_hr": 4.15,
+      "md_chat_grid_hr": 1.575,
+      "md_clip_vs_v018_K4": 1.3,
+      "mint_ratio_adversarial_IIIvsII": 2.083333,
+      "mint_ratio_center": 1.041667,
+      "qf_admitted_hr": 5.5,
+      "qf_completions_hr": 1.8,
+      "qf_currency_hr_II": 45.0
+    },
+    "cE0|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 4.15,
+      "md_chat_grid_hr": 1.575,
+      "md_clip_vs_v018_K4": 1.3,
+      "mint_ratio_adversarial_IIIvsII": 128.715084,
+      "mint_ratio_center": 64.357542,
+      "qf_admitted_hr": 5.5,
+      "qf_completions_hr": 2.2375,
+      "qf_currency_hr_II": 55.9375
+    },
+    "cE0|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 1.125,
+      "farmer_currency_hr_II": 28.125,
+      "farmer_currency_hr_III": 56.25,
+      "md_admitted_hr": 4.15,
+      "md_chat_grid_hr": 1.575,
+      "md_clip_vs_v018_K4": 1.3,
+      "mint_ratio_adversarial_IIIvsII": 2.142857,
+      "mint_ratio_center": 1.071429,
+      "qf_admitted_hr": 5.5,
+      "qf_completions_hr": 1.05,
+      "qf_currency_hr_II": 26.25
+    },
+    "cE0|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 4.15,
+      "md_chat_grid_hr": 1.575,
+      "md_clip_vs_v018_K4": 1.3,
+      "mint_ratio_adversarial_IIIvsII": 132.110092,
+      "mint_ratio_center": 66.055046,
+      "qf_admitted_hr": 5.5,
+      "qf_completions_hr": 1.3625,
+      "qf_currency_hr_II": 34.0625
+    },
+    "cE0|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 0.625,
+      "farmer_currency_hr_II": 15.625,
+      "farmer_currency_hr_III": 31.25,
+      "md_admitted_hr": 4.15,
+      "md_chat_grid_hr": 1.575,
+      "md_clip_vs_v018_K4": 1.3,
+      "mint_ratio_adversarial_IIIvsII": 2.0,
+      "mint_ratio_center": 1.0,
+      "qf_admitted_hr": 5.5,
+      "qf_completions_hr": 0.625,
+      "qf_currency_hr_II": 15.625
+    },
+    "cE300|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 3.6625,
+      "md_chat_grid_hr": 1.9625,
+      "md_clip_vs_v018_K4": 0.9125,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 5.075,
+      "qf_completions_hr": 3.75,
+      "qf_currency_hr_II": 93.75
+    },
+    "cE300|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 1.15,
+      "farmer_currency_hr_II": 28.75,
+      "farmer_currency_hr_III": 57.5,
+      "md_admitted_hr": 3.6625,
+      "md_chat_grid_hr": 1.9625,
+      "md_clip_vs_v018_K4": 0.9125,
+      "mint_ratio_adversarial_IIIvsII": 1.383459,
+      "mint_ratio_center": 0.691729,
+      "qf_admitted_hr": 5.075,
+      "qf_completions_hr": 1.6625,
+      "qf_currency_hr_II": 41.5625
+    },
+    "cE300|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 3.6625,
+      "md_chat_grid_hr": 1.9625,
+      "md_clip_vs_v018_K4": 0.9125,
+      "mint_ratio_adversarial_IIIvsII": 128.715084,
+      "mint_ratio_center": 64.357542,
+      "qf_admitted_hr": 5.075,
+      "qf_completions_hr": 2.2375,
+      "qf_currency_hr_II": 55.9375
+    },
+    "cE300|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 0.65,
+      "farmer_currency_hr_II": 16.25,
+      "farmer_currency_hr_III": 32.5,
+      "md_admitted_hr": 3.6625,
+      "md_chat_grid_hr": 1.9625,
+      "md_clip_vs_v018_K4": 0.9125,
+      "mint_ratio_adversarial_IIIvsII": 1.333333,
+      "mint_ratio_center": 0.666667,
+      "qf_admitted_hr": 5.075,
+      "qf_completions_hr": 0.975,
+      "qf_currency_hr_II": 24.375
+    },
+    "cE300|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": true,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 3.6625,
+      "md_chat_grid_hr": 1.9625,
+      "md_clip_vs_v018_K4": 0.9125,
+      "mint_ratio_adversarial_IIIvsII": 132.110092,
+      "mint_ratio_center": 66.055046,
+      "qf_admitted_hr": 5.075,
+      "qf_completions_hr": 1.3625,
+      "qf_currency_hr_II": 34.0625
+    },
+    "cE300|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 0.375,
+      "farmer_currency_hr_II": 9.375,
+      "farmer_currency_hr_III": 18.75,
+      "md_admitted_hr": 3.6625,
+      "md_chat_grid_hr": 1.9625,
+      "md_clip_vs_v018_K4": 0.9125,
+      "mint_ratio_adversarial_IIIvsII": 1.25,
+      "mint_ratio_center": 0.625,
+      "qf_admitted_hr": 5.075,
+      "qf_completions_hr": 0.6,
+      "qf_currency_hr_II": 15.0
+    },
+    "cE600|B3|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 3.175,
+      "md_chat_grid_hr": 2.3125,
+      "md_clip_vs_v018_K4": 0.5625,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 4.025,
+      "qf_completions_hr": 3.75,
+      "qf_currency_hr_II": 93.75
+    },
+    "cE600|B3|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 0.9,
+      "farmer_currency_hr_II": 22.5,
+      "farmer_currency_hr_III": 45.0,
+      "md_admitted_hr": 3.175,
+      "md_chat_grid_hr": 2.3125,
+      "md_clip_vs_v018_K4": 0.5625,
+      "mint_ratio_adversarial_IIIvsII": 1.384615,
+      "mint_ratio_center": 0.692308,
+      "qf_admitted_hr": 4.025,
+      "qf_completions_hr": 1.3,
+      "qf_currency_hr_II": 32.5
+    },
+    "cE600|B5|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 3.175,
+      "md_chat_grid_hr": 2.3125,
+      "md_clip_vs_v018_K4": 0.5625,
+      "mint_ratio_adversarial_IIIvsII": 128.715084,
+      "mint_ratio_center": 64.357542,
+      "qf_admitted_hr": 4.025,
+      "qf_completions_hr": 2.2375,
+      "qf_currency_hr_II": 55.9375
+    },
+    "cE600|B5|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 0.525,
+      "farmer_currency_hr_II": 13.125,
+      "farmer_currency_hr_III": 26.25,
+      "md_admitted_hr": 3.175,
+      "md_chat_grid_hr": 2.3125,
+      "md_clip_vs_v018_K4": 0.5625,
+      "mint_ratio_adversarial_IIIvsII": 1.423729,
+      "mint_ratio_center": 0.711864,
+      "qf_admitted_hr": 4.025,
+      "qf_completions_hr": 0.7375,
+      "qf_currency_hr_II": 18.4375
+    },
+    "cE600|B8|free": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 3.175,
+      "md_chat_grid_hr": 2.3125,
+      "md_clip_vs_v018_K4": 0.5625,
+      "mint_ratio_adversarial_IIIvsII": 132.110092,
+      "mint_ratio_center": 66.055046,
+      "qf_admitted_hr": 4.025,
+      "qf_completions_hr": 1.3625,
+      "qf_currency_hr_II": 34.0625
+    },
+    "cE600|B8|gated": {
+      "ALL": false,
+      "FAIR": false,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 6.0,
+      "farmer_completions_hr": 0.275,
+      "farmer_currency_hr_II": 6.875,
+      "farmer_currency_hr_III": 13.75,
+      "md_admitted_hr": 3.175,
+      "md_chat_grid_hr": 2.3125,
+      "md_clip_vs_v018_K4": 0.5625,
+      "mint_ratio_adversarial_IIIvsII": 1.222222,
+      "mint_ratio_center": 0.611111,
+      "qf_admitted_hr": 4.025,
+      "qf_completions_hr": 0.45,
+      "qf_currency_hr_II": 11.25
+    },
+    "cE900|B3|free": {
+      "ALL": false,
+      "FAIR": true,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 240.0,
+      "farmer_currency_hr_II": 6000.0,
+      "farmer_currency_hr_III": 12000.0,
+      "md_admitted_hr": 2.675,
+      "md_chat_grid_hr": 2.55,
+      "md_clip_vs_v018_K4": 0.325,
+      "mint_ratio_adversarial_IIIvsII": 128.0,
+      "mint_ratio_center": 64.0,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 3.75,
+      "qf_currency_hr_II": 93.75
+    },
+    "cE900|B3|gated": {
+      "ALL": false,
+      "FAIR": true,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.775,
+      "farmer_currency_hr_II": 19.375,
+      "farmer_currency_hr_III": 38.75,
+      "md_admitted_hr": 2.675,
+      "md_chat_grid_hr": 2.55,
+      "md_clip_vs_v018_K4": 0.325,
+      "mint_ratio_adversarial_IIIvsII": 1.61039,
+      "mint_ratio_center": 0.805195,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 0.9625,
+      "qf_currency_hr_II": 24.0625
+    },
+    "cE900|B5|free": {
+      "ALL": false,
+      "FAIR": true,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 144.0,
+      "farmer_currency_hr_II": 3600.0,
+      "farmer_currency_hr_III": 7200.0,
+      "md_admitted_hr": 2.675,
+      "md_chat_grid_hr": 2.55,
+      "md_clip_vs_v018_K4": 0.325,
+      "mint_ratio_adversarial_IIIvsII": 128.715084,
+      "mint_ratio_center": 64.357542,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 2.2375,
+      "qf_currency_hr_II": 55.9375
+    },
+    "cE900|B5|gated": {
+      "ALL": false,
+      "FAIR": true,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.425,
+      "farmer_currency_hr_II": 10.625,
+      "farmer_currency_hr_III": 21.25,
+      "md_admitted_hr": 2.675,
+      "md_chat_grid_hr": 2.55,
+      "md_clip_vs_v018_K4": 0.325,
+      "mint_ratio_adversarial_IIIvsII": 1.545455,
+      "mint_ratio_center": 0.772727,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 0.55,
+      "qf_currency_hr_II": 13.75
+    },
+    "cE900|B8|free": {
+      "ALL": false,
+      "FAIR": true,
+      "FLOW": false,
+      "MINT": false,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 90.0,
+      "farmer_currency_hr_II": 2250.0,
+      "farmer_currency_hr_III": 4500.0,
+      "md_admitted_hr": 2.675,
+      "md_chat_grid_hr": 2.55,
+      "md_clip_vs_v018_K4": 0.325,
+      "mint_ratio_adversarial_IIIvsII": 132.110092,
+      "mint_ratio_center": 66.055046,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 1.3625,
+      "qf_currency_hr_II": 34.0625
+    },
+    "cE900|B8|gated": {
+      "ALL": false,
+      "FAIR": true,
+      "FLOW": false,
+      "MINT": true,
+      "ceiling_hr": 4.0,
+      "farmer_completions_hr": 0.25,
+      "farmer_currency_hr_II": 6.25,
+      "farmer_currency_hr_III": 12.5,
+      "md_admitted_hr": 2.675,
+      "md_chat_grid_hr": 2.55,
+      "md_clip_vs_v018_K4": 0.325,
+      "mint_ratio_adversarial_IIIvsII": 1.481481,
+      "mint_ratio_center": 0.740741,
+      "qf_admitted_hr": 3.0125,
+      "qf_completions_hr": 0.3375,
+      "qf_currency_hr_II": 8.4375
+    }
+  },
+  "decision_detail": {
+    "approve_band_exists": false,
+    "full_pass_cE_gated": [],
+    "per_cE_B_pass_count_gated": {
+      "0": 0,
+      "300": 0,
+      "600": 0,
+      "900": 0
+    }
+  },
+  "decision_detail_stability": {
+    "approve_band_exists": false,
+    "full_pass_cE_gated": [],
+    "per_cE_B_pass_count_gated": {
+      "0": 0,
+      "300": 0,
+      "600": 0,
+      "900": 0
+    }
+  },
+  "per_axis_pass_shares_decision_cells": {
+    "B": {
+      "3": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 0.75,
+        "MINT": 0.5
+      },
+      "5": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 0.625,
+        "MINT": 0.5
+      },
+      "8": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 0.5,
+        "MINT": 0.5
+      }
+    },
+    "c_E": {
+      "0": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 1.0,
+        "MINT": 0.5
+      },
+      "300": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 0.833333,
+        "MINT": 0.5
+      },
+      "600": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 0.666667,
+        "MINT": 0.5
+      },
+      "900": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 0.0,
+        "MINT": 0.5
+      }
+    },
+    "coupling": {
+      "free": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 0.75,
+        "MINT": 0.0
+      },
+      "gated": {
+        "ALL": 0.0,
+        "FAIR": 0.0,
+        "FLOW": 0.5,
+        "MINT": 1.0
+      }
+    }
+  },
+  "proposal": "idea-engine PROPOSAL 031 \u00b7 2026-07-13T07:49:09Z \u00b7 status: sim-ready",
+  "r_E_sensitivity_reporting": {
+    "rE30|cE0": {
+      "admitted_hr": 4.0,
+      "ceiling_hr": 4.0,
+      "comp_gated_hr": {
+        "3": 1.25,
+        "5": 0.75,
+        "8": 0.5
+      },
+      "flow_rate_ok": true
+    },
+    "rE30|cE300": {
+      "admitted_hr": 4.0,
+      "ceiling_hr": 4.0,
+      "comp_gated_hr": {
+        "3": 1.25,
+        "5": 0.75,
+        "8": 0.5
+      },
+      "flow_rate_ok": true
+    },
+    "rE30|cE600": {
+      "admitted_hr": 3.9375,
+      "ceiling_hr": 4.0,
+      "comp_gated_hr": {
+        "3": 1.25,
+        "5": 0.75,
+        "8": 0.4375
+      },
+      "flow_rate_ok": true
+    },
+    "rE30|cE900": {
+      "admitted_hr": 3.5625,
+      "ceiling_hr": 4.0,
+      "comp_gated_hr": {
+        "3": 1.1375,
+        "5": 0.6375,
+        "8": 0.375
+      },
+      "flow_rate_ok": true
+    },
+    "rE6|cE0": {
+      "admitted_hr": 3.2125,
+      "ceiling_hr": 4.0,
+      "comp_gated_hr": {
+        "3": 1.0125,
+        "5": 0.6125,
+        "8": 0.3625
+      },
+      "flow_rate_ok": true
+    },
+    "rE6|cE300": {
+      "admitted_hr": 3.1125,
+      "ceiling_hr": 4.0,
+      "comp_gated_hr": {
+        "3": 1.0,
+        "5": 0.6,
+        "8": 0.3625
+      },
+      "flow_rate_ok": false
+    },
+    "rE6|cE600": {
+      "admitted_hr": 2.9375,
+      "ceiling_hr": 4.0,
+      "comp_gated_hr": {
+        "3": 0.925,
+        "5": 0.5375,
+        "8": 0.3125
+      },
+      "flow_rate_ok": false
+    },
+    "rE6|cE900": {
+      "admitted_hr": 2.425,
+      "ceiling_hr": 4.0,
+      "comp_gated_hr": {
+        "3": 0.775,
+        "5": 0.425,
+        "8": 0.25
+      },
+      "flow_rate_ok": false
+    }
+  },
+  "ruling": "REJECT",
+  "ruling_stability_leg": "REJECT",
+  "seeds": {
+    "aux": 20260767,
+    "main": 20260764,
+    "reporting": 20260766,
+    "stability": 20260765,
+    "v018_parents": [
+      11,
+      23,
+      42,
+      101,
+      2027
+    ]
+  },
+  "v018_anchor_set": {
+    "format_note": "each anchor is checked exactly as the parent formatted it (V018's matches_published discipline): 2-dp anchors at %.2f, 3-dp anchors at %.3f",
+    "v001_farmer_claims_per_hr": 4.0,
+    "v001_visibility_spawns_per_active_hr": {
+      "high": 4.38,
+      "low": 0.93,
+      "med": 3.0
+    },
+    "v008_enc_per_hr_1h": {
+      "casual": 0.2,
+      "deep-runner": 2.8,
+      "fastmine": 5.2
+    },
+    "v008_enc_per_hr_8h": {
+      "casual": 0.05,
+      "deep-runner": 2.95,
+      "fastmine": 4.88
+    },
+    "v018_contract_row": "per-source clocks CHAT_ACTIVITY 900 s / GRID_ROAM 600 s + mandatory combined per-player cap K=4 per sliding 3600 s",
+    "v018_farmer_combined_per_hr_K4": 4.0,
+    "v018_farmer_combined_per_hr_per_source": 8.875,
+    "v018_mixed_deep_combined_per_hr_K4": 2.875,
+    "v018_mixed_deep_combined_per_hr_uncapped": 3.275,
+    "v018_mixed_deep_honest_cost_per_hr": 0.4,
+    "v018_parent_seeds": [
+      11,
+      23,
+      42,
+      101,
+      2027
+    ]
+  }
+}
