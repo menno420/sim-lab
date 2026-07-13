@@ -1,0 +1,593 @@
+{
+ "arm_a": {
+  "covered_cells": "FUN + casual-R1 wipe: ALL 52 cells exact; casual-R1 E[net incl. comp]: all 52 cells exact; farmer EVs: D1 all cells exact, D2 sign-exact (exact value at sigma = t), D3 T1 cells exact; baseline T1 grinder P_double: exact capped DP; D3 T1 stopper P(tau): exact",
+  "d3_stopper_dp": "exact exit-state distribution of every T1 stopper variant per t via banded exact-Fraction Gaussian elimination on the absorbing chain (states phi+1..tau-1, steps 2W - b', W ~ Bin(b', (1-t)/2), b' = min(b, bank)); EV per rho and P(reach tau) derive from the exits; the b = 1 variants are independently cross-checked against the two-boundary gambler's-ruin closed form (exact equality); T2 stopper EVs are MC-only (the proposal pins the DP 'on T1'), with the T1 DP anchoring the shared kernel",
+  "fun_T1": "P_ahead_ref(T1, t, design, size) exact via math.comb binomial: W ~ Bin(100, (1-t)/2); baseline/D3 ahead iff W >= 51; D1/D2 ahead iff 2W - 100 + 100*sigma > 0 i.e. W > 50 - 50*sigma (the proposal's own threshold) - W >= 50/48/46/41 for sigma = 0.02/0.05/0.10/0.20",
+  "fun_T2": "exact integer-support DP convolution of the single-ticket round net (units in {+7, +2, 0, -1}) over 100 R1 steps; ahead iff s > -100*sigma (baseline/D3: s > 0)",
+  "identities_asserted": [
+   "D1-FUN == D2-FUN on the reference leg (same shifted threshold; asserted as exact Fraction equality of the two independently derived values)",
+   "D3-FUN == baseline-FUN (a loss rebate never lifts a losing session above B0 for rho <= 1; asserted exactly)",
+   "D1 wash-qualifier EV = (sigma - t)*B0 EXACTLY (100 tickets always staked and always qualifying); the sigma = t pump knife-edge",
+   "D2 cap-chaser EV = (sigma - t)*F*E[N] by Wald (every ticket rebated, N <= 200): sign EXACT = sign(sigma - t), = 0 EXACTLY at sigma = t",
+   "D1/D2 casual-R1 E[session net incl. comp] = (sigma - t)*B0 EXACTLY (N = 100 fixed, qualification certain, cap not binding)",
+   "D3 casual-R1 E[session net incl. comp] = sum_s P(s)*(s + rho*max(-s, 0)) EXACTLY from the same final-net distributions",
+   "t=0 control: T1xR1 grinder uncapped P_double = 1/3 exactly (optional stopping; both parents' control)",
+   "E[prize] = (1-t)*F exactly in Fractions per (shape, t)"
+  ],
+  "ruin_T1xR1_baseline": "V025's three derivations reused verbatim: gambler's-ruin closed form + independent exact-Fraction tridiagonal elimination + exact finite-horizon capped DP (4,000 rounds, 151 states) for t in {0, 0.05, 0.1}; must equal V025's committed values (identity_gate below)",
+  "wipe_R1": "exact casual R1 wipe from the same distributions: baseline s <= -90; D1/D2 s <= -90 - 100*sigma (= 0 exactly for sigma = 0.2 on T1: below the support); D3 wipe = 0 EXACTLY for every rho >= 0.2 (wealth at total ruin = rho*B0 >= 0.2*B0 > 0.1*B0 - 'cashback buys SAFE')"
+ },
+ "boundaries_restated": [
+  "bankroll-RELATIVE: chips normalized to B0; nothing here prices the casino sink against fishing/mining faucet mint in absolute chips/hr - that needs the live earn-rate baseline whose absence V001/V008 named and V022/V025 restated; the telemetry caveat applies verbatim and is restated, not re-attempted",
+  "i.i.d. tickets: no skill edge; a game's strategy spread folds into the take as the REALIZED take",
+  "PER-SESSION comp accounting: cross-session comp banking is out of scope; the multi-session mint rate is bounded linearly by the per-session farmer EV the MINT band caps (stated)",
+  "finite policy + farmer sets: R1/R5/RG/MC plus wash-qualifier/cap-chaser/stopper-grid bracket unit, bounded, greedy, loss-chasing, wash-qualifying, cap-chasing and optimal-stopping behavior; the D3 stopper grid is 12 variants, NOT an optimum proof - its max EV is a LOWER bound on the exploit, so a MINT failure stands and a MINT pass at the D3 grid boundary is marked (stated, not proven)",
+  "inherited bands: FUN >= 0.25 / SAFE <= 0.05 / SINK <= 0.10 are the parents' pre-registered judgments held BY DESIGN for cell-addressable comparison; MINT <= 0 is this grid's registered faucet line; full curves ship so a re-drawn line re-reads, never re-runs",
+  "T3 excluded by citation, not re-run: V025 measured its SINK wall 0.148-0.346 and SAFE 0.275-1.000 across ALL (t, c), and comp weakly RAISES P_double - a lever that only adds player value cannot rescue a shape whose SINK already fails without it; monotonicity spot-asserted on one reporting cell",
+  "reporting-only legs that cannot flip the decision: t=0 control, compulsive harm context, T3 monotonicity spot cell, house-net table, aggregated-draw spot check, chained anchors"
+ ],
+ "chained_anchors_reporting_only": {
+  "anchor_1_surviving_cell": "V025's one surviving cell T1 (t=0.05, c=5): FUN exact 0.2737540221256319, worst-policy P_wipe 0.0024 (RG 12/5000), worst-policy P_double 0.0000 (0/2000) / uncapped exact 4.472052208172175e-05, R1 grinder cap_frac 0.0035 - my sigma=0 baseline block must reproduce every row",
+  "anchor_2_C2_near_miss": "V025's C2 cell T2 (t=0.05, c=5): worst-policy P_wipe 0.0608 (RG 304/5000) vs the 0.05 band, SINK/FUN passing",
+  "anchor_3_t0_control": "T1xR1 grinder uncapped P_double = 1/3 exactly + the T1/T2 FUN identity gate above",
+  "anchor_4_house_net_price_tag": "the incumbent (T1, t=0.05, c=5, no comp) expected session cost: casual R1 5.2% of B0 (V025 expected_loss_frac 0.05155), worst-policy 25.2% (RG 0.2518) - every all-pass cell's house-net is read against this row",
+  "note": "pre-registered cross-verdict anchors; reporting-only, cannot flip the decision, but implemented as self-checks: exact quantities by string equality, measured quantities at 4x two-sample SE with a 0.4 pp floor (disclosure 15); parent values quoted verbatim from V025's committed results.json @ 5e356ed",
+  "parent_committed_baseline_rows_c5": {
+   "T1|t=0.05|c=5|MC": {
+    "P_ahead": 0.2342,
+    "P_double": 0.0,
+    "P_wipe": 0.0,
+    "aheads": 1171,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 0,
+    "expected_loss_frac": 0.11326800000000006,
+    "grinder_M": 2000,
+    "halves": 2000,
+    "wipes": 0
+   },
+   "T1|t=0.05|c=5|R1": {
+    "P_ahead": 0.2588,
+    "P_double": 0.0,
+    "P_wipe": 0.0,
+    "aheads": 1294,
+    "cap_frac": 0.0035,
+    "caphits": 7,
+    "casual_M": 5000,
+    "doubles": 0,
+    "expected_loss_frac": 0.05155199999999994,
+    "grinder_M": 2000,
+    "halves": 1993,
+    "wipes": 0
+   },
+   "T1|t=0.05|c=5|R5": {
+    "P_ahead": 0.126,
+    "P_double": 0.0,
+    "P_wipe": 0.0018,
+    "aheads": 630,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 0,
+    "expected_loss_frac": 0.24505399999999994,
+    "grinder_M": 2000,
+    "halves": 2000,
+    "wipes": 9
+   },
+   "T1|t=0.05|c=5|RG": {
+    "P_ahead": 0.1196,
+    "P_double": 0.0,
+    "P_wipe": 0.0024,
+    "aheads": 598,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 0,
+    "expected_loss_frac": 0.251798,
+    "grinder_M": 2000,
+    "halves": 2000,
+    "wipes": 12
+   },
+   "T1|t=0.1|c=5|MC": {
+    "P_ahead": 0.0678,
+    "P_double": 0.0,
+    "P_wipe": 0.0004,
+    "aheads": 339,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 0,
+    "expected_loss_frac": 0.24827399999999997,
+    "grinder_M": 2000,
+    "halves": 2000,
+    "wipes": 2
+   },
+   "T1|t=0.1|c=5|R1": {
+    "P_ahead": 0.1356,
+    "P_double": 0.0,
+    "P_wipe": 0.0,
+    "aheads": 678,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 0,
+    "expected_loss_frac": 0.10057199999999994,
+    "grinder_M": 2000,
+    "halves": 2000,
+    "wipes": 0
+   },
+   "T1|t=0.1|c=5|R5": {
+    "P_ahead": 0.0082,
+    "P_double": 0.0,
+    "P_wipe": 0.037,
+    "aheads": 41,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 0,
+    "expected_loss_frac": 0.503486,
+    "grinder_M": 2000,
+    "halves": 2000,
+    "wipes": 185
+   },
+   "T1|t=0.1|c=5|RG": {
+    "P_ahead": 0.0156,
+    "P_double": 0.0,
+    "P_wipe": 0.0376,
+    "aheads": 78,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 0,
+    "expected_loss_frac": 0.49619599999999997,
+    "grinder_M": 2000,
+    "halves": 2000,
+    "wipes": 188
+   },
+   "T2|t=0.05|c=5|MC": {
+    "P_ahead": 0.3244,
+    "P_double": 0.0425,
+    "P_wipe": 0.0104,
+    "aheads": 1622,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 85,
+    "expected_loss_frac": 0.135732,
+    "grinder_M": 2000,
+    "halves": 1915,
+    "wipes": 52
+   },
+   "T2|t=0.05|c=5|R1": {
+    "P_ahead": 0.3698,
+    "P_double": 0.0475,
+    "P_wipe": 0.0,
+    "aheads": 1849,
+    "cap_frac": 0.0095,
+    "caphits": 19,
+    "casual_M": 5000,
+    "doubles": 95,
+    "expected_loss_frac": 0.04834000000000003,
+    "grinder_M": 2000,
+    "halves": 1886,
+    "wipes": 0
+   },
+   "T2|t=0.05|c=5|R5": {
+    "P_ahead": 0.2602,
+    "P_double": 0.037,
+    "P_wipe": 0.0604,
+    "aheads": 1301,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 74,
+    "expected_loss_frac": 0.250446,
+    "grinder_M": 2000,
+    "halves": 1926,
+    "wipes": 302
+   },
+   "T2|t=0.05|c=5|RG": {
+    "P_ahead": 0.2636,
+    "P_double": 0.0465,
+    "P_wipe": 0.0608,
+    "aheads": 1318,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 93,
+    "expected_loss_frac": 0.251786,
+    "grinder_M": 2000,
+    "halves": 1907,
+    "wipes": 304
+   },
+   "T2|t=0.1|c=5|MC": {
+    "P_ahead": 0.1832,
+    "P_double": 0.001,
+    "P_wipe": 0.04,
+    "aheads": 916,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 2,
+    "expected_loss_frac": 0.29178799999999994,
+    "grinder_M": 2000,
+    "halves": 1998,
+    "wipes": 200
+   },
+   "T2|t=0.1|c=5|R1": {
+    "P_ahead": 0.2588,
+    "P_double": 0.0025,
+    "P_wipe": 0.0,
+    "aheads": 1294,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 5,
+    "expected_loss_frac": 0.10243200000000002,
+    "grinder_M": 2000,
+    "halves": 1995,
+    "wipes": 0
+   },
+   "T2|t=0.1|c=5|R5": {
+    "P_ahead": 0.1,
+    "P_double": 0.0035,
+    "P_wipe": 0.1724,
+    "aheads": 500,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 7,
+    "expected_loss_frac": 0.485284,
+    "grinder_M": 2000,
+    "halves": 1993,
+    "wipes": 862
+   },
+   "T2|t=0.1|c=5|RG": {
+    "P_ahead": 0.1012,
+    "P_double": 0.004,
+    "P_wipe": 0.173,
+    "aheads": 506,
+    "cap_frac": 0.0,
+    "caphits": 0,
+    "casual_M": 5000,
+    "doubles": 8,
+    "expected_loss_frac": 0.48847999999999997,
+    "grinder_M": 2000,
+    "halves": 1992,
+    "wipes": 865
+   }
+  }
+ },
+ "constants": {
+  "B0": 1000,
+  "F": 10,
+  "M_capchaser": 2000,
+  "M_casual": 5000,
+  "M_compulsive": 500,
+  "M_grinder": 2000,
+  "M_stopper": 4000,
+  "M_wash": 5000,
+  "agreement_gate_EV": "EV quantities (not probabilities) gate at 4x the predicted per-point SE, disclosed per point",
+  "agreement_gate_pp": 1.0,
+  "arithmetic_note": "all walks computed in exact integer CENTI-UNITS (cu): 1 cu = F/100 = 0.1 chip; B0 = 10000 cu, F = 100 cu, prizes are multiples of 100 cu. Every comp amount in the grid is an exact integer in cu: D2 rebate sigma*F in {2, 5, 10, 20} cu/ticket; D1 stipend sigma*B0 in {200, 500, 1000, 2000} cu; D2 cap 2*sigma*B0 in {400, 1000, 2000, 4000} cu (= exactly 200 rebated tickets); D3 rebate rho*(10000 - final_bank) with rho = k/5 and final_bank a multiple of 100 cu (D3 credits nothing in-session) is an exact integer. No floats anywhere in bankroll state.",
+  "bands": {
+   "FUN": "reference-leg (R1 casual) P_ahead incl. comp >= 0.25 (= 1/4, exact Fraction comparison; Arm A analytic for ALL cells)",
+   "MINT": "max over the 8 swept policy legs (casual + grinder x R1/R5/RG/MC) AND the design's farmer family of E[session net incl. comp] <= 0 (weak inequality); exact-where-covered per disclosure 3; boundary cells (max = 0 exactly, the sigma = t knife-edge) marked",
+   "SAFE": "max P_wipe incl. comp over the 4 swept policies (casual) <= 0.05 (integer cross-multiplication on counts: 20*wipes <= M)",
+   "SINK": "max P_double incl. comp over the 4 swept policies (grinder) <= 0.10 (10*doubles <= M; measured P_double is a LOWER bound under the round cap, so SINK failures stand)",
+   "provenance": "FUN/SAFE/SINK inherited verbatim from V022/V025 BY DESIGN (the inherited-bands contract); MINT is this grid's new pre-registered faucet guard"
+  },
+  "cap_c": 5,
+  "cap_note": "c = 5 FIXED by pre-registration: both parents measured the tight cap load-bearing (V022's MAXBET <= 0.05*B0 rider; V025's 'c=5 is load-bearing' with RG wiping 0.116-1.000 of sessions at c >= 25). No cap axis in this grid.",
+  "designs": {
+   "D1_qualified_stipend": "S = sigma*B0 credited at session END iff session handle >= B0 (handle = tickets_staked * F, i.e. tickets >= 100; weak >=)",
+   "D2_handle_rebate": "sigma*F credited to bankroll PER TICKET at stake time (spendable in-session), stopping once total rebate reaches the per-session cap 2*sigma*B0 (exactly 200 rebated tickets); no end-of-session component",
+   "D3_loss_rebate": "rho*(B0 - final_bank)+ credited at session END; nothing in-session"
+  },
+  "farmers": {
+   "D1_wash_qualifier": "R1 for exactly 100 rounds (= the minimum qualifying handle), stop, collect the stipend; M = 5000 primary / 2500 stability (casual-class leg)",
+   "D2_cap_chaser": "R1 until total rebate reaches the cap 2*sigma*B0 (= 200 tickets) or 2,000 rounds or bank < F, stop; M = 2000 primary / 1000 stability",
+   "D3_stopper_grid": "b in {1, 5} x target tau in {1.1, 1.25, 1.5}*B0 x floor phi in {0, 0.5*B0}, 12 variants: play b'=min(b, bankroll_units) per round, stop-and-collect when bank >= tau or bank <= phi (phi=0: when bank < F); max EV over the grid taken per rho; M = 4000 primary / 2000 stability per variant; the walk is rho-INVARIANT (thresholds on bankroll, comp only at exit) - see disclosure 4",
+   "farmer_M_note": "farmer-leg M values are intake-time pins (the proposal pins M only for casual/grinder/compulsive)"
+  },
+  "policies": {
+   "MC": "chase b = min(2^min(L,7), 5, bankroll_units), L = consecutive net-losing rounds (prizes_cu < stake_cu, rebate excluded), reset on a net win, unchanged on net zero",
+   "R1": "b = 1",
+   "R5": "b = min(5, bankroll_units) (= min(5, c, floor(bank/F)) at c = 5)",
+   "RG": "greedy b = max affordable = min(c, bankroll_units) = min(5, bankroll_units) - STRUCTURALLY IDENTICAL to R5 at c = 5 (kept as a separate swept leg with independent draws per the verbatim V025 policy list; the identity is disclosed, not exploited)"
+  },
+  "prize_scaling": "level probability at take t = (1-t) * base_prob; asserted in exact Fractions at start: E[prize] = (1-t)*F exactly per (shape, t)",
+  "prize_schedules": {
+   "T1": {
+    "base_probs": [
+     0.5
+    ],
+    "base_probs_exact": [
+     "1/2"
+    ],
+    "per_ticket_variance_at_t0_units2": 1.0,
+    "prizes_units": [
+     2
+    ]
+   },
+   "T2": {
+    "base_probs": [
+     0.05,
+     0.1,
+     0.3
+    ],
+    "base_probs_exact": [
+     "1/20",
+     "1/10",
+     "3/10"
+    ],
+    "per_ticket_variance_at_t0_units2": 3.4,
+    "prizes_units": [
+     8,
+     3,
+     1
+    ]
+   },
+   "T3_reporting_only": {
+    "base_probs": [
+     0.024,
+     0.08
+    ],
+    "base_probs_exact": [
+     "3/125",
+     "2/25"
+    ],
+    "note": "T3 exists ONLY for the seed-20260754 monotonicity spot cell; excluded from every decision number by citation of V025's measured walls",
+    "per_ticket_variance_at_t0_units2": 16.0,
+    "prizes_units": [
+     25,
+     5
+    ]
+   }
+  },
+  "profiles": {
+   "casual": "100 rounds, stopping early only when bankroll < F (bank < 100 cu); metrics per (cell, policy): P_ahead = P(final wealth incl. comp > B0), P_wipe = P(final wealth incl. comp <= 0.1*B0), E[session net incl. comp]",
+   "compulsive": "reporting-only, R1, to ruin (bank < F) or 20,000 rounds; rides the seed-20260754 reporting stream",
+   "grinder": "play to WEALTH-INCLUDING-COMP >= 2*B0 (double) or <= 0.5*B0 (half), hard cap 4,000 rounds; wealth = bank (baseline, D2 - rebate already in bank) / bank + stipend*[tickets >= 100] (D1) / bank + rho*(B0 - bank)+ (D3) - the proposal's 'shifted stop targets', checked after every round; a session whose bank drops below F with wealth strictly between the bands ends STRANDED (reachable only under D3 rho >= 0.6, where the wealth floor is unreachable); > 1% cap-hits marks the cell indeterminate"
+  },
+  "python": "cpython-3.11 (minor version pinned in results.json and asserted at start)",
+  "rho_grid": [
+   0.2,
+   0.4,
+   0.6,
+   0.8
+  ],
+  "rho_grid_exact": [
+   "1/5",
+   "2/5",
+   "3/5",
+   "4/5"
+  ],
+  "seed_aux": 20260755,
+  "seed_note": "seeds 20260752-55 allocated strictly above the PROPOSAL 026 registry high-water 20260751",
+  "seed_primary": 20260752,
+  "seed_reporting": 20260754,
+  "seed_stability": 20260753,
+  "sigma_grid": [
+   0.02,
+   0.05,
+   0.1,
+   0.2
+  ],
+  "sigma_grid_exact": [
+   "1/50",
+   "1/20",
+   "1/10",
+   "1/5"
+  ],
+  "stability_leg": "half M everywhere (2500/1000/2500/1000/2000), seed 20260753, identical pinned loop order; must reproduce the same ruling",
+  "t_excluded_note": "t <= 0.02 excluded by V025's own indeterminacy measurement (grinder cap_frac 0.17-0.32); t=0 control rides the seed-20260754 reporting stream, never a decision number",
+  "t_grid": [
+   0.05,
+   0.1
+  ],
+  "t_grid_exact": [
+   "1/20",
+   "1/10"
+  ],
+  "ticket_resolution": "a round's b tickets are b INDEPENDENT draws, exactly one rng.random() per ticket, consumed in ticket order; per ticket, prize = level j prize iff cum_{j-1} <= u < cum_j on the (1-t)-scaled cumulative thresholds"
+ },
+ "gate_calibration_disclosure": {
+  "handling_protocol": "every gate point reports value, exact, deviation, predicted SE and z-score; every point breaching 1.0 pp is re-measured at 8x pooled M on the aux stream (seed 20260755; predicted SE shrinks ~2.8x, making 1.0 pp >= 4.5 sigma on every point class) and MUST land within the same 1.0 pp tolerance - any 8x re-measure failure fails the run (exit 1). Breaches + re-measures are fully disclosed in results.json. Decision impact: NONE possible within this protocol - every gated quantity's decision reading is its Arm-A exact value (FUN, wipe, exact MINT legs, stopper EVs), so an in-protocol sampling breach cannot move a band edge; the gates condition the validity of the MC arm, whose decision role is confined to the MC-only SAFE/SINK/MINT legs that have no Arm-A counterpart and hence no gate.",
+  "pooling": "probability gate points pool primary + stability legs of every leg measuring the SAME exact quantity: sigma-shifted FUN/wipe points pool the D1 and D2 legs at that (shape, t, sigma) (M = 2*(5000+2500) = 15,000); baseline FUN/wipe points pool the baseline leg + all four D3 legs (FUN/wipe identical by the exact D3 identities; M = 5*(5000+2500) = 37,500); T1 baseline grinder P_double pools primary + stability (M = 3,000); D3 T1 stopper P(tau) points pool primary + stability (M = 6,000)",
+  "predicted_SE_pp": {
+   "baseline_FUN_points": "<= 0.26 pp -> >= 3.9 sigma",
+   "grinder_P_double_points": "p ~ 4e-5 -> SE ~ 0.01 pp -> huge margin",
+   "sigma_shifted_FUN_points": "sqrt(p*(1-p)/15000)*100 <= 0.41 pp at p = 0.5 -> the 1.0 pp gate is a >= 2.4 sigma gate; ~16 such points: P(at least one breach) is non-trivial (~10-20%)",
+   "stopper_P_tau_points": "p up to ~0.37 -> SE up to 0.62 pp -> the 1.0 pp gate is a ~1.6 sigma gate on the mid-p variants; ~24 points: BREACHES ARE EXPECTED BY CONSTRUCTION (a registration-calibration artifact of the same class V027 disclosed)",
+   "wipe_points": "p <= ~0.05 -> SE <= 0.18 pp -> >= 5.5 sigma"
+  },
+  "written": "BEFORE any run (fixtures-before-runner discipline); the handling protocol is pinned here so a breach discovered later cannot be outcome-motivated"
+ },
+ "hand_derived_pins": [
+  {
+   "derivation": "RG bets b = min(5, bank//100), start 10000 cu; rounds 1-24: b = 5, stake 500, prizes 0, rebate 5*20 = 100 -> bank -= 400 per round; after round 24 bank = 10000 - 24*400 = 400. Round 25: bank 400 affords only b = 4 (the registered b <= floor(bank/F) rule) -> stake 400, rebate 80 -> bank = 80 < 100 -> casual early stop. tickets = 24*5 + 4 = 124, rebate_total = 2480 < cap 4000. Final wealth = 80 (D2 has no end comp) -> wipe (<= 1000), not ahead. Conservation: 10000 + 0 - 12400 + 2480 = 80.",
+   "derivation_correction": "DISCLOSED CORRECTION: the originally committed derivation asserted b = 5 on round 25 and tickets = 125, mis-applying the affordability clamp on the final round (bank = 400 cu affords 4 tickets, not 5). The first full run failed exactly this pin (kernel and twin both returned 124/2480/80, agreeing with the registered b <= floor(bankroll/F) rule); the EXPECTATION was corrected to the hand-recomputed values above before the accepted runs. No decision constant, band, seed, M, or convention changed - the error was in the pin's arithmetic, not the model, and the correction is disclosed here, in the session card, and in REPORT.md.",
+   "draws_note": "124 x u=0.99 (loss; win threshold 0.475)",
+   "expect": {
+    "ahead": false,
+    "draws": 124,
+    "final_bank_cu": 80,
+    "prizes_cu": 0,
+    "rebate_cu": 2480,
+    "rounds": 25,
+    "tickets": 124,
+    "wealth_cu": 80,
+    "wipe": true
+   },
+   "name": "pin-1: D2 rebate crediting + casual early-death (T1, t=0.05, D2 sigma=0.2, policy RG, casual)"
+  },
+  {
+   "derivation": "R1: win round net = -100 + 200 + 20 = +120 cu; loss round net = -100 + 0 + 20 = -80 cu. After 200 rounds (100 wins, 100 losses): bank = 10000 + 100*120 - 100*80 = 14000 cu; tickets = 200 -> rebate_total = 200*20 = 4000 = cap EXACTLY -> farmer stops on the cap condition (before the 2,000-round horizon). Session net = +4000 cu = +0.4*B0 = 2*(sigma - t)*B0 with sigma=0.2, t=0.05 on this crafted path.",
+   "draws_note": "alternating [0.2 (win), 0.99 (loss)] x 100 pairs = 200 draws",
+   "expect": {
+    "draws": 200,
+    "final_bank_cu": 14000,
+    "net_cu": 4000,
+    "prizes_cu": 20000,
+    "rebate_cu": 4000,
+    "rounds": 200,
+    "tickets": 200,
+    "wealth_cu": 14000
+   },
+   "name": "pin-2: D2 cap-chaser stops EXACTLY at the rebate cap (T1, t=0.05, D2 sigma=0.2, farmer cap-chaser)"
+  },
+  {
+   "derivation": "R5 bets min(5, bank//100): rounds 1-20 bet 5 and lose -> bank 10000 - 500k; after round 20 bank = 0 -> stop. tickets = 100 -> handle = B0 EXACTLY -> qualifies (weak >=) -> stipend 500 cu. Final wealth = 0 + 500 = 500 <= 1000 -> STILL a wipe; not ahead.",
+   "draws_note": "100 x u=0.99 (loss)",
+   "expect": {
+    "ahead": false,
+    "draws": 100,
+    "final_bank_cu": 0,
+    "prizes_cu": 0,
+    "rounds": 20,
+    "tickets": 100,
+    "wealth_cu": 500,
+    "wipe": true
+   },
+   "name": "pin-3: D1 qualification at EXACTLY 100 tickets + wipe WITH stipend (T1, t=0.05, D1 sigma=0.05, policy R5, casual)"
+  },
+  {
+   "derivation": "each loss: bank -= 100 cu. Wealth after k losses = (10000 - 100k) + (4/5)*(100k) = 10000 - 20k cu; the half-stop needs wealth <= 5000 -> k >= 250: UNREACHABLE. At k = 100: bank = 0 < 100 -> cannot stake -> session ends STRANDED with wealth = 8000 cu (= rho*B0), rounds = 100; not a double, not a half, not a cap-hit.",
+   "draws_note": "100 x u=0.99 (loss; win threshold 0.45)",
+   "expect": {
+    "draws": 100,
+    "final_bank_cu": 0,
+    "outcome": "stranded",
+    "rounds": 100,
+    "tickets": 100,
+    "wealth_cu": 8000
+   },
+   "name": "pin-4: D3 STRANDED grinder (T1, t=0.10, D3 rho=0.8, policy R1, grinder)"
+  },
+  {
+   "derivation": "rounds 1-19: 5 wins each, net +500 cu -> bank = 10000 + 19*500 = 19500 (tickets 95; wealth 19500 < 20000: no stop, not yet qualified). Round 20: 1 win + 4 losses, net = 200 - 500 = -300 -> bank = 19200, tickets = 100 -> QUALIFIED -> wealth = 19200 + 2000 = 21200 >= 20000 -> DOUBLE by the stipend jump alone (bank never reached 2*B0). prizes = 96*200 = 19200 cu; conservation: 10000 + 19200 - 10000 = 19200.",
+   "draws_note": "95 x u=0.2 (win) + [0.2, 0.99, 0.99, 0.99, 0.99] = 100 draws",
+   "expect": {
+    "draws": 100,
+    "final_bank_cu": 19200,
+    "outcome": "double",
+    "prizes_cu": 19200,
+    "rounds": 20,
+    "tickets": 100,
+    "wealth_cu": 21200
+   },
+   "name": "pin-5: D1 stipend jump CROSSES the double line at qualification (T1, t=0.05, D1 sigma=0.2, policy R5, grinder)"
+  }
+ ],
+ "honest_null": "a NULL lands as a finalized verdict naming the binding axis (per-design signature table + per-axis pass shares), not a re-run request",
+ "identity_gate": {
+  "parent_committed_T1_fun_exact": {
+   "t=0": {
+    "float": 0.46020538130641064,
+    "fraction": "145844906960333151020236338515/316912650057057350374175801344"
+   },
+   "t=0.05": {
+    "float": 0.2737540221256319,
+    "fraction": "1099764382306488104655580907692728826761825730102504507218147928130470032789936821802966802729001960705984430700114831878920118503785911508194776202735460663843/4017345110647475688854905230852906506305507484456982088253440000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   },
+   "t=0.1": {
+    "float": 0.13457621318805238,
+    "fraction": "426489043560691923801380294482419720928209163131747101971482420571241111600003065359950029938992973481879890877629986104537215843/3169126500570573503741758013440000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   }
+  },
+  "parent_committed_T2_fun_exact": {
+   "t=0": {
+    "float": 0.4707499590095923,
+    "fraction": "745933085119905156452606881794716574542627981374501223765928871464080551737509530053470202513449310235240605651275676943905844559/1584563250285286751870879006720000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   },
+   "t=0.05": {
+    "float": 0.36476385289560737,
+    "fraction": "7326911404855516392763685840792030584249985491938073737556550654262295428466570374952072627082227969573869273572358208367300889254908369796944379647380386481234934541404639932967547787205150642942496689144352691846691948838432123389922690004479486039606008559/20086725553237378444274526154264532531527537422284910441267200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   },
+   "t=0.1": {
+    "float": 0.26708478515203343,
+    "fraction": "4232127352622535874183563295098618671231875887278719332434137564171353693626648262620642147308826610285611541726402187077108910522654260415949634019676022797569446383807608996665235036449683014609096918132147612076132436349082559/15845632502852867518708790067200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   }
+  },
+  "parent_committed_T2_wipe_exact": {
+   "t=0.05": {
+    "float": 1.3675808921459658e-14,
+    "fraction": "2197617764191003271556719345384768853496192575209662780546859755496656942426204248342732028677235319674956904821344916999214655842952135941818179300853622998519758428116053502086112623544316030291841457884166889057073755934822454002098440654466261/160693804425899027554196209234116260252220299378279283530137600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   },
+   "t=0.1": {
+    "float": 2.6747913687387183e-13,
+    "fraction": "33907008840669233619590956544147473725843490329059370478051832958448165569877046634405512799228215420131005183847522847473381486750134203661794154057720793033709625308776895848557523824571050236383229053369248134332261/126765060022822940149670320537600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+   }
+  },
+  "parent_committed_ruin_capped_p_double": {
+   "t=0": 0.11231584882263569,
+   "t=0.05": 4.333881302047223e-05,
+   "t=0.1": 1.927361624579118e-09
+  },
+  "parent_committed_ruin_uncapped": {
+   "t=0": {
+    "float": 0.3333333333333333,
+    "fraction": "1/3"
+   },
+   "t=0.05": {
+    "float": 4.472052208172175e-05,
+    "fraction": "75051624198251984443456989853061891539043939434909537798332873934101480896578056472849915762891214746171016655874432115640378001/1678236762556204755798961843959035146128123375764037005807805680437704513177885821913719256803590942695309449007481744055347791940003"
+   },
+   "t=0.1": {
+    "float": 1.9273623055017443e-09,
+    "fraction": "265613988875874769338781322035779626829233452653394495974574961739092490901302182994384699044001/137812173724508066083562620259357815353777509940772966778740117993471387752894007412817272027253637735003"
+   }
+  },
+  "statement": "cross-verdict identity, pre-registered: the sigma=0 baseline T1 FUN exact Fractions at t in {0, 0.05, 0.10} MUST equal V022's committed G1 reference values (quoted below verbatim from sims/verdict-025-ticket-envelope/fixtures.json identity_gate @ 5e356ed, itself quoting V022 @ fda94d0) by EXACT rational equality - the grid's third chained verdict on one binomial; the T2 baseline Fractions must equal V025's committed strings the same way"
+ },
+ "intake_time_decisions_disclosed": [
+  "1. REPORTING-STREAM ASSIGNMENT: the t=0 control and ALL compulsive legs ride the seed-20260754 reporting stream (the proposal's explicit seed assignment 'reporting legs seed 20260754 - t=0 control, compulsive, the house-net table, the T3 monotonicity spot cell, and the per-round aggregated-draw spot check' is more specific than the loop-order clause's 'casual -> grinder -> compulsive' profile listing and therefore wins); the primary/stability decision streams carry casual + grinder only.",
+  "2. BOUNDARY RULE (the sigma = t mint knife-edge, pinned BEFORE any run): a cell whose MINT maximum is 0 EXACTLY (reachable only through the exact-arm legs - D1 wash/casual-R1 and D2 cap-chaser/casual-R1 at sigma = t) PASSES the band as registered (weak inequality) and is marked BOUNDARY; boundary-marked cells cannot be members of an APPROVE consecutive-size band and cannot count as 'clean' rescues ('a band, not a knife-edge'; the NULL clause's own 'MINT-boundary-only passes'); they DO block REJECT (a boundary rescue is not a measured-dead lever - it lands NULL). Identical conservative treatment to indeterminate cells ('route to NULL, never to APPROVE').",
+  "3. MINT EXACT-WHERE-COVERED: every MINT leg with an Arm-A exact EV (casual-R1 all designs; D1 wash farmer; D2 cap-chaser at sigma = t exact zero, elsewhere sign-exact with the MC integer total as the reported value; D3 T1 stopper EVs) is DECIDED by the exact value (Fraction comparison); MC-only legs (casual R5/RG/MC, all grinder legs, D3 T2 stopper) are decided by exact integer session-net totals (sum of (wealth_cu - 10000) over replications <= 0). This keeps the sigma = t knife-edge deterministic instead of a coin flip on MC noise, exactly as the proposal's 'EV = 0 exactly ... marked boundary' requires.",
+  "4. D3 STOPPER RHO-INVARIANCE: the stopper walk stops on BANKROLL thresholds (tau, phi) and rho enters only through the exit-time comp, so the 12 variant walks are run ONCE per (shape, t) at M_stopper and each rho's EV derives from the same exit records - draw-for-draw equivalent to running them per rho, 4x cheaper, and the pinned loop order stays unambiguous (stopper block after the D3 size loop).",
+  "5. FARMER M PINS: wash 5,000 (casual-class: fixed 100 rounds), cap-chaser 2,000, stopper 4,000 per variant (the proposal pins M only for casual/grinder/compulsive; these are intake-time pins, halved in the stability leg).",
+  "6. STOPPER TERMINATION GUARD: the stopper chains absorb almost surely (negative drift at every decision t); the MC carries a 200,000-round guard that is a SELF-CHECK sentinel (expected hits: 0; any hit fails the run), not a censoring convention.",
+  "7. COMPULSIVE DESIGN COVERAGE: end-of-session comp (D1 stipend, D3 rebate) cannot alter an in-session walk, so compulsive under D1/D3 is DRAW-IDENTICAL to the baseline compulsive leg (an identity, not an approximation): compulsive runs on the 4 baseline cells (+ t=0 control) and the 16 D2 cells (where the continuous rebate genuinely changes ruin timing); D1/D3 cells report the baseline row by identity, labeled as such.",
+  "8. GRINDER OUTCOME CLASSES: double (wealth >= 2*B0) / half (wealth <= 0.5*B0) / STRANDED (bank < F with wealth strictly between the bands - reachable only under D3 rho >= 0.6 where the wealth floor sits below the total-ruin wealth rho*B0) / cap-hit (4,000 rounds). Stranded is a COMPLETED, determinate session counted in the denominator and never a double; only cap-hits > 1% mark the cell indeterminate.",
+  "9. MC-CHASE STREAK CONVENTION (V025 disclosures 3-4 transposed): L compares prizes_cu to stake_cu, REBATE EXCLUDED (the rebate is comp, not a prize); net-zero rounds leave L unchanged; exponent clip b = min(2^min(L,7), 5, units) is stake-identical to min(2^L, .) at c = 5.",
+  "10. CASUAL STOP: 'bankroll < F' = bank < 100 cu (D2's rebate-augmented bankroll included); an R1-casual session can never stop early under ANY design (minimum per-round net -100 + 0 cu from start 10000 cu over 100 rounds; D2 only adds), so the R1 casual leg is always the exact 100-step binomial/DP object Arm A computes - the FUN/wipe/E[net] reference identities hold with certainty, not approximately.",
+  "11. RG == R5 AT c = 5: greedy b = min(c, units) = min(5, units) = R5's rule; both legs are kept and swept independently per the proposal's verbatim policy list (their agreement is itself a free consistency signal; disclosed so no reader mistakes them for independent behavioral evidence).",
+  "12. GATE-CALIBRATION DISCLOSURE (SE arithmetic done BEFORE the run - the V027 lesson, applied at registration): see gate_calibration_disclosure.",
+  "13. EV AGREEMENT GATES: EV quantities gate at 4x predicted SE (an EV is not a probability; the proposal's 1.0 pp gate applies to the probability quantities); predicted SEs computed from the exact per-session variance where Arm A knows it, else from the measured sample variance, disclosed per point.",
+  "14. SCRATCHPAD PROBE DISCLOSURE: a pre-commit scratchpad feasibility probe (the comp-shifted FUN table, the exact D3 casual-R1 EVs, one stopper-DP timing run) ran before this fixtures commit; every decision constant was already pinned by the idea file and every convention in this file was written before the probe's numbers were read, so no free parameter remained tunable.",
+  "15. ANCHOR TOLERANCE: baseline-reproduction anchors compare this sim's fresh-seed MC counts to V025's quoted measured rows at 4x two-sample binomial SE (sqrt(p*(1-p)*(1/M_mine + 1/M_parent))) with an absolute floor of 0.004 (guards the zero-count cells); exact quantities (Fractions, capped-DP floats from the identical algorithm) must be EQUAL. Anchors are reporting-only for the decision but run as hard self-checks.",
+  "16. REBATE TIMING: D2's per-ticket rebate is credited in the same round-end bank update as prizes and stake (bank += prizes + rebate - stake); within-round ordering is unobservable (no stop condition is evaluated mid-round) and the cap accounting is per-ticket exact (cap/rebate = exactly 200 tickets, integer cu).",
+  "17. HOUSE-NET TABLE: pure arithmetic over the primary legs' measured integer session-net totals and the Arm-A exact values (house net per session = -E[player session net incl. comp]); no fresh draws - listed under the seed-20260754 reporting umbrella per the proposal, sourced from the committed primary tables.",
+  "18. STABILITY-LEG SCOPE: the stability ruling re-evaluates every MC-decided quantity at half M under seed 20260753; Arm-A exact values (FUN, exact MINT legs, boundary marks) are seedless constants shared by construction - what stability tests is every MC-decided band edge and the ruling's count structure."
+ ],
+ "process": {
+  "decision_rule_evaluated_in_this_order": [
+   "REJECT ('the third lever falls - the triage is complete') iff NO (design, size) rescues C1 AND none rescues C2, in both arms where covered, counting NEITHER determinate all-four-pass cells NOR boundary-marked passes NOR indeterminate all-four-band cells as existing at either target (if the only 'rescues' are boundary or indeterminate, REJECT does NOT fire - those land NULL per the proposal's own NULL clause)",
+   "APPROVE ('comp completes the casino') iff some design D* rescues C1 with >= 2 CONSECUTIVE sizes all-four-pass where every member cell is determinate AND non-boundary ('a band, not a knife-edge'), reproduced by the stability leg - house-net table attached",
+   "NULL (anything else): C2-only rescues, single-size knife-edges, MINT-boundary-only passes, or indeterminate cells in the passing set; the per-design signature table IS the pin, flip axis named via per-axis pass shares"
+  ],
+  "indeterminacy_soundness": "failure is always definitive, passes are what indeterminacy can spoil: FUN is analytic (exact); SAFE sessions are casual (always complete); measured P_double under the cap is a lower bound so SINK failures stand; indeterminate cells route to NULL, never to APPROVE",
+  "loop_order": "ONE random.Random(seed) stream per arm-leg flows in this pinned order: shape T1 < T2; t ascending [0.05, 0.1]; within (shape, t): the sigma=0 BASELINE block first (policies R1/R5/RG/MC, each casual M_casual then grinder M_grinder), then design D1 (sizes sigma ascending; per size: policies R1/R5/RG/MC each casual-then-grinder, then the D1 wash-qualifier farmer leg), then design D2 (same, with the D2 cap-chaser farmer leg per size), then design D3 (sizes rho ascending, policies only - the stopper walk is rho-invariant), then the D3 stopper block: 12 variants in pinned order (b ascending, then tau ascending, then phi ascending), M_stopper walks each. Replications sequential, one rng.random() per ticket, no other stream consumption.",
+  "round_step": "per round: compute b from policy state; draw b tickets (one uniform each, ticket order); bank += prizes_cu + rebate_cu - 100*b; update MC streak on prizes vs stake; increment round; re-check stop conditions",
+  "target_cells": {
+   "C1": "(T1, t=0.10) - the FUN-dead sink-firm take; baseline FUN 0.13457621... (V022's committed G1 e=0.10 value, V025-identical binomial)",
+   "C2": "(T2, t=0.05) - the SAFE near-miss; V025's worst-policy P_wipe 0.0608 vs the 0.05 band, binding policy RG, its SINK/FUN passing",
+   "rescued": "all four bands (FUN and SAFE and SINK and MINT) pass at that (shape, take) for some (design, size), determinate cells only"
+  },
+  "twin_evaluators": "two independently coded decision evaluators (integer cross-multiplication on counts; Fraction comparisons) must agree on every band, every cell, and the ruling"
+ },
+ "question": "Under the pinned comp-envelope model on VERDICT 025's surviving ticket substrate (B0 = 1,000 integer chips; F = 0.01*B0 = 10; per-round ticket cap c = 5 FIXED; prize shapes T1 double-up {2F w.p. (1-t)/2} and T2 tiered {8F, 3F, 1F w.p. (1-t)*{0.05, 0.10, 0.30}} with E[prize] = (1-t)*F exact and T3 jackpot EXCLUDED BY CITATION (V025's measured SINK wall 0.148-0.346 and SAFE 0.275-1.000 across all (t, c)) plus comp monotonicity spot-asserted on one T3 reporting cell; takes t in {0.05, 0.10} + t=0 control reporting-only; comp designs D1 QUALIFIED STIPEND S = sigma*B0 at session end iff session handle >= B0, D2 HANDLE REBATE sigma*F per ticket credited to bankroll continuously with per-session rebate cap 2*sigma*B0, D3 LOSS REBATE rho*(B0 - final)+ at session end - D1/D2 over sigma in {0.02, 0.05, 0.10, 0.20}, D3 over rho in {0.2, 0.4, 0.6, 0.8}; 48 decision cells = 2 shapes x 2 takes x 3 designs x 4 sizes, plus 4 sigma=0 baseline cells that must REPRODUCE V025's committed rows; re-buy policies R1/R5/RG/MC and profiles CASUAL/GRINDER/COMPULSIVE verbatim from V025 with comp counted in final wealth; FARMER family per design - D1 wash-qualifier, D2 cap-chaser, D3 12-variant stopper grid, max EV taken), for which (design, size) cells do FUN (reference-leg R1 P_ahead incl. comp >= 0.25), SAFE (max-policy P_wipe incl. comp <= 0.05), SINK (max-policy P_double incl. comp <= 0.10) and MINT (max over the 4 swept policies AND the farmer family of E[session net incl. comp] <= 0, weak inequality, boundary cells marked) hold simultaneously, determinate cells only - and do any RESCUE the pre-registered target cells C1 = (T1, t=0.10) (the FUN-dead sink-firm take, baseline FUN 0.13457621...) and C2 = (T2, t=0.05) (the SAFE near-miss, V025's worst-policy P_wipe 0.0608, binding policy RG) - landing (evaluated in this pre-registered order) REJECT (no cell rescues C1 AND none rescues C2, both arms where covered), APPROVE (some design rescues C1 with >= 2 CONSECUTIVE sizes all-four-pass, a band not a knife-edge, stability-reproduced, house-net table attached), or NULL (anything else - the per-design signature table IS the pin, flip axis named via per-axis pass shares)?",
+ "reporting_legs_seed_20260754": {
+  "cannot_flip": "all four legs are registered as unable to flip the decision",
+  "order": "pinned: (1) t=0 control - T1 casual R1 M=5000, T1 grinder R1 M=2000, T2 casual R1 M=5000, gated against the exact DP/capped-DP values and the Wald t=0 prize-fairness form; (2) compulsive block - for shape in [T1, T2], t in [0.05, 0.1]: baseline R1 M=500, then D2 sigma ascending M=500 each; (3) T3 monotonicity spot cell - T3 (t=0.05) baseline grinder R1 M=2000 then D1 sigma=0.2 grinder R1 M=2000, asserting P_double(D1 sigma=0.2) >= P_double(baseline) (the proposal's 'comp weakly raises P_double', expected margin >> MC noise: the stipend moves the double line from 200 to 180 units); (4) the aggregated-draw spot check - V025's clause transposed verbatim: T2 (t=0.05), 1,000 rounds of 100 tickets, per-ticket draws vs binomial-inversion aggregation, means within 4 SE (reporting-only; every decision number in this sim uses per-ticket draws)"
+ },
+ "source": {
+  "idea_entry": "ideas/superbot/casino-comp-stipend-envelope-2026-07-13.md (proposal's own blob link @ 2f9139c793c3dcac2989b251b81f7707ab073b4e)",
+  "parents": "VERDICT 022 (sims/verdict-022-casino-fairness/) and VERDICT 025 (sims/verdict-025-ticket-envelope/), both committed in this repo @ 5e356ed7d255377cefedf4f6ede1544617bd0c89; every anchor constant below is quoted verbatim from their committed fixtures.json/results.json at drafting - zero repo/network reads at run time",
+  "proposal": "idea-engine control/outbox.md PROPOSAL 027 \u00b7 2026-07-13T06:04:37Z \u00b7 status: sim-ready",
+  "proposal_pin": "idea-engine main 3978df1 (landed via idea-engine PR #294)",
+  "rotation_slot": "inbox ORDER 004 rule 3 - GAME-MECHANICS rotation slot, round 3: round 1 PROPOSAL 020 -> VERDICT 022 rejected the odds lever and routed exactly three non-odds levers; round 2 PROPOSAL 023 -> VERDICT 025 rejected the entry-fee lever and its recommendation names this head verbatim ('the comp/stipend envelope sim - the THIRD routed lever, now the last unpriced one'); rake-only PvP was priced FREE by V022's rake == edge identity - this head CLOSES the World seat's fairness-lever triage whatever it lands"
+ }
+}
