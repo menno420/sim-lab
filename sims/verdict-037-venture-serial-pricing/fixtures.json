@@ -1,0 +1,109 @@
+{
+  "_preregistration": {
+    "written": "2026-07-13T09:38:11Z (date -u), committed BEFORE the runner existed; the sim reads every constant from this file and touches no repo state, network, or wall clock",
+    "binding_spec_verbatim": {
+      "source": "menno420/idea-engine control/inbox.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d, ORDER 005 · 2026-07-13T07:51:32Z · status: new, SIM-REQUEST (1)",
+      "text": "(1) VENTURE SERIAL PRICING — venture-lab asks for a pricing verdict on its Ultramarine serial (per-episode ~$2.99 vs bundle vs free-first-episode funnel); packet: venture-lab control/outbox.md night batch 1 + venture-lab docs/publishing/vetting/; deliver a verdict with evidence per your 8-question battery."
+    },
+    "packet_request_verbatim": {
+      "source": "menno420/venture-lab control/outbox.md @ 58cdb145dd524e8289a72a0bfd3d63a66ad0101b, section '2026-07-13 · night-run batch 1 (coordinator → manager)'",
+      "text": "SIM-REQUEST: serialized-fiction pricing feasibility — Ultramarine 3-part serial at $2.99/episode vs $3.99–$5.99 single volume (source: PR #109; packet carries the details). Answer routes back via manager."
+    },
+    "packet_question_verbatim": {
+      "source": "menno420/venture-lab candidates/adult-novels/ultramarine/versions/serial-edition/NOTES.md @ 58cdb145dd524e8289a72a0bfd3d63a66ad0101b, § Market position",
+      "text": "SIM-REQUEST: serial vs single-volume pricing feasibility — model carry-through breakeven (what episode-2/3 continuation rate makes 3 × $2.99 beat 1 × $4.99 per browsing reader) before any publish decision."
+    }
+  },
+  "pinned_constants": {
+    "episode_count": {
+      "value": 3,
+      "source_verbatim": "The novella cut as a **three-episode serial**, each episode a purchasable unit",
+      "source": "venture-lab candidates/adult-novels/ultramarine/versions/serial-edition/NOTES.md @ 58cdb14"
+    },
+    "episode_words": {
+      "value": [9188, 9849, 10399],
+      "total": 29436,
+      "source_verbatim": "9188 ultramarine-part-1.md / 9849 ultramarine-part-2.md / 10399 ultramarine-part-3.md / 29436 total (wc -w, 2026-07-13)",
+      "source": "venture-lab candidates/adult-novels/ultramarine/versions/serial-edition/NOTES.md @ 58cdb14, § Honest word counts"
+    },
+    "base_manuscript_words": {
+      "value": 27865,
+      "source_verbatim": "the single manuscript file measures **27,865 words**",
+      "source": "venture-lab docs/publishing/vetting/ultramarine.md @ 58cdb14, §3"
+    },
+    "price_per_episode_usd": {
+      "value": "2.99",
+      "source_verbatim": "Pricing frame: per-episode **$2.99** — the KDP 70%-royalty floor ($2.99–$9.99 band per `docs/publishing/CHECKLIST.md` §4; ≈ $2.09/episode at 70% before delivery fee)",
+      "source": "venture-lab candidates/adult-novels/ultramarine/versions/serial-edition/NOTES.md @ 58cdb14, § Market position"
+    },
+    "price_single_volume_usd": {
+      "value": "4.99",
+      "band": "3.99–5.99",
+      "fallback": "3.99",
+      "source_verbatim": "Band: adult/literary novella ebook **$3.99–$5.99** → **recommended $4.99** ... Owner fallback: $3.99",
+      "source": "venture-lab docs/publishing/vetting/ultramarine.md @ 58cdb14, §4"
+    },
+    "royalty_rate_70_band": {
+      "value": "0.70",
+      "band_usd": "2.99–9.99",
+      "below_or_above": "0.35",
+      "source_verbatim": "KDP pays 70% only on ebooks priced **$2.99–$9.99** (below/above → 35%, delivery fee applies on the 70% tier). A $0.99 impulse price means 35% — flag the trade-off explicitly.",
+      "source": "venture-lab docs/publishing/CHECKLIST.md @ 58cdb14, §4 (lines 58–60)"
+    },
+    "packet_net_arithmetic": {
+      "single_net_usd": "≈ $3.49/sale ($4.99 at the 70% tier, minus per-MB delivery fee; text-only file is small)",
+      "serial_full_run": "A completed serial run grosses ≈ $8.97 / nets ≈ $6.27 per reader who buys all three, vs ≈ $3.49 for the single volume — IF readers carry through all three episodes.",
+      "source": "venture-lab docs/publishing/vetting/ultramarine.md §3 + versions/serial-edition/NOTES.md § Market position, both @ 58cdb14",
+      "reconciliation_note": "the packet's ≈$6.27 rounds $2.09×3; exact 0.70×$8.97 = $6.279 — the sim uses exact fractions and reports both"
+    },
+    "packet_caveat_verbatim": {
+      "text": "Honest caveat — serialization economics are unverified. The 2–3× revenue math above assumes episode-2/3 carry-through rates that nobody has measured for this catalog, and literary historical fiction is not a proven Kindle serial category (serial reading on Amazon skews to genre fiction, and Amazon's dedicated serial surface, Kindle Vella, shut down in early 2025). A $2.99 price on a ~9–10k-word episode also risks poor value perception next to $4.99 full novellas. Unknown-author base case remains ≈ $0 either way; no sales projection is made.",
+      "source": "venture-lab candidates/adult-novels/ultramarine/versions/serial-edition/NOTES.md @ 58cdb14, § Market position"
+    }
+  },
+  "recorded_gaps_feeding_null_or_conditional": [
+    "G1: NO measured episode-2/episode-3 carry-through (continuation) rate exists anywhere in the packet — the packet states this verbatim ('carry-through rates that nobody has measured for this catalog').",
+    "G2: NO measured free→paid conversion rate and NO acquisition multiplier (free downloads per counterfactual paid buyer) exist in the packet for a free-first-episode funnel; the packet carries zero funnel telemetry.",
+    "G3: NO committed platform mechanism for a permanently-$0.00 KDP listing is pinned in the packet — CHECKLIST.md §4 pins the 70% band $2.99–$9.99 and the $0.99→35% tradeoff only; a free episode 1 has no priced path in the packet's own platform constants.",
+    "G4: NO entry-rate data (browse→first-purchase propensity at $2.99 vs $4.99) — the packet's own frame is 'per browsing reader' who commits; entry asymmetry is unmeasured.",
+    "G5: The per-MB delivery fee's exact value is not pinned (packet: 'text-only file is small'); the fee applies per unit sold, so the serial arm pays it 3× — direction stated, magnitude unpinned.",
+    "G6: KU page-read economics (the vetting packet's own 'realistic first revenue surface' for the single volume) carry no committed KENP rate in the packet — the ruling is on à-la-carte sale economics only."
+  ],
+  "model": {
+    "frame": "expected net royalty per committed browsing reader per arm (the packet's own 'per browsing reader' frame); exact rational arithmetic (fractions of USD), zero RNG",
+    "arms": {
+      "SERIAL": "buy ep1 at $2.99 (net r = 0.70×2.99), continue to ep2 w.p. p2, then ep3 w.p. p3 (conditional). E[net] = r·(1 + p2 + p2·p3).",
+      "SINGLE": "buy the $4.99 volume once. E[net] = s = 0.70×4.99. Zero unmeasured parameters. This is the packet's 'bundle' arm: one listing carrying the whole text at the vetted band price.",
+      "FREE_FUNNEL": "ep1 free (net 0, mechanism itself UNPINNED — gap G3), convert to paid ep2 w.p. q2, then ep3 w.p. q3; acquisition multiplier m = free-readers acquired per counterfactual committed buyer. E[net] = m·r·(q2 + q2·q3)."
+    },
+    "sweep_grids": {
+      "p2_p3_grid": "0.00 to 1.00 step 0.05 (21×21 = 441 cells), WIN map SERIAL vs SINGLE",
+      "q2_q3_grid": "0.00 to 1.00 step 0.05 at m=1, WIN map FREE_FUNNEL vs SINGLE; plus m* table at q ∈ {0.25, 0.50, 0.75, 1.00} symmetric",
+      "delivery_fee_sensitivity": "REPORTING-ONLY, cannot flip the decision (decision taken at fee=0, the packet's own arithmetic, the direction FAVORABLE to serial): per-unit royalty-side fee deduction f ∈ {0.00, 0.05, 0.10, 0.15} USD, illustrative grid — constant unpinned (gap G5); serial pays f 3×, single 1×"
+    }
+  },
+  "decision_rule": {
+    "note": "pre-registered BEFORE the runner; evaluated strictly in order; B := s/r − 1 is the exact carry-through breakeven the packet itself asks for",
+    "order": [
+      "R1 SERIAL-WINS: iff the packet carries a MEASURED continuation pair (p̂2, p̂3) with p̂2·(1+p̂3) ≥ B → recommend per-episode $2.99. (Reachable only if a measured rate exists — gap G1 says none does; registered anyway so a re-run against a future packet re-reads.)",
+      "R2 SINGLE-WINS-UNCONDITIONAL: iff B > 2 (serial cannot win anywhere in [0,1]²) → recommend single volume $4.99 unconditionally.",
+      "R3 CONDITIONAL-DEFAULT: iff NO measured continuation/conversion/multiplier datum exists in the packet (gaps G1/G2/G4 all open) AND 0 < B ≤ 2 → recommend the only arm with zero unmeasured parameters (SINGLE volume at the vetted $4.99, exact net s per sale) as the default publish arm; SERIAL parked behind the named measurement p2·(1+p3) ≥ B (frontier table ships); FREE_FUNNEL not recommendable — its win condition m·q2·(1+q3) ≥ s/r must clear BOTH an unmeasured behavioral bar (G2) and an unpinned platform mechanism (G3).",
+      "R4 NULL: anything else — name the binding gap."
+    ],
+    "honest_null_note": "R3 and R4 are both honest outcomes; the frontier table is the citable pin either way. Never stretch: no sales projection is made anywhere (the packet's own 'unknown-author base case ≈ $0' stands)."
+  },
+  "expected_exact_values_hand_derived": {
+    "r_serial_episode_net": "2093/1000 = 2.093",
+    "s_single_net": "3493/1000 = 3.493",
+    "B_breakeven": "s/r − 1 = 1400/2093 = 200/299 ≈ 0.668896",
+    "s_over_r": "3493/2093 = 499/299 ≈ 1.668896",
+    "breakeven_p2_when_p3_equals_p2": "positive root of p + p² = 200/299 ≈ 0.4586",
+    "breakeven_p2_when_p3_is_1": "100/299 ≈ 0.334448",
+    "breakeven_p2_when_p3_is_0": "200/299 ≈ 0.668896",
+    "full_carrythrough_serial_net": "3r = 6279/1000 = 6.279 (packet's ≈6.27 is the 2.09×3 rounding)",
+    "free_funnel_bar_at_m1": "q2·(1+q3) ≥ 499/299 — needs q2 ≥ 499/598 ≈ 0.834448 even at q3 = 1",
+    "free_vs_serial_identity": "at equal rates and m = 1, SERIAL − FREE_FUNNEL = r exactly (the paid-ep1 margin) > 0 for all rates — free can only win via m"
+  },
+  "seeds": "NONE — zero RNG; every arm is exact closed-form Fraction arithmetic (the seed high-water mark 20260775 is therefore untouched; no seed is drawn)",
+  "determinism_contract": "stdout and results.json byte-identical across two full process runs, proven by external diff; all JSON keys sorted; no timestamps inside results.json"
+}
