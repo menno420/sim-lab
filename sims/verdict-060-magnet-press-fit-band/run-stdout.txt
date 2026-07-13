@@ -1,0 +1,89 @@
+VERDICT 060 — magnet press-fit band (INTAKE 049)
+Arm A (exact, decision) — DROP/UNSEAT/FAIL x F over the 9,471-cell lattice:
+  F =  5  DROP =   125/861 = 0.145180   UNSEAT =    20/861 = 0.023229   FAIL =   145/861 = 0.168409
+  F = 10  DROP =    20/287 = 0.069686   UNSEAT =    20/287 = 0.069686   FAIL =    40/287 = 0.139373
+  F = 15  DROP =    20/861 = 0.023229   UNSEAT =   125/861 = 0.145180   FAIL =   145/861 = 0.168409   <- shipped default
+  F = 20  DROP =    5/1353 = 0.003695   UNSEAT =  335/1353 = 0.247598   FAIL =  340/1353 = 0.251293
+  F = 25  DROP =         0 = 0.000000   UNSEAT =     15/41 = 0.365854   FAIL =     15/41 = 0.365854
+  F = 30  DROP =         0 = 0.000000   UNSEAT =     20/41 = 0.487805   FAIL =     20/41 = 0.487805
+  FAIL(15) = 145/861 = 0.168409   min_F FAIL = 40/287 = 0.139373 at F = 10
+  FAIL_glue(F) = UNSEAT(F) (reporting-only): F=5 0.023229  F=10 0.069686  F=15 0.145180  F=20 0.247598  F=25 0.365854  F=30 0.487805
+Per-H conditional FAIL(15 | H) (reporting-only):
+  H =  0  FAIL(15 | H) =      5/21 = 0.238095
+  H =  1  FAIL(15 | H) =     15/77 = 0.194805
+  H =  2  FAIL(15 | H) =     12/77 = 0.155844
+  H =  3  FAIL(15 | H) =      4/33 = 0.121212
+  H =  4  FAIL(15 | H) =      1/11 = 0.090909
+  H =  5  FAIL(15 | H) =      5/77 = 0.064935
+  H =  6  FAIL(15 | H) =    10/231 = 0.043290
+  H =  7  FAIL(15 | H) =      2/77 = 0.025974
+  H =  8  FAIL(15 | H) =      1/77 = 0.012987
+  H =  9  FAIL(15 | H) =     1/231 = 0.004329
+  H = 10  FAIL(15 | H) =         0 = 0.000000
+  H = 11  FAIL(15 | H) =         0 = 0.000000
+  H = 12  FAIL(15 | H) =         0 = 0.000000
+  H = 13  FAIL(15 | H) =         0 = 0.000000
+  H = 14  FAIL(15 | H) =         0 = 0.000000
+  H = 15  FAIL(15 | H) =         0 = 0.000000
+  H = 16  FAIL(15 | H) =         0 = 0.000000
+  H = 17  FAIL(15 | H) =         0 = 0.000000
+  H = 18  FAIL(15 | H) =         0 = 0.000000
+  H = 19  FAIL(15 | H) =         0 = 0.000000
+  H = 20  FAIL(15 | H) =         0 = 0.000000
+  H = 21  FAIL(15 | H) =     1/231 = 0.004329
+  H = 22  FAIL(15 | H) =      1/77 = 0.012987
+  H = 23  FAIL(15 | H) =      2/77 = 0.025974
+  H = 24  FAIL(15 | H) =    10/231 = 0.043290
+  H = 25  FAIL(15 | H) =      5/77 = 0.064935
+  H = 26  FAIL(15 | H) =      1/11 = 0.090909
+  H = 27  FAIL(15 | H) =      4/33 = 0.121212
+  H = 28  FAIL(15 | H) =     12/77 = 0.155844
+  H = 29  FAIL(15 | H) =     15/77 = 0.194805
+  H = 30  FAIL(15 | H) =      5/21 = 0.238095
+  H = 31  FAIL(15 | H) =       2/7 = 0.285714
+  H = 32  FAIL(15 | H) =       1/3 = 0.333333
+  H = 33  FAIL(15 | H) =      8/21 = 0.380952
+  H = 34  FAIL(15 | H) =       3/7 = 0.428571
+  H = 35  FAIL(15 | H) =     10/21 = 0.476190
+  H = 36  FAIL(15 | H) =     11/21 = 0.523810
+  H = 37  FAIL(15 | H) =       4/7 = 0.571429
+  H = 38  FAIL(15 | H) =     13/21 = 0.619048
+  H = 39  FAIL(15 | H) =       2/3 = 0.666667
+  H = 40  FAIL(15 | H) =       5/7 = 0.714286
+Controls gate (INVALID if any fails):
+  arm_B_agreement_every_cell                    PASS
+  monotonicity_DROP_nonincreasing_arm_A         PASS
+  monotonicity_DROP_nonincreasing_arm_B         PASS
+  monotonicity_UNSEAT_nondecreasing_arm_A       PASS
+  monotonicity_UNSEAT_nondecreasing_arm_B       PASS
+  zero_noise_identity_arm_A                     PASS
+  zero_noise_identity_arm_B                     PASS
+Arm B headline (seed 20261333, N = 200,000, common random numbers):
+  F =  5  FAIL_hat = 0.168745  exact = 0.168409  |dev| = 0.000336  (1/100 abs ok, 4se = 0.003347 ok)  PASS
+  F = 10  FAIL_hat = 0.139705  exact = 0.139373  |dev| = 0.000332  (1/100 abs ok, 4se = 0.003098 ok)  PASS
+  F = 15  FAIL_hat = 0.168475  exact = 0.168409  |dev| = 0.000066  (1/100 abs ok, 4se = 0.003347 ok)  PASS
+  F = 20  FAIL_hat = 0.250430  exact = 0.251293  |dev| = 0.000863  (1/100 abs ok, 4se = 0.003880 ok)  PASS
+  F = 25  FAIL_hat = 0.366275  exact = 0.365854  |dev| = 0.000421  (1/100 abs ok, 4se = 0.004308 ok)  PASS
+  F = 30  FAIL_hat = 0.487645  exact = 0.487805  |dev| = 0.000160  (1/100 abs ok, 4se = 0.004471 ok)  PASS
+Zero-noise identity (seed 20261334): Arm A exact-1 PASS, Arm B all-PRESS PASS
+Sensitivity worlds (seed 20261335, N = 20,000 each, reporting-only):
+  H_narrow      FAIL(15) =    20/441 = 0.045351  [reject-edge: at-or-below  approve-edge: at-or-below  straddle: True ]  mc 0.045750 confirmed
+  H_wide        FAIL(15) =  440/1281 = 0.343482  [reject-edge: above        approve-edge: above        straddle: False]  mc 0.340900 confirmed
+  eta_narrow    FAIL(15) =  675/4961 = 0.136061  [reject-edge: above        approve-edge: above        straddle: False]  mc 0.137400 confirmed
+  eta_wide      FAIL(15) =  455/1681 = 0.270672  [reject-edge: above        approve-edge: above        straddle: False]  mc 0.275600 confirmed
+  m_degenerate  FAIL(15) =    45/287 = 0.156794  [reject-edge: above        approve-edge: above        straddle: False]  mc 0.158800 confirmed
+  m_wide        FAIL(15) = 3565/18081 = 0.197168  [reject-edge: above        approve-edge: above        straddle: False]  mc 0.199300 confirmed
+  I_hold_5      FAIL(15) =  470/3157 = 0.148876  [reject-edge: above        approve-edge: above        straddle: False]  mc 0.149050 confirmed
+  I_hold_15     FAIL(15) =   185/861 = 0.214866  [reject-edge: above        approve-edge: above        straddle: False]  mc 0.213300 confirmed
+  I_seat_40     FAIL(15) =   335/861 = 0.389082  [reject-edge: above        approve-edge: above        straddle: False]  mc 0.383400 confirmed
+  I_seat_60     FAIL(15) =    40/861 = 0.046458  [reject-edge: at-or-below  approve-edge: at-or-below  straddle: True ]  mc 0.046250 confirmed
+Stability (seed 20261336, N = 20,000): FAIL15_hat = 3367/20000 = 0.168350, class reject -> REPRODUCES
+Rules (registered order):
+  FIRED     REJECT (checked FIRST): FAIL(15) > 1/10
+  no-fire   INVALID gate: zero-noise identity fails in either arm, OR a monotonicity theorem fails, OR Arm B breaches the agreement gate on any cell
+  no-fire   APPROVE: FAIL(15) <= 1/20 AND FAIL(15) <= min_F FAIL(F) + 1/100 AND the seed-20261336 stability leg reproduces the ruling
+  no-fire   NULL: anything else (axes: band-miss / wrong-center / stability non-reproduction / sensitivity straddle)
+Remedy-direction flag (reporting-only, routes lane-side): both shipped remedy texts point the magnet_fit dial the wrong way vs the line-83 geometry (pocket_d = magnet_d - magnet_fit: RAISING magnet_fit TIGHTENS the pocket).
+Drafter reference match (reporting-only): {"DROP(10)": true, "DROP(15)": true, "DROP(5)": true, "FAIL(10)": true, "FAIL(15)": true, "FAIL(20)": true, "FAIL(25)": true, "FAIL(30)": true, "FAIL(5)": true, "UNSEAT(10)": true, "UNSEAT(15)": true}
+VERDICT: reject
+SELF-CHECKS: 43 passed, 0 failed
