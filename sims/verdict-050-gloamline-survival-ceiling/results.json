@@ -1,0 +1,765 @@
+{
+  "census": {
+    "KITE-GRAD \u00b7 DARK \u00b7 13": {
+      "SURV": "0",
+      "median_death_frame": 261,
+      "min_gap_quartiles_subpx": [
+        2386,
+        2432,
+        2492
+      ],
+      "n_seeds": 32,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 24": {
+      "SURV": "0",
+      "median_death_frame": 280,
+      "min_gap_quartiles_subpx": [
+        2388,
+        2432,
+        2496
+      ],
+      "n_seeds": 32,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 13": {
+      "SURV": "0",
+      "median_death_frame": 311,
+      "min_gap_quartiles_subpx": [
+        2404,
+        2432,
+        2464
+      ],
+      "n_seeds": 32,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 24": {
+      "SURV": "0",
+      "median_death_frame": 329,
+      "min_gap_quartiles_subpx": [
+        2414,
+        2447,
+        2483
+      ],
+      "n_seeds": 32,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 13": {
+      "SURV": "0",
+      "median_death_frame": 139,
+      "min_gap_quartiles_subpx": [
+        2209,
+        2332,
+        2471
+      ],
+      "n_seeds": 128,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 16": {
+      "SURV": "0",
+      "median_death_frame": 146,
+      "min_gap_quartiles_subpx": [
+        2220,
+        2395,
+        2465
+      ],
+      "n_seeds": 128,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 20": {
+      "SURV": "0",
+      "median_death_frame": 139,
+      "min_gap_quartiles_subpx": [
+        2197,
+        2289,
+        2448
+      ],
+      "n_seeds": 128,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 24": {
+      "SURV": "0",
+      "median_death_frame": 137,
+      "min_gap_quartiles_subpx": [
+        2247,
+        2394,
+        2474
+      ],
+      "n_seeds": 128,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 13": {
+      "SURV": "0",
+      "median_death_frame": 155,
+      "min_gap_quartiles_subpx": [
+        2205,
+        2321,
+        2462
+      ],
+      "n_seeds": 128,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 16": {
+      "SURV": "0",
+      "median_death_frame": 173,
+      "min_gap_quartiles_subpx": [
+        2217,
+        2368,
+        2457
+      ],
+      "n_seeds": 128,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 20": {
+      "SURV": "0",
+      "median_death_frame": 154,
+      "min_gap_quartiles_subpx": [
+        2194,
+        2304,
+        2457
+      ],
+      "n_seeds": 128,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 24": {
+      "SURV": "0",
+      "median_death_frame": 155,
+      "min_gap_quartiles_subpx": [
+        2269,
+        2379,
+        2458
+      ],
+      "n_seeds": 128,
+      "shove_connects": 0,
+      "surv_count": 0
+    },
+    "SHOVE-GRAD \u00b7 DARK \u00b7 13": {
+      "SURV": "0",
+      "median_death_frame": 328,
+      "min_gap_quartiles_subpx": [
+        2405,
+        2450,
+        2496
+      ],
+      "n_seeds": 32,
+      "shove_connects": 44,
+      "surv_count": 0
+    },
+    "SHOVE-GRAD \u00b7 DARK \u00b7 24": {
+      "SURV": "0",
+      "median_death_frame": 356,
+      "min_gap_quartiles_subpx": [
+        2391,
+        2432,
+        2496
+      ],
+      "n_seeds": 32,
+      "shove_connects": 57,
+      "surv_count": 0
+    },
+    "SHOVE-GRAD \u00b7 LIT \u00b7 13": {
+      "SURV": "0",
+      "median_death_frame": 441,
+      "min_gap_quartiles_subpx": [
+        2392,
+        2432,
+        2496
+      ],
+      "n_seeds": 32,
+      "shove_connects": 51,
+      "surv_count": 0
+    },
+    "SHOVE-GRAD \u00b7 LIT \u00b7 24": {
+      "SURV": "0",
+      "median_death_frame": 457,
+      "min_gap_quartiles_subpx": [
+        2407,
+        2443,
+        2496
+      ],
+      "n_seeds": 32,
+      "shove_connects": 61,
+      "surv_count": 0
+    },
+    "SHOVE-PERIM \u00b7 DARK \u00b7 13": {
+      "SURV": "0",
+      "median_death_frame": 269,
+      "min_gap_quartiles_subpx": [
+        2269,
+        2401,
+        2479
+      ],
+      "n_seeds": 128,
+      "shove_connects": 223,
+      "surv_count": 0
+    },
+    "SHOVE-PERIM \u00b7 DARK \u00b7 16": {
+      "SURV": "0",
+      "median_death_frame": 288,
+      "min_gap_quartiles_subpx": [
+        2267,
+        2390,
+        2465
+      ],
+      "n_seeds": 128,
+      "shove_connects": 239,
+      "surv_count": 0
+    },
+    "SHOVE-PERIM \u00b7 DARK \u00b7 20": {
+      "SURV": "0",
+      "median_death_frame": 255,
+      "min_gap_quartiles_subpx": [
+        2274,
+        2383,
+        2467
+      ],
+      "n_seeds": 128,
+      "shove_connects": 225,
+      "surv_count": 0
+    },
+    "SHOVE-PERIM \u00b7 DARK \u00b7 24": {
+      "SURV": "0",
+      "median_death_frame": 290,
+      "min_gap_quartiles_subpx": [
+        2221,
+        2401,
+        2457
+      ],
+      "n_seeds": 128,
+      "shove_connects": 241,
+      "surv_count": 0
+    },
+    "SHOVE-PERIM \u00b7 LIT \u00b7 13": {
+      "SURV": "0",
+      "median_death_frame": 284,
+      "min_gap_quartiles_subpx": [
+        2281,
+        2401,
+        2473
+      ],
+      "n_seeds": 128,
+      "shove_connects": 236,
+      "surv_count": 0
+    },
+    "SHOVE-PERIM \u00b7 LIT \u00b7 16": {
+      "SURV": "0",
+      "median_death_frame": 305,
+      "min_gap_quartiles_subpx": [
+        2240,
+        2398,
+        2462
+      ],
+      "n_seeds": 128,
+      "shove_connects": 266,
+      "surv_count": 0
+    },
+    "SHOVE-PERIM \u00b7 LIT \u00b7 20": {
+      "SURV": "0",
+      "median_death_frame": 274,
+      "min_gap_quartiles_subpx": [
+        2284,
+        2409,
+        2484
+      ],
+      "n_seeds": 128,
+      "shove_connects": 234,
+      "surv_count": 0
+    },
+    "SHOVE-PERIM \u00b7 LIT \u00b7 24": {
+      "SURV": "0",
+      "median_death_frame": 284,
+      "min_gap_quartiles_subpx": [
+        2280,
+        2410,
+        2471
+      ],
+      "n_seeds": 128,
+      "shove_connects": 237,
+      "surv_count": 0
+    }
+  },
+  "gates": {
+    "arm_d_frames": 1256927,
+    "arm_s_draws": {
+      "aux": 0,
+      "main": 4091553,
+      "reporting": 4083328,
+      "stability": 2045785
+    },
+    "dark_zero_stagger_violations": 0,
+    "evaluators": {
+      "main": [
+        "approve",
+        "approve"
+      ],
+      "stability": [
+        "approve",
+        "approve"
+      ]
+    },
+    "idle_worst_contact_frame": 258,
+    "press_worst_pressed_contact": 186,
+    "spawn_identities_checked": 30720,
+    "stagger_grid_mean": "21638/86400",
+    "twin_engine_cells": 32
+  },
+  "mirror_sha256": "c86d950723b6fff1159a9c6cddb32822f6c8651e65376f2001a86f7372492892",
+  "noise_main_20261293": {
+    "KITE-GRAD \u00b7 DARK \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 264886,
+      "frames": 264886,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 279989,
+      "frames": 279989,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 272207,
+      "frames": 272207,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 310155,
+      "frames": 310155,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 324199,
+      "frames": 324199,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 333319,
+      "frames": 333319,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 336540,
+      "frames": 336540,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 369652,
+      "frames": 369652,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 162037,
+      "frames": 162037,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 178324,
+      "frames": 178324,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 204694,
+      "frames": 204694,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 203439,
+      "frames": 203439,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 178190,
+      "frames": 178190,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 206397,
+      "frames": 206397,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 225275,
+      "frames": 225275,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 242250,
+      "frames": 242250,
+      "n_reps": 1024,
+      "surv_count": 0
+    }
+  },
+  "noise_reporting_20261295": {
+    "KITE-GRAD \u00b7 DARK \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 265370,
+      "frames": 265370,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 280131,
+      "frames": 280131,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 272089,
+      "frames": 272089,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 308365,
+      "frames": 308365,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 322449,
+      "frames": 322449,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 332713,
+      "frames": 332713,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 336123,
+      "frames": 336123,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 371384,
+      "frames": 371384,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 163218,
+      "frames": 163218,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 177276,
+      "frames": 177276,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 206590,
+      "frames": 206590,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 199102,
+      "frames": 199102,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 177515,
+      "frames": 177515,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 205821,
+      "frames": 205821,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 221487,
+      "frames": 221487,
+      "n_reps": 1024,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 243695,
+      "frames": 243695,
+      "n_reps": 1024,
+      "surv_count": 0
+    }
+  },
+  "noise_stability_20261294": {
+    "KITE-GRAD \u00b7 DARK \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 132328,
+      "frames": 132328,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 139897,
+      "frames": 139897,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 135913,
+      "frames": 135913,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 DARK \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 153996,
+      "frames": 153996,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 161460,
+      "frames": 161460,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 167317,
+      "frames": 167317,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 168619,
+      "frames": 168619,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-GRAD \u00b7 LIT \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 184350,
+      "frames": 184350,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 81062,
+      "frames": 81062,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 91129,
+      "frames": 91129,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 101080,
+      "frames": 101080,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 DARK \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 98549,
+      "frames": 98549,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 13 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 89210,
+      "frames": 89210,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 13 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 104605,
+      "frames": 104605,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 24 \u00b7 1/16": {
+      "SURV": "0",
+      "draws": 112501,
+      "frames": 112501,
+      "n_reps": 512,
+      "surv_count": 0
+    },
+    "KITE-PERIM \u00b7 LIT \u00b7 24 \u00b7 1/4": {
+      "SURV": "0",
+      "draws": 123769,
+      "frames": 123769,
+      "n_reps": 512,
+      "surv_count": 0
+    }
+  },
+  "per_axis_survival_shares": {
+    "night": {
+      "13": "0",
+      "16": "0",
+      "20": "0",
+      "24": "0"
+    },
+    "oil": {
+      "DARK": "0",
+      "LIT": "0"
+    },
+    "policy": {
+      "KITE-GRAD": "0",
+      "KITE-PERIM": "0",
+      "SHOVE-GRAD": "0",
+      "SHOVE-PERIM": "0"
+    }
+  },
+  "python": "cpython-3.11",
+  "ramp_kite_perim_lit": {
+    "1": {
+      "SURV": "51/128",
+      "median_death_frame": 111,
+      "n_seeds": 128,
+      "surv_count": 51
+    },
+    "10": {
+      "SURV": "0",
+      "median_death_frame": 163,
+      "n_seeds": 128,
+      "surv_count": 0
+    },
+    "11": {
+      "SURV": "0",
+      "median_death_frame": 156,
+      "n_seeds": 128,
+      "surv_count": 0
+    },
+    "12": {
+      "SURV": "0",
+      "median_death_frame": 155,
+      "n_seeds": 128,
+      "surv_count": 0
+    },
+    "2": {
+      "SURV": "15/128",
+      "median_death_frame": 145,
+      "n_seeds": 128,
+      "surv_count": 15
+    },
+    "3": {
+      "SURV": "1/128",
+      "median_death_frame": 220,
+      "n_seeds": 128,
+      "surv_count": 1
+    },
+    "4": {
+      "SURV": "0",
+      "median_death_frame": 219,
+      "n_seeds": 128,
+      "surv_count": 0
+    },
+    "5": {
+      "SURV": "0",
+      "median_death_frame": 341,
+      "n_seeds": 128,
+      "surv_count": 0
+    },
+    "6": {
+      "SURV": "0",
+      "median_death_frame": 159,
+      "n_seeds": 128,
+      "surv_count": 0
+    },
+    "7": {
+      "SURV": "0",
+      "median_death_frame": 159,
+      "n_seeds": 128,
+      "surv_count": 0
+    },
+    "8": {
+      "SURV": "0",
+      "median_death_frame": 155,
+      "n_seeds": 128,
+      "surv_count": 0
+    },
+    "9": {
+      "SURV": "0",
+      "median_death_frame": 182,
+      "n_seeds": 128,
+      "surv_count": 0
+    }
+  },
+  "registry_seeds": {
+    "aux": 20261296,
+    "main": 20261293,
+    "new_high_water": 20261296,
+    "reporting": 20261295,
+    "stability": 20261294
+  },
+  "self_checks": {
+    "failed": 0,
+    "passed": 8358
+  },
+  "verdict": "approve"
+}
