@@ -1,0 +1,125 @@
+{
+  "buyer_savings_by_anchor_usd": {
+    "59": "9",
+    "64": "4",
+    "68": "0"
+  },
+  "decision": {
+    "recommendation": "$59 one-time fixed (the committed listing price) \u2014 the only anchor with zero unmeasured parameters and committed packet support; $64/$68 park behind measured retention frontiers (lookup table below)",
+    "rule_trace": [
+      {
+        "fires": false,
+        "rule": "R1 MEASURED-DEMAND",
+        "why": "no measured per-anchor conversion exists \u2014 the packet's verbatim honest null (G1)"
+      },
+      {
+        "fires": false,
+        "rule": "R2 DOMINANCE SCREEN",
+        "why": "net is increasing in P but retention is free on [0,1]; no dominant anchor exists"
+      },
+      {
+        "fires": true,
+        "rule": "R3 CONDITIONAL-DEFAULT",
+        "why": "G1 open; $59 is the only anchor with zero unmeasured parameters AND committed packet support (BUNDLE-LISTING \u00a7 Pricing, OWNER-QUEUE click row, bundle-starter \u00a73/\u00a77); $64/$68 park behind the measured-retention frontiers (and $64 has zero packet provenance, G3; $68 voids the committed saves-$9 rationale)"
+      }
+    ],
+    "ruling": "R3-CONDITIONAL-DEFAULT \u2014 recommend $59"
+  },
+  "exact_nets_usd": {
+    "bundle68_minus_separate": "0.800",
+    "net_59": "50.589",
+    "net_64": "54.944",
+    "net_68": "58.428",
+    "net_kit_alone": "41.879",
+    "net_separate_both_at_19": "57.628",
+    "seller_cost_of_9_dollar_nudge": "7.039"
+  },
+  "fee_free_frontier_bounds": {
+    "64_vs_59": "59/64 = 0.921875",
+    "68_vs_59": "59/68 = 0.867647",
+    "68_vs_64": "16/17 = 0.941176",
+    "note": "cited-fee frontiers sit within 0.19 pp BELOW these bounds; fee imprecision (G4) cannot flip"
+  },
+  "materiality_bound_monthly_usd": {
+    "59_vs_64_max": "8.710",
+    "59_vs_68_max": "15.678",
+    "basis": "packet's own conservative 0-2 sales/month (Q-0259.4)"
+  },
+  "probe_battery_v0": [
+    {
+      "probe": "A discount-depth decision on a two-component Gumroad bundle with ZERO demand data: the only committed constants are the component prices ($49 + $19 PWYW-suggested = $68 separate), the cited fee schedule (net(P) = 0.871P \u2212 0.80), and the already-committed $59 listing. The $9 'nudge' costs the seller exactly $7.039 net per both-buyer (0.871\u00b79 \u2212 0.80 saved fee).",
+      "q": "1. What is this really?"
+    },
+    {
+      "probe": "Charged price on the coherent band [$49, $68] (floor: bundle must not undercut the kit alone \u2014 packet's own coherence rule); the three named anchors are points on it. Two readings of '$64/$68 anchors' exist: charged price (modeled here) vs displayed comparison ($68-separate is already committed in copy; a displayed $64 would be arithmetically FALSE since $49+$19=$68 \u2014 eliminated by the packet's own anti-fake-anchor stance, G3).",
+      "q": "2. What is the possibility space?"
+    },
+    {
+      "probe": "Exact closed-form frontier table \u2014 no MC needed for the decision: $64 beats $59 iff retention >= 50589/54944 ~ 0.9207; $68 beats $59 iff >= 5621/6492 ~ 0.8658; $68 beats $64 iff >= 13736/14607 ~ 0.9404. Any future measured retention decides by lookup, no re-run.",
+      "q": "3. Most advanced capability reachable by the simplest implementation?"
+    },
+    {
+      "probe": "NOT MEASURED, all three: (a) demand/retention at any anchor (G1 \u2014 packet verbatim 'zero sales history'); (b) the PWYW minimum (G2 \u2014 'minimum owner's choice', so the $68 separate total assumes the suggested $19 is paid); (c) fee exactness (G4 \u2014 cited '~2.9% + $0.30'; bounded: fee-free frontiers differ by < 0.19 pp, cannot flip orderings).",
+      "q": "4. What breaks it?"
+    },
+    {
+      "probe": "A self-superseding price rule: publish at the committed $59, and the first measured sales signal (the packet's own T+14-style checkpoint discipline, SWTK precedent) converts to a switch decision by frontier lookup. Materiality bound at the packet's own 0-2 sales/month: choosing $59 over $68 costs at most $15.678/month net, over $64 at most $8.710/month \u2014 the wrong-anchor risk is capped and small.",
+      "q": "5. What does it unlock?"
+    },
+    {
+      "probe": "HARD GATE G5: the bundle cannot exist until the \u2691B membership-kit and \u2691D template-packs publish clicks are executed (a Gumroad bundle references existing live products) \u2014 the pricing verdict is serveable now, the publish click stays owner-gated; plus the Gumroad fee schedule as cited and the $19-suggested PWYW basis of the $68 anchor (G2).",
+      "q": "6. What does it depend on?"
+    },
+    {
+      "probe": "Nothing to build. venture-lab owns the click (price field already queued at $59 in OWNER-QUEUE); sim-lab delivers the frontier table; the owner executes. No code, no new artifact (the packet's own \u00a71: a bundle has no artifact of its own).",
+      "q": "7. Which lane should build it?"
+    },
+    {
+      "probe": "Zero diff: ratify the committed $59 click exactly as queued. The verdict adds only the parked switch rule (frontier table) to the ledger \u2014 no packet edit, no copy rewrite, no new click.",
+      "q": "8. What is the smallest shippable slice?"
+    }
+  ],
+  "retention_frontiers": {
+    "64_vs_59": {
+      "first_winning_grid_point": "0.93",
+      "frontier_decimal": "0.920737",
+      "frontier_exact": "50589/54944",
+      "win_cells_of_101": 8
+    },
+    "68_vs_59": {
+      "first_winning_grid_point": "0.87",
+      "frontier_decimal": "0.865835",
+      "frontier_exact": "5621/6492",
+      "win_cells_of_101": 14
+    },
+    "68_vs_64": {
+      "first_winning_grid_point": "0.95",
+      "frontier_decimal": "0.940371",
+      "frontier_exact": "13736/14607",
+      "win_cells_of_101": 6
+    }
+  },
+  "seeded_validation_leg": {
+    "draws": 30000,
+    "per_pair": {
+      "64_vs_59": {
+        "empirical_win_share": "0.0746",
+        "exact_win_share": "0.079263"
+      },
+      "68_vs_59": {
+        "empirical_win_share": "0.1345",
+        "exact_win_share": "0.134165"
+      },
+      "68_vs_64": {
+        "empirical_win_share": "0.0631",
+        "exact_win_share": "0.059629"
+      }
+    },
+    "seed": 20260880,
+    "twin_agreement": "all draws"
+  },
+  "self_checks": {
+    "failed": 0,
+    "passed": 46
+  }
+}
