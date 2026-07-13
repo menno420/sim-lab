@@ -1,0 +1,63 @@
+{
+  "question": "Under joint traces composing the two verdicted player models — VERDICT 001's channel-activity tiers (low/med/high + paced-spam farmer) and VERDICT 008's grid playstyles (casual roamer, deep-runner, `!fastmine` grinder) into single-player profiles (chat-only and grid-only regression legs FIRST, each reproducing its verdict's solo headline rates, then mixed-casual, mixed-deep, and a cross-surface arbitrage farmer that fills either surface's cooldown dead time with the other surface's actions), which cooldown-namespace contract — (a) per-source clocks at the pinned defaults (CHAT_ACTIVITY 900 s / GRID_ROAM 600 s, combined per-player ceiling 10/hr), (b) one shared per-player clock (c in {600, 900} s), (c) per-source clocks plus a combined per-player hourly cap (K in {4, 6, 8}) — keeps BOTH verdicts' pinned shapes simultaneously true (wild: rare-but-visible per traffic tier under the 5.22/hr debounce x threshold ceiling; grid: zero above depth threshold, rare-but-present at depth; farming unprofitable in RATE terms on each surface) while bounding the combined per-player interruption rate at or under the stricter solo ceiling (the Q-0087 never-mandatory bound), and does cross-surface cooldown arbitrage buy the farmer a combined encounter-rate yield materially above the honest mixed profiles' — i.e. do the two solo-tuned default sets survive coexistence unchanged, or does a named default or the namespace rule itself need re-pinning before the first build fixes the engine?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 016 · 2026-07-13T00:37:54Z · status: sim-ready",
+    "proposal_pin": "idea-engine main d1d1b6b5575c2dce084a41325fd2a3a9a9e5ab66 (landed via idea-engine PR #279)",
+    "idea_entry": "ideas/superbot/encounter-coexistence-cooldown-contract-2026-07-13.md @ 3ddaea8fd732d5108a303432ba019d88f5d52709",
+    "parent_verdict_001": "sims/intake-003-wild-encounter-spawn-tuning/ (VERDICT 001 — wild encounters, CHAT_ACTIVITY)",
+    "parent_verdict_008": "sims/verdict-008-mining-grid-encounters/ (VERDICT 008 — grid encounters, GRID_ROAM)",
+    "shared_seam": "superbot-games games/shared/encounter/interface.py @ 64b3371b5ca240bcbaea3833acba6fdd2d627ef6 (fixture byte-copy; zero cooldown/rate surface — verified)",
+    "premise_window": "superbot live HEAD cdb26804ea4a61c5c1d09ddaea46a4c535175dc5 at 2026-07-13T00:45:05Z (moved from the proposal's 0f991a8 pin by a docs-only delta: 3 files, 360 insertions, no code); no Encounters cog, no spawn engine, no grid-encounter slice; disbot/utils/mining/grid.py rules 'v1 = free movement, NO encounters' — the window is still OPEN"
+  },
+  "pinned_defaults": {
+    "chat": {"threshold": 24, "debounce_s": 30.0, "cooldown_s": 900.0, "spawn_ttl_s": 300.0, "solo_claim_cap_per_hr": 4.0, "spawn_ceiling_per_hr": 5.217391304347826},
+    "grid": {"depth_threshold": 15, "chance": 0.02, "cooldown_s": 600.0, "solo_cap_per_hr": 6.0}
+  },
+  "contract_cells": [
+    {"id": "A-per-source", "family": "a", "rule": "per-source clocks at the pinned defaults: chat 900 s from the player's last chat claim; grid 600 s from the player's last grid fire; no cross-surface coupling", "analytic_combined_ceiling_per_hr": 10.0, "preserves_pinned_defaults": true},
+    {"id": "B-shared-600", "family": "b", "rule": "one shared per-player clock c=600 s: any encounter on either surface blocks BOTH surfaces for 600 s", "analytic_combined_ceiling_per_hr": 6.0, "preserves_pinned_defaults": false},
+    {"id": "B-shared-900", "family": "b", "rule": "one shared per-player clock c=900 s: any encounter on either surface blocks BOTH surfaces for 900 s", "analytic_combined_ceiling_per_hr": 4.0, "preserves_pinned_defaults": false},
+    {"id": "C-cap-4", "family": "c", "rule": "per-source clocks at the pinned defaults PLUS a combined per-player cap: at most K=4 encounters in any sliding 3600 s window", "analytic_combined_ceiling_per_hr": 4.0, "preserves_pinned_defaults": true},
+    {"id": "C-cap-6", "family": "c", "rule": "per-source clocks at the pinned defaults PLUS a combined per-player cap: at most K=6 encounters in any sliding 3600 s window", "analytic_combined_ceiling_per_hr": 6.0, "preserves_pinned_defaults": true},
+    {"id": "C-cap-8", "family": "c", "rule": "per-source clocks at the pinned defaults PLUS a combined per-player cap: at most K=8 encounters in any sliding 3600 s window", "analytic_combined_ceiling_per_hr": 8.0, "preserves_pinned_defaults": true}
+  ],
+  "profiles": {
+    "regression_legs_first": "chat-only (V001 tiers at (24,30,300) visibility + lone farmer at (24,30,900)) and grid-only (V008 styles at (15,0.02,600), 1 h AND 8 h) must reproduce the parents' published headline numbers EXACTLY (self-check-enforced) before any joint cell counts — the VERDICT 017 baseline-leg discipline",
+    "joint": [
+      {"id": "mixed-casual", "chat": "V001 med-tier honest channel (3 msg/min, 8 users), joint player = author 0", "grid": "V008 casual-roamer trace, same seed"},
+      {"id": "mixed-deep", "chat": "V001 med-tier honest channel (3 msg/min, 8 users), joint player = author 0", "grid": "V008 deep-runner trace, same seed"},
+      {"id": "arb-farmer", "chat": "V001 lone paced-spam farmer (gap = debounce = 30 s, own channel — V001's antifarm leg)", "grid": "V008 !fastmine grinder trace (parked deep, ~3 s cadence), same seed", "note": "runs both surfaces in parallel — each surface's cooldown dead time is filled with the other surface's actions; the cross-surface arbitrage channel neither solo sim could see"}
+    ],
+    "joint_horizon_hours": 8.0,
+    "joint_solo_anchors_note": "joint-leg per-surface comparisons use the SAME-horizon (8 h) solo-leg values computed from the same vendored trace models, so deltas are contract effects, not horizon effects",
+    "seeds": [11, 23, 42, 101, 2027]
+  },
+  "solo_anchors_published": {
+    "v001_visibility_spawns_per_hr": {"low": 0.93, "med": 3.0, "high": 4.38},
+    "v001_farmer_claims_per_hr": 4.0,
+    "v008_1h_enc_per_hr": {"casual": 0.2, "deep-runner": 2.8, "fastmine": 5.2},
+    "v008_8h_enc_per_hr": {"casual": 0.05, "deep-runner": 2.95, "fastmine": 4.88},
+    "anchor_tolerance": 0.005
+  },
+  "scoring": {
+    "P1_wild_shape": "med-tier channel spawns/hr stays in V001's rare-but-visible band [0.5, 6.0] (the band VERDICT 001's report explicitly defined) for both honest mixed profiles, under the 5.22/hr debounce x threshold ceiling",
+    "P2_grid_shape": "zero fires below the depth threshold on every profile/seed (structural gating), mixed-deep grid enc/hr > 0 (rare-but-present at depth), and every profile's grid enc/hr <= 6.0 + eps (V008's solo cap)",
+    "P3_chat_farm_cap": "every profile's chat claims/hr <= 4.0 + eps (V001's per-claimer solo cap — a contract whose namespace rule lets chat claims exceed the verdicted per-claimer cap re-pins V001)",
+    "P4_combined_bound": "every profile's combined interruptions/hr (chat claims + grid fires, per player) <= 4.0 + eps — the stricter solo ceiling min(4, 6), the Q-0087 never-mandatory bound named by the proposal",
+    "P5_no_material_arbitrage": "arb-farmer combined rate <= ARB_RATIO_MAX x max(honest mixed combined rate); ARB_RATIO_MAX = 2.0, committed from the only parent-measured farmer-vs-honest RATE precedent (VERDICT 008 accepted 1.86 bounded-and-shrinking at the pinned defaults; 2.0 is that precedent rounded up)",
+    "P6_no_rate_inflation": "each honest mixed profile's per-surface rate <= its same-horizon solo-leg rate + 0.01/hr (coexistence must never RAISE a solo-tuned surface rate; drops are reported, not failed)",
+    "eps": 1e-09
+  },
+  "winner_rule": "PASS(cell) iff P1..P6 all hold on every seed-mean. Among PASS cells prefer, in order: (1) preserves_pinned_defaults = true (both verdicts' solo default sets survive unchanged); (2) minimal honest-rate distortion = sum over honest mixed profiles and surfaces of |joint rate - same-horizon solo rate|; (3) the smallest added constraint (lowest K / longest shared c). If NO cell passes, the finding path: name the breached criterion per cell and the default or namespace rule that needs re-pinning. Committed BEFORE results existed.",
+  "reported_not_scored": ["combined encounter-mint share per profile (chat vs grid fraction, RATE terms only)", "arbitrage-vs-honest-mixed ratio per cell", "contract-blocked attempt counts per surface (own-clock vs cross-surface vs combined-cap)", "arb-farmer lone-channel spawn dynamics (spawns left to expire under shared clocks)"],
+  "walls_restated": {
+    "reward_value": "no live fishing/mining earn-rate baseline exists, so loot values stay provisional and the slice must log the same named telemetry — VERDICT 001's caveat, restated verbatim by VERDICT 008 and again here; every mint conclusion in this sim is RATE/fraction-only",
+    "explore_action": "the third trigger (EXPLORE_ACTION, superbot-games quest beats) inherits the namespace rule by contract, not by this sweep — its pacing is lane-pinned"
+  },
+  "telemetry_extension_combined_fields": [
+    "per player per day: combined_encounters_all_surfaces (count + per-trigger breakdown chat_activity/grid_roam)",
+    "per encounter: trigger namespace + player_id + fire_ts + cooldown_state_at_fire (per-source clocks remaining, combined-window count)",
+    "per player per day: cooldown_block_events per surface, split own-clock vs combined-cap",
+    "per player per day: combined encounter-mint share vs each surface's solo mint (RATE/fraction terms — the VALUE ratio stays unmeasurable until the parents' named earn-rate baseline telemetry lands)"
+  ]
+}
