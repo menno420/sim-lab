@@ -1,0 +1,160 @@
+{
+  "_what": "VERDICT 033 pre-registration fixtures — idea-engine PROPOSAL 031 (control/outbox.md 2026-07-13T07:49:09Z, status: sim-ready; idea ideas/superbot-games/explore-action-pacing-quest-mint-2026-07-13.md @ idea-engine main 6daf5ea, PR #299). Every constant below is copied verbatim from the idea file / the proposal outbox entry, committed BEFORE the runner exists (git history is the trail). The sim reads ONLY this file plus the sha256-pinned V018 machinery files listed in pins.sha256 — zero repo/network/wall-clock reads at run time.",
+
+  "source": {
+    "proposal": "idea-engine PROPOSAL 031 · 2026-07-13T07:49:09Z · status: sim-ready",
+    "idea_file": "ideas/superbot-games/explore-action-pacing-quest-mint-2026-07-13.md",
+    "idea_engine_main": "6daf5ea (PR #299)",
+    "superbot_games_pin": "5aec110834345e20ce47941266fe598f43804ea0 (quoted constants only — no live read this session; hermetic per the P017-P030 precedent)",
+    "sim_lab_anchor_at": "b50fd06 (V018 committed report/fixtures; V018 runner re-run out-of-sim in a scratchpad copy BEFORE this build: exit 0, 1500 self-checks, results.json byte-identical to the committed file)"
+  },
+
+  "pins": {
+    "sha256": {
+      "../verdict-018-encounter-coexistence/encounter_coexistence_sim.py": "00027b7638020dd585baaee05c59283f86c99bdb428183d22f7ffdba388fe02b",
+      "../verdict-018-encounter-coexistence/fixtures/MANIFEST.json": "f4b0e10a41fd57db0a0e973bb37f81add7e273fde7375b4dfff9461c8a3eb573",
+      "../verdict-018-encounter-coexistence/fixtures/games_shared_encounter_interface.py": "79aef51ec59e403d8ba4982070fb73af3651e85e34391d05f2262c3b92dae39a",
+      "../verdict-018-encounter-coexistence/results.json": "000e19ea6d95944a4ce947e72d311fb41880b34f4536c7575aff964cd2e100eb",
+      "../verdict-018-encounter-coexistence/grid.json": "59eeb43418aa38aaa510d646814b35b3e70d6a1d8ea7d5a302ade38128b173c1",
+      "../intake-003-wild-encounter-spawn-tuning/wild_encounter_spawn_sim.py": "6057bee2e4751dd40af2ba3b6061085373e9e7542e7828b742fae2e699947aac",
+      "../verdict-008-mining-grid-encounters/mining_grid_encounter_sim.py": "8dd1d7e8b62cb6bb07ea02c82f783512c519cea90ef7e979243683b78d81e0ac"
+    },
+    "note": "V018's own MANIFEST already pins the V001/V008 parent files; both are re-pinned here directly so a silent edit to ANY layer of the chained machinery fails this sim loudly before any leg runs."
+  },
+
+  "sweep": {
+    "c_E_grid_seconds": [0, 300, 600, 900],
+    "B_grid_beats_per_completion": [3, 5, 8],
+    "coupling": ["gated", "free"],
+    "K_decision": 4,
+    "K_reporting_only": 6,
+    "window_seconds": 3600.0,
+    "horizon_hours": 8.0,
+    "decision_cells": 24,
+    "note": "K=4 is V018's committed contract row and is decision-binding; V018 carved K to the owner and priced it — the K=6 grid runs reporting-only and re-pins nothing. c_E = 0 means no per-source clock (the min(3600/c_E, ...) ceiling term is +inf)."
+  },
+
+  "explore_surface": {
+    "model": "quest-beat attempts as a Poisson stream at r_E/hr; each attempt requests EXPLORE_ACTION admission against (c_E per-source clock AND the shared sliding K-window over combined admitted encounters, all three surfaces)",
+    "coupling_gated": "an ADMITTED beat advances the active quest by 1; denied attempts advance nothing",
+    "coupling_free": "quest progress advances on EVERY attempt; encounters fire only when admitted (denied attempts fire no encounter)",
+    "quest_chain": "a quest completes at B beats, mints its tier bundle, the next quest is offered instantly (the engine's offer is deterministic and instant @ 5aec110) — so completions == floor(progress_beats / B), asserted against the integer quest counter",
+    "r_E_honest_quest_focused_per_hr": 12.0,
+    "r_E_sensitivity_reporting_only_per_hr": [6.0, 30.0],
+    "r_E_mixed_triple_casual_per_hr": 6.0,
+    "r_E_mixed_triple_deep_per_hr": 12.0,
+    "farmer_attempt_gap_seconds": 5.0,
+    "farmer_note": "the beat-steering farmer's 'saturating beat attempts' are a deterministic paced stream, one attempt every 5.0 s from t=0 (720 attempts/hr) — intake-time decision D3 below; any freed window slot or expired c_E clock is re-claimed within <= 5 s, which realizes 'admission budget spent explore-first' operationally on the merged stream"
+  },
+
+  "quest_bundles_verbatim_at_5aec110": {
+    "TIER_CAPS": {"I": [5, 25, 10], "II": [10, 60, 25], "III": [20, 120, 50]},
+    "GLOBAL_MAX": [20, 120, 50],
+    "components": ["gxp", "game_xp", "currency"],
+    "tier_bracket": "{II center, III adversarial} — tier selection is BRACKETED, not swept (registered boundary)",
+    "currency_center_tier_II": 25,
+    "currency_adversarial_tier_III": 50
+  },
+
+  "profiles": {
+    "regression_pairs": "V018's, unchanged — vendored V001 chat legs (low/med/high visibility + lone paced farmer) and V008 grid legs (casual/deep-runner/fastmine, 1 h and 8 h), plus V018's own mixed-deep and arb-farmer joint anchors at per-source and C-cap-4",
+    "quest-focused": {"chat": null, "grid": null, "explore_r_per_hr": 12.0},
+    "mixed-triple-casual": {"chat": ["tier", "med", 0], "grid": "casual", "explore_r_per_hr": 6.0},
+    "mixed-triple-deep": {"chat": ["tier", "med", 0], "grid": "deep-runner", "explore_r_per_hr": 12.0},
+    "beat-steer-farmer": {"chat": ["farmer", null, -1], "grid": "fastmine", "explore": "paced 5.0 s"}
+  },
+
+  "bands": {
+    "FLOW": "honest quest-focused admitted-beat rate >= 0.80 x the cell's analytic ceiling min(3600/c_E, K, r_E)/hr AND completions/hr >= 0.80 x ceiling/B",
+    "FAIR": "mixed-triple-deep keeps combined chat+grid >= 2.375/hr (V018's committed K=4 mixed-deep 2.875/hr minus the 0.5/hr materiality allowance) AND >= 1 admitted quest beat/hr",
+    "MINT": "beat-steering farmer currency/hr <= 2.0 x honest quest-focused currency/hr (ARB_RATIO_MAX = 2.0, V018's committed materiality bound reused)",
+    "flow_fraction": 0.80,
+    "fair_chat_grid_min_per_hr": 2.375,
+    "fair_admitted_beats_min_per_hr": 1.0,
+    "ARB_RATIO_MAX": 2.0,
+    "evaluation": "bands scored on the MAIN-leg mean over M replications per (cell, profile)"
+  },
+
+  "decision_rule": {
+    "order": "REJECT checked FIRST, then APPROVE, else NULL — pre-registered in the proposal before any code",
+    "REJECT": "in GATED coupling at K=4, NO c_E passes FLOW+FAIR+MINT simultaneously in >= 2 of 3 B values",
+    "APPROVE": "there exists a band of >= 2 CONSECUTIVE c_E grid values passing all three bands at K=4 in GATED coupling for ALL B in {3, 5, 8}, stability-reproduced",
+    "NULL": "anything else — flip axis named via per-axis pass shares; the conditional rule is the citable finding",
+    "reporting_legs_cannot_flip": "K=6 grid, r_E in {6, 30} sensitivity, the tier-III adversarial absolute leg, and the free-coupling mint table are reporting context; the decision reads ONLY the gated-K=4 band table (plus the free-coupling cells' own band rows, which enter the sweep as registered cells but the REJECT/APPROVE clauses read GATED at K=4 only)"
+  },
+
+  "v018_anchor_set_verbatim_at_b50fd06": {
+    "v001_visibility_spawns_per_active_hr": {"low": 0.93, "med": 3.00, "high": 4.38},
+    "v001_farmer_claims_per_hr": 4.00,
+    "v008_enc_per_hr_1h": {"casual": 0.20, "deep-runner": 2.80, "fastmine": 5.20},
+    "v008_enc_per_hr_8h": {"casual": 0.05, "deep-runner": 2.95, "fastmine": 4.88},
+    "v018_mixed_deep_combined_per_hr_uncapped": 3.275,
+    "v018_mixed_deep_combined_per_hr_K4": 2.875,
+    "v018_mixed_deep_honest_cost_per_hr": 0.400,
+    "v018_farmer_combined_per_hr_per_source": 8.875,
+    "v018_farmer_combined_per_hr_K4": 4.000,
+    "v018_contract_row": "per-source clocks CHAT_ACTIVITY 900 s / GRID_ROAM 600 s + mandatory combined per-player cap K=4 per sliding 3600 s",
+    "v018_parent_seeds": [11, 23, 42, 101, 2027],
+    "format_note": "each anchor is checked exactly as the parent formatted it (V018's matches_published discipline): 2-dp anchors at %.2f, 3-dp anchors at %.3f"
+  },
+
+  "chat_surface_constants_v001_verbatim": {
+    "threshold": 24, "debounce_s": 30.0, "cooldown_s": 900.0, "ttl_s": 300.0,
+    "tiers": {"low": [0.5, 3], "med": [3.0, 8], "high": [15.0, 25]},
+    "tier_offset": {"low": 0, "med": 1000, "high": 2000},
+    "farmer_gap_s": 30.0, "visibility_leg_cooldown_s": 300.0
+  },
+  "grid_surface_constants_v008_verbatim": {
+    "threshold": 15, "chance": 0.02, "cooldown_s": 600.0,
+    "style_offset": {"casual": 0, "deep-runner": 100000, "fastmine": 200000}
+  },
+
+  "seeds": {
+    "main": 20260764,
+    "stability": 20260765,
+    "reporting": 20260766,
+    "aux_self_check": 20260767,
+    "registry_note": "allocated strictly above the P030 registry high-water 20260763",
+    "stream_derivation": "explore-stream RNG per (leg_seed, profile, r_E, replication): random.Random(leg_seed * 1000003 + profile_id * 10007 + int(r_E * 10) * 211 + rep * 101); the chat/grid surfaces ride V018's own committed parent seeds (rep i uses parent seed v018_parent_seeds[i mod 5]) — 'V018's committed seeds for the vendored parents plus fresh seeds for the explore layer', per the registration",
+    "profile_ids": {"quest-focused": 1, "mixed-triple-casual": 2, "mixed-triple-deep": 3, "beat-steer-farmer": 4}
+  },
+
+  "replications": {
+    "M_main": 10,
+    "M_stability": 5,
+    "note": "M_main = 10 replications per (c_E, K, profile) admission run; the stability leg is half-M (5) on seed 20260765 and must reproduce the ruling (gate). Reporting legs run at M_main on seed 20260766."
+  },
+
+  "gates_run_invalid_on_any_failure": [
+    "sha256 pins on all seven chained machinery files verified before any leg",
+    "exact regression to ALL of V018's published numbers listed in v018_anchor_set (V001 x4, V008 x6, V018 joint x5)",
+    "empty-third-surface composition identity: the three-surface machine with an empty explore stream equals the V018 two-surface machine event-for-event per seed (fire logs + all counters), at per-source AND C-cap-4, for mixed-deep and arb-farmer",
+    "per-cell analytic ceilings: admitted-explore count <= floor(H/c_E)+1 (c_E>0), combined admitted <= K per sliding 3600 s (independent re-audit, recomputed from the fire log without the deque), admitted <= attempted",
+    "saturated farmer combined == K exactly (4.000 at K=4, 6.000 at K=6) on every replication",
+    "bundle-cap identity: currency/hr == completions/hr x tier currency (exact integer arithmetic) AND tier bundle <= GLOBAL_MAX component-wise",
+    "quest-counter identity: the integer quest counter equals floor(beats/B) for every (cell, profile, replication), both couplings",
+    "stdout + results.json byte-identical across two process runs (external diff) plus an in-process full-sweep determinism check with CRN caches cleared",
+    "CPython minor pinned: (3, 11) asserted at start",
+    "stability leg (seed 20260765, half-M) reproduces the ruling"
+  ],
+
+  "intake_time_decisions_pinned_before_runner": {
+    "D1_mint_decision_tier": "the MINT decision ratio is computed with BOTH profiles minting the tier-II center bundle (25 currency/completion) — the tier factor cancels, so the decision ratio equals the completions ratio; the tier-III adversarial leg (50) rides the ABSOLUTE currency/hr table, and the cross-tier adversarial ratio (farmer@III / honest@II) is reported per cell REPORTING-ONLY. Rationale: the registration rules 'tier selection is modeled as the {II center, III adversarial} bracket, not swept' — putting the farmer alone on tier III inside the decision ratio would hard-code MINT >= 2x completions-ratio and decide every cell by the bracket instead of by (c_E, B, K), which is not the registered question; the absolute table ships both legs regardless of ruling.",
+    "D2_merged_stream_tie_order": "events sorted by (t, kind) with chat=0 < grid=1 < explore=2 at equal t — V018's committed chat-before-grid rule extended by one tag",
+    "D3_farmer_saturation": "deterministic paced attempts every 5.0 s from t=0 (720/hr) — 'saturating' realized as: any admission opportunity is re-probed within <= 5 s, so the farmer's admitted-explore stream tracks min(3600/c_E, remaining K budget) with zero Poisson wait; explore-first steering emerges from attempt density (the farmer's chat spawns need ~690 s of self-traffic and its grid rolls hit at ~2%/3 s, so explore claims free budget first on the merged stream)",
+    "D4_admission_check_order": "per-source clock checked FIRST, then the shared K-window (V018's allows() order, extended); denial tallies attribute to the first failing check — denied-own vs denied-cap fractions are reported per cell",
+    "D5_completions_arithmetic": "instant re-offer makes completions == floor(total progress beats / B); the sim still runs the integer quest counter inline and asserts the identity (gate) — the (B, coupling) dimensions are therefore exact post-processing of the ONE admission pass per (c_E, K, profile, replication), which also makes gated and free cells share their admission-side metrics EXACTLY (same replications, same admitted stream) by construction, disclosed in the report",
+    "D6_flow_ceiling_convention": "the FLOW band ceiling is the registered analytic min(3600/c_E, K, r_E)/hr with r_E at its NOMINAL value (12/hr) and 3600/c_E = +inf at c_E = 0; the per-replication ceiling GATES use exact count bounds instead (floor(H/c_E)+1, 8K, attempts) because a Poisson replication can draw attempts above the nominal r_E",
+    "D7_fair_metric": "FAIR's 'combined chat+grid' is the mixed-triple-deep JOINT player's chat claims + grid fires per hour (the same quantity V018's 2.875 anchors); its clip vs BOTH V018 anchors (2.875 K=4 and 3.275 uncapped) is reported per cell",
+    "D8_aux_stream_use": "seed 20260767 drives aux-only self-check legs (c_E=0 K=inf admitted==attempted identity; B=1 completions==admitted identity; a 4x-M re-measure of the band margins at the decision-critical c_E values, reported only) — never read by any decision number"
+  },
+
+  "boundaries_registered": {
+    "item_faucet_value_wall_verbatim": "no live fishing/mining earn-rate baseline exists, so loot values stay provisional and the slice must log the same named telemetry — chat/grid mint stays in RATE terms only (V001/V008/V018's caveat restated)",
+    "quest_faucet_asymmetry": "quest-currency conclusions are in ABSOLUTE native units BY CONSTRUCTION (committed in-tree bundle integers @ 5aec110) — the wall does not apply to this faucet and the verdict states the asymmetry explicitly",
+    "dnd_escort": "the other host-gated bundle is OUT OF SCOPE — different trigger surface; the natural follow-up if MINT binds",
+    "tier_selection": "bracketed {II center, III adversarial}, not swept",
+    "r_E_is_a_dial": "real beat rates are unmeasured until the named telemetry lands — the honest profiles BRACKET, the farmer is the optimizing adversary",
+    "K_not_reopened": "K=4 decision-binding; K=6 reporting-only against V018's own priced owner knob"
+  }
+}
