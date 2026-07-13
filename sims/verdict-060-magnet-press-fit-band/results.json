@@ -1,0 +1,882 @@
+{
+  "arm_A": {
+    "FAIL_15": {
+      "den": 861,
+      "float": 0.16840882694541232,
+      "num": 145
+    },
+    "argmin_F": 10,
+    "margin_over_reject_band": {
+      "den": 8610,
+      "float": 0.06840882694541231,
+      "num": 589
+    },
+    "min_FAIL": {
+      "den": 287,
+      "float": 0.13937282229965156,
+      "num": 40
+    },
+    "per_H_conditional_FAIL15": [
+      {
+        "FAIL": {
+          "den": 21,
+          "float": 0.23809523809523808,
+          "num": 5
+        },
+        "H": 0
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.19480519480519481,
+          "num": 15
+        },
+        "H": 1
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.15584415584415584,
+          "num": 12
+        },
+        "H": 2
+      },
+      {
+        "FAIL": {
+          "den": 33,
+          "float": 0.12121212121212122,
+          "num": 4
+        },
+        "H": 3
+      },
+      {
+        "FAIL": {
+          "den": 11,
+          "float": 0.09090909090909091,
+          "num": 1
+        },
+        "H": 4
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.06493506493506493,
+          "num": 5
+        },
+        "H": 5
+      },
+      {
+        "FAIL": {
+          "den": 231,
+          "float": 0.04329004329004329,
+          "num": 10
+        },
+        "H": 6
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.025974025974025976,
+          "num": 2
+        },
+        "H": 7
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.012987012987012988,
+          "num": 1
+        },
+        "H": 8
+      },
+      {
+        "FAIL": {
+          "den": 231,
+          "float": 0.004329004329004329,
+          "num": 1
+        },
+        "H": 9
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 10
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 11
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 12
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 13
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 14
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 15
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 16
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 17
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 18
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 19
+      },
+      {
+        "FAIL": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "H": 20
+      },
+      {
+        "FAIL": {
+          "den": 231,
+          "float": 0.004329004329004329,
+          "num": 1
+        },
+        "H": 21
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.012987012987012988,
+          "num": 1
+        },
+        "H": 22
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.025974025974025976,
+          "num": 2
+        },
+        "H": 23
+      },
+      {
+        "FAIL": {
+          "den": 231,
+          "float": 0.04329004329004329,
+          "num": 10
+        },
+        "H": 24
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.06493506493506493,
+          "num": 5
+        },
+        "H": 25
+      },
+      {
+        "FAIL": {
+          "den": 11,
+          "float": 0.09090909090909091,
+          "num": 1
+        },
+        "H": 26
+      },
+      {
+        "FAIL": {
+          "den": 33,
+          "float": 0.12121212121212122,
+          "num": 4
+        },
+        "H": 27
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.15584415584415584,
+          "num": 12
+        },
+        "H": 28
+      },
+      {
+        "FAIL": {
+          "den": 77,
+          "float": 0.19480519480519481,
+          "num": 15
+        },
+        "H": 29
+      },
+      {
+        "FAIL": {
+          "den": 21,
+          "float": 0.23809523809523808,
+          "num": 5
+        },
+        "H": 30
+      },
+      {
+        "FAIL": {
+          "den": 7,
+          "float": 0.2857142857142857,
+          "num": 2
+        },
+        "H": 31
+      },
+      {
+        "FAIL": {
+          "den": 3,
+          "float": 0.3333333333333333,
+          "num": 1
+        },
+        "H": 32
+      },
+      {
+        "FAIL": {
+          "den": 21,
+          "float": 0.38095238095238093,
+          "num": 8
+        },
+        "H": 33
+      },
+      {
+        "FAIL": {
+          "den": 7,
+          "float": 0.42857142857142855,
+          "num": 3
+        },
+        "H": 34
+      },
+      {
+        "FAIL": {
+          "den": 21,
+          "float": 0.47619047619047616,
+          "num": 10
+        },
+        "H": 35
+      },
+      {
+        "FAIL": {
+          "den": 21,
+          "float": 0.5238095238095238,
+          "num": 11
+        },
+        "H": 36
+      },
+      {
+        "FAIL": {
+          "den": 7,
+          "float": 0.5714285714285714,
+          "num": 4
+        },
+        "H": 37
+      },
+      {
+        "FAIL": {
+          "den": 21,
+          "float": 0.6190476190476191,
+          "num": 13
+        },
+        "H": 38
+      },
+      {
+        "FAIL": {
+          "den": 3,
+          "float": 0.6666666666666666,
+          "num": 2
+        },
+        "H": 39
+      },
+      {
+        "FAIL": {
+          "den": 7,
+          "float": 0.7142857142857143,
+          "num": 5
+        },
+        "H": 40
+      }
+    ],
+    "table": {
+      "10": {
+        "DROP": {
+          "den": 287,
+          "float": 0.06968641114982578,
+          "num": 20
+        },
+        "FAIL": {
+          "den": 287,
+          "float": 0.13937282229965156,
+          "num": 40
+        },
+        "FAIL_glue": {
+          "den": 287,
+          "float": 0.06968641114982578,
+          "num": 20
+        },
+        "UNSEAT": {
+          "den": 287,
+          "float": 0.06968641114982578,
+          "num": 20
+        }
+      },
+      "15": {
+        "DROP": {
+          "den": 861,
+          "float": 0.023228803716608595,
+          "num": 20
+        },
+        "FAIL": {
+          "den": 861,
+          "float": 0.16840882694541232,
+          "num": 145
+        },
+        "FAIL_glue": {
+          "den": 861,
+          "float": 0.14518002322880372,
+          "num": 125
+        },
+        "UNSEAT": {
+          "den": 861,
+          "float": 0.14518002322880372,
+          "num": 125
+        }
+      },
+      "20": {
+        "DROP": {
+          "den": 1353,
+          "float": 0.003695491500369549,
+          "num": 5
+        },
+        "FAIL": {
+          "den": 1353,
+          "float": 0.25129342202512933,
+          "num": 340
+        },
+        "FAIL_glue": {
+          "den": 1353,
+          "float": 0.24759793052475979,
+          "num": 335
+        },
+        "UNSEAT": {
+          "den": 1353,
+          "float": 0.24759793052475979,
+          "num": 335
+        }
+      },
+      "25": {
+        "DROP": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "FAIL": {
+          "den": 41,
+          "float": 0.36585365853658536,
+          "num": 15
+        },
+        "FAIL_glue": {
+          "den": 41,
+          "float": 0.36585365853658536,
+          "num": 15
+        },
+        "UNSEAT": {
+          "den": 41,
+          "float": 0.36585365853658536,
+          "num": 15
+        }
+      },
+      "30": {
+        "DROP": {
+          "den": 1,
+          "float": 0.0,
+          "num": 0
+        },
+        "FAIL": {
+          "den": 41,
+          "float": 0.4878048780487805,
+          "num": 20
+        },
+        "FAIL_glue": {
+          "den": 41,
+          "float": 0.4878048780487805,
+          "num": 20
+        },
+        "UNSEAT": {
+          "den": 41,
+          "float": 0.4878048780487805,
+          "num": 20
+        }
+      },
+      "5": {
+        "DROP": {
+          "den": 861,
+          "float": 0.14518002322880372,
+          "num": 125
+        },
+        "FAIL": {
+          "den": 861,
+          "float": 0.16840882694541232,
+          "num": 145
+        },
+        "FAIL_glue": {
+          "den": 861,
+          "float": 0.023228803716608595,
+          "num": 20
+        },
+        "UNSEAT": {
+          "den": 861,
+          "float": 0.023228803716608595,
+          "num": 20
+        }
+      }
+    },
+    "zero_noise_identity": {
+      "10": {
+        "PRESS": {
+          "den": 1,
+          "float": 1.0,
+          "num": 1
+        }
+      },
+      "15": {
+        "PRESS": {
+          "den": 1,
+          "float": 1.0,
+          "num": 1
+        }
+      },
+      "20": {
+        "PRESS": {
+          "den": 1,
+          "float": 1.0,
+          "num": 1
+        }
+      },
+      "25": {
+        "PRESS": {
+          "den": 1,
+          "float": 1.0,
+          "num": 1
+        }
+      },
+      "30": {
+        "PRESS": {
+          "den": 1,
+          "float": 1.0,
+          "num": 1
+        }
+      },
+      "5": {
+        "PRESS": {
+          "den": 1,
+          "float": 1.0,
+          "num": 1
+        }
+      }
+    }
+  },
+  "arm_B": {
+    "N": 200000,
+    "agreement": [
+      {
+        "F": 5,
+        "FAIL_exact_float": 0.16840882694541232,
+        "FAIL_hat": {
+          "den": 200000,
+          "num": 33749
+        },
+        "FAIL_hat_float": 0.168745,
+        "N": 200000,
+        "abs_dev": 0.00033617305458769065,
+        "fail_count": 33749,
+        "pass": true,
+        "se": 0.0008368013323133589,
+        "tol_4se": 0.0033472053292534355,
+        "within_1_100": true,
+        "within_4se": true
+      },
+      {
+        "F": 10,
+        "FAIL_exact_float": 0.13937282229965156,
+        "FAIL_hat": {
+          "den": 200000,
+          "num": 27941
+        },
+        "FAIL_hat_float": 0.139705,
+        "N": 200000,
+        "abs_dev": 0.00033217770034843497,
+        "fail_count": 27941,
+        "pass": true,
+        "se": 0.0007744289467210058,
+        "tol_4se": 0.0030977157868840232,
+        "within_1_100": true,
+        "within_4se": true
+      },
+      {
+        "F": 15,
+        "FAIL_exact_float": 0.16840882694541232,
+        "FAIL_hat": {
+          "den": 40000,
+          "num": 6739
+        },
+        "FAIL_hat_float": 0.168475,
+        "N": 200000,
+        "abs_dev": 6.617305458769818e-05,
+        "fail_count": 33695,
+        "pass": true,
+        "se": 0.0008368013323133589,
+        "tol_4se": 0.0033472053292534355,
+        "within_1_100": true,
+        "within_4se": true
+      },
+      {
+        "F": 20,
+        "FAIL_exact_float": 0.25129342202512933,
+        "FAIL_hat": {
+          "den": 100000,
+          "num": 25043
+        },
+        "FAIL_hat_float": 0.25043,
+        "N": 200000,
+        "abs_dev": 0.0008634220251293456,
+        "fail_count": 50086,
+        "pass": true,
+        "se": 0.0009699098877525416,
+        "tol_4se": 0.0038796395510101666,
+        "within_1_100": true,
+        "within_4se": true
+      },
+      {
+        "F": 25,
+        "FAIL_exact_float": 0.36585365853658536,
+        "FAIL_hat": {
+          "den": 40000,
+          "num": 14651
+        },
+        "FAIL_hat_float": 0.366275,
+        "N": 200000,
+        "abs_dev": 0.0004213414634146595,
+        "fail_count": 73255,
+        "pass": true,
+        "se": 0.0010770440080887617,
+        "tol_4se": 0.004308176032355047,
+        "within_1_100": true,
+        "within_4se": true
+      },
+      {
+        "F": 30,
+        "FAIL_exact_float": 0.4878048780487805,
+        "FAIL_hat": {
+          "den": 200000,
+          "num": 97529
+        },
+        "FAIL_hat_float": 0.487645,
+        "N": 200000,
+        "abs_dev": 0.00015987804878048184,
+        "fail_count": 97529,
+        "pass": true,
+        "se": 0.0011177013890136195,
+        "tol_4se": 0.004470805556054478,
+        "within_1_100": true,
+        "within_4se": true
+      }
+    ],
+    "all_cells_pass": true,
+    "draw_sentinels": {
+      "headline": 600000,
+      "sensitivity": 600000,
+      "stability": 60000,
+      "zero_noise_control": 60000
+    },
+    "rngs_constructed_in_order": [
+      20261333,
+      20261334,
+      20261335,
+      20261336
+    ],
+    "seed": 20261333,
+    "zero_noise_control": {
+      "N": 20000,
+      "all_press_exactly": true,
+      "seed": 20261334
+    }
+  },
+  "controls_gate": {
+    "all_ok": true,
+    "gates": {
+      "arm_B_agreement_every_cell": true,
+      "monotonicity_DROP_nonincreasing_arm_A": true,
+      "monotonicity_DROP_nonincreasing_arm_B": true,
+      "monotonicity_UNSEAT_nondecreasing_arm_A": true,
+      "monotonicity_UNSEAT_nondecreasing_arm_B": true,
+      "zero_noise_identity_arm_A": true,
+      "zero_noise_identity_arm_B": true
+    }
+  },
+  "environment": {
+    "implementation": "CPython",
+    "version_major_minor": "3.11"
+  },
+  "null_axes": [],
+  "reporting_only": {
+    "drafter_reference_match": {
+      "DROP(10)": true,
+      "DROP(15)": true,
+      "DROP(5)": true,
+      "FAIL(10)": true,
+      "FAIL(15)": true,
+      "FAIL(20)": true,
+      "FAIL(25)": true,
+      "FAIL(30)": true,
+      "FAIL(5)": true,
+      "UNSEAT(10)": true,
+      "UNSEAT(15)": true
+    },
+    "remedy_direction_flag": "line 83 geometry pocket_d = magnet_d - magnet_fit means RAISING magnet_fit makes the pocket SMALLER (tighter) \u2014 yet both shipped remedy texts point the dial the other way: the scad comment says \"Won't go in? Raise it (e.g. 0.25)\" / \"Drops out? Lower it\", and the README says \"won't seat, raise it; if the magnet drops out, lower it\" / \"raise if too tight\". Under the shipped geometry each remedy as written makes its failure WORSE."
+  },
+  "rules_evaluated_in_registered_order": [
+    {
+      "fired": true,
+      "rule": "REJECT (checked FIRST): FAIL(15) > 1/10"
+    },
+    {
+      "fired": false,
+      "rule": "INVALID gate: zero-noise identity fails in either arm, OR a monotonicity theorem fails, OR Arm B breaches the agreement gate on any cell"
+    },
+    {
+      "fired": false,
+      "rule": "APPROVE: FAIL(15) <= 1/20 AND FAIL(15) <= min_F FAIL(F) + 1/100 AND the seed-20261336 stability leg reproduces the ruling"
+    },
+    {
+      "fired": false,
+      "rule": "NULL: anything else (axes: band-miss / wrong-center / stability non-reproduction / sensitivity straddle)"
+    }
+  ],
+  "self_checks": {
+    "failed": 0,
+    "passed": 43
+  },
+  "sensitivity_worlds": [
+    {
+      "DROP15_float": 0.0,
+      "FAIL15": {
+        "den": 441,
+        "num": 20
+      },
+      "FAIL15_float": 0.045351473922902494,
+      "UNSEAT15_float": 0.045351473922902494,
+      "mc_FAIL15_hat_float": 0.04575,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "at-or-below",
+      "side_reject_edge": "at-or-below",
+      "straddle_vs_headline": true,
+      "world": "H_narrow"
+    },
+    {
+      "DROP15_float": 0.0975800156128025,
+      "FAIL15": {
+        "den": 1281,
+        "num": 440
+      },
+      "FAIL15_float": 0.3434816549570648,
+      "UNSEAT15_float": 0.2459016393442623,
+      "mc_FAIL15_hat_float": 0.3409,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "above",
+      "side_reject_edge": "above",
+      "straddle_vs_headline": false,
+      "world": "H_wide"
+    },
+    {
+      "DROP15_float": 0.00705502922797823,
+      "FAIL15": {
+        "den": 4961,
+        "num": 675
+      },
+      "FAIL15_float": 0.1360612779681516,
+      "UNSEAT15_float": 0.12900624874017336,
+      "mc_FAIL15_hat_float": 0.1374,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "above",
+      "side_reject_edge": "above",
+      "straddle_vs_headline": false,
+      "world": "eta_narrow"
+    },
+    {
+      "DROP15_float": 0.074360499702558,
+      "FAIL15": {
+        "den": 1681,
+        "num": 455
+      },
+      "FAIL15_float": 0.27067221891731114,
+      "UNSEAT15_float": 0.19631171921475313,
+      "mc_FAIL15_hat_float": 0.2756,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "above",
+      "side_reject_edge": "above",
+      "straddle_vs_headline": false,
+      "world": "eta_wide"
+    },
+    {
+      "DROP15_float": 0.017421602787456445,
+      "FAIL15": {
+        "den": 287,
+        "num": 45
+      },
+      "FAIL15_float": 0.156794425087108,
+      "UNSEAT15_float": 0.13937282229965156,
+      "mc_FAIL15_hat_float": 0.1588,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "above",
+      "side_reject_edge": "above",
+      "straddle_vs_headline": false,
+      "world": "m_degenerate"
+    },
+    {
+      "DROP15_float": 0.03760853935069963,
+      "FAIL15": {
+        "den": 18081,
+        "num": 3565
+      },
+      "FAIL15_float": 0.19716829821359438,
+      "UNSEAT15_float": 0.15955975886289475,
+      "mc_FAIL15_hat_float": 0.1993,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "above",
+      "side_reject_edge": "above",
+      "straddle_vs_headline": false,
+      "world": "m_wide"
+    },
+    {
+      "DROP15_float": 0.003695491500369549,
+      "FAIL15": {
+        "den": 3157,
+        "num": 470
+      },
+      "FAIL15_float": 0.14887551472917326,
+      "UNSEAT15_float": 0.14518002322880372,
+      "mc_FAIL15_hat_float": 0.14905,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "above",
+      "side_reject_edge": "above",
+      "straddle_vs_headline": false,
+      "world": "I_hold_5"
+    },
+    {
+      "DROP15_float": 0.06968641114982578,
+      "FAIL15": {
+        "den": 861,
+        "num": 185
+      },
+      "FAIL15_float": 0.2148664343786295,
+      "UNSEAT15_float": 0.14518002322880372,
+      "mc_FAIL15_hat_float": 0.2133,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "above",
+      "side_reject_edge": "above",
+      "straddle_vs_headline": false,
+      "world": "I_hold_15"
+    },
+    {
+      "DROP15_float": 0.023228803716608595,
+      "FAIL15": {
+        "den": 861,
+        "num": 335
+      },
+      "FAIL15_float": 0.389082462253194,
+      "UNSEAT15_float": 0.36585365853658536,
+      "mc_FAIL15_hat_float": 0.3834,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "above",
+      "side_reject_edge": "above",
+      "straddle_vs_headline": false,
+      "world": "I_seat_40"
+    },
+    {
+      "DROP15_float": 0.023228803716608595,
+      "FAIL15": {
+        "den": 861,
+        "num": 40
+      },
+      "FAIL15_float": 0.04645760743321719,
+      "UNSEAT15_float": 0.023228803716608595,
+      "mc_FAIL15_hat_float": 0.04625,
+      "mc_confirms_all_cells": true,
+      "side_approve_edge": "at-or-below",
+      "side_reject_edge": "at-or-below",
+      "straddle_vs_headline": true,
+      "world": "I_seat_60"
+    }
+  ],
+  "stability": {
+    "FAIL15_hat": {
+      "den": 20000,
+      "float": 0.16835,
+      "num": 3367
+    },
+    "N": 20000,
+    "class": "reject",
+    "min_FAIL_hat": {
+      "den": 20000,
+      "float": 0.13895,
+      "num": 2779
+    },
+    "reproduces_ruling": true,
+    "seed": 20261336
+  },
+  "straddle_worlds": [
+    "H_narrow",
+    "I_seat_60"
+  ],
+  "verdict": "reject"
+}

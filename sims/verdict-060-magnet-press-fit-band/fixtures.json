@@ -1,0 +1,153 @@
+{
+  "registration": {
+    "proposal_header": "## PROPOSAL 049 · 2026-07-13T22:26:26Z · status: sim-ready",
+    "proposal_source": "idea-engine control/outbox.md @ main b77beca (landed via idea-engine PR #358, merged 2026-07-13T22:30:14Z)",
+    "idea_doc": "https://github.com/menno420/idea-engine/blob/bbcb9f92ca7b61599f285b88911011422bf4dad3/ideas/fleet/magnet-press-fit-band-2026-07-13.md",
+    "claim": "idea-engine PR #361 — control/claims/claude-verdict-060-magnet-press-fit-band.md @ a0ca29c (claim-first)",
+    "verdict": "VERDICT 060 (INTAKE 049; INTAKE number = proposal number per the established offset map)"
+  },
+  "harvest_pin": {
+    "repo": "menno420/curious-research",
+    "commit": "a9fd5faa6a10b4d1364d205dbeac7a8678e1bd73",
+    "note": "citation only — the sim is fully hermetic: zero repo/network reads at verdict time; every constant below is pinned in the idea file and copied verbatim from it",
+    "magnet_tool_scad": {
+      "path": "projects/effector-mount/magnet_tool.scad",
+      "line_52": "magnet_d      = 12.0;   // magnet DIAMETER (mm). Common discs: 10, 12, 15, 20.",
+      "lines_56_59": [
+        "magnet_fit    = 0.15;   // how much SMALLER the pocket is than the magnet (mm).",
+        "                        // 0.10-0.20 = a firm press-fit on most printers. Won't go",
+        "                        // in? Raise it (e.g. 0.25) or sand the magnet. Drops out?",
+        "                        // Lower it, or add a drop of glue."
+      ],
+      "line_83_geometry": "pocket_d = magnet_d - magnet_fit;",
+      "bench_words_lines_40_41": "press-fit : a pocket a hair SMALLER than the magnet so it wedges in and stays with no glue. Loose? A drop of glue fixes it.",
+      "safety_line_30_fragment": "Neodymium magnets are brittle",
+      "header_lines_22_24_fragment": "authored with no OpenSCAD installed, so this has NOT been rendered or sliced"
+    },
+    "effector_mount_readme": {
+      "path": "projects/effector-mount/README.md",
+      "lines_113_117_fragment": "The pocket prints this much smaller than the magnet so it wedges in. If your printer runs tight and the magnet won't seat, raise it; if the magnet drops out, lower it (or add a drop of glue)",
+      "inline_echo": "magnet_fit = 0.15;   // <- 0.10–0.20 firm press-fit; raise if too tight"
+    },
+    "tolerance_test_coin_scad": {
+      "path": "projects/tolerance-test-coin/tolerance-test-coin.scad",
+      "lines_26_28": [
+        "clear_min  = 0.10;   // smallest radial clearance to test (mm, per side)",
+        "clear_max  = 0.50;   // largest  radial clearance to test (mm, per side)",
+        "clear_step = 0.05;   // gap between tested clearances (mm)"
+      ],
+      "lines_14_16_unit_rule_fragment": "It is measured PER SIDE here: a hole labelled 0.20 has 0.20 mm of gap on every side, so the two sides add up to 0.40 mm across the diameter -- the classic gotcha"
+    },
+    "clearance_results_md": {
+      "path": "projects/tolerance-test-coin/clearance-results.md",
+      "lines_10_12_bands": [
+        "- **Press** — tightest gap that pushed in firmly and held (no wobble).",
+        "- **Snug** — gap that slid in snug with no side-to-side play.",
+        "- **Loose** — gap where the pin dropped in and rattled."
+      ],
+      "line_36_exemplar_row": "| Generic grey PLA | 2026-07-13 | 0.10 | 0.20 | 0.45 | 210 °C, 0.2 mm layer, elephant-foot 0.2 |"
+    }
+  },
+  "model": {
+    "units": "all lengths INTEGER HUNDREDTHS of a millimetre (cmm), all DIAMETRAL (the coin's per-side values doubled on entry per its own lines 14-16); all probabilities exact fractions.Fraction on the equiprobable integer lattice",
+    "fit_grid_cmm": [5, 10, 15, 20, 25, 30],
+    "shipped_default_F": 15,
+    "exemplar_calibration": {
+      "coin_row_per_side_cmm": {"press": 10, "snug": 20, "loose": 45},
+      "coin_row_diametral_cmm": {"press": 20, "snug": 40, "loose": 90},
+      "pair_offset_S": 40,
+      "hole_share_rho": {"num": 1, "den": 2, "note": "a CHOICE, disclosed — the coin measures pin + hole combined; the H sensitivity pair brackets it"},
+      "population_center_H0": 20
+    },
+    "population": {
+      "H": {"lo": 0, "hi": 40, "note": "systematic hole undersize, uniform integer, cmm diametral; center = exemplar's 20; span INVENTED, pinned, disclosed"},
+      "eta": {"lo": -10, "hi": 10, "note": "per-print noise, uniform integer, cmm diametral; INVENTED, pinned, disclosed"},
+      "m": {"lo": -5, "hi": 5, "note": "magnet diameter error, uniform integer, cmm diametral; INVENTED, pinned, disclosed"},
+      "independence": "H, m, eta independent (named in the idea doc's Model basis)"
+    },
+    "interference_formula": "I(F) = F + H + m - eta",
+    "bands": {
+      "I_hold": 10,
+      "I_seat": 50,
+      "DROPS_OUT": "iff I < I_hold",
+      "PRESS": "iff I_hold <= I <= I_seat",
+      "UNSEATABLE": "iff I > I_seat"
+    },
+    "lattice": {"H_cells": 41, "m_cells": 11, "eta_cells": 21, "total": 9471},
+    "metrics": "per F: DROP(F), UNSEAT(F), FAIL(F) = DROP(F) + UNSEAT(F) as exact Fractions over the 9,471-cell equiprobable lattice; plus reporting-only FAIL_glue(F) = UNSEAT(F) and the per-H conditional FAIL(15 | H) curve"
+  },
+  "decision_rule": {
+    "evaluation_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "REJECT": "checked FIRST: iff FAIL(15) > 1/10 (the shipped universal default is dishonest across the pinned population; the honest instruction is the repo's own calibrate-first coin doctrine)",
+    "INVALID": "iff the seed-20261334 zero-noise identity fails in either arm, OR a monotonicity theorem gate fails (DROP(F) non-increasing and UNSEAT(F) non-decreasing in F), OR Arm B breaches the agreement gate on any grid cell — report, do not rule",
+    "APPROVE": "iff FAIL(15) <= 1/20 AND FAIL(15) <= min_F FAIL(F) + 1/100 AND the seed-20261336 stability leg reproduces the ruling through the twin evaluators",
+    "NULL": "anything else — four pre-registered axes: (i) band-miss FAIL(15) in (1/20, 1/10]; (ii) wrong-center — FAIL(15) <= 1/20 but some grid F beats it by more than 1/100; (iii) stability non-reproduction; (iv) sensitivity straddle — a reporting-only world lands a primary conjunct on the other side of a band edge (named axis is the finding; reporting legs never flip the decision)",
+    "reject_band": {"num": 1, "den": 10},
+    "approve_band": {"num": 1, "den": 20},
+    "wrong_center_band": {"num": 1, "den": 100}
+  },
+  "arm_A": {
+    "role": "DECISION — seedless exact full enumeration of the 9,471-cell lattice per grid F; every probability an exact Fraction; run twice in-process and identity-checked; byte-identical across process runs; the ruling rides Arm A alone"
+  },
+  "arm_B": {
+    "role": "VALIDATION only — never overrides Arm A",
+    "N": 200000,
+    "draw_order": "per scenario, pinned: H then m then eta (one randint call each on the counting RNG wrapper)",
+    "common_random_numbers": "one scenario set of N draws via random.Random(20261333), evaluated at all six grid F",
+    "agreement_gate": "|FAILhat(F) - FAIL(F)| <= 1/100 absolute AND <= 4*se on every grid cell, se = sqrt(pA*(1-pA)/N) with pA = Arm A's exact FAIL(F); any breach is a control failure (INVALID), never overridden"
+  },
+  "seeds": {
+    "20261333": "Arm B headline: N = 200,000 common-random-numbers validation across all six F (draw sentinel 600,000 randint calls)",
+    "20261334": "Arm B control: zero-noise identity world (eta ≡ 0, m ≡ 0, H ≡ 20) — I = F + 20 in [25, 50] for every grid F, so every cell must return PRESS with probability EXACTLY 1 in both arms (exact identity, not a tolerance); any other value is a misbehaving control → INVALID; N = 20,000 (fixture-choice, disclosed — the registration pins the world, not the control N; draw sentinel 60,000)",
+    "20261335": "Arm B sensitivity confirmations: MC re-runs of the ten reporting-only sensitivity worlds, N = 20,000 each, one RNG in the pinned world order (draw sentinel 600,000); reporting-only, can never flip the decision",
+    "20261336": "stability leg: re-run the headline at N = 20,000 (draw sentinel 60,000); PASS iff the ruling class reproduces through the twin independently-written evaluators",
+    "policy": "exactly these four, pre-registered in PROPOSAL 049, strictly above the P048/V059 high-water 20261332; no other RNG constructed; no aux reads"
+  },
+  "sensitivity_worlds": {
+    "note": "seed 20261335, N = 20,000 each, REPORTING-ONLY — each world changes exactly ONE component from the headline pin; Arm A exact enumeration per world plus the MC confirmation; pinned order below",
+    "order": ["H_narrow", "H_wide", "eta_narrow", "eta_wide", "m_degenerate", "m_wide", "I_hold_5", "I_hold_15", "I_seat_40", "I_seat_60"],
+    "H_narrow": {"H": {"lo": 10, "hi": 30}},
+    "H_wide": {"H": {"lo": -10, "hi": 50}},
+    "eta_narrow": {"eta": {"lo": -5, "hi": 5}},
+    "eta_wide": {"eta": {"lo": -20, "hi": 20}},
+    "m_degenerate": {"m": {"lo": 0, "hi": 0}},
+    "m_wide": {"m": {"lo": -10, "hi": 10}},
+    "I_hold_5": {"I_hold": 5},
+    "I_hold_15": {"I_hold": 15},
+    "I_seat_40": {"I_seat": 40},
+    "I_seat_60": {"I_seat": 60}
+  },
+  "reporting_only": {
+    "full_table": "DROP/UNSEAT/FAIL × F with the DROP-vs-UNSEAT split per cell (the glue-asymmetry exhibit)",
+    "glue_fallback": "FAIL_glue(F) = UNSEAT(F) — the grid re-read under the repo's own one-drop-of-glue remedy",
+    "per_H_conditional": "FAIL(15 | H) for H in 0..40 over the 11 × 21 sub-lattice (which printers the default fails)",
+    "remedy_direction_flag": {
+      "status": "reporting-only, decidable by inspection, NEVER gated — routes lane-side as a one-line doc fix per Q-0260 (this repo never edits curious-research files)",
+      "finding": "line 83 geometry pocket_d = magnet_d - magnet_fit means RAISING magnet_fit makes the pocket SMALLER (tighter) — yet both shipped remedy texts point the dial the other way: the scad comment says \"Won't go in? Raise it (e.g. 0.25)\" / \"Drops out? Lower it\", and the README says \"won't seat, raise it; if the magnet drops out, lower it\" / \"raise if too tight\". Under the shipped geometry each remedy as written makes its failure WORSE."
+    }
+  },
+  "drafter_disclosed_reference": {
+    "note": "NON-authoritative drafting-time hand check disclosed in the idea doc; the sim re-derives everything from the pinned constants above and must not trust these — equality is reported, never gated",
+    "FAIL": {
+      "5": {"num": 145, "den": 861},
+      "10": {"num": 40, "den": 287},
+      "15": {"num": 145, "den": 861},
+      "20": {"num": 340, "den": 1353},
+      "25": {"num": 15, "den": 41},
+      "30": {"num": 20, "den": 41}
+    },
+    "splits": {
+      "DROP_5": {"num": 125, "den": 861},
+      "DROP_10": {"num": 20, "den": 287},
+      "UNSEAT_10": {"num": 20, "den": 287},
+      "DROP_15": {"num": 20, "den": 861},
+      "UNSEAT_15": {"num": 125, "den": 861}
+    },
+    "expected_landing": "REJECT — FAIL(15) = 145/861 ≈ 0.168 > 1/10; grid-best FAIL(10) = 40/287 ≈ 0.139",
+    "sensitivity_approx": {"H_narrow_FAIL15": 0.045, "I_seat_60_FAIL15": 0.046, "note": "≈ values only as disclosed; floats, non-authoritative"}
+  },
+  "environment": {
+    "python": "cpython-3.11 pinned and asserted",
+    "hermetic": "the runner reads only this fixtures.json; zero repo/network reads at verdict time; stdlib only; no wall-clock in any output"
+  }
+}
