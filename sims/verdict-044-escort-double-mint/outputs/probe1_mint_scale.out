@@ -1,0 +1,16 @@
+PROBE 1 — mint scale (all values read live from the pinned catalog)
+mint per safe_passage completion (TIER_CAPS[I]): (5, 25, 10)  (global_xp, game_xp, currency)
+packet-arc total (2x TIER_CAPS[I]):              (10, 50, 20)
+TIER_CAPS[II]:                                   (10, 60, 25)
+TIER_CAPS[III]:                                  (20, 120, 50)
+GLOBAL_MAX:                                      (20, 120, 50)
+
+2x tier-I <= TIER_CAPS[II] component-wise? True
+2x tier-I <= GLOBAL_MAX component-wise?   True
+  global_xp: 2x tier-I = 10 vs tier-II cap 10 (1.000 of tier II)
+  game_xp: 2x tier-I = 50 vs tier-II cap 60 (0.833 of tier II)
+  currency: 2x tier-I = 20 vs tier-II cap 25 (0.800 of tier II)
+
+safe_passage template: kind='escort', objectives=1 (single objective, required=1)
+
+C1 RESULT: WITHIN-SCALE per the pre-registered threshold (2x tier-I <= tier-II component-wise)

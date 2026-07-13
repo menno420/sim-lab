@@ -1,0 +1,19 @@
+PROBE 6 — exhaustive legal-path census, up to K=5 chooses at the xp=0 width floor (pin 57f69be3)
+len=1: 2 paths; mint distribution {0: 1, 1: 1}; max mints 1
+  a max-mint path: advance_escort
+len=2: 4 paths; mint distribution {0: 1, 1: 3}; max mints 1
+  a max-mint path: advance_escort -> enter_common_room
+len=3: 8 paths; mint distribution {0: 1, 1: 5, 2: 2}; max mints 2
+  a max-mint path: advance_escort -> circle_to_treeline -> signal_escort
+len=4: 16 paths; mint distribution {0: 1, 1: 7, 2: 6, 3: 2}; max mints 3
+  a max-mint path: advance_escort -> circle_to_treeline -> signal_escort -> signal_escort
+len=5: 32 paths; mint distribution {0: 1, 1: 9, 2: 12, 3: 8, 4: 2}; max mints 4
+  a max-mint path: advance_escort -> circle_to_treeline -> signal_escort -> signal_escort -> signal_escort
+
+packet arc advance_escort -> circle_to_treeline -> signal_escort: 2 mints, totals g10/x50/c20
+scout_ahead -> signal_escort: 1 mints, totals g5/x25/c10
+scout_ahead -> signal_escort -> signal_escort: 2 mints, totals g10/x50/c20
+advance_escort -> circle_to_treeline -> signal_escort -> signal_escort -> signal_escort: 4 mints, totals g20/x100/c40
+
+RESULT: mints grow linearly with path length (max = 1 mint/choose once at an escort
+scene); the packet's 2x is not a ceiling — it is one point on an unbounded line.

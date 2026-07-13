@@ -1,0 +1,32 @@
+B0 — packet traversal on pinned modules @ 57f69be34785afb427d608b207e7369025166e94
+TIER_CAPS[I]   = (global_xp=5, game_xp=25, currency=10, capability=None)
+TIER_CAPS[II]  = (global_xp=10, game_xp=60, currency=25, capability=None)
+TIER_CAPS[III] = (global_xp=20, game_xp=120, currency=50, capability=None)
+GLOBAL_MAX     = (global_xp=20, game_xp=120, currency=50, capability=None)
+
+STEP 1: scene='waystation_road' surfaced(width-capped)=['advance_escort', 'scout_ahead'] choose='advance_escort'
+  clamped=False effect='escort_step' prev='waystation_road' next='waystation_gate' ended=False
+  reward=(global_xp=5, game_xp=25, currency=10, capability=None)
+  audit: mutation_id=m0001 target='reward:waystation_road' prev_value='g0/x0/c0' new_value='g5/x25/c10'
+  running totals: g5/x25/c10
+
+STEP 2: scene='waystation_gate' surfaced(width-capped)=['enter_common_room', 'circle_to_treeline'] choose='circle_to_treeline'
+  clamped=False effect='scout_narrate' prev='waystation_gate' next='treeline_watch' ended=False
+  reward=None
+  audit: mutation_id=m0002 target='scene:waystation_gate' prev_value='waystation_gate' new_value='treeline_watch'
+  running totals: g5/x25/c10
+
+STEP 3: scene='treeline_watch' surfaced(width-capped)=['signal_escort', 'hold_position'] choose='signal_escort'
+  clamped=False effect='escort_step' prev='treeline_watch' next=None ended=True
+  reward=(global_xp=5, game_xp=25, currency=10, capability=None)
+  audit: mutation_id=m0003 target='reward:treeline_watch' prev_value='g5/x25/c10' new_value='g10/x50/c20'
+  running totals: g10/x50/c20
+
+BUNDLE COMPLETION EVENTS (mints): 2
+  mint at step 1 (scene 'waystation_road'): (global_xp=5, game_xp=25, currency=10, capability=None)
+  mint at step 3 (scene 'treeline_watch'): (global_xp=5, game_xp=25, currency=10, capability=None)
+reward:* audit rows: 2 -> ['reward:waystation_road', 'reward:treeline_watch']
+final totals: g10/x50/c20
+
+B0 CHECK: two mints? True · each == TIER_CAPS[I]? True · totals == 2x TIER_CAPS[I] (10, 50, 20)? True · two reward:* rows? True
+B0 RESULT: REPRODUCED — one traversal completes safe_passage TWICE and mints 2x
