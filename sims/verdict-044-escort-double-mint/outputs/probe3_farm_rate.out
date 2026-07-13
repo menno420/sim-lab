@@ -1,0 +1,13 @@
+PROBE 3 — greedy farm rate (pin 57f69be3)
+scene graph: {'waystation_road': [('advance_escort', 'escort_step', 'waystation_gate'), ('scout_ahead', 'scout_narrate', 'treeline_watch'), ('make_camp', 'rest_noop', None)], 'waystation_gate': [('enter_common_room', 'scout_narrate', None), ('circle_to_treeline', 'scout_narrate', 'treeline_watch'), ('rest_at_gate', 'rest_noop', None)], 'treeline_watch': [('signal_escort', 'escort_step', None), ('hold_position', 'scout_narrate', None), ('fall_back_camp', 'rest_noop', None)]}
+
+N= 10 chooses -> 9 mints; totals g45/x225/c90; rate=0.90 mints/choose
+  mint positions: [1, 3, 4, 5, 6, 7, 8, 9, 10]
+N=100 chooses -> 99 mints; totals g495/x2475/c990; rate=0.99 mints/choose
+
+first mint at choose #1; second mint at choose #3; steady-state 1 mint/choose from #3 on (stay-loop at treeline_watch)
+asymptotic farm: 100 chooses -> 99x TIER_CAPS[I] = (495, 2475, 990) — every legal, none clamped
+
+C2 RESULT: farm rate approaches 1 mint per choose; the ONLY rate limit is the host's
+choose cadence (docs/balance.md: 'there is no in-domain cooldown, so the host decides
+how often a scene/quest can be run') — in-domain the mint is UNBOUNDED per session.

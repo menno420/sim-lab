@@ -1,0 +1,31 @@
+PROBE 7 — fix-surface pricing (pin 57f69be3; pinned files untouched — in-memory prototypes)
+
+BASELINE (unguarded seam):
+  packet arc: 2 mints, totals (10, 50, 20)
+  loop attack (arc + 10x signal): 12 mints, totals (60, 300, 120)
+  honest single (scout -> signal): 1 mints, totals (5, 25, 10)
+
+CANDIDATE (a) seam one-shot flag — DnDState field + guard in choose() after resolve(),
+  before _fold_reward (services/dnd_workflow.py: guard belongs between the resolve() call
+  at line 243 and _fold_reward(state, resolution.reward) at line 254):
+  packet arc: 1 mints, totals (5, 25, 10)
+  loop attack: 1 mints, totals (5, 25, 10)
+  honest single: 1 mints, totals (5, 25, 10)
+  surface: 1 field on DnDState + ~4 lines in choose(); audit still records every choose.
+
+CANDIDATE (b) scene rewiring — treeline_watch.signal_escort effect_id -> scout_narrate
+  (games/dnd/data/scenes.py, the signal_escort MenuOption):
+  packet arc: 1 mints, totals (5, 25, 10)
+  loop attack: 1 mints, totals (5, 25, 10)
+  honest single: 0 mints, totals (0, 0, 0)
+  road-only restart: 1 mints, totals (5, 25, 10)
+  surface: 1 data-row edit; NOTE the honest scout route now mints ZERO (it deletes the
+  escort payoff for players who scouted first) and per-session road re-mints survive if
+  sessions are free to recreate — the guard moved the hole, candidate (a) closes it.
+
+CANDIDATE (c) engine persistence: guard already exists (QuestStateError, probe 4) but
+needs an instance store threaded through the pure effect layer — largest surface,
+architectural (the effect signature (seed, player_id) has no store handle).
+
+RECOMMENDED FIX: candidate (a) — mint-at-most-once per DnDState session via a one-shot
+flag checked in services/dnd_workflow.choose between resolve() and _fold_reward().

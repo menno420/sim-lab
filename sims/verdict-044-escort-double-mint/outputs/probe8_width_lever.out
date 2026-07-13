@@ -1,0 +1,22 @@
+PROBE 8 — width lever (pin 57f69be3)
+BASE_MENU_WIDTH=2 MAX_MENU_WIDTH=4 XP_PER_EXTRA_OPTION=500
+  menu_width(xp=0) = 2
+  menu_width(xp=499) = 2
+  menu_width(xp=500) = 3
+  menu_width(xp=1000) = 4
+  menu_width(xp=1000000) = 4
+
+xp=    0 (width 2): packet arc fully legal? True [waystation_road:advance_escort ON-menu; waystation_gate:circle_to_treeline ON-menu; treeline_watch:signal_escort ON-menu]
+xp=  500 (width 3): packet arc fully legal? True [waystation_road:advance_escort ON-menu; waystation_gate:circle_to_treeline ON-menu; treeline_watch:signal_escort ON-menu]
+xp= 1000 (width 4): packet arc fully legal? True [waystation_road:advance_escort ON-menu; waystation_gate:circle_to_treeline ON-menu; treeline_watch:signal_escort ON-menu]
+
+waystation_road: escort options at indices ['advance_escort@0'] (width floor surfaces indices 0-1)
+waystation_gate: escort options at indices none (width floor surfaces indices 0-1)
+treeline_watch: escort options at indices ['signal_escort@0'] (width floor surfaces indices 0-1)
+
+xp=0: 13-choose loop attack mints 12 (totals g60/x300/c120)
+xp=1000: 13-choose loop attack mints 12 (totals g60/x300/c120)
+
+RESULT: the width lever never gates the exploit — every escort option sits inside the
+width-2 FLOOR, so a fresh 0-XP player has the full double-mint arc AND the stay-loop
+from the first session. XP widens options 2->4 but adds no new mint path and closes none.
