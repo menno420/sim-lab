@@ -1,0 +1,483 @@
+{
+  "b0": {
+    "anchors": 41,
+    "pass": true
+  },
+  "bands": {
+    "BAND-FORGE1": {
+      "measured": "NP-1 cumulative 438.6 digs (band [200,2200])",
+      "ratify": true
+    },
+    "BAND-FORGE2": {
+      "measured": "NP-1 cumulative 1550.8 digs (band [500,4400])",
+      "ratify": true
+    },
+    "BAND-GATE": {
+      "measured": "worst-case deterministic 5 actions / 10s @ INT-1 (chop-craft path)",
+      "ratify": true
+    },
+    "BAND-SWORD": {
+      "measured": "E[digs]=13.313 (band [10,200])",
+      "ratify": true
+    }
+  },
+  "faucet_bypass_leg": {
+    "boosted_seconds_to_forge_II_after_I": {
+      "float": 2497.0027973891033,
+      "frac": "18745000/7507"
+    },
+    "boosted_seconds_to_forge_I_from_P3": {
+      "float": 946.7163980285068,
+      "frac": "7107000/7507"
+    },
+    "coins_per_dig_cost": {
+      "float": 0.8,
+      "frac": "4/5"
+    },
+    "digs_per_hour_INT1": 1800,
+    "net_coins_per_dig_P3": {
+      "float": 6.527826086956522,
+      "frac": "7507/1150"
+    },
+    "net_coins_per_hour_boosted_P3": {
+      "float": 11750.08695652174,
+      "frac": "270252/23"
+    },
+    "note": "boosted active play is x5 the sustained throttle and PROFITABLE (0.8 < E[coins/dig] at every depth) \u2014 the 360/hr energy throttle is bypassable at scale for coins; flagged, reporting-only"
+  },
+  "grid1": {
+    "BARREN": {
+      "abs_err": {
+        "float": 0.000215,
+        "frac": "43/200000"
+      },
+      "expected": {
+        "float": 0.18,
+        "frac": "9/50"
+      },
+      "observed": {
+        "float": 0.179785,
+        "frac": "35957/200000"
+      }
+    },
+    "NORMAL": {
+      "abs_err": {
+        "float": 0.000285,
+        "frac": "57/200000"
+      },
+      "expected": {
+        "float": 0.7,
+        "frac": "7/10"
+      },
+      "observed": {
+        "float": 0.700285,
+        "frac": "140057/200000"
+      }
+    },
+    "RICH": {
+      "abs_err": {
+        "float": 0.0002,
+        "frac": "1/5000"
+      },
+      "expected": {
+        "float": 0.1,
+        "frac": "1/10"
+      },
+      "observed": {
+        "float": 0.0998,
+        "frac": "499/5000"
+      }
+    },
+    "TREASURE": {
+      "abs_err": {
+        "float": 0.00013,
+        "frac": "13/100000"
+      },
+      "expected": {
+        "float": 0.02,
+        "frac": "1/50"
+      },
+      "observed": {
+        "float": 0.02013,
+        "frac": "2013/100000"
+      }
+    }
+  },
+  "grid1_seeds": {
+    "coord_seed": 20260797,
+    "disclosure": "the two GRID-1 seeds were not enumerated in fixtures.json (which pinned only the four profile-MC seeds); chosen per the registered policy (strictly above high-water 20260791), disclosed here \u2014 intake-time decision, self-check leg only",
+    "world_seed": 20260796
+  },
+  "intake": "simreq-006",
+  "mc": {
+    "P0_fresh_floor": {
+      "N": 200000,
+      "exact": {
+        "float": 4.571428571428571,
+        "frac": "32/7"
+      },
+      "mc_mean": {
+        "float": 4.56474,
+        "frac": "228237/50000"
+      },
+      "rel_err": {
+        "float": 0.001463125,
+        "frac": "2341/1600000"
+      },
+      "seed": 20260792
+    },
+    "P1_surface_roamer": {
+      "N": 200000,
+      "exact": {
+        "float": 4.845714285714286,
+        "frac": "848/175"
+      },
+      "mc_mean": {
+        "float": 4.83151,
+        "frac": "483151/100000"
+      },
+      "rel_err": {
+        "float": 0.002931308962264151,
+        "frac": "9943/3392000"
+      },
+      "seed": 20260793
+    },
+    "P2_cavern_roamer": {
+      "N": 200000,
+      "exact": {
+        "float": 6.1431818181818185,
+        "frac": "2703/440"
+      },
+      "mc_mean": {
+        "float": 6.15098,
+        "frac": "307549/50000"
+      },
+      "rel_err": {
+        "float": 0.0012694043655197928,
+        "frac": "4289/3378750"
+      },
+      "seed": 20260794
+    },
+    "P3_deep_roamer": {
+      "N": 200000,
+      "exact": {
+        "float": 7.327826086956522,
+        "frac": "8427/1150"
+      },
+      "mc_mean": {
+        "float": 7.344365,
+        "frac": "1468873/200000"
+      },
+      "rel_err": {
+        "float": 0.002257001305328112,
+        "frac": "76079/33708000"
+      },
+      "seed": 20260795
+    }
+  },
+  "packet_arithmetic_leg": {
+    "E_value_stone_bronze_iron_only": {
+      "float": 1.8666666666666667,
+      "frac": "28/15"
+    },
+    "exact_faucet_per8_P0": {
+      "float": 36.57142857142857,
+      "frac": "256/7"
+    },
+    "exact_faucet_per8_P1": {
+      "float": 38.76571428571429,
+      "frac": "6784/175"
+    },
+    "reading": "the packet's ~22/8digs is the stone/bronze/iron-only average (28/15 x 1.5 x 8 = 22.4); the true faucet includes silver/gold/diamond and is ~1.6-1.7x higher",
+    "x1.5_amount_x8_digs": {
+      "float": 22.4,
+      "frac": "112/5"
+    }
+  },
+  "pin": "57f69be34785afb427d608b207e7369025166e94",
+  "probe_a": {
+    "G0_best_worst_case": {
+      "actions": 5,
+      "seconds_INT1": 10
+    },
+    "G0_chop_craft": {
+      "E_actions": {
+        "float": 4.333333333333333,
+        "frac": "13/3"
+      },
+      "E_chops": {
+        "float": 1.3333333333333333,
+        "frac": "4/3"
+      },
+      "worst_actions": 5,
+      "worst_seconds_INT1": 10
+    },
+    "G0_dig_sell_buy": {
+      "E_actions": {
+        "float": 6.985012184762958,
+        "frac": "182652042913/26149137336"
+      },
+      "E_digs": {
+        "float": 2.985012184762958,
+        "frac": "78055493569/26149137336"
+      },
+      "digs_quantiles": {
+        "1/2": 3,
+        "9/10": 5,
+        "99/100": 6
+      },
+      "worst_actions": 14,
+      "worst_digs": 10
+    },
+    "G1_pickaxe_grants_depth1": {
+      "cost": "deletes the light-slot Cavern gate (torch teaching beat); lantern still gates Deep",
+      "worst_actions": 1,
+      "worst_seconds_INT1": 2
+    },
+    "G2_torch_cheaper": {
+      "chop_worst_actions": 4,
+      "dig_E_digs": {
+        "float": 1.900886204822065,
+        "frac": "164305/86436"
+      },
+      "dig_worst_digs": 5
+    }
+  },
+  "probe_b": {
+    "np1": {
+      "digs": {
+        "forge_I": {
+          "float": 438.5670642856644,
+          "frac": "1005258865/2292144"
+        },
+        "forge_II": {
+          "float": 1550.7659488234597,
+          "frac": "3554578865/2292144"
+        },
+        "iron_sword": {
+          "float": 16.886751006917542,
+          "frac": "38706865/2292144"
+        },
+        "lantern": {
+          "float": 8.698783758786533,
+          "frac": "376205/43248"
+        },
+        "torch": {
+          "float": 2.1875,
+          "frac": "35/16"
+        }
+      },
+      "materials_check": {
+        "coins_bind": true,
+        "gold_at_forge_II_vs_20": {
+          "float": 426.41509433962267,
+          "frac": "22600/53"
+        },
+        "iron_at_forge_I_vs_25": {
+          "float": 181.27982796892343,
+          "frac": "1306665/7208"
+        },
+        "stone_at_forge_I_vs_15": {
+          "float": 62.25381520532741,
+          "frac": "897451/14416"
+        }
+      },
+      "seconds_sustained": {
+        "forge_I": {
+          "float": 3905.6706428566445,
+          "frac": "4476179765/1146072"
+        },
+        "forge_II": {
+          "float": 15027.659488234596,
+          "frac": "17222779765/1146072"
+        },
+        "iron_sword": {
+          "float": 33.773502013835085,
+          "frac": "38706865/1146072"
+        },
+        "lantern": {
+          "float": 17.397567517573066,
+          "frac": "376205/21624"
+        },
+        "torch": {
+          "float": 4.375,
+          "frac": "35/8"
+        }
+      },
+      "withheld_material_value": {
+        "forge_I": 90,
+        "forge_II": 150
+      }
+    },
+    "profiles": {
+      "P0_fresh_floor": {
+        "E_coins_per_dig": {
+          "float": 4.571428571428571,
+          "frac": "32/7"
+        },
+        "E_gold_per_dig": {
+          "float": 0.14285714285714285,
+          "frac": "1/7"
+        },
+        "E_iron_per_dig": {
+          "float": 0.2857142857142857,
+          "frac": "2/7"
+        },
+        "E_stone_per_dig": {
+          "float": 0.42857142857142855,
+          "frac": "3/7"
+        },
+        "coins_per_hour_sustained": {
+          "float": 1645.7142857142858,
+          "frac": "11520/7"
+        }
+      },
+      "P1_surface_roamer": {
+        "E_coins_per_dig": {
+          "float": 4.845714285714286,
+          "frac": "848/175"
+        },
+        "E_gold_per_dig": {
+          "float": 0.15142857142857144,
+          "frac": "53/350"
+        },
+        "E_iron_per_dig": {
+          "float": 0.3028571428571429,
+          "frac": "53/175"
+        },
+        "E_stone_per_dig": {
+          "float": 0.4542857142857143,
+          "frac": "159/350"
+        },
+        "coins_per_hour_sustained": {
+          "float": 1744.4571428571428,
+          "frac": "61056/35"
+        }
+      },
+      "P2_cavern_roamer": {
+        "E_coins_per_dig": {
+          "float": 6.1431818181818185,
+          "frac": "2703/440"
+        },
+        "E_gold_per_dig": {
+          "float": 0.21681818181818183,
+          "frac": "477/2200"
+        },
+        "E_iron_per_dig": {
+          "float": 0.3613636363636364,
+          "frac": "159/440"
+        },
+        "E_stone_per_dig": {
+          "float": 0.28909090909090907,
+          "frac": "159/550"
+        },
+        "coins_per_hour_sustained": {
+          "float": 2211.5454545454545,
+          "frac": "24327/11"
+        }
+      },
+      "P3_deep_roamer": {
+        "E_coins_per_dig": {
+          "float": 7.327826086956522,
+          "frac": "8427/1150"
+        },
+        "E_gold_per_dig": {
+          "float": 0.27652173913043476,
+          "frac": "159/575"
+        },
+        "E_iron_per_dig": {
+          "float": 0.4147826086956522,
+          "frac": "477/1150"
+        },
+        "E_stone_per_dig": {
+          "float": 0.13826086956521738,
+          "frac": "159/1150"
+        },
+        "coins_per_hour_sustained": {
+          "float": 2638.0173913043477,
+          "frac": "303372/115"
+        }
+      }
+    },
+    "sword": {
+      "P1_E_digs": {
+        "float": 13.312751098626208,
+        "frac": "575133705726515850878222858711620262410236942723277413815184930706806097724479135179594554388980825799850345713448561755829545073015126294563361323645370114435656293/43201717020448612407403404203976485151306897932719962653395154210736461841690925211878493428230285644531250000000000000000000000000000000000000000000000000000000000"
+      },
+      "P1_fluid_digs": {
+        "float": 12.382075471698114,
+        "frac": "2625/212"
+      },
+      "P1_quantiles": {
+        "1/2": 13,
+        "9/10": 18,
+        "99/100": 21
+      },
+      "P1_worst_digs": 60
+    }
+  },
+  "ruling": "approve",
+  "self_checks": {
+    "failed": 0,
+    "failures": [],
+    "passed": 67
+  },
+  "tool_ladder_leg": {
+    "bare hands": {
+      "E_amount": {
+        "float": 1.5,
+        "frac": "3/2"
+      },
+      "multiplier": 1.0,
+      "support": [
+        1,
+        2
+      ]
+    },
+    "diamond pickaxe": {
+      "E_amount": {
+        "float": 2.5,
+        "frac": "5/2"
+      },
+      "multiplier": 1.5,
+      "support": [
+        2,
+        3
+      ]
+    },
+    "gold pickaxe": {
+      "E_amount": {
+        "float": 2.0,
+        "frac": "2/1"
+      },
+      "multiplier": 1.375,
+      "support": [
+        1,
+        3
+      ]
+    },
+    "iron pickaxe": {
+      "E_amount": {
+        "float": 1.5,
+        "frac": "3/2"
+      },
+      "multiplier": 1.25,
+      "support": [
+        1,
+        2
+      ]
+    },
+    "pickaxe": {
+      "E_amount": {
+        "float": 1.5,
+        "frac": "3/2"
+      },
+      "multiplier": 1.125,
+      "support": [
+        1,
+        2
+      ]
+    }
+  },
+  "verdict": 42
+}
