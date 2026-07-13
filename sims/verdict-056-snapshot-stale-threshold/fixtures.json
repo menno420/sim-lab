@@ -1,0 +1,111 @@
+{
+  "verdict": "VERDICT 056",
+  "proposal": {
+    "header_verbatim": "## PROPOSAL 045 · 2026-07-13T20:24:09Z · status: sim-ready",
+    "location": "idea-engine control/outbox.md @ main 5f8a94e (landed via idea-engine PR #343)",
+    "idea_doc": "https://github.com/menno420/idea-engine/blob/62821c59bcce3ec926e6c03800f3ae1d8c87fb00/ideas/superbot-mineverse/snapshot-stale-indicator-threshold-2026-07-13.md",
+    "claim": "idea-engine PR #345 · control/claims/2026-07-13-verdict-056.md · work branch claude/verdict-056-snapshot-stale-sim"
+  },
+  "harvest_source": {
+    "repo": "menno420/superbot-mineverse",
+    "commit": "ae98dd094100f7b864f2c36b91494c8fb2cd1f31",
+    "file": "docs/mining-data-contract.md",
+    "section": "Delivery expectations",
+    "sentence_cadence_verbatim": "**Cadence**: the bot pushes a fresh snapshot into the read relay periodically — target every **60 s** — plus on-demand refreshes when the owner or a workflow requests one.",
+    "sentence_staleness_verbatim": "**Staleness**: consumers compare `generated_at` to now. Beyond a staleness threshold (default suggestion: 3 missed cycles ≈ 180 s), the frontend shows a stale indicator next to the snapshot metadata instead of presenting old numbers as live.",
+    "note": "citation only — the runner reads ONLY this fixtures.json; source clone-verified this session at exactly that HEAD"
+  },
+  "hermeticity_note": "every constant below is copied VERBATIM from the idea doc / PROPOSAL 045 block; the runner reads ONLY this file - zero repo/network reads at run time",
+  "python_minor": "3.11",
+  "model": {
+    "time_unit": "integer seconds throughout; all probabilities exact rationals",
+    "producer": "push ATTEMPTS spaced I ~ uniform integer {interval_lo..interval_hi}; each attempt independently FAILS with probability f; a success stamps generated_at = the attempt instant; inter-success gap G = sum_{i=1..N} I_i with P(N = n) = f^(n-1)(1-f), n >= 1",
+    "viewer": "loads at a uniformly random instant in producer steady state; perceived age = A + c, c ~ uniform integer {c_lo..c_hi}",
+    "indicator_rule": "show STALE iff perceived age A + c > T, STRICT (perceived age EXACTLY T is LIVE) — pinned",
+    "outage": "clean halt at a uniformly random healthy instant; per-viewer detection latency L(T) = max(0, T - A - c)",
+    "falsestale_definition": "FALSESTALE(T) = P(A + c > T | healthy) — by renewal-reward, FALSESTALE(T) = E_c[ E[(G - (T - c))+] ] / E[G] (the registered computational definition; the decision rides it)",
+    "lat_definition": "LAT(T) = E[L(T)] over the stationary age at the halt and c; stationary age pmf P(A = a) = P(G > a)/E[G] (registered)",
+    "indicator_equivalence_note": "conformance derivation, disclosed: the registered renewal-reward numerator E[(G - x)+] equals Sum_{a>=x} P(G > a) = P(A >= x) on the integer floor-age lattice — exactly P(A_real + c > T) STRICT when the viewer instant is uniform REAL (the registration's 'uniformly random instant') and A_real >= x has the integer floor-age >= x a.s. (the boundary atom perceived-age == T has measure zero in real time). Arm S therefore counts STALE iff floor_age + c >= T, which IS the registered strict rule under real-instant sampling and reproduces the registered Arm-A formula with no off-by-one. The integer-strict variant count (floor_age + c > T) is committed alongside in results.json, reporting-only.",
+    "lat_age_convention_note": "LAT uses the registered FLOOR-age pmf P(A = a) = P(G > a)/E[G] verbatim (the zero-disturbance identity LAT(T) = T - 59/2 pins this convention)"
+  },
+  "primary": {
+    "interval_lo": 55, "interval_hi": 75,
+    "fail_num": 1, "fail_den": 25,
+    "c_lo": -30, "c_hi": 30,
+    "target_cadence_cited_s": 60
+  },
+  "T_grid": [90, 120, 150, 180, 240, 300, 360],
+  "bands": {
+    "falsestale_max": "1/200",
+    "lat_max_s": 240,
+    "reporting_L_threshold_s": 300
+  },
+  "decision_rule": {
+    "feasible_set": "Feas = {T in grid : FALSESTALE(T) <= 1/200 AND LAT(T) <= 240}; T* = min Feas (undefined iff Feas empty)",
+    "evaluation_order": "REJECT FIRST, then APPROVE, else NULL",
+    "REJECT": "Feas = {} — 'a client-side age threshold cannot be made honest at the pinned cadence — the staleness leg needs a producer-side health signal, not a bigger number'",
+    "APPROVE": "180 in Feas AND Feas intersect {90, 120} = {} AND the seed-20261318 stability leg reproduces the ruling (150 in Feas does NOT defeat it; a full cheaper CYCLE would). Both conjuncts on Arm-A exact numbers.",
+    "NULL_axes": [
+      "(i) under-provisioned — Feas nonempty but 180 not in Feas",
+      "(ii) over-provisioned — some T <= 120 in Feas",
+      "(iii) arm disagreement — the agreement gate fails (no ruling issues)",
+      "(iv) sensitivity straddle — a reporting-only sensitivity pair lands a primary conjunct on the opposite side of a band edge (named axis; reporting legs CANNOT flip the decision)"
+    ],
+    "stability_reproduction_pin": "the stability leg reproduces the ruling iff the decision class derived from the Arm-S stability estimates under the same bands and evaluation order (sans the stability conjunct itself) equals the Arm-A class, through both twin evaluators — the V055 own-median precedent shape; the hard 1/1000 + 5 s agreement gate is registered against the n=200,000 main confirmation leg (its '>= 8 SE headroom at n = 200,000' clause) and binds THAT leg"
+  },
+  "arm_a": {
+    "method": "seedless exact enumeration: gap pmf = geometric mixture of n-fold convolutions of the interval lattice, exact for n <= tail_cutoff_n with the n > tail_cutoff_n tail in closed form (every such term has S_n > every evaluated x, so it contributes E_interval_mean*n - x exactly via geometric sums); exact fractions.Fraction end to end, no RNG; the ruling rides Arm A alone",
+    "tail_cutoff_n_primary": 8,
+    "tail_cutoff_rule": "smallest m with m*interval_lo > x_max where x_max = max(T) + |c|_max evaluated in that world (primary: 8*55 = 440 > 390 = 360 + 30, the registered closure); sensitivity worlds recompute m by the same rule",
+    "tail_closure_spot_check": "direct enumeration extended to n <= 12 must reproduce the n <= 8 + analytic-tail FALSESTALE numerators EXACTLY on the pinned sub-grid T in {90, 240} x c in {-30, 0, +30} — hard gate, exact equality"
+  },
+  "arm_s": {
+    "method": "seeded timeline MC: founding success pinned at t = 0 (no draws), then per attempt: interval draw I = interval_lo + randrange(span) THEN fail-bit draw (randrange(fail_den) < fail_num), timeline generated until t >= warmup + horizon; then viewer samples (instant t = randrange(warmup, warmup + horizon) THEN offset c = c_lo + randrange(c_span)); then halt samples (same two-draw shape); COMMON RANDOM NUMBERS across the whole T grid; age lookups by bisection over the success timeline; floor_age = t - last_success_at_or_before_t",
+    "main": {"seed": 20261317, "warmup_s": 10000, "horizon_s": 5000000, "viewer_samples": 200000, "halt_samples": 200000, "role": "confirmation of the primary world"},
+    "stability": {"seed": 20261318, "warmup_s": 10000, "horizon_s": 1000000, "viewer_samples": 20000, "halt_samples": 20000, "role": "must reproduce the Arm-A ruling for any APPROVE (fresh timeline)"},
+    "reporting": {"seed": 20261319, "warmup_s": 10000, "horizon_s": 1000000, "viewer_samples": 20000, "halt_samples": 20000, "role": "Arm-S confirmations of the sensitivity + burst legs, 20,000 samples each, scenarios sequential in the pinned order on ONE generator", "scenario_order": ["jitter_tight", "jitter_loose", "f_low", "f_high", "c_zero", "c_wide", "burst"]},
+    "aux": {"seed": 20261320, "role": "RESERVED - never read by any decision number, never even constructed (asserted); reserved for the named live probe's analysis"},
+    "agreement_gate": {"falsestale_abs_max": "1/1000", "lat_abs_max_s": 5, "applies_to": "every FALSESTALE and LAT cell of the seed-20261317 main confirmation leg vs Arm A - any breach invalidates the run (NULL axis iii)"},
+    "draw_sentinel": "per leg/scenario: exactly 2*attempts + 2*viewer_samples + 2*halt_samples randrange calls, attempts counted from the generated timeline",
+    "reporting_horizon_note": "the 1,000,000 s reporting/stability timeline length is an implementation pin (registration pins the sample counts and the stability timeline; the reporting timeline rides the same shape), disclosed"
+  },
+  "sensitivity_worlds": {
+    "jitter_tight": {"vary": "interval", "interval_lo": 58, "interval_hi": 62},
+    "jitter_loose": {"vary": "interval", "interval_lo": 45, "interval_hi": 90},
+    "f_low": {"vary": "fail", "fail_num": 1, "fail_den": 100},
+    "f_high": {"vary": "fail", "fail_num": 1, "fail_den": 10},
+    "c_zero": {"vary": "offset", "c_lo": 0, "c_hi": 0},
+    "c_wide": {"vary": "offset", "c_lo": -120, "c_hi": 120},
+    "note": "each varies ONE axis from primary; Arm A exact for all six + seed-20261319 Arm-S confirmations; REPORTING-ONLY — cannot flip the decision; straddle detection compares each world's primary-conjunct outcomes (Feas empty? 180 in Feas? Feas intersect {90,120} empty?) against the primary world"
+  },
+  "burst_leg": {
+    "vary": "failure process",
+    "p_fail_to_fail_num": 1, "p_fail_to_fail_den": 2,
+    "p_ok_to_fail_num": 1, "p_ok_to_fail_den": 48,
+    "stationary_miss_rate": "1/25 exactly = (1/48)/((1/48)+(1/2)) — matching the primary",
+    "initial_state": "ok at the founding success (warm-up absorbs mixing)",
+    "arm": "Arm S ONLY, disclosed: the geometric closed form does not apply; direction stated by the registration: bursts lengthen gaps and push toward REJECT/NULL(i) — burstiness raises FALSESTALE at every T (direction check printed as a first-class anomaly line, reporting, never invalidating)",
+    "fail_bit_draws": "prev fail: randrange(2) < 1; prev ok: randrange(48) < 1 (one draw per attempt either way)"
+  },
+  "zero_disturbance_identity": {
+    "interval_lo": 60, "interval_hi": 60, "fail_num": 0, "fail_den": 1, "c_lo": 0, "c_hi": 0,
+    "expected": "G == 60; FALSESTALE(T) == 0 exactly for every grid T; stationary age uniform on {0..59}; LAT(T) == T - 59/2 exactly — exact values, not tolerances (hard gate, Arm A)"
+  },
+  "hand_fixture": [
+    {"leg": "gap", "G": 60, "c": 0, "T": 180, "expected": "x = T - c = 180, (G - x)+ = 0"},
+    {"leg": "gap", "G": 200, "c": 10, "T": 180, "expected": "x = 170, (G - x)+ = 30"},
+    {"leg": "latency", "A": 40, "c": -30, "T": 90, "expected": "L = max(0, 90 - 40 + 30) = 80"},
+    {"leg": "latency", "A": 100, "c": 30, "T": 120, "expected": "120 - 100 - 30 = -10 -> L = 0 (already showing stale at the halt)"},
+    {"leg": "indicator", "A": 155, "c": 30, "T": 180, "expected": "perceived 185 > 180 -> STALE"},
+    {"leg": "indicator", "A": 155, "c": 20, "T": 180, "expected": "perceived 175 <= 180 -> LIVE (strict inequality pinned)"}
+  ],
+  "monotonicity_gate": "FALSESTALE non-increasing and LAT non-decreasing in T — exact, both arms (a theorem under shared enumeration / common random numbers; any violation is an implementation defect): hard gate",
+  "reporting_only_outputs": {
+    "P_L_gt_300": "per T: P(L > 300) — L = max(0, T - A - c) <= T - c_lo, so zero is guaranteed exactly where T - c_lo <= 300 (grid T <= 240 at the primary c_lo = -30); positive where T - A - c can exceed 300 (amended pre-run from an over-strong 'T <= 300' descriptive note — reporting-output description only, no registered constant touched; disclosed in REPORT.md)",
+    "per_c_splits": "per-c FALSESTALE/LAT at the decision cell T = 180 for every c, plus the c in {-30, 0, +30} split across the full T grid",
+    "integer_strict_variant": "Arm-S count with the integer-strict indicator floor_age + c > T, committed alongside (see indicator_equivalence_note)"
+  },
+  "seed_registry_note": "seeds 20261317-20261320 strictly above the P044/V055 high-water 20261316; new registry high-water 20261320",
+  "twin_evaluators": "two independently written decision evaluators — Fraction comparisons vs pure-integer cross-multiplication — each derives Feas, T*, class, and NULL axis; must agree on main AND stability inputs (hard gate)",
+  "byte_identity": "stdout + results.json byte-identical across two full process runs by external diff; no wall-clock in any output; CPython minor pinned and asserted"
+}
