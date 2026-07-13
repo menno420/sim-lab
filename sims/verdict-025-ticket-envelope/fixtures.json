@@ -1,0 +1,130 @@
+{
+  "question": "Under the pinned ticket-frame model (B0 = 1,000 integer chips; ticket price F = 0.01*B0 = 10 chips, a table constant no policy can escalate; prize schedules paying multiples of F with probabilities scaled by (1-t) so E[prize] = (1-t)*F exactly — T1 double-up {2F w.p. (1-t)/2}, T2 tiered {8F, 3F, 1F w.p. (1-t)*{0.05, 0.10, 0.30}}, T3 jackpot {25F, 5F w.p. (1-t)*{0.024, 0.08}}; take grid t in {0.01, 0.02, 0.05, 0.10} plus a t=0 control leg (reporting-only); house table rule per-round ticket cap c in {5, 25, 100} — max per-round spend {5%, 25%, 100%}*B0, the exact mirror of VERDICT 022's m-grid; re-buy policies with b <= c and b <= floor(bankroll/F), a round's b tickets resolving as b INDEPENDENT draws, round net = sum(prizes) - b*F: R1 b=1, R5 b=min(5, .), RG greedy b=max affordable, MC chase b=min(2^L, .) with L = consecutive net-losing rounds reset on a net-winning round; profiles CASUAL 100 rounds or bankroll < F with P_ahead = P(final > B0) and P_wipe = P(final <= 0.1*B0), GRINDER to >= 2*B0 or <= 0.5*B0 hard-capped at 4,000 rounds with P_double and > 1% cap-hits marking the cell indeterminate, COMPULSIVE reporting-only R1 to ruin or 20,000 rounds; 36 decision cells = 3 shapes x 4 takes x 3 caps), in BOTH Arm A (analytic, seedless, exact rationals: FUN for ALL 36 cells — T1 binomial via math.comb REQUIRED to reproduce VERDICT 022's committed G1 reference values exactly, T2/T3 by exact integer-support DP convolution; two-boundary gambler's-ruin closed forms for GRINDER on T1xR1; an exact T1xR1 CASUAL wipe DP; the t=0 control must give T1xR1 P_double = 1/3 exactly by optional stopping) and Arm S (seeded MC: random.Random(20260730), pinned loop order, one rng.random() per ticket, M = 5,000 casual / 2,000 grinder / 500 compulsive per cell-policy; the 1.0 pp Arm-A agreement gate or the run is invalid; half-M stability leg seed 20260731 must reproduce the ruling), for which (t, c) cells do FUN (R1 reference-leg P_ahead >= 0.25), SAFE (max P_wipe over the 4 swept policies <= 0.05), and SINK (max P_double over the 4 swept policies <= 0.10) hold simultaneously per prize shape — E*(g, c), determinate cells only — and does the result land (evaluated in this pre-registered order) REJECT / APPROVE / NULL per the pre-registered rule?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 023 · 2026-07-13T03:53:03Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 15d1802 (landed via idea-engine PR #289)",
+    "idea_entry": "ideas/superbot/casino-entry-fee-ticket-envelope-2026-07-13.md (proposal's own blob link @ f3932a5b1b49564bb138c72113e778586a5093ae)",
+    "rotation_slot": "inbox ORDER 004 rule 3 — GAME-MECHANICS rotation slot, round 2: the direct successor to VERDICT 022 (PROPOSAL 020, reject — 'odds cannot do the job'), whose Named follow-ups list requested this head verbatim ('an entry-fee/prize-table envelope sim — the SAFE-band successor question'); fully hermetic (the PROPOSAL 017-022 precedent): every fixture is a pinned constant committed with the sim, zero repo/network reads in the verdict session; the parent's anchor constants are quoted verbatim below from its committed REPORT.md/results.json @ sim-lab fda94d0"
+  },
+  "constants": {
+    "B0": 1000,
+    "F": 10,
+    "F_note": "F = 0.01*B0; every bankroll state is an exact integer multiple of F (start = 100*F, ticket cost F, prizes integer multiples of F), so all walks are computed in exact integer F-units: start 100, casual wipe line 10 units (0.1*B0), casual ahead line > 100 units, grinder boundaries >= 200 / <= 50 units, session-affordability stop bankroll < 1 unit (== 0)",
+    "prize_schedules": {
+      "T1": {"prizes_units": [2], "base_probs": [0.5], "base_probs_exact": ["1/2"], "per_ticket_variance_at_t0_units2": 1.0},
+      "T2": {"prizes_units": [8, 3, 1], "base_probs": [0.05, 0.1, 0.3], "base_probs_exact": ["1/20", "1/10", "3/10"], "per_ticket_variance_at_t0_units2": 3.4},
+      "T3": {"prizes_units": [25, 5], "base_probs": [0.024, 0.08], "base_probs_exact": ["3/125", "2/25"], "per_ticket_variance_at_t0_units2": 16.0}
+    },
+    "prize_scaling": "level probability at take t = (1-t) * base_prob; asserted in exact Fractions at start: E[prize] = (1-t)*F exactly per (shape, t), and the t=0 per-ticket variances equal the committed constants {1, 3.4, 16}*F^2 exactly",
+    "t_grid": [0.01, 0.02, 0.05, 0.1],
+    "t_grid_exact": ["1/100", "1/50", "1/20", "1/10"],
+    "t_control": 0.0,
+    "t_control_note": "t=0 control leg is reporting-only: swept in the pinned loop (ascending order puts it first) but NEVER a member of the envelope t-grid or any decision number; it feeds the Wald prize-fairness and P_double = 1/3 self-checks",
+    "c_grid": [5, 25, 100],
+    "max_round_spend_chips": [50, 250, 1000],
+    "policies": {
+      "R1": "b = 1 (always affordable mid-session: every profile stops before bankroll < F)",
+      "R5": "b = min(5, c, bankroll_units) = min(5, bankroll_units) since every c >= 5",
+      "RG": "greedy: b = min(c, bankroll_units) — the compounding all-in",
+      "MC": "chase: b = min(2^L, c, bankroll_units) with L = number of consecutive net-losing rounds so far, reset to 0 on a net-winning round (ticket-count martingale)"
+    },
+    "ticket_resolution": "a round's b tickets are b INDEPENDENT draws, exactly one rng.random() per ticket, consumed in ticket order; per ticket, prize = level j prize iff cum_{j-1} <= u < cum_j where cum = cumulative sums of (1-t)*base_prob in IEEE-754 double (computed once per (shape, take)); round net (units) = sum(prizes) - b",
+    "profiles": {
+      "casual": "one session = 100 rounds, stopping early only when bankroll < F (units == 0); metrics per (cell, policy): P_ahead = P(final > B0), P_wipe = P(final <= 0.1*B0), mean final, expected session loss (B0 - mean final)/B0",
+      "grinder": "play until bankroll >= 2*B0 (units >= 200) or <= 0.5*B0 (units <= 50), hard cap 4,000 rounds; metric P_double = doubles / M (a cap-hit counts as neither double nor half and stays in the denominator, reported separately as cap_frac); any decision cell with cap_frac > 0.01 on ANY of the 4 swept policies is marked INDETERMINATE — a NULL path, never silently absorbed; measured P_double stays a LOWER bound on the uncapped quantity so SINK failures stand regardless",
+      "compulsive": "reporting-only, policy R1 only: play to ruin (bankroll < F) or 20,000 rounds; median rounds-to-ruin (harm context) + ruin fraction"
+    },
+    "M_casual": 5000,
+    "M_grinder": 2000,
+    "M_compulsive": 500,
+    "seed_primary": 20260730,
+    "seed_stability": 20260731,
+    "seed_spot_check": 20260732,
+    "seed_aux": 20260733,
+    "stability_leg": "half M (2,500 casual / 1,000 grinder / 250 compulsive), seed 20260731, identical pinned loop order; must reproduce the same ruling",
+    "bands": {
+      "FUN": "R1 reference-leg P_ahead >= 0.25 (= 1/4, exact Fraction comparison; Arm A analytic, cap-independent)",
+      "SAFE": "max P_wipe over the 4 swept policies <= 0.05 (= 1/20; integer cross-multiplication: 20 * wipes <= M)",
+      "SINK": "max P_double over the 4 swept policies <= 0.10 (= 1/10; integer cross-multiplication: 10 * doubles <= M)"
+    },
+    "bands_provenance": "held fixed from VERDICT 022 BY DESIGN (the inherited-bands contract): every (shape, take, cap) cell names its parent (archetype, edge, max-bet) cell; full curves ship so a re-drawn line re-reads, never re-runs",
+    "agreement_gate_pp": 1.0,
+    "python": "cpython-3.11 (minor version pinned in results.json and asserted at start)"
+  },
+  "process": {
+    "round_step": "per round, in pinned order: compute b from the policy state (always >= 1 mid-session); draw the b tickets (one rng.random() each, ticket order); bankroll_units += sum(prizes) - b; update MC chase state from the round net sign; check the profile stop rule",
+    "loop_order": "ONE random.Random(seed) stream flows through the whole arm in this pinned order: shape T1 < T2 < T3, then t ascending over [0.0 (control), 0.01, 0.02, 0.05, 0.10], then c ascending over [5, 25, 100], then policy [R1, R5, RG, MC], then profile casual -> grinder -> compulsive (compulsive exists only under policy R1), replications sequential (0..M-1)",
+    "metrics_pooling": "per (shape, t, c, policy): casual {P_ahead = aheads/M, P_wipe = wipes/M, mean final, expected_loss_frac}; grinder {P_double = doubles/M, P_half = halves/M, cap_frac = caphits/M, mean rounds}; compulsive (R1 only) {ruin_frac, median rounds-to-ruin per disclosure 6}",
+    "envelope": "E*(g, c) = the set of t in the 4-take grid where FUN(g, t) AND SAFE(g, t, c) AND SINK(g, t, c) all hold; FUN comes from Arm A (exact); SAFE and SINK from Arm S measured maxima over the 4 swept policies; envelope MEMBERSHIP additionally requires the cell determinate (cap_frac <= 0.01 on all 4 policies, integer cross-multiplication 100 * caphits <= M)",
+    "decision_rule_evaluated_in_this_order": [
+      "REJECT ('the fee frame cannot do it either') iff in >= 2 of the 3 shapes, E*(g, c) = EMPTY for EVERY cap c, in both arms where covered — the second routed lever falls to the same variance arithmetic as the first; the verdict quantifies the residual gap per shape (the failing band's value at that shape's best cell) and the World seat's remaining levers are comp/stipend and rake-only PvP alone",
+      "APPROVE ('the ticket frame is the one house rule') iff there exists a cap c* such that the intersection over shapes of E*(g, c*) contains >= 2 CONSECUTIVE take-rate grid points (a band, not a knife-edge), all contributing cells determinate, and the stability leg reproduces it -> recommended row: ticket price 0.01*B0 + per-round cap c* + the shared take band; any game added later declares its prize schedule and a one-line check computes its take against the band",
+      "NULL otherwise — a legitimate reportable outcome: the per-shape (c, t) envelope table IS the pin, with the flip axis named via per-axis envelope shares (expected candidates: the cap c — RG's compounding at c=100 recreating exactly the wipe the parent measured while c=5 tames it — or the prize shape via T3's tail). Indeterminate cells route to NULL, never to APPROVE."
+    ],
+    "indeterminacy_soundness": "failure is always definitive, passes are what indeterminacy can spoil: FUN is analytic (exact); SAFE sessions are 100 rounds and always complete (no cap); measured P_double = doubles/M is a LOWER bound on the uncapped quantity (a cap-hit session could still have doubled), so a SINK failure (P_double > 0.10) stands regardless of cap-hits. Therefore: E*-emptiness (REJECT's input) is sound under indeterminacy; envelope MEMBERSHIP used for APPROVE requires the cell determinate. If an indeterminate cell passes all three bands on measured numbers, it is reported as indeterminate-pass and cannot support APPROVE; if such cells are load-bearing for the ruling, the ruling is NULL."
+  },
+  "arm_a": {
+    "fun_tail_T1": "P_ahead_ref(T1, t) = P(Bin(100, p) >= 51) with p = (1-t)/2 exact Fraction, ahead iff wins*2 > 100; sum over w = 51..100 of C(100, w) * p^w * (1-p)^(100-w) via math.comb — the IDENTICAL binomial to VERDICT 022's G1 reference leg (its p = (1-e)/(k+1) = (1-e)/2 at k=1), so the computed Fractions MUST equal the parent's committed values exactly (identity_gate below)",
+    "fun_dp_T2_T3": "P_ahead_ref(g, t) for T2/T3 by exact integer-support DP convolution of the single-ticket round net (units in {+7,+2,0,-1} for T2, {+24,+4,-1} for T3) over 100 steps: distribution kept as integer numerators over the implicit denominator D^100 (D = 2000*denominator-lcm scaled per take; exact integer arithmetic, support <= 2,500 units); P_ahead = Fraction(sum of numerators at s > 0, D^100); the same DP run for T1 must equal the binomial exactly (self-check)",
+    "wipe_dp": "exact CASUAL R1 wipe: P_wipe_ref(g, t) = P(final <= 10 units) = P(sum of 100 single-ticket nets <= -90) from the same exact DP (R1 casual sessions never stop early: minimum round net -1 unit from start 100, so all 100 rounds are always played); for T1 this equals the binomial tail P(Bin(100, p) <= 5) exactly (self-check); Arm-A analytic wipe coverage the parent's grid never had",
+    "ruin_form": "GRINDER on T1 x R1: unit steps of F (up w.p. p = (1-t)/2, down w.p. q = 1-p), start 100 units, lower boundary 50, upper boundary 200 — span 150, start 50 above the lower boundary; boundaries hit exactly (no overshoot); two-boundary gambler's ruin, exact Fraction: P_double_uncapped = (1 - r^50) / (1 - r^150) with r = q/p for p != 1/2, and = 50/150 = 1/3 exactly at p = 1/2 (t = 0, optional stopping)",
+    "ruin_form_independent_check": "the same 151-state absorbing chain is also solved by exact-Fraction forward elimination of the tridiagonal hitting-probability system (an independently coded second derivation); both must agree exactly, and at t=0 both must equal 1/3 exactly",
+    "ruin_capped_dp": "the CAPPED quantity Arm S actually measures (P_double within the 4,000-round hard cap) is computed exactly by finite-horizon absorption DP on the identical 151-state chain (4,000 steps, deterministic IEEE-754 double arithmetic, seedless); capped DP <= uncapped closed form asserted per take; capped + half_capped + alive(4000) = 1 within 1e-12; the capped-vs-uncapped gap is reported per take (see intake decision 2)",
+    "covered_cells": "FUN reference cells (every shape x take incl. t=0) — Arm A exact, and Arm S's R1 casual legs measure the same quantity; CASUAL R1 P_wipe (every shape x take incl. t=0) — same; T1 x R1 GRINDER P_double (every take incl. t=0, capped quantity via the finite-horizon DP) — Arm S sweeps this leg at each cap"
+  },
+  "identity_gate": {
+    "statement": "cross-verdict identity, pre-registered: the T1 FUN exact Fractions at t in {0, 0.01, 0.02, 0.05, 0.10} MUST equal VERDICT 022's committed G1 reference values (arm_a.fun_exact, sims/verdict-022-casino-fairness/results.json @ fda94d0) exactly — Fraction equality against the committed strings below, quoted verbatim from the parent's committed results.json",
+    "parent_committed_G1_fun_exact": {
+      "G1|e=0": {"float": 0.46020538130641064, "fraction": "145844906960333151020236338515/316912650057057350374175801344"},
+      "G1|e=1/100": {"float": 0.42067415338617126, "fraction": "13331696076012056357395846859811333247710332572573047069592879572061230134180744270275804210434401846048923545250229667712013689585068248816001197527299289175701700632599857821581349788993292030313054531100463646746229411348367843/31691265005705735037417580134400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+      "G1|e=1/50": {"float": 0.3819212875066915, "fraction": "9548032187667288066194524288546078949740866995747112685873467932447615446138059711759354842995627332735540179969160183754356956775336576641826476319903869200827143534568491928983234378139293785027843/25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+      "G1|e=1/20": {"float": 0.2737540221256319, "fraction": "1099764382306488104655580907692728826761825730102504507218147928130470032789936821802966802729001960705984430700114831878920118503785911508194776202735460663843/4017345110647475688854905230852906506305507484456982088253440000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+      "G1|e=1/10": {"float": 0.13457621318805238, "fraction": "426489043560691923801380294482419720928209163131747101971482420571241111600003065359950029938992973481879890877629986104537215843/3169126500570573503741758013440000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"}
+    }
+  },
+  "chained_anchors_reporting_only": {
+    "note": "the four pre-registered cross-verdict anchors; reporting-only, cannot flip the decision; parent values quoted verbatim from VERDICT 022's committed REPORT.md/results.json @ fda94d0",
+    "anchor_1_parent_near_miss": "VERDICT 022's (G1, e=0.05, m=0.05) row passed FUN 0.2738 (exact 0.2737540221256319) and SINK 0.0895 (measured; exact Arm A for the binding C policy 0.08991227914975158) and died ONLY on SAFE at 0.1358 (2.7x the band, via flat C-50). The transposed cell here is T1 (t=0.05, c=5); whether its worst-policy P_wipe crosses under 0.05 is the single most legible measurement of what the structure lever buys.",
+    "anchor_2_parent_sink_wall": "VERDICT 022's high-variance SINK wall: worst-policy P_double G2 0.195-0.323 and G3 0.220-0.296 at EVERY edge and cap vs the 0.10 band ('the house edge barely dents a high-variance grinder's doubling odds'). Compare T2/T3 worst-policy P_double per (t, c) against that range.",
+    "anchor_3_t0_control": "the t=0 optional-stopping control (T1xR1 P_double_uncapped = 1/3 exactly) and the T1-FUN == G1-FUN identity (identity_gate above) — the parent ran the identical e=0 control.",
+    "anchor_4_expected_loss": "the expected-loss price tag: E[casual session net loss]/B0 per (shape, t, c, policy) — the 'bounded fee' claim measured, not asserted."
+  },
+  "intake_time_decisions_disclosed": [
+    "1. AGREEMENT-GATE GRANULARITY (the parent's disclosure-1 precedent): the R1 processes Arm A covers are cap-independent by construction (b = 1 <= every cap in the grid), so the per-cap Arm-S legs at a given (shape, t) measure the IDENTICAL quantity on independent draws — as do the primary and stability legs (same kernel, same quantity, independent seeds). At per-cap granularity the 1.0 pp gate sits at ~1 MC standard error for the mid-range FUN tails (a coin flip on pure noise — it cannot be the registered intent). The gate is therefore applied per Arm-A-covered (shape, t, quantity), pooled across the three cap-legs AND the primary + stability legs: FUN P_ahead and R1 P_wipe at pooled M = 22,500; T1xR1 grinder P_double at pooled M = 9,000. The per-cap, per-leg deviations are ADDITIONALLY computed and reported, any > 1.0 pp disclosed in the report. Committed here BEFORE the runner was written.",
+    "2. GRINDER GATE QUANTITY UNDER THE HARD CAP: Arm S measures P_double under the pre-registered 4,000-round cap; the pre-registered closed form is uncapped. On T1xR1 low-take cells the cap binds materially (the proposal's own expectation: 'expected on T1xR1 low-take cells, the parent's F-0.01 precedent'), so a 1.0 pp comparison of capped MC vs uncapped closed form would fail on model mismatch, not kernel bugs. The agreement gate therefore reads Arm S against the exact same-capped quantity — the finite-horizon absorption DP on the identical 151-state chain (arm_a.ruin_capped_dp) — while the uncapped closed form + independent elimination remain the exact analytic pins (t=0 = 1/3 control applies to the closed form) and the capped-vs-uncapped gap is reported per take.",
+    "3. MC-CHASE NET-ZERO ROUNDS: a round with net exactly 0 (reachable only on T2, e.g. b=1 paying the 1F consolation) is neither net-losing nor net-winning: L is unchanged.",
+    "4. MC-CHASE EXPONENT CLIP: b = min(2^min(L, 7), c, bankroll_units). Stake-identical to min(2^L, .) since 2^7 = 128 > 100 >= every cap in the grid; keeps the shift bounded across long loss streaks. Pinned as an implementation identity (the parent's martingale-target-clip precedent).",
+    "5. COMPULSIVE POSITION: compulsive exists only under policy R1 (the proposal's 'COMPULSIVE reporting-only R1'), riding every (shape, t, c) leg in the pinned loop after that leg's R1 grinder.",
+    "6. COMPULSIVE MEDIAN CONVENTION: median rounds-to-ruin = the average of the two middle order statistics (M = 500 even) with censored sessions (alive at 20,000 rounds) ordered as +infinity; if either middle statistic is censored the median reports '>20000'. Ruin fraction reported alongside.",
+    "7. CASUAL STOP: 'bankroll < F' with integer F-multiples means bankroll_units == 0; a casual R1 session can never stop early (minimum round net -1 unit from start 100 over 100 rounds), which is what makes the Arm-A FUN/wipe tails exact.",
+    "8. AGGREGATION CLAUSE NOT EXERCISED FOR DECISIONS: every decision number comes from per-ticket draws (one rng.random() per ticket, the primary pinned discipline). The permitted per-round aggregated draw (per-prize-level counts by sequential conditional-binomial inversion, one uniform per level) is implemented ONLY for the pre-registered spot check (seed 20260732: 1,000 rounds at b = 100, T2, t = 0.05, aggregated vs per-ticket run as two separate streams from the same seed; per-round mean net and level-count means compared within 4 MC standard errors) and feeds no decision number. Feasibility measured at build time made the clause unnecessary.",
+    "9. T=0 CONTROL POSITION: the control leg rides the pinned t-ascending sweep in first position (0.0 < 0.01); reporting-only per the proposal.",
+    "10. T=0 PRIZE-FAIRNESS CONTROL FORM (the parent's disclosure-8 precedent, transposed): per t=0 leg (every shape x cap x policy x profile), the stopped-sum Wald check |total_prize_units - total_tickets| <= 4 * sqrt(total_tickets * V_g) is asserted, with V_g the exact per-ticket prize variance at t=0 (T1: 1, T2: 3.4, T3: 16 units^2; E[prize] = 1 unit at t=0). Chip-level fairness then follows from per-replication conservation.",
+    "11. AUX SELF-CHECK STREAM: random.Random(20260733) feeds ONLY self-check MC legs — an independent R1-casual corroboration at M = 5,000 per (shape, t) (single leg; the process is cap-independent) against the Arm-A exact tails at 4 MC standard errors — and is never read by any decision number.",
+    "12. DRAW-COUNT ACCOUNTING FORM: the kernel counts every rng.random() call; per leg the count must equal the summed ticket purchases, which must equal total spend in units (exact integer identities); the first draw of each arm must equal Random(seed).random(); and after the sweep a fresh Random(seed) advanced by the total count must produce the arm's next draw (post-sweep sentinel, the parent's precedent)."
+  ],
+  "hand_derived_pins": [
+    {
+      "name": "pin-1: MC-chase seven-round loss-streak wipe (policy MC, T1, t = 0.05, c = 100, casual)",
+      "draws": [0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99, 0.99],
+      "draws_note": "the kernel consumes exactly 100 draws, all equal to 0.99 (the pin replayer supplies a constant-0.99 stream); win threshold p = (1-0.05)/2 = 0.475, so every ticket misses",
+      "derivation": "start 100 units, L=0. Round 1: b = min(2^0, 100, 100) = 1, miss, net -1 -> 99, L=1. Round 2: b = min(2, 100, 99) = 2 -> -2 -> 97, L=2. Round 3: b = 4 -> 93, L=3. Round 4: b = 8 -> 85, L=4. Round 5: b = 16 -> 69, L=5. Round 6: b = 32 -> 37, L=6. Round 7: b = min(2^6 = 64, 100, 37) = 37 -> 0; bankroll_units == 0 stops the session after 7 rounds. Tickets consumed: 1+2+4+8+16+32+37 = 100 exactly. EXPECT: final = 0 chips, rounds = 7, draws = 100, ahead = false, wipe = true.",
+      "expect": {"final_units": 0, "rounds": 7, "draws": 100, "ahead": false, "wipe": true}
+    },
+    {
+      "name": "pin-2: jackpot three-round double under the tight cap (policy RG, T3, t = 0.10, c = 5, grinder)",
+      "draws": [0.0, 0.5, 0.5, 0.5, 0.5, 0.0, 0.0, 0.5, 0.5, 0.5, 0.0, 0.02, 0.5, 0.5, 0.5],
+      "derivation": "thresholds at t = 0.10: cum1 = 0.024*0.9 = 0.0216 (prize 25), cum2 = 0.0216 + 0.08*0.9 = 0.0936 (prize 5); u = 0.0 and u = 0.02 are jackpots (< 0.0216), u = 0.5 misses (>= 0.0936). Start 100 units. Round 1: b = min(5, 100) = 5, draws [0.0, 0.5, 0.5, 0.5, 0.5] -> prizes 25, net +25-5 = +20 -> 120 (< 200, continue). Round 2: b = 5, draws [0.0, 0.0, 0.5, 0.5, 0.5] -> prizes 50, net +45 -> 165 (continue). Round 3: b = 5, draws [0.0, 0.02, 0.5, 0.5, 0.5] -> prizes 50, net +45 -> 210 >= 200: DOUBLE after 3 rounds. Draws consumed: 15. EXPECT: final = 210 units (2,100 chips), rounds = 3, outcome double.",
+      "expect": {"final_units": 210, "rounds": 3, "draws": 15, "outcome": "double"}
+    }
+  ],
+  "boundaries_restated": [
+    "bankroll-RELATIVE: chips normalized to B0; nothing here prices the casino sink against fishing/mining faucet mint in absolute chips/hr — that needs the live earn-rate baseline whose absence VERDICTs 001 and 008 both named and VERDICT 022 restated, and their telemetry caveat applies verbatim: no live fishing/mining earn-rate baseline exists in source, so reward-VALUE conclusions stay provisional until the named telemetry slice (per-spawn/per-claim/per-channel mint + the fishing/mining earn-rate baseline) exists upstream",
+    "i.i.d. tickets: no skill edge; a game's strategy spread folds into the take grid as the REALIZED take against the table's actual player mix",
+    "finite policy set: R1/R5/RG/MC bracket unit, bounded, greedy-compounding, and loss-chasing re-buy behavior; any b-policy is bounded between R1 and RG by the cap — stated, not proven",
+    "inherited bands: FUN P_ahead >= 0.25, SAFE <= 0.05, SINK <= 0.10 are the parent's pre-registered, disputable lines held fixed BY DESIGN for cell-addressable comparison; the full curves ship in results.json so a re-drawn line re-reads, never re-runs",
+    "reporting-only legs that cannot flip the decision: compulsive harm context, t=0 control, the four chained anchors, the expected-loss table",
+    "three prize schedules, not every game: {2F} / {8F,3F,1F} / {25F,5F} bracket the payout-shape axis; a real mixed table lands between brackets and interpolation is on the consumer"
+  ],
+  "honest_null": "a NULL lands as a finalized verdict naming the binding axis, not a re-run request"
+}
