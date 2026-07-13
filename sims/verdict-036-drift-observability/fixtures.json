@@ -1,0 +1,508 @@
+{
+ "source": {
+  "proposal": "idea-engine control/outbox.md PROPOSAL 034 \u00b7 2026-07-13T09:12:01Z \u00b7 status: sim-ready",
+  "proposal_pin": "idea-engine main eea4e5bb3ace87346e4728f0bfc9e075fe7cf17d",
+  "idea_entry": "ideas/trading-strategy/xsec-drift-regime-observability-2026-07-13.md @ idea-engine main eea4e5b (proposal's own blob link @ 5e094c8812dd083ccd5d75ae5ac291c57888efd0)",
+  "rotation_slot": "the standing ORDER 003 VENTURE rotation slot, round 5, trading half (rounds 1-4: P018 books -> V020 null, P022 trading -> V024 null, P026 trading -> V028 approve, P030 books -> V032 reject); follows V024's own first 'What it did NOT settle' line -- which null arm the lane's real data lives in -- sharpened by V028's LIMITS line 'a bar registered for a regime-switching world should be recomputed under it'",
+  "hermeticity": "fully hermetic per the PROPOSAL 017-033 precedent: every fixture below a pinned constant committed with the sim, zero repo/network reads at run time, ZERO real market bars, no dev-candidate evaluated on any data, the owner-gated post-2026 protocol untouched (P022's harvest-hazard clause inherited verbatim as a contract term)"
+ },
+ "stream_model": {
+  "definition": "per-bar Sharpe units: x_t = mu_{s_t} + eps_t, eps_t i.i.d. N(0,1); state D mean delta = 1.15/sqrt(252) (V024's matched arm, its committed basket-Sharpe constant), state Z mean 0; vol model IID only by citation (V024 measured the vol axis inert, spread 0.000 -- the P026 demotion precedent)",
+  "delta": 0.07244319066010188,
+  "p_D": 0.528875393055249,
+  "rho_invariance": "the reduction is exact and rho-invariant BY CONSTRUCTION: V024 pins the matched drift so the basket Sharpe is 1.15 at EVERY rho (mu_d = 1.15 * SIGMA_D * sqrt(rho + (1-rho)/9) / sqrt(252)), so the basket-level detection problem is scale-free -- asserted as a code-level identity (mu_d/(sigma_basket_daily) == delta at rho in {0.0, 0.3, 0.6}) AND as the rho-invariance gate below",
+  "chain": "2-state Markov on {D, Z}, geometric sojourns, per-bar stay probability 1 - 1/S, stationary start pi_D = S_D/(S_D + S_Z)",
+  "T": 2595,
+  "scoring_start": 252,
+  "scored_bars_per_path": 2343,
+  "S_grid": [
+   126,
+   252,
+   1008
+  ],
+  "cells_lexicographic_S_D_then_S_Z": [
+   {
+    "S_D": 126,
+    "S_Z": 126,
+    "pi_D_exact": "1/2",
+    "pi_D": 0.5,
+    "min_pi_exact": "1/2",
+    "min_pi": 0.5,
+    "expected_flips_each_direction": 10.293650793650794,
+    "occupancy_share_tol_z4_M1000": 0.013712691637572988,
+    "flip_count_tol_z4_M1000": 0.28930198965691706,
+    "var_occupancy_count_exact": 79140.75000000013,
+    "var_flip_count_each_dir_exact": 5.2309775762156825
+   },
+   {
+    "S_D": 126,
+    "S_Z": 252,
+    "pi_D_exact": "1/3",
+    "pi_D": 0.3333333333333333,
+    "min_pi_exact": "1/3",
+    "min_pi": 0.3333333333333333,
+    "expected_flips_each_direction": 6.862433862433862,
+    "occupancy_share_tol_z4_M1000": 0.01488132007944434,
+    "flip_count_tol_z4_M1000": 0.24957801512373007,
+    "var_occupancy_count_exact": 93204.66666666673,
+    "var_flip_count_each_dir_exact": 3.893074102068802
+   },
+   {
+    "S_D": 126,
+    "S_Z": 1008,
+    "pi_D_exact": "1/9",
+    "pi_D": 0.1111111111111111,
+    "min_pi_exact": "1/9",
+    "min_pi": 0.1111111111111111,
+    "expected_flips_each_direction": 2.2874779541446206,
+    "occupancy_share_tol_z4_M1000": 0.01140013050258134,
+    "flip_count_tol_z4_M1000": 0.17219163751388167,
+    "var_occupancy_count_exact": 54698.37037056249,
+    "var_flip_count_each_dir_exact": 1.853122501857001
+   },
+   {
+    "S_D": 252,
+    "S_Z": 126,
+    "pi_D_exact": "2/3",
+    "pi_D": 0.6666666666666666,
+    "min_pi_exact": "1/3",
+    "min_pi": 0.3333333333333333,
+    "expected_flips_each_direction": 6.862433862433862,
+    "occupancy_share_tol_z4_M1000": 0.01488132007944434,
+    "flip_count_tol_z4_M1000": 0.24957801512373007,
+    "var_occupancy_count_exact": 93204.66666666673,
+    "var_flip_count_each_dir_exact": 3.893074102068802
+   },
+   {
+    "S_D": 252,
+    "S_Z": 252,
+    "pi_D_exact": "1/2",
+    "pi_D": 0.5,
+    "min_pi_exact": "1/2",
+    "min_pi": 0.5,
+    "expected_flips_each_direction": 5.146825396825397,
+    "occupancy_share_tol_z4_M1000": 0.01918819770881411,
+    "flip_count_tol_z4_M1000": 0.20739144603877396,
+    "var_occupancy_count_exact": 154961.25000824506,
+    "var_flip_count_each_dir_exact": 2.6882007431283554
+   },
+   {
+    "S_D": 252,
+    "S_Z": 1008,
+    "pi_D_exact": "1/5",
+    "pi_D": 0.2,
+    "min_pi_exact": "1/5",
+    "min_pi": 0.2,
+    "expected_flips_each_direction": 2.0587301587301585,
+    "occupancy_share_tol_z4_M1000": 0.0191318432562794,
+    "flip_count_tol_z4_M1000": 0.15228932816685195,
+    "var_occupancy_count_exact": 154052.364996733,
+    "var_flip_count_each_dir_exact": 1.4495024670944452
+   },
+   {
+    "S_D": 1008,
+    "S_Z": 126,
+    "pi_D_exact": "8/9",
+    "pi_D": 0.8888888888888888,
+    "min_pi_exact": "1/9",
+    "min_pi": 0.1111111111111111,
+    "expected_flips_each_direction": 2.2874779541446206,
+    "occupancy_share_tol_z4_M1000": 0.011400130502581343,
+    "flip_count_tol_z4_M1000": 0.17219163751388167,
+    "var_occupancy_count_exact": 54698.37037056251,
+    "var_flip_count_each_dir_exact": 1.853122501857001
+   },
+   {
+    "S_D": 1008,
+    "S_Z": 252,
+    "pi_D_exact": "4/5",
+    "pi_D": 0.8,
+    "min_pi_exact": "1/5",
+    "min_pi": 0.2,
+    "expected_flips_each_direction": 2.0587301587301585,
+    "occupancy_share_tol_z4_M1000": 0.019131843256279396,
+    "flip_count_tol_z4_M1000": 0.15228932816685195,
+    "var_occupancy_count_exact": 154052.36499673294,
+    "var_flip_count_each_dir_exact": 1.4495024670944452
+   },
+   {
+    "S_D": 1008,
+    "S_Z": 1008,
+    "pi_D_exact": "1/2",
+    "pi_D": 0.5,
+    "min_pi_exact": "1/2",
+    "min_pi": 0.5,
+    "expected_flips_each_direction": 1.2867063492063493,
+    "occupancy_share_tol_z4_M1000": 0.03539469077291362,
+    "flip_count_tol_z4_M1000": 0.11077843872961933,
+    "var_occupancy_count_exact": 527267.4802555314,
+    "var_flip_count_each_dir_exact": 0.7669914054607514
+   }
+  ]
+ },
+ "detectors": {
+  "families": "statistic in {SR_w = (sqrt(252)/w) * sum_{i=t-w+1..t} x_i (trailing w-bar annualized Sharpe, PINNED vol normalizer = the true unit vol; the realized-sd variant rides a reporting leg), UP_w = trailing w-bar up-share (#{x_i > 0}/w)} x window w in {63, 126, 252} x threshold position lambda in {0.3, 0.5, 0.7} -- 18 pre-registered variants, all evaluated on the same paths",
+  "SR_threshold": "h = lambda * 1.15",
+  "UP_threshold": "u = 1/2 + lambda * (p_D - 1/2); classify drift-on iff count >= ceil(w*u) (w*u is never an integer at the registered grid -- asserted in-sim, so >= vs > is immaterial)",
+  "classify": "drift-on iff statistic >= threshold, evaluated at every scored bar t in [252, T) against the true state s_t",
+  "variants_pure_window_OC_pinned": [
+   {
+    "stat": "SR",
+    "w": 63,
+    "lam": 0.3,
+    "threshold": 0.345,
+    "k_up": null,
+    "TPR_inf": 0.6563419558184976,
+    "FPR_inf": 0.4315222306800767,
+    "BA_inf": 0.6124098625692104,
+    "E_inf_balanced": 0.3875901374307895
+   },
+   {
+    "stat": "SR",
+    "w": 63,
+    "lam": 0.5,
+    "threshold": 0.575,
+    "k_up": null,
+    "TPR_inf": 0.613135249031273,
+    "FPR_inf": 0.38686475096872697,
+    "BA_inf": 0.6131352490312731,
+    "E_inf_balanced": 0.38686475096872697
+   },
+   {
+    "stat": "SR",
+    "w": 63,
+    "lam": 0.7,
+    "threshold": 0.8049999999999999,
+    "k_up": null,
+    "TPR_inf": 0.5684777693199232,
+    "FPR_inf": 0.34365804418150236,
+    "BA_inf": 0.6124098625692105,
+    "E_inf_balanced": 0.38759013743078957
+   },
+   {
+    "stat": "SR",
+    "w": 126,
+    "lam": 0.3,
+    "threshold": 0.345,
+    "k_up": null,
+    "TPR_inf": 0.7153969005208877,
+    "FPR_inf": 0.40363405981334527,
+    "BA_inf": 0.6558814203537713,
+    "E_inf_balanced": 0.34411857964622883
+   },
+   {
+    "stat": "SR",
+    "w": 126,
+    "lam": 0.5,
+    "threshold": 0.575,
+    "k_up": null,
+    "TPR_inf": 0.6578441059030129,
+    "FPR_inf": 0.34215589409698716,
+    "BA_inf": 0.6578441059030129,
+    "E_inf_balanced": 0.3421558940969871
+   },
+   {
+    "stat": "SR",
+    "w": 126,
+    "lam": 0.7,
+    "threshold": 0.8049999999999999,
+    "k_up": null,
+    "TPR_inf": 0.5963659401866548,
+    "FPR_inf": 0.28460309947911233,
+    "BA_inf": 0.6558814203537713,
+    "E_inf_balanced": 0.3441185796462288
+   },
+   {
+    "stat": "SR",
+    "w": 252,
+    "lam": 0.3,
+    "threshold": 0.345,
+    "k_up": null,
+    "TPR_inf": 0.7895901601064363,
+    "FPR_inf": 0.3650471853658016,
+    "BA_inf": 0.7122714873703173,
+    "E_inf_balanced": 0.28772851262968263
+   },
+   {
+    "stat": "SR",
+    "w": 252,
+    "lam": 0.5,
+    "threshold": 0.575,
+    "k_up": null,
+    "TPR_inf": 0.7173543515027994,
+    "FPR_inf": 0.2826456484972007,
+    "BA_inf": 0.7173543515027994,
+    "E_inf_balanced": 0.28264564849720064
+   },
+   {
+    "stat": "SR",
+    "w": 252,
+    "lam": 0.7,
+    "threshold": 0.8049999999999999,
+    "k_up": null,
+    "TPR_inf": 0.6349528146341984,
+    "FPR_inf": 0.2104098398935637,
+    "BA_inf": 0.7122714873703174,
+    "E_inf_balanced": 0.2877285126296827
+   },
+   {
+    "stat": "UP",
+    "w": 63,
+    "lam": 0.3,
+    "threshold": 0.5086626179165747,
+    "k_up": 33,
+    "TPR_inf": 0.582707742898725,
+    "FPR_inf": 0.4006532462520332,
+    "BA_inf": 0.5910272483233459,
+    "E_inf_balanced": 0.40897275167665414
+   },
+   {
+    "stat": "UP",
+    "w": 63,
+    "lam": 0.5,
+    "threshold": 0.5144376965276245,
+    "k_up": 33,
+    "TPR_inf": 0.582707742898725,
+    "FPR_inf": 0.4006532462520332,
+    "BA_inf": 0.5910272483233459,
+    "E_inf_balanced": 0.40897275167665414
+   },
+   {
+    "stat": "UP",
+    "w": 63,
+    "lam": 0.7,
+    "threshold": 0.5202127751386743,
+    "k_up": 33,
+    "TPR_inf": 0.582707742898725,
+    "FPR_inf": 0.4006532462520332,
+    "BA_inf": 0.5910272483233459,
+    "E_inf_balanced": 0.40897275167665414
+   },
+   {
+    "stat": "UP",
+    "w": 126,
+    "lam": 0.3,
+    "threshold": 0.5086626179165747,
+    "k_up": 65,
+    "TPR_inf": 0.6490961907982695,
+    "FPR_inf": 0.394697972344072,
+    "BA_inf": 0.6271991092270988,
+    "E_inf_balanced": 0.37280089077290124
+   },
+   {
+    "stat": "UP",
+    "w": 126,
+    "lam": 0.5,
+    "threshold": 0.5144376965276245,
+    "k_up": 65,
+    "TPR_inf": 0.6490961907982695,
+    "FPR_inf": 0.394697972344072,
+    "BA_inf": 0.6271991092270988,
+    "E_inf_balanced": 0.37280089077290124
+   },
+   {
+    "stat": "UP",
+    "w": 126,
+    "lam": 0.7,
+    "threshold": 0.5202127751386743,
+    "k_up": 66,
+    "TPR_inf": 0.5810877196054708,
+    "FPR_inf": 0.32808911080171477,
+    "BA_inf": 0.6264993044018781,
+    "E_inf_balanced": 0.373500695598122
+   },
+   {
+    "stat": "UP",
+    "w": 252,
+    "lam": 0.3,
+    "threshold": 0.5086626179165747,
+    "k_up": 129,
+    "TPR_inf": 0.7268947946434368,
+    "FPR_inf": 0.3764279121379387,
+    "BA_inf": 0.675233441252749,
+    "E_inf_balanced": 0.32476655874725097
+   },
+   {
+    "stat": "UP",
+    "w": 252,
+    "lam": 0.5,
+    "threshold": 0.5144376965276245,
+    "k_up": 130,
+    "TPR_inf": 0.6834685558173322,
+    "FPR_inf": 0.32966432830446607,
+    "BA_inf": 0.676902113756433,
+    "E_inf_balanced": 0.32309788624356695
+   },
+   {
+    "stat": "UP",
+    "w": 252,
+    "lam": 0.7,
+    "threshold": 0.5202127751386743,
+    "k_up": 132,
+    "TPR_inf": 0.5891229085124705,
+    "FPR_inf": 0.24421300914334823,
+    "BA_inf": 0.6724549496845611,
+    "E_inf_balanced": 0.32754505031543885
+   }
+  ],
+  "up_discreteness_note": "the exact ceil thresholds collapse some UP variants: k = 33 at w=63 for ALL lambda, k = 65 at w=126 for lambda in {0.3, 0.5} -- a genuine property of the registered discrete detector, disclosed; the collapsed variants remain distinct registered rows with identical behavior"
+ },
+ "metrics": {
+  "E": "misclassified scored bars / scored bars, pooled over the M paths of a cell (equal bar weights)",
+  "dE_oracle": "min(pi_D, pi_Z) - E, the EXACT best-static-prior baseline (the V032 beat-the-best-static discipline); win iff dE_oracle >= +0.10",
+  "dE_always": "pi_Z - E (the lane's de-facto always-trust rule) -- reporting-only",
+  "also_shipped": "TPR/TNR/BA per (cell, variant) pooled state-conditional; the exact pure-window per-cell error table pi_D*(1-TPR_inf) + pi_Z*FPR_inf (reporting)"
+ },
+ "decision_rule": {
+  "bands_registered_before_any_code": "in the idea file, verbatim; evaluated in this order",
+  "REJECT": "('cheap drift-gating never materially pays -- build no lane tooling; the round-3 registration carries the quantified unhedgeable-degradation caveat, with the exact pure-window ceiling table as the evidence row') iff NO variant achieves dE_oracle >= +0.10 in >= 3 of 9 cells; checked FIRST",
+  "APPROVE": "('ship the drift-conditional trust line') iff EXISTS one variant -- the SAME (statistic, w, lambda) across all cells -- with dE_oracle >= +0.10 in >= 7 of 9 cells, stability-reproduced",
+  "NULL": "anything else -- a legitimate and expected-plausible outcome: the per-cell frontier table IS the citable pin, flip axes named via per-axis pass shares (expected candidates: the occupancy skew |pi_D - 1/2| and the min-sojourn axis), the CONDITIONAL rule is the citable finding",
+  "win_margin": 0.1,
+  "reject_bar_cells": 3,
+  "approve_bar_cells": 7,
+  "stability_gate": "the seed-20260773 leg (M=250, full 9x18 recompute) must reproduce the SAME ruling -- a gate for every outcome"
+ },
+ "legs_and_seeds": {
+  "seed_registry_note": "seeds 20260772-20260775 allocated strictly above the PROPOSAL 033 registry high-water 20260771",
+  "main": {
+   "seed": 20260772,
+   "M_per_cell": 1000
+  },
+  "stability": {
+   "seed": 20260773,
+   "M_per_cell": 250
+  },
+  "reporting": {
+   "seed": 20260774,
+   "frozen_M_per_state": 500,
+   "occupancy_M_per_point": 400
+  },
+  "aux": {
+   "seed": 20260775,
+   "role": "self-check stream, never read by any decision number: the rho-invariance leg (M=50)"
+  },
+  "draw_order": "pinned: cells lexicographic S_D asc then S_Z asc, paths sequential; per path FIRST the chain pass (1 uniform for the stationary start at t=0, then T-1 transition uniforms), THEN the return pass (T normals, one uniform each via NormalDist.inv_cdf -- a drawn 0.0 raises = run invalid); frozen legs draw the return pass only (no chain uniforms); the frozen-D then frozen-Z legs ride ONE fresh Random(20260774) stream sequentially; the occupancy leg rides its OWN fresh Random(20260774) stream (the V024 fresh-seed reporting-leg reuse precedent); lag/realized-sd/dE_always ride the main-leg paths and draw nothing",
+  "draws_per_switching_path": 5190,
+  "draws_per_frozen_path": 2595,
+  "sentinels": {
+   "main": 46710000,
+   "stability": 11677500,
+   "frozen": 2595000,
+   "occupancy": 51900000,
+   "rho_invariance": 259500
+  }
+ },
+ "gates_run_invalid_on_any_failure": {
+  "breach_protocol_pinned_before_any_draw": "any gate breach exits 1 and invalidates the run; no tolerance is adjusted post-hoc; a breached run is reported as breached, never re-run against widened bands (the V027/V031 pipeline lesson with V028's gate-calibration lesson applied at design time)",
+  "frozen_state": {
+   "spec": "chain held in D (M=500), then held in Z (M=500), seed 20260774: the measured per-variant classified-share must reproduce Arm A's exact TPR (frozen-D) / FPR (frozen-Z) within the pre-pinned tolerances below -- 36 gate points, calibrated FAMILYWISE before any run",
+   "tolerance_arithmetic": "tol = 4.0 * sqrt(p*(1-p)*(2w-1) / n_scored / M_frozen) with p = the Arm-A exact rate, n_scored = 2343: the per-path variance of the mean classification over n autocorrelated bars is bounded above by p*(1-p)*(2w-1)/n (indicator covariances vanish beyond window overlap |lag| >= w and are <= p*(1-p) inside it), so each tolerance is >= 4 sigma of a bound >= the true SE (hence >= 2.5 sigma of the registered-M estimator, conservatively); familywise false-fail across the 36 points < 36 * 6.4e-5 ~ 0.23% even at the bound, smaller in truth",
+   "tolerances": {
+    "SR_w63_lam0.3_D": 0.019623306709080125,
+    "SR_w63_lam0.3_Z": 0.020464549158803826,
+    "SR_w63_lam0.5_D": 0.020123409921002703,
+    "SR_w63_lam0.5_Z": 0.020123409921002703,
+    "SR_w63_lam0.7_D": 0.020464549158803826,
+    "SR_w63_lam0.7_Z": 0.019623306709080125,
+    "SR_w126_lam0.3_D": 0.026419162457051244,
+    "SR_w126_lam0.3_Z": 0.028726057446519866,
+    "SR_w126_lam0.5_D": 0.027777887353283584,
+    "SR_w126_lam0.5_Z": 0.027777887353283584,
+    "SR_w126_lam0.7_D": 0.028726057446519862,
+    "SR_w126_lam0.7_Z": 0.026419162457051244,
+    "SR_w252_lam0.3_D": 0.0337836620542831,
+    "SR_w252_lam0.3_Z": 0.039904150140785216,
+    "SR_w252_lam0.5_D": 0.037321651888524765,
+    "SR_w252_lam0.5_Z": 0.03732165188852477,
+    "SR_w252_lam0.7_D": 0.039904150140785216,
+    "SR_w252_lam0.7_Z": 0.033783662054283105,
+    "UP_w63_lam0.3_D": 0.02037461490654511,
+    "UP_w63_lam0.3_Z": 0.02024730677230385,
+    "UP_w63_lam0.5_D": 0.02037461490654511,
+    "UP_w63_lam0.5_Z": 0.02024730677230385,
+    "UP_w63_lam0.7_D": 0.02037461490654511,
+    "UP_w63_lam0.7_Z": 0.02024730677230385,
+    "UP_w126_lam0.3_D": 0.027943080197418233,
+    "UP_w126_lam0.3_Z": 0.02861832541210035,
+    "UP_w126_lam0.5_D": 0.027943080197418233,
+    "UP_w126_lam0.5_Z": 0.02861832541210035,
+    "UP_w126_lam0.7_D": 0.028887376396740962,
+    "UP_w126_lam0.7_Z": 0.02749017177478969,
+    "UP_w252_lam0.3_D": 0.036929515143057166,
+    "UP_w252_lam0.3_Z": 0.04015661348261253,
+    "UP_w252_lam0.5_D": 0.03855143393628149,
+    "UP_w252_lam0.5_Z": 0.03896323258949513,
+    "UP_w252_lam0.7_D": 0.04077854790087285,
+    "UP_w252_lam0.7_Z": 0.03560876741563964
+   }
+  },
+  "occupancy_and_flips": {
+   "spec": "main leg, per cell: |mean occupancy share - pi_D| <= occupancy_share_tol_z4_M1000 AND |mean flip count per direction - (T-1)/(S_D+S_Z)| <= flip_count_tol_z4_M1000 (both directions) -- 27 gate points at z=4 with EXACT closed-form variances pinned per cell above",
+   "variance_arithmetic": "occupancy count: Var = pi_D*pi_Z*(T + 2*sum_{g=1..T-1} (T-g)*phi^g), phi = 1 - 1/S_D - 1/S_Z; flip count per direction: indicators X_t = 1{s_{t-1}=a, s_t=b} have E = p = 1/(S_D+S_Z), Cov(X_t, X_{t+g}) = -p^2 * phi^(g-1), so Var = N*p*(1-p) - 2*p^2 * sum_{g=1..N-1} (N-g)*phi^(g-1), N = T-1; the runner recomputes both from these formulas and asserts equality with the pinned values"
+  },
+  "swap_identity": {
+   "arm_A_exact": "SR family: TPR(w, lambda) == TNR(w, 1-lambda) and FPR(w, lambda) == FNR(w, 1-lambda) asserted to 1e-12 on the closed forms (the Gaussian reflection x -> delta - x swaps the two states exactly and maps h(lambda) to h(1-lambda)); UP family: the exact mirror identity P(Bin(w,p) >= k) == P(Bin(w,1-p) <= w-k) asserted to 1e-12 at every registered (w, k) via TWO independently written binomial routines (upper-tail sum vs mirrored lower-CDF sum) -- the exact-in-Arm-A form of the swap for the discrete family, whose confusion transpose holds PATHWISE under the down-share orientation (classify-Z at 1-lambda == NOT classify-D at lambda, tie-free because w*u is never integer, asserted)",
+   "arm_S_statistical": "SR family only (the discrete UP family's cross-cell transpose is broken by ceil-threshold asymmetry between Bin(w,p_D) and Bin(w,1/2) -- the disclosed reason the MC swap gate is scoped to SR): pooled TPR at (cell (a,b), lambda) must equal pooled TNR at (cell (b,a), 1-lambda) within z=4.5 of the combined cluster-robust SE (per-path residual formula; paired residuals when (a,b)==(b,a)); 9 SR variants x 9 unordered cell pairs x 2 identities = 162 gate points, familywise false-fail < 162 * 3.4e-6 ~ 0.06%",
+   "swap_z": 4.5
+  },
+  "rho_invariance": {
+   "spec": "aux seed 20260775, cell (252,252), M=50: the same eps/chain draws rendered at the rho=0.0 and rho=0.6 basket-vol scales (sigma_ann(rho) = 0.30*sqrt(rho + (1-rho)/9), V024's formula; daily = /sqrt(252)), classified via returns/sigma_pinned, must produce BYTE-IDENTICAL classification bit-strings to the unscaled Sharpe-unit classifications, all 18 variants, every scored bar",
+   "sigma_ann_rho0": 0.09999999999999999,
+   "sigma_ann_rho06": 0.2408318915758459
+  },
+  "v024_anchors": {
+   "pin": "sims/verdict-024-keep-margins-noise/results.json @ sim-lab cd47c0626fb01211fc214125fdbc83b95b8aef5f, main-leg cells (IID, rho=0.3): sbh=0.0 -> q99(G6) = 0.6041012959180625; sbh=1.15 -> q99(G6) = 0.36690217335833175 (machine-read, not transcribed from prose)",
+   "anchor_q99_phi0": 0.6041012959180625,
+   "anchor_q99_phi1": 0.36690217335833175,
+   "gate": "tail-count anchors (the V028 calibrated tail-count precedent): N_exc(phi) = #{Delta_max(G6) values > anchor} among the M=400 panels; gate PASS iff N_exc(phi=1) <= 12 AND N_exc(phi=0) <= 12 (lower bound 0 is vacuous, disclosed; the complementary error direction is caught by the OTHER endpoint: drift wrongly absent at phi=1 inflates N_exc(phi=1) to ~O(60), drift wrongly present at phi=0 inflates N_exc at the phi=1 anchor and collapses q99(phi=0))",
+   "tolerance_arithmetic": "the parent q99 is the 990th order statistic of M=1000, so the true tail prob beyond it is ~Beta(11, 990): mean 11/1001 ~ 0.011, SD ~ 0.0033; child count SD = sqrt(400^2 * 0.0033^2 + 400*0.011*0.989) ~ 2.47; band = round(4.4 + 3*2.47) -> 12 (z=3 per point, 2 points, familywise ~0.5%)"
+  },
+  "twin_g6_evaluator": "an independently written G6 evaluator (direct bar sums, statistics-module mean/stdev, explicit turnover sets -- the V024 twin_eval pattern restricted to G6) must agree with the leg evaluator within 1e-9 on the first panel of every phi point",
+  "twin_decision_evaluators": "two independently written decision evaluators -- evaluator A in pure integer arithmetic (win iff 10*(min_num*N_scored - mis*min_den) >= min_den*N_scored, with min(pi_D,pi_Z) = min_num/min_den exact and mis, N_scored integers), evaluator B in fractions.Fraction end to end (win iff Fraction(min_num,min_den) - Fraction(mis,N_scored) >= Fraction(1,10)) -- must agree on every (cell, variant) win flag, every per-variant cell count, and the ruling, on the main AND stability legs",
+  "byte_identity": "stdout + results.json byte-identical across two full process runs by external diff; CPython minor pinned and asserted == 3.11",
+  "determinism_replay": "first path of every leg regenerated from a captured RNG state must reproduce identical classifications/statistics (the V024 replay pattern)"
+ },
+ "occupancy_graded_bar_leg_reporting_only": {
+  "spec": "V024's committed panel machinery re-used at its IID/rho=0.3 cell -- J=9, T=2595, period 21 bars, 123 periods, warmup 12, eval periods 12..122 (111), sigma_ann=0.30, cost 10bp per side, the lane's R3 rule verbatim (best-of-6: G6 = {(L,k,mom,eq): L in {63,126,252}, k in {2,3}}, Delta = strategy Sharpe - basket Sharpe, monthly x sqrt(12)), M=400 panels per point, seed 20260774; path-level drift occupancy phi_D in {0, 0.25, 0.5, 0.75, 1} as ONE LEADING D-BLOCK covering the first ceil(phi_D * T) bars (mu_d = 1.15 * (0.30/sqrt(252)) * sqrt(0.3 + 0.7/9) / sqrt(252) on block bars, 0 after); measuring q99(Delta_max(G6)) vs occupancy with the chained anchors above; q99 = the left-continuous empirical quantile sorted[ceil(0.99*M)-1] (V024's convention)",
+  "question_it_answers": "does the selection bar move monotonically between the two committed arms, so a partial-occupancy regime reading CALIBRATES the bar by interpolation rather than demanding a fresh null sweep per reading -- reporting-only, cannot flip the decision",
+  "phi_grid": [
+   0,
+   0.25,
+   0.5,
+   0.75,
+   1
+  ],
+  "M_per_point": 400
+ },
+ "reporting_only_legs_cannot_flip": [
+  "post-flip detection-lag tables: per (cell, variant, direction D->Z and Z->D), lag = first scored bar t >= f (flip at f in [252, T)) with classification == the new state, censored at the next flip or path end; median and p90 over collected lags, censor fractions shipped",
+  "dE_always = pi_Z - E vs the lane's de-facto always-trust rule",
+  "the realized-sd SR variant: same paths, w-bar realized sample sd (ddof=1) in the normalizer -- the vol-estimation price shipped as a delta-BA column per (cell, w, lambda)",
+  "the occupancy-graded bar leg above",
+  "the exact pure-window per-cell error table and the per-axis pass shares"
+ ],
+ "intake_time_decisions_disclosed": [
+  "D1 window convention: the statistic at bar t uses bars [t-w+1, t] inclusive and classifies the state s_t; scoring t in [252, T) (0-indexed), so every variant is defined at every scored bar (largest w = 252 needs t >= 251)",
+  "D2 up-bar: x_i > 0 counts as up (P(x>0|D) = Phi(delta) = p_D exactly, P(x>0|Z) = 1/2; ties have measure zero)",
+  "D3 UP threshold in integer form: count >= ceil(w*u), asserted non-integer w*u at every registered (w, lambda)",
+  "D4 E pooling: misclassified bars pooled over all M paths of a cell (equal bar weights); TPR/FPR pooled state-conditional the same way",
+  "D5 swap-gate scope: the Arm-S statistical transpose is scoped to the SR family with the mathematical reason disclosed (UP ceil-threshold asymmetry between Bin(w,p_D) and Bin(w,1/2) breaks the cross-cell transpose by O(discreteness) >> MC SE); the UP family's swap content rides the exact Arm-A mirror identity + the tie-free pathwise complement assertion instead",
+  "D6 rho-invariance leg at M=50 on cell (252,252) (the center cell), aux seed 20260775 -- an identity check, not an estimator, so M is a cost choice, disclosed",
+  "D7 lag conventions: only flips at f in [252, T) enter; lag 0 allowed (detector already reading the new state at the flip bar); censoring at min(next flip, T); quantiles over the pooled lag list per (cell, variant, direction) by the left-continuous convention; cells/directions with zero uncensored lags report null",
+  "D8 occupancy-leg layout: the D-block LEADS (first ceil(phi*T) bars) -- one block, not interleaved, per the proposal's 'one leading D-block'; the G6-only evaluator is V024's eval_panel trimmed to the 6 G6 configs (identical arithmetic: same prefix sums, same tie rule 'ties by index', same turnover charge, same Sharpe forms), twin-gated per phi point",
+  "D9 ceiling-table E_inf = the balanced error 1 - BA_inf (occupancy-free, per variant); the occupancy-weighted pure-window error table ships per (cell, variant) separately",
+  "D10 realized-sd normalizer: sample sd over the window with ddof=1; realized-sd variants are reporting-only and share the pinned thresholds h = lambda*1.15",
+  "D11 decision evaluator A uses pure integer arithmetic on (mis, N_scored, min_pi as exact integer ratio); evaluator B uses fractions.Fraction end to end; both written independently",
+  "D12 frozen legs hold the chain by construction (no chain uniforms drawn) -- the pinned draw order above; their scored window is identical to the main leg",
+  "D13 stability leg computes decision numbers only (no lag/realized-sd/swap legs) -- its role is ruling reproduction at the registered M=250",
+  "D14 stdout floats formatted %.6f/%.4f fixed-width; results.json floats raw repr via json.dump -- byte-identity is over both",
+  "D15 the scratchpad pilot: the runner was debugged on throwaway seeds (990101/990102) at reduced M in the session scratchpad before the committed runs; no committed number was read from the pilot (the V032 disclosure precedent)"
+ ],
+ "model_basis": {
+  "declared_assumptions": "Gaussian i.i.d. innovations around a 2-state Markov drift -- the two states are V024's own two committed arms; geometric sojourns are the neutral persistence choice; IID vol by V024's measured inertness; no fat tails, no drift levels between 0 and 1.15 (the two-arm world is inherited, not asserted -- the two-point gap is the HARDEST fixed-gap version of the distinguishability question, stated)",
+  "single_most_likely_to_flip_alternative": "the lane's REAL sojourn and occupancy structure -- deliberately the same measurement as the NULL-case live probe (the pinned detector run once on the lane's committed dev bars); second-order: smooth drift decay between arms would make every threshold detector look BETTER than the two-point world's worst case near the boundary",
+  "oracle_baseline_conservatism": "dE_oracle compares against min(pi_D, pi_Z), a prior the lane cannot know without the very observable under test -- REJECT (nothing beats even the oracle) is the strong claim; the dE_always table ships so a reader can re-weigh; the registered ruling stays on the oracle bar (the V032 discipline)",
+  "out_of_scope_by_design": "composite/multi-scale detectors (CUSUM, likelihood-ratio filters -- the REJECT-case rescue family, carrying its own sim if routed); trust semantics for the weakest margin (+0.130 stays promotion-weightless per V024 under EVERY regime reading -- restated, not re-run); transaction/allocation changes on regime flips (trust gating only -- nothing here trades)"
+ }
+}
