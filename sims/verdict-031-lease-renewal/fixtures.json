@@ -60,7 +60,7 @@
         "leg H24: H_c = 24 h — N' = 12 / 2 / 1",
         "leg D02: p_d = 0.02 on the main machinery",
         "leg D30: p_d = 0.30 on the main machinery",
-        "leg E: empirical-anchor leg AT the quoted multisets — per claim, H_c drawn uniformly from the 11-value lifetime multiset, wake gaps i.i.d. uniform from the 19-value heartbeat-gap multiset, overdue grace = the gap multiset median 1.08 h (pinned), otherwise the leg-J conventions; per theta_r only (no p_w/p_f axes — the multisets ARE the cadence); reporting-only brackets, not fits (the P019 precedent)"
+        "leg E: empirical-anchor leg AT the quoted multisets — per claim, H_c drawn uniformly from the 11-value lifetime multiset, wake gaps i.i.d. uniform from the 19-value heartbeat-gap multiset, overdue grace = the gap multiset median 1.08 h (pinned), forget probability pinned at the typical column p_f = 0.10 (the multisets carry no compliance information — pinned here BEFORE the runner was written), otherwise the leg-J conventions; per theta_r only (no p_w/p_f axes — the multisets ARE the cadence); reporting-only brackets, not fits (the P019 precedent)"
       ],
       "C48_column_note": "the C48 reporting column is computed EXACTLY by the Arm A machinery at lambda_c = 1/48 (seedless — it draws nothing from this stream), with V027's distribution-free identity restated by citation: p95 orphan latency >= ln(20)/lambda_c = 143.795 h > 120 h at lambda_c = 1/48 for ANY renewal-age distribution, because latency = (theta_r - A)+ + Exp(lambda_c) stochastically dominates Exp(lambda_c) — contender-side detection latency, which NO signal design can shrink"
     },
