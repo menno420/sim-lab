@@ -1,0 +1,227 @@
+{
+  "_readme": "VERDICT 058 fixtures — every registered constant, copied verbatim from the PROPOSAL 047 block (idea-engine control/outbox.md @ main 2808b16, landed via idea-engine PR #350) and the idea doc ideas/superbot/creature-rarity-skill-counter-2026-07-13.md @ the same pin; engine constants and all 24 quoted catalog rows (18 used: 6 Epics + 12 Commons; plus the 6 Rares for the gradient leg) verified verbatim against menno420/superbot @ 1cc553651a19016a4b1439f048b49e7baa28dfb1 (disbot/utils/creatures/battle.py, creature.py, encounters.py, disbot/data/creatures/creatures.json). Committed BEFORE the runner (git-trail discipline). The runner reads ONLY this file.",
+  "verdict": "VERDICT 058",
+  "intake": "INTAKE 047",
+  "proposal_header_verbatim": "## PROPOSAL 047 · 2026-07-13T21:28:33Z · status: sim-ready",
+  "proposal_source": "idea-engine control/outbox.md @ main 2808b16 (PR #350); idea doc https://github.com/menno420/idea-engine/blob/66a05b1f3c8aa095765ce651289d65cc3c267649/ideas/superbot/creature-rarity-skill-counter-2026-07-13.md",
+  "harvest_source": "menno420/superbot @ 1cc553651a19016a4b1439f048b49e7baa28dfb1",
+  "harvested_lines_verbatim": {
+    "rarity_budget_comment": "Total stat budget per rarity — rarer = stronger, but level + type + move choice still let a Common counter an Epic.",
+    "module_docstring_line": "Flat-level PvP makes **types + team-building + ordering + move choice** decide, so it rewards *skill*, not *time spent*."
+  },
+  "element_cycle": ["Ember", "Tide", "Bramble", "Spark", "Stone", "Gust"],
+  "normal_type": "Normal",
+  "strong_mult": 1.5,
+  "weak_mult": 0.67,
+  "neutral_mult": 1.0,
+  "effectiveness_rule": "attack element strong (1.5) vs the next two on the cycle (delta=(d-a)%6 in {1,2}), weak (0.67) vs the previous two (delta in {4,5}), neutral (1.0) vs itself and its opposite; Normal always 1.0",
+  "effectiveness_hand_table_F1": {
+    "_order": "rows = attack type (6 elements + Normal), columns = defender element in element_cycle order",
+    "Ember":   [1.0, 1.5, 1.5, 1.0, 0.67, 0.67],
+    "Tide":    [0.67, 1.0, 1.5, 1.5, 1.0, 0.67],
+    "Bramble": [0.67, 0.67, 1.0, 1.5, 1.5, 1.0],
+    "Spark":   [1.0, 0.67, 0.67, 1.0, 1.5, 1.5],
+    "Stone":   [1.5, 1.0, 0.67, 0.67, 1.0, 1.5],
+    "Gust":    [1.5, 1.5, 1.0, 0.67, 0.67, 1.0],
+    "Normal":  [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  },
+  "rarity_budget": {"Common": 200, "Uncommon": 230, "Rare": 260, "Epic": 300},
+  "rarity_budget_spread_gate": "300/200 == 3/2 exact",
+  "archetype_weights": {
+    "attacker": [0.9, 1.3, 0.7, 1.1],
+    "tank": [1.3, 0.8, 1.3, 0.6],
+    "balanced": [1.0, 1.0, 1.0, 1.0],
+    "speedster": [0.8, 1.2, 0.7, 1.3]
+  },
+  "stat_derivation": "round(budget * weight / total) per stat (hp, atk, def, spd), total = hp_w + atk_w + df_w + spd_w, Python-3 banker's rounding on the float expression exactly as battle.py derive_stats computes it",
+  "derived_stats_gate_F2": {
+    "_note": "the six used (rarity, archetype) pairs, hand-pinned incl. the committed tank-Epic 301 overshoot",
+    "Common/balanced": [50, 50, 50, 50],
+    "Common/attacker": [45, 65, 35, 55],
+    "Epic/tank": [98, 60, 98, 45],
+    "Epic/balanced": [75, 75, 75, 75],
+    "Epic/attacker": [68, 98, 52, 82],
+    "Epic/speedster": [60, 90, 52, 98]
+  },
+  "epic_tank_total_overshoot": 301,
+  "level_scaling": {
+    "hp_per_lvl": 0.06,
+    "off_per_lvl": 0.035,
+    "normalized_level": 50,
+    "max_hp": "round(hp * (1 + hp_per_lvl * (level - 1)))",
+    "off_stat": "stat * (1 + off_per_lvl * (level - 1)) * (1 + stage)",
+    "gate_F3": {
+      "hp_mult_at_50": 3.94,
+      "off_mult_at_50": 2.715,
+      "balanced_common_max_hp_at_50": 197,
+      "tank_epic_max_hp_at_50": 386,
+      "atk_df_level_invariance": "60/50 = 1.2 at any level (the off mult cancels in every atk/df ratio); asserted numerically at levels 5 and 50 within 1e-12 of 6/5"
+    }
+  },
+  "moves": {
+    "normal_power": 9,
+    "element_power": 12,
+    "buff_step": 0.25,
+    "buff_cap": 0.5,
+    "team_size": 6,
+    "set": "Strike (Normal, power 9) / element signature (power 12, type chart applies) / Bulwark (+DEF) / Onslaught (+ATK)"
+  },
+  "damage_formula": "max(1, round((atk / max(1.0, df)) * power * mult * jitter)), jitter ~ rng.uniform(0.85, 1.0); expected_damage uses the constant 0.925 in place of jitter",
+  "jitter_bounds": [0.85, 1.0],
+  "expected_damage_constant": 0.925,
+  "battle_rules": {
+    "structure": "6v6 lead-until-faint; each turn both leads act in SPD order",
+    "tie": "exact SPD tie resolved by one rng.random() < 0.5 coin flip per turn (a-first if < 0.5)",
+    "ko_denial": "a KO denies the victim's action that turn (engine: `if actor.fainted or target.fainted: continue`)",
+    "stall_guard": 5000,
+    "stall_guard_semantics": "any battle reaching it invalidates the run (unmodeled territory); the engine awards the higher remaining-HP side",
+    "winner_rule": "loop exits when either index reaches team length; winner 'a' iff the b index is exhausted (engine: 'a' if ib >= len(team_b) else 'b')"
+  },
+  "catalog_rows_verbatim": {
+    "_note": "quoted verbatim @ superbot 1cc5536 disbot/data/creatures/creatures.json — [element, rarity, archetype]",
+    "Infernox": ["Ember", "Epic", "tank"],
+    "Abysscale": ["Tide", "Epic", "balanced"],
+    "Verdankor": ["Bramble", "Epic", "speedster"],
+    "Stormfang": ["Spark", "Epic", "attacker"],
+    "Tectonix": ["Stone", "Epic", "balanced"],
+    "Tempestra": ["Gust", "Epic", "speedster"],
+    "Cindling": ["Ember", "Common", "balanced"],
+    "Rippling": ["Tide", "Common", "balanced"],
+    "Sproutle": ["Bramble", "Common", "balanced"],
+    "Voltkit": ["Spark", "Common", "balanced"],
+    "Pebblet": ["Stone", "Common", "balanced"],
+    "Zephyrl": ["Gust", "Common", "balanced"],
+    "Emberpaw": ["Ember", "Common", "attacker"],
+    "Splashfin": ["Tide", "Common", "attacker"],
+    "Thornkit": ["Bramble", "Common", "attacker"],
+    "Sparkpup": ["Spark", "Common", "attacker"],
+    "Gravelpup": ["Stone", "Common", "attacker"],
+    "Gustling": ["Gust", "Common", "attacker"],
+    "Magmaul": ["Ember", "Rare", "attacker"],
+    "Coralisk": ["Tide", "Rare", "tank"],
+    "Thornmaw": ["Bramble", "Rare", "balanced"],
+    "Arcwing": ["Spark", "Rare", "speedster"],
+    "Boulderon": ["Stone", "Rare", "tank"],
+    "Galeon": ["Gust", "Rare", "balanced"]
+  },
+  "catalog_shape_guard": "36-row catalog @ 1cc5536: exactly one Epic per element, two Commons per element (one balanced, one attacker); a catalog reshuffle or re-tuned engine means re-run, not reuse",
+  "teams": {
+    "epic": ["Infernox", "Abysscale", "Verdankor", "Stormfang", "Tectonix", "Tempestra"],
+    "common_BAL": ["Cindling", "Rippling", "Sproutle", "Voltkit", "Pebblet", "Zephyrl"],
+    "common_ATK": ["Emberpaw", "Splashfin", "Thornkit", "Sparkpup", "Gravelpup", "Gustling"],
+    "common_MIX": ["Cindling", "Splashfin", "Sproutle", "Sparkpup", "Pebblet", "Gustling"],
+    "rare": ["Magmaul", "Coralisk", "Thornmaw", "Arcwing", "Boulderon", "Galeon"],
+    "_note": "all pre-orders pinned to ELEMENT_CYCLE order; MIX = balanced on even ELEMENT_CYCLE indices (Ember, Bramble, Stone), attacker on odd (Tide, Spark, Gust)"
+  },
+  "pilots": {
+    "common_side_always": "MAX-SKILL — order_type_aware (stable-sort the team by descending effectiveness vs the opponent's PRE-ordering lead) + policy_setup (best expected-damage move; finish a kill rather than buff; one opening +ATK when un-buffed, cur_hp >= 0.6*max_hp, and not slower)",
+    "BEGINNER": "policy_naive_element (always the signature move, even into a 0.67 resist) with the pinned ELEMENT_CYCLE lead order",
+    "MID": "policy_best_damage (higher expected damage of Strike vs signature each turn), pinned lead order",
+    "SKILLED": "policy_setup + order_type_aware",
+    "ordering_resolution": "both type-aware orderings resolve against the opponent's PRE-ordering lead, applied simultaneously (the engine gives ordering no second-mover privilege)"
+  },
+  "grid": {
+    "compositions_outer": ["BAL", "ATK", "MIX"],
+    "pilots_inner": ["BEGINNER", "MID", "SKILLED"],
+    "cells": 9,
+    "common_side": "a",
+    "epic_side": "b",
+    "metric": "W(cell) = P(Common side wins) as an exact fractions.Fraction of wins/N"
+  },
+  "seeds": {
+    "main": 20261325,
+    "stability": 20261326,
+    "sensitivity_reporting": 20261327,
+    "aux_never_read": 20261328,
+    "registry_note": "20261325–328 strictly above the P046/V057 high-water 20261324; aux is registered-never-drawn — no RNG may be constructed with it (asserted)"
+  },
+  "battle_counts": {
+    "main_grid_per_cell": 20000,
+    "reporting_legs_per_leg": 20000,
+    "stability_per_cell": 5000,
+    "sensitivity_per_cell": 5000
+  },
+  "main_leg_order": "one random.Random(20261325) stream: the 9-cell grid (compositions outer BAL/ATK/MIX, pilots inner BEGINNER/MID/SKILLED), then reporting legs in pinned order: mirror (BAL vs BAL, both MAX-SKILL), naive-vs-naive (BAL vs Epic, both policy_naive_element, pinned pre-orders), Rare-gradient BEGINNER (BAL MAX-SKILL vs Rare team naive), Rare-gradient SKILLED (BAL MAX-SKILL vs Rare team setup+ordering)",
+  "stability_leg": "random.Random(20261326), the 9-cell grid at N = 5000, pinned order; must reproduce the ruling class through both twin evaluators",
+  "sensitivity_scenarios_order": ["jitter_wide", "jitter_degenerate", "buff_cap_75", "level_5"],
+  "sensitivity_scenarios": {
+    "jitter_wide": {"jitter_bounds": [0.7, 1.0]},
+    "jitter_degenerate": {"jitter_fixed": 0.925, "jitter_draws_sentinel": 0, "_note": "fixture-only hook: damage jitter pinned to the expected-damage constant, no uniform draw (sentinel pinned 0); tie flips still drawn"},
+    "buff_cap_75": {"buff_cap": 0.75, "_note": "derived disclosure: the committed policy family buffs at most once (policy_setup requires atk_stage == 0.0), so buff stages never exceed 0.25 and this lever is inert by construction — run and reported anyway per the registration"},
+    "level_5": {"level": 5}
+  },
+  "sensitivity_note": "all four scenarios ride one random.Random(20261327) stream in the pinned order, 9-cell grid at N = 5000 each, reporting-only — they name axes, never flip the decision",
+  "decision_bands": {
+    "reject_threshold": "2/5",
+    "even_money_threshold": "1/2",
+    "reject_rule": "W(c, BEGINNER) < 2/5 in >= 2 of 3 Common compositions — checked FIRST",
+    "approve_rule": "W(c, BEGINNER) >= 1/2 in ALL 3 compositions AND W(c, SKILLED) < 1/2 in >= 2 of 3 AND the seed-20261326 stability leg reproduces the ruling through both twin evaluators",
+    "null_axes": ["composition-straddle (BEGINNER row mixes >= 1/2 and < 2/5)", "margin-band (BEGINNER row lives in [2/5, 1/2))", "budget-inert (W(c, SKILLED) >= 1/2 in >= 2 of 3)", "stability non-reproduction", "sensitivity straddle (reporting legs name the axis, never flip the decision)"],
+    "evaluation_order": "REJECT first, then APPROVE, else NULL",
+    "se_precheck": "SE at N = 20000 is <= 1/283; the decision bands (2/5 vs 1/2) sit >= 14 SE apart"
+  },
+  "arm_e": {
+    "rarity_encounter_weight": {"Common": 100, "Uncommon": 45, "Rare": 18, "Epic": 6},
+    "rarity_catch_base": {"Common": "9/10", "Uncommon": "13/20", "Rare": "2/5", "Epic": "1/5"},
+    "catch_bonus_per_level": "1/50",
+    "max_catch_bonus": "1/5",
+    "max_catch_chance": "19/20",
+    "player_level": 50,
+    "catalog_counts": {"Common": 12, "Uncommon": 12, "Rare": 6, "Epic": 6},
+    "total_weight": 1884,
+    "catch_at_level_50": {"Common": "19/20", "Uncommon": "17/20", "Rare": "3/5", "Epic": "2/5"},
+    "per_encounter_p": "P(catch specific creature c) = (weight_c / 1884) * catch_c at player level 50",
+    "expected_encounters": "E[max over the 6 team targets] by max-min inclusion-exclusion: E = sum over nonempty S of (-1)^(|S|+1) / sum_{c in S} p_c (exact under per-encounter exclusivity — one creature per encounter)",
+    "hand_anchor_single_epic": 785,
+    "hand_anchor_equal_p_identity": "six equal-p targets cost (1/p) * 49/20 exactly",
+    "markov_twin": "subset-state Markov chain E(S) = 1/P_S + sum_{c in S} (p_c / P_S) * E(S minus c), P_S = sum of p_c over S — must agree with inclusion-exclusion at exact equality",
+    "outputs": "E_epic (the committed all-Epic team), E_common (BAL), TP = E_epic / E_common (reporting-only for the decision; the verdict's stakes line)",
+    "tp_hand_span": "approx 39.6 (the exact Fraction is the sim's output; the two hand anchors are the gates)"
+  },
+  "hand_fixture_F4": {
+    "_note": "deterministic 1v1 hand trace: Cindling (Common balanced, level 50) vs Infernox (Epic tank, level 50), both policy_best_damage, jitter pinned = 0.925 (fixture-only hook, zero jitter draws). Cindling acts first every turn (spd 135.75 > 122.175); both pick the signature move (Cinderlash, Ember vs Ember = neutral 1.0, expected 12*0.925 > 9*0.925); per-action damages exactly 6 = round(12 * 0.925 * 135.75/266.07) and 13 = round(12 * 0.925 * 1.2); Infernox KOs on its 16th action with Cindling having dealt 96 = 16*6 <= 386; winner b. Full 32-event log below: [turn, side, actor, move, damage, target_hp_left, faint], turns 1..16, per turn Cindling then Infernox; Infernox hp after Cindling's t-th action = 386 - 6t; Cindling hp after Infernox's t-th action = max(0, 197 - 13t).",
+    "cindling_per_action_damage": 6,
+    "infernox_per_action_damage": 13,
+    "infernox_ko_action": 16,
+    "cindling_total_dealt": 96,
+    "winner": "b",
+    "event_log": [
+      [1, "a", "Cindling", "Cinderlash", 6, 380, false], [1, "b", "Infernox", "Cinderlash", 13, 184, false],
+      [2, "a", "Cindling", "Cinderlash", 6, 374, false], [2, "b", "Infernox", "Cinderlash", 13, 171, false],
+      [3, "a", "Cindling", "Cinderlash", 6, 368, false], [3, "b", "Infernox", "Cinderlash", 13, 158, false],
+      [4, "a", "Cindling", "Cinderlash", 6, 362, false], [4, "b", "Infernox", "Cinderlash", 13, 145, false],
+      [5, "a", "Cindling", "Cinderlash", 6, 356, false], [5, "b", "Infernox", "Cinderlash", 13, 132, false],
+      [6, "a", "Cindling", "Cinderlash", 6, 350, false], [6, "b", "Infernox", "Cinderlash", 13, 119, false],
+      [7, "a", "Cindling", "Cinderlash", 6, 344, false], [7, "b", "Infernox", "Cinderlash", 13, 106, false],
+      [8, "a", "Cindling", "Cinderlash", 6, 338, false], [8, "b", "Infernox", "Cinderlash", 13, 93, false],
+      [9, "a", "Cindling", "Cinderlash", 6, 332, false], [9, "b", "Infernox", "Cinderlash", 13, 80, false],
+      [10, "a", "Cindling", "Cinderlash", 6, 326, false], [10, "b", "Infernox", "Cinderlash", 13, 67, false],
+      [11, "a", "Cindling", "Cinderlash", 6, 320, false], [11, "b", "Infernox", "Cinderlash", 13, 54, false],
+      [12, "a", "Cindling", "Cinderlash", 6, 314, false], [12, "b", "Infernox", "Cinderlash", 13, 41, false],
+      [13, "a", "Cindling", "Cinderlash", 6, 308, false], [13, "b", "Infernox", "Cinderlash", 13, 28, false],
+      [14, "a", "Cindling", "Cinderlash", 6, 302, false], [14, "b", "Infernox", "Cinderlash", 13, 15, false],
+      [15, "a", "Cindling", "Cinderlash", 6, 296, false], [15, "b", "Infernox", "Cinderlash", 13, 2, false],
+      [16, "a", "Cindling", "Cinderlash", 6, 290, false], [16, "b", "Infernox", "Cinderlash", 13, 0, true]
+    ]
+  },
+  "element_move_names": {"Ember": "Cinderlash", "Tide": "Tidal Crash", "Bramble": "Thorn Volley", "Spark": "Voltstrike", "Stone": "Boulder Smash", "Gust": "Galeforce"},
+  "gates": {
+    "F1": "the full 7x6 effectiveness hand table exact (incl. Normal row = 1.0, opposite-element = 1.0)",
+    "F2": "derived-stats hand table for all six used (rarity, archetype) pairs, banker's-rounding values pinned, incl. the tank-Epic 301 overshoot",
+    "F3": "level-50 identities: HP mult 3.94 and off mult 2.715 exact; balanced Common max_hp 197; tank Epic max_hp 386; atk/df ratio level-invariance (60/50 = 1.2 at levels 5 and 50, within 1e-12 of 6/5 — the off mult cancels symbolically)",
+    "F4": "the deterministic hand-traced Cindling-vs-Infernox 1v1 fixture at jitter = 0.925: full event log exact, damages 6 and 13, Cindling first, Infernox KOs on its 16th action, Cindling dealt 96",
+    "F5": "mirror match within 1/50 of 1/2 (invalidating); naive-vs-naive W < 1/2 expected-direction (loudly flagged, not invalidating); zero stall-guard hits (invalidating); RARITY_BUDGET spread 300/200 = 3/2 asserted from the pinned table",
+    "F6": "Arm E anchors: 785 exact; the 49/20 equal-p identity exact; the subset-Markov twin agreeing with inclusion-exclusion at exact equality",
+    "sentinels": "per-leg draw-count sentinels: jitter draws = damage events (except the pinned-0 degenerate scenario), tie-flip draws = recorded ties",
+    "twins": "twin independently-written decision evaluators (Fraction comparisons vs pure-integer cross-multiplication, opposite iteration orders) agree on main AND stability inputs",
+    "reproducibility": "stdout + results.json byte-identical across two process runs (external diff); Arm E platform-independent exact Fractions; the battle arm pinned to CPython 3.11 (asserted)"
+  },
+  "cpython_minor_pin": "3.11",
+  "boundaries": {
+    "skill_ceiling": "the policy family is the engine's own committed skill ceiling (four policies + one ordering lever; no mid-battle switching exists in the engine) — a cleverer in-engine policy could only RAISE the Common side, so REJECT is conservative in the direction that matters",
+    "float": "the battle arm's reproducibility is pinned to a stated CPython minor (the P017+ Arm-S convention)",
+    "roster": "6v6 element-complete teams only (the owner's standard); off-meta element stacking out of registered scope",
+    "level": "the harvested comment's 'level' lever is normalized away in ranked PvP by the engine's own NORMALIZED_LEVEL rule — this prices the sharper surviving claim; raw-level PvE counters out of scope",
+    "trading": "trading/gifting economies don't exist in the engine; TP prices self-caught grind only"
+  }
+}
