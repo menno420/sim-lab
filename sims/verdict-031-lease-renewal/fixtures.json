@@ -1,0 +1,193 @@
+{
+  "question": "Under the pinned renewal-race model (an alive lane holds one work claim H_c = 168 h decision-binding — H_c in {4, 24} h reporting-only — waking on deterministic cadence p_w in {2, 12, 24} h, re-stamping renewed: each wake EXCEPT an i.i.d. forget w.p. p_f in {0.02, 0.10, 0.25}; with p_d = 0.10 the lane instead dies silent at a uniform wake — p_d deliberately NOT a decision axis, T conditions on alive claims and O95 on dead ones, V027's own construction; contenders check at Poisson lambda_c and take over any claim whose renewed: age exceeds theta_r in {6, 12, 24, 48, 72} h; metrics composed worst-case-per-metric from V027's own tempo grid — T at the FASTEST tempo lambda_c = 1/4 per hour, O95 at the SLOWEST decision tempo lambda_c = 1/12 per hour, the C48 sparse column carried reporting-only with V027's distribution-free identity restated by citation; 9 decision cells = 3 p_w x 3 p_f), in BOTH Arm A (exact, seedless: T by finite DP over the <= 84-wake lattice — a run of j consecutive forgets exposes (j*p_w - theta_r)+ hours and P(takeover) = 1 - E[exp(-lambda_c * total exposure)] exact over the forget-run distribution; O95 by the exact mixture quantile of (theta_r - A)+ + Exp(lambda_c) with A the lattice-valued renewal age at death; Arm A covers ALL 45 decision points with zero sampling error) and Arm S (seeded event-driven MC: M_S = 4,000 per (cell, theta_r), random.Random(20260756), pinned loop order; gates |T_S - T_A| <= 1.0 pp and |O95_S - O95_A| <= max(4 h, 5% relative), BOTH tolerances pre-checked in the fixture as >= 2.5 sigma of the registered-M_S estimators BEFORE any run; stability leg seed 20260757 M_S = 1,000 must reproduce the ruling; reporting-only legs seed 20260758; aux stream seed 20260759 never read by any decision number), with the CHAINED ANCHOR that a silence-keyed baseline leg re-computes V027's committed exact closed form at V027's committed regime constants and must reproduce its committed Feas map EXACTLY — for which cells is Feas(cell) = {theta_r : T <= 0.05 AND O95 <= 120 h} non-empty (bands inherited VERBATIM from V027), and does the result land (evaluated in this pre-registered order) REJECT (Feas = empty in >= 5 of 9 cells, checked FIRST), APPROVE (exists a single theta_r-dagger feasible in >= 8 of 9 cells, stability-reproduced -> pinned row: theta_r-dagger + compliance floor + per-cadence requirement + whether the planted WORK_CLAIM_STALE_HOURS = 72 lies at theta_r-dagger), or NULL (anything else — flip axis named via per-axis feasible-cell shares and per-axis median theta*)?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 029 · 2026-07-13T06:51:49Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 0e168bf8042b9f6b2d08b211380d93539155e3f8 (landed via idea-engine PR #297)",
+    "idea_entry": "ideas/substrate-kit/lease-renewal-claim-expiry-2026-07-13.md @ idea-engine main 0e168bf (proposal's own blob link @ 900ebe48154ceab916a1374a76d7ed016b9e2ea9)",
+    "rotation_slot": "ORDER 004 rule-3 FLEET-BACKLOGS rotation slot, round 4 — round 1 websites (P019 -> V021 approve), round 2 superbot (P021 -> V023 reject), round 3 kit claims doctrine (P025 -> V027 reject); round 4 follows round 3's own verdict-opened thread: V027 rejected silence-keyed expiry and routed the lease-renewal renewed: slice while its LIMITS line left the mechanism undesigned — this sim prices the routed mechanism's THREE unpinned constants (renewal cadence, expiry horizon on the renewal stream, and the compliance it silently assumes); fully hermetic per the PROPOSAL 017-028 precedent: every fixture below is a pinned constant committed with the sim, zero repo/network reads in the verdict session"
+  },
+  "model": {
+    "lane": "claims at t = 0 (the claim event carries a fresh renewed: stamp), wakes at the deterministic lattice times i*p_w for i = 1..N with N = H_c/p_w exactly (84 / 14 / 7 at H_c = 168), completes at H_c = N*p_w; at each wake it re-stamps renewed: EXCEPT an i.i.d. forget with probability p_f; with probability p_d = 0.10 it instead dies silent at a uniformly chosen wake k in {1..N} (dies INSTEAD of stamping at wake k, never stamps again)",
+    "observer": "contender sessions check at Poisson rate lambda_c and take over any claim whose renewal is OVERDUE past theta_r — a stamp at wake time s is current until its successor due time s + p_w, so the claim is takeable at times t > s + p_w + theta_r with s the last stamped wake (or the t = 0 claim stamp); first-check-wins",
+    "p_w_grid_hours": [2, 12, 24],
+    "p_f_grid": [0.02, 0.1, 0.25],
+    "theta_r_grid_hours": [6, 12, 24, 48, 72],
+    "theta_r_cap_rationale": "the grid caps at 72 by the idea file's pre-computation (theta_r = 168 busts the 120 h orphan band at the decision tempo before any run; the exact per-cell O95 at theta_r = 168 ships in the reporting section); the planted WORK_CLAIM_STALE_HOURS = 72 is in-grid by design",
+    "H_c_decision_hours": 168,
+    "H_c_reporting_hours": [4, 24],
+    "p_d_pinned": 0.1,
+    "p_d_sensitivity_reporting_only": [0.02, 0.3],
+    "lambda_T_per_hour": 0.25,
+    "lambda_O_per_hour": 0.08333333333333333,
+    "lambda_C48_reporting_per_hour": 0.020833333333333332,
+    "lambda_exact": "lambda_T = 1/4 (T at the fastest tempo), lambda_O = 1/12 (O95 at the slowest decision tempo), lambda_C48 = 1/48 (reporting-only) — computed as 1.0/4.0, 1.0/12.0, 1.0/48.0 in IEEE double; worst-case-per-metric composition per the registration",
+    "decision_cells": "9 = {p_w 2, 12, 24} x {p_f 0.02, 0.10, 0.25}; 45 decision points = 9 cells x 5 theta_r",
+    "metrics": {
+      "T": "false-takeover probability: P(an alive-throughout claim is taken over at least once before completion) — the twin-work risk, evaluated at lambda_T = 1/4",
+      "O95": "p95 death->takeover latency for dead claims — the deadlock cost, evaluated at lambda_O = 1/12"
+    }
+  },
+  "arm_A": {
+    "name": "exact, seedless, platform-independent (covers all 45 decision points with zero sampling error)",
+    "T_A": "finite DP over the N-wake lattice: a maximal run of j consecutive forgets exposes (j*p_w - theta_r)+ hours (the registered formula — see intake decisions 2-3 for the overdue convention it encodes and the terminal-run convention); total exposure X = sum over maximal runs; P(takeover) = 1 - E[exp(-lambda_T * X)] computed exactly by a trailing-run-state DP that folds e^(-lambda*g(j)) at each run closure (state = trailing run length; O(N^2))",
+    "O95_A": "exact mixture quantile of (theta_r - A)+ + Exp(lambda_O) with A = m*p_w the lattice-valued renewal age at death: P(A = m*p_w) = (1/N) * p_f^m * (1 + (N - m - 1)*(1 - p_f)) for m in 0..N-1 (death wake k uniform in 1..N, m = consecutive forgets immediately before k, truncated-geometric; derived two independent ways and asserted equal in exact Fractions); quantile solved in closed form piecewise: F(x) = sum_m P(A_m) * [x >= d_m] * (1 - e^(-lambda*(x - d_m))), d_m = (theta_r - m*p_w)+, x* = (1/lambda) * ln(K_i / (S_i - 0.95)) on the segment where S_i > 0.95, with a CDF bracketing assert at x*",
+    "cross_checks": "an independent exposure-DISTRIBUTION DP (dict over (trailing run, accumulated integer exposure) — structurally different from the factor-folding DP) must agree with T_A to 1e-9 on all 45 points; a full 2^N brute-force pattern enumeration in exact Fractions must agree to 1e-12 on every p_w in {12, 24} point (N = 14: 16,384 patterns; N = 7: 128); the two P(A) derivations must agree exactly in Fractions and sum to 1 exactly",
+    "arithmetic": "IEEE double via math.exp/math.log on the pinned CPython minor version (asserted at start); decision comparisons (T_A <= 0.05, O95_A <= 120) are float comparisons; any point within 1e-9 of a band is flagged knife-edge in the output"
+  },
+  "arm_S": {
+    "name": "seeded event-driven MC (validates Arm A on the same registered model; adds nothing to the decision surface)",
+    "M_S": 4000,
+    "seed": 20260756,
+    "loop_order": "cells lexicographic p_w ascending then p_f ascending; theta_r ascending; replications sequential",
+    "draw_layout_per_claim": "in order: u_death (dead iff u < p_d_leg); u_pos -> k = int(u_pos * N) + 1 (ALWAYS consumed, used only if dead — the V027 layout precedent); then ALIVE: N forget coins in wake order (forget iff u < p_f), then IFF the realized exposure-window list is non-empty, contender-check inter-arrivals c += -ln(1-u)/lambda_T from c = 0 until c >= (N+1)*p_w (steal = >= 1 check strictly inside a window; a claim with an empty window list draws NO check uniforms — steal impossible, registered layout decision keeping the stream audit exact); DEAD: k-1 forget coins (wakes 1..k-1 in order), trailing-run m computed, d = (theta_r - m*p_w)+, then check inter-arrivals c += -ln(1-u)/lambda_O from c = 0 until c > d; latency = c (the first check strictly past the takeable point, matching the closed form by Poisson memorylessness)",
+    "gates_registered": {
+      "T_gate": "|T_S - T_A| <= 1.0 pp on every (cell, theta_r) point",
+      "O95_gate": "|O95_S - O95_A| <= max(4 h, 5% relative to O95_A) on every point",
+      "precheck_rule": "BOTH tolerances pre-checked as >= 2.5 sigma of the registered-M_S estimators BEFORE any run (the registration's own design rule — the V027 pipeline lesson): the effective per-point tolerance is max(registered absolute tolerance, 2.5 x closed-form predicted SE), with SEs computed from Arm A values before any MC draw; see gate_calibration_precheck"
+    },
+    "stability_leg": {
+      "seed": 20260757,
+      "M_S": 1000,
+      "contract": "applying the identical decision machinery to the stability leg's measured (T_S, O95_S) tables must reproduce the same APPROVE/REJECT/NULL ruling as the exact arm"
+    },
+    "reporting_only_legs": {
+      "seed": 20260758,
+      "contract": "cannot flip the decision — registered as reporting-only",
+      "M_rep": 1000,
+      "legs_in_stream_order": [
+        "leg J: exponential wake jitter at mean p_w — wake gaps i.i.d. Exp(mean p_w), wakes at cumulative gap times < H_c (variable count), overdue rule with the same nominal grace p_w (takeable when t > last_stamp + p_w + theta_r), exposure windows close at the next stamp or at H_c + p_w whichever first, alive checks drawn to H_c + p_w when windows non-empty, death at a uniformly chosen realized wake (a claim with zero realized wakes counts alive with zero exposure; u_death and u_pos still consumed); M_rep per (cell, theta_r)",
+        "leg H4: H_c = 4 h — N' = floor(H_c/p_w) wakes (2 / 0 / 0); N' = 0 means no wakes: alive T = 0 structurally, death-at-a-wake impossible (O95 null; u_death and u_pos still consumed)",
+        "leg H24: H_c = 24 h — N' = 12 / 2 / 1",
+        "leg D02: p_d = 0.02 on the main machinery",
+        "leg D30: p_d = 0.30 on the main machinery",
+        "leg E: empirical-anchor leg AT the quoted multisets — per claim, H_c drawn uniformly from the 11-value lifetime multiset, wake gaps i.i.d. uniform from the 19-value heartbeat-gap multiset, overdue grace = the gap multiset median 1.08 h (pinned), otherwise the leg-J conventions; per theta_r only (no p_w/p_f axes — the multisets ARE the cadence); reporting-only brackets, not fits (the P019 precedent)"
+      ],
+      "C48_column_note": "the C48 reporting column is computed EXACTLY by the Arm A machinery at lambda_c = 1/48 (seedless — it draws nothing from this stream), with V027's distribution-free identity restated by citation: p95 orphan latency >= ln(20)/lambda_c = 143.795 h > 120 h at lambda_c = 1/48 for ANY renewal-age distribution, because latency = (theta_r - A)+ + Exp(lambda_c) stochastically dominates Exp(lambda_c) — contender-side detection latency, which NO signal design can shrink"
+    },
+    "aux_stream": {
+      "seed": 20260759,
+      "contract": "never read by any decision number",
+      "legs_in_stream_order": [
+        "aux A1: p_f = 0 alive-identity leg (theta_r = 24, p_d = 0.10, M_aux = 500 per cell, 9 cells) — every ALIVE claim must realize ZERO exposure windows and ZERO steals exactly (the registered self-check: p_f = 0 AND alive => zero exposure exactly)",
+        "aux A2: theta_r -> infinity leg (theta_r = math.inf, p_d = 0.10, M_aux = 500 per cell) — alive claims must produce T = 0 exactly (no window can open); dead claims are never takeable and draw no check uniforms (pinned layout for this leg)",
+        "aux A3: gate-diagnostic re-measure — every (cell, theta_r) point failing an EFFECTIVE gate in the main leg is re-measured on this stream at M_diag = 64,000 (16x), standard point order; REPORTING-ONLY: the gate verdict stands as measured at M_S = 4,000"
+      ],
+      "M_aux": 500,
+      "M_diag": 64000
+    },
+    "seed_registry_note": "seeds 20260756-59 allocated strictly above the P027 registry high-water 20260755; P028 drew zero seeds per its own card"
+  },
+  "gate_calibration_precheck": {
+    "written": "BEFORE any simulation ran (closed-form arithmetic only, no draws; per-point numbers are computed by the runner from Arm A values BEFORE the first MC draw and shipped in results.json)",
+    "arithmetic": "SE_T = sqrt(T_A*(1-T_A)/n_alive_exp) with n_alive_exp = round((1-p_d)*M_S) = 3600 — the registered 1.0 pp absolute tolerance is >= 2.5 sigma only where T_A(1-T_A) <= 0.0576 (T_A <= ~0.061 or >= ~0.939); mid-range-T points (expected in the low-theta_r/daily-cadence corner) sit at ~1.2-1.7 sigma at M_S = 4,000. SE_O95 = sqrt(0.95*0.05/n_dead_exp)/f_A(O95_A) with n_dead_exp = round(p_d*M_S) = 400 and f_A the exact mixture density at the exact quantile (= lambda_O*(S_piece - 0.95) on the quantile's segment); where the quantile sits in the pure upper-exponential piece (S_piece = 1), SE_O95 = sqrt(0.0475/400)*12/0.05 ~= 2.62 h, so the registered max(4 h, 5%) tolerance is a ~1.5-2.1 sigma gate on most points. CONSEQUENCE OF THE REGISTERED DESIGN RULE, pinned before any run: the pre-check RAISES every sub-2.5-sigma point's effective tolerance to exactly 2.5 x its closed-form predicted SE (tolerance_eff = max(registered_absolute, 2.5*SE_predicted)); BOTH the registered-absolute and the effective >= 2.5-sigma gate results ship per point with predicted SEs and z-scores",
+    "handling_protocol_pinned_before_running": "(1) every per-point gate result is reported as measured, with predicted SE and z-score beside it; (2) every point failing an EFFECTIVE gate is re-measured at 16x on the aux stream (aux A3) to distinguish sampling noise from model disagreement; (3) the ruling applies the registered evaluation order (REJECT -> APPROVE -> NULL) to the Arm A exact values — the registered APPROVE clause alone conditions on gates + stability, so an effective-gate breach bars APPROVE but can neither create nor destroy REJECT or NULL, which ride the exact arm (V027's committed protocol, inherited); (4) residual false-breach risk at exactly-2.5-sigma points (~1.24% two-sided per such point) is accepted and disclosed"
+  },
+  "decision_rule": {
+    "bands_registered_before_any_code": "in the idea file ideas/substrate-kit/lease-renewal-claim-expiry-2026-07-13.md, verbatim; bands inherited VERBATIM from V027 by design (the P023 inherited-bands contract)",
+    "feasibility": "Feas(cell) = {theta_r in grid : T(cell, theta_r) <= 0.05 AND O95(cell, theta_r) <= 120 h}; theta*(cell) = min Feas(cell)",
+    "band_constants": {"T_max": 0.05, "O95_max_hours": 120.0, "approve_cells": "8 of 9", "reject_cells": "5 of 9"},
+    "evaluation_order": "REJECT, then APPROVE, then NULL — the registered order; REJECT is checked FIRST (the costly error is a fleet-wide doctrine build that measurably does not fix the infeasibility, so the protect-the-build-budget arm cannot be shadowed by an eager mechanism recommendation)",
+    "REJECT": "Feas(cell) = empty in >= 5 of 9 cells -> 'renewal fails the same bands — descope the slice before it is built'",
+    "APPROVE": "exists a single theta_r-dagger feasible in >= 8 of 9 cells (Arm A exact values; effective Arm S gates passed; stability leg reproducing) -> recommended row: renewed: <ISO8601> re-stamped each working wake + expiry at theta_r-dagger + the measured COMPLIANCE FLOOR (the largest swept p_f at which theta_r-dagger is feasible in ALL THREE cadence cells of that column) + the wake-cadence requirement stated per row, and the verdict MUST state whether the planted WORK_CLAIM_STALE_HOURS = 72 read onto the renewal stream lies at theta_r-dagger",
+    "NULL": "anything else — the flip axis named via per-axis feasible-cell shares and per-axis median theta*; expected candidates the p_f = 0.25 sloppy column and the p_w = 24 daily row (at daily cadence every single forget is a full exposure once ceil(theta_r/p_w) = 1); the CONDITIONAL rule is the citable finding",
+    "consequences_pre_registered": {
+      "APPROVE": "the substrate-kit lease-renewal build (V027's routed slice) lands with sim-pinned constants — theta_r-dagger, the compliance floor, the cadence requirement, warn-first per the kit's posture — instead of a fresh seeded horizon; routed lane-side via the manager sweep (Q-0260; this repo never edits kit files; natural ride: the kit-lane fan-in bundle)",
+      "REJECT": "the renewal slice is descoped BEFORE build spend; silence-expiry plus V027's local-feasibility table stay as the doctrine; the residual routes to the manager as a doctrine question (claims need an explicit release/handoff protocol, not a better timeout — the measured per-cell infeasibility table of BOTH mechanisms as the evidence row)",
+      "NULL": "the conditional per-cadence/per-compliance rule ships and the cheapest LIVE probe is named: ship the renewed: field warn-first and count missed-renewal warnings per lane-week — p_f becomes MEASURABLE the day the field exists, at zero extra tooling"
+    }
+  },
+  "chained_anchor_V027": {
+    "contract": "the silence-keyed baseline leg re-computes V027's committed exact closed form T = 1 - (1 - sum_i w_i*e^(-theta/m_i)*lambda_c*m_i/(1+lambda_c*m_i))^M and O95 = theta + ln(20)/lambda_c at V027's committed regime constants over V027's full 9x6 grid, applies V027's bands (identical to this sim's), and must reproduce its committed Feas map EXACTLY — run INVALID on mismatch (the idea file's own kill test); the headline then reads as DeltaFeas of renewal-keyed over silence-keyed on shared bands",
+    "regimes_verbatim_from_V027_fixtures": {
+      "R1_burst": {"w": [0.9, 0.1], "m_hours": [1.5, 12.0], "M": 6},
+      "R2_daily": {"w": [0.7, 0.3], "m_hours": [6.0, 24.0], "M": 4},
+      "R3_weekend": {"w": [0.6, 0.4], "m_hours": [12.0, 48.0], "M": 3}
+    },
+    "check_rates_per_hour": {"C4": 0.25, "C12": 0.08333333333333333, "C48": 0.020833333333333332},
+    "theta_grid_hours": [6.0, 12.0, 24.0, 48.0, 72.0, 168.0],
+    "committed_feas_map": {
+      "R1-C4": [48.0, 72.0],
+      "R1-C12": [24.0, 48.0, 72.0],
+      "R1-C48": [],
+      "R2-C4": [],
+      "R2-C12": [72.0],
+      "R2-C48": [],
+      "R3-C4": [],
+      "R3-C12": [],
+      "R3-C48": []
+    },
+    "committed_theta_star": {"R1-C4": 48.0, "R1-C12": 24.0, "R2-C12": 72.0},
+    "committed_infeasible_count": 6,
+    "C48_identity": "O95 = theta + ln(20)/lambda_c >= theta + 143.79514913059157 h > 120 h at lambda_c = 1/48 for ANY theta >= 0 (V027 hand pin 3, restated by citation, never re-run)",
+    "out_of_sim_verification_this_session": "the committed V027 runner (sims/verdict-027-claim-expiry/claim_expiry_sim.py) was re-run in a scratchpad copy before this fixture was committed: exit 0, 4,975,945 self-checks 0 failed, results.json byte-identical to the committed file at sim-lab main fcb39e3, Feas map as above"
+  },
+  "empirical_anchors_quoted_at_drafting": {
+    "work_claim_lifetimes_hours_n11": [0.14, 0.25, 0.49, 1.37, 2.21, 2.65, 3.13, 3.69, 3.7, 3.72, 4.01],
+    "work_claim_lifetimes_median": 2.65,
+    "heartbeat_restamp_gaps_hours_n19": [0.17, 0.17, 0.26, 0.27, 0.33, 0.65, 0.78, 0.86, 0.98, 1.08, 1.38, 1.54, 1.73, 1.74, 1.93, 2.23, 2.32, 2.44, 5.52],
+    "heartbeat_restamp_gaps_median": 1.08,
+    "heartbeat_restamp_gaps_max": 5.52,
+    "provenance": "the V027-named zero-tooling git-log probe RUN at drafting on idea-engine's local clone @ 92b653a (11 work-claim create->delete lifetimes; 19 control/status.md re-stamp gaps) — quoted verbatim from the idea file, the first fleet datapoint of its kind; reporting-only brackets, not fits (the P019 four-interval precedent); they enter NO decision computation"
+  },
+  "boundaries_registered": {
+    "p_d_free_decision_metrics": "T conditions on alive claims, O95 on dead ones; p_d only weights how often each mode is paid — a reporting dial, not a decision axis (V027's construction, inherited)",
+    "contender_side_boundary": "C48 unmeetable by V027's identity for ANY signal design — restated, not re-run; disclosed up front: in the decision cells the orphan band binds nowhere by the same arithmetic (max O95 <= 72 + 35.949 ~= 107.9 h < 120), so renewal moves the entire game to the twin side; the O95 column ships per point for cell-addressable comparison with the parent",
+    "compliance_boundary": "p_f is swept, not measured — no fleet datapoint exists until the renewed: field ships; the i.i.d. forget assumption is the disclosed weakest joint (correlated forgetting — a sick harness missing EVERY renewal — sits between the i.i.d. sweep and lane death, and is exactly what the warn-first live counter measures)",
+    "cooperative_lanes": "adversarial silence out of scope — claims are cooperative machinery among honest lanes (V027's registration inherited)",
+    "single_claim_independence": "no contention among contenders for the same steal; first-check-wins timing is what is priced (V027's registration inherited)",
+    "model_basis": {
+      "behavioral_assumption": "deterministic-cadence wakes x i.i.d. forgets x Poisson contender checks are the neutral choices; the lattice structure is what makes Arm A an exact finite DP",
+      "most_likely_to_flip": "the real forget process — correlated forgetting sits between the i.i.d. sweep and lane death, and is exactly what the warn-first live counter measures the day the renewed: field ships"
+    }
+  },
+  "intake_time_decisions_disclosed": [
+    "1. wake-lattice convention: the claim event at t = 0 carries a fresh renewed: stamp; wakes at exactly i*p_w for i = 1..N with N = H_c/p_w (an integer for every registered pair: 84/14/7 decision; 2/0/0 and 12/2/1 reporting); completion at H_c = N*p_w. The registration's 'phase uniform' phrase enters NO registered Arm A formula — the registered run-exposure arithmetic (j*p_w - theta_r)+ is position- and phase-free — so the lattice is pinned at phase = p_w (wakes at exact multiples); disclosed, and decision-free by the registered arithmetic itself",
+    "2. overdue convention (what 'renewed: age exceeds theta_r' measures): a stamp at wake time s is current until its successor due time s + p_w; the claim is takeable at times t > s + p_w + theta_r. This is the UNIQUE reading consistent with BOTH registered identities: (i) a run of j consecutive forgets exposes (j*p_w - theta_r)+ hours — the window (s + p_w + theta_r, s + (j+1)*p_w) has exactly that length; and (ii) the registered self-check 'p_f = 0 AND alive => zero exposure exactly' for EVERY (p_w, theta_r) pair INCLUDING theta_r < p_w (the naive age-since-last-stamp reading violates it at theta_r = 6 < p_w in {12, 24}: perfect compliance would still expose (p_w - theta_r) per gap)",
+    "3. terminal-run convention: a maximal run of j forgets ending at wake N (no closing stamp) is scored by the SAME registered formula (j*p_w - theta_r)+ — its exposure window runs (s + p_w + theta_r, (N+1)*p_w], ending exactly one cadence past the last wake; completion at H_c = N*p_w does not truncate the registered run exposure. Conservative (counts up to p_w of post-completion exposure on terminal runs, biasing T UP, against APPROVE) and faithful to the registered position-free arithmetic; BOTH arms implement it identically, so the agreement gates test the same model",
+    "4. death convention: death wake k = int(u*N) + 1 uniform over {1..N}; the lane dies INSTEAD of stamping at wake k; A = m*p_w with m = the number of consecutive forgotten wakes immediately preceding wake k (m = k-1 means every prior wake forgot and the last stamp is the t = 0 claim stamp — the arithmetic s + p_w + theta_r = t_death + (theta_r - A) is identical in that case); the claim is takeable at t_death + (theta_r - A)+, so latency = (theta_r - A)+ + Exp(lambda_O) exactly as registered; a pre-death false takeover of an eventually-dying lane belongs to NEITHER registered metric (T is alive-throughout-conditional; O95 is death->takeover) and is not tracked in the decision stream (V027 convention 4, inherited)",
+    "5. empirical p95 convention (Arm S): sorted ascending, value at index ceil(0.95*n) - 1 (V027 convention 3, verbatim); Arm A uses the exact continuous quantile — the O(1/n) convention gap is folded into the gate SEs",
+    "6. per-metric tempo composition in ONE stream: each claim is a single pinned draw sequence; alive claims score T at lambda_T = 1/4, dead claims score O95 at lambda_O = 1/12 (the registered worst-case-per-metric composition); the two metrics never share a check draw",
+    "7. theta_r-dagger selection when APPROVE admits several: the SMALLEST theta_r with coverage >= 8/9 (V027's min-theta-dagger precedent), with the full coverage-per-theta_r table shipped so a re-reader can re-draw the selection; the compliance floor and per-cadence rows ship alongside",
+    "8. predicted-SE columns ship per point (closed-form: SE_T = sqrt(T_A*(1-T_A)/n_alive); SE_O95 = sqrt(0.95*0.05/n_dead)/f_A(O95_A)) with z-scores, so every gate result is readable against its own sampling error (V027 convention 8, inherited; here they also DEFINE the effective >= 2.5-sigma tolerances per the registered pre-check rule)",
+    "9. knife-edge disclosure rule: any decision point with |T_A - 0.05| <= 0.002 (0.2 pp) or |O95_A - 120| <= 0.5 h is flagged knife-edge in results.json and the REPORT states whether the ruling survives flipping every flagged point",
+    "10. reporting-leg conventions pinned in arm_S.reporting_only_legs (jitter grace = nominal p_w; H_c legs' N' = floor; N' = 0 semantics; empirical-anchor grace = 1.08 h = the gap multiset median; C48 computed exactly by Arm A machinery, no draws)",
+    "11. stability-reproduction contract: 'reproduces the ruling' = the stability leg's decision-machinery output carries the same APPROVE/REJECT/NULL label as the exact arm's registered-order ruling (pattern-level, V027 precedent); its per-cell tables ship for inspection",
+    "12. theta_r = 168 exclusion re-check (reporting-only): the exact O95 at theta_r = 168 ships per cell; the idea file's drafting shorthand 'O95 >= 168 + 35.94' is an equality only in the p_f -> 0 limit (higher-p_f cells sit slightly below 203.94 because mass at A > 0 shortens the wait) — the exclusion itself is unaffected (every cell lands far above 120 h), and this nit is disclosed rather than silently corrected",
+    "13. scratchpad probe disclosure (V027 convention 9 analog): rough closed-form magnitude estimates of T at a handful of cells were hand-derived while drafting THIS fixture (to anticipate knife-edge cells and the gate-calibration arithmetic above); every decision constant (grids, p_d, M_S, seeds, bands, evaluation order) was already pinned by the idea file before that arithmetic, and the runner had not been written when this fixture was committed — git history is the trail; no free parameter remained tunable"
+  ],
+  "hand_derived_pins": [
+    {
+      "name": "pin_1_single_full_run_identity",
+      "derivation": "at p_w = 24, N = 7, an OFF-GRID theta_r = 150 in [6*24, 7*24) makes ONLY the full 7-forget run expose ((7*24 - 150)+ = 18 h; every shorter run gives (j*24 - 150)+ = 0), so T = p_f^7 * (1 - e^(-lambda_T * 18)) exactly; at p_f = 0.25: T = 0.25^7 * (1 - e^(-4.5)) = 6.103515625e-05 * 0.9888910034617577 = 6.0357116910507674e-05 — derived by hand, independent of both DP code paths",
+      "expected": {"T_A": 6.0357116910507674e-05},
+      "tolerance": 1e-15
+    },
+    {
+      "name": "pin_2_O95_pf0_closed_form",
+      "derivation": "at p_f = 0 every dead claim has A = 0 (all prior wakes stamped), so latency = theta_r + Exp(lambda_O) and O95 = theta_r + ln(20)/lambda_O exactly; at theta_r = 24, lambda_O = 1/12: O95 = 24 + 12*2.995732273553991 = 59.94878728264789 (numerically the SAME constant as V027's pin 2 — the chained echo is deliberate)",
+      "expected": {"O95_A": 59.94878728264789},
+      "tolerance": 1e-12
+    },
+    {
+      "name": "pin_3_C48_renewal_side_identity",
+      "derivation": "renewal-keyed orphan latency = (theta_r - A)+ + Exp(lambda_c) stochastically dominates Exp(lambda_c), so its p95 >= ln(20)/lambda_c = 48*2.995732273553991 = 143.79514913059157 > 120 for ANY renewal-age distribution at lambda_c = 1/48 — STRONGER than V027's silence-side identity (which needed theta added); every exact C48 reporting value must be >= this constant",
+      "expected": {"ln20_times_48": 143.79514913059157, "column_infeasible": true},
+      "tolerance": 1e-9
+    },
+    {
+      "name": "pin_4_theta_inf_T_zero",
+      "derivation": "theta_r >= N*p_w = 168 makes every run exposure (j*p_w - theta_r)+ = 0 (j <= N), so T = 0 EXACTLY in the DP with no tolerance; asserted at theta_r = 1e9 for every decision cell",
+      "expected": {"T_A": 0.0},
+      "tolerance": 0.0
+    }
+  ],
+  "outputs_registered": [
+    "the full {T, O95} x (cell, theta_r) table, BOTH arms (45 decision points each), plus the exact C48 reporting column and the theta_r = 168 exclusion check",
+    "Feas(cell) sets, theta*(cell), per-axis feasible-cell shares and per-axis median theta*, coverage per theta_r, theta_r-dagger if any, compliance floor and per-cadence rows on APPROVE",
+    "the V027 silence-baseline chained anchor: recomputed 9x6 Feas map asserted EQUAL to the committed map (run invalid on mismatch); DeltaFeas headline renewal vs silence on shared bands",
+    "per-point gate results at BOTH the registered-absolute and effective >= 2.5-sigma tolerances, with predicted SEs and z-scores; aux A3 16x diagnostics for effective-gate failures",
+    "stability-leg tables + reproduced-ruling flag; reporting legs (jitter, H_c in {4, 24}, p_d in {0.02, 0.30}, C48, empirical-anchor)",
+    "the REJECT -> APPROVE -> NULL ruling per the registered evaluation order (REJECT checked first), with the planted-constant reading (WORK_CLAIM_STALE_HOURS = 72 on the renewal stream)",
+    "self-check count; stdout + results.json byte-identical across two process runs (external diff); CPython minor pinned and asserted"
+  ]
+}
