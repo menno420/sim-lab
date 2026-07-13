@@ -1,0 +1,121 @@
+{
+  "identity": {
+    "verdict": "047",
+    "intake": "036",
+    "proposal": "idea-engine control/outbox.md — ## PROPOSAL 036 · 2026-07-13T14:38:14Z · status: sim-ready",
+    "idea_file": "https://github.com/menno420/idea-engine/blob/4488a8641c4885a8341869f46cf795c6ff589605/ideas/fleet/secretary-rule-cardinal-regret-2026-07-13.md",
+    "claim": "idea-engine PR #314 → main 1c56a01 (control/claims/claude-verdict-047-37-rule.md; number RESERVES, never the position)",
+    "title": "the 37% rule off its home objective — the exact cardinal price of look-then-leap's folk cutoff"
+  },
+  "frame": {
+    "statement": "N candidates, i.i.d. U[0,1] values arriving in uniform random order (equivalently a uniform random permutation of overall ranks; rank 1 = best); N known, accept/reject on the spot, no recall. Policy family = the cutoff rules CR(r): observe the first r without committing, then accept the first subsequent running record.",
+    "values": "the overall rank-k candidate is worth (N+1-k)/(N+1) exactly (the U[0,1] order-statistics mean); E[V] of a policy = sum_k P(select rank k) * (N+1-k)/(N+1), an ended-empty walk contributing 0",
+    "model_basis": "known-N, no-recall, cutoff-family, uniform values — the folk rule's OWN canonical frame; the single most-likely-to-flip alternative is the VALUE DISTRIBUTION (heavy tails reward late leaps — the named follow-up head, both arms' machinery reusable); unknown-N, recall, interview costs, and non-cutoff threshold policies are out of the registered scope by design. The optimal cardinal policy is a threshold rule OUTSIDE the cutoff family, so every regret measured here is a LOWER bound on the cost against full optimality."
+  },
+  "N_grid": [5, 10, 20, 50, 100, 200],
+  "cutoff_family": {
+    "definition": "CR(r), r in {1..N-1}: observe the first r, then accept the first subsequent running record",
+    "cells_total": 379,
+    "note": "full census: every (N, r) cell, N in the grid, r in {1..N-1} — 4+9+19+49+99+199 = 379 cells × 2 objectives (P_best, E[V]) × 2 conventions (must-choose, walk-away)"
+  },
+  "r_folk_formula": "clamp(floor((37*N + 50)/100), 1, N-1)",
+  "conventions": {
+    "must_choose": {
+      "role": "decision-binding",
+      "rule": "if no record is accepted after position r, take candidate N",
+      "never_leap_identity": "P(take last | must-choose) = r/(N-1) exactly (take-last = the position-N candidate is selected, whether as a record or forced)"
+    },
+    "walk_away": {
+      "role": "reporting-only",
+      "rule": "if no record is accepted after position r, end empty with payoff 0",
+      "never_leap_identity": "P(end empty | walk-away) = r/N exactly"
+    },
+    "convention_identity": "E_must[V] - E_walk[V] = r/(2(N+1)) on every cell, both sides independently computed",
+    "rank_sum_identities": "selected-rank distribution sums to 1 (must-choose) and to 1 - r/N (walk-away)"
+  },
+  "bottom_half_definition": "overall rank >= floor(N/2)+1 (rank 1 = best)",
+  "measured": {
+    "dV": "dV(N) = E_must[V](r*_V(N)) - E_must[V](r_folk(N)); r*_V(N) = exact integer argmax of E_must[V] over the full cutoff grid, ties reported",
+    "B": "B(N) = P(bottom-half hire under CR(r_folk), must-choose, forced-last leg included) — computed from Arm B's selected-rank distribution including the take-candidate-N leg's rank distribution"
+  },
+  "bands": {
+    "evaluation_order": ["REJECT", "APPROVE", "NULL"],
+    "REJECT": {
+      "label": "the 37% rule is objective-robust — cite it freely, one cutoff serves both goals",
+      "rule": "dV(N) <= 1/50 at EVERY swept N (checked FIRST — the folk-vindicating strict claim)",
+      "dV_threshold": "1/50"
+    },
+    "APPROVE": {
+      "label": "the objective fork is first-order — 37% is a rank-obsession tax at scale",
+      "rule": "dV(N) >= 1/20 AND B(N) >= 3/20 at every swept N >= 50",
+      "dV_threshold": "1/20",
+      "B_threshold": "3/20",
+      "decision_cells": [50, 100, 200]
+    },
+    "NULL": {
+      "label": "anything else — a legitimate reportable outcome",
+      "rule": "the exact per-N frontier table {dV, B, dR, r*_V} is the citable pin; neither '37% is optimal, full stop' nor '37% is broken' may be cited as settled"
+    },
+    "note": "pre-registered BEFORE any runner code exists; the two decision bands are DISJOINT by construction (1/50 < 1/20); exact Fraction comparisons only; an honest NULL lands as a finalized verdict, not a re-run request"
+  },
+  "anchors": {
+    "P_best_1_3": "1/2",
+    "small_N_optimal_table": {
+      "N4": {"r_star": 1, "P_best": "11/24"},
+      "N5": {"r_star": 2, "P_best": "13/30"}
+    },
+    "E_must_last_cutoff": "E_must[V](N-1, N) = 1/2 exactly, per N",
+    "note": "the classic anchors are reproduced as ANCHORS, never bands — the existence side (known N, rank-only feedback, payoff = 1 iff the single best is chosen → ~N/e cutoff optimal, P(best) → 1/e) is textbook-settled"
+  },
+  "e_bracket": {
+    "lo": "271828182845/100000000000",
+    "hi": "271828182846/100000000000",
+    "rule": "271828182845/10^11 < e < 271828182846/10^11; floor(N/e) computed under BOTH bracket endpoints must agree per N (asserted); the floor(N/e) cutoff variant is reporting-only",
+    "one_over_e_context": "P_best(r_folk, N) is reported against the 1/e limit via the same rational bracket (reporting-only)"
+  },
+  "arm_A_closed_forms": {
+    "P_best": "P_best(r, N) = (r/N) * sum_{j=r}^{N-1} 1/j",
+    "E_must": "E_must[V](r, N) = (1/2) * (1 + r/(r+1) - r/N)",
+    "E_walk": "E_walk[V](r, N) = 1/2 + r/(2(r+1)) - r/(2N) - r/(2(N+1))",
+    "note": "the drafting hand-derivation — independently re-verifying it is exactly what Arm B and the census gate exist for"
+  },
+  "arm_B": {
+    "description": "independent combinatorial rank census: the joint distribution of (selected position j, selected overall rank k) by direct finite counting — binomial-ratio terms of the C(N-k, j-1)/C(N-1, j-1) family plus the take-at-N legs; no integrals, no values; P_best read off the rank-1 row, E[V] through sum_k P(rank k)*(N+1-k)/(N+1)",
+    "independence_note": "derived independently from first principles, NOT a re-arrangement of Arm A's formulas"
+  },
+  "census_gate": {
+    "N": [5, 6, 7],
+    "orders": [120, 720, 5040],
+    "rule": "full permutation enumeration tallying both objectives, both conventions, and the full selected-rank distribution at every r — must equal BOTH arms exactly (the algorithm-free third arm)"
+  },
+  "gates_run_invalid_on_failure": [
+    "Arm A ≡ Arm B by EXACT RATIONAL EQUALITY on every (N, r, objective, convention) cell",
+    "full permutation census at N in {5,6,7} equal to BOTH arms exactly",
+    "classic anchors: P_best(1,3) = 1/2; N=4: r*=1 with 11/24; N=5: r*=2 with 13/30",
+    "convention identity E_must[V] - E_walk[V] = r/(2(N+1)) on every cell, both sides independently computed",
+    "never-leap identities: P(take last | must-choose) = r/(N-1); P(end empty | walk-away) = r/N",
+    "rank-distribution sums: 1 (must-choose), 1 - r/N (walk-away)",
+    "E_must[V](N-1, N) = 1/2 exactly, per N",
+    "per-N floor agreement of floor(N/e) under the rational e-bracket (the floor(N/e) variant is reporting-only)"
+  ],
+  "reporting_only_legs": [
+    "the WALK-AWAY frontier, both objectives (the convention flip visible, never decision-entangled)",
+    "the floor(N/e)-variant deltas",
+    "dR(N) = P_best(r*_R) - P_best(r*_V) and the folk cutoff's own-objective shortfall P_best(r*_R) - P_best(r_folk)",
+    "take-last / end-empty probability columns",
+    "selected-rank quartiles at r_folk / r*_R / r*_V",
+    "P_best(r_folk, N) against the 1/e limit (via the rational bracket)",
+    "r*_V(N) against the sqrt(N)-1 calculus prediction"
+  ],
+  "seed_registry": {
+    "seeds_drawn": 0,
+    "fleet_high_water": 20261284,
+    "note": "ZERO seeds drawn — zero RNG, zero floats anywhere in computation (byte-identical re-run BY CONSTRUCTION, platform-independent); the PROPOSAL 035 registry high-water 20261284 is left unchanged for the next seeded head"
+  },
+  "drafting_liveness_nonbinding": {
+    "dV_predicted": ["~1/60 ~= 0.017", "0.033", "0.0375", "0.084", "0.103", "0.123"],
+    "B_bracket": "a 200k-draw drafting MC brackets B near 0.19 against the 3/20 = 0.15 band — the genuinely open number; the forced-last leg alone contributes ~ r_folk/(2(N-1)) ~= 0.186",
+    "expected_landing": "APPROVE; NULL via the B conjunct genuinely reachable; REJECT live only through a derivation-scale surprise (which the dual-arm + census gates exist to catch)",
+    "note": "sanity context only — disclosed at drafting, CANNOT bind or flip the decision; the measurement wins on any divergence, disclosed"
+  }
+}
