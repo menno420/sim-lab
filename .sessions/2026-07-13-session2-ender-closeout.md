@@ -1,10 +1,10 @@
 # Session — session 2 close-out: ender twin (ledger refresh, heartbeat, baton)
 
-> **Status:** `in-progress`
-> 📊 Model: fable · 2026-07-13T12:52Z · session-2 ender landing worker (sim-lab
-> twin of the idea-engine close-out PR, same branch name — the card is born
-> in-progress as the designed gate hold and flips complete in this PR's final
-> commit)
+> **Status:** `complete`
+> 📊 Model: fable · 2026-07-13T12:52Z → 12:54Z · session-2 ender landing worker
+> (sim-lab twin of the idea-engine close-out PR, same branch name — the card
+> was born in-progress as the designed gate hold and flips complete in this
+> final commit)
 
 ## Scope
 
@@ -56,4 +56,11 @@ dispatch brief, the same read-at-HEAD discipline that card practiced.
 
 ## Close-out
 
-Filled at flip (final commit of this PR).
+Both twin pieces landed on this branch before this flip: the
+`docs/current-state.md` refresh (c4b7bd5 — ledger through V045 recounted at
+HEAD, simreq-NNN namespace section, offset map extended P017→V019 …
+P035→V046-pending, OA-005 stale copy resolved, Review-rhythm codex wording
+fixed) and the SESSION 2 CLOSED heartbeat (9350f53). `python3 bootstrap.py
+check --strict` exit code captured directly immediately before the final
+push — see the PR body for the recorded exit 0. PR left OPEN READY to land
+on green (no agent merge calls — enabler-lands-on-green posture, ORDER 003).
