@@ -1,4 +1,20 @@
 {
+  "automerge": {
+    "branch_patterns": [
+      "claude/*",
+      "control/*",
+      "sim/*",
+      "harness/*",
+      "closeout/*",
+      "fix/*",
+      "verdict-*",
+      "intake-*",
+      "heartbeat-*",
+      "finalize-*",
+      "order-*"
+    ],
+    "required_context": "substrate-gate"
+  },
   "badge_tokens": [
     "binding",
     "living-ledger",
@@ -18,6 +34,7 @@
     "reconciliation_sessions": 20,
     "staleness_days": 14
   },
+  "claims_dir": "control/claims",
   "docs_root": "docs",
   "economy": {
     "classes": [],
@@ -37,7 +54,7 @@
   ],
   "interpreter": "/usr/local/bin/python3",
   "interpreter_for_checks": null,
-  "kit_version": "1.7.0",
+  "kit_version": "1.15.0",
   "namespace": {
     "reserved": {},
     "roots": []

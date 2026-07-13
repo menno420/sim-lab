@@ -7,7 +7,7 @@
     "soft_target_sessions": 50
   },
   "graduation_proposed": false,
-  "kit_version": "1.15.0",
+  "kit_version": "1.7.0",
   "last_compaction_session": 0,
   "mode": "guided",
   "mode_history": [
@@ -22,13 +22,10 @@
     ".session-journal.md": "5e8e56ffff0282a12b12d4959e04875008f26224924288e2cd4ed8afda4dedf3",
     "CONSTITUTION.md": "c86f457b7432e5ad4277019de63b9695562d6b4ba4f845210f5e1adfc2616bb0",
     "control/README.md": "3f464318fc31c38a25266e5f78c75f9175850d6691c6a810dd9af0f904be1366",
-    "control/claims/README.md": "f5b4574ef942baa594f46f67a4048b3d83d698f401c1ccc8460354d119ffbbd0",
     "control/inbox.md": "6d104e1d5621e4104090121dc0d16ae0db51ffcabc26d3238eb92dbc6ef316c3",
     "control/status.md": "dfc8bd14a6cb3bde759eda95520a51acaf749c38c4e35ac135866667366f3f08",
     "docs/AGENT_ORIENTATION.md": "b85a4bb7dc119b2677430aa0eabba7e14f77962fc9e866e8fd03e5309e66c1e2",
     "docs/CAPABILITIES.md": "5e88b0570dc4e87bdb426e857e3df01c6a881f7ba85007a7af9f60d44cdfc01f",
-    "docs/ROUTINES.md": "1ecc860b33bf9c1b9fadf09dfad5b6aea2e951c09f38818f32c2a21f6bfa4c5f",
-    "docs/SKILLS.md": "75b582566ca55c7b9b08016ddb93ea8e557ffc790fc8a8f828d8b598ddc1ce68",
     "docs/ai-project-workflow.md": "a7a1dc9958195c0fb3b443f8a8ae81b05458467a75213b3c17e7322bd44bb414",
     "docs/architecture.md": "f1c044c6cffa17daa5be238f34b5a6e9a75779f1b7d665e6734d079fc152bddc",
     "docs/collaboration-model.md": "12a4e1e21f4613f6d65b8cd49b21a964bb74fc35bad5d1c3645dea29418d93cc",
@@ -40,9 +37,7 @@
     "docs/ownership.md": "bae54e61485c686bb63e22ade468562b707b29fd1e25301b038d405da677fa7b",
     "docs/question-router.md": "9776e3bca30a69c5abc74ea2f23afc7ef8b1d986831500057e0a772596e5f3de",
     "docs/repo-navigation-map.md": "2f37a61a6c1f8612e3fbfe2dab1558f523e5eae84eb94d63d0b25c694804e6cc",
-    "docs/runtime_contracts.md": "32bf13cd7f5f2ade945738561cfa41de863e26365264d001f15babc43356a1cc",
-    "docs/seat-digest.md": "31cf77d8bcfea2e8a5e13e36ca69518a0fbff6a455d850eac6ac53a52e1def03",
-    "scripts/env-setup.sh": "cd2145129fcba288ff9399ad44146a09017d85813e282c16bcba22340b613a2c"
+    "docs/runtime_contracts.md": "32bf13cd7f5f2ade945738561cfa41de863e26365264d001f15babc43356a1cc"
   },
   "project_id": "ff8e5bbe973b",
   "promotion_rights": "propose",
