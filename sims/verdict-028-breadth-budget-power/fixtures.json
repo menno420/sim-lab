@@ -1,0 +1,142 @@
+{
+  "question": "Under the pinned planted-edge panel model (V024's committed machinery at sim-lab pin 5e356ed re-used verbatim — J = 9 instruments x T = 2,595 daily bars, one-factor Gaussian returns r_{j,t} = mu_d + alpha_{j,e(t)} + sigma_d*(sqrt(rho)*f_t + sqrt(1-rho)*z_{j,t}), sigma_ann = 0.30, IID vol (RSV demoted to reporting by V024's measured inert axis), matched drift S_bh = 1.15, rho in {0.0, 0.3, 0.6}; NEW planted layer: per-instrument epoch drifts alpha_{j,e} = kappa*(sigma_d/sqrt(252))*g_{j,e}, g ~ N(0,1) i.i.d., redrawn every E bars from bar 0 (last partial epoch kept) — persistent cross-sectional drift dispersion with one-sigma annualized Sharpe kappa, gone at kappa = 0 so the null legs are machinery-identical to V024's IID matched cells; 27 decision cells = kappa in {0.5, 1.0, 2.0} x E in {21, 63, 252} x rho in {0.0, 0.3, 0.6}; the lane's R3 rule verbatim — 21-bar rebalance, warm-up 252 bars, 111 evaluation periods, trailing-L ranking with ties by instrument index, top-k equal-weight, 10 bp per side on replaced names, zero-cost equal-weight basket benchmark, Delta = annualized period Sharpe - basket Sharpe; design grids nested G6 (the lane's own L in {63,126,252} x k in {2,3}) subset G10 (G6 union L in {21,42} x k in {2,3} momentum equal — the TARGETED short-horizon expansion) subset G24 subset G96 (V024 definitions verbatim), design axis N in {6, 10, 24, 96}; round-3 procedure emulated exactly: per rho the bar b_N(rho) = q99 of Delta_max(G_N) from a kappa=0 null leg at M = 1,000, per planted panel shortlist = {i in G_N : Delta_i >= b_N(rho)} — the familywise-1% rule V024's table implies; oracle margins theta_i(cell) = no-selection means over the cell's M = 400 panels, true edge theta_i >= 0.10; Y(cell, N) = expected true keeps per sweep, F = expected false keeps (reporting), N*(cell) = smallest N with Y(N) >= 0.95*max yield, cell detectable iff max_N Y >= 0.25; seeds 20260748 main / 20260749 stability (M = 200, must reproduce the ruling) / 20260750 validation + reporting / 20260751 aux; gates, run invalid on any failure: chained anchors to V024's committed q99 values within +/-0.05 absolute, k=9 identity (Delta == 0 to 1e-12), INDEPENDENT-leg familywise gate (bars from null leg A applied to a fresh M = 500 null leg B, false-keep rate within 3 binomial SE of 0.01), oracle sign gates (theta(reversal) < theta(matched momentum) in every planted cell; theta of the E-matched config non-decreasing in kappa within 2 MC SE), stdout + results.json byte-identical across two process runs; reporting-only legs that cannot flip the decision: S_bh = 0 stress arm and RSV vol arm (kappa=1.0/E=63, rho in {0.0, 0.3}), and the marginal-config price list — from G6 add ONE config of each class {covered-horizon duplicate L=84/k=2 - uncovered short horizon L=21/k=2 - direction decoy L=63/k=2 reversal - weighting variant L=63/k=2 rank-linear}, bar recomputed at N=7, DeltaY measured on the rho=0.3 planted cells, computed on the main-leg panels at zero extra cost), what are Y(cell, N), F(cell, N), and N*(cell) across the 27 cells — and does the result land (evaluated in this pre-registered order, over detectable cells with the count reported) REJECT ('blanket expansion never pays — the bar eats the margin': N* <= 10 in >= 80% of detectable cells; checked FIRST, the protect-the-evidence arm), APPROVE ('blanket breadth survives its own bar': N* >= 24 in >= 80% of detectable cells AND median Y(96) - Y(6) >= +0.25 true keeps per sweep), or NULL (anything else, or fewer than 8 of 27 cells detectable — the flip axis named via per-axis N*-shares and yield spreads for each of kappa, E, rho, the CONDITIONAL coverage rule the citable finding, the named live probe = lag-1..6 period Spearman rank-autocorrelation of trailing-63-bar returns on the lane's own committed dev bars)?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 026 · 2026-07-13T05:40:19Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 0716140 (landed via idea-engine PR #293)",
+    "idea_entry": "ideas/trading-strategy/round3-breadth-budget-q99-power-2026-07-13.md @ idea-engine main 0716140 (proposal's own blob link @ 16f942455cc7090cb0a2e9fa9d02c0c8d0caedbe)",
+    "rotation_slot": "ORDER 004 rule-3 VENTURE rotation slot, round 3 — trading half deliberately (round 1 books P018 -> V020 null, round 2 trading P022 -> V024 null; V024's own recommendation flags its burden-bar table as round-3 pre-registration default material and this head is its POWER complement); fully hermetic per the PROPOSAL 017-025 precedent: every fixture below is a pinned constant committed with the sim, zero repo/network reads in the verdict session, ZERO real market bars, no dev-candidate evaluated on any data, the owner-gated post-2026 protocol untouched (P022's harvest hazard clause inherited verbatim as a contract term)",
+    "parent_machinery": "sims/verdict-024-keep-margins-noise/ @ sim-lab 5e356ed — in-repo byte-reuse of the panel generator, strategy evaluator, independently-written twin evaluator, k=9 identity gate, left-continuous quantile, and hand pins PIN1/PIN2 (the VERDICT 006/017 engine-copy precedent); anchor constants quoted verbatim from its committed results.json below"
+  },
+  "constants": {
+    "J": 9,
+    "T": 2595,
+    "period_bars": 21,
+    "n_periods": 123,
+    "warmup_periods": 12,
+    "warmup_bars": 252,
+    "eval_periods": 111,
+    "sigma_ann": 0.30,
+    "sigma_d": "0.30 / sqrt(252)",
+    "trading_days_per_year": 252,
+    "periods_per_year": 12,
+    "sharpe_annualization": "mean(period returns) / sample std(period returns, ddof=1) * sqrt(12)",
+    "vol_model_decision": "IID only — V024 measured the vol axis INERT (per-axis spread 0.000), so the RSV arm demotes to a reporting leg by citation; RSV constants (p_cc 0.98, p_ss 0.94, variance multipliers (0.6, 2.2), stationary pi (0.75, 0.25), one chain per panel) ride only in the reporting arm, byte-reused from V024",
+    "sbh_decision": 1.15,
+    "sbh_stress_reporting_only": 0.0,
+    "mu_d_formula": "mu_d = S_bh * sigma_d * sqrt(rho + (1 - rho)/J) / sqrt(252)",
+    "rho_grid": [0.0, 0.3, 0.6],
+    "kappa_grid": [0.5, 1.0, 2.0],
+    "E_grid": [21, 63, 252],
+    "n_decision_cells": 27,
+    "cell_order": "pinned lexicographic: kappa outer, then E, then rho ascending",
+    "planted_layer": {
+      "alpha": "alpha_{j,e} = kappa * (sigma_d / sqrt(252)) * g_{j,e}, g ~ N(0,1) i.i.d. across j and e",
+      "epochs": "epoch index e(t) = t // E, epochs of E bars from bar 0, last partial epoch kept",
+      "null_identity": "at kappa = 0 ZERO alpha draws are made — the null-leg generator is V024's IID generator verbatim (machinery-identical null legs)",
+      "return": "r_{j,t} = mu_d + alpha_{j,e(t)} + sigma_d*(sqrt(rho)*f_t + sqrt(1-rho)*z_{j,t})"
+    },
+    "cost_per_side": 0.001,
+    "cost_per_rebalance": "0.001 * 2 * replaced / k, subtracted from that period's strategy return; replaced = |top-k(p) \\ top-k(p-1)|; entry rebalance p=12 is cost-free (forced by the k=9 identity gate, V024 disclosure)",
+    "benchmark": "zero-cost equal-weight basket of all J instruments, same 111 evaluation periods",
+    "grids": {
+      "G6": "L in {63, 126, 252} x k in {2, 3}, momentum, equal-weight (the lane's own R3 grid)",
+      "G10": "G6 union (L in {21, 42} x k in {2, 3}, momentum, equal-weight) — the TARGETED short-horizon expansion this head introduces",
+      "G24": "L in {21, 42, 63, 84, 126, 252} x k in {2, 3} x direction in {momentum, reversal}, equal-weight (V024 definition verbatim)",
+      "G96": "L in {21, 42, 63, 84, 105, 126, 189, 252} x k in {2, 3, 4} x direction in {momentum, reversal} x weighting in {equal, rank-linear} (V024 definition verbatim)",
+      "nesting": "G6 subset G10 subset G24 subset G96 — asserted as set inclusions on the constructed config lists; all at the frozen 21-bar rebalance, so one panel's 8 sorted rankings (per L, per direction) serve every config",
+      "N_grid": [6, 10, 24, 96]
+    },
+    "shortlist_rule": "per rho the bar b_N(rho) = q99 (left-continuous empirical quantile, V024 convention) of Delta_max(G_N) over the kappa=0 null leg at M_null = 1,000; per planted panel shortlist(G_N) = {i in G_N : Delta_i >= b_N(rho)} — the familywise-1% rule V024's table implies",
+    "oracle": {
+      "theta": "theta_i(cell) = mean of Delta_i over the cell's M_cell = 400 main-leg panels (no selection)",
+      "true_edge_line": 0.10,
+      "coupling_disclosure": "theta_i is estimated on the same M = 400 panels the selection runs on; each panel contributes 1/M to a cross-panel mean, so the coupling is O(1/M) and disclosed; the sign gates catch gross failures (idea file section 4c)"
+    },
+    "decision_metrics": {
+      "Y": "Y(cell, N) = expected true keeps per sweep = mean over panels of #{i in G_N : Delta_i >= b_N(rho), theta_i >= 0.10}",
+      "F": "F(cell, N) = expected false keeps (reporting only) = mean over panels of #{i in G_N : Delta_i >= b_N(rho), theta_i < 0.10}",
+      "N_star": "N*(cell) = smallest N in {6, 10, 24, 96} with Y(N) >= 0.95 * max_N' Y(N') (parsimony tie rule)",
+      "detectable": "cell detectable iff max_N Y(N) >= 0.25",
+      "yield_spread": "Y(96) - Y(6) per cell; decision band uses the median over detectable cells"
+    },
+    "M_null": 1000,
+    "M_cell": 400,
+    "M_stability": 200,
+    "M_validation": 500,
+    "M_reporting": 250,
+    "seed_main": 20260748,
+    "seed_stability": 20260749,
+    "seed_validation_reporting": 20260750,
+    "seed_aux": 20260751,
+    "seed_provenance": "allocated strictly above the P025 registry high-water 20260747",
+    "anchors": {
+      "source": "sims/verdict-024-keep-margins-noise/results.json @ sim-lab 5e356ed, main leg, IID / S_bh = 1.15 cells, rate 0.0010, q99 of Delta_max(N)",
+      "tolerance_abs": 0.05,
+      "tolerance_basis": "fresh-seed MC tolerance at M = 1,000 (the idea file's stated basis); run invalid outside it",
+      "values_full_precision": {
+        "rho_0.0": {"N6": 0.3983240156544581, "N24": 0.4915611654470813, "N96": 0.5844755463006072},
+        "rho_0.3": {"N6": 0.36690217335833175, "N24": 0.42722598328634476, "N96": 0.4548974486103219},
+        "rho_0.6": {"N6": 0.301072200222968, "N24": 0.3607737009873204, "N96": 0.3909020558622308}
+      },
+      "values_as_quoted_in_proposal": {
+        "rho_0.0": [0.3983, 0.4916, 0.5845],
+        "rho_0.3": [0.3669, 0.4272, 0.4549],
+        "rho_0.6": [0.3011, 0.3608, 0.3909]
+      },
+      "note": "N=10 has no anchor — G10 is the new grid this head introduces; its bar is measured fresh and reported"
+    },
+    "validation_gate_familywise": {
+      "rule": "bars b_N(rho) from the main null legs (leg A) applied to a FRESH independent kappa=0 null leg B (M_validation = 500 per rho, seed 20260750): per (rho, N) the false-keep rate P(Delta_max(G_N) >= b_N(rho)) must lie within 3 binomial SE of 0.01 — kills in-sample quantile circularity; run invalid on any failure",
+      "binomial_se_arithmetic": "SE = sqrt(0.01*0.99/500) = 0.004449719..., 3*SE = 0.013349157...; |c/500 - 0.01| <= 3*SE  <=>  c <= 11 (upper: c < 500*0.023349 = 11.67; lower: 0.01 - 0.013349 < 0 so c >= 0 always passes) — hand-derived BEFORE any run and pinned here as the exact integer test c in [0, 11]",
+      "points": "12 gate points = 3 rho x 4 N"
+    },
+    "oracle_sign_gates": {
+      "reversal_vs_momentum": "theta(L=63, k=2, reversal, equal) < theta(L=63, k=2, momentum, equal) strictly, in every one of the 27 planted cells; run invalid on any failure",
+      "kappa_monotonicity": "for each (E, rho) pair, theta of the E-matched config (L=E, k=2, momentum, equal) must be non-decreasing in kappa within 2 MC SE: theta(kappa_next) >= theta(kappa_prev) - 2*sqrt(SE_prev^2 + SE_next^2), SE = sample std of Delta_i over the cell's panels / sqrt(M_cell); 18 comparisons (9 pairs x 2 steps); run invalid on any failure",
+      "E_matched_configs": {"E21": "L=21 k=2 mom eq", "E63": "L=63 k=2 mom eq", "E252": "L=252 k=2 mom eq"}
+    },
+    "decision_rule": {
+      "evaluation_order": ["detectability-floor", "REJECT", "APPROVE", "NULL"],
+      "detectability_floor": "if fewer than 8 of 27 cells are detectable the run lands NULL naming detectability itself the finding (checked before the bands; count always reported)",
+      "REJECT": "N*(cell) <= 10 in >= 80% of detectable cells — exact integer test: 5*count(N* <= 10) >= 4*n_detectable; checked FIRST (the protect-the-evidence arm: the costly error is a round-3 registration that dilutes every real margin behind its own multiplicity bar — the PROPOSAL 019/021/022 evaluation-order discipline)",
+      "APPROVE": "N*(cell) >= 24 in >= 80% of detectable cells AND median over detectable cells of (Y(96) - Y(6)) >= +0.25 true keeps per sweep — exact tests: 5*count(N* >= 24) >= 4*n_detectable AND median(Fraction(SC96 - SC6, M_cell)) >= Fraction(1, 4)",
+      "NULL": "anything else — flip axis named via per-axis N*-shares (share of the axis value's detectable cells with N* <= 10) and yield spreads (median Y(96) - Y(6)) for each of kappa, E, rho; largest N*-share spread = the named boundary (ties: all tied axes named); expected candidate E, the coverage axis; the CONDITIONAL coverage rule is the citable finding and the named live probe is lag-1..6 period Spearman rank-autocorrelation of trailing-63-bar returns on the lane's own committed dev bars (zero holdout spend, zero owner clicks, zero new data)",
+      "stability": "seed 20260749, M_stability = 200 per decision cell, identical decision machinery (main-leg bars, own oracle theta), must reproduce the same ruling — validity gate, run invalid otherwise",
+      "consequences_pre_registered": "APPROVE -> round-3 registration may take the full blanket grid with the q99(N) bar attached at registration (V024's matched-row table the standing default), ORDER 033 executes as written; REJECT -> round-3 pre-registration default becomes G6 + TARGETED additions only, ORDER 033's 'more' routed preferentially to universe breadth (V024 measured J=18 bar-LOWERING, q99 shift -0.041) rather than config breadth, quantified reason = the per-cell Y table; NULL -> the conditional coverage rule ships, the targeted-G10 row stands as the default-if-hunting-short-horizons, and the lane's rank-autocorrelation probe locates the real (kappa, E) cell before any registration fixes N"
+    },
+    "reporting_only_legs": {
+      "contract": "registered as unable to flip the decision",
+      "sbh0_stress_arm": "kappa = 1.0, E = 63, rho in {0.0, 0.3}, IID, S_bh = 0, M_reporting = 250 each — Y/F/N* against the MAIN bars, own oracle theta",
+      "rsv_vol_arm": "kappa = 1.0, E = 63, rho in {0.0, 0.3}, RSV vol (V024 constants byte-reused), S_bh = 1.15, M_reporting = 250 each — Y/F/N* against the MAIN bars, own oracle theta",
+      "marginal_config_price_list": {
+        "classes": {
+          "covered_horizon_duplicate": "L=84, k=2, momentum, equal",
+          "uncovered_short_horizon": "L=21, k=2, momentum, equal",
+          "direction_decoy": "L=63, k=2, reversal, equal",
+          "weighting_variant": "L=63, k=2, momentum, rank-linear"
+        },
+        "procedure": "starting from G6, add ONE config of each class; bar recomputed at N=7: b_7^c(rho) = q99 of Delta_max(G6 union {c}) on the SAME main kappa=0 null-leg panels (zero extra panels — the 8 sorted rankings per panel already serve every config); bar_increase = b_7^c(0.3) - b_6(0.3); DeltaY per class = Y(G7^c under b_7^c) - Y(G6 under b_6) measured on the 9 rho=0.3 planted cells' main-leg panels; ships on EVERY outcome",
+        "rho_reported": 0.3
+      }
+    },
+    "runtime_feasibility": "~10,800 planted + ~4,500 null/validation + ~1,000 reporting + 5,400 stability panels ~= 21.7k panels; parent measured 15.5k at ~4.6 min — single-digit minutes per run, stdlib-only"
+  },
+  "intake_time_decisions_disclosed": [
+    "1. STABILITY-LEG BARS: the proposal allocates the stability leg M = 200 per decision cell and no stability null legs; the bars b_N(rho) are therefore the MAIN null-leg bars (the emulated registration fixes the bar; the stability leg re-randomizes the planted panels and the oracle theta) — identical decision machinery applied to the stability leg's own measured tables, V027 precedent.",
+    "2. DRAW ORDER (pinned): per planted panel — alpha g_{j,e} draws first (j outer, e inner, n_epochs = ceil(T/E)), then f_t (t ascending), then z_{j,t} (j outer, t inner); at kappa = 0 no alpha draws, making the null path V024's generator verbatim and draw-count sentinels exact.",
+    "3. NORMALS: NormalDist().inv_cdf on one uniform per normal (V024 disclosure 1, byte-reused); a drawn 0.0 raises StatisticsError = run invalid.",
+    "4. QUANTILE: left-continuous empirical quantile (V024 convention, byte-reused): q99 of M=1,000 sorted values = element ceil(0.99*1000)-1 = index 989.",
+    "5. EXACT DECISION ARITHMETIC: within a cell all Y share denominator M, so N* and detectability are exact integer tests on true-keep count sums SC(N) = sum over {i in G_N, theta_i >= 0.10} of keep counts: N* = smallest N with 20*SC(N) >= 19*max_N SC; detectable iff 4*max_N SC >= M; band shares as 5*count >= 4*n_detectable; the median yield-spread band in Fractions (median(Fraction(SC96 - SC6, M)) >= Fraction(1,4)). Two independently written decision evaluators (integer-arithmetic and Fraction/float) must agree — V024 twin-decision discipline.",
+    "6. THETA BOUNDARY: theta_i >= 0.10 and theta comparisons are IEEE-double comparisons on means of floats; exact boundary ties are measure-zero and none was observed within 1e-9 of the line (asserted in-run, reported).",
+    "7. REPORTING-ARM M: 250 per reporting cell (the idea file's ~1,000 reporting panels / 4 cells); reporting arms are evaluated against the MAIN bars — that is the stress question (what does the S_bh=1.15-registered bar do in a different world) — with their own oracle theta.",
+    "8. MARGINAL-LIST BARS: b_7^c per rho computed from the main null-leg panels' stored per-config Deltas (zero extra panels, zero extra draws); only rho = 0.3 is reported per the registration; the other rho values ship in results.json as reporting surplus.",
+    "9. ORACLE SE: SE(theta_i) = sample std (ddof=1) of Delta_i over the cell's panels / sqrt(M); the kappa-monotonicity gate tolerance is 2*sqrt(SE_prev^2 + SE_next^2).",
+    "10. TWIN EVALUATORS: V024's independently written strategy evaluator (direct bar sums, own sorts, explicit weights, statistics-module moments) cross-checks the main evaluator to 1e-9 on pinned panel indices: panel 0 of every null leg, panels (0, 200) of every planted decision cell, panel 0 of every stability/validation/reporting cell.",
+    "11. K9 GATE SCOPE: the k=9 identity (|Delta| <= 1e-12) asserted on the first 10 panels of every leg (V024 scope); determinism replay (regenerate panel 0 from captured RNG state, must reproduce Deltas exactly) on panel 0 of every cell of every leg; per-stream draw-count sentinels (fresh Random(seed) fast-forwarded by the analytic draw count must rejoin the live stream).",
+    "12. PINS: V024's PIN1/PIN2 hand pins byte-reused (they validate the shared evaluator); NEW PIN3 alpha-injection identity — a panel generated with hand-pinned alphas must differ from the same-seed alphas=0 panel by exactly the running alpha prefix sums (within 1e-9 float accumulation), verifying the epoch map e(t) = t // E and the additive planted layer.",
+    "13. SCRATCHPAD PROBE: a reduced-M smoke run of the runner was executed in the session scratchpad (outside the repo) BEFORE the committed full run, strictly for code-correctness (gate wiring, byte-identity plumbing); every decision constant, band, seed, and the evaluation order above was already pinned by the idea file and by this fixtures.json commit before that probe ran — no free parameter remained tunable."
+  ],
+  "model_basis": "the planted epoch-dispersion family (persistent per-instrument drift, i.i.d. Gaussian across epochs and instruments, one-factor Gaussian noise) — a standard neutral choice for detectable cross-sectional structure with a tunable horizon, chosen because trailing-return ranking is exactly its matched detector; single most-likely-to-flip alternative = the lane's REAL persistence structure (smoothly decaying drifts, regime-dependent dispersion, momentum crashes) — deliberately the same measurement as the NULL-case live probe",
+  "familywise_strictness_direction": "the familywise q99 rule is the strictest reasonable shortlist; a laxer round-3 rule (e.g. per-config q99) would raise every Y — direction disclosed, REJECT is therefore the conservative arm exactly where it is checked first",
+  "python_pin": "cpython-3.11 (minor version asserted at start)"
+}
