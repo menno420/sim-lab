@@ -1,0 +1,58 @@
+{
+  "question": "Which (C2, R2, g) cells hit the pre-registered T10 band (time-to-second-generator-tier 15-45 min active, target 30) under the SIM-001 S2/S3 policies extended with the committed greedy buy rule, while keeping all ten SIM-001 criteria A1-A10 in PASS state with the purchase path present?",
+  "source": "idea-engine control/outbox.md PROPOSAL 015 (2026-07-12T23:08:19Z); idea ideas/superbot-idle/generator-purchase-path-t10-2026-07-12.md @ 18778ff",
+  "engine_pin": "menno420/superbot-idle @ c753bc8f5ace96e4632510f43b53f0ee45e2def5 (fixtures/idle_engine, sha256 manifest in fixtures/MANIFEST.json)",
+  "grid": {
+    "C2_seconds_of_tier1_output": [300, 600, 900, 1800],
+    "R2_tier2_base_rate": [5, 10, 25],
+    "g_per_count_cost_growth": [[110, 100], [115, 100], [120, 100]],
+    "cells": 36
+  },
+  "held_pinned": {
+    "note": "the seven VERDICT 006-graduated economy-v1 parameters and the 1.15 growth-ratio guardrail are held fixed and NOT re-opened by this sweep; the sim self-checks them against the vendored idle_engine.economy at run time",
+    "UPGRADE_BASE_COST_SECONDS": 60,
+    "UPGRADE_COST_GROWTH_NUM": 115,
+    "UPGRADE_COST_GROWTH_DEN": 100,
+    "UPGRADE_EFFECT_PERCENT": 25,
+    "PRESTIGE_THRESHOLD": 100000,
+    "PRESTIGE_AWARD_DIVISOR": 100000,
+    "PRESTIGE_BONUS_PERCENT": 10,
+    "MILESTONE_OWNED_THRESHOLDS": [10, 100, 1000],
+    "MILESTONE_LIFETIME_THRESHOLDS": [1000, 100000, 10000000],
+    "MILESTONE_PRESTIGE_THRESHOLDS": [1, 5, 25],
+    "MILESTONE_BONUS_PERCENT": 5
+  },
+  "candidate_mechanic": {
+    "generator_cost_curve": "cost of the NEXT copy of a generator with n copies currently owned = BASE_COST * g_num**n // g_den**n (the upgrade-curve family: exact big-int, one floor); BASE_COST = tier1.base_rate * COST_SECONDS (the UPGRADE_BASE_COST_SECONDS unit convention, seconds-of-tier-1-output)",
+    "tier2_cost_seconds": "C2 (swept). With owned tier2 = 0 the unlock costs exactly C2.",
+    "tier1_copy_cost_seconds": 60,
+    "tier1_copy_cost_rationale": "NOT swept - held at the UPGRADE_BASE_COST_SECONDS convention (one minute of the target's base output, the engine's only registered cost anchor); a fresh save owns copy #1 free (reference world), so the first purchasable tier-1 copy costs 60*g//100. Committed fixture constant, disclosed as a modelling choice in REPORT.md.",
+    "purchase_semantics": "driver-level (the engine has NO generator purchase path at c753bc8 - the premise): exact spend or nothing, balance-only (lifetime untouched, mirroring purchase_upgrade), owned[spec_id] += 1. The vendored engine is byte-identical and unmodified.",
+    "run_scoped": "owned is wiped by apply_prestige (engine semantics, untouched); the reference world re-seeds owned={'tier1':1} on every fresh save (the VERDICT 006 rule); ALL purchased copies (tier1 extras + tier2) are LOST at reset and re-bought - the run-scoped-counts design fork the proposal names."
+  },
+  "buy_rule": {
+    "primary_S3_and_S2": "greedy-myopic: at each action boundary, repeat: among the AFFORDABLE options {next boost1 upgrade level, next tier-1 copy, next tier-2 copy (count 0 = the unlock)}, buy the one with the highest marginal production per unit cost (delta_rate/cost compared as exact integer cross-products delta_a*cost_b vs delta_b*cost_a; delta_rate measured by calling the REAL production_per_second on the hypothetical post-purchase state); ties broken by (higher delta, then lower cost, then fixed order upgrade < tier1 < tier2); stop when nothing is affordable. The SIM-001 'repeat-buy while affordable' policy extended to the three-option choice set.",
+    "additive_S3g": "greedy-saving (additive variant, reported as S3g, never instead of S3): identical, except the ratio argmax runs over ALL three options including unaffordable ones, and when the winner is unaffordable the player SAVES (buys nothing) until it is; zero-delta winners fall back to the affordable-myopic step so the player never deadlocks on saving for a zero-gain option.",
+    "milestone_banking": "award_milestones (REAL engine call) at every action boundary: after crediting production, after every purchase, after a prestige reset. S3's 1-second player additionally banks a milestone the second its threshold is crossed (a milestone-crossing is an event-jump boundary), byte-identical to a literal per-second loop that calls award_milestones each second (self-checked). S2 banks at visits only (the reference world's 'the player can only act when present' rule).",
+    "prestige": "prestige iff eligible, AFTER buying (SIM-001 rule: spending never reduces the award)."
+  },
+  "policies": {
+    "S2_checkin_hours": [0.25, 2, 8, 24],
+    "S3": "optimal-active at 1-second granularity, computed by exact event-jump (self-checked byte-identical to a literal per-second loop over the first two resets)",
+    "horizon_days": 14,
+    "s3_max_resets": 25
+  },
+  "scoring": {
+    "T10": "time of the FIRST tier-2 purchase (fresh save, first run), seconds; band PASS = S3's T10 in [900, 2700] (15-45 min active, target 1800); reported under S3, S3g and every S2(N) - not just the optimal center",
+    "A1_A10": "SIM-001's ten acceptance criteria re-scored with the purchase path present, dual-read where the registered wording names upgrades: LITERAL counts boost1 upgrade purchases only (T1/T2/T7/T8 registered text); INTENT counts ALL purchases (upgrade levels + generator copies - the criteria's cadence/payoff/dead-zone intent over the extended purchase set). Both are committed per cell; the scorecard's headline PASS uses INTENT, and every LITERAL divergence is listed and rides the ruling as a re-registration caveat.",
+    "early_inert": "share of S3 purchases in the first 900 s with zero marginal rate delta (vs VERDICT 006's measured 3-in-4 baseline on upgrade levels)",
+    "owned_rungs": "earned time of the owned-10/100/1000 milestones per profile within the horizon (run-scoped progress: counts wiped at reset, earned marks kept - engine semantics)",
+    "baseline_legs": "B0 = no purchase path, no milestone specs (must reproduce VERDICT 006's published numbers exactly - drift isolation anchor); B1 = no purchase path, milestone+theme fold active (the honest engine-drift measurement at the new pin; if B1 itself breaks an A-band that is a first-class finding routed to the lane)"
+  },
+  "diagnostic_legs": {
+    "note": "additive, disclosed - the SIM-001 S3b precedent (an additive policy leg never replaces the committed grid's scoring); every leg runs the full 36-cell grid under the full policy set with the same dual scorecards",
+    "D1_no_t1": "the committed cell with the tier-1 copy path REMOVED (tier-2 unlock/copies are the only generator purchases; tier-1 count stays at the shipped 1) - isolates whether the tier-1 copy loop, not the swept (C2,R2,g) knobs, binds",
+    "D2_unlock_only": "D1 with tier-2 additionally CAPPED at 1 copy - buying the SECOND GENERATOR TIER is a one-off unlock (T10's registered wording read literally); no count-stacking loop exists at all; the g axis is inert in this shape by construction (no repeat generator purchases)"
+  },
+  "winner_rule": "mechanical: among cells with S3 T10 in-band AND all ten INTENT criteria PASS, rank by |T10 - 1800| ascending, tie-break by (S2(N=0.25) T10 in-band, S3g T10 in-band, lower early-inert fraction, then lexicographic (C2,R2,g)); the top cell is the ONE recommended registration row, the next three are runners-up. The committed shape's winner is THE verdict row; if the committed shape has no eligible cell, the same rule over D1 then D2 names the reshape-recommended row (evidence for the mechanic-shape finding, not a graduation of the committed shape)"
+}
