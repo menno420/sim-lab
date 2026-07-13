@@ -1,0 +1,78 @@
+{
+  "registration": {
+    "proposal_header": "## PROPOSAL 048 · 2026-07-13T21:54:41Z · status: sim-ready",
+    "proposal_source": "idea-engine control/outbox.md @ main 1218196 (landed via idea-engine PR #353)",
+    "idea_doc": "https://github.com/menno420/idea-engine/blob/09dadfb599a87da068beffdadd03183221e8fc49/ideas/fleet/parrondo-losing-games-combine-2026-07-13.md",
+    "verdict": "VERDICT 059 (INTAKE 048; INTAKE number = proposal number per the P047->V058 offset map)"
+  },
+  "model": {
+    "EPS": {"num": 1, "den": 100},
+    "M": 3,
+    "coin_triple_base": {
+      "game_A": {"num": 1, "den": 2},
+      "game_B_bad": {"num": 1, "den": 10},
+      "game_B_good": {"num": 3, "den": 4}
+    },
+    "derived": {
+      "a": {"num": 49, "den": 100, "note": "a = 1/2 - EPS"},
+      "b0": {"num": 9, "den": 100, "note": "b0 = 1/10 - EPS, used at s == 0"},
+      "b1": {"num": 37, "den": 50, "note": "b1 = 3/4 - EPS, used at s in {1,2}"}
+    },
+    "switching_rule": "RANDOM: at each step play A with probability 1/2, else B (independent per step); effective win probability at residue s is w_s = (a + b_s)/2",
+    "derived_w": {
+      "w0": {"num": 29, "den": 100},
+      "w1": {"num": 123, "den": 200},
+      "w2": {"num": 123, "den": 200}
+    },
+    "reduced_chain_rule": "on residues s in {0,1,2}: from s go to (s+1) mod 3 w.p. w_s (win, capital +1) and to (s-1) mod 3 w.p. 1 - w_s (loss, capital -1)",
+    "drift_formula": "D = sum_s pi_s * (2*w_s - 1), pi the chain's stationary distribution (exact rationals)"
+  },
+  "decision_rule": {
+    "evaluation_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "REJECT": "checked FIRST: iff D_mix <= 0",
+    "INVALID": "iff an isolated-loss gate fails (D_A >= 0 or D_B >= 0) — the 'two LOSING games' premise is void; report, do not rule",
+    "APPROVE": "iff D_mix >= 1/1000 AND the seed-20261332 stability leg reproduces the sign and the >= 1/1000 margin",
+    "NULL": "iff 0 < D_mix < 1/1000, OR any validity conjunct fails (an Arm B leg disagrees with Arm A beyond 4*se)",
+    "approve_band": {"num": 1, "den": 1000},
+    "armB_tolerance": "abs(empirical_drift - exact_drift) <= 4 * se, se = sqrt((1 - empirical_drift^2) / N)"
+  },
+  "seeds": {
+    "20261329": "Arm B headline: random-switch mixed drift, N = 200000; PASS iff |D_hat_mix - D_mix| <= 4*se",
+    "20261330": "Arm B control: pure Game A, N = 200000; confirms D_hat_A ~ -1/50 (A-losing precondition, live)",
+    "20261331": "Arm B control: pure Game B, N = 200000; confirms D_hat_B ~ D_B < 0 (B-losing precondition, live)",
+    "20261332": "stability leg: re-run the mixed headline at a second seed; PASS iff the sign and the >= 1/1000 margin both reproduce",
+    "policy": "exactly these four, pre-registered in PROPOSAL 048, strictly above the V058 high-water 20261328; no other RNG constructed"
+  },
+  "arm_B": {
+    "N": 200000,
+    "capital_start": 0,
+    "draw_order": "mixed legs: 2 draws per step in pinned order (draw 1: policy coin, rng.random() < 1/2 -> play A; draw 2: win coin, rng.random() < p_win); pure legs: 1 draw per step (win coin only)",
+    "draw_sentinels": {"mixed_leg": 400000, "pure_leg": 200000}
+  },
+  "reporting_only": {
+    "stationary_residue_distributions": "pi_B and pi_mix (exhibit the ratchet mechanism); never gate the ruling",
+    "critical_EPS_sweep": [
+      {"num": 1, "den": 100},
+      {"num": 3, "den": 200},
+      {"num": 1, "den": 50},
+      {"num": 1, "den": 40},
+      {"num": 1, "den": 25}
+    ],
+    "periodic_comparator": {
+      "pattern": ["A", "A", "B", "B"],
+      "rule": "deterministic [A,A,B,B] cycle on the phase x residue product chain (12 states: phase p in 0..3 advances +1 mod 4 every step; residue s moves +-1 mod 3 with win prob a if pattern[p] == 'A' else b_s); drift = sum over states of pi * (2*w - 1); reporting-only"
+    }
+  },
+  "drafter_disclosed_reference": {
+    "note": "NON-authoritative drafting-time hand check disclosed in the idea doc; the sim re-derives everything from the pinned constants above and must not trust these — equality is reported, never gated",
+    "D_A": {"num": -1, "den": 50},
+    "D_B": {"num": -1529, "den": 87950},
+    "D_mix": {"num": 26673, "den": 4429850},
+    "pi_B": [{"num": 673, "den": 1759}, {"num": 1633, "den": 10554}, {"num": 4883, "den": 10554}],
+    "pi_mix": [{"num": 30529, "den": 88597}, {"num": 1186, "den": 4663}, {"num": 35534, "den": 88597}]
+  },
+  "environment": {
+    "python": "cpython-3.11 pinned and asserted",
+    "hermetic": "the runner reads only this fixtures.json; zero repo/network reads at verdict time; stdlib only; no wall-clock in any output"
+  }
+}
