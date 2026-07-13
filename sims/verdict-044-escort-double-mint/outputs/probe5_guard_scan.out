@@ -1,0 +1,25 @@
+PROBE 5 — guard scan (pin 57f69be3)
+DnDState fields: ['capability', 'currency', 'game_xp', 'global_xp', 'player_id', 'scene_id', 'seed', 'xp']
+-> no field records quest/bundle completion (only scene_id + running totals).
+
+services/dnd_workflow.py:11:     (``resolve``, which already CLAMPS any off-menu id to the deterministic safe
+services/dnd_workflow.py:29:   and/or a minted reward) even when the input clamps to the deterministic no-op.
+services/dnd_workflow.py:67: # minted inside the pure effect, tier-capped by the engine), so the seam
+services/dnd_workflow.py:96:       folded from each minted :class:`~games.exploration.quest.models.RewardBundle`
+services/dnd_workflow.py:132:     beat concludes / stays). ``reward`` is the code-owned bundle minted this
+services/dnd_workflow.py:185:     """Fold a minted :class:`RewardBundle` into the running totals (code-owned).
+services/dnd_workflow.py:264:         # A minted reward: the primary mutation is the reward grant (mirrors
+games/dnd/core/effects.py:6: deterministic transition; the only number-bearing outcome (a reward) is minted by
+games/dnd/core/effects.py:16:   quest, applies the ``npc_reached`` event, and on ``COMPLETED`` mints the tier's
+games/dnd/core/effects.py:92:         if instance.state is QuestState.COMPLETED
+games/dnd/core/resolver.py:47:     for a narrate-only outcome); ``flavor`` is display-only, already length-capped.
+games/exploration/quest/engine.py:75:     done the state becomes COMPLETED. Returns a NEW instance; never mutates.
+games/exploration/quest/engine.py:101:     new_state = QuestState.COMPLETED if all_done else instance.state
+games/exploration/quest/engine.py:142:     """Return the tier's capped reward bundle for a COMPLETED quest.
+games/exploration/quest/engine.py:150:     if instance.state is not QuestState.COMPLETED:
+games/exploration/quest/engine.py:152:             f"grant_rewards requires COMPLETED, got {instance.state.value}"
+games/exploration/quest/models.py:26:     COMPLETED = "completed"
+
+C2b RESULT: the only 'completed' hits are the engine's per-INSTANCE state machine
+(QuestState.COMPLETED) — which nothing persists across chooses (probe 4). No cooldown,
+no one-shot flag, no session-level completion memory exists on the escort path.

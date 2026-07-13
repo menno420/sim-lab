@@ -1,0 +1,19 @@
+PROBE 2 — stay-loop farm after the packet arc (pin 57f69be3)
+after packet arc: scene_id='treeline_watch' totals=g10/x50/c20 (ended flag on last result: True)
+
+repeat  1: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g15/x75/c30
+repeat  2: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g20/x100/c40
+repeat  3: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g25/x125/c50
+repeat  4: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g30/x150/c60
+repeat  5: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g35/x175/c70
+repeat  6: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g40/x200/c80
+repeat  7: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g45/x225/c90
+repeat  8: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g50/x250/c100
+repeat  9: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g55/x275/c110
+repeat 10: scene='treeline_watch' on-menu=True clamped=False minted=True totals=g60/x300/c120
+
+extra mints in 10 repeats: 10 (all legal, none clamped)
+total reward:* audit rows: 12; final totals g60/x300/c120
+totals == 12x TIER_CAPS[I] (60, 300, 120)? True
+
+C2a RESULT: UNBOUNDED — signal_escort re-mints every repeat; no cooldown, no one-shot flag, no session end

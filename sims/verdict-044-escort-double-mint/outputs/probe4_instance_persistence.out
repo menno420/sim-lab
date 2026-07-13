@@ -1,0 +1,19 @@
+PROBE 4 — quest-instance persistence (pin 57f69be3)
+resolver-derived scene seed for treeline_watch (session seed 0): 18065608658313674186
+escort_step call #1: reward=(5, 25, 10)
+escort_step call #2: reward=(5, 25, 10)
+-> the SAME (seed, player) mints TWICE: the effect is stateless by construction.
+
+offer #1 instance_id: q-safe_passage-player-9182fb68 (state=offered)
+offer #2 instance_id: q-safe_passage-player-9182fb68 (state=offered)
+identical ids? True — the engine names ONE logical quest, but no store remembers it was completed.
+
+completed persisted instance: state=completed
+accept(COMPLETED) raises QuestStateError: QuestStateError('accept requires OFFERED, got completed')
+apply_event on COMPLETED instance: state stays completed, step unchanged? True (returned unchanged: True)
+grant_rewards on COMPLETED works (idempotent read) — the mint guard must live where the instance is (not) stored.
+
+ROOT CAUSE: games/dnd/core/effects.py _escort_step lines ~86-97 construct a fresh
+instance per call (offer->accept->apply_event->grant_rewards) and discard it; no layer
+(effect, resolver, seam DnDState) persists QuestInstance, so the engine's own
+re-completion guard (QuestStateError) can never fire.
