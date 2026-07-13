@@ -183,3 +183,37 @@ provenance: NIGHT REPORT REQUEST — owner ask 2026-07-13 (relayed via Fleet Man
 do: post a THOROUGH night report, window 2026-07-12T22:30Z→now, to control/status.md AND your outbox (manager-addressed): SHIPPED (merges/PRs, numbers+SHAs) · OPEN PRs + check states · ORDERS served + outstanding · SIM-REQUESTs/asks pending (note idea-engine local ORDERs 005/006 = 9 queued SIM-REQUESTs) · STALLS/denials verbatim · wake-chain health · next-3.
 why: owner morning review.
 done-when: report in both files; Fleet Manager compiles the roll-up.
+
+## ORDER 005 · 2026-07-13T22:14Z · status: new
+**EAP final-night worklist — owner directive relay (fm ORDER 045, Phase 3 fan-out).**
+
+Owner directive, quoted VERBATIM as recorded in fm ORDER 045: "I want you to find out the current state of all repos and
+dispatch instructions for all projects so they know what to do, find out if there still
+need to be improvements made in existing features or else if the idea lab made any good
+plans etc. the goal is to make sure each project has a full list to work on tonight since
+it's the last day of the EAP."
+
+Citations: fm ORDER 045, control/inbox.md @ ca1ce28 · docs/eap-final-night-worklists-2026-07-13.md @ ca1ce28 (doc last modified by commit e963183; landed via fm PR #178, merged 2026-07-13T22:07:14Z).
+
+**Your seat's full night worklist, copied faithfully from the doc:**
+
+## sim-lab — swept @ `32ff5c3`
+
+Healthy and nearly drained: 57 verdicts finalized, 0 open PRs, all ORDERs done.
+
+1. PROPOSAL 047 → VERDICT 058 — creature-rarity vs skill-counter battle sweep, the only sim-ready unverdicted proposal (idea-engine `control/outbox.md` L401 @`66a05b1`, sim-ready 21:28Z, seeds 20261325–328) `[standing]`
+2. Heartbeat/ledger refresh through V057 + fleet-seed high-water 20261328 (`control/status.md` 20:08:41Z @`32ff5c3`) `[drift]`
+3. `docs/current-state.md` drift — says "verdicts through 045 / V046 pending", stale by 11 verdicts (V046 landed #96) `[drift]` (fix-on-sight class)
+4. Kit upgrade v1.7.0 → v1.15.0 — standing watch from the session-2 close; no upgrade PR open at sweep (`control/status.md` kit line @`32ff5c3`) `[improve]`
+5. Own outbox rollover prep — 1028 lines and heading for the same 256KB wall as idea-engine ASK 004; adopt whatever convention fm answers (`control/outbox.md@32ff5c3`) `[improve]`
+
+**Blocked (do not schedule):** OA-002 Codex quota · OA-003 review-site deploy · OA-004 harness tag-push 403 (all owner actions, `control/status.md` ⚑ @`32ff5c3`).
+
+Why-tonight tags (from the worklists doc): `[lane]` unfinished lane work · `[standing]` standing/unconsumed
+ORDER · `[verdict]` sim verdict served/approved awaiting build · `[build-direct]`
+idea-engine plan marked buildable without a sim verdict · `[improve]`
+feature-improvement · `[drift]` docs/heartbeat drift fix · `[deadline]` window
+closes 07-14 · `[relay]` fm routing/relay debt.
+
+provenance: relayed by the Fleet Manager seat per owner directive, coordinator dispatch 2026-07-13
+done-when: work the list top-down across tonight's wakes; ack in your inbox thread; heartbeat progress per item.
