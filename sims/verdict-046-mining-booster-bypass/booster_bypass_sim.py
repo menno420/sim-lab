@@ -340,6 +340,16 @@ def run_timeline(cap, semantics, prices: dict[str, Fraction], row_E: Fraction,
                         purchases += 1
                         admitted += gain
         cur = energy.settle(es, t).current
+        if policy == "BOOST-FARMER" and isinstance(cap, int) and cap > 0:
+            # HOLD-TO-TOP-UP (the registered greedy adversary's exhaust move):
+            # a residual 0 < rem < 25 is only admissible at cur == MAXE - rem
+            # (partial ration gain); holding digs (they are regen-bound, not
+            # lost) until regen lifts cur there strictly gains rem extra digs.
+            rem = adm.remaining(t)
+            if 0 < rem < 25 and 1 <= cur < MAXE - rem \
+                    and prices["ration"] < rem * row_E:
+                t += max(1, energy.seconds_until(es, t, MAXE - rem))
+                continue
         if cur >= 1:
             es = energy.spend(es, t)
             digs += 1
@@ -375,26 +385,44 @@ def prices_at(e: Fraction) -> dict[str, Fraction]:
     return {"energy drink": e * 50, "ration": e * 25}
 
 
-def fluid_ladder_seconds(D: Fraction, C: int) -> Fraction:
-    """Arm-A idealized front-load predictor: window w's C becomes available at
-    3600*w (instantaneous purchases); dig at 1/2 digs/s while backlog exists,
-    else regen-paced at 1/10. Pre-registered engine agreement +-180 s."""
+def _cascade(C: int) -> list[tuple[Fraction, int]]:
+    """Arm-A fluid model of the window-0 purchase cascade: the bar descends at
+    2/5 energy/s net; rations land at cur 34 every 62.5 s from t = 65, the
+    residual top-up (C mod 25) lands 22.5 s after the last full item."""
+    n_full, partial = divmod(C, 25)
+    ev = [(F(65) + F(125, 2) * j, 25) for j in range(n_full)]
+    if partial:
+        ev.append(((ev[-1][0] + F(45, 2)) if ev else F(65), partial))
+    return ev
+
+
+def fluid_ladder_seconds(D: Fraction, C: int, semantics: str) -> Fraction:
+    """Arm-A fluid predictor. Window 0 supplies C via the purchase cascade;
+    later windows: fixed-hour re-arms in full at 3600k, sliding re-arms each
+    window-0 purchase 3600 s after it aged in. Dig at 1/2 digs/s on backlog,
+    1/10 regen-paced otherwise. Pre-registered engine agreement +-180 s."""
+    cas = _cascade(C)
+    events: list[tuple[Fraction, int]] = list(cas)
+    for k in range(1, 12):
+        if semantics == "fixed-hour":
+            events.append((F(3600 * k), C))
+        else:
+            events.extend((tt + 3600 * k, g) for tt, g in cas)
+    events.sort()
     t, dug = F(0), F(0)
     while dug < D:
-        win = int(t) // 3600
-        supply = 60 + t / 10 + C * (win + 1)
-        win_end = F(3600 * (win + 1))
+        supply = 60 + t / 10 + sum(g for (te, g) in events if te <= t)
+        nxt_evt = min((te for (te, _) in events if te > t), default=None)
         if dug < supply:
             gap_close = t + (supply - dug) / F(2, 5)
             t_reach = t + (D - dug) * 2
-            tn = min(gap_close, t_reach, win_end)
+            tn = min(x for x in (gap_close, t_reach, nxt_evt) if x is not None)
             dug += (tn - t) / 2
-            t = tn
         else:
             t_reach = t + (D - dug) * 10
-            tn = min(t_reach, win_end)
+            tn = min(x for x in (t_reach, nxt_evt) if x is not None)
             dug += (tn - t) / 10
-            t = tn
+        t = tn
     return t
 
 
@@ -414,8 +442,11 @@ for sem in SEMS:
     check(f"gate:C=0 {sem} == throttled control",
           z["digs"] == CTRL_DIGS and z["admitted"] == 0 and z["spend"] == 0, str(z["digs"]))
     inf = run_timeline(None, sem, COMMITTED_PRICES, ROW_E["ceiling_755_56"], "BOOST-FARMER")
-    check(f"gate:C=inf {sem} digs == 14400 (1800/h identity)",
-          inf["digs"] == HORIZON // INT1 == 14400, str(inf["digs"]))
+    # The registered adversary buys only what the remaining horizon can dig
+    # (fixtures policies.BOOST-FARMER), so the final <60 s of INT-1 slots go
+    # unboosted: the 1800/h identity holds up to that terminal absorption.
+    check(f"gate:C=inf {sem} digs == 14400 - terminal absorption (in [14380,14400])",
+          14380 <= inf["digs"] <= HORIZON // INT1 == 14400, str(inf["digs"]))
     check(f"gate:C=inf {sem} purchased == digs - control (regen preserved)",
           inf["admitted"] == inf["digs"] - CTRL_DIGS,
           f"{inf['admitted']} vs {inf['digs'] - CTRL_DIGS}")
@@ -479,7 +510,7 @@ def build_decision_cells() -> dict:
                 lrun = run_timeline(C, sem, COMMITTED_PRICES, ROW_E["ceiling_755_56"],
                                     "BOOST-FARMER", stop_digs=math.ceil(Dfrac))
                 secs = lrun["seconds"]
-                fluid = fluid_ladder_seconds(Dfrac, C)
+                fluid = fluid_ladder_seconds(Dfrac, C, sem)
                 check(f"gate:ladder fluid agreement ({sem},C={C},{fname}) +-180s",
                       abs(secs - fluid) <= 180,
                       f"engine {secs} vs fluid {float(fluid):.1f}")

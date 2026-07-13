@@ -1,0 +1,1049 @@
+{
+  "b0": {
+    "anchors": 37,
+    "pass": true
+  },
+  "boundary_gamer_fixed_hour": {
+    "C=100": {
+      "admitted": 600,
+      "asap_farmer_peak": 175,
+      "digs": 3539,
+      "note": "2C is the naive bound; the 60-energy bar caps an instantaneous burst, so the measured peak lands near C + 60",
+      "peak_trailing_3600s_admitted": 150,
+      "peak_window_rho_ceiling": 1.3919,
+      "sliding_audited_ceiling": 100
+    },
+    "C=125": {
+      "admitted": 700,
+      "asap_farmer_peak": 200,
+      "digs": 3639,
+      "note": "2C is the naive bound; the 60-energy bar caps an instantaneous burst, so the measured peak lands near C + 60",
+      "peak_trailing_3600s_admitted": 175,
+      "peak_window_rho_ceiling": 1.4573,
+      "sliding_audited_ceiling": 125
+    },
+    "C=60": {
+      "admitted": 480,
+      "asap_farmer_peak": 120,
+      "digs": 3415,
+      "note": "2C is the naive bound; the 60-energy bar caps an instantaneous burst, so the measured peak lands near C + 60",
+      "peak_trailing_3600s_admitted": 120,
+      "peak_window_rho_ceiling": 1.3136,
+      "sliding_audited_ceiling": 60
+    },
+    "C=75": {
+      "admitted": 500,
+      "asap_farmer_peak": 150,
+      "digs": 3439,
+      "note": "2C is the naive bound; the 60-energy bar caps an instantaneous burst, so the measured peak lands near C + 60",
+      "peak_trailing_3600s_admitted": 125,
+      "peak_window_rho_ceiling": 1.3266,
+      "sliding_audited_ceiling": 75
+    }
+  },
+  "control": {
+    "digs_8h": 2939,
+    "net_coins_per_h": {
+      "P0": "11756/7",
+      "P1": "311534/175",
+      "P2": "7944117/3520",
+      "P3": "24766953/9200",
+      "ceiling_755_56": "2218945/448"
+    }
+  },
+  "decision_cells": {
+    "fixed-hour|C=100": {
+      "C": 100,
+      "PACE": false,
+      "REFILL": {
+        "cost_coins": "60",
+        "full_bar_within_window": true,
+        "pass": true
+      },
+      "SEAL": false,
+      "admitted": 800,
+      "digs": 3739,
+      "ladder": {
+        "forge_I": {
+          "PACE_pass": false,
+          "engine_seconds": 2792,
+          "fluid_seconds_float": 2785.7,
+          "ratio": 0.7149,
+          "ratio_frac": "3199833024/4476179765",
+          "sustained_rate_prediction": 0.7893,
+          "throttled_anchor_seconds": "4476179765/1146072"
+        },
+        "forge_II": {
+          "PACE_pass": false,
+          "engine_seconds": 11024,
+          "fluid_seconds_float": 11021.5,
+          "ratio": 0.7336,
+          "ratio_frac": "12634297728/17222779765",
+          "sustained_rate_prediction": 0.7843,
+          "throttled_anchor_seconds": "17222779765/1146072"
+        }
+      },
+      "passes_all_three": false,
+      "peak_trailing_3600s_admitted": 175,
+      "purchases": 25,
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "14396/7",
+          "net_coins_per_h_float": 2056.57,
+          "premium": -0.0046,
+          "rho_closed_form": "59/48",
+          "rho_float": 1.2246,
+          "rho_vs_control": "3599/2939"
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "382334/175",
+          "net_coins_per_h_float": 2184.77,
+          "premium": -0.0047,
+          "rho_closed_form": "1567/1272",
+          "rho_float": 1.2273,
+          "rho_vs_control": "191167/155767"
+        },
+        "P2": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "9824917/3520",
+          "net_coins_per_h_float": 2791.17,
+          "premium": -0.0049,
+          "rho_closed_form": "60409/48654",
+          "rho_float": 1.2368,
+          "rho_vs_control": "9824917/7944117"
+        },
+        "P3": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "30772553/9200",
+          "net_coins_per_h_float": 3344.84,
+          "premium": -0.005,
+          "rho_closed_form": "189221/151686",
+          "rho_float": 1.2425,
+          "rho_vs_control": "30772553/24766953"
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "2787105/448",
+          "net_coins_per_h_float": 6221.22,
+          "premium": -0.0052,
+          "rho_closed_form": "17141/13590",
+          "rho_float": 1.256,
+          "rho_vs_control": "557421/443789"
+        }
+      },
+      "semantics": "fixed-hour",
+      "spend_coins": "640"
+    },
+    "fixed-hour|C=125": {
+      "C": 125,
+      "PACE": false,
+      "REFILL": {
+        "cost_coins": "60",
+        "full_bar_within_window": true,
+        "pass": true
+      },
+      "SEAL": false,
+      "admitted": 1000,
+      "digs": 3939,
+      "ladder": {
+        "forge_I": {
+          "PACE_pass": false,
+          "engine_seconds": 2542,
+          "fluid_seconds_float": 2535.7,
+          "ratio": 0.6508,
+          "ratio_frac": "2913315024/4476179765",
+          "sustained_rate_prediction": 0.7502,
+          "throttled_anchor_seconds": "4476179765/1146072"
+        },
+        "forge_II": {
+          "PACE_pass": false,
+          "engine_seconds": 10874,
+          "fluid_seconds_float": 10871.5,
+          "ratio": 0.7236,
+          "ratio_frac": "12462386928/17222779765",
+          "sustained_rate_prediction": 0.7443,
+          "throttled_anchor_seconds": "17222779765/1146072"
+        }
+      },
+      "passes_all_three": false,
+      "peak_trailing_3600s_admitted": 200,
+      "purchases": 33,
+      "rows": {
+        "P0": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "15056/7",
+          "net_coins_per_h_float": 2150.86,
+          "premium": -0.0058,
+          "rho_closed_form": "247/192",
+          "rho_float": 1.2807,
+          "rho_vs_control": "3764/2939"
+        },
+        "P1": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "400034/175",
+          "net_coins_per_h_float": 2285.91,
+          "premium": -0.0058,
+          "rho_closed_form": "6563/5088",
+          "rho_float": 1.2841,
+          "rho_vs_control": "200017/155767"
+        },
+        "P2": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "10295117/3520",
+          "net_coins_per_h_float": 2924.75,
+          "premium": -0.0061,
+          "rho_closed_form": "253391/194616",
+          "rho_float": 1.2959,
+          "rho_vs_control": "10295117/7944117"
+        },
+        "P3": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "32273953/9200",
+          "net_coins_per_h_float": 3508.04,
+          "premium": -0.0062,
+          "rho_closed_form": "794419/606744",
+          "rho_float": 1.3031,
+          "rho_vs_control": "32273953/24766953"
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "2929145/448",
+          "net_coins_per_h_float": 6538.27,
+          "premium": -0.0066,
+          "rho_closed_form": "14423/10872",
+          "rho_float": 1.3201,
+          "rho_vs_control": "585829/443789"
+        }
+      },
+      "semantics": "fixed-hour",
+      "spend_coins": "800"
+    },
+    "fixed-hour|C=60": {
+      "C": 60,
+      "PACE": true,
+      "REFILL": {
+        "cost_coins": "60",
+        "full_bar_within_window": true,
+        "pass": true
+      },
+      "SEAL": true,
+      "admitted": 480,
+      "digs": 3415,
+      "ladder": {
+        "forge_I": {
+          "PACE_pass": true,
+          "engine_seconds": 3200,
+          "fluid_seconds_float": 3185.7,
+          "ratio": 0.8193,
+          "ratio_frac": "733486080/895235953",
+          "sustained_rate_prediction": 0.8615,
+          "throttled_anchor_seconds": "4476179765/1146072"
+        },
+        "forge_II": {
+          "PACE_pass": true,
+          "engine_seconds": 12532,
+          "fluid_seconds_float": 12507.7,
+          "ratio": 0.8339,
+          "ratio_frac": "14362574304/17222779765",
+          "sustained_rate_prediction": 0.8583,
+          "throttled_anchor_seconds": "17222779765/1146072"
+        }
+      },
+      "passes_all_three": true,
+      "peak_trailing_3600s_admitted": 120,
+      "purchases": 17,
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "13240/7",
+          "net_coins_per_h_float": 1891.43,
+          "premium": -0.0113,
+          "rho_closed_form": "91/80",
+          "rho_float": 1.1262,
+          "rho_vs_control": "3310/2939"
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "70298/35",
+          "net_coins_per_h_float": 2008.51,
+          "premium": -0.0109,
+          "rho_closed_form": "483/424",
+          "rho_float": 1.1283,
+          "rho_vs_control": "175745/155767"
+        },
+        "P2": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "1803909/704",
+          "net_coins_per_h_float": 2562.37,
+          "premium": -0.0096,
+          "rho_closed_form": "18569/16218",
+          "rho_float": 1.1354,
+          "rho_vs_control": "3006515/2648039"
+        },
+        "P3": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "5645241/1840",
+          "net_coins_per_h_float": 3068.07,
+          "premium": -0.0088,
+          "rho_closed_form": "58069/50562",
+          "rho_float": 1.1397,
+          "rho_vs_control": "9408735/8255651"
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "2551445/448",
+          "net_coins_per_h_float": 5695.19,
+          "premium": -0.0069,
+          "rho_closed_form": "26201/22650",
+          "rho_float": 1.1498,
+          "rho_vs_control": "510289/443789"
+        }
+      },
+      "semantics": "fixed-hour",
+      "spend_coins": "480"
+    },
+    "fixed-hour|C=75": {
+      "C": 75,
+      "PACE": false,
+      "REFILL": {
+        "cost_coins": "60",
+        "full_bar_within_window": true,
+        "pass": true
+      },
+      "SEAL": true,
+      "admitted": 600,
+      "digs": 3539,
+      "ladder": {
+        "forge_I": {
+          "PACE_pass": false,
+          "engine_seconds": 3042,
+          "fluid_seconds_float": 3035.7,
+          "ratio": 0.7789,
+          "ratio_frac": "3486351024/4476179765",
+          "sustained_rate_prediction": 0.8329,
+          "throttled_anchor_seconds": "4476179765/1146072"
+        },
+        "forge_II": {
+          "PACE_pass": false,
+          "engine_seconds": 11912,
+          "fluid_seconds_float": 11907.7,
+          "ratio": 0.7927,
+          "ratio_frac": "13652009664/17222779765",
+          "sustained_rate_prediction": 0.829,
+          "throttled_anchor_seconds": "17222779765/1146072"
+        }
+      },
+      "passes_all_three": false,
+      "peak_trailing_3600s_admitted": 150,
+      "purchases": 17,
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "13736/7",
+          "net_coins_per_h_float": 1962.29,
+          "premium": -0.0035,
+          "rho_closed_form": "75/64",
+          "rho_float": 1.1684,
+          "rho_vs_control": "3434/2939"
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "364634/175",
+          "net_coins_per_h_float": 2083.62,
+          "premium": -0.0035,
+          "rho_closed_form": "1991/1696",
+          "rho_float": 1.1704,
+          "rho_vs_control": "182317/155767"
+        },
+        "P2": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "9354717/3520",
+          "net_coins_per_h_float": 2657.59,
+          "premium": -0.0036,
+          "rho_closed_form": "76627/64872",
+          "rho_float": 1.1776,
+          "rho_vs_control": "3118239/2648039"
+        },
+        "P3": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "29271153/9200",
+          "net_coins_per_h_float": 3181.65,
+          "premium": -0.0037,
+          "rho_closed_form": "239783/202248",
+          "rho_float": 1.1819,
+          "rho_vs_control": "9757051/8255651"
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "2645065/448",
+          "net_coins_per_h_float": 5904.16,
+          "premium": -0.0039,
+          "rho_closed_form": "21671/18120",
+          "rho_float": 1.192,
+          "rho_vs_control": "529013/443789"
+        }
+      },
+      "semantics": "fixed-hour",
+      "spend_coins": "480"
+    },
+    "sliding-3600s|C=100": {
+      "C": 100,
+      "PACE": false,
+      "REFILL": {
+        "cost_coins": "60",
+        "full_bar_within_window": true,
+        "pass": true
+      },
+      "SEAL": false,
+      "admitted": 800,
+      "digs": 3739,
+      "ladder": {
+        "forge_I": {
+          "PACE_pass": false,
+          "engine_seconds": 2792,
+          "fluid_seconds_float": 2785.7,
+          "ratio": 0.7149,
+          "ratio_frac": "3199833024/4476179765",
+          "sustained_rate_prediction": 0.7893,
+          "throttled_anchor_seconds": "4476179765/1146072"
+        },
+        "forge_II": {
+          "PACE_pass": false,
+          "engine_seconds": 11077,
+          "fluid_seconds_float": 11073.5,
+          "ratio": 0.7371,
+          "ratio_frac": "12695039544/17222779765",
+          "sustained_rate_prediction": 0.7843,
+          "throttled_anchor_seconds": "17222779765/1146072"
+        }
+      },
+      "passes_all_three": false,
+      "peak_trailing_3600s_admitted": 100,
+      "purchases": 32,
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "14396/7",
+          "net_coins_per_h_float": 2056.57,
+          "premium": -0.0046,
+          "rho_closed_form": "59/48",
+          "rho_float": 1.2246,
+          "rho_vs_control": "3599/2939"
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "382334/175",
+          "net_coins_per_h_float": 2184.77,
+          "premium": -0.0047,
+          "rho_closed_form": "1567/1272",
+          "rho_float": 1.2273,
+          "rho_vs_control": "191167/155767"
+        },
+        "P2": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "9824917/3520",
+          "net_coins_per_h_float": 2791.17,
+          "premium": -0.0049,
+          "rho_closed_form": "60409/48654",
+          "rho_float": 1.2368,
+          "rho_vs_control": "9824917/7944117"
+        },
+        "P3": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "30772553/9200",
+          "net_coins_per_h_float": 3344.84,
+          "premium": -0.005,
+          "rho_closed_form": "189221/151686",
+          "rho_float": 1.2425,
+          "rho_vs_control": "30772553/24766953"
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "2787105/448",
+          "net_coins_per_h_float": 6221.22,
+          "premium": -0.0052,
+          "rho_closed_form": "17141/13590",
+          "rho_float": 1.256,
+          "rho_vs_control": "557421/443789"
+        }
+      },
+      "semantics": "sliding-3600s",
+      "spend_coins": "640"
+    },
+    "sliding-3600s|C=125": {
+      "C": 125,
+      "PACE": false,
+      "REFILL": {
+        "cost_coins": "60",
+        "full_bar_within_window": true,
+        "pass": true
+      },
+      "SEAL": false,
+      "admitted": 1000,
+      "digs": 3939,
+      "ladder": {
+        "forge_I": {
+          "PACE_pass": false,
+          "engine_seconds": 2542,
+          "fluid_seconds_float": 2535.7,
+          "ratio": 0.6508,
+          "ratio_frac": "2913315024/4476179765",
+          "sustained_rate_prediction": 0.7502,
+          "throttled_anchor_seconds": "4476179765/1146072"
+        },
+        "forge_II": {
+          "PACE_pass": false,
+          "engine_seconds": 10927,
+          "fluid_seconds_float": 10923.5,
+          "ratio": 0.7271,
+          "ratio_frac": "12523128744/17222779765",
+          "sustained_rate_prediction": 0.7443,
+          "throttled_anchor_seconds": "17222779765/1146072"
+        }
+      },
+      "passes_all_three": false,
+      "peak_trailing_3600s_admitted": 125,
+      "purchases": 40,
+      "rows": {
+        "P0": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "15056/7",
+          "net_coins_per_h_float": 2150.86,
+          "premium": -0.0058,
+          "rho_closed_form": "247/192",
+          "rho_float": 1.2807,
+          "rho_vs_control": "3764/2939"
+        },
+        "P1": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "400034/175",
+          "net_coins_per_h_float": 2285.91,
+          "premium": -0.0058,
+          "rho_closed_form": "6563/5088",
+          "rho_float": 1.2841,
+          "rho_vs_control": "200017/155767"
+        },
+        "P2": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "10295117/3520",
+          "net_coins_per_h_float": 2924.75,
+          "premium": -0.0061,
+          "rho_closed_form": "253391/194616",
+          "rho_float": 1.2959,
+          "rho_vs_control": "10295117/7944117"
+        },
+        "P3": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "32273953/9200",
+          "net_coins_per_h_float": 3508.04,
+          "premium": -0.0062,
+          "rho_closed_form": "794419/606744",
+          "rho_float": 1.3031,
+          "rho_vs_control": "32273953/24766953"
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": false,
+          "net_coins_per_h": "2929145/448",
+          "net_coins_per_h_float": 6538.27,
+          "premium": -0.0066,
+          "rho_closed_form": "14423/10872",
+          "rho_float": 1.3201,
+          "rho_vs_control": "585829/443789"
+        }
+      },
+      "semantics": "sliding-3600s",
+      "spend_coins": "800"
+    },
+    "sliding-3600s|C=60": {
+      "C": 60,
+      "PACE": true,
+      "REFILL": {
+        "cost_coins": "60",
+        "full_bar_within_window": true,
+        "pass": true
+      },
+      "SEAL": true,
+      "admitted": 480,
+      "digs": 3419,
+      "ladder": {
+        "forge_I": {
+          "PACE_pass": true,
+          "engine_seconds": 3200,
+          "fluid_seconds_float": 3185.7,
+          "ratio": 0.8193,
+          "ratio_frac": "733486080/895235953",
+          "sustained_rate_prediction": 0.8615,
+          "throttled_anchor_seconds": "4476179765/1146072"
+        },
+        "forge_II": {
+          "PACE_pass": true,
+          "engine_seconds": 12520,
+          "fluid_seconds_float": 12507.7,
+          "ratio": 0.8331,
+          "ratio_frac": "2869764288/3444555953",
+          "sustained_rate_prediction": 0.8583,
+          "throttled_anchor_seconds": "17222779765/1146072"
+        }
+      },
+      "passes_all_three": true,
+      "peak_trailing_3600s_admitted": 60,
+      "purchases": 24,
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "13256/7",
+          "net_coins_per_h_float": 1893.71,
+          "premium": -0.0099,
+          "rho_closed_form": "91/80",
+          "rho_float": 1.1276,
+          "rho_vs_control": "3314/2939"
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "351914/175",
+          "net_coins_per_h_float": 2010.94,
+          "premium": -0.0095,
+          "rho_closed_form": "483/424",
+          "rho_float": 1.1296,
+          "rho_vs_control": "175957/155767"
+        },
+        "P2": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "9030357/3520",
+          "net_coins_per_h_float": 2565.44,
+          "premium": -0.0082,
+          "rho_closed_form": "18569/16218",
+          "rho_float": 1.1367,
+          "rho_vs_control": "3010119/2648039"
+        },
+        "P3": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "28259913/9200",
+          "net_coins_per_h_float": 3071.73,
+          "premium": -0.0074,
+          "rho_closed_form": "58069/50562",
+          "rho_float": 1.141,
+          "rho_vs_control": "9419971/8255651"
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "2554465/448",
+          "net_coins_per_h_float": 5701.93,
+          "premium": -0.0056,
+          "rho_closed_form": "26201/22650",
+          "rho_float": 1.1512,
+          "rho_vs_control": "510893/443789"
+        }
+      },
+      "semantics": "sliding-3600s",
+      "spend_coins": "480"
+    },
+    "sliding-3600s|C=75": {
+      "C": 75,
+      "PACE": false,
+      "REFILL": {
+        "cost_coins": "60",
+        "full_bar_within_window": true,
+        "pass": true
+      },
+      "SEAL": true,
+      "admitted": 600,
+      "digs": 3539,
+      "ladder": {
+        "forge_I": {
+          "PACE_pass": false,
+          "engine_seconds": 3042,
+          "fluid_seconds_float": 3035.7,
+          "ratio": 0.7789,
+          "ratio_frac": "3486351024/4476179765",
+          "sustained_rate_prediction": 0.8329,
+          "throttled_anchor_seconds": "4476179765/1146072"
+        },
+        "forge_II": {
+          "PACE_pass": false,
+          "engine_seconds": 11912,
+          "fluid_seconds_float": 11907.7,
+          "ratio": 0.7927,
+          "ratio_frac": "13652009664/17222779765",
+          "sustained_rate_prediction": 0.829,
+          "throttled_anchor_seconds": "17222779765/1146072"
+        }
+      },
+      "passes_all_three": false,
+      "peak_trailing_3600s_admitted": 75,
+      "purchases": 24,
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "13736/7",
+          "net_coins_per_h_float": 1962.29,
+          "premium": -0.0035,
+          "rho_closed_form": "75/64",
+          "rho_float": 1.1684,
+          "rho_vs_control": "3434/2939"
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "364634/175",
+          "net_coins_per_h_float": 2083.62,
+          "premium": -0.0035,
+          "rho_closed_form": "1991/1696",
+          "rho_float": 1.1704,
+          "rho_vs_control": "182317/155767"
+        },
+        "P2": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "9354717/3520",
+          "net_coins_per_h_float": 2657.59,
+          "premium": -0.0036,
+          "rho_closed_form": "76627/64872",
+          "rho_float": 1.1776,
+          "rho_vs_control": "3118239/2648039"
+        },
+        "P3": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "29271153/9200",
+          "net_coins_per_h_float": 3181.65,
+          "premium": -0.0037,
+          "rho_closed_form": "239783/202248",
+          "rho_float": 1.1819,
+          "rho_vs_control": "9757051/8255651"
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": true,
+          "net_coins_per_h": "2645065/448",
+          "net_coins_per_h_float": 5904.16,
+          "premium": -0.0039,
+          "rho_closed_form": "21671/18120",
+          "rho_float": 1.192,
+          "rho_vs_control": "529013/443789"
+        }
+      },
+      "semantics": "sliding-3600s",
+      "spend_coins": "480"
+    }
+  },
+  "drink_mix_invariance": {
+    "alternating": {
+      "admitted": 600,
+      "digs": 3539,
+      "purchase_actions": 24,
+      "spend": "480"
+    },
+    "drink-first": {
+      "admitted": 600,
+      "digs": 3539,
+      "purchase_actions": 24,
+      "spend": "480"
+    },
+    "ration-only": {
+      "admitted": 600,
+      "digs": 3539,
+      "purchase_actions": 24,
+      "spend": "480"
+    }
+  },
+  "honest_casual": {
+    "admitted_8h": 480,
+    "digs_8h": 2392,
+    "per_cell_identical": true,
+    "refills": 16,
+    "spend_8h_coins": "480"
+  },
+  "hybrid_reporting": {
+    "admitted": 600,
+    "cell": {
+      "C": 75,
+      "e": "2",
+      "semantics": "sliding-3600s"
+    },
+    "digs": 3539,
+    "rho_ceiling": 1.1739
+  },
+  "identity_cells": {
+    "C0_fixed-hour": {
+      "admitted": 0,
+      "digs": 2939
+    },
+    "C0_sliding-3600s": {
+      "admitted": 0,
+      "digs": 2939
+    },
+    "Cinf_fixed-hour": {
+      "admitted": 11450,
+      "digs": 14389,
+      "spend_coins": "9160"
+    },
+    "Cinf_sliding-3600s": {
+      "admitted": 11450,
+      "digs": 14389,
+      "spend_coins": "9160"
+    }
+  },
+  "intake": "035",
+  "mc_validation": {
+    "cells": {
+      "fixed-hour|C=100": {
+        "M": 400,
+        "draws": 1495600,
+        "mc_mean": "1008583/74780",
+        "rel_err": 0.000385
+      },
+      "fixed-hour|C=125": {
+        "M": 400,
+        "draws": 1575600,
+        "mc_mean": "3541063/262600",
+        "rel_err": 0.000184
+      },
+      "fixed-hour|C=60": {
+        "M": 400,
+        "draws": 1366000,
+        "mc_mean": "1150811/85375",
+        "rel_err": 0.000197
+      },
+      "fixed-hour|C=75": {
+        "M": 400,
+        "draws": 1415600,
+        "mc_mean": "953377/70780",
+        "rel_err": 0.000932
+      },
+      "sliding-3600s|C=100": {
+        "M": 400,
+        "draws": 1495600,
+        "mc_mean": "20164307/1495600",
+        "rel_err": 2.1e-05
+      },
+      "sliding-3600s|C=125": {
+        "M": 400,
+        "draws": 1575600,
+        "mc_mean": "3541667/262600",
+        "rel_err": 0.000355
+      },
+      "sliding-3600s|C=60": {
+        "M": 400,
+        "draws": 1367600,
+        "mc_mean": "921997/68380",
+        "rel_err": 9.6e-05
+      },
+      "sliding-3600s|C=75": {
+        "M": 400,
+        "draws": 1415600,
+        "mc_mean": "4770259/353900",
+        "rel_err": 0.000225
+      }
+    },
+    "rows": {
+      "P0": {
+        "N": 200000,
+        "exact": "32/7",
+        "mc_mean": "914571/200000",
+        "rel_err": 0.000312
+      },
+      "P1": {
+        "N": 200000,
+        "exact": "848/175",
+        "mc_mean": "194403/40000",
+        "rel_err": 0.002964
+      },
+      "P2": {
+        "N": 200000,
+        "exact": "2703/440",
+        "mc_mean": "614361/100000",
+        "rel_err": 7e-05
+      },
+      "P3": {
+        "N": 200000,
+        "exact": "8427/1150",
+        "mc_mean": "146403/20000",
+        "rel_err": 0.001048
+      },
+      "ceiling_755_56": {
+        "N": 200000,
+        "exact": "755/56",
+        "mc_mean": "2695061/200000",
+        "rel_err": 0.000507
+      }
+    }
+  },
+  "passing_cells": [
+    "fixed-hour|C=60",
+    "sliding-3600s|C=60"
+  ],
+  "pin": "57f69be34785afb427d608b207e7369025166e94",
+  "reprice_reporting": {
+    "11325/896": {
+      "REFILL_pass_60e": false,
+      "SEAL_all_rows": true,
+      "refill_cost_60e": "169875/224",
+      "refill_cost_75e_committed_granularity": "849375/896",
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "buys": false,
+          "digs": 2939,
+          "rho_vs_control": 1.0
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "buys": false,
+          "digs": 2939,
+          "rho_vs_control": 1.0
+        },
+        "P2": {
+          "SEAL_pass": true,
+          "buys": false,
+          "digs": 2939,
+          "rho_vs_control": 1.0
+        },
+        "P3": {
+          "SEAL_pass": true,
+          "buys": false,
+          "digs": 2939,
+          "rho_vs_control": 1.0
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": true,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 1.2435
+        }
+      }
+    },
+    "2": {
+      "REFILL_pass_60e": true,
+      "SEAL_all_rows": false,
+      "refill_cost_60e": "120",
+      "refill_cost_75e_committed_granularity": "150",
+      "rows": {
+        "P0": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 3.1914
+        },
+        "P1": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 3.2879
+        },
+        "P2": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 3.6275
+        },
+        "P3": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 3.8326
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 4.318
+        }
+      }
+    },
+    "32/7": {
+      "REFILL_pass_60e": true,
+      "SEAL_all_rows": false,
+      "refill_cost_60e": "1920/7",
+      "refill_cost_75e_committed_granularity": "2400/7",
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "buys": false,
+          "digs": 2939,
+          "rho_vs_control": 1.0
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 1.2205
+        },
+        "P2": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 1.9968
+        },
+        "P3": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 2.4655
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 3.5749
+        }
+      }
+    },
+    "48/7": {
+      "REFILL_pass_60e": true,
+      "SEAL_all_rows": false,
+      "refill_cost_60e": "2880/7",
+      "refill_cost_75e_committed_granularity": "3600/7",
+      "rows": {
+        "P0": {
+          "SEAL_pass": true,
+          "buys": false,
+          "digs": 2939,
+          "rho_vs_control": 1.0
+        },
+        "P1": {
+          "SEAL_pass": true,
+          "buys": false,
+          "digs": 2939,
+          "rho_vs_control": 1.0
+        },
+        "P2": {
+          "SEAL_pass": true,
+          "buys": false,
+          "digs": 2939,
+          "rho_vs_control": 1.0
+        },
+        "P3": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 1.2502
+        },
+        "ceiling_755_56": {
+          "SEAL_pass": false,
+          "buys": true,
+          "digs": 14389,
+          "rho_vs_control": 2.9144
+        }
+      }
+    }
+  },
+  "ruling": "null",
+  "seeds": {
+    "aux": 20261284,
+    "main": 20261281,
+    "new_high_water": 20261284,
+    "reporting": 20261283,
+    "stability": 20261282
+  },
+  "self_checks": {
+    "failed": 0,
+    "failures": [],
+    "passed": 110
+  },
+  "stability": {
+    "M": 200,
+    "reproduces_ruling": true,
+    "ruling": "null",
+    "seed": 20261282
+  },
+  "verdict": 46
+}

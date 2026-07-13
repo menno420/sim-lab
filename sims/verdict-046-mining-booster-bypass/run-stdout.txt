@@ -1,0 +1,17 @@
+VERDICT 046 mining-booster-bypass @ 57f69be3
+B0 validity gate: PASS (37 anchors)
+control (throttled, 8h): 2939 digs
+  sliding-3600s|C=60: rho(ceiling) 1.1512 (cf 1.1568) SEAL=P REFILL=P PACE=P (FI 0.8193 / FII 0.8331) -> PASS
+  sliding-3600s|C=75: rho(ceiling) 1.192 (cf 1.1960) SEAL=P REFILL=P PACE=F (FI 0.7789 / FII 0.7927) -> fail
+  sliding-3600s|C=100: rho(ceiling) 1.256 (cf 1.2613) SEAL=F REFILL=P PACE=F (FI 0.7149 / FII 0.7371) -> fail
+  sliding-3600s|C=125: rho(ceiling) 1.3201 (cf 1.3266) SEAL=F REFILL=P PACE=F (FI 0.6508 / FII 0.7271) -> fail
+  fixed-hour|C=60: rho(ceiling) 1.1498 (cf 1.1568) SEAL=P REFILL=P PACE=P (FI 0.8193 / FII 0.8339) -> PASS
+  fixed-hour|C=75: rho(ceiling) 1.192 (cf 1.1960) SEAL=P REFILL=P PACE=F (FI 0.7789 / FII 0.7927) -> fail
+  fixed-hour|C=100: rho(ceiling) 1.256 (cf 1.2613) SEAL=F REFILL=P PACE=F (FI 0.7149 / FII 0.7336) -> fail
+  fixed-hour|C=125: rho(ceiling) 1.3201 (cf 1.3266) SEAL=F REFILL=P PACE=F (FI 0.6508 / FII 0.7236) -> fail
+passing cells: ['fixed-hour|C=60', 'sliding-3600s|C=60']
+boundary-gamer peak-window admitted (fixed-hour): C=60:120, C=75:125, C=100:150, C=125:175
+casual: immune (identical at every cell) — 2392 digs/8h of 30-min sessions, 16 refill purchases
+reprice (reporting): e=2: SEAL_all=False REFILL_60e=True, e=32/7: SEAL_all=False REFILL_60e=True, e=48/7: SEAL_all=False REFILL_60e=True, e=11325/896: SEAL_all=True REFILL_60e=False
+RULING: null
+SELF-CHECKS: 110 passed, 0 failed
