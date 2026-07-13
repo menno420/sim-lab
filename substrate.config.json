@@ -1,4 +1,20 @@
 {
+  "automerge": {
+    "branch_patterns": [
+      "claude/*",
+      "control/*",
+      "sim/*",
+      "harness/*",
+      "closeout/*",
+      "fix/*",
+      "verdict-*",
+      "intake-*",
+      "heartbeat-*",
+      "finalize-*",
+      "order-*"
+    ],
+    "required_context": "substrate-gate"
+  },
   "badge_tokens": [
     "binding",
     "living-ledger",
