@@ -1,0 +1,788 @@
+{
+ "anchor_3": {
+  "grid": {
+   "gumroad_direct": {
+    "bar": "1.960838",
+    "bar_frac": "3555/1813",
+    "cells": [
+     [
+      "1.00",
+      0
+     ],
+     [
+      "1.05",
+      0
+     ],
+     [
+      "1.10",
+      0
+     ],
+     [
+      "1.15",
+      0
+     ],
+     [
+      "1.20",
+      0
+     ],
+     [
+      "1.25",
+      0
+     ],
+     [
+      "1.30",
+      0
+     ],
+     [
+      "1.35",
+      0
+     ],
+     [
+      "1.40",
+      0
+     ],
+     [
+      "1.45",
+      0
+     ],
+     [
+      "1.50",
+      0
+     ],
+     [
+      "1.55",
+      0
+     ],
+     [
+      "1.60",
+      0
+     ],
+     [
+      "1.65",
+      0
+     ],
+     [
+      "1.70",
+      0
+     ],
+     [
+      "1.75",
+      0
+     ],
+     [
+      "1.80",
+      0
+     ],
+     [
+      "1.85",
+      0
+     ],
+     [
+      "1.90",
+      0
+     ],
+     [
+      "1.95",
+      0
+     ],
+     [
+      "2.00",
+      1
+     ],
+     [
+      "2.05",
+      1
+     ],
+     [
+      "2.10",
+      1
+     ],
+     [
+      "2.15",
+      1
+     ],
+     [
+      "2.20",
+      1
+     ],
+     [
+      "2.25",
+      1
+     ],
+     [
+      "2.30",
+      1
+     ],
+     [
+      "2.35",
+      1
+     ],
+     [
+      "2.40",
+      1
+     ],
+     [
+      "2.45",
+      1
+     ],
+     [
+      "2.50",
+      1
+     ],
+     [
+      "2.55",
+      1
+     ],
+     [
+      "2.60",
+      1
+     ],
+     [
+      "2.65",
+      1
+     ],
+     [
+      "2.70",
+      1
+     ],
+     [
+      "2.75",
+      1
+     ],
+     [
+      "2.80",
+      1
+     ],
+     [
+      "2.85",
+      1
+     ],
+     [
+      "2.90",
+      1
+     ],
+     [
+      "2.95",
+      1
+     ],
+     [
+      "3.00",
+      1
+     ]
+    ],
+    "of": 41,
+    "win_cells": 21
+   },
+   "gumroad_discover": {
+    "bar": "1.666667",
+    "bar_frac": "5/3",
+    "cells": [
+     [
+      "1.00",
+      0
+     ],
+     [
+      "1.05",
+      0
+     ],
+     [
+      "1.10",
+      0
+     ],
+     [
+      "1.15",
+      0
+     ],
+     [
+      "1.20",
+      0
+     ],
+     [
+      "1.25",
+      0
+     ],
+     [
+      "1.30",
+      0
+     ],
+     [
+      "1.35",
+      0
+     ],
+     [
+      "1.40",
+      0
+     ],
+     [
+      "1.45",
+      0
+     ],
+     [
+      "1.50",
+      0
+     ],
+     [
+      "1.55",
+      0
+     ],
+     [
+      "1.60",
+      0
+     ],
+     [
+      "1.65",
+      0
+     ],
+     [
+      "1.70",
+      1
+     ],
+     [
+      "1.75",
+      1
+     ],
+     [
+      "1.80",
+      1
+     ],
+     [
+      "1.85",
+      1
+     ],
+     [
+      "1.90",
+      1
+     ],
+     [
+      "1.95",
+      1
+     ],
+     [
+      "2.00",
+      1
+     ],
+     [
+      "2.05",
+      1
+     ],
+     [
+      "2.10",
+      1
+     ],
+     [
+      "2.15",
+      1
+     ],
+     [
+      "2.20",
+      1
+     ],
+     [
+      "2.25",
+      1
+     ],
+     [
+      "2.30",
+      1
+     ],
+     [
+      "2.35",
+      1
+     ],
+     [
+      "2.40",
+      1
+     ],
+     [
+      "2.45",
+      1
+     ],
+     [
+      "2.50",
+      1
+     ],
+     [
+      "2.55",
+      1
+     ],
+     [
+      "2.60",
+      1
+     ],
+     [
+      "2.65",
+      1
+     ],
+     [
+      "2.70",
+      1
+     ],
+     [
+      "2.75",
+      1
+     ],
+     [
+      "2.80",
+      1
+     ],
+     [
+      "2.85",
+      1
+     ],
+     [
+      "2.90",
+      1
+     ],
+     [
+      "2.95",
+      1
+     ],
+     [
+      "3.00",
+      1
+     ]
+    ],
+    "of": 41,
+    "win_cells": 27
+   },
+   "kofi_free": {
+    "bar": "1.747967",
+    "bar_frac": "215/123",
+    "cells": [
+     [
+      "1.00",
+      0
+     ],
+     [
+      "1.05",
+      0
+     ],
+     [
+      "1.10",
+      0
+     ],
+     [
+      "1.15",
+      0
+     ],
+     [
+      "1.20",
+      0
+     ],
+     [
+      "1.25",
+      0
+     ],
+     [
+      "1.30",
+      0
+     ],
+     [
+      "1.35",
+      0
+     ],
+     [
+      "1.40",
+      0
+     ],
+     [
+      "1.45",
+      0
+     ],
+     [
+      "1.50",
+      0
+     ],
+     [
+      "1.55",
+      0
+     ],
+     [
+      "1.60",
+      0
+     ],
+     [
+      "1.65",
+      0
+     ],
+     [
+      "1.70",
+      0
+     ],
+     [
+      "1.75",
+      1
+     ],
+     [
+      "1.80",
+      1
+     ],
+     [
+      "1.85",
+      1
+     ],
+     [
+      "1.90",
+      1
+     ],
+     [
+      "1.95",
+      1
+     ],
+     [
+      "2.00",
+      1
+     ],
+     [
+      "2.05",
+      1
+     ],
+     [
+      "2.10",
+      1
+     ],
+     [
+      "2.15",
+      1
+     ],
+     [
+      "2.20",
+      1
+     ],
+     [
+      "2.25",
+      1
+     ],
+     [
+      "2.30",
+      1
+     ],
+     [
+      "2.35",
+      1
+     ],
+     [
+      "2.40",
+      1
+     ],
+     [
+      "2.45",
+      1
+     ],
+     [
+      "2.50",
+      1
+     ],
+     [
+      "2.55",
+      1
+     ],
+     [
+      "2.60",
+      1
+     ],
+     [
+      "2.65",
+      1
+     ],
+     [
+      "2.70",
+      1
+     ],
+     [
+      "2.75",
+      1
+     ],
+     [
+      "2.80",
+      1
+     ],
+     [
+      "2.85",
+      1
+     ],
+     [
+      "2.90",
+      1
+     ],
+     [
+      "2.95",
+      1
+     ],
+     [
+      "3.00",
+      1
+     ]
+    ],
+    "of": 41,
+    "win_cells": 26
+   }
+  },
+  "per_unit_net_cut_direct": "0.490014",
+  "reading": "at $3 the price falls 40% but net-per-sale falls 49.0% (direct); tie requires +96.1% unit sales (direct), +74.8% (kofi), +66.7% (discover)"
+ },
+ "bundle_2pack": {
+  "at_8_frontier_direct": "g >= 0.942*t/(2.613*(1-t)) \u2014 e.g. t=0.25 needs upgrade share g >= 0.120168",
+  "discover_note": "on Discover b* = $10.00 exactly: no fixed fee -> zero demand-free discount room; the bundle's fee-save rationale is channel-specific",
+  "dominance_band_direct": "[9.081515..., 10.00] (b* = 7910/871)",
+  "grid": {
+   "gumroad_direct": {
+    "bstar": "9.081515",
+    "bstar_frac": "7910/871",
+    "prices": {
+     "10.00": {
+      "delta_vs_two_singles": "0.800000",
+      "net": "7.910000",
+      "net_frac": "791/100",
+      "of": 441,
+      "win_cells": 441
+     },
+     "8.00": {
+      "delta_vs_two_singles": "-0.942000",
+      "net": "6.168000",
+      "net_frac": "771/125",
+      "of": 441,
+      "win_cells": 228
+     },
+     "8.50": {
+      "delta_vs_two_singles": "-0.506500",
+      "net": "6.603500",
+      "net_frac": "13207/2000",
+      "of": 441,
+      "win_cells": 290
+     },
+     "9.00": {
+      "delta_vs_two_singles": "-0.071000",
+      "net": "7.039000",
+      "net_frac": "7039/1000",
+      "of": 441,
+      "win_cells": 387
+     },
+     "9.50": {
+      "delta_vs_two_singles": "0.364500",
+      "net": "7.474500",
+      "net_frac": "14949/2000",
+      "of": 441,
+      "win_cells": 441
+     },
+     "9.99": {
+      "delta_vs_two_singles": "0.791290",
+      "net": "7.901290",
+      "net_frac": "790129/100000",
+      "of": 441,
+      "win_cells": 441
+     }
+    }
+   },
+   "gumroad_discover": {
+    "bstar": "10.000000",
+    "bstar_frac": "10/1",
+    "prices": {
+     "10.00": {
+      "delta_vs_two_singles": "0.000000",
+      "net": "7.000000",
+      "net_frac": "7/1",
+      "of": 441,
+      "win_cells": 441
+     },
+     "8.00": {
+      "delta_vs_two_singles": "-1.400000",
+      "net": "5.600000",
+      "net_frac": "28/5",
+      "of": 441,
+      "win_cells": 173
+     },
+     "8.50": {
+      "delta_vs_two_singles": "-1.050000",
+      "net": "5.950000",
+      "net_frac": "119/20",
+      "of": 441,
+      "win_cells": 213
+     },
+     "9.00": {
+      "delta_vs_two_singles": "-0.700000",
+      "net": "6.300000",
+      "net_frac": "63/10",
+      "of": 441,
+      "win_cells": 258
+     },
+     "9.50": {
+      "delta_vs_two_singles": "-0.350000",
+      "net": "6.650000",
+      "net_frac": "133/20",
+      "of": 441,
+      "win_cells": 317
+     },
+     "9.99": {
+      "delta_vs_two_singles": "-0.007000",
+      "net": "6.993000",
+      "net_frac": "6993/1000",
+      "of": 441,
+      "win_cells": 401
+     }
+    }
+   },
+   "kofi_free": {
+    "bstar": "9.673913",
+    "bstar_frac": "445/46",
+    "prices": {
+     "10.00": {
+      "delta_vs_two_singles": "0.300000",
+      "net": "8.900000",
+      "net_frac": "89/10",
+      "of": 441,
+      "win_cells": 441
+     },
+     "8.00": {
+      "delta_vs_two_singles": "-1.540000",
+      "net": "7.060000",
+      "net_frac": "353/50",
+      "of": 441,
+      "win_cells": 188
+     },
+     "8.50": {
+      "delta_vs_two_singles": "-1.080000",
+      "net": "7.520000",
+      "net_frac": "188/25",
+      "of": 441,
+      "win_cells": 232
+     },
+     "9.00": {
+      "delta_vs_two_singles": "-0.620000",
+      "net": "7.980000",
+      "net_frac": "399/50",
+      "of": 441,
+      "win_cells": 287
+     },
+     "9.50": {
+      "delta_vs_two_singles": "-0.160000",
+      "net": "8.440000",
+      "net_frac": "211/25",
+      "of": 441,
+      "win_cells": 369
+     },
+     "9.99": {
+      "delta_vs_two_singles": "0.290800",
+      "net": "8.890800",
+      "net_frac": "22227/2500",
+      "of": 441,
+      "win_cells": 441
+     }
+    }
+   }
+  },
+  "saved_second_fixed_fee_at_10_direct": "0.800000 (exact)"
+ },
+ "fee_floor": {
+  "fixed_fees_usd": "0.80",
+  "packet_rule_verbatim_reproduced": true,
+  "share_25pct_crossing_price": "3.20",
+  "share_at_3": "0.266667",
+  "share_at_3_frac": "4/15"
+ },
+ "per_sale_nets": {
+  "gumroad_direct": {
+   "net_at_3": "1.813000",
+   "net_at_3_frac": "1813/1000",
+   "net_at_5": "3.555000",
+   "net_at_5_frac": "711/200"
+  },
+  "gumroad_discover": {
+   "net_at_3": "2.100000",
+   "net_at_3_frac": "21/10",
+   "net_at_5": "3.500000",
+   "net_at_5_frac": "7/2"
+  },
+  "kofi_free": {
+   "net_at_3": "2.460000",
+   "net_at_3_frac": "123/50",
+   "net_at_5": "4.300000",
+   "net_at_5_frac": "43/10"
+  }
+ },
+ "processing_sensitivity_reporting_only": {
+  "0.023": {
+   "anchor_bar": "1.957946",
+   "bstar": "9.087799",
+   "net3": "1.831000",
+   "net5": "3.585000"
+  },
+  "0.029": {
+   "anchor_bar": "1.960838",
+   "bstar": "9.081515",
+   "net3": "1.813000",
+   "net5": "3.555000"
+  },
+  "0.035": {
+   "anchor_bar": "1.963788",
+   "bstar": "9.075145",
+   "net3": "1.795000",
+   "net5": "3.525000"
+  }
+ },
+ "pwyw": {
+  "grid": {
+   "gumroad_direct": {
+    "of": 651,
+    "win_cells": 330
+   },
+   "gumroad_discover": {
+    "of": 651,
+    "win_cells": 343
+   },
+   "kofi_free": {
+    "of": 651,
+    "win_cells": 337
+   }
+  },
+  "parity_wbar_at_u1_direct": "5.000000 (exact)",
+  "reading": "PWYW replaces $5 only if mean voluntary payment reaches $5 at paid parity (u=1), or paid volume nearly doubles at a $3 mean \u2014 both unmeasured (gap G1); PWYW averaging the $3 floor IS $3 pricing (same bar)",
+  "u_bar_at_wbar3_direct_frac": "3555/1813",
+  "u_bar_at_wbar4_direct": "1.324516",
+  "u_bar_at_wbar4_direct_frac": "3555/2684"
+ },
+ "robustness_gates": {
+  "scope": "gates on the exact frontier logic; reporting-only, cannot flip the decision (decision arm is exact Fractions)",
+  "seed_20260790_agreements": 2000,
+  "seed_20260790_pwyw_draws": 2000,
+  "seed_20260791_agreements": 2000,
+  "seed_20260791_bundle_draws": 2000,
+  "seed_20260791_dominance_violations": 0
+ },
+ "ruling": {
+  "decision": "keep the packet's $5-fixed default per pack (Gumroad direct, net 3.555 exact/sale \u2014 zero unmeasured parameters); ADD the two-pack bundle priced inside [9.081515..., 10.00] \u2014 recommend $9.99 (net 7.90129 exact, +0.79129 vs two singles; at $10.00 the gain is the saved second fixed fee, +0.80 exactly); the $3 anchor parks behind measured units ratio >= 3555/1813 (+96.1%); PWYW parks behind measured (u, wbar) clearing u*net(wbar) >= 3.555; bundle prices below b* park behind the measured mix frontier",
+  "evaluated_in_registered_order": [
+   "R1 no-fire (G1)",
+   "R2 no-fire (G2)",
+   "R3 FIRES"
+  ],
+  "outcome": "R3-CONDITIONAL-DEFAULT"
+ },
+ "scale_scenarios_reporting_only": {
+  "frame": "90-day units at $5 in {0, 2, 6} = the packet's $0 / $10-anchor / $30-cap gross band; NO projection claimed",
+  "rows": {
+   "n5_0": {
+    "anchor_3_net_at_bar_units": "0.000000",
+    "anchor_3_net_same_units": "0.000000",
+    "bundle_10_if_all_pair_up": "0.000000",
+    "fixed_5_net": "0.000000"
+   },
+   "n5_2": {
+    "anchor_3_net_at_bar_units": "7.110000",
+    "anchor_3_net_same_units": "3.626000",
+    "bundle_10_if_all_pair_up": "7.910000",
+    "fixed_5_net": "7.110000"
+   },
+   "n5_6": {
+    "anchor_3_net_at_bar_units": "21.330000",
+    "anchor_3_net_same_units": "10.878000",
+    "bundle_10_if_all_pair_up": "23.730000",
+    "fixed_5_net": "21.330000"
+   }
+  }
+ },
+ "self_checks": {
+  "failed": 0,
+  "passed": 4761
+ }
+}
