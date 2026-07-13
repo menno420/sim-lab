@@ -1,0 +1,19 @@
+{
+  "copied": "byte-for-byte vendor copy of idle_engine/ (ALL 11 modules, __init__.py included, unmodified) plus the committed SIM-001 harness tools/simulate.py, unmodified",
+  "pin_commit": "d992c5688e802b28d11c0ec6c835fa54a87149ec",
+  "repo": "menno420/superbot-idle",
+  "sha256": {
+    "idle_engine/__init__.py": "c90971a0c226b667fb32b635b21cfe9e4efc7eb63a964852538b62b86b4e89c0",
+    "idle_engine/achievements.py": "6b37fef6df6b8f798f34a9f2c199f5c0255c6ef7b5da2580aa79a693c94bc37a",
+    "idle_engine/economy.py": "4379e14ddb1a976547dd7ef976852596556511c10aeff20126d85e8fb3c2067f",
+    "idle_engine/engine.py": "a1b43b87b4a7541e87a205bdc01489df71b49c3a8fae491fbda505e8470ca091",
+    "idle_engine/persistence.py": "308a45be56ae40f2f3ffa5ba82dcafd8bbe876bedc521f21bb72a90a74272755",
+    "idle_engine/prestige.py": "448a61474c400c400eb9f08dc279706a2677d133456cbe5c29b3c4097157e088",
+    "idle_engine/provisioning.py": "0bb2060cb3938c811357da181bfc2b64ecb84777f0f78ab88421972c7e440f06",
+    "idle_engine/render.py": "6ce9e4a28284f2c43b98d466869e131377614acba931496f0db576a88bbab154",
+    "idle_engine/state.py": "b2ad9674b44813903a24ae53e8e467270bff12c13e636aa11cb7226dbcf21400",
+    "idle_engine/theme.py": "19451cf67fed3c3576f6a771ce631f62fcda57baec11e5bb4a73c4d8bc991d45",
+    "idle_engine/upgrades.py": "4ad83652c71855840e31830c2a3fa081b65a76391ef3b6f94ff385399530dad6",
+    "tools/simulate.py": "f295584114353c12472690205e4f3697314857ea08c8c2cc83bc6a82a41f9f35"
+  }
+}

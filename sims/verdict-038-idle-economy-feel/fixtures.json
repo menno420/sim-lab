@@ -1,0 +1,201 @@
+{
+  "registration": {
+    "what": "PRE-REGISTRATION for VERDICT 038 — idle economy FEEL sim (superbot-idle SIM-001, idea-engine ORDER 005 SIM-REQUEST 2). Committed BEFORE the runner and BEFORE any results, per the V017/V035 discipline; git history is the trail.",
+    "order_verbatim": "(2) IDLE SIM-001 — superbot-idle asks for an economy-FEEL sim on its idle engine; packet: superbot-idle control/outbox.md SIM-001 + superbot-idle docs/design/; note the generator purchase curve is now also queued as fm owner-queue E#52 — a T10-style cost-curve verdict feeds it.",
+    "order_source": "idea-engine control/inbox.md @ 8218d6630f53633461d993d9a3caa4ad54ab251d — ORDER 005 · 2026-07-13T07:51:32Z · SIM-REQUEST 2 (fm ORDER 043 relay, Q-0264 fan-in); requesting seat superbot-idle",
+    "registered_spec": "superbot-idle docs/design/economy-v1.md § 'Simulation request — SIM-001 (Q-0264)' @ d992c5688e802b28d11c0ec6c835fa54a87149ec: scenarios S1/S2/S3, outputs O1–O6, acceptance criteria A1–A10, verdict semantics (ALL PASS -> graduate PROVISIONAL -> SIM-PINNED; ANY FAIL -> report which criterion broke and by how much, re-register before tuning)",
+    "packet_verbatim_asks": {
+      "ask1": "ASK 1 — First-upgrade no-op: at the reference world (tier1 count=1, base_rate=1) the single rate-floor fold (`engine.py` ~L60-73, `//100_000_000`) with UPGRADE_EFFECT_PERCENT=25 floors boost1 levels 1–3 back to 1/s (observed rate-by-level [1,1,1,1,2,2]); the player's first three purchases (costs 60/69/79) change the rate by nothing. Timing criterion passes but the FELT effect is null. Request a low-count-regime tuning/curve verdict (seed count, effect %, or a min-visible-delta floor).",
+      "ask2": "ASK 2 — Weak prestige payoff: greedy sim first prestige at t≈12573s (3.49h) → award 1; run 2 completes in 11536s (ratio 0.9175, ~8% faster). In-band but flat felt payoff for a 3.5h grind. Request a payoff-curve verdict (bonus curve / award divisor, `prestige.py` ~L65 / `economy.py` award+bonus).",
+      "ask3": "ASK 3 — A10 ruling + graduation: full harness at HEAD → A1–A9 PASS, **A10 FAIL** under the strict literal reading — consecutive O6 reset-duration ratios not non-decreasing; 20-reset final_ratio ≈ **0.9661**; trend rises toward 1. Request the A10 ruling (strict non-decreasing gate vs trend reading) + the graduation decision on the PROVISIONAL table. Auxiliary: optimal play reaches ~80,796 resets in the 14-day horizon — may warrant a v2 cap/cooldown criterion."
+    },
+    "packet_source": "superbot-idle control/outbox.md § '2026-07-13 · SIM-REQUEST: economy-FEEL cluster (⚑ Simulator seat, ref SIM-001 / Q-0264)' @ d992c5688e802b28d11c0ec6c835fa54a87149ec"
+  },
+  "engine_pin": {
+    "repo": "menno420/superbot-idle",
+    "commit": "d992c5688e802b28d11c0ec6c835fa54a87149ec",
+    "manifest": "fixtures/MANIFEST.json (sha256 per file; re-verified at every run BEFORE anything is imported)",
+    "vendored": "fixtures/idle_engine/ (ALL 11 modules byte-for-byte, __init__.py never EXECUTED — the V017 synthetic-package-anchor accommodation) + fixtures/tools/simulate.py (the committed SIM-001 harness, byte-for-byte, loaded as a module and driven through its own public functions)",
+    "v017_cross_pin": "the entire economy surface (economy/engine/prestige/upgrades/state/achievements/__init__) is byte-identical to V017's fixture pin c753bc8f5ace96e4632510f43b53f0ee45e2def5 (only render.py differs, outside the economy surface) — so V006/V017 published numbers are expected to reproduce exactly",
+    "no_generator_purchase_path": "verified premise at d992c568 (same as V017's premise at c753bc8): the engine has NO generator purchase path — purchase_upgrade/purchase_upgrades are the only purchase functions; asserted at run time against the vendored bytes"
+  },
+  "parameters_verbatim_from_engine": {
+    "UPGRADE_BASE_COST_SECONDS": 60,
+    "UPGRADE_COST_GROWTH_NUM": 115,
+    "UPGRADE_COST_GROWTH_DEN": 100,
+    "UPGRADE_EFFECT_PERCENT": 25,
+    "PRESTIGE_THRESHOLD": 100000,
+    "PRESTIGE_AWARD_DIVISOR": 100000,
+    "PRESTIGE_BONUS_PERCENT": 10,
+    "source": "idle_engine/economy.py @ d992c568 (test-enforced parity with the economy-v1.md table); self-checked at run time against the vendored module"
+  },
+  "world": {
+    "generator": {"spec_id": "tier1", "produces": "primary", "base_rate": 1, "rate_multiplier_pct": 100},
+    "owned": {"tier1": 1},
+    "upgrade": "build_upgrade_spec('boost1', tier1)",
+    "prestige": "build_prestige_spec(awards='prestige', measures='primary')",
+    "milestones": "NOT modeled — the committed harness tools/simulate.py drives (upgrade, prestige) specs only; milestone_percent defaults to 100 (disclosed, matches the registered harness)",
+    "horizon_s": 1209600,
+    "s2_checkin_steps_s": {"0.25": 900, "2": 7200, "8": 28800, "24": 86400},
+    "o6_resets": 20,
+    "policy": "the registered spec's own: credit -> greedy-buy (repeat-buy while affordable) -> prestige iff eligible; S3 = S2's policy at 1-second granularity via exact event jump; AMB-1..AMB-11 literal readings inherited from the committed harness verbatim"
+  },
+  "method": {
+    "label": "NUMERIC SIMULATION (rung 1) — the committed SIM-001 harness run byte-for-byte at the pin (run_report(quick=False)) is the baseline; all arm legs call the SAME vendored harness functions (simulate_s2/simulate_s3) with modified spec objects, plus one driver-level S3 variant for the seed-count arm (equivalence-gated at C=1)",
+    "rng": "NONE anywhere — zero seeds drawn; determinism is bit-identity (byte-identical stdout + results.json across two full process runs by external diff); fleet seed-registry high-water 20260775 (V037) untouched",
+    "runtime_python": "recorded in results.json; the engine is exact big-int arithmetic, platform-independent by construction"
+  },
+  "b0_baseline_validity_anchors": {
+    "rule": "B0 runs FIRST. Every hard anchor must match EXACTLY or the run is INVALID for the registered rulings and the mismatch is the headline finding (investigate before proceeding). Soft anchors carry the packet's own '~' and get a registered tolerance; the exact measured value is pinned in results.json.",
+    "hard_from_packet": {
+      "s3_first_three_purchase_costs": [60, 69, 79],
+      "rate_by_level_L0_to_L5": [1, 1, 1, 1, 2, 2],
+      "s3_first_prestige_t_s": 12573,
+      "s3_run2_duration_s": 11536,
+      "run2_ratio_rounded_4dp": 0.9175,
+      "o6_final_ratio_rounded_4dp": 0.9661,
+      "criteria_A1_to_A9": "all pass=true",
+      "criterion_A10": "pass=false (strict literal reading)"
+    },
+    "soft_from_packet": {
+      "s3_resets_total_14d": {"value": 80796, "tolerance": 100, "note": "the packet's own '~80,796'; exact measured value pinned in results.json"}
+    },
+    "hard_from_v006_cross_pins": {
+      "A1_s3_first_purchase_t_s": 60,
+      "A2_s3_purchases_by_900s": 12,
+      "A4_s1_threshold_crossing_t_s": 100000,
+      "A5_s2_2h_first_prestige_t_s": 21600,
+      "s3_reset_durations_1_to_3": [12573, 11536, 10475],
+      "A7_min_levels_per_early_visit": {"N=2": 6, "N=8": 16},
+      "A8_s3_max_purchase_gap_s": 1215,
+      "o6_awards_first_3": [1, 1, 1],
+      "early_inert_purchases_of_first_12": 9,
+      "source": "sims/verdict-006-idle-economy-sim-kernel/ published numbers (V006 @ engine f11c71a; economy surface byte-identical through c753bc8 and d992c568) — the V017 B0 drift-isolation discipline"
+    }
+  },
+  "ask1_first_upgrade_noop": {
+    "felt_definition": "a purchase k (raising boost1 from level k-1 to k) is FELT iff the engine's integer production rate strictly increases: rate(k) > rate(k-1), rates read from the REAL production_per_second at the purchase-moment world (prestige units as held, tier1 count as configured). A purchase with zero integer rate delta is FELT-INERT.",
+    "baseline_metrics": [
+      "rate_by_level table L=0..24 (real engine)",
+      "per-purchase table for S3 run 1 purchases 1..12: t, cost, level_after, rate_before, rate_after, felt_delta",
+      "first_felt_purchase_index (min k with rate(k) > rate(k-1))",
+      "felt_inert_count and felt_inert_spend_share among purchases 1..12 (spend-share = sum(cost of inert)/sum(cost))",
+      "felt_share_full_run1 (felt purchases / all purchases in S3 reset 1) and felt_inert_spend_share_full_run1",
+      "closed-form check: with count=1, base_rate=1, rate(L) = (100 + 25*L) // 100 = 1 + L//4, so felt levels are exactly L ≡ 0 (mod 4): purchases 4, 8, 12, ..."
+    ],
+    "confirmation_rule": "ASK1-CONFIRMED-INERT iff first_felt_purchase_index >= 2 AND felt_inert_spend_share among purchases 1..12 >= 0.5. Else ASK1-NOT-CONFIRMED.",
+    "arms": {
+      "note": "exact integer arms, registered here BEFORE the run; each arm is ONE constant changed from the baseline world, everything else the pinned table. Arm runs use the vendored harness functions (or the equivalence-gated C-variant) capped at max_resets=1 (first run only).",
+      "effect_percent": [25, 34, 50, 75, 100],
+      "base_rate": [1, 2, 3, 4, 5, 10, 100],
+      "seed_count": [1, 2, 3, 4, 5, 10],
+      "growth_num_den": [[110, 100], [115, 100], [120, 100]],
+      "growth_note": "the growth axis CANNOT make purchase 1 felt (it prices levels, it does not change the effect fold) — registered as a non-lever for feltness; measured for its effect on early inert SPEND (cost of purchases 1..3) and on A2 cadence only",
+      "per_arm_measures": [
+        "purchase1_felt (bool: rate(1) > rate(0) at the arm world)",
+        "first_felt_purchase_index",
+        "A1 = S3 first purchase t (band [30,180])",
+        "A2 = S3 purchases with t<=900 in run 1 (band >=5)",
+        "A3 = S3 first prestige t (band [7200,28800])",
+        "A4 = ceil(PRESTIGE_THRESHOLD / rate0) closed form via the real engine rate at the fresh arm world (band [64800,129600])",
+        "A6 = A4/A3 exact Fraction (band [4,12])"
+      ],
+      "viability_rule": "an axis's MINIMAL FELT value is the smallest registered arm value on that axis with purchase1_felt = true. That value is VIABLE iff A1, A2, A3, A4 and A6 are ALL in-band at the arm. Screening scope disclosed: A5/A7/A8/A9/A10 are not re-measured per arm; any recommended row must re-run the full committed harness before re-registration (the V017 guardrail).",
+      "recommendation_rule": "MECHANICAL, in this order: (1) if at least one axis has a viable minimal felt value, recommend the viable one with the smallest change magnitude (magnitude = max(new,old)/min(new,old) on the changed constant; tie-break: effect_percent before base_rate before seed_count); (2) if NO axis is viable, the registered fallback recommendation is the packet's own third option: a min-visible-delta floor in the effect fold (an ENGINE change — outside this sim's no-reimplementation scope, routed as a design recommendation with the measured inertness table as its sizing input), plus the per-axis felt thresholds and their band damage quoted as evidence."
+    },
+    "closed_form_predictions_registered": {
+      "note": "derivable at registration time from the fold arithmetic; the run must confirm them (self-checked), they do not replace measurement",
+      "effect_percent_min_felt": "E >= 100 (purchase 1 felt iff (100+E)//100 > 1)",
+      "base_rate_min_felt": "B >= 4 (felt iff floor(1.25*B) > B)",
+      "seed_count_min_felt": "C >= 4 (same fold arithmetic as base_rate)"
+    }
+  },
+  "ask2_prestige_payoff": {
+    "baseline_metrics": [
+      "O6 20-reset ladder (the registered output): per reset N = duration_N, award_N, cum_prestige, cum_bonus_pct; consecutive exact ratios r_N = duration_N/duration_{N-1} (Fraction) for N=2..20",
+      "per-reset felt speedup 1 - r_N",
+      "marginal relative production bonus at reset N: 10/(100 + 10*(N-1)) (closed form, confirmed against engine prestige_percent)",
+      "time_to_award_K: cumulative t of reaching K total prestige units, K=1..20"
+    ],
+    "confirmation_rule": "ASK2-WEAK-PAYOFF-CONFIRMED iff (1 - r_2) <= 0.10 AND every award_N == 1 across the 20-reset ladder AND r_20 >= r_2 (the per-reset speedup shrinks or stalls). Else ASK2-NOT-CONFIRMED.",
+    "arms": {
+      "note": "the packet's own named levers: bonus curve / award divisor. ONE constant changed per arm; run = 20-reset S3 ladder via the vendored simulate_s3(max_resets=20) with a modified PrestigeSpec; ladder analysis computed driver-side in exact Fractions (the harness _o6_table reads the module constant for cum-bonus display, not trusted for arm worlds).",
+      "prestige_bonus_percent": [10, 25, 50],
+      "prestige_award_divisor": [100000, 50000, 25000, 10000],
+      "divisor_constraint": "PrestigeSpec requires threshold >= award_divisor; all registered arms satisfy it at threshold 100000",
+      "per_arm_measures": [
+        "award_1 (first-reset award)",
+        "r_2 exact Fraction and 1 - r_2",
+        "r_2 and r_3 within T9's registered band [0.5, 1.0] (the doc's own criterion, inclusive per AMB-9)",
+        "awards_all_1 across the 20-reset ladder (does the lever add award growth or only bonus scale?)",
+        "ladder strict non-decreasing (A10-strict) and trend (final >= first) at the arm"
+      ],
+      "felt_band": "an arm gives a FELT run-2 payoff iff r_2 <= 0.85 (at least 15% faster; registered against the packet's complaint that 8.25% read as flat)",
+      "recommendation_rule": "MECHANICAL: among arms (excluding the baseline values 10/100000) with r_2 <= 0.85 AND r_2, r_3 in [0.5, 1.0], recommend the one with the smallest change magnitude (max(new,old)/min(new,old); tie-break: bonus_percent before award_divisor). If none qualifies, honest NULL on the lever ask: report the full measured curve and route the re-registration decision with the table as evidence."
+    }
+  },
+  "ask3_a10_ruling": {
+    "basis": "the 20-reset O6 ladder (the registered output O6 and A10's own evaluation basis in the committed harness), NOT the ~80k-reset horizon run (which no criterion covers; its reset count is reported as the packet's auxiliary signal)",
+    "measures": [
+      "strict gate: violations = all k with r_{k+1} < r_k, each with exact drop r_k - r_{k+1}",
+      "max_single_step_drop (exact Fraction, reported as float)",
+      "trend: first_ratio, final_ratio, final >= first, final <= 1",
+      "super_geometric_shrinkage_flag (the harness's own AMB-11 flag: final < first)"
+    ],
+    "wiggle_band": 0.02,
+    "wiggle_band_rationale": "registered at 2x the packet's own on-record single-step wiggle (reset 3 ratio 0.9080 vs reset 2's 0.9175, a 0.0095 drop attributed by the harness doc to single integer-floor steps); a drop above 0.02 would be structural, not floor noise",
+    "ruling_rule": "evaluated in this order: (1) if the strict gate PASSES -> A10-PASS outright; (2) else if every violation drop <= 0.02 AND final_ratio >= first_ratio AND final_ratio <= 1 AND super_geometric_shrinkage_flag == false -> TREND-PASS (A10's strict literal reading fails only on integer-floor wiggles; the criterion's own stated intent 'sub-exponential' holds); (3) else -> STRICT-FAIL-MATERIAL.",
+    "graduation_rule": "GRADUATE-WITH-REWORDING iff B0 valid AND criteria A1..A9 all PASS at the pin AND the ruling above is TREND-PASS: recommend graduating the PROVISIONAL table PROVISIONAL -> SIM-PINNED with A10 RE-REGISTERED in trend form in the same PR (economy-v1.md verdict semantics: re-registration is a doc change, and here the parameters do not change — only the criterion's wording is brought to its own stated intent). If ruling is A10-PASS -> GRADUATE outright. If STRICT-FAIL-MATERIAL or any A1..A9 FAIL -> NO-GRADUATE, name the breach.",
+    "a10_trend_wording_proposed": "A10 (trend form): across 20 S3 resets, the consecutive duration-ratio TREND must not fall (final ratio >= first ratio), the final ratio must be <= 1, and O6's super-geometric flag must be false; single-step ratio wiggles <= 0.02 attributable to integer floors do not fail the criterion. — final text is the requesting seat's to register; this row is the recommendation",
+    "aux_cap_note": "the ~80k-resets-in-14-days auxiliary signal is reported with the measured exact count; a v2 cap/cooldown criterion is recommended as a NEW registered target (T11-class), not folded into A10"
+  },
+  "feel_probes": {
+    "note": "ORDER 005's economy-FEEL framing, made falsifiable: each probe is a registered metric with a band, measured from the registered scenarios. F1/F3 bands are the design doc's own; F2's band is a registered judgment line (disclosed as such — a re-drawn line re-reads the committed table, never re-runs).",
+    "F1_session_pacing": {
+      "metric": "median and max gap between consecutive S3 run-1 purchases within the first 15 minutes (t <= 900), plus A8's max-gap share of run duration",
+      "bands": {"median_early_gap_s": "<= 120 (the doc's own 'a purchase every minute or two')", "a8_share": "< 25% (the doc's own T8)"}
+    },
+    "F2_meaningful_choice_cadence": {
+      "metric": "FELT-purchase share (per the ask1 felt definition) among S3 run-1 purchases: first 12, and full run 1; plus felt-inert spend share",
+      "bands": {"felt_share_full_run1": ">= 0.5 (registered judgment line: a purchase should more often than not change the integer rate)"}
+    },
+    "F3_idle_vs_active_balance": {
+      "metric": "A6's exact ratio (S1 threshold crossing / S3 first prestige) and A7's per-visit burst minima at N in {2,8}",
+      "bands": {"A6": "[4, 12] (the doc's own T6)", "A7_min_levels": ">= 2 per visit (the doc's own T7)"}
+    }
+  },
+  "v017_chain": {
+    "registered_row_verbatim": "GENERATOR_T2_COST_SECONDS = 900 · GENERATOR_T2_BASE_RATE = 5 · measured T10 = 1948 s ≈ 32.5 min active (band 15–45, target 30); proposed criterion text A11: \"S3's first tier-2 generator purchase within T10's band (15–45 min); re-run this sim on any retune.\"",
+    "chain_statement": "V017 (conditional, sims/verdict-017-t10-cost-curve/ @ engine pin c753bc8) priced the FUTURE generator purchase path; this verdict re-opens SIM-001 itself at d992c568 where the economy surface is byte-identical to V017's pin. NO generator purchase path exists at d992c568 (verified premise), so every generator-dependent FEEL probe here is an HONEST NULL: T10/A11 remain V017's conditional row, unre-measured. This verdict + V017 jointly feed fm owner-queue E#52 (generator purchase curve).",
+    "null_scope": "generator-dependent probes (tier-2 pacing, cross-tier choice cadence): NULL by premise, not by failure"
+  },
+  "verdict_rule": {
+    "vocabulary": "approve | reject | needs-more-evidence | conditional | null",
+    "evaluation_order": "REJECT first, then APPROVE, then CONDITIONAL, then NULL",
+    "reject_iff": "B0 valid AND (any of A1..A9 FAIL at the pin OR ask3 ruling == STRICT-FAIL-MATERIAL) — the parameters must be retuned/re-registered before graduation",
+    "approve_iff": "B0 valid AND A1..A10 ALL PASS under the strict committed reading — graduate outright",
+    "conditional_iff": "B0 valid AND A1..A9 all PASS AND ask3 ruling == TREND-PASS — graduate PROVISIONAL -> SIM-PINNED conditional on re-registering A10 in trend form (same-PR doc change, no parameter change); the ASK1/ASK2 FEEL findings and their arm tables ship as re-registration candidates for the requesting seat (they gate NOTHING here: no registered criterion measures feltness)",
+    "null_iff": "anything else (including B0 anchor mismatch, which is then the headline finding)",
+    "note": "the three ASK rulings and the FEEL probe scores are the deliverable either way; they are pinned by their own registered rules above and cannot be moved by the verdict-level mapping"
+  },
+  "intake_time_decisions": [
+    "D1: B0 soft anchor tolerance ±100 on the packet's '~80,796' resets; every other packet number is anchored EXACTLY (they are stated as measurements, not approximations)",
+    "D2: ratio anchors match on round(float(exact_fraction), 4) == the packet's 4-decimal quotes (0.9175, 0.9661); the exact fractions are pinned in results.json",
+    "D3: 'felt' is defined on the engine's integer rate at the purchase-moment world state (strict increase) — the only player-visible rate the engine exposes",
+    "D4: the early window is purchases 1..12 (V006's measured A2 value at the pin) AND the first 15 minutes (the doc's T2 window); both reported",
+    "D5: arm screening measures A1/A2/A3/A4/A6 only (the active-play + idle-anchor criteria computable in a max_resets=1 run); full-harness re-run required before any row is registered (V017 guardrail) — screening scope disclosed in the report",
+    "D6: change-magnitude metric for arm ranking = max(new,old)/min(new,old) on the changed constant; tie-breaks registered per ask (ask1: effect > base_rate > seed_count; ask2: bonus > divisor)",
+    "D7: ASK3 wiggle band 0.02 registered at 2x the packet's own on-record wiggle (0.0095)",
+    "D8: ASK2 felt band r_2 <= 0.85, calibrated against the packet's own complaint that 0.9175 (8.25% faster) read as flat; weak-payoff confirmation bar 1 - r_2 <= 0.10",
+    "D9: F2's >= 0.5 felt-share band is a registered judgment line, shipped with the full felt table so a re-drawn line re-reads without re-running",
+    "D10: the seed-count arm needs a driver-level S3 variant (the vendored _fresh_state hard-codes count 1); it is equivalence-GATED at C=1 against the vendored simulate_s3 (exact purchase/reset trail match) before any C>1 cell is trusted",
+    "D11: A10 is evaluated on the 20-reset O6 ladder (the registered output and the committed harness's own A10 basis); the 14-day ~80k-reset run informs only the auxiliary cap note",
+    "D12: arm ladders' cum-bonus columns are recomputed driver-side from awards (the vendored _o6_table displays the module-level bonus constant, wrong for bonus arms)",
+    "D13: the vendored tools/simulate.py is imported as a module through the synthetic idle_engine anchor (its __init__-triggering top-level path insert is harmless because sys.modules already carries the anchor); its run_report(quick=False) IS the B0 baseline — no re-implementation of the registered spec"
+  ],
+  "run": {
+    "command": "python3 sims/verdict-038-idle-economy-feel/idle_economy_feel_sim.py",
+    "outputs": "results.json (committed) + stdout summary; exit 0 iff every self-check passes",
+    "determinism_proof": "run the whole sim TWICE as separate processes; stdout and results.json must be byte-identical by external diff; sha256 of both pinned in the report"
+  }
+}
