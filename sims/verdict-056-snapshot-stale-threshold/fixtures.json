@@ -101,7 +101,7 @@
   ],
   "monotonicity_gate": "FALSESTALE non-increasing and LAT non-decreasing in T — exact, both arms (a theorem under shared enumeration / common random numbers; any violation is an implementation defect): hard gate",
   "reporting_only_outputs": {
-    "P_L_gt_300": "per T: P(L > 300) — zero identically for T <= 300, positive only where T - A - c can exceed 300",
+    "P_L_gt_300": "per T: P(L > 300) — L = max(0, T - A - c) <= T - c_lo, so zero is guaranteed exactly where T - c_lo <= 300 (grid T <= 240 at the primary c_lo = -30); positive where T - A - c can exceed 300 (amended pre-run from an over-strong 'T <= 300' descriptive note — reporting-output description only, no registered constant touched; disclosed in REPORT.md)",
     "per_c_splits": "per-c FALSESTALE/LAT at the decision cell T = 180 for every c, plus the c in {-30, 0, +30} split across the full T grid",
     "integer_strict_variant": "Arm-S count with the integer-strict indicator floor_age + c > T, committed alongside (see indicator_equivalence_note)"
   },
