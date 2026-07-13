@@ -1,0 +1,53 @@
+==============================================================================
+VERDICT 047 — the 37% rule off its home objective
+idea-engine PROPOSAL 036 · exact cardinal regret of look-then-leap
+==============================================================================
+N grid: [5, 10, 20, 50, 100, 200] · cutoff family CR(r), r in 1..N-1 · 379 cells
+all arithmetic exact Fraction / exact int · zero RNG · zero floats in computation
+seed registry: 0 seeds drawn · fleet high-water 20261284 unchanged
+
+census gate: full permutation enumeration at N in [5, 6, 7] (120/720/5040 orders) == both arms exactly
+
+------------------------------------------------------------------------------
+DECISION TABLE (must-choose; exact rationals, display decimals truncated)
+------------------------------------------------------------------------------
+   N r_folk     r*_V     r*_R       dV exact    dV dec          B exact     B dec
+   5      2      [1]      [2]           1/60   0.01666              1/3   0.33333
+  10      4      [2]      [3]           1/30   0.03333         281/1260   0.22301
+  20      7   [3, 4]      [7]           3/80   0.03750   720919/3912480   0.18426
+  50     19      [6]     [18]       117/1400   0.08357 3720341542979195807/19189130057250753600   0.19387
+ 100     37      [9]     [37]         49/475   0.10315 704246214441540175971604980905923574663/3768668931335809576461286969476340732800   0.18686
+ 200     74     [13]     [73]      1037/8400   0.12345 4880889755693529584614288810743924547791341437042816327370601874326289224028490359/26251271929270605063195769549676780027079435834045319618139625169948424808964656000   0.18592
+
+REPORTING-ONLY columns (cannot flip the decision):
+  N=  5: dR=1/60 (0.016666) · own-objective shortfall=0/1 (0.000000) · take-last@r_folk=1/2 · end-empty@r_folk=2/5 · r_e=1 (dV_evar=0/1) · quartiles(must) folk=[1, 2, 3] r*_R=[1, 2, 3] r*_V=[1, 2, 3] · walk r*_E=[1] E_walk*=17/30 · P_best(r_folk)-1/e in (0.065453, 0.065453)
+  N= 10: dR=829/25200 (0.032896) · own-objective shortfall=11/25200 (0.000436) · take-last@r_folk=4/9 · end-empty@r_folk=2/5 · r_e=3 (dV_evar=1/120) · quartiles(must) folk=[1, 2, 5] r*_R=[1, 2, 4] r*_V=[1, 2, 4] · walk r*_E=[1] E_walk*=36/55 · P_best(r_folk)-1/e in (0.030374, 0.030374)
+  N= 20: dR=14946821/193993800 (0.077047) · own-objective shortfall=0/1 (0.000000) · take-last@r_folk=7/19 · end-empty@r_folk=7/20 · r_e=7 (dV_evar=3/80) · quartiles(must) folk=[1, 2, 7] r*_R=[1, 2, 7] r*_V=[1, 3, 5] · walk r*_E=[2] E_walk*=103/140 · P_best(r_folk)-1/e in (0.016329, 0.016329)
+  N= 50: dR=5258613906692544283/47473108214552645625 (0.110770) · own-objective shortfall=49283298586934311099/154952225212299835320000 (0.000318) · take-last@r_folk=19/49 · end-empty@r_folk=19/50 · r_e=18 (dV_evar=249/3325) · quartiles(must) folk=[1, 2, 18] r*_R=[1, 2, 16] r*_V=[1, 3, 7] · walk r*_E=[4] E_walk*=2093/2550 · P_best(r_folk)-1/e in (0.006077, 0.006077)
+  N=100: dR=74544001791246286788803082463760713575703/498002680212231979746670063823659311120000 (0.149685) · own-objective shortfall=0/1 (0.000000) · take-last@r_folk=37/99 · end-empty@r_folk=37/100 · r_e=36 (dV_evar=729/7400) · quartiles(must) folk=[1, 2, 34] r*_R=[1, 2, 34] r*_V=[2, 4, 9] · walk r*_E=[6] E_walk*=61429/70700 · P_best(r_folk)-1/e in (0.003163, 0.003163)
+  N=200: dR=28395963593513637620706534729020533415370566458464693371174887504793981988048643779286061/149908261703522784284207007464373958858841947904514326323932009740992896915856617807552000 (0.189422) · own-objective shortfall=55384940898596155192278890216956746332745467780245139028813915430041510274849652649271/7495413085176139214210350373218697942942097395225716316196600487049644845792830890377600000 (0.000007) · take-last@r_folk=74/199 · end-empty@r_folk=37/100 · r_e=73 (dV_evar=627/5180) · quartiles(must) folk=[1, 2, 66] r*_R=[1, 2, 64] r*_V=[2, 5, 12] · walk r*_E=[9] E_walk*=24257/26800 · P_best(r_folk)-1/e in (0.001573, 0.001573)
+
+------------------------------------------------------------------------------
+PRE-REGISTERED DECISION RULE — evaluated IN ORDER (exact Fraction comparisons)
+------------------------------------------------------------------------------
+1. REJECT iff dV(N) <= 1/50 at EVERY swept N (checked FIRST):
+     N=  5: dV = 1/60 (0.01666) <= 1/50
+     N= 10: dV = 1/30 (0.03333) > 1/50
+     N= 20: dV = 3/80 (0.03750) > 1/50
+     N= 50: dV = 117/1400 (0.08357) > 1/50
+     N=100: dV = 49/475 (0.10315) > 1/50
+     N=200: dV = 1037/8400 (0.12345) > 1/50
+   REJECT does not fire
+2. APPROVE iff dV(N) >= 1/20 AND B(N) >= 3/20 at every N in [50, 100, 200]:
+     N= 50: dV = 117/1400 (0.08357) >= 1/20 · B = 3720341542979195807/19189130057250753600 (0.19387) >= 3/20
+     N=100: dV = 49/475 (0.10315) >= 1/20 · B = 704246214441540175971604980905923574663/3768668931335809576461286969476340732800 (0.18686) >= 3/20
+     N=200: dV = 1037/8400 (0.12345) >= 1/20 · B = 4880889755693529584614288810743924547791341437042816327370601874326289224028490359/26251271929270605063195769549676780027079435834045319618139625169948424808964656000 (0.18592) >= 3/20
+   APPROVE FIRES
+3. NULL otherwise.
+
+RULING: APPROVE
+
+drafting-liveness context (non-binding): predicted dV ['~1/60 ~= 0.017', '0.033', '0.0375', '0.084', '0.103', '0.123']; B bracket a 200k-draw drafting MC brackets B near 0.19 against the 3/20 = 0.15 band — the genuinely open number; the forced-last leg alone contributes ~ r_folk/(2(N-1)) ~= 0.186
+
+SELF-CHECKS: 151 passed, 0 failed
+results.json written.
