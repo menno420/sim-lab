@@ -1,0 +1,129 @@
+{
+  "_what": "VERDICT 054 fixtures — Brineward band-2 necessity (idea-engine PROPOSAL 043). Every registered constant copied verbatim from the PROPOSAL 043 block (## PROPOSAL 043 . 2026-07-13T19:11:37Z . status: sim-ready) and its idea file ideas/gba-homebrew/brineward-band-necessity-2026-07-13.md @ idea-engine ea3744d. Committed game tables quoted verbatim from menno420/gba-homebrew @ 8bac80a70c82096828663d501af5f2790acbccc4 (games/brineward-nds/source/bw_sim.c + bw_sim.h). The runner reads ONLY this file — fully hermetic.",
+  "proposal_header_verbatim": "## PROPOSAL 043 · 2026-07-13T19:11:37Z · status: sim-ready",
+  "source_pin": "menno420/gba-homebrew@8bac80a70c82096828663d501af5f2790acbccc4",
+  "cpython_minor": "3.11",
+  "committed_tables": {
+    "BW_BAND_LOOT_VALUE_OF": [5, 12, 25],
+    "BW_UP_COST": [0, 15, 45],
+    "upgrade_tracks": 3,
+    "ladder_total_gold": 180,
+    "BW_LOOT_DROPS": 3,
+    "BW_HOLD_CAP": 8,
+    "BW_REPAIR_PER_GOLD": 4,
+    "BW_BAND_EHULL_OF": [100, 130, 160],
+    "BW_BAND_ERELOAD_OF": [150, 120, 100],
+    "BW_HULL_MAX": 100
+  },
+  "harvested_doc_lines_verbatim": {
+    "progression_economy_sketch": "Tier prices roughly triple per step so band-2 runs stay necessary, never optional.",
+    "core_loop_loot": "deep-water salvage is worth more per crate, so greed has a shape: one more fight or turn for home?"
+  },
+  "model": {
+    "bands": [0, 1, 2],
+    "sink_threshold_cum_damage": 100,
+    "duel_time_per_band": ["1", "3/2", "3/2"],
+    "duel_time_rakes_derivation": "ceil(EHULL_b/60) = {2, 3, 3} rakes-to-kill at tier 0",
+    "sinking_water_time_factor": "1/2",
+    "select_transition_cost": "0",
+    "post_sink_restart_cost_base": "0",
+    "damage_support_5pt_rule": "{0, floor(D/2), D, D + ceil(D/2), 2*D}",
+    "damage_pmf_5pt": ["1/8", "1/4", "1/4", "1/4", "1/8"],
+    "damage_ratio_committed_derived": ["1", "15/8", "9/4"],
+    "damage_tables_round_half_up": {
+      "20": [20, 38, 45],
+      "35": [35, 66, 79],
+      "50": [50, 94, 113]
+    },
+    "D0_axis": [20, 35, 50],
+    "T_dock_axis": ["1/2", "1", "2"],
+    "central_cell": ["35", "1"],
+    "cell_order": "D0 outer, T_dock inner",
+    "theta_hull_bank_trigger": 50,
+    "repair_cost_rule": "ceil(missing_hull / BW_REPAIR_PER_GOLD), rounded against the player",
+    "banking": "pier detour costing T_dock time + full repair paid from banked gold"
+  },
+  "policies": {
+    "family": "GRIND(b, m) for b in {0,1,2} x m in {1,2,3} plus GRIND-H(b, m) (bank early whenever hull <= theta after a won water); 18 policies",
+    "pinned_order": [
+      "GRIND(0,1)", "GRIND(0,2)", "GRIND(0,3)",
+      "GRIND(1,1)", "GRIND(1,2)", "GRIND(1,3)",
+      "GRIND(2,1)", "GRIND(2,2)", "GRIND(2,3)",
+      "GRIND-H(0,1)", "GRIND-H(0,2)", "GRIND-H(0,3)",
+      "GRIND-H(1,1)", "GRIND-H(1,2)", "GRIND-H(1,3)",
+      "GRIND-H(2,1)", "GRIND-H(2,2)", "GRIND-H(2,3)"
+    ],
+    "descent": "descend winning one water per band 0..b-1 scooping en route, pier-bank + repair at descent end; sinking restarts the descent",
+    "loop": "fight m waters in band b, pier-bank + repair; segments iid by full repair at every bank",
+    "argmax_tie_rule": "first in pinned order (implementation pin, disclosed)"
+  },
+  "decision_rule": {
+    "evaluation_order": "REJECT first, then APPROVE, then NULL",
+    "NEC": "G*(all 18) / G*(policies with b <= 1)",
+    "NEC0": "G*(all 18) / G*(policies with b = 0)",
+    "reject_band": "5/4",
+    "reject_cells_of_9": 5,
+    "approve_band": "3/2",
+    "approve_cells_of_9": 7,
+    "approve_central_argmax": "neither GRIND(b*,1) nor GRIND(b*,3) — i.e. GRIND(b*,2) or a GRIND-H variant",
+    "approve_stability_conjunct": "seed-20261310 stability leg reproduces the ruling through both twin evaluators",
+    "null_axes_registration_order": [
+      "band-1-carries", "hold-cap-bind", "risk-straddle", "dock-straddle",
+      "margin-thin", "arm-disagreement", "sensitivity-straddle"
+    ]
+  },
+  "seeds": {
+    "main": 20261309,
+    "stability": 20261310,
+    "sensitivity": 20261311,
+    "aux_never_read": 20261312,
+    "registry_note": "strictly above the P042/V053 high-water 20261308"
+  },
+  "waters_per_leg": {
+    "main": 100000,
+    "stability": 20000,
+    "sensitivity": 20000
+  },
+  "agreement_gates": {
+    "main_rel": "1/50",
+    "stability_rel": "1/20",
+    "sensitivity_rel": "1/20",
+    "se_headroom_min": 4
+  },
+  "sensitivity_variants_pinned_order": [
+    "t_hull_proportional", "support_7pt", "m_4", "theta_30", "theta_70", "restart_T_dock"
+  ],
+  "sensitivity_values": {
+    "duel_time_hull_proportional": ["1", "13/10", "8/5"],
+    "support_7pt_rule": "{0, floor(D/2), floor(3D/4), D, D + ceil(D/4), D + ceil(D/2), 2*D}",
+    "support_7pt_pmf": ["1/16", "1/8", "1/8", "3/8", "1/8", "1/8", "1/16"],
+    "m_extension": 4,
+    "theta_variants": [30, 70],
+    "post_sink_restart_overhead": "T_dock"
+  },
+  "hand_fixture": {
+    "F1_ladder_identity": "(15 + 45) * 3 = 180",
+    "F2_descent_bank_gold_b2": 51,
+    "F2_band2_m1_loop_hold_gold": 75,
+    "F2_band2_m3_loop_hold_gold": 200,
+    "F2_band2_m3_wasted_crates": 1,
+    "F3_cell": {"D0": 0, "T_dock": "1"},
+    "F3_G_GRIND_2_2": "75/2",
+    "F3_G_GRIND_1_2": "18",
+    "F3_NEC": "25/12",
+    "F6_repair_spots": {"1": 1, "48": 12, "0": 0}
+  },
+  "implementation_pins_disclosed": [
+    "7-point support: the registration says 'quarter terms floored and disclosed' AND (gate F4) 'mean = D_b exactly on every band, axis point, and both supports'. All-floor breaks the exact mean for D not divisible by 4, so the sub-D terms are floored and their above-D mirrors carry the compensating ceil — {0, floor(D/2), floor(3D/4), D, D + ceil(D/4), D + ceil(D/2), 2D} — exactly the committed 5-point convention (floor below, D + ceil above); mean = D exactly for every integer D. The exact-mean F4 gate wins over a literal all-floor reading; disclosed here and in REPORT.md.",
+    "sensitivity-leg length and gate: the registration names seed 20261311 for sensitivity confirmations but pins neither leg length nor gate; pinned here to the stability convention (20,000 waters per leg, widened relative gate 1/20).",
+    "argmax ties broken by pinned policy order (first wins); no tie is expected on exact rationals.",
+    "GRIND-H threshold check runs after every won water, descent and loop alike; the descent-end bank happens regardless of the threshold on the last descent water (one bank, never two).",
+    "MC damage draws use Random.getrandbits(3) (5-pt, 8 equiprobable eighths mapped {1,2,2,2,1}) and Random.getrandbits(4) (7-pt, 16 sixteenths mapped {1,2,2,6,2,2,1}) — exact pmf, one draw per water, zero float thresholds anywhere.",
+    "MC time is accumulated in exact integer twentieths of a water-unit (all registered times are multiples of 1/20); G_S is an exact Fraction.",
+    "MC legs stop at exactly the pinned water count; a mid-segment stop leaves that segment's hold unbanked (truncation bias O(1/W), inside the gate).",
+    "SE headroom pre-check: asymptotic renewal-reward variance from the exact Arm-A enumeration — Var(R - G*T per renewal unit) / (N * E[T]^2) with N = waters_per_leg / E[waters per renewal unit]; compared to the gate squared in exact rationals; asserted >= 4 SE on every main leg, reported for the widened legs.",
+    "NULL axis operationalizations (checked in registration order): band-1-carries = argmax band 1 in >= 5 cells each with NEC0 >= 3/2; hold-cap-bind = argmax policy wastes crates (expected wasted > 0 per loop segment) in >= 5 cells; risk-straddle = a fixed T_dock column mixes reject-lean (NEC < 5/4) and approve-lean (NEC >= 3/2) across D0 (boundary D0-dagger named); dock-straddle = same across T_dock at fixed D0; margin-thin = any cell with 5/4 <= NEC < 3/2; arm-disagreement = stability twin-evaluator class differs from Arm A class; sensitivity-straddle = any sensitivity variant's cells-class differs from base.",
+    "SE headroom registration defect (found at implementation, disclosed): the registration claims the 1/50 main gate was 'pre-checked >= 4 SE headroom at the pinned leg length' — the exact renewal-reward variance from the Arm-A enumeration shows this is FALSE at 100,000 waters for the low-G legs (worst ~1.7 SE; the relative gate is narrow in absolute terms exactly where G is small). The headroom is therefore computed and REPORTED per leg (first-class anomaly where < 4 SE), while the registered run-invalidator stays the agreement gate itself. Direction stated: a headroom shortfall risks a FALSE breach of the confirmation gate, never a wrong decision number — Arm A exact rationals alone are decision-bearing.",
+    "Agreement-breach resolution: the registration says a MAIN-gate breach 'invalidates the run' (the clause sits in the Arm S main-leg sentence) AND registers 'arm disagreement' as NULL axis (vi). Resolved per the honest-null-explicit clause (every NULL axis is a finalized, citable finding, never a re-run request): any main-leg (1/50, seed 20261309) breach lands the verdict as NULL(arm-disagreement) with the breach legs cited. The stability leg's APPROVE conjunct is the registered CLASS reproduction — proposal text verbatim: 'AND the seed-20261310 stability leg reproduces the ruling', done-when: 'reproduces the ruling class through both twin evaluators' — a widened-gate (1/20) breach on a stability leg is a first-class anomaly and a dual-reading disclosure (results.json records the class under BOTH the registered reading and the stricter breach-denies reading), not a registered conjunct. Sensitivity-leg breaches are reported anomalies (reporting legs never flip). NOTE, disclosed for the audit trail: an earlier implementation draft carried the stricter breach-denies conjunct; it was conformed to the proposal's literal text after the first prototype run, and the stricter reading's class is permanently recorded alongside the ruling — the knife-edge is visible, not hidden."
+  ]
+}
