@@ -1,0 +1,158 @@
+{
+  "question": "Under the pinned momentum-free panel model (J = 9 instruments x T = 2,595 daily bars — the lane's aligned-index shape; r_{j,t} = mu_d + m_{s_t}*sigma_d*(sqrt(rho)*f_t + sqrt(1-rho)*z_{j,t}) with f, z i.i.d. N(0,1), sigma_ann = 0.30; 12 decision cells = vol model {IID (m == 1), RSV 2-state Markov systemic vol (p_cc = 0.98, p_ss = 0.94, variance multipliers (0.6, 2.2), unconditional unit variance exact and asserted)} x pairwise correlation rho in {0.0, 0.3, 0.6} x basket-Sharpe drift S_bh in {0, 1.15} (mu_d = S_bh*sigma_d*sqrt(rho + (1-rho)/9)/sqrt(252), the matched leg reproducing the lane's reported basket Sharpe 1.147 in expectation); M = 1,000 seeded panels per cell, random.Random(20260727), pinned loop order; strategy layer = the lane's R3 rule verbatim on the period frame: rebalance every 21 bars (123 periods), warm-up 252 bars, 111 evaluation periods uniform across configs, rank by trailing L-bar total log return (ties by instrument index), hold top-k equal-weight to the next rebalance, cost 10 bp per side on replaced names, benchmark = zero-cost equal-weight basket, Delta(config) = annualized period Sharpe (x sqrt(12)) minus basket Sharpe; nested burden grids G1 = {L=63, k=2, momentum, equal} subset G6 = the lane's own L in {63,126,252} x k in {2,3} subset G24 = L in {21,42,63,84,126,252} x k in {2,3} x direction in {momentum, reversal} subset G96 = L in {21,42,63,84,105,126,189,252} x k in {2,3,4} x direction in {momentum, reversal} x weighting in {equal, rank-linear}; analytic validation gates, run invalid on any failure: k=9 control config Delta == 0 to 1e-12, exchangeability pre-cost mean gate within 4 MC SE at S_bh = 0, strategy-to-basket vol ratio sqrt(9/k) within 2% on IID/rho=0.0/S_bh=0 cells, RSV normalization exact, CPython minor pinned, stdout + results.json byte-identical across two process runs; decision-stability leg seed 20260728 M = 250 must reproduce the ruling; reporting-only legs seed 20260729 that cannot flip the decision: J = 18 universe, cost c in {0, 25 bp}, sigma_ann = 0.15), what are P := P(Delta_max(G6) >= 0.484) per cell (0.484 = the lane's best KEEP margin; P(Delta_max(G6) >= 0.130), the weakest KEEP margin, reported alongside) and the burden-bar quantiles {q50, q90, q99} of Delta_max(N) for N in {1, 6, 24, 96} per cell — and does the result land (evaluated in this pre-registered order) REJECT (P >= 0.10 in >= 6 of 12 cells; checked FIRST), APPROVE (P <= 0.01 in ALL 12 cells), or NULL (anything else — the flip axis named via per-axis APPROVE-pass shares and median P for each of vol model, rho, and S_bh)?",
+  "source": {
+    "proposal": "idea-engine control/outbox.md PROPOSAL 022 · 2026-07-13T03:02:28Z · status: sim-ready",
+    "proposal_pin": "idea-engine main 1c6313c (landed via idea-engine PR #288)",
+    "idea_entry": "ideas/trading-strategy/xsec-keep-margins-selection-noise-2026-07-13.md @ idea-engine main 1c6313c (proposal's own blob link @ 02ac65766e06e6e0043ad592fae2bfec92819902)",
+    "rotation_slot": "ORDER 004 rule-3 VENTURE rotation slot, round 2 — trading half per the manager guidance quoted in the dispatching order (ORDER 033: 'find more strategies to backtest, as well as more stocks, more indicators'); fully hermetic (the PROPOSAL 017/018/019/020/021 precedent): every fixture is a pinned constant committed with the sim, zero repo/network reads in the verdict session, ZERO real market bars, no dev-candidate evaluated on any data, the owner gate untouched (the harvest source's routing-hazard warning honored as a contract clause)",
+    "tested_margins_provenance": "margins +0.484 / +0.130 over basket Sharpe 1.147 quoted from the idea file, which quotes idea-engine's committed probe of the trading lane's results doc docs/research-round-2-results.md §R3 @ lane HEAD 6799a4c (R3 xsec_momentum: L=63/k=3 stitched-OOS Sharpe 1.631, L=63/k=2 1.627, L=252/k=3 1.277 vs equal-weight basket 1.147)"
+  },
+  "constants": {
+    "J": 9,
+    "T": 2595,
+    "period_bars": 21,
+    "n_periods": 123,
+    "warmup_periods": 12,
+    "warmup_bars": 252,
+    "eval_periods": 111,
+    "sigma_ann": 0.30,
+    "sigma_d": "0.30 / sqrt(252)",
+    "trading_days_per_year": 252,
+    "periods_per_year": 12,
+    "sharpe_annualization": "mean(period returns) / sample std(period returns, ddof=1) * sqrt(12)",
+    "vol_models": ["IID", "RSV"],
+    "rsv": {
+      "p_cc": 0.98,
+      "p_ss": 0.94,
+      "variance_multipliers": [0.6, 2.2],
+      "stationary_pi": [0.75, 0.25],
+      "unit_variance_identity": "0.75*0.6 + 0.25*2.2 = 1 EXACT — asserted in Fraction arithmetic (3/4*3/5 + 1/4*11/5 = 9/20 + 11/20 = 1); stationary pi itself re-derived in Fractions from the transition probabilities (pi_s = (1-p_cc)/((1-p_cc)+(1-p_ss)) = 0.02/0.08 = 1/4)",
+      "m_values": "m_s = sqrt(variance multiplier): sqrt(0.6) calm, sqrt(2.2) stress",
+      "chain": "one chain per panel shared by all instruments"
+    },
+    "rho_grid": [0.0, 0.3, 0.6],
+    "sbh_grid": [0.0, 1.15],
+    "mu_d_formula": "mu_d = S_bh * sigma_d * sqrt(rho + (1 - rho)/J) / sqrt(252)",
+    "lane_basket_sharpe_reference": 1.147,
+    "cost_per_side": 0.001,
+    "cost_per_rebalance": "0.001 * 2 * replaced / k, subtracted from that period's strategy return; replaced = |top-k(p) \\ top-k(p-1)|",
+    "benchmark": "zero-cost equal-weight basket of all J instruments, same 111 evaluation periods",
+    "grids": {
+      "G1": "{L=63, k=2, momentum, equal}",
+      "G6": "L in {63, 126, 252} x k in {2, 3}, momentum, equal-weight (the lane's own R3 grid)",
+      "G24": "L in {21, 42, 63, 84, 126, 252} x k in {2, 3} x direction in {momentum, reversal}, equal-weight",
+      "G96": "L in {21, 42, 63, 84, 105, 126, 189, 252} x k in {2, 3, 4} x direction in {momentum, reversal} x weighting in {equal, rank-linear}",
+      "nesting": "G1 subset G6 subset G24 subset G96 — asserted as set inclusions on the constructed config lists; all at the frozen 21-bar rebalance, so one panel's 8 sorted rankings (per L, per direction) serve every config"
+    },
+    "tested_margins": {"best_keep": 0.484, "weakest_keep": 0.13},
+    "M_main": 1000,
+    "M_stability": 250,
+    "seed_main": 20260727,
+    "seed_stability": 20260728,
+    "seed_reporting": 20260729,
+    "quantiles_reported": [0.5, 0.9, 0.99],
+    "burden_N_grid": [1, 6, 24, 96],
+    "decision_rule": {
+      "statistic": "P := P(Delta_max(G6) >= 0.484) per decision cell, on the MAIN leg (M = 1,000, seed 20260727), post-cost at 10 bp",
+      "evaluation_order": ["REJECT", "APPROVE", "NULL"],
+      "REJECT": "P >= 0.10 in >= 6 of 12 cells — exact integer test: 10*count_484 >= M in >= 6 cells; checked FIRST (the protect-owner-attention arm)",
+      "APPROVE": "P <= 0.01 in ALL 12 cells — exact integer test: 100*count_484 <= M in all cells",
+      "NULL": "anything else — flip axis named via per-axis APPROVE-pass shares and median P for each of vol model, rho, S_bh; largest share-spread = the named axis (ties: all tied axes named)",
+      "stability": "seed 20260728, M = 250 per cell, identical machinery, must reproduce the same ruling — validity gate, run invalid otherwise",
+      "consequences": "APPROVE -> the one-page owner PROPOSAL (five Round-2 dev-candidates) rides the manager sweep with the quantified line and the q99(N) table becomes the round-3 pre-registration default; REJECT -> round-3 BREADTH under the burden bar outranks owner attention on the current candidates, the owner proposal is NOT routed, quantified reason = the per-cell P table; NULL -> the conditional rule ships and the named live probe is lag-1..5 autocorrelation of squared daily basket returns on the lane's own committed dev bars"
+    },
+    "burden_bar_table": "{q90, q99} of Delta_max(N) per cell for N in {1, 6, 24, 96} (q50 also reported), plus the max-over-cells row as the conservative round-3 shortlist bar per N — ships on EVERY outcome",
+    "analytic_gates": {
+      "a_k9_identity": "k=9 control config (all 9 names, equal weight, zero turnover after entry) must give Delta = 0 to 1e-12, asserted per panel on the first 10 panels of every cell",
+      "b_exchangeability": "per cell at S_bh = 0, per config: the panel-mean PRE-COST strategy period return minus basket period return must lie within 4 MC standard errors of 0 (SE = std over panel means / sqrt(M))",
+      "c_vol_ratio": "on the IID/rho=0.0/S_bh=0 cell the measured pre-cost strategy-to-basket period-return std ratio (pooled over panels x periods) must match sqrt(9/k) within 2% for every equal-weighted config; rank-linear configs are additionally checked against their own analytic value sqrt(9 * sum(w_i^2)) as a self-check (see disclosure 7)",
+      "d_rsv_normalization": "RSV unit-variance normalization asserted exactly (Fraction arithmetic)",
+      "e_reproducibility": "CPython minor version pinned (cpython-3.11) and asserted; stdout + results.json byte-identical across two process runs (external diff)"
+    },
+    "reporting_legs": {
+      "cell": "IID / rho=0.3 / S_bh=1.15 only",
+      "J18": "J = 18 universe ('more stocks'): same G6-shape grid on 18 instruments, q99 shift reported; mu_d uses (rho + (1-rho)/18); benchmark = 18-name equal-weight basket",
+      "cost_grid": "c in {0, 25 bp} (10 bp is the main-leg pin, re-reported for the same panels)",
+      "sigma_015": "sigma_ann = 0.15 at 10 bp — cost drag doubles in Sharpe units",
+      "cannot_flip": "reporting-only by pre-registration — none of these legs enters the decision rule"
+    }
+  },
+  "process": {
+    "panel_draw_order": "ONE random.Random(seed) stream flows through the whole leg in the pinned loop order: cells lexicographic (vol model IID -> RSV, then rho ascending, then S_bh ascending), panels sequential (0..M-1); per panel: regime chain first (RSV cells only: 1 uniform for the initial state from stationary pi, then T-1 transition uniforms — see disclosure 2), then f_t for t = 0..T-1, then z_{j,t} by instrument then bar (j outer, t inner)",
+    "normal_draws": "every N(0,1) variate = statistics.NormalDist().inv_cdf(rng.random()) — exactly ONE uniform per normal (see disclosure 1)",
+    "period_frame": "period p covers bars [21p, 21p+20], p = 0..122 (123 periods = 2,583 bars; the final 12 of the 2,595 bars are beyond the last full period and unused — 2,595 = 123*21 + 12; see disclosure 3); rebalance at bar t_p = 21p; warm-up = periods 0..11 (252 bars); evaluation periods p = 12..122 (111 periods)",
+    "ranking": "at rebalance t_p rank by trailing L-bar total log return sum(r[j][t_p-L .. t_p-1]) via prefix sums; momentum order = sort by (-value, j); reversal order = sort by (value, j) — ties broken by instrument index in both directions",
+    "holding": "hold top-k of the direction's order for period p; equal weighting w_i = 1/k; rank-linear weighting w_i = (k+1-i)/(k(k+1)/2) for selection rank i = 1..k (rank 1 = strongest signal)",
+    "turnover_and_cost": "holdings enter free at the first evaluation rebalance p=12 (forced by pre-registered gate (a): the k=9 control must satisfy Delta == 0 exactly, so entry cannot be charged — see disclosure 4); for p = 13..122, replaced = |top-k(p) \\ top-k(p-1)| and cost 0.001*2*replaced/k is subtracted from period p's strategy return; turnover (and hence cost) is weighting-independent per the pre-registration's cost formula",
+    "delta": "Delta(config) = Sharpe_config(post-cost) - Sharpe_basket, Sharpe = mean/std(ddof=1) * sqrt(12) over the 111 evaluation-period returns; Delta_max(N) = max over G_N of Delta",
+    "P_and_quantiles": "P(Delta_max(G6) >= margin) = exact count / M (integer comparisons in the decision rule); empirical quantile q_p = ascending-sorted value at index ceil(p*M) - 1 (left-continuous inverse CDF; see disclosure 5)",
+    "reporting_leg_streams": "each reporting leg consumes its own fresh random.Random(20260729) (legs independent; the cost-grid and sigma legs share one J=9 panel set by construction — identical seed, identical draw order; the J=18 leg's stream diverges after the f-draws by its larger z block); M = 250 per reporting leg (disclosure 6)",
+    "python": "cpython-3.11 (minor version pinned in results.json and asserted at start)"
+  },
+  "intake_time_decisions_disclosed": [
+    "1. NORMAL-DRAW MECHANISM: normals are statistics.NormalDist().inv_cdf(rng.random()) — exactly one uniform per normal — rather than rng.gauss(), whose cached second value makes draw-count accounting ambiguous. Pinned BEFORE the runner was written; makes the draw-count sentinel exact (IID panel = T + J*T uniforms, RSV panel = T + T + J*T uniforms). A drawn uniform of exactly 0.0 (probability ~1e-16 per draw) invalidates the run (inv_cdf undefined at 0); asserted.",
+    "2. RSV INITIAL STATE: the idea file pins the chain's transition matrix and stationary distribution but not the initial state; pinned at intake: state_0 drawn from the stationary distribution (calm iff u < 0.75, one uniform), then T-1 transition uniforms (calm->calm iff u < 0.98, stress->stress iff u < 0.94). IID cells draw NO regime uniforms.",
+    "3. PERIOD ALIGNMENT: 2,595 = 123*21 + 12 — the idea file pins 123 periods and 111 evaluation periods; pinned at intake: periods align from bar 0 and the final 12 bars are unused (they fall beyond period 122). The lane-shape constant T = 2,595 is retained verbatim; the strategy frame uses bars 0..2,582.",
+    "4. ENTRY COST: derived, not chosen — pre-registered gate (a) demands the k=9 control config satisfy Delta == 0 to 1e-12 against the zero-cost basket, which forces cost-free entry at the first rebalance ('zero turnover after entry -> Delta = 0' is the idea file's own wording); replacements from p=13 on are charged.",
+    "5. QUANTILE CONVENTION: empirical quantile = ascending-sorted value at index ceil(p*M) - 1 (left-continuous inverse CDF; for M = 1,000: q50 = order statistic 500, q90 = 900, q99 = 990). The idea file does not pin an interpolation rule; this order-statistic convention is exact-rank and interpolation-free.",
+    "6. REPORTING-LEG M: the idea file leaves M for the J=18 / cost-grid / sigma legs unpinned; pinned at intake to M = 250, the stability leg's committed scale (the INTAKE 019 precedent), reporting-only by construction.",
+    "7. VOL-RATIO GATE SCOPE: the pre-registered sqrt(9/k) value is exact for equal-weight portfolios of k exchangeable i.i.d. instruments; the gate therefore binds on the 48 equal-weighted configs (plus the k=9 control, ratio 1). Rank-linear configs have analytic ratio sqrt(9 * sum(w_i^2)) (e.g. k=2: sqrt(9*5/9) = sqrt(5)); they are checked against THAT value within the same 2% as an additional self-check, disclosed rather than silently exempted.",
+    "8. SAMPLE STD: Sharpe uses the sample standard deviation (ddof = 1) of the 111 evaluation-period returns; the idea file says 'mean/std' without pinning ddof. Identical convention for strategy and basket, so gate (a)'s identity is unaffected.",
+    "9. SIGMA-SCALING IDENTITY (used, asserted, disclosed): pre-cost returns scale linearly in sigma_ann (mu_d is proportional to sigma_d by the drift formula), so Sharpe at sigma_ann = 0.15 with cost rate c is EXACTLY Sharpe at sigma_ann = 0.30 with cost rate 2c on the same panels; the sigma_015 reporting leg is computed via this identity and independently verified by explicit sigma-scaled evaluation on the first 5 reporting panels (tolerance 1e-12).",
+    "10. EXCHANGEABILITY-GATE GRANULARITY: gate (b) is applied PER CONFIG per S_bh=0 cell (96 configs x 6 cells = 576 gate checks): d_i = panel i's (pre-cost strategy mean period return - basket mean period return), gate |mean(d)| <= 4 * std(d, ddof=1)/sqrt(M). Per-config is the strictest available reading of the pre-registered sentence."
+  ],
+  "hand_derived_pins": [
+    {
+      "name": "PIN1 — constant-plus-alternating panel: deterministic ranking, zero turnover, closed-form Delta",
+      "construction": "r[j][t] = c_j + d*(-1)^t with c_j = j*1e-4 (j = 0..8), d = 0.01; J=9, T=2595, no RNG",
+      "derivation": [
+        "Period-p return of instrument j: sum over 21 bars = 21*c_j + d*(-1)^p (21 alternating terms starting at sign (-1)^(21p) = (-1)^p sum to that sign: 11 - 10 = 1).",
+        "Trailing L-bar sum at rebalance t_p = 21p: L*c_j + d*e where e in {-1, 0, +1} is IDENTICAL across j — so every L ranks instruments purely by c_j: momentum order = [8,7,...,0], reversal order = [0,1,...,8], no ties, ZERO turnover, zero cost for every config.",
+        "Evaluation periods p = 12..122: 56 even (+d), 55 odd (-d). For any held set with mean base A: values A + d*(-1)^p; sample mean = A + d/111; sample variance = d^2 * (111^2 - 1) / (111 * 110) = d^2 * 1232/1221 (exact); identical variance for strategy and basket.",
+        "Delta(config) = (A_config - A_basket) / (d * sqrt(1232/1221)) * sqrt(12) = ((A_config - A_basket)/d) * sqrt(12 * 1221/1232).",
+        "A_basket = 21 * mean(c_j) = 21 * 4e-4 = 0.0084.",
+        "Config (63, 2, momentum, equal): A = 21*(c_8 + c_7)/2 = 21 * 7.5e-4 = 0.01575 -> Delta = 0.735 * sqrt(14652/1232) = +2.5347171623242183 (float).",
+        "Config (63, 2, reversal, equal): A = 21*(c_0 + c_1)/2 = 0.00105 -> Delta = -2.5347171623242183 (symmetric).",
+        "Config (63, 2, momentum, rank-linear): weights (2/3, 1/3): A = 21*(2*c_8 + c_7)/3 = 21 * 23e-4/3 = 0.0161 -> Delta = 0.77 * sqrt(14652/1232) = +2.655416285720229 (float).",
+        "Delta_max(G96) = the k=2 momentum rank-linear value (weighted mean of c is maximized at k=2 rank-linear: 23/3 e-4 > 7.5e-4 eq-k2 > 22/3 e-4 rl-k3 > 7e-4 eq-k3); Delta_max(G1) = Delta_max(G6) = +2.5347171623242183.",
+        "Check tolerance 1e-9 on all pinned values; turnover asserted 0 on every config; cost asserted 0."
+      ]
+    },
+    {
+      "name": "PIN2 — alternating-leader panel: selection flips every rebalance, exact cost accounting",
+      "construction": "r[8][t] = s*q(t), r[7][t] = -s*q(t), r[j][t] = 0 for j <= 6, all plus a common d*(-1)^t term on every instrument; q(t) = +1 if floor(t/21) even else -1; s = 1e-3, d = 0.01; J=9, T=2595, no RNG",
+      "derivation": [
+        "The common d*(-1)^t term shifts every instrument's trailing sum and period return equally: rankings and turnover are unaffected by it; it exists to give the basket nonzero variance.",
+        "Trailing-21 sum at rebalance t_p = 21p is period (p-1)'s sum: j=8: 21s*(-1)^(p-1) + D, j=7: -21s*(-1)^(p-1) + D, j<=6: D (D common). At p even: j7 leads (+21s), at p odd: j8 leads; second slot = tie among {0..6} broken by index -> instrument 0.",
+        "Config (21, 2, momentum, equal): selection alternates {7,0} <-> {8,0}: replaced = 1 at EVERY rebalance p = 13..122 -> cost = 0.001*2*1/2 = 0.001 per period, 110 times.",
+        "Held leader's period-p return: at p even hold j7 whose period-p own-term is -21s (q = +1 in period p, j7 = -s*q -> -21s); at p odd hold j8, own-term -21s likewise. Equal-weight over {leader, 0}: own-terms contribute -21s/2 = -0.0105 every period; plus the common d*(-1)^p.",
+        "Strategy period values (p = 12..122): p=12: -0.0105 + d = -0.0005; p odd (55 of them): -0.0105 - d - 0.001 = -0.0225; p even >= 14 (55 of them): -0.0105 + d - 0.001 = -0.0015.",
+        "Basket period return: (j8 + j7) own-terms cancel exactly; = d*(-1)^p (as PIN1): mean d/111, variance d^2*1232/1221.",
+        "Strategy mean/variance computed EXACTLY from the value multiset {(-0.0005) x 1, (-0.0225) x 55, (-0.0015) x 55} in Fraction arithmetic inside the check; Sharpe = mean/sqrt(var)*sqrt(12); pinned float targets computed from those exact rationals, tolerance 1e-9.",
+        "Asserted: replaced-count sequence == 1 for all p in 13..122 on config (21,2,momentum,equal); total cost charged == 110 * 0.001 exactly; PIN2 basket variance identical to PIN1's."
+      ]
+    }
+  ],
+  "self_check_plan": [
+    "fixture cross-checks (RSV unit variance + stationary pi in Fractions, mu_d formula recomputation, grid nesting as set inclusions, |G96| = 96, |G24| = 24, |G6| = 6, |G1| = 1)",
+    "gate (a) k=9 identity on the first 10 panels of every cell (also runs on stability + reporting legs' first panels)",
+    "gate (b) exchangeability per config per S_bh=0 cell (4 MC SE)",
+    "gate (c) vol-ratio on IID/rho=0/S_bh=0: equal-weight configs vs sqrt(9/k) within 2%; rank-linear vs sqrt(9*sum w^2) within 2% (aux)",
+    "gate (d) RSV normalization exact; RSV pooled state-frequency and transition-rate checks within 4 binomial SE per RSV cell (aux)",
+    "per-panel invariants on ALL panels: Delta_max(G1) <= Delta_max(G6) <= Delta_max(G24) <= Delta_max(G96) (nested-grid monotonicity), all Deltas finite",
+    "designated-panel determinism replay: first panel of every cell — rng state captured, panel re-simulated from the same state, byte-identical Delta vector asserted",
+    "independently written TWIN evaluator (direct summation over bars, its own sorts, explicit weight vectors, explicit turnover sets, statistics.mean/stdev) replayed on strided panels (first of every cell + panels 250/500/750 of every main cell), per-config Delta agreement within 1e-9, Delta_max and threshold indicators re-derived",
+    "draw-count accounting: exact analytic per-panel counts accumulated; after the main leg a fresh random.Random(20260727) advanced by the counted total must produce the same next draw as the live stream (sentinel); same check on stability + reporting legs",
+    "two hand-derived pins (PIN1, PIN2) with committed derivations, run through the REAL evaluator",
+    "twin decision evaluators (independent code paths) agreeing on ruling, per-axis APPROVE-pass shares, median P, and the named flip axis",
+    "sigma-scaling identity check (disclosure 9) on the first 5 reporting panels",
+    "stability leg reproduces the main ruling (validity gate)",
+    "stdout + results.json byte-identical across two process runs (external diff, session-level)"
+  ],
+  "boundaries_stated": {
+    "model_true": "Gaussian one-factor + regime vol; no fat tails beyond clustering, no cross-sectional dispersion dynamics, no momentum crashes — the RSV arm brackets the expected flip axis and the named autocorrelation probe locates the lane's real cell from its own committed bars",
+    "frequency_bias": "period-level Sharpe (111 obs, x sqrt(12)) emulates the lane's daily stitched-OOS statistic with a WIDER null — fewer observations fatten Delta_max tails, so APPROVE is the conservative direction and REJECT inherits the bias; the REJECT band (0.10, ten times the APPROVE line) carries that head-room by pre-registration",
+    "cost_benchmark_pins": "10 bp per side and a zero-cost rebalanced basket are model constants, not the lane's exact settings; both push the strategy DOWN vs the basket — conservative toward APPROVE — with c in {0, 25 bp} bracketing",
+    "owner_gate": "this sim computes the null distribution of the lane's dev-stage statistic and nothing else: zero real market bars, no dev-candidate evaluated on any data, the owner-gated post-2026 protocol untouched"
+  }
+}
