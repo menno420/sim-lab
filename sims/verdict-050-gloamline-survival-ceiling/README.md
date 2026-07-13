@@ -1,6 +1,6 @@
 # verdict-050-gloamline-survival-ceiling
 
-> **Status:** `in-progress` — VERDICT 050 (INTAKE 039), idea-engine PROPOSAL
+> **Status:** `finalized` — VERDICT 050 (INTAKE 039), idea-engine PROPOSAL
 > 039 ("Gloamline plateau survival ceiling", game-mechanics rotation round 6 —
 > the first head sourced from the Game Lab repo; consumer =
 > `menno420/gba-homebrew`'s difficulty backlog + best-nights record system,
@@ -49,6 +49,12 @@ block / idea file. Details and the full ruling in [REPORT.md](REPORT.md).
   census loop ≡ mirror-functions-only reference on the pinned subsample) ·
   twin independently-written decision evaluators · two-process
   byte-identity · CPython minor pinned
-- **Ruling:** see REPORT.md (exactly one of APPROVE/REJECT/NULL per the
-  pre-registered rule, REJECT checked first; an honest NULL lands as a
-  finalized verdict)
+- **Ruling:** **APPROVE** — REJECT (checked first) fails maximally
+  (KITE-PERIM · LIT 0/128 at every decision night vs the ≥ 99% band; the
+  ε = 1/16 night-24 LIT leg 0/1024 vs ≥ 90%); APPROVE fires: EVERY swept
+  policy incl. SHOVE-GRAD posts SURV = 0 (< 50%) at every decision night
+  in BOTH oil legs, stability-reproduced. The committed ramp has a real
+  ceiling — the record is a skill score; the family's per-policy ceilings
+  all sit below night 13 (blind kiter below night ~3, matching the earned
+  best = 1). Full table + boundaries in [REPORT.md](REPORT.md); 8358
+  self-checks 0 failed, ~32 s/run
