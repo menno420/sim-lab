@@ -33,7 +33,9 @@ The planted doc set (this router reaches every live doc — keep it that way):
 `docs/ROUTINES.md` (scheduled trigger/routine doctrine — read it before
 touching the trigger registry) · `docs/seat-digest.md` (the kit-generated
 seat digest) · `docs/ideas/README.md` ·
-`docs/retro/questions.md` (the fleet retro self-review set) — plus the root
+`docs/retro/questions.md` (the fleet retro self-review set) ·
+`docs/audits/2026-07-13-fleet-cleanup-audit.md` (external fleet-wide
+cleanup/audit pass, EAP final night) — plus the root
 `CONSTITUTION.md` (the working agreement), the lane contract (root `README.md` +
 `CONVENTIONS.md`), and `.session-journal.md`.
 
