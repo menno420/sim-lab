@@ -1,0 +1,114 @@
+{
+  "registration": {
+    "proposal_header": "## PROPOSAL 050 · 2026-07-13T23:26:05Z · status: sim-ready",
+    "proposal_source": "idea-engine control/outbox.md @ main 3b9b26ca9a8a5faef52bef0750a2b691d56a031e (landed via idea-engine PR #371)",
+    "idea_doc": "https://github.com/menno420/idea-engine/blob/13a7a2211930063efcd89658418b7d7b8e277916/ideas/venture-lab/kill-clock-horizon-2026-07-13.md",
+    "claim": "idea-engine PR #372 — control/claims/2026-07-13-verdict-061.md @ main 2089860 (claim-first; branch claude/verdict-061-kill-clock)",
+    "verdict": "VERDICT 061 (INTAKE 050; INTAKE number = proposal number per the established P049→V060 offset map)"
+  },
+  "harvest_pin": {
+    "repo": "menno420/venture-lab",
+    "commit": "be6c75d4e3379efc108f27d17f2c8ff5adb9a74f",
+    "via": "idea-engine control/outbox.md @ HEAD 763b19e26d237f3d042a32ebf32f02bc297cd7c6 (PROPOSAL 042's verbatim harvest — the DOUBLE pin be6c75d via 763b19e)",
+    "secondhand_status": "SECONDHAND, disclosed — a direct venture-lab read was attempted exactly once at DRAFTING (not by this verdict session) and denied, verbatim: Access denied: repository \"menno420/venture-lab\" is not configured for this session. Allowed repositories: menno420/idea-engine, menno420/sim-lab — deny-wins, no retry. This verdict session attempted NO venture-lab read (hermetic by registration); every constant below is quoted from the P050 block / idea doc.",
+    "harvested_kill_clock_family": {
+      "t7_checkpoint": "the T+7 checkpoint (armed for 2026-07-19)",
+      "t14_kill_rule": "the T+14 kill rule (armed for 2026-07-26)",
+      "signal_window": "the 30-day signal window (\"the lane's own kill-rule window\" per P042's harvest)",
+      "success_leg": "the ≥1-organic-sale leg (the reads/inbound leg named out of scope by the harvest itself)",
+      "evidence_line": "0 organic sales across 7 click-queued products"
+    },
+    "note": "citation only — the sim is fully hermetic: zero repo/network reads at verdict time; the runner reads ONLY this fixtures.json"
+  },
+  "model": {
+    "time_unit": "whole days; ONE experimental slot; all decision arithmetic exact fractions.Fraction",
+    "horizon_H": 90,
+    "sensitivity_H": [60, 180],
+    "p_grid": [
+      {"num": 0, "den": 1},
+      {"num": 1, "den": 60},
+      {"num": 1, "den": 30},
+      {"num": 1, "den": 14},
+      {"num": 1, "den": 7}
+    ],
+    "sensitivity_p_grid": [
+      {"num": 0, "den": 1},
+      {"num": 1, "den": 90},
+      {"num": 1, "den": 45},
+      {"num": 1, "den": 21},
+      {"num": 1, "den": 10}
+    ],
+    "priors_in_pinned_order": [
+      {"name": "SKEPTIC", "pmf": [{"num": 3, "den": 4}, {"num": 1, "den": 10}, {"num": 3, "den": 40}, {"num": 1, "den": 20}, {"num": 1, "den": 40}]},
+      {"name": "NEUTRAL", "pmf": [{"num": 1, "den": 2}, {"num": 1, "den": 8}, {"num": 1, "den": 8}, {"num": 1, "den": 8}, {"num": 1, "den": 8}]},
+      {"name": "HOPEFUL", "pmf": [{"num": 1, "den": 4}, {"num": 1, "den": 4}, {"num": 1, "den": 4}, {"num": 3, "den": 20}, {"num": 1, "den": 10}]}
+    ],
+    "build_downtime_B_in_pinned_order": [2, 5, 10],
+    "cell_order": "pinned: (SKEPTIC, NEUTRAL, HOPEFUL) × (B = 2, 5, 10) — prior-major",
+    "clock_set_T_in_pinned_order": [7, 14, 30],
+    "shipped_clock_T": 14,
+    "renewal_rule": "policy KILL@T: launch; each live day is an independent Bernoulli(p) sale trial; first sale on day x ≤ T → GRADUATION (count 1, slot freed); zero sales through day T → KILL (count 0); either way B build days then a fresh prior draw; products still live at horizon end contribute nothing further",
+    "arm_A_recursion": "G(h) = Σ_p π(p)·[ Σ_{x=1..min(T,h)} p(1−p)^{x−1}·(1 + G(h−x−B)) + 1{T<h}·(1−p)^T·G(h−T−B) ], G(h≤0) = 0; cell value G(H); every quantity exact",
+    "graduation_blocks_slot_world": "sensitivity alternative (maintenance-drag reading, reporting-only): a GRADUATED product BLOCKS its slot for the rest of the horizon (count 1, no further launches in that slot); kills renew as in the main world"
+  },
+  "decision_rule": {
+    "margin_m": {"num": 1, "den": 20},
+    "primary_metric": "D(cell) = (max_T G(cell, T) − G(cell, 14)) / G(cell, 14), exact; dir(cell) ∈ {SHORTER (argmax T = 7), HELD (argmax T = 14, D = 0), LONGER (argmax T = 30)}; argmax ties resolved to 14 first (then to the earlier clock — a documented determinism choice, registration says 'ties to 14')",
+    "evaluation_order": ["REJECT", "APPROVE", "NULL"],
+    "REJECT": "checked FIRST: D(cell) ≥ 1/20 in ≥ 7 of 9 cells AND dir agreeing (all SHORTER or all LONGER) in every such over-margin cell",
+    "APPROVE": "D(cell) < 1/20 in ≥ 7 of 9 cells AND in ≥ 2 of the 3 SKEPTIC cells, AND the seed-20261338 stability leg (20,000 trajectories, widened gate ≤ 3/50) reproduces the ruling through the twin independently-written evaluators",
+    "NULL": "anything else — five pre-registered axes: (i) direction-straddle; (ii) build-cost-conditional; (iii) margin-thin under the sweep m ∈ {1/50, 1/10}; (iv) arm disagreement; (v) sensitivity straddle — reporting-only legs can NEVER flip the decision",
+    "reject_approve_cells_required": 7,
+    "skeptic_cells_required": 2,
+    "margin_sweep": [{"num": 1, "den": 50}, {"num": 1, "den": 10}]
+  },
+  "arm_S": {
+    "seed_main": 20261337,
+    "N_main": 200000,
+    "leg_order": "pinned: cells in the pinned cell order, clocks in order (7, 14, 30) within a cell",
+    "draw_order": "pinned per trajectory: p from the cell prior (one uniform draw against the cumulative pmf), then daily sale trials day-by-day (each live day exactly one Bernoulli draw: random() < p) until graduation/kill/horizon, repeating across renewals",
+    "agreement_gate_abs": {"num": 3, "den": 200},
+    "headroom": "≥ 4·SE per leg asserted from the per-trajectory sample SD (pre-check 4·SE ≤ 3/200 per leg); any breach invalidates the run",
+    "seed_stability": 20261338,
+    "N_stability": 20000,
+    "stability_gate_abs": {"num": 3, "den": 50},
+    "seed_reporting": 20261339,
+    "N_reporting": 20000,
+    "reporting_world_order": "pinned: H = 60, H = 180, sensitivity grid P′ (at H = 90), graduation-blocks-slot (at H = 90) — 27 legs each in the pinned (cell, clock) order, one RNG",
+    "seed_aux": 20261340,
+    "aux_role": "constructed in pinned order (fourth), RESERVED for the named NULL-probe bookkeeping, NEVER read by any decision number; draw-count sentinel asserts its exact draw count",
+    "constructed_rngs": "the four registered seeds are the ONLY RNGs constructed, in pinned order 20261337 → 20261338 → 20261339 → 20261340, strictly above the P049/V060 registry high-water 20261336",
+    "sentinels": "per leg: daily-trial draws ≡ recorded live days, p-draws ≡ recorded launches; per seed: total random() calls ≡ Σ(p-draws + daily-trial draws)"
+  },
+  "gates": {
+    "F1": "each of the three pmfs sums to 1 exactly (both grids)",
+    "F2": {"rule": "point mass p = 0 ⇒ G = 0 exactly for every (T, B, H); point mass p = 1 (fixture constant, not on the grid) ⇒ G = ⌈H/(1+B)⌉ exactly", "p1_expected_at_H90": [30, 15, 9]},
+    "F3": "truncated-geometric identity Σ_{x=1..T} p(1−p)^{x−1} = 1 − (1−p)^T exactly for every grid p and clock T; per-launch graduation probability non-decreasing in T",
+    "F4": {"rule": "hand world H = 6, B = 1, T = 2, point prior p = 1/2 ⇒ G = 31/16 exactly via the pinned hand chain", "hand_world": {"H": 6, "B": 1, "T": 2, "p": {"num": 1, "den": 2}}, "hand_chain": [{"h": 1, "G": {"num": 1, "den": 2}}, {"h": 2, "G": {"num": 3, "den": 4}}, {"h": 3, "G": {"num": 1, "den": 1}}, {"h": 4, "G": {"num": 11, "den": 8}}, {"h": 5, "G": {"num": 13, "den": 8}}, {"h": 6, "G": {"num": 31, "den": 16}}]},
+    "F5": "theorem gates, exact: (a) G non-increasing in B for every (prior, T); (b) the degenerate all-dead world (point mass 0) ⇒ G = 0 exactly with kills ≡ renewals (renewals = completed runs = graduations + kills; graduations = 0 there); (c) slot-day accounting identity graduation-days + kill-days + build-days + live-at-horizon-days = H exactly in Arm A's bookkeeping",
+    "other": "arm agreement gate; per-leg draw-count sentinels; twin independently-written decision evaluators (both must agree on the provisional class, the stability class, every margin-sweep class, and the final verdict); stdout + results.json byte-identical across two full process runs by external sha256 (no wall-clock/timestamps in any output); CPython minor version pinned below and asserted in the runner"
+  },
+  "reporting_only": {
+    "note": "Arm A exact re-evaluations + seed-20261339 Arm-S confirmations at 20,000 trajectories where MC is used — CANNOT flip the decision",
+    "outputs": "full 9 × 3 G table with the D column and directions; expected kills / idle days / wasted graduations per cell; per-p conditional graduation split; H ∈ {60, 180}; sensitivity grid P′; graduation-blocks-slot world; margin sweep m ∈ {1/50, 1/10}",
+    "idle_days_definition": "expected slot-days-idle = expected build-downtime days within the horizon, reported as the total with its post-kill / post-graduation split (the registration says 'expected slot-days-idle'; the split is a disclosed reporting refinement, not a registered constant)",
+    "wasted_graduations_definition": "the wasted-graduation column per (cell, T) = graduations the shorter clock forfeits (idea doc's own gloss): at each KILL event of a product with true p, add 1 − (1−p)^(30−T) — the probability the killed product would have graduated had it run to the lane's own 30-day signal window; exactly 0 at T = 30 by construction. Expected live-at-horizon days are reported alongside (the censoring column). This definition is the one fixture-level disambiguation this session, disclosed here BEFORE the runner exists.",
+    "per_p_split_definition": "per (cell, T): expected graduations and expected kills broken out by true p row (WHICH burners each clock saves or kills), exact"
+  },
+  "environment": {
+    "cpython_minor": [3, 11],
+    "stdlib_only": true,
+    "run": "python3 sims/verdict-061-kill-clock-horizon/kill_clock_sim.py"
+  },
+  "drafter_reference_never_gated": {
+    "note": "the drafter's DISCLOSED expected landing (P048/P049 closed-form-arm norm) — re-derived from scratch with ZERO trust, compared in REPORT.md, never gated",
+    "expected_class": "APPROVE, thinly",
+    "expected_D_zero_cells": 5,
+    "expected_nonzero_cells": [
+      {"cell": "SKEPTIC/B=2", "D_approx": 0.0440, "dir": "SHORTER"},
+      {"cell": "NEUTRAL/B=2", "D_approx": 0.0699, "dir": "SHORTER", "note": "the one over-margin cell"},
+      {"cell": "HOPEFUL/B=2", "D_approx": 0.0036, "dir": "SHORTER"},
+      {"cell": "HOPEFUL/B=10", "D_approx": 0.0482, "dir": "LONGER"}
+    ]
+  }
+}

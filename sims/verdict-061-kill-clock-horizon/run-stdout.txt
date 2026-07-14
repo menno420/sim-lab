@@ -1,0 +1,97 @@
+VERDICT 061 — kill-clock horizon (idea-engine PROPOSAL 050)
+registration: ## PROPOSAL 050 · 2026-07-13T23:26:05Z · status: sim-ready
+environment: CPython 3.11 (pinned)
+
+ARM A (DECISION, exact Fractions, seedless) — 9 x 3 G table, H = 90:
+  SKEPTIC/B=2   G(7)=0.656410  G(14)=0.628768  G(30)=0.507449  D=0.043963  dir=SHORTER
+  SKEPTIC/B=5   G(7)=0.506206  G(14)=0.536226  G(30)=0.474449  D=0.000000  dir=HELD
+  SKEPTIC/B=10  G(7)=0.370672  G(14)=0.426550  G(30)=0.418959  D=0.000000  dir=HELD
+  NEUTRAL/B=2   G(7)=1.877411  G(14)=1.754739  G(30)=1.397232  D=0.069909  dir=SHORTER
+  NEUTRAL/B=5   G(7)=1.411738  G(14)=1.467175  G(30)=1.270487  D=0.000000  dir=HELD
+  NEUTRAL/B=10  G(7)=1.024887  G(14)=1.154395  G(30)=1.097574  D=0.000000  dir=HELD
+  HOPEFUL/B=2   G(7)=2.270117  G(14)=2.261934  G(30)=2.012794  D=0.003618  dir=SHORTER
+  HOPEFUL/B=5   G(7)=1.699114  G(14)=1.879887  G(30)=1.803883  D=0.000000  dir=HELD
+  HOPEFUL/B=10  G(7)=1.228336  G(14)=1.471887  G(30)=1.542765  D=0.048155  dir=LONGER
+
+decision arithmetic @ m = 1/20 (twin evaluators agree): class=APPROVE_ARITH over=1 under=8 skeptic_under=3
+ARM S main (seed 20261337, N = 200,000/leg, 27 legs): all legs within 3/200 + 4*SE headroom; worst |dev| = 0.005503 at HOPEFUL/B=2 T=7
+STABILITY (seed 20261338, N = 20,000/leg, gate 3/50): class=NULL_ARITH over=3 under=6 skeptic_under=2; worst |dev| = 0.025335 at HOPEFUL/B=10 T=30
+
+REPORTING-ONLY (never flip the decision):
+  world H=60    arith_class=APPROVE_ARITH over=2 under=7 skeptic_under=2 mc_worst_dev=0.010794 at NEUTRAL/B=10 T=7
+  world H=180   arith_class=APPROVE_ARITH over=2 under=7 skeptic_under=2 mc_worst_dev=0.021590 at HOPEFUL/B=10 T=7
+  world P'      arith_class=APPROVE_ARITH over=1 under=8 skeptic_under=3 mc_worst_dev=0.011271 at NEUTRAL/B=5 T=30
+  world blocks  arith_class=APPROVE_ARITH over=0 under=9 skeptic_under=3 mc_worst_dev=0.006117 at SKEPTIC/B=2 T=7
+  margin sweep m=1/50  arith_class=NULL_ARITH over=3 under=6 skeptic_under=2
+  margin sweep m=1/10  arith_class=APPROVE_ARITH over=0 under=9 skeptic_under=3
+  axis flags: {"arm_disagreement": false, "direction_straddle_among_over_margin_cells": false, "margin_thin_ruling_flips_inside_sweep": true, "over_margin_cells_concentrate_in_one_B_column": true, "sensitivity_straddle_world_class_differs": false}
+
+PER-CELL bookkeeping (Arm A exact, per clock T — kills / idle (build) days split post-grad+post-kill / live-at-horizon days / wasted graduations vs the 30-day window / launches):
+  SKEPTIC/B=2   T=7  kills=9.4348 idle=20.1261 (pg=1.3016 pk=18.8246) liveH=1.4153 wasted=0.938497 launches=10.4792
+  SKEPTIC/B=2   T=14 kills=4.8327 idle=10.8287 (pg=1.2371 pk=9.5916) liveH=7.5942 wasted=0.286399 launches=6.3650
+  SKEPTIC/B=2   T=30 kills=1.9509 idle=4.8865 (pg=1.0024 pk=3.8840) liveH=21.0036 wasted=0.000000 launches=3.4277
+  SKEPTIC/B=5   T=7  kills=6.8698 idle=36.1532 (pg=2.4287 pk=33.7245) liveH=3.9008 wasted=0.683353 launches=8.0490
+  SKEPTIC/B=5   T=14 kills=4.5091 idle=21.9840 (pg=2.5946 pk=19.3894) liveH=1.4824 wasted=0.267223 launches=5.3216
+  SKEPTIC/B=5   T=30 kills=1.9074 idle=11.7305 (pg=2.3009 pk=9.4297) liveH=15.9739 wasted=0.000000 launches=3.3078
+  SKEPTIC/B=10  T=7  kills=4.8888 idle=50.7028 (pg=3.3489 pk=47.3540) liveH=3.7345 wasted=0.486297 launches=6.0011
+  SKEPTIC/B=10  T=14 kills=3.5992 idle=35.8836 (pg=4.1062 pk=31.7774) liveH=1.0168 wasted=0.213299 launches=4.2369
+  SKEPTIC/B=10  T=30 kills=1.8245 idle=21.4919 (pg=3.8488 pk=17.6431) liveH=9.3778 wasted=0.000000 launches=3.0499
+  NEUTRAL/B=2   T=7  kills=8.6279 idle=20.7889 (pg=3.7004 pk=17.0885) liveH=2.1315 wasted=1.995176 launches=11.1072
+  NEUTRAL/B=2   T=14 kills=4.4130 idle=12.1535 (pg=3.4520 pk=8.7015) liveH=5.7696 wasted=0.599134 launches=6.9837
+  NEUTRAL/B=2   T=30 kills=1.8093 idle=6.3393 (pg=2.7557 pk=3.5836) liveH=15.9727 wasted=0.000000 launches=4.1318
+  NEUTRAL/B=5   T=7  kills=6.4032 idle=37.9309 (pg=6.8326 pk=31.0984) liveH=2.2099 wasted=1.480734 launches=8.2853
+  NEUTRAL/B=5   T=14 kills=3.8314 idle=24.7194 (pg=7.0990 pk=17.6204) liveH=2.9764 wasted=0.520181 launches=5.7984
+  NEUTRAL/B=5   T=30 kills=1.7067 idle=14.4876 (pg=6.1535 pk=8.3341) liveH=12.2592 wasted=0.000000 launches=3.8145
+  NEUTRAL/B=10  T=7  kills=4.5635 idle=52.2539 (pg=9.4129 pk=42.8410) liveH=2.1642 wasted=1.055301 launches=6.0219
+  NEUTRAL/B=10  T=14 kills=3.0243 idle=38.6506 (pg=10.9681 pk=27.6825) liveH=2.1976 wasted=0.410602 launches=4.5787
+  NEUTRAL/B=10  T=30 kills=1.5449 idle=24.7714 (pg=10.2616 pk=14.5099) liveH=8.4879 wasted=0.000000 launches=3.2888
+  HOPEFUL/B=2   T=7  kills=8.3678 idle=21.0152 (pg=4.4712 pk=16.5440) liveH=2.1561 wasted=2.998805 launches=11.2565
+  HOPEFUL/B=2   T=14 kills=4.1457 idle=12.6099 (pg=4.4494 pk=8.1605) liveH=5.4193 wasted=0.988203 launches=7.2013
+  HOPEFUL/B=2   T=30 kills=1.6047 idle=7.1272 (pg=3.9629 pk=3.1643) liveH=13.5125 wasted=0.000000 launches=4.5092
+  HOPEFUL/B=5   T=7  kills=6.2138 idle=38.3494 (pg=8.2259 pk=30.1235) liveH=1.9640 wasted=2.226846 launches=8.3630
+  HOPEFUL/B=5   T=14 kills=3.5366 idle=25.6040 (pg=9.0920 pk=16.5119) liveH=3.2551 wasted=0.843015 launches=5.9550
+  HOPEFUL/B=5   T=30 kills=1.4742 idle=15.8766 (pg=8.7299 pk=7.1468) liveH=10.9749 wasted=0.000000 launches=4.0711
+  HOPEFUL/B=10  T=7  kills=4.4280 idle=52.6827 (pg=11.3238 pk=41.3589) liveH=1.8611 wasted=1.586888 launches=6.0332
+  HOPEFUL/B=10  T=14 kills=2.7770 idle=39.5909 (pg=13.9495 pk=25.6414) liveH=2.4331 wasted=0.661963 launches=4.6794
+  HOPEFUL/B=10  T=30 kills=1.2972 idle=26.5926 (pg=14.4892 pk=12.1034) liveH=8.3010 wasted=0.000000 launches=3.4634
+
+PER-P conditional graduation split (Arm A exact, grads by true p row 0, 1/60, 1/30, 1/14, 1/7):
+  SKEPTIC/B=2   T=7  grads_by_p=[0.000000, 0.114239, 0.163146, 0.208593, 0.170433] kills_by_p=[7.557398, 0.895811, 0.596087, 0.299908, 0.085630]
+  SKEPTIC/B=2   T=14 grads_by_p=[0.000000, 0.125860, 0.170746, 0.196064, 0.136097] kills_by_p=[4.043885, 0.426136, 0.251578, 0.095526, 0.015575]
+  SKEPTIC/B=2   T=30 grads_by_p=[0.000000, 0.125388, 0.153307, 0.145851, 0.082902] kills_by_p=[1.735266, 0.139742, 0.062758, 0.012524, 0.000567]
+  SKEPTIC/B=5   T=7  grads_by_p=[0.000000, 0.088045, 0.125766, 0.160872, 0.131523] kills_by_p=[5.502810, 0.652272, 0.434032, 0.218374, 0.062350]
+  SKEPTIC/B=5   T=14 grads_by_p=[0.000000, 0.107986, 0.146163, 0.167016, 0.115061] kills_by_p=[3.773122, 0.397604, 0.234734, 0.089130, 0.014532]
+  SKEPTIC/B=5   T=30 grads_by_p=[0.000000, 0.115775, 0.142407, 0.137155, 0.079111] kills_by_p=[1.696645, 0.136632, 0.061361, 0.012245, 0.000555]
+  SKEPTIC/B=10  T=7  grads_by_p=[0.000000, 0.064281, 0.091904, 0.117804, 0.096682] kills_by_p=[3.915988, 0.464179, 0.308872, 0.155402, 0.044370]
+  SKEPTIC/B=10  T=14 grads_by_p=[0.000000, 0.085914, 0.116279, 0.132849, 0.091508] kills_by_p=[3.011726, 0.317369, 0.187366, 0.071144, 0.011599]
+  SKEPTIC/B=10  T=30 grads_by_p=[0.000000, 0.101332, 0.124889, 0.121301, 0.071436] kills_by_p=[1.622889, 0.130692, 0.058694, 0.011713, 0.000531]
+  NEUTRAL/B=2   T=7  grads_by_p=[0.000000, 0.149723, 0.285168, 0.547238, 0.895283] kills_by_p=[5.218798, 1.159887, 1.029077, 0.776636, 0.443489]
+  NEUTRAL/B=2   T=14 grads_by_p=[0.000000, 0.171363, 0.309854, 0.533361, 0.740161] kills_by_p=[3.000830, 0.592914, 0.466719, 0.265825, 0.086681]
+  NEUTRAL/B=2   T=30 grads_by_p=[0.000000, 0.182100, 0.297548, 0.427118, 0.490465] kills_by_p=[1.423590, 0.214955, 0.128714, 0.038529, 0.003491]
+  NEUTRAL/B=5   T=7  grads_by_p=[0.000000, 0.112649, 0.214535, 0.411588, 0.672966] kills_by_p=[3.873169, 0.860819, 0.763737, 0.576386, 0.329139]
+  NEUTRAL/B=5   T=14 grads_by_p=[0.000000, 0.143730, 0.259677, 0.446209, 0.617560] kills_by_p=[2.605385, 0.514781, 0.405216, 0.230795, 0.075259]
+  NEUTRAL/B=5   T=30 grads_by_p=[0.000000, 0.164369, 0.269146, 0.388193, 0.448779] kills_by_p=[1.342857, 0.202765, 0.121415, 0.036344, 0.003293]
+  NEUTRAL/B=10  T=7  grads_by_p=[0.000000, 0.081645, 0.155546, 0.298664, 0.489032] kills_by_p=[2.760360, 0.613495, 0.544306, 0.410783, 0.234573]
+  NEUTRAL/B=10  T=14 grads_by_p=[0.000000, 0.113052, 0.204259, 0.351033, 0.486051] kills_by_p=[2.056544, 0.406339, 0.319854, 0.182177, 0.059405]
+  NEUTRAL/B=10  T=30 grads_by_p=[0.000000, 0.141867, 0.232145, 0.334910, 0.388652] kills_by_p=[1.215607, 0.183551, 0.109910, 0.032900, 0.002981]
+  HOPEFUL/B=2   T=7  grads_by_p=[0.000000, 0.303078, 0.577269, 0.664708, 0.725062] kills_by_p=[2.638965, 2.346059, 2.081473, 0.942523, 0.358811]
+  HOPEFUL/B=2   T=14 grads_by_p=[0.000000, 0.353336, 0.638831, 0.659648, 0.610119] kills_by_p=[1.551941, 1.226552, 0.965494, 0.329945, 0.071727]
+  HOPEFUL/B=2   T=30 grads_by_p=[0.000000, 0.392761, 0.641892, 0.553385, 0.424757] kills_by_p=[0.788726, 0.476375, 0.285252, 0.051231, 0.003094]
+  HOPEFUL/B=5   T=7  grads_by_p=[0.000000, 0.226951, 0.432221, 0.497549, 0.542393] kills_by_p=[1.959637, 1.742131, 1.545656, 0.699897, 0.266445]
+  HOPEFUL/B=5   T=14 grads_by_p=[0.000000, 0.294112, 0.531471, 0.548169, 0.506136] kills_by_p=[1.323928, 1.046345, 0.823642, 0.281469, 0.061188]
+  HOPEFUL/B=5   T=30 grads_by_p=[0.000000, 0.351151, 0.574423, 0.496264, 0.382045] kills_by_p=[0.724579, 0.437631, 0.262052, 0.047065, 0.002843]
+  HOPEFUL/B=10  T=7  grads_by_p=[0.000000, 0.163935, 0.312285, 0.359677, 0.392439] kills_by_p=[1.396470, 1.241472, 1.101460, 0.498758, 0.189873]
+  HOPEFUL/B=10  T=14 grads_by_p=[0.000000, 0.230215, 0.416030, 0.429178, 0.396464] kills_by_p=[1.039592, 0.821625, 0.646751, 0.221018, 0.048047]
+  HOPEFUL/B=10  T=30 grads_by_p=[0.000000, 0.300342, 0.491091, 0.424238, 0.327094] kills_by_p=[0.637587, 0.385090, 0.230591, 0.041414, 0.002501]
+
+DRAFTER REFERENCE (disclosed, re-derived from scratch, compared NEVER gated): zero-D cells measured=5 expected=5 match=True
+  SKEPTIC/B=2   drafter D~0.0440 SHORTER | measured D=0.043963 SHORTER | 4dp match=True
+  NEUTRAL/B=2   drafter D~0.0699 SHORTER | measured D=0.069909 SHORTER | 4dp match=True
+  HOPEFUL/B=2   drafter D~0.0036 SHORTER | measured D=0.003618 SHORTER | 4dp match=True
+  HOPEFUL/B=10  drafter D~0.0482 LONGER | measured D=0.048155 LONGER | 4dp match=True
+
+SENTINELS: seed 20261337 calls=380890538; seed 20261338 calls=38085547; seed 20261339 calls=162191295; seed 20261340 (aux) calls=0 (reserved, never read by any decision number)
+
+RULING (registered evaluation order REJECT -> APPROVE -> NULL, m = 1/20 exact): NULL
+  APPROVE arithmetic fired but the stability leg did NOT reproduce it (stability class NULL_ARITH) — NULL
+SELF-CHECKS: 959 passed, 0 failed
