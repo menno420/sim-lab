@@ -1,0 +1,51 @@
+VERDICT 063 — coupon collector's tail (idea-engine PROPOSAL 052)
+registration: ## PROPOSAL 052 · 2026-07-14T00:26:42Z · status: sim-ready
+environment: CPython 3.11 (pinned)
+
+ARM A (DECISION, exact Fractions, seedless) — the phi(N) grid, m = ceil(N/10):
+  N=20  m=2  E[T]=71.9548      E[tail]=30.0000     phi=0.416928 (exact 23279256/55835135) 1/H_N=0.277952
+  N=50  m=5  E[T]=224.9603     E[tail]=114.1667    phi=0.507497 (exact 7076151618028359146280/13943237577224054...) 1/H_N=0.222261
+  N=100 m=10 E[T]=518.7378     E[tail]=292.8968    phi=0.564634 (exact 4084175314051649158344635267869365972640...) 1/H_N=0.192776
+  N=200 m=20 E[T]=1175.6062    E[tail]=719.5479    phi=0.612065 (exact 4494424150535311693425992990132141510110...) 1/H_N=0.170125
+  overshoot: P(T_50 > 2*E[T_50]) = P(T_50 > 449) = 0.005734 (exact rational in results.json)
+
+decision arithmetic @ bands 2/5|1/5 (twin evaluators agree): class=REJECT_ARITH over=4 under=0 phi50_ge_2/5=True
+
+ARM S main (seed 20261345, N = 200,000/cell — agreement gate 1/100 relative AND 4*SE on E[T] and phi, every cell):
+  N=20  mean_T=71.89587     devE=0.05892 (4SE 0.21274) phi_hat=0.416599 devPhi=0.000330 (4SE 0.001649) draws=14379174
+  N=50  mean_T=225.15863    devE=0.19836 (4SE 0.55473) phi_hat=0.508094 devPhi=0.000597 (4SE 0.001215) draws=45031726
+  N=100 mean_T=518.91939    devE=0.18163 (4SE 1.12734) phi_hat=0.564608 devPhi=0.000025 (4SE 0.000958) draws=103783877
+  N=200 mean_T=1175.26394   devE=0.34225 (4SE 2.27007) phi_hat=0.611978 devPhi=0.000087 (4SE 0.000761) draws=235052788
+F5 control legs (main seed, N = 200,000 each — mean gate + CDF point gate t = 1..12, all pass):
+  N=2 mean_T=3.001930 (exact 3/1) devE=0.001930 (4SE 0.012654) draws=600386
+  N=3 mean_T=5.510775 (exact 11/2) devE=0.010775 (4SE 0.023260) draws=1102155
+F5 exact CDF == full enumeration at N in {2, 3}, t = 1..12: all 24 identities exact (table in results.json)
+
+STABILITY (seed 20261346, N = 20,000/cell): class=REJECT_ARITH over=4 under=0 — reproduces Arm A's REJECT_ARITH; worst rel phi dev 0.001432 at N=50
+
+REPORTING-ONLY (seed 20261347 — never flip the decision):
+  last-20% alternative m = ceil(N/5), exact + MC confirm (arith class REJECT_ARITH):
+    N=20  m=4  phi20_exact=0.579067 phi20_hat=0.578797 rel_dev=0.000467
+    N=50  m=10 phi20_exact=0.650997 phi20_hat=0.650482 rel_dev=0.000791
+    N=100 m=20 phi20_exact=0.693557 phi20_hat=0.693794 rel_dev=0.000342
+    N=200 m=40 phi20_exact=0.727887 phi20_hat=0.727314 rel_dev=0.000787
+  weighted rarity-tier collector (pinned tiers, MC only — arith class REJECT_ARITH):
+    N=20  tiers=14/5/1         mean_T=71.7500     phi_w_hat=0.414752 uniform_phi=0.416928 delta=-0.002177
+    N=50  tiers=35/12/3        mean_T=226.0632    phi_w_hat=0.508262 uniform_phi=0.507497 delta=+0.000765
+    N=100 tiers=70/25/5        mean_T=517.2046    phi_w_hat=0.563730 uniform_phi=0.564634 delta=-0.000904
+    N=200 tiers=140/50/10      mean_T=1176.3570   phi_w_hat=0.612261 uniform_phi=0.612065 delta=+0.000196
+  (fixture-disclosed degeneracy: the registered tier masses equal the tier item-fractions, so the weighted pmf is exactly uniform at N in {20, 100, 200}; only the N = 50 integer split 35/12/3 departs from uniform)
+  axis flags: {"N_sensitivity_phi_crosses_a_band_across_grid": false, "arm_disagreement": false, "band_straddle_phi50_in_open_interval": false, "weight_sensitivity_weighted_leg_would_flip": false}
+
+DRAFTER REFERENCE (disclosed, re-derived from scratch, compared NEVER gated): expected class REJECT, class match=True
+  N=20  drafter phi~0.417 ((3/2)/H_20) | measured phi=0.416928 | within 1e-3=True
+  N=50  drafter phi~0.508 ((137/60)/H_50) | measured phi=0.507497 | within 1e-3=True
+  N=100 drafter phi~0.565 (H_10/H_100) | measured phi=0.564634 | within 1e-3=True
+  N=200 drafter phi~0.612 (H_20/H_200) | measured phi=0.612065 | within 1e-3=True
+  sharpening: last single coupon share 1/H_50 = 0.222261 (drafter ~0.22)
+
+SENTINELS: seed 20261345 calls=399950106; seed 20261346 calls=39857673; seed 20261347 calls=79637137; seed 20261348 (aux) calls=0 (reserved, never read by any decision number)
+
+RULING (registered evaluation order REJECT -> INVALID -> APPROVE -> NULL): REJECT
+  REJECT fires (checked FIRST): phi(50) >= 2/5 AND phi >= 2/5 in 4 of 4 cells (3 required) AND Arm S confirms within tolerance on every grid cell
+SELF-CHECKS: 751 passed, 0 failed
