@@ -1,0 +1,104 @@
+[check 001] PASS - cpython minor pinned == (3, 11)
+[check 002] PASS - seeds strictly above prior high-water 20261340
+[check 003] PASS - decision grid transcription (cadences, policies, kappa, band constants)
+[check 004] PASS - F1 hen price table (extras 0-14) re-derived == fixture
+[check 005] PASS - F1 coop price table (L0-9) re-derived == fixture
+[check 006] PASS - F1 coop ladder total == 44506
+[check 007] PASS - F4 E[!daily] == 169201/100 exact
+[check 008] PASS - F4 kappa*E == 169201/200 exact
+[check 009] PASS - F2 settle idempotence + settling-every-second == settling-once (pinned grid)
+[check 010] PASS - F2 cap clamp: eggs >= cap settles to (cap, now)
+[check 011] PASS - F2 zero-hen clock advance keeps eggs
+[check 012] PASS - F2 remainder preserved below cap (updated_at advances by iv*300 only)
+[check 013] PASS - F3 exactly 40 coins collectible at t=6000s
+[check 014] PASS - F3 zero further accrual at t=7200s
+[check 015] PASS - F5 2nd-hen marginal exactly 0 at Delta=86400 for EVERY coop level 0..10 (288>=170)
+[check 016] PASS - design-ceiling row R(100,10,Delta) == {32640, 8160, 2040, 340}
+[check 017] PASS - monotonicity: R non-decreasing in n and in L (pinned grid, all cadences)
+VERDICT 062 - chicken-farm faucet self-balance - hermetic run
+engine @ superbot affd7ea (fixtures verbatim); anchor E[!daily] = 169201/100 = 1692.01
+REJECT band: plateau(best-of-family) >= 169201/200 = 846.005 coins/day at >= 2 of 4 cadences
+
+[check 018] PASS - two in-process Arm-A grid computations identical
+ARM A - closed-wallet decision grid (plateau coins/day exact; wall days; spend)
+  D=900    GREEDY    plateau=8064/1       (8064.000/day, 4.7659x E) n=14  L=2  wall=3.6875 spend=21887
+  D=900    PAIR      plateau=8064/1       (8064.000/day, 4.7659x E) n=14  L=2  wall=3.6875 spend=21887
+  D=900    HEN_ONLY  plateau=3840/1       (3840.000/day, 2.2695x E) n=7   L=0  wall=0.4375 spend=936
+  D=900    COOP_ONLY plateau=576/1        (576.000/day, 0.3404x E) n=1   L=0  wall=0.0104 spend=0
+  D=900    ALT       plateau=576/1        (576.000/day, 0.3404x E) n=1   L=0  wall=0.0104 spend=0
+  D=3600   GREEDY    plateau=4560/1       (4560.000/day, 2.6950x E) n=8   L=5  wall=1.4167 spend=3728
+  D=3600   PAIR      plateau=6720/1       (6720.000/day, 3.9716x E) n=12  L=8  wall=4.8333 spend=22602
+  D=3600   HEN_ONLY  plateau=960/1        (960.000/day, 0.5674x E) n=2   L=0  wall=0.0833 spend=40
+  D=3600   COOP_ONLY plateau=576/1        (576.000/day, 0.3404x E) n=1   L=0  wall=0.0417 spend=0
+  D=3600   ALT       plateau=576/1        (576.000/day, 0.3404x E) n=1   L=0  wall=0.0417 spend=0
+  D=14400  GREEDY    plateau=1140/1       (1140.000/day, 0.6738x E) n=2   L=5  wall=3.5000 spend=2277
+  D=14400  PAIR      plateau=1320/1       (1320.000/day, 0.7801x E) n=3   L=6  wall=5.1667 spend=4229
+  D=14400  HEN_ONLY  plateau=240/1        (240.000/day, 0.1418x E) n=1   L=0  wall=0.1667 spend=0
+  D=14400  COOP_ONLY plateau=576/1        (576.000/day, 0.3404x E) n=1   L=2  wall=1.0000 spend=280
+  D=14400  ALT       plateau=420/1        (420.000/day, 0.2482x E) n=1   L=1  wall=0.5000 spend=100
+  D=86400  GREEDY    plateau=130/1        (130.000/day, 0.0768x E) n=1   L=3  wall=9.0000 spend=604
+  D=86400  PAIR      plateau=130/1        (130.000/day, 0.0768x E) n=1   L=3  wall=9.0000 spend=604
+  D=86400  HEN_ONLY  plateau=40/1         (40.000/day, 0.0236x E) n=1   L=0  wall=1.0000 spend=0
+  D=86400  COOP_ONLY plateau=130/1        (130.000/day, 0.0768x E) n=1   L=3  wall=9.0000 spend=604
+  D=86400  ALT       plateau=70/1         (70.000/day, 0.0414x E) n=1   L=1  wall=3.0000 spend=100
+[check 019] PASS - wall day exists (converged) for every decision cell
+[check 020] PASS - every executed purchase in every cell rode a plan payback <= 14 days
+
+BEST-OF-FAMILY per cadence vs threshold 169201/200 (= 846.005):
+  D=900    best=GREEDY    plateau=8064/1       -> FIRES (>= threshold)
+  D=3600   best=PAIR      plateau=6720/1       -> FIRES (>= threshold)
+  D=14400  best=PAIR      plateau=1320/1       -> FIRES (>= threshold)
+  D=86400  best=GREEDY    plateau=130/1        -> under threshold
+[check 021] PASS - monotonicity: plateau non-decreasing along divisor chain 86400->14400->3600->900 at every cell's final state
+[check 022] PASS - F6 hand trajectory D=3600 GREEDY check-ins 1-5 (eggs/coins/buys/wallet exact)
+[check 023] PASS - Arm-S degenerate jitter == Arm A EVENT-FOR-EVENT on all 20 decision cells (zero rng draws)
+
+ARM S - jittered robustness, seed 20261341, N=2000/cell (gaps uniform int [ceil(D/2), floor(3D/2)], skip 1/10, window days 76-90)
+  D=900    GREEDY    mean=6146.306/day se=0.9894 (ArmA 8064/1)
+  D=900    PAIR      mean=6145.935/day se=0.9967 (ArmA 8064/1)
+  D=900    HEN_ONLY  mean=2809.101/day se=0.5052 (ArmA 3840/1)
+  D=900    COOP_ONLY mean=489.865/day se=0.0403 (ArmA 576/1)
+  D=900    ALT       mean=489.920/day se=0.0407 (ArmA 576/1)
+  D=3600   GREEDY    mean=3578.600/day se=1.4015 (ArmA 4560/1)
+  D=3600   PAIR      mean=5306.080/day se=2.1076 (ArmA 6720/1)
+  D=3600   HEN_ONLY  mean=799.249/day se=0.3555 (ArmA 960/1)
+  D=3600   COOP_ONLY mean=530.803/day se=0.1201 (ArmA 576/1)
+  D=3600   ALT       mean=530.968/day se=0.1191 (ArmA 576/1)
+  D=14400  GREEDY    mean=910.146/day se=0.7229 (ArmA 1140/1)
+  D=14400  PAIR      mean=1135.615/day se=1.0430 (ArmA 1320/1)
+  D=14400  HEN_ONLY  mean=216.051/day se=0.2254 (ArmA 240/1)
+  D=14400  COOP_ONLY mean=468.756/day se=0.3686 (ArmA 576/1)
+  D=14400  ALT       mean=364.831/day se=0.3395 (ArmA 420/1)
+  D=86400  GREEDY    mean=117.152/day se=0.3027 (ArmA 130/1)
+  D=86400  PAIR      mean=117.048/day se=0.3108 (ArmA 130/1)
+  D=86400  HEN_ONLY  mean=35.955/day se=0.0930 (ArmA 40/1)
+  D=86400  COOP_ONLY mean=116.987/day se=0.3043 (ArmA 130/1)
+  D=86400  ALT       mean=62.930/day se=0.1607 (ArmA 70/1)
+[check 024] PASS - Arm-S headline draw sentinel: draws == 2 x attempted check-ins
+
+REJECT confirmation on firing cells (best policy, mean > 846.005 with >= 4*SE headroom; spend <= 30*E = 507603/10):
+  D=900    mean=6146.306 headroom=5300.301 (4*SE=3.9578) spend=21887 -> CONFIRMS
+  D=3600   mean=5306.080 headroom=4460.075 (4*SE=8.4304) spend=22602 -> CONFIRMS
+  D=14400  mean=1135.615 headroom=289.610 (4*SE=4.1719) spend=4229 -> CONFIRMS
+[check 025] PASS - twin evaluators agree on the headline class
+[check 026] PASS - twin evaluators agree on the firing cells
+[check 027] PASS - stability-leg draw sentinel: draws == 2 x attempts
+[check 028] PASS - stability leg (seed 20261342, N=500) reproduces the ruling through BOTH twin evaluators
+[check 029] PASS - margin-thin axis does NOT bind: >= 2 cells fire at BOTH kappa = 1/3 and 2/3
+[check 030] PASS - every firing cell stays over the band at BOTH jitter widths (1/4, 3/4)
+[check 031] PASS - monotonicity: wall day non-decreasing in P_max (7 -> 14 -> 28), every cell
+[check 032] PASS - monotonicity: closed-wallet plateau <= WHALE plateau, every cell
+[check 033] PASS - knob sanity: R scales linearly in EGG_VALUE (final-state spot identity)
+[check 034] PASS - reporting-leg draw sentinel: draws == 2 x attempted check-ins
+[check 035] PASS - aux seed 20261344 constructed and NEVER read (getstate identity)
+
+DRAFTER COMPARISON (never gated): ALL MATCH
+
+DECISION (registered order, REJECT first): REJECT
+  firing cells: 3 of 4 cadences over 169201/200 coins/day: [900, 3600, 14400]
+  D=900    best=GREEDY    plateau=8064/1 = 4.7659x E[!daily]
+  D=3600   best=PAIR      plateau=6720/1 = 3.9716x E[!daily]
+  D=14400  best=PAIR      plateau=1320/1 = 0.7801x E[!daily]
+
+SELF-CHECKS: 35 passed, 0 failed
+results.json written
