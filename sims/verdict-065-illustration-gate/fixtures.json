@@ -1,0 +1,120 @@
+{
+  "registration": {
+    "proposal": "PROPOSAL 054 · 2026-07-14T01:51:37Z · status: sim-ready",
+    "source": "idea-engine control/outbox.md @ main ca719974bd449fa5d9ead3c92986d1149539f547 (landed via idea-engine PR #382)",
+    "idea_doc": "https://github.com/menno420/idea-engine/blob/0b147da3cb29fee6a375b7ebc2b9297a39a1e350/ideas/venture-lab/illustration-gate-park-vs-pilot-2026-07-14.md",
+    "claim": "idea-engine PR #384, control/claims/2026-07-14-verdict-065.md",
+    "verdict": "VERDICT 065 (INTAKE 054; PROPOSAL 054 -> VERDICT 065 per the P050->V061 / P051->V062 / P052->V063 / P053->V064 offset map)",
+    "hermetic": "zero repo/network reads at verdict time; every constant below copied verbatim from the PROPOSAL 054 block / idea doc; the venture-lab pin is citation-only"
+  },
+  "harvested_lines_citation_only": {
+    "venture_lab_pin": "d93aee502a4daf2b3f7cd249067eb5c5a5ac046c (FIRSTHAND at drafting; docs/publishing/PUBLISHING-PLAN.md + docs/publishing/OWNER-QUEUE.md)",
+    "s3_options": "(A) Commission art '~$100-$400 per spread' / 'Reedsy's market average is $1,540-$4,950' / 'a budget freelancer can land under $1,500'; (B) AI art '~$0-$30/mo', KDP-permitted with mandatory DISCLOSE-at-publish, caveats 'risks title removal / account action' and 'the copyright status of purely AI-generated images is legally unsettled'; (C) Park 'Defer all kids titles until Tier-1 revenue ... funds commissioned art'",
+    "seat_recommendation_verbatim": "Park the kids titles (C) and publish Tier 1 first. Kids books carry the full illustration cost up front against the same unknown-author zero base case - spending four figures on art before any title has sold is the wrong order. If the owner wants to test the kids line cheaply, pilot AI art on ONE title (with disclosure) rather than commissioning the whole series.",
+    "owner_queue_gate_line": "illustration money-decision - Commission / AI / Park (seat recommends Park; §5). Blocking: nothing below proceeds without it. (The Painted Stones / The Puddle Museum / The Windmill Mouse, docs/publishing/OWNER-QUEUE.md @ the pin)",
+    "s1_unit_economics": "$12.99 list · flat ~$3.60 print · '≈ $4.19/unit' (§1 CORRECTION #1)",
+    "s6_base_case": "Base case for an unknown author with no marketing is ≈ $0"
+  },
+  "model": {
+    "H_days": 365,
+    "H_sensitivity": [180, 730],
+    "K_titles": 5,
+    "K_sensitivity": 7,
+    "W_pilot_days": 90,
+    "W_sensitivity": [45, 180],
+    "P_live": ["1/60", "1/30", "1/10", "1/3", "1"],
+    "omega": ["7/20", "3/10", "1/5", "1/10", "1/20"],
+    "omega_prime_uniform": ["1/5", "1/5", "1/5", "1/5", "1/5"],
+    "mu_live_expected": "143/1200",
+    "pi_L_rows": {"SKEPTIC": "3/4", "NEUTRAL": "1/2", "HOPEFUL": "1/4"},
+    "c_columns": [1500, 3245, 4950],
+    "royalty_r": "2097/500",
+    "royalty_recompute": "60/100 * 1299/100 - 360/100",
+    "royalty_consistency_bound": "|r - 419/100| = 1/250 <= 1/100",
+    "q_ai_quality": "7/10",
+    "q_sensitivity": ["1/2", "9/10"],
+    "a_ai_tool_cost_total": 30,
+    "a_sensitivity": [0, 150],
+    "rho_removal_risk": "1/20",
+    "rho_sensitivity": ["0", "1/10"],
+    "sale_cap": "per published title per day at most ONE sale, Bernoulli(f*p); f=1 commissioned art, f=q AI art",
+    "grid": "3 belief rows x 3 cost columns = 9 cells, row-major pinned order: (SKEPTIC,1500),(SKEPTIC,3245),(SKEPTIC,4950),(NEUTRAL,1500),(NEUTRAL,3245),(NEUTRAL,4950),(HOPEFUL,1500),(HOPEFUL,3245),(HOPEFUL,4950)"
+  },
+  "policies": {
+    "order_pinned": ["PARK", "COMM-ALL", "COMM-PILOT-SALE", "COMM-PILOT-EV", "AI-ALL", "AI-PILOT-SALE", "AI-PILOT-EV"],
+    "PARK": "publish nothing; NET = 0 (the shipped s3 recommendation C)",
+    "COMM-ALL": "commission all K at day 0 (spend K*c), publish day 0 at f=1",
+    "COMM-PILOT-SALE": "commission ONE title day 0 (spend c, f=1); iff >=1 sale by day W (days 0..W-1) commission the remaining K-1 at c each, publishing day W (f=1, selling H-W days); the pilot keeps selling through H either way",
+    "COMM-PILOT-EV": "as COMM-PILOT-SALE, committing additionally requires the exact posterior continuation V_cont = mu_live*r*(H-W) > c (on >=1 sale the line is alive with certainty - proven in-sim)",
+    "AI-ALL": "AI-art all K at day 0 (spend a total), publish day 0 with disclosure at f=q; each title independently removed w.p. rho at publish (removed earns 0, spend stays spent)",
+    "AI-PILOT-SALE": "AI-art ONE title day 0 (spend a; pilot removed w.p. rho -> stop at -a); on >=1 sale by W commission the remaining K-1 at c each (f=1, no removal), publishing day W; else stop, the pilot selling on through H at q*p",
+    "AI-PILOT-EV": "as AI-PILOT-SALE with the V_cont > c gate on committing",
+    "family_map": {"COMM-ALL": "COMMISSION-led", "COMM-PILOT-SALE": "COMMISSION-led", "COMM-PILOT-EV": "COMMISSION-led", "AI-ALL": "AI-led", "AI-PILOT-SALE": "AI-led", "AI-PILOT-EV": "AI-led"},
+    "outcome": "NET(cell, policy) = expected dollars net of all spend over H, exact rational; primary metric Delta(cell) = max over non-PARK policies of NET - NET(PARK), winning policy family recorded"
+  },
+  "decision_rule": {
+    "margin_m_dollars": 100,
+    "margin_sweep": [25, 400],
+    "evaluation_order": ["REJECT", "APPROVE", "NULL"],
+    "REJECT": "Delta(cell) >= 100 in >= 7 of 9 cells AND the winning policy's family identical in every such cell - checked FIRST",
+    "APPROVE": "Delta(cell) < 100 in >= 7 of 9 cells AND in >= 2 of the 3 SKEPTIC cells, with the seed-20261354 stability leg reproducing the ruling through the twin evaluators",
+    "NULL_axes": ["belief-conditional", "cost-conditional", "family-split", "margin-thin", "arm-disagreement (the agreement gate fails - a defect is the finding, no ruling)", "sensitivity-straddle"],
+    "gates_invalidate": "Gates (run invalid on any failure) - F1..F6 per the registration; an invalid run cannot issue REJECT/APPROVE (otherwise NULL axis v would be unreachable dead text); a registered-gate failure lands NULL with the defect as the finding"
+  },
+  "arms": {
+    "arm_A": "DECISION arm, seedless exact fractions.Fraction closed-form expected-value tree; per-title gross f*p*r*days by linearity; pilot branches weighted by the exact commit probability 1-(1-f*p)^W mixed over the prior; posterior alive-certainty on >=1 sale collapses the continuation to V_cont exactly; the ruling rides Arm A alone",
+    "arm_S": "confirmation arm, seeded MC: N = 200000 scenario draws per cell via random.Random(20261353), cells in pinned row-major order; pinned draw order per scenario: line-state -> K per-title p draws -> removal coins -> day-by-day Bernoulli trials; common random numbers - one scenario's draws replayed against all 7 policies",
+    "agreement_gate": "|ArmS - ArmA| <= 10 dollars absolute on EVERY (cell, policy) AND >= 4*SE headroom verified per leg from the per-scenario sample SD - any breach invalidates the run",
+    "stability_leg": "seed 20261354, 20000 scenarios per cell, widened gate <= 25 dollars, twin evaluators must reproduce the ruling",
+    "reporting_legs": "seed 20261355, 20000 scenarios per cell per world, worlds in pinned order [H180, H730, K7, omega_uniform, q_1_2, q_9_10, rho_0, rho_1_10, a_0, a_150, W45, W180]; Arm A exact re-evaluations + Arm-S confirmations; CANNOT flip the decision",
+    "aux_seed": "20261356 reserved - never read by any decision number; constructed last, 0 draws asserted",
+    "seeds_registered": [20261353, 20261354, 20261355, 20261356],
+    "seed_high_water_previous": 20261352
+  },
+  "gates_F1_F6": {
+    "F1": "omega sums to 1 exactly (and omega_prime); every pi_L row a legal probability",
+    "F2": "r = 60/100 * 1299/100 - 360/100 = 2097/500 exactly; |r - 419/100| = 1/250 <= 1/100",
+    "F3": "dead-line identities at pi_L = 1: NET(PARK)=0, NET(AI-ALL)=-30, NET(COMM-ALL)=-K*c, pilots -a resp. -c exactly, commit probability exactly 0",
+    "F4_hand_world": {"H": 4, "W": 2, "K": 2, "point_prior_p": "1/2", "pi_L": "1/2", "c": 3, "a": 1, "q": "1/2", "rho": "0", "r": 1, "expected": "NET(AI-ALL) = 0 exactly via E[p]=1/4 -> per-title gross q*E[p]*r*H = 1/2 -> x2 - a=1 -> 0"},
+    "F5": "(a) NET(COMM-ALL) strictly decreasing in c; (b) every policy's NET non-decreasing in the alive share 1-pi_L [REGISTERED FORM - evaluated as registered AND against the exact linear alpha-coefficients; where the registered universal form fails at the pinned constants the failure is itself asserted reproducible and reported as a registration defect]; (c) AI-ALL >= AI-PILOT-EV under a=30 (all alpha); under the a=150 reporting world the registered reverse assertion is evaluated at the grid rows AND as the existence/threshold form (exact reversal threshold alpha* reported); (d) Delta column-independence asserted structurally whenever V_cont < min c",
+    "F6": "per-scenario draw-count sentinels (line-state draw + K p-draws + removal coins == AI-published titles; daily trials == recorded published-title-days) + the arm agreement gate + TWIN independently-written decision evaluators (two separate functions, different code) + byte-identical stdout & results.json across two full process runs by external sha256, CPython minor version pinned"
+  },
+  "reporting_numbers": {
+    "c_star": "V_cont = mu_live * r * (H-W)",
+    "ai_all_break_even_alive_shares": "margin-clearing (NET = m) and EV-zero (NET = 0), re-derived exactly; drafter disclosed ~0.2143 / ~0.0495",
+    "commit_probabilities": "per pilot policy per cell, exact",
+    "per_p_conditional_revenue_split": "omega_i * p_i / mu_live per tier, exact",
+    "margin_sweep": "REJECT-shape re-evaluated at m in {25, 400}",
+    "drafter_reference_never_gated": {
+      "expected_class": "REJECT 9 of 9, argmax AI-ALL in every cell",
+      "delta_SKEPTIC": "778482513/6400000",
+      "delta_NEUTRAL": "874482513/3200000",
+      "delta_HOPEFUL": "2719447539/6400000",
+      "V_cont_disclosed": "137.44",
+      "ai_pilot_ev_skeptic_disclosed": "+0.33",
+      "a150_world_disclosed": "6 of 9",
+      "q_half_world_disclosed": "6 of 9",
+      "note": "compared, never gated; the sim re-derives everything from scratch and must not trust these"
+    }
+  },
+  "fixture_level_choices_disclosed": {
+    "pilot_window_convention": "'>=1 sale by day W' = at least one sale on days 0..W-1 (the pilot's first W selling days)",
+    "categorical_p_draw": "one uniform u per title; tier index = first i with u < cumsum(omega)[i], cumulative sums as CPython floats (0.35, 0.65, 0.85, 0.95, 1.0)",
+    "line_state_draw": "one uniform u per scenario; DEAD iff u < float(pi_L)",
+    "removal_coin": "one uniform u per title; removed iff u < float(rho); coins drawn for all K titles of an alive scenario (the CRN union - AI-ALL AI-publishes all K; pilot policies read coin 0)",
+    "daily_trial_draw": "one uniform per title-day for every title of an alive scenario over all H days (the CRN union of published title-days - COMM-ALL publishes all K at day 0), title-major day-minor order; sale under a policy iff u < float(f*p) with thresholds precomputed per tier as CPython floats",
+    "dead_short_circuit": "a DEAD scenario consumes exactly 1 draw (the line-state uniform) - the registration's own 'dead lines short-circuiting at one draw'; every policy's dead-line net is the F3 constant; sentinel counts published titles / AI-published titles as 0 for dead scenarios per this short-circuit",
+    "sentinel_formula": "draws per alive scenario = 1 + K + K + K*H (line-state + p-draws + removal coins + daily trials); per dead scenario = 1; draw counts accumulated at the call sites in bulk (len of materialized draw blocks) and asserted equal to the structural formula per leg; per-leg totals also asserted against n_dead*1 + n_alive*(1+2K+K*H)",
+    "estimator_units": "per-scenario net accumulated as exact integers in units of 1/500 dollar (net_u = 2097*sale_counts - 500*dollar_costs); Arm-S means exact Fractions from integer totals; |ArmS - ArmA| compared exactly against 10 (and 25)",
+    "SE_convention": "per-scenario sample SD from exact integer sums (Sum x, Sum x^2, N-1 denominator), converted to float dollars; SE = SD/sqrt(N); the 4*SE headroom pre-check (4*SE <= gate) and the statistical-consistency diagnostic (|dev| <= 4*SE) are float comparisons by disclosure (the V064 precedent)",
+    "agreement_gate_reading": "the registered gate = (|dev| <= 10 exact) AND (4*SE <= 10, the headroom pre-check) per (cell, policy) leg; the statistical-consistency diagnostic |dev| <= 4*SE is computed and reported per leg (it is the gate's purpose-level content) but the registered constants rule the gate outcome; stability leg same structure at 25",
+    "reporting_leg_gate": "reporting legs (seed 20261355) are confirmations that CANNOT flip the decision: consistency |dev| <= 4*SE recorded per leg and reported; no absolute-dollar clause is registered for them",
+    "reporting_leg_N": "20000 scenarios per cell per world (mirroring the stability leg's per-cell convention)",
+    "a_accounting_split": "a is carried as (a_line, a_pilot): headline shared-tool a=30 -> (30, 30); the a=0 world -> (0, 0); the a=150 PER-TITLE-accounting world -> (150, 30) - the line pays 30 per AI title (5x30=150), the one-title pilot pays 30; this is the only reading under which the registered F5(c) 'breaks BY DESIGN under a=150' boundary is evaluable (a shared a=150 for both would make AI-ALL >= AI-PILOT-EV an identity); disclosed here before the runner",
+    "ev_gate_evaluation": "the V_cont > c commit gate is evaluated exactly per world; at every registered world and column V_cont < min c, so EV-gated pilots never commit (asserted, feeding F5d)",
+    "twin_evaluators": "evaluator 1 = procedural fractions.Fraction comparisons; evaluator 2 = pure-integer cross-multiplication on (numerator, denominator) pairs, independently written; both produce over-margin count, family set, REJECT/APPROVE shape, and final class from the validity flags; asserted equal on the Arm-A table, the stability leg, the margin sweep, and every reporting world",
+    "self_check_policy": "structural/arithmetic checks are hard asserts; the registered-gate outcomes whose failure is itself a registered finding (the F5b/F5c registered forms, the agreement-gate legs) are recorded pass/fail and feed the validity classification instead of crashing the run - axis (v) requires a completed run",
+    "cpython_pin": "3.11 (asserted via sys.version_info[:2]); Arm A platform-independent exact rationals",
+    "no_wall_clock": "stdout and results.json carry no timestamps; runtime reported in REPORT.md only"
+  }
+}
