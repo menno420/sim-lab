@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "verdict": "VERDICT 070",
+    "intake": "INTAKE 059",
+    "proposal_header_verbatim": "## PROPOSAL 059 · 2026-07-14T05:19:21Z · status: sim-ready",
+    "proposal_source": "idea-engine control/outbox.md @ main 99ce912768eea541aef7a8c863b91147cfd7d10c (landed via idea-engine PR #402)",
+    "idea_doc": "https://github.com/menno420/idea-engine/blob/94cceaae791442f6725c91953ffdfd1267c45ce9/ideas/superbot-idle/prestige-reset-policy-optimality-2026-07-14.md",
+    "source_pin": "superbot-idle @ 5ddd5a230d4a6504c06b52805cba5dc8b3276b44",
+    "hermetic": "the runner reads ONLY this fixtures.json; zero repo/network reads at verdict time; every constant below copied verbatim from the PROPOSAL 059 block / idea doc",
+    "cpython_minor_pinned": [3, 11]
+  },
+  "world": {
+    "generator": {"id": "tier1", "base_rate": 1, "count_fixed": 1, "reseed_after_reset": true},
+    "theme_pct_neutral": 100,
+    "upgrade": {"id": "boost1", "base_cost": 60, "cost_growth_num": 115, "cost_growth_den": 100, "effect_percent_additive": 25, "cost_formula": "cost(L) = 60 * 115**L // 100**L"},
+    "prestige": {"threshold": 100000, "award_divisor": 100000, "bonus_percent_per_unit": 10, "award_formula": "isqrt(lifetime // 100000)"},
+    "milestones": {
+      "lifetime_thresholds": [1000, 100000, 10000000],
+      "prestige_thresholds": [1, 5, 25],
+      "owned_thresholds": [10, 100, 1000],
+      "bonus_percent_each": 5,
+      "semantics": "earned once, kept forever (survive resets); ms_pct = 100 + 5 * earned; owned rungs structurally unreachable at count 1 (asserted in-sim)"
+    },
+    "fold": {
+      "formula": "rate = (base_rate * count * (100 + 25*L) * (100 + 10*P) * ms_pct * theme_pct) // 100000000",
+      "fold_divisor": 100000000,
+      "one_floor_per_second": true,
+      "legacy_identity": "with theme 100 and ms_pct 100: rate == (base*count*up_pct*pres_pct) // 10000"
+    },
+    "boundary_order": ["credit", "award_milestones", "buy_while_affordable", "award_milestones", "reset_check", "award_milestones"],
+    "horizon_s": 1209600,
+    "half_horizon_s": 604800
+  },
+  "policies": [
+    {"name": "never", "kind": "never", "param": null},
+    {"name": "fixed-1", "kind": "fixed", "param": 1, "note": "m=1 IS the committed greedy policy (reset at lifetime >= 100000)"},
+    {"name": "fixed-2", "kind": "fixed", "param": 2},
+    {"name": "fixed-4", "kind": "fixed", "param": 4},
+    {"name": "fixed-9", "kind": "fixed", "param": 9},
+    {"name": "fixed-16", "kind": "fixed", "param": 16},
+    {"name": "fixed-25", "kind": "fixed", "param": 25},
+    {"name": "fixed-100", "kind": "fixed", "param": 100},
+    {"name": "hybrid-0", "kind": "hybrid", "param": 0},
+    {"name": "hybrid-100", "kind": "hybrid", "param": 100},
+    {"name": "hybrid-1000", "kind": "hybrid", "param": 1000},
+    {"name": "hybrid-10000", "kind": "hybrid", "param": 10000},
+    {"name": "cooldown-60", "kind": "cooldown", "param": 60},
+    {"name": "cooldown-300", "kind": "cooldown", "param": 300},
+    {"name": "cooldown-3600", "kind": "cooldown", "param": 3600}
+  ],
+  "policy_semantics": {
+    "never": "grind forever, no reset",
+    "fixed": "reset at the first boundary with run lifetime >= m*100000",
+    "hybrid": "greedy (fixed-1), except ONE patient run to 10000000 triggered at the first reset boundary (run lifetime >= 100000) with P >= k and the detour unused; the patient run resets at the first boundary with lifetime >= 10000000 (award isqrt(lifetime//100000) at the actual boundary lifetime); greedy thereafter",
+    "cooldown": "greedy, but a reset is legal only once the run is >= tau seconds old (reset at the first boundary with lifetime >= 100000 AND age >= tau)"
+  },
+  "decision": {
+    "metric": "total(pi) = cumulative primary PRODUCED over [0,H], exact integer (sum of all crediting across all runs; spending never subtracts)",
+    "rule_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "reject": "exists pi in Pi \\ {fixed-1}: 100*total(pi) >= 101*total(fixed-1), exact big-int, Arm A reproduced exactly by Arm B",
+    "invalid": "any F1-F6 gate fails — report, no ruling",
+    "approve": "forall pi in Pi \\ {fixed-1}: 100*total(pi) <= 99*total(fixed-1) AND total(fixed-1) >= 2*total(never)",
+    "null_axes": ["parity-straddle (best alternative ratio inside (99/100, 101/100))", "mechanism-miss (REJECT fires but the beater also beats with milestones OFF)", "horizon-conditional (H/2 leg lands the promoted clause on the other side — named, never ruling)", "twin-arm disagreement surviving the INVALID diagnosis"],
+    "reject_line_num_den": [101, 100],
+    "approve_line_num_den": [99, 100],
+    "grind_multiple": 2
+  },
+  "seeds": {
+    "arm_r_main": 20261373,
+    "arm_r_stability": 20261374,
+    "presentation": 20261375,
+    "aux_reserved_never_read": 20261376,
+    "high_water_below": 20261372
+  },
+  "arm_r": {
+    "main_draws": {"hybrid_triggers": 12, "cooldowns": 6},
+    "stability_draws": {"hybrid_triggers": 4, "cooldowns": 2},
+    "hybrid_grammar": "randrange(1, 60001)",
+    "cooldown_grammar": "randrange(30, 7201)",
+    "order": "all hybrid triggers first, then all cooldowns, one RNG stream per seed",
+    "role": "REPORTING-ONLY — no statistical gate rides Arm R; a probe beating the Pi-best is a named finding, never a ruling; every probe total must re-evaluate EXACTLY through Arm B"
+  },
+  "gates": {
+    "F1": {"cost_ladder": [60, 69, 79], "rate_by_level_P0_msoff": [1, 1, 1, 1, 2, 2], "legacy_fold_identity_sweep": {"L_range": [0, 100], "P_samples": [0, 1, 5, 10, 100, 1000, 174619]}, "isqrt_first_award": 1},
+    "F2": {"world": "milestones-OFF greedy (fixed-1)", "first_prestige_t": 12573, "first_award": 1, "run_durations_1_3": [12573, 11536, 10475], "reset_count_14d": 80795, "note": "80795 is HARD under THIS spec's pinned boundary order; the vendored harness's convention counts 80796 (the disclosed +-1 AMB-convention difference, see choice C1)"},
+    "F3": {"rule": "total_OFF(pi) <= total_ON(pi) for every pi (exact monotonicity), and fixed-1 OFF reproduces F2's anchors"},
+    "F4": {"rule": "balance + cumulative upgrade spend == run lifetime at every boundary; sum of closed run lifetimes + open run lifetime == total at every boundary; sum(owned) == 1 always (owned rungs never fire)"},
+    "F5": {"horizon": 200, "milestones_on": true, "purchase_times": [60, 129], "purchase_costs": [60, 69], "balance_at_horizon": 71, "lifetime": 200, "total": 200, "level": 2, "milestones_earned": 0},
+    "F6": {"rule": "twin evaluators exact-equal on every total (ON@H, OFF@H, ON@H/2, Arm-R main, Arm-R stability); randrange sentinels 12+6 on 20261373 and 4+2 on 20261374 counted and asserted; aux 20261376 never read; stdout + results.json byte-identical across two process runs (external sha256); CPython minor pinned 3.11"}
+  },
+  "quoted_sentences_pinned_at_5ddd5a2": [
+    {"where": "idle_engine/prestige.py docstring", "text": "doubling a run does not double the award, so the optimal loop is reset-and-grow rather than one endless grind"},
+    {"where": "docs/design/upgrades-prestige-v0.md", "text": "the optimal loop is reset-and-regrow, not one endless grind — the core prestige feel"},
+    {"where": "tools/simulate.py::simulate_s3 docstring", "text": "S3 — optimal-play speedrun … Policy per second matches S2's visit order: credit, greedy-buy, prestige iff eligible"},
+    {"where": "control/status.md", "text": "optimal play reaches ~80,796 resets in 14 days (late resets ~13 s each) — uncovered by any criterion, likely wants a pre-registered cap/cooldown criterion in v2 of the doc"}
+  ],
+  "fixture_level_choices_disclosed_before_runner": {
+    "C1": "Horizon-boundary convention: the boundary sequence (award/buy/award/reset/award) runs only when the post-credit time t < H; an event landing exactly at t == H credits but takes no boundary actions. This is the convention under which the registered F2 hard anchor 80,795 holds; the vendored harness runs actions at an event landing exactly at H and counts 80,796 — a reset lands exactly at t = 1,209,600 in the milestones-OFF greedy world (the PROPOSAL's disclosed +-1 AMB-convention difference). Policy TOTALS are convention-independent (no crediting occurs after H).",
+    "C2": "Arm A event set: next-purchase affordability crossing, next unearned lifetime-milestone crossing (milestones-ON worlds only), and the policy reset event (fixed/hybrid: lifetime-target crossing; cooldown: max(lifetime-crossing, run_start + tau)). Prestige and owned milestone progress change only AT boundaries, so they need no events. The full pinned boundary sequence runs at every event boundary; between boundaries the rate is a constant integer, so jumping ceil(need/rate) seconds equals 1-second ticking (the harness's documented equivalence, here proven by the per-second twin).",
+    "C3": "hybrid-k trigger: at the first boundary where run lifetime >= 100,000, if the detour is unused and P >= k, the run continues (no reset, detour armed) to the 10,000,000 target and resets at the first boundary with lifetime >= 10,000,000, award computed on the actual boundary lifetime; greedy thereafter. k = 0 arms the detour at the very first reset boundary.",
+    "C4": "Mechanism-miss (NULL axis ii) is evaluated on the ARGMAX beater pi* (the best-total policy among those firing the REJECT inequality): the class demotes to NULL(mechanism-miss) iff the REJECT inequality fires AND 100*total_OFF(pi*) >= 101*total_OFF(fixed-1); attribution to the milestone fold holds iff the best beater's beat disappears with milestones OFF.",
+    "C5": "Sentinels count randrange() invocations via a counting Random subclass: exactly 12 then 6 on seed 20261373, exactly 4 then 2 on seed 20261374 (per-phase counts asserted). Seed 20261375 performs exactly ONE shuffle of the presentation row order of the 15-policy table (reporting only; results.json carries canonical order plus the shuffled name list). Aux seed 20261376: asserted never constructed (the constructed-RNG set is exactly {20261373, 20261374, 20261375}).",
+    "C6": "Reset-time series serialization: per-day reset counts (14 bins, day = t // 86400 of the reset boundary), first 3 and last 3 reset records (t, duration, award, lifetime, level), min/max/final run durations, and sha256 of the full comma-joined reset-time series (full series ~175k entries for greedy-class policies — the hash pins it; committing it verbatim would bloat the ledger).",
+    "C7": "Serialization: every decision number is an exact integer; ratios are reported as exact 'num/den' strings plus repr-float conveniences; results.json written with sort_keys=True, ensure_ascii=True, single trailing newline.",
+    "C8": "F4 conservation is checked at EVERY boundary as integer equalities (balance + run-spend == run-lifetime; closed-run lifetime sum + open-run lifetime == running total; owned is the constant 1 by construction with the owned-rung unreachability asserted), aggregated into a per-policy-run boolean.",
+    "C9": "REJECT's 'both arms' clause is implemented as: the inequality holds on Arm A totals AND Arm B reproduces every ON-grid@H total exactly (twin equality on the decision leg; also required by F6 across all legs)."
+  }
+}
