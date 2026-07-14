@@ -1,0 +1,2128 @@
+{
+ "anomalies": [],
+ "armA_grid": {
+  "14400/ALT": {
+   "final_state": [
+    1,
+    1
+   ],
+   "plateau": "420/1",
+   "plateau_float": 420.0,
+   "purchases": [
+    {
+     "day": "1/2",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "5/9",
+     "price": 100
+    }
+   ],
+   "spend": 100,
+   "wall_day": "1/2",
+   "wall_day_float": 0.5,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "14400/COOP_ONLY": {
+   "final_state": [
+    1,
+    2
+   ],
+   "plateau": "576/1",
+   "plateau_float": 576.0,
+   "purchases": [
+    {
+     "day": "1/2",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "5/9",
+     "price": 100
+    },
+    {
+     "day": "1/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "15/13",
+     "price": 180
+    }
+   ],
+   "spend": 280,
+   "wall_day": "1/1",
+   "wall_day_float": 1.0,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "14400/GREEDY": {
+   "final_state": [
+    2,
+    5
+   ],
+   "plateau": "1140/1",
+   "plateau_float": 1140.0,
+   "purchases": [
+    {
+     "day": "1/2",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "5/9",
+     "price": 100
+    },
+    {
+     "day": "1/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "15/13",
+     "price": 180
+    },
+    {
+     "day": "1/1",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "5/3",
+     "price": 40
+    },
+    {
+     "day": "5/3",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "9/5",
+     "price": 324
+    },
+    {
+     "day": "7/3",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "583/180",
+     "price": 583
+    },
+    {
+     "day": "7/2",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "35/6",
+     "price": 1050
+    }
+   ],
+   "spend": 2277,
+   "wall_day": "7/2",
+   "wall_day_float": 3.5,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "14400/HEN_ONLY": {
+   "final_state": [
+    1,
+    0
+   ],
+   "plateau": "240/1",
+   "plateau_float": 240.0,
+   "purchases": [],
+   "spend": 0,
+   "wall_day": "1/6",
+   "wall_day_float": 0.16666666666666666,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "14400/PAIR": {
+   "final_state": [
+    3,
+    6
+   ],
+   "plateau": "1320/1",
+   "plateau_float": 1320.0,
+   "purchases": [
+    {
+     "day": "1/2",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "5/9",
+     "price": 100
+    },
+    {
+     "day": "1/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "15/13",
+     "price": 180
+    },
+    {
+     "day": "1/1",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "5/3",
+     "price": 40
+    },
+    {
+     "day": "5/3",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "9/5",
+     "price": 324
+    },
+    {
+     "day": "7/3",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "583/180",
+     "price": 583
+    },
+    {
+     "day": "7/2",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "35/6",
+     "price": 1050
+    },
+    {
+     "day": "31/6",
+     "kind": "hen",
+     "plan": "hen+coop",
+     "plan_payback_days": "488/45",
+     "price": 62
+    },
+    {
+     "day": "31/6",
+     "kind": "coop",
+     "plan": "hen+coop",
+     "plan_payback_days": "488/45",
+     "price": 1890
+    }
+   ],
+   "spend": 4229,
+   "wall_day": "31/6",
+   "wall_day_float": 5.166666666666667,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "3600/ALT": {
+   "final_state": [
+    1,
+    0
+   ],
+   "plateau": "576/1",
+   "plateau_float": 576.0,
+   "purchases": [],
+   "spend": 0,
+   "wall_day": "1/24",
+   "wall_day_float": 0.041666666666666664,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "3600/COOP_ONLY": {
+   "final_state": [
+    1,
+    0
+   ],
+   "plateau": "576/1",
+   "plateau_float": 576.0,
+   "purchases": [],
+   "spend": 0,
+   "wall_day": "1/24",
+   "wall_day_float": 0.041666666666666664,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "3600/GREEDY": {
+   "final_state": [
+    8,
+    5
+   ],
+   "plateau": "4560/1",
+   "plateau_float": 4560.0,
+   "purchases": [
+    {
+     "day": "1/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "5/48",
+     "price": 40
+    },
+    {
+     "day": "5/24",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "25/48",
+     "price": 100
+    },
+    {
+     "day": "1/4",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "31/264",
+     "price": 62
+    },
+    {
+     "day": "3/8",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "15/4",
+     "price": 180
+    },
+    {
+     "day": "5/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1/6",
+     "price": 96
+    },
+    {
+     "day": "1/2",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "149/96",
+     "price": 149
+    },
+    {
+     "day": "5/8",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "27/40",
+     "price": 324
+    },
+    {
+     "day": "17/24",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "77/80",
+     "price": 231
+    },
+    {
+     "day": "11/12",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "583/336",
+     "price": 583
+    },
+    {
+     "day": "1/1",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "179/192",
+     "price": 358
+    },
+    {
+     "day": "31/24",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "175/32",
+     "price": 1050
+    },
+    {
+     "day": "17/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "185/176",
+     "price": 555
+    }
+   ],
+   "spend": 3728,
+   "wall_day": "17/12",
+   "wall_day_float": 1.4166666666666667,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "3600/HEN_ONLY": {
+   "final_state": [
+    2,
+    0
+   ],
+   "plateau": "960/1",
+   "plateau_float": 960.0,
+   "purchases": [
+    {
+     "day": "1/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "5/48",
+     "price": 40
+    }
+   ],
+   "spend": 40,
+   "wall_day": "1/12",
+   "wall_day_float": 0.08333333333333333,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "3600/PAIR": {
+   "final_state": [
+    12,
+    8
+   ],
+   "plateau": "6720/1",
+   "plateau_float": 6720.0,
+   "purchases": [
+    {
+     "day": "1/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "5/48",
+     "price": 40
+    },
+    {
+     "day": "5/24",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "25/48",
+     "price": 100
+    },
+    {
+     "day": "1/4",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "31/264",
+     "price": 62
+    },
+    {
+     "day": "3/8",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "15/4",
+     "price": 180
+    },
+    {
+     "day": "5/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1/6",
+     "price": 96
+    },
+    {
+     "day": "1/2",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "149/96",
+     "price": 149
+    },
+    {
+     "day": "5/8",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "27/40",
+     "price": 324
+    },
+    {
+     "day": "17/24",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "77/80",
+     "price": 231
+    },
+    {
+     "day": "11/12",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "583/336",
+     "price": 583
+    },
+    {
+     "day": "1/1",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "179/192",
+     "price": 358
+    },
+    {
+     "day": "31/24",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "175/32",
+     "price": 1050
+    },
+    {
+     "day": "17/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "185/176",
+     "price": 555
+    },
+    {
+     "day": "49/24",
+     "kind": "hen",
+     "plan": "hen+coop",
+     "plan_payback_days": "1375/312",
+     "price": 860
+    },
+    {
+     "day": "49/24",
+     "kind": "coop",
+     "plan": "hen+coop",
+     "plan_payback_days": "1375/312",
+     "price": 1890
+    },
+    {
+     "day": "55/24",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1333/96",
+     "price": 1333
+    },
+    {
+     "day": "35/12",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "3401/480",
+     "price": 3401
+    },
+    {
+     "day": "79/24",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1033/120",
+     "price": 2066
+    },
+    {
+     "day": "29/6",
+     "kind": "hen",
+     "plan": "hen+coop",
+     "plan_payback_days": "259/20",
+     "price": 3202
+    },
+    {
+     "day": "29/6",
+     "kind": "coop",
+     "plan": "hen+coop",
+     "plan_payback_days": "259/20",
+     "price": 6122
+    }
+   ],
+   "spend": 22602,
+   "wall_day": "29/6",
+   "wall_day_float": 4.833333333333333,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "86400/ALT": {
+   "final_state": [
+    1,
+    1
+   ],
+   "plateau": "70/1",
+   "plateau_float": 70.0,
+   "purchases": [
+    {
+     "day": "3/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "10/3",
+     "price": 100
+    }
+   ],
+   "spend": 100,
+   "wall_day": "3/1",
+   "wall_day_float": 3.0,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "86400/COOP_ONLY": {
+   "final_state": [
+    1,
+    3
+   ],
+   "plateau": "130/1",
+   "plateau_float": 130.0,
+   "purchases": [
+    {
+     "day": "3/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "10/3",
+     "price": 100
+    },
+    {
+     "day": "6/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "6/1",
+     "price": 180
+    },
+    {
+     "day": "9/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "54/5",
+     "price": 324
+    }
+   ],
+   "spend": 604,
+   "wall_day": "9/1",
+   "wall_day_float": 9.0,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "86400/GREEDY": {
+   "final_state": [
+    1,
+    3
+   ],
+   "plateau": "130/1",
+   "plateau_float": 130.0,
+   "purchases": [
+    {
+     "day": "3/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "10/3",
+     "price": 100
+    },
+    {
+     "day": "6/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "6/1",
+     "price": 180
+    },
+    {
+     "day": "9/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "54/5",
+     "price": 324
+    }
+   ],
+   "spend": 604,
+   "wall_day": "9/1",
+   "wall_day_float": 9.0,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "86400/HEN_ONLY": {
+   "final_state": [
+    1,
+    0
+   ],
+   "plateau": "40/1",
+   "plateau_float": 40.0,
+   "purchases": [],
+   "spend": 0,
+   "wall_day": "1/1",
+   "wall_day_float": 1.0,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "86400/PAIR": {
+   "final_state": [
+    1,
+    3
+   ],
+   "plateau": "130/1",
+   "plateau_float": 130.0,
+   "purchases": [
+    {
+     "day": "3/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "10/3",
+     "price": 100
+    },
+    {
+     "day": "6/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "6/1",
+     "price": 180
+    },
+    {
+     "day": "9/1",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "54/5",
+     "price": 324
+    }
+   ],
+   "spend": 604,
+   "wall_day": "9/1",
+   "wall_day_float": 9.0,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "900/ALT": {
+   "final_state": [
+    1,
+    0
+   ],
+   "plateau": "576/1",
+   "plateau_float": 576.0,
+   "purchases": [],
+   "spend": 0,
+   "wall_day": "1/96",
+   "wall_day_float": 0.010416666666666666,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "900/COOP_ONLY": {
+   "final_state": [
+    1,
+    0
+   ],
+   "plateau": "576/1",
+   "plateau_float": 576.0,
+   "purchases": [],
+   "spend": 0,
+   "wall_day": "1/96",
+   "wall_day_float": 0.010416666666666666,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "900/GREEDY": {
+   "final_state": [
+    14,
+    2
+   ],
+   "plateau": "8064/1",
+   "plateau_float": 8064.0,
+   "purchases": [
+    {
+     "day": "7/96",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "5/72",
+     "price": 40
+    },
+    {
+     "day": "1/8",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "31/288",
+     "price": 62
+    },
+    {
+     "day": "3/16",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1/6",
+     "price": 96
+    },
+    {
+     "day": "1/4",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "149/576",
+     "price": 149
+    },
+    {
+     "day": "1/3",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "77/192",
+     "price": 231
+    },
+    {
+     "day": "7/16",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "179/192",
+     "price": 358
+    },
+    {
+     "day": "15/32",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "25/48",
+     "price": 100
+    },
+    {
+     "day": "29/48",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "185/192",
+     "price": 555
+    },
+    {
+     "day": "19/24",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "215/144",
+     "price": 860
+    },
+    {
+     "day": "101/96",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1333/576",
+     "price": 1333
+    },
+    {
+     "day": "45/32",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1033/288",
+     "price": 2066
+    },
+    {
+     "day": "23/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1601/192",
+     "price": 3202
+    },
+    {
+     "day": "31/16",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "15/16",
+     "price": 180
+    },
+    {
+     "day": "85/32",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "4963/576",
+     "price": 4963
+    },
+    {
+     "day": "59/16",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "641/48",
+     "price": 7692
+    }
+   ],
+   "spend": 21887,
+   "wall_day": "59/16",
+   "wall_day_float": 3.6875,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "900/HEN_ONLY": {
+   "final_state": [
+    7,
+    0
+   ],
+   "plateau": "3840/1",
+   "plateau_float": 3840.0,
+   "purchases": [
+    {
+     "day": "7/96",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "5/72",
+     "price": 40
+    },
+    {
+     "day": "1/8",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "31/288",
+     "price": 62
+    },
+    {
+     "day": "3/16",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1/6",
+     "price": 96
+    },
+    {
+     "day": "1/4",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "149/576",
+     "price": 149
+    },
+    {
+     "day": "1/3",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "77/192",
+     "price": 231
+    },
+    {
+     "day": "7/16",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "179/192",
+     "price": 358
+    }
+   ],
+   "spend": 936,
+   "wall_day": "7/16",
+   "wall_day_float": 0.4375,
+   "zero_marginal_hen_share": "0/1"
+  },
+  "900/PAIR": {
+   "final_state": [
+    14,
+    2
+   ],
+   "plateau": "8064/1",
+   "plateau_float": 8064.0,
+   "purchases": [
+    {
+     "day": "7/96",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "5/72",
+     "price": 40
+    },
+    {
+     "day": "1/8",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "31/288",
+     "price": 62
+    },
+    {
+     "day": "3/16",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1/6",
+     "price": 96
+    },
+    {
+     "day": "1/4",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "149/576",
+     "price": 149
+    },
+    {
+     "day": "1/3",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "77/192",
+     "price": 231
+    },
+    {
+     "day": "7/16",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "179/192",
+     "price": 358
+    },
+    {
+     "day": "15/32",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "25/48",
+     "price": 100
+    },
+    {
+     "day": "29/48",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "185/192",
+     "price": 555
+    },
+    {
+     "day": "19/24",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "215/144",
+     "price": 860
+    },
+    {
+     "day": "101/96",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1333/576",
+     "price": 1333
+    },
+    {
+     "day": "45/32",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1033/288",
+     "price": 2066
+    },
+    {
+     "day": "23/12",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "1601/192",
+     "price": 3202
+    },
+    {
+     "day": "31/16",
+     "kind": "coop",
+     "plan": "coop",
+     "plan_payback_days": "15/16",
+     "price": 180
+    },
+    {
+     "day": "85/32",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "4963/576",
+     "price": 4963
+    },
+    {
+     "day": "59/16",
+     "kind": "hen",
+     "plan": "hen",
+     "plan_payback_days": "641/48",
+     "price": 7692
+    }
+   ],
+   "spend": 21887,
+   "wall_day": "59/16",
+   "wall_day_float": 3.6875,
+   "zero_marginal_hen_share": "0/1"
+  }
+ },
+ "armS_headline": {
+  "14400/ALT": {
+   "N": 2000,
+   "Sx": 10944938,
+   "Sxx": 59999541588,
+   "mean": "5472469/15000",
+   "mean_float": 364.8312666666667,
+   "se": 0.339541448714992
+  },
+  "14400/COOP_ONLY": {
+   "N": 2000,
+   "Sx": 14062672,
+   "Sxx": 99001598848,
+   "mean": "878917/1875",
+   "mean_float": 468.75573333333335,
+   "se": 0.36861317010764905
+  },
+  "14400/GREEDY": {
+   "N": 2000,
+   "Sx": 27304384,
+   "Sxx": 373234801344,
+   "mean": "1706524/1875",
+   "mean_float": 910.1461333333333,
+   "se": 0.7229136310215323
+  },
+  "14400/HEN_ONLY": {
+   "N": 2000,
+   "Sx": 6481520,
+   "Sxx": 21050739200,
+   "mean": "81019/375",
+   "mean_float": 216.05066666666667,
+   "se": 0.22536710903231522
+  },
+  "14400/PAIR": {
+   "N": 2000,
+   "Sx": 34068456,
+   "Sxx": 581308372336,
+   "mean": "1419519/1250",
+   "mean_float": 1135.6152,
+   "se": 1.0429737034064872
+  },
+  "3600/ALT": {
+   "N": 2000,
+   "Sx": 15929036,
+   "Sxx": 126879861008,
+   "mean": "3982259/7500",
+   "mean_float": 530.9678666666666,
+   "se": 0.11913321244649024
+  },
+  "3600/COOP_ONLY": {
+   "N": 2000,
+   "Sx": 15924102,
+   "Sxx": 126801485420,
+   "mean": "2654017/5000",
+   "mean_float": 530.8034,
+   "se": 0.12009096841937576
+  },
+  "3600/GREEDY": {
+   "N": 2000,
+   "Sx": 107358010,
+   "Sxx": 5764638001308,
+   "mean": "10735801/3000",
+   "mean_float": 3578.6003333333333,
+   "se": 1.401479215664797
+  },
+  "3600/HEN_ONLY": {
+   "N": 2000,
+   "Sx": 23977484,
+   "Sxx": 287573559696,
+   "mean": "5994371/7500",
+   "mean_float": 799.2494666666666,
+   "se": 0.35550759394015624
+  },
+  "3600/PAIR": {
+   "N": 2000,
+   "Sx": 159182400,
+   "Sxx": 12673513976320,
+   "mean": "132652/25",
+   "mean_float": 5306.08,
+   "se": 2.1075895420954445
+  },
+  "86400/ALT": {
+   "N": 2000,
+   "Sx": 1887900,
+   "Sxx": 1805326600,
+   "mean": "6293/100",
+   "mean_float": 62.93,
+   "se": 0.1607448720842912
+  },
+  "86400/COOP_ONLY": {
+   "N": 2000,
+   "Sx": 3509610,
+   "Sxx": 6241998100,
+   "mean": "116987/1000",
+   "mean_float": 116.987,
+   "se": 0.304336442575621
+  },
+  "86400/GREEDY": {
+   "N": 2000,
+   "Sx": 3514550,
+   "Sxx": 6258458700,
+   "mean": "70291/600",
+   "mean_float": 117.15166666666667,
+   "se": 0.3027082998011375
+  },
+  "86400/HEN_ONLY": {
+   "N": 2000,
+   "Sx": 1078640,
+   "Sxx": 589513600,
+   "mean": "13483/375",
+   "mean_float": 35.95466666666667,
+   "se": 0.09300757366975833
+  },
+  "86400/PAIR": {
+   "N": 2000,
+   "Sx": 3511430,
+   "Sxx": 6251969100,
+   "mean": "351143/3000",
+   "mean_float": 117.04766666666667,
+   "se": 0.3108094247719031
+  },
+  "900/ALT": {
+   "N": 2000,
+   "Sx": 14697606,
+   "Sxx": 108011298308,
+   "mean": "2449601/5000",
+   "mean_float": 489.9202,
+   "se": 0.040661015661845955
+  },
+  "900/COOP_ONLY": {
+   "N": 2000,
+   "Sx": 14695958,
+   "Sxx": 107987049748,
+   "mean": "7347979/15000",
+   "mean_float": 489.8652666666667,
+   "se": 0.04027280544384818
+  },
+  "900/GREEDY": {
+   "N": 2000,
+   "Sx": 184389188,
+   "Sxx": 17000566976272,
+   "mean": "46097297/7500",
+   "mean_float": 6146.3062666666665,
+   "se": 0.9894393294026875
+  },
+  "900/HEN_ONLY": {
+   "N": 2000,
+   "Sx": 84273026,
+   "Sxx": 3551201009036,
+   "mean": "42136513/15000",
+   "mean_float": 2809.1008666666667,
+   "se": 0.5051603395599581
+  },
+  "900/PAIR": {
+   "N": 2000,
+   "Sx": 184378040,
+   "Sxx": 16998524499264,
+   "mean": "4609451/750",
+   "mean_float": 6145.934666666667,
+   "se": 0.9967331125029865
+  }
+ },
+ "armS_headline_draws": {
+  "attempts": 114322357,
+  "draws": 228644714
+ },
+ "best_of_family": {
+  "14400": {
+   "fires_kappa_half": true,
+   "plateau": "1320/1",
+   "plateau_float": 1320.0,
+   "policy": "PAIR",
+   "ratio_to_E_daily": 0.7801372332314821
+  },
+  "3600": {
+   "fires_kappa_half": true,
+   "plateau": "6720/1",
+   "plateau_float": 6720.0,
+   "policy": "PAIR",
+   "ratio_to_E_daily": 3.971607732814818
+  },
+  "86400": {
+   "fires_kappa_half": false,
+   "plateau": "130/1",
+   "plateau_float": 130.0,
+   "policy": "GREEDY",
+   "ratio_to_E_daily": 0.07683169721219142
+  },
+  "900": {
+   "fires_kappa_half": true,
+   "plateau": "8064/1",
+   "plateau_float": 8064.0,
+   "policy": "GREEDY",
+   "ratio_to_E_daily": 4.765929279377781
+  }
+ },
+ "decision": {
+  "class": "REJECT",
+  "evaluators_agree": true,
+  "fired_cells": [
+   900,
+   3600,
+   14400
+  ],
+  "stability_reproduces": true,
+  "threshold": "169201/200"
+ },
+ "drafter_comparison": {
+  "drafter_900_matches_pmax28_column": false,
+  "note": "comparison only, never gated",
+  "rows": [
+   {
+    "delta": 900,
+    "drafter": 8064,
+    "match": true,
+    "ours_greedy": "8064/1"
+   },
+   {
+    "delta": 3600,
+    "drafter": 4560,
+    "match": true,
+    "ours_greedy": "4560/1"
+   },
+   {
+    "delta": 14400,
+    "drafter": 1140,
+    "match": true,
+    "ours_greedy": "1140/1"
+   },
+   {
+    "delta": 86400,
+    "drafter": 130,
+    "match": true,
+    "ours_greedy": "130/1"
+   }
+  ]
+ },
+ "family_split_note": {
+  "14400": {
+   "greedy_wall": "7/2",
+   "pair_extends_days": 1.6666666666666667,
+   "pair_wall": "31/6"
+  },
+  "3600": {
+   "greedy_wall": "17/12",
+   "pair_extends_days": 3.4166666666666665,
+   "pair_wall": "29/6"
+  },
+  "86400": {
+   "greedy_wall": "9/1",
+   "pair_extends_days": 0.0,
+   "pair_wall": "9/1"
+  },
+  "900": {
+   "greedy_wall": "59/16",
+   "pair_extends_days": 0.0,
+   "pair_wall": "59/16"
+  }
+ },
+ "meta": {
+  "intake": "051",
+  "proposal_header": "## PROPOSAL 051 \u00b7 2026-07-14T00:00:51Z \u00b7 status: sim-ready",
+  "python": "3.11",
+  "seeds": {
+   "armS_main": 20261341,
+   "aux_never_read": 20261344,
+   "reporting": 20261343,
+   "stability": 20261342
+  },
+  "verdict": "062"
+ },
+ "reject_confirmation": {
+  "14400": true,
+  "3600": true,
+  "900": true
+ },
+ "reporting": {
+  "design_ceiling_row": {
+   "14400": "2040/1",
+   "3600": "8160/1",
+   "86400": "340/1",
+   "900": "32640/1"
+  },
+  "extra_cadences": {
+   "300": {
+    "ALT": {
+     "final_state": [
+      1,
+      0
+     ],
+     "plateau": "576/1",
+     "plateau_float": 576.0,
+     "spend": 0,
+     "wall_day": "1/288"
+    },
+    "COOP_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "plateau": "576/1",
+     "plateau_float": 576.0,
+     "spend": 0,
+     "wall_day": "1/288"
+    },
+    "GREEDY": {
+     "final_state": [
+      14,
+      0
+     ],
+     "plateau": "8064/1",
+     "plateau_float": 8064.0,
+     "spend": 21607,
+     "wall_day": "1043/288"
+    },
+    "HEN_ONLY": {
+     "final_state": [
+      14,
+      0
+     ],
+     "plateau": "8064/1",
+     "plateau_float": 8064.0,
+     "spend": 21607,
+     "wall_day": "1043/288"
+    },
+    "PAIR": {
+     "final_state": [
+      14,
+      0
+     ],
+     "plateau": "8064/1",
+     "plateau_float": 8064.0,
+     "spend": 21607,
+     "wall_day": "1043/288"
+    },
+    "_best": "GREEDY",
+    "_jittered_mean_best": {
+     "N": 500,
+     "mean": "3399742/625",
+     "mean_float": 5439.5872,
+     "se": 1.0580256339699945
+    }
+   },
+   "604800": {
+    "ALT": {
+     "final_state": [
+      1,
+      0
+     ],
+     "plateau": "40/7",
+     "plateau_float": 5.714285714285714,
+     "spend": 0,
+     "wall_day": "7/1"
+    },
+    "COOP_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "plateau": "40/7",
+     "plateau_float": 5.714285714285714,
+     "spend": 0,
+     "wall_day": "7/1"
+    },
+    "GREEDY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "plateau": "40/7",
+     "plateau_float": 5.714285714285714,
+     "spend": 0,
+     "wall_day": "7/1"
+    },
+    "HEN_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "plateau": "40/7",
+     "plateau_float": 5.714285714285714,
+     "spend": 0,
+     "wall_day": "7/1"
+    },
+    "PAIR": {
+     "final_state": [
+      1,
+      0
+     ],
+     "plateau": "40/7",
+     "plateau_float": 5.714285714285714,
+     "spend": 0,
+     "wall_day": "7/1"
+    },
+    "_best": "GREEDY",
+    "_jittered_mean_best": {
+     "N": 500,
+     "mean": "1934/375",
+     "mean_float": 5.157333333333334,
+     "se": 0.0818093323959282
+    }
+   }
+  },
+  "jitter_widths": {
+   "14400@1/4": {
+    "mean": "742018/625",
+    "mean_float": 1187.2288,
+    "policy": "PAIR",
+    "se": 2.080924184865327
+   },
+   "14400@3/4": {
+    "mean": "3977879/3750",
+    "mean_float": 1060.7677333333334,
+    "policy": "PAIR",
+    "se": 2.1174667095456994
+   },
+   "3600@1/4": {
+    "mean": "10611622/1875",
+    "mean_float": 5659.531733333333,
+    "policy": "PAIR",
+    "se": 4.301327160437554
+   },
+   "3600@3/4": {
+    "mean": "619944/125",
+    "mean_float": 4959.552,
+    "policy": "PAIR",
+    "se": 4.501550128221562
+   },
+   "86400@1/4": {
+    "mean": "29289/250",
+    "mean_float": 117.156,
+    "policy": "GREEDY",
+    "se": 0.5108410501225542
+   },
+   "86400@3/4": {
+    "mean": "8788/75",
+    "mean_float": 117.17333333333333,
+    "policy": "GREEDY",
+    "se": 0.7358821316556386
+   },
+   "900@1/4": {
+    "mean": "11827127/1875",
+    "mean_float": 6307.801066666667,
+    "policy": "GREEDY",
+    "se": 1.9107562490484407
+   },
+   "900@3/4": {
+    "mean": "11171417/1875",
+    "mean_float": 5958.089066666666,
+    "policy": "GREEDY",
+    "se": 1.9175240639360356
+   }
+  },
+  "kappa_sweep": {
+   "1/3": {
+    "fired_cells": [
+     900,
+     3600,
+     14400
+    ],
+    "fires_ge2": true,
+    "threshold": "169201/300"
+   },
+   "2/3": {
+    "fired_cells": [
+     900,
+     3600,
+     14400
+    ],
+    "fires_ge2": true,
+    "threshold": "169201/150"
+   }
+  },
+  "knob_table": {
+   "EGG_VALUE=1": {
+    "14400/ALT": {
+     "final_state": [
+      1,
+      1
+     ],
+     "over_band": false,
+     "plateau": "210/1",
+     "plateau_float": 210.0
+    },
+    "14400/COOP_ONLY": {
+     "final_state": [
+      1,
+      2
+     ],
+     "over_band": false,
+     "plateau": "288/1",
+     "plateau_float": 288.0
+    },
+    "14400/GREEDY": {
+     "final_state": [
+      2,
+      5
+     ],
+     "over_band": false,
+     "plateau": "570/1",
+     "plateau_float": 570.0
+    },
+    "14400/HEN_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "120/1",
+     "plateau_float": 120.0
+    },
+    "14400/PAIR": {
+     "final_state": [
+      2,
+      5
+     ],
+     "over_band": false,
+     "plateau": "570/1",
+     "plateau_float": 570.0
+    },
+    "3600/ALT": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "288/1",
+     "plateau_float": 288.0
+    },
+    "3600/COOP_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "288/1",
+     "plateau_float": 288.0
+    },
+    "3600/GREEDY": {
+     "final_state": [
+      8,
+      5
+     ],
+     "over_band": true,
+     "plateau": "2280/1",
+     "plateau_float": 2280.0
+    },
+    "3600/HEN_ONLY": {
+     "final_state": [
+      2,
+      0
+     ],
+     "over_band": false,
+     "plateau": "480/1",
+     "plateau_float": 480.0
+    },
+    "3600/PAIR": {
+     "final_state": [
+      9,
+      6
+     ],
+     "over_band": true,
+     "plateau": "2592/1",
+     "plateau_float": 2592.0
+    },
+    "86400/ALT": {
+     "final_state": [
+      1,
+      1
+     ],
+     "over_band": false,
+     "plateau": "35/1",
+     "plateau_float": 35.0
+    },
+    "86400/COOP_ONLY": {
+     "final_state": [
+      1,
+      2
+     ],
+     "over_band": false,
+     "plateau": "50/1",
+     "plateau_float": 50.0
+    },
+    "86400/GREEDY": {
+     "final_state": [
+      1,
+      2
+     ],
+     "over_band": false,
+     "plateau": "50/1",
+     "plateau_float": 50.0
+    },
+    "86400/HEN_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "20/1",
+     "plateau_float": 20.0
+    },
+    "86400/PAIR": {
+     "final_state": [
+      1,
+      2
+     ],
+     "over_band": false,
+     "plateau": "50/1",
+     "plateau_float": 50.0
+    },
+    "900/ALT": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "288/1",
+     "plateau_float": 288.0
+    },
+    "900/COOP_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "288/1",
+     "plateau_float": 288.0
+    },
+    "900/GREEDY": {
+     "final_state": [
+      11,
+      1
+     ],
+     "over_band": true,
+     "plateau": "3168/1",
+     "plateau_float": 3168.0
+    },
+    "900/HEN_ONLY": {
+     "final_state": [
+      7,
+      0
+     ],
+     "over_band": true,
+     "plateau": "1920/1",
+     "plateau_float": 1920.0
+    },
+    "900/PAIR": {
+     "final_state": [
+      12,
+      2
+     ],
+     "over_band": true,
+     "plateau": "3456/1",
+     "plateau_float": 3456.0
+    }
+   },
+   "LAY_INTERVAL=600": {
+    "14400/ALT": {
+     "final_state": [
+      3,
+      3
+     ],
+     "over_band": false,
+     "plateau": "780/1",
+     "plateau_float": 780.0
+    },
+    "14400/COOP_ONLY": {
+     "final_state": [
+      1,
+      1
+     ],
+     "over_band": false,
+     "plateau": "288/1",
+     "plateau_float": 288.0
+    },
+    "14400/GREEDY": {
+     "final_state": [
+      4,
+      5
+     ],
+     "over_band": true,
+     "plateau": "1140/1",
+     "plateau_float": 1140.0
+    },
+    "14400/HEN_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "240/1",
+     "plateau_float": 240.0
+    },
+    "14400/PAIR": {
+     "final_state": [
+      5,
+      6
+     ],
+     "over_band": true,
+     "plateau": "1320/1",
+     "plateau_float": 1320.0
+    },
+    "3600/ALT": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "288/1",
+     "plateau_float": 288.0
+    },
+    "3600/COOP_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "288/1",
+     "plateau_float": 288.0
+    },
+    "3600/GREEDY": {
+     "final_state": [
+      12,
+      4
+     ],
+     "over_band": true,
+     "plateau": "3456/1",
+     "plateau_float": 3456.0
+    },
+    "3600/HEN_ONLY": {
+     "final_state": [
+      4,
+      0
+     ],
+     "over_band": true,
+     "plateau": "960/1",
+     "plateau_float": 960.0
+    },
+    "3600/PAIR": {
+     "final_state": [
+      12,
+      4
+     ],
+     "over_band": true,
+     "plateau": "3456/1",
+     "plateau_float": 3456.0
+    },
+    "86400/ALT": {
+     "final_state": [
+      1,
+      1
+     ],
+     "over_band": false,
+     "plateau": "70/1",
+     "plateau_float": 70.0
+    },
+    "86400/COOP_ONLY": {
+     "final_state": [
+      1,
+      3
+     ],
+     "over_band": false,
+     "plateau": "130/1",
+     "plateau_float": 130.0
+    },
+    "86400/GREEDY": {
+     "final_state": [
+      1,
+      3
+     ],
+     "over_band": false,
+     "plateau": "130/1",
+     "plateau_float": 130.0
+    },
+    "86400/HEN_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "40/1",
+     "plateau_float": 40.0
+    },
+    "86400/PAIR": {
+     "final_state": [
+      1,
+      3
+     ],
+     "over_band": false,
+     "plateau": "130/1",
+     "plateau_float": 130.0
+    },
+    "900/ALT": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "192/1",
+     "plateau_float": 192.0
+    },
+    "900/COOP_ONLY": {
+     "final_state": [
+      1,
+      0
+     ],
+     "over_band": false,
+     "plateau": "192/1",
+     "plateau_float": 192.0
+    },
+    "900/GREEDY": {
+     "final_state": [
+      11,
+      0
+     ],
+     "over_band": true,
+     "plateau": "2112/1",
+     "plateau_float": 2112.0
+    },
+    "900/HEN_ONLY": {
+     "final_state": [
+      11,
+      0
+     ],
+     "over_band": true,
+     "plateau": "2112/1",
+     "plateau_float": 2112.0
+    },
+    "900/PAIR": {
+     "final_state": [
+      11,
+      0
+     ],
+     "over_band": true,
+     "plateau": "2112/1",
+     "plateau_float": 2112.0
+    }
+   }
+  },
+  "p_max_sweep": {
+   "28": {
+    "14400/ALT": {
+     "plateau": "420/1",
+     "spend": 100,
+     "wall_day": "1/2"
+    },
+    "14400/COOP_ONLY": {
+     "plateau": "576/1",
+     "spend": 280,
+     "wall_day": "1/1"
+    },
+    "14400/GREEDY": {
+     "plateau": "1140/1",
+     "spend": 2277,
+     "wall_day": "7/2"
+    },
+    "14400/HEN_ONLY": {
+     "plateau": "240/1",
+     "spend": 0,
+     "wall_day": "1/6"
+    },
+    "14400/PAIR": {
+     "plateau": "1500/1",
+     "spend": 7630,
+     "wall_day": "47/6"
+    },
+    "3600/ALT": {
+     "plateau": "576/1",
+     "spend": 0,
+     "wall_day": "1/24"
+    },
+    "3600/COOP_ONLY": {
+     "plateau": "576/1",
+     "spend": 0,
+     "wall_day": "1/24"
+    },
+    "3600/GREEDY": {
+     "plateau": "4560/1",
+     "spend": 3728,
+     "wall_day": "17/12"
+    },
+    "3600/HEN_ONLY": {
+     "plateau": "960/1",
+     "spend": 40,
+     "wall_day": "1/12"
+    },
+    "3600/PAIR": {
+     "plateau": "7440/1",
+     "spend": 38585,
+     "wall_day": "173/24"
+    },
+    "86400/ALT": {
+     "plateau": "70/1",
+     "spend": 100,
+     "wall_day": "3/1"
+    },
+    "86400/COOP_ONLY": {
+     "plateau": "160/1",
+     "spend": 1187,
+     "wall_day": "14/1"
+    },
+    "86400/GREEDY": {
+     "plateau": "160/1",
+     "spend": 1187,
+     "wall_day": "14/1"
+    },
+    "86400/HEN_ONLY": {
+     "plateau": "40/1",
+     "spend": 0,
+     "wall_day": "1/1"
+    },
+    "86400/PAIR": {
+     "plateau": "160/1",
+     "spend": 1187,
+     "wall_day": "14/1"
+    },
+    "900/ALT": {
+     "plateau": "576/1",
+     "spend": 0,
+     "wall_day": "1/96"
+    },
+    "900/COOP_ONLY": {
+     "plateau": "576/1",
+     "spend": 0,
+     "wall_day": "1/96"
+    },
+    "900/GREEDY": {
+     "plateau": "8640/1",
+     "spend": 33810,
+     "wall_day": "31/6"
+    },
+    "900/HEN_ONLY": {
+     "plateau": "3840/1",
+     "spend": 936,
+     "wall_day": "7/16"
+    },
+    "900/PAIR": {
+     "plateau": "8640/1",
+     "spend": 33810,
+     "wall_day": "31/6"
+    }
+   },
+   "7": {
+    "14400/ALT": {
+     "plateau": "420/1",
+     "spend": 100,
+     "wall_day": "1/2"
+    },
+    "14400/COOP_ONLY": {
+     "plateau": "576/1",
+     "spend": 280,
+     "wall_day": "1/1"
+    },
+    "14400/GREEDY": {
+     "plateau": "1140/1",
+     "spend": 2277,
+     "wall_day": "7/2"
+    },
+    "14400/HEN_ONLY": {
+     "plateau": "240/1",
+     "spend": 0,
+     "wall_day": "1/6"
+    },
+    "14400/PAIR": {
+     "plateau": "1140/1",
+     "spend": 2277,
+     "wall_day": "7/2"
+    },
+    "3600/ALT": {
+     "plateau": "576/1",
+     "spend": 0,
+     "wall_day": "1/24"
+    },
+    "3600/COOP_ONLY": {
+     "plateau": "576/1",
+     "spend": 0,
+     "wall_day": "1/24"
+    },
+    "3600/GREEDY": {
+     "plateau": "4560/1",
+     "spend": 3728,
+     "wall_day": "17/12"
+    },
+    "3600/HEN_ONLY": {
+     "plateau": "960/1",
+     "spend": 40,
+     "wall_day": "1/12"
+    },
+    "3600/PAIR": {
+     "plateau": "5184/1",
+     "spend": 6478,
+     "wall_day": "49/24"
+    },
+    "86400/ALT": {
+     "plateau": "70/1",
+     "spend": 100,
+     "wall_day": "3/1"
+    },
+    "86400/COOP_ONLY": {
+     "plateau": "100/1",
+     "spend": 280,
+     "wall_day": "6/1"
+    },
+    "86400/GREEDY": {
+     "plateau": "100/1",
+     "spend": 280,
+     "wall_day": "6/1"
+    },
+    "86400/HEN_ONLY": {
+     "plateau": "40/1",
+     "spend": 0,
+     "wall_day": "1/1"
+    },
+    "86400/PAIR": {
+     "plateau": "100/1",
+     "spend": 280,
+     "wall_day": "6/1"
+    },
+    "900/ALT": {
+     "plateau": "576/1",
+     "spend": 0,
+     "wall_day": "1/96"
+    },
+    "900/COOP_ONLY": {
+     "plateau": "576/1",
+     "spend": 0,
+     "wall_day": "1/96"
+    },
+    "900/GREEDY": {
+     "plateau": "6336/1",
+     "spend": 5850,
+     "wall_day": "45/32"
+    },
+    "900/HEN_ONLY": {
+     "plateau": "3840/1",
+     "spend": 936,
+     "wall_day": "7/16"
+    },
+    "900/PAIR": {
+     "plateau": "6912/1",
+     "spend": 9232,
+     "wall_day": "31/16"
+    }
+   }
+  },
+  "whale": {
+   "14400/ALT": {
+    "plateau": "420/1",
+    "spend": 100,
+    "wall_day": "1/6"
+   },
+   "14400/COOP_ONLY": {
+    "plateau": "576/1",
+    "spend": 280,
+    "wall_day": "1/6"
+   },
+   "14400/GREEDY": {
+    "plateau": "1140/1",
+    "spend": 2277,
+    "wall_day": "1/6"
+   },
+   "14400/HEN_ONLY": {
+    "plateau": "240/1",
+    "spend": 0,
+    "wall_day": "1/6"
+   },
+   "14400/PAIR": {
+    "plateau": "1320/1",
+    "spend": 4229,
+    "wall_day": "1/6"
+   },
+   "3600/ALT": {
+    "plateau": "576/1",
+    "spend": 0,
+    "wall_day": "1/24"
+   },
+   "3600/COOP_ONLY": {
+    "plateau": "576/1",
+    "spend": 0,
+    "wall_day": "1/24"
+   },
+   "3600/GREEDY": {
+    "plateau": "4560/1",
+    "spend": 3728,
+    "wall_day": "1/24"
+   },
+   "3600/HEN_ONLY": {
+    "plateau": "960/1",
+    "spend": 40,
+    "wall_day": "1/24"
+   },
+   "3600/PAIR": {
+    "plateau": "6720/1",
+    "spend": 22602,
+    "wall_day": "1/24"
+   },
+   "86400/ALT": {
+    "plateau": "70/1",
+    "spend": 100,
+    "wall_day": "1/1"
+   },
+   "86400/COOP_ONLY": {
+    "plateau": "130/1",
+    "spend": 604,
+    "wall_day": "1/1"
+   },
+   "86400/GREEDY": {
+    "plateau": "130/1",
+    "spend": 604,
+    "wall_day": "1/1"
+   },
+   "86400/HEN_ONLY": {
+    "plateau": "40/1",
+    "spend": 0,
+    "wall_day": "1/1"
+   },
+   "86400/PAIR": {
+    "plateau": "130/1",
+    "spend": 604,
+    "wall_day": "1/1"
+   },
+   "900/ALT": {
+    "plateau": "576/1",
+    "spend": 0,
+    "wall_day": "1/96"
+   },
+   "900/COOP_ONLY": {
+    "plateau": "576/1",
+    "spend": 0,
+    "wall_day": "1/96"
+   },
+   "900/GREEDY": {
+    "plateau": "8064/1",
+    "spend": 21887,
+    "wall_day": "1/96"
+   },
+   "900/HEN_ONLY": {
+    "plateau": "3840/1",
+    "spend": 936,
+    "wall_day": "1/96"
+   },
+   "900/PAIR": {
+    "plateau": "8064/1",
+    "spend": 21887,
+    "wall_day": "1/96"
+   }
+  }
+ },
+ "reporting_draws": {
+  "attempts": 24398290,
+  "draws": 48796580
+ },
+ "self_checks": {
+  "failed": 0,
+  "passed": 35
+ },
+ "stability": {
+  "attempts": 28580393,
+  "class_eval1": "REJECT",
+  "class_eval2": "REJECT",
+  "draws": 57160786,
+  "means": {
+   "14400/ALT": "136477/375",
+   "14400/COOP_ONLY": "1755383/3750",
+   "14400/GREEDY": "3402103/3750",
+   "14400/HEN_ONLY": "80882/375",
+   "14400/PAIR": "2125622/1875",
+   "3600/ALT": "331643/625",
+   "3600/COOP_ONLY": "1991567/3750",
+   "3600/GREEDY": "6714289/1875",
+   "3600/HEN_ONLY": "499879/625",
+   "3600/PAIR": "9941482/1875",
+   "86400/ALT": "23576/375",
+   "86400/COOP_ONLY": "87581/750",
+   "86400/GREEDY": "86671/750",
+   "86400/HEN_ONLY": "13402/375",
+   "86400/PAIR": "43654/375",
+   "900/ALT": "1836361/3750",
+   "900/COOP_ONLY": "1837463/3750",
+   "900/GREEDY": "3840673/625",
+   "900/HEN_ONLY": "10532533/3750",
+   "900/PAIR": "3840428/625"
+  }
+ }
+}
