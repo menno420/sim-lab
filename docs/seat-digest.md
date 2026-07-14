@@ -35,7 +35,14 @@ Full index (grounds + capabilities): `docs/SKILLS.md` — the source this block 
 <!-- substrate-kit:walls-digest BEGIN venues=autonomous-project,any — derived render, kit-generated; regenerate with `python3 bootstrap.py seat-digest`, never edit. -->
 ## Walls digest (venues: autonomous-project, any)
 
-- (no walls recorded for these venues in `docs/CAPABILITIES.md`)
+- `any` · **Tag push / release create via git**: HTTP 403 from the environment's git proxy → use the workflow_dispatch release path.
+- `any` · **Branch deletion**: 403 on every path (git push `:branch` and API) → owner deletes by hand / enables "Automatically delete head branches".
+- `any` · **`api.github.com` direct HTTP**: blocked → GitHub access is MCP-tools-only.
+- `any` · **Environment / Project creation**: owner-click actions in the console — queue them as structured owner asks, never wait silently. Routine/schedule creation…
+- `any` · **GraphQL API quota**: tight — batch queries and prefer the REST-backed MCP tools for bulk reads.
+- `autonomous-project` · **Routine/wake arming is seat-dependent** (folded from PLATFORM-LIMITS.md per inbox ORDER 007): trigger tools (`create_trigger`, `list_triggers`,…
+- `autonomous-project` · **GraphQL auto-merge intermittently rate-limited** (folded from PLATFORM-LIMITS.md per inbox ORDER 007): REST merge-on-green is the PROVEN fallback (and…
+- …plus 5 more — read `docs/CAPABILITIES.md`.
 
 Full ledger (all venues, evidence, freshness): `docs/CAPABILITIES.md` — the seat-local source of truth; append findings THERE, never here.
 <!-- substrate-kit:walls-digest END -->
