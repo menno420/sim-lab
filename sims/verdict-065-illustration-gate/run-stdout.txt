@@ -1,0 +1,43 @@
+VERDICT 065 SIM — illustration gate (PROPOSAL 054)
+cpython pinned: 3.11 | stdlib-only | hermetic (fixtures.json only)
+mu_live = 143/1200 | B = 7296861/40000 (~182.421525) | V_cont = c* = 1099527/8000 (~137.440875)
+P1 = 0.908678679 | Pq = 0.842150213 (exact rationals in results.json)
+
+ARM A 9x7 NET table (dollars, floats; exact Fractions in results.json):
+cell                        PARK        COMM-ALL COMM-PILOT-SALE   COMM-PILOT-EV          AI-ALL   AI-PILOT-SALE     AI-PILOT-EV
+SKEPTIC  c=1500            0.0000      -7271.9731      -2692.5230      -1454.3946        121.6379      -1089.7779          0.3276
+SKEPTIC  c=3245            0.0000     -15996.9731      -6023.1673      -3199.3946        121.6379      -2485.8524          0.3276
+SKEPTIC  c=4950            0.0000     -24521.9731      -9277.4645      -4904.3946        121.6379      -3849.9252          0.3276
+NEUTRAL  c=1500            0.0000      -7043.9462      -3885.0461      -1408.7892        273.2758      -2149.5558         30.6552
+NEUTRAL  c=3245            0.0000     -15768.9462      -8801.3347      -3153.7892        273.2758      -4941.7048         30.6552
+NEUTRAL  c=4950            0.0000     -24293.9462     -13604.9290      -4858.7892        273.2758      -7669.8505         30.6552
+HOPEFUL  c=1500            0.0000      -6815.9193      -5077.5691      -1363.1839        424.9137      -3209.3337         60.9827
+HOPEFUL  c=3245            0.0000     -15540.9193     -11579.5020      -3108.1839        424.9137      -7397.5573         60.9827
+HOPEFUL  c=4950            0.0000     -24065.9193     -17932.3935      -4813.1839        424.9137     -11489.7757         60.9827
+
+Delta SKEPTIC  = 778482513/6400000 (~$121.6379), argmax AI-ALL [AI-led], row-constant across c
+Delta NEUTRAL  = 874482513/3200000 (~$273.2758), argmax AI-ALL [AI-led], row-constant across c
+Delta HOPEFUL  = 2719447539/6400000 (~$424.9137), argmax AI-ALL [AI-led], row-constant across c
+AI-ALL break-even alive-share: margin 16000000/74652501 (~0.214326), zero 16000000/323494171 (~0.049460)
+per-p revenue split (given alive): 7/143, 12/143, 24/143, 40/143, 60/143
+
+REJECT-shape arithmetic (Arm A): over-margin 9/9, families AI-led -> shape True (twins agree)
+margin sweep: m=25 reject-shape True | m=400 reject-shape False (over=3)
+
+ARM S main (seed 20261353, N=200000/cell): abs-gate failures 5/63, headroom failures 18/63,
+  statistically consistent (|dev|<=4*SE): True | worst dev $44.4265 @ NEUTRAL/4950/AI-PILOT-SALE | worst 4*SE $84.9444 @ NEUTRAL/4950/COMM-PILOT-SALE
+  REGISTERED gate (<=$10 AND 4*SE<=$10 on every leg): FAIL
+ARM S stability (seed 20261354, N=20000/cell): REGISTERED gate (<=$25): FAIL | stat consistent: True | shape reproduces: True
+reporting worlds (seed 20261355, N=20000/cell/world): all stat-consistent: True
+  over-margin counts per world: H180=6, H730=9, K7=9, omega_uniform=9, q_1_2=6, q_9_10=9, rho_0=9, rho_1_10=9, a_0=9, a_150=6, W45=9, W180=9
+
+GATES: F1 pass | F2 pass | F3 pass | F4 pass | F5a pass | F5b-registered FAIL | F5c-shared-tool pass | F5c-registered-reverse(a150) FAIL | F5d pass | sentinels pass | twins pass
+VALIDITY: run_valid=False (registered 'run invalid on any failure')
+
+DRAFTER COMPARISON (never gated): {"V_cont_exact": "1099527/8000", "V_cont_matches_disclosed_2dp": true, "a150_world_6_of_9_matches": true, "ai_pilot_ev_skeptic": "10482513/32000000", "ai_pilot_ev_skeptic_matches_033": true, "argmax_AI_ALL_9_of_9": true, "delta_HOPEFUL_matches": true, "delta_NEUTRAL_matches": true, "delta_SKEPTIC_matches": true, "q_half_world_6_of_9_matches": true, "registered_gate_defects_found": ["A1-F5b", "A2-F5c", "A3-agreement-gate"], "reject_shape_9_of_9": true, "undisclosed_H180_also_6_of_9": true}
+
+FINAL CLASS (rules in order, REJECT first, twins agree): NULL
+BINDING NULL AXIS: arm-disagreement (agreement gate fails; the defect is the finding)
+anomalies: A1-F5b, A2-F5c, A3-agreement-gate
+
+SELF-CHECKS: 620 passed, 4 failed (recorded registered-gate defects: F5b (REGISTERED form): every policy non-decreasing in alive share; F5c (REGISTERED reverse form under a=150): AI-PILOT-EV >= AI-ALL at the grid rows; F6-agreement (REGISTERED): |dev| <= $10 AND 4*SE <= $10 on every (cell,policy), main leg; F6-agreement (REGISTERED): |dev| <= $25 AND 4*SE <= $25 on every (cell,policy), stability leg)
