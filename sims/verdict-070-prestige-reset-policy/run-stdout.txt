@@ -1,0 +1,112 @@
+VERDICT 070 — prestige reset-policy optimality (INTAKE 059 / PROPOSAL 059)
+fixtures sha256: a4f67e02320d9829cdda0ba065338c1f2bb6737a54c7f2e26bfe48d04502ebdd
+cpython: 3.11 (pinned 3.11)
+
+15-policy grid @ H = 1,209,600 s (milestones ON, Arm A exact; Arm B twin equal):
+        policy            total  final_P   resets  ms    ratio-vs-greedy
+         never         24767541        0        0   3 0.0009756359348710741
+       fixed-1      25386048335   174619   174619   5                1.0
+       fixed-2       2308530416    11301    11301   5 0.09093697394474767
+       fixed-4       5562567873    27034    13517   5 0.21911909248714506
+       fixed-9       1189091761     3954     1318   5 0.046840364648663625
+      fixed-16        460817123     1148      287   5 0.018152377121439054
+      fixed-25        250843290      500      100   5 0.009881147577197347
+     fixed-100         56754018       50        5   6 0.002235638144663605
+      hybrid-0       1905424414    17843    17834   6 0.07505793689729064
+    hybrid-100      24975644645   170715   170706   6 0.9838334945012228
+   hybrid-1000      27411200535   182276   182267   6  1.079774219810647
+  hybrid-10000      26870606289   179801   179792   6 1.0584792849367275
+   cooldown-60      15237507974    33844    13357   5 0.6002315828333115
+  cooldown-300       5758125849    10290     3180   5 0.22682245669016607
+ cooldown-3600       1041938127     1416      322   6 0.04104373052671886
+
+milestones-OFF contrast grid @ H (attribution control, F3):
+         never         21758004 ratio-vs-greedy-OFF 0.0022645870711446438
+       fixed-1       9607934390 ratio-vs-greedy-OFF 1.0
+       fixed-2        619621706 ratio-vs-greedy-OFF 0.06449062627289652
+       fixed-4       1290598992 ratio-vs-greedy-OFF 0.13432637439148873
+       fixed-9        374594644 ratio-vs-greedy-OFF 0.03898805183243971
+      fixed-16        184186863 ratio-vs-greedy-OFF 0.019170287339982554
+      fixed-25        116044876 ratio-vs-greedy-OFF 0.012078025441220774
+     fixed-100         37118448 ratio-vs-greedy-OFF 0.003863311976675561
+      hybrid-0        306946454 ratio-vs-greedy-OFF 0.031947184643503795
+    hybrid-100       7829816130 ratio-vs-greedy-OFF 0.814932306172836
+   hybrid-1000       9405520499 ratio-vs-greedy-OFF 0.9789326318453346
+  hybrid-10000       9596130758 ratio-vs-greedy-OFF 0.9987714703784525
+   cooldown-60       5741594887 ratio-vs-greedy-OFF 0.5975888941306561
+  cooldown-300       2562630779 ratio-vs-greedy-OFF 0.26672026212701894
+ cooldown-3600        562931901 ratio-vs-greedy-OFF 0.05859031485330532
+
+H/2 = 604,800 s reporting grid:
+         never         11098530 ratio 0.024775534122495155
+       fixed-1        447963299 ratio 1.0
+       fixed-2         62884610 ratio 0.1403789331411277
+       fixed-4         97777256 ratio 0.21827068471517796
+       fixed-9         49056823 ratio 0.10951080838432704
+      fixed-16         32601415 ratio 0.07277697765146604
+      fixed-25         25185154 ratio 0.05622146737516548
+     fixed-100         11747520 ratio 0.026224291200248526
+      hybrid-0         11365671 ratio 0.025371879851255403
+    hybrid-100        367564365 ratio 0.8205233906896466
+   hybrid-1000        464775623 ratio 1.037530583504342
+  hybrid-10000        447963299 ratio 1.0
+   cooldown-60        445563473 ratio 0.9946428066643915
+  cooldown-300        291547412 ratio 0.6508287903290935
+ cooldown-3600         98388108 ratio 0.21963430535410894
+
+Arm R main (seed 20261373): hybrid triggers [16256, 36766, 3862, 44627, 58921, 2272, 53885, 19087, 4013, 47285, 12900, 40274] cooldowns [976, 1387, 3965, 5032, 6397, 527]
+  probe hybrid-16256: total 26669865971 twin-exact True
+  probe hybrid-36766: total 26355364381 twin-exact True
+  probe hybrid- 3862: total 27180810561 twin-exact True
+  probe hybrid-44627: total 26309252775 twin-exact True
+  probe hybrid-58921: total 26145790692 twin-exact True
+  probe hybrid- 2272: total 27317178883 twin-exact True
+  probe hybrid-53885: total 26176810385 twin-exact True
+  probe hybrid-19087: total 26621735036 twin-exact True
+  probe hybrid- 4013: total 27170538702 twin-exact True
+  probe hybrid-47285: total 26288134694 twin-exact True
+  probe hybrid-12900: total 26783482501 twin-exact True
+  probe hybrid-40274: total 26338829590 twin-exact True
+  probe cooldown-  976: total 2608510797 twin-exact True
+  probe cooldown- 1387: total 2043473554 twin-exact True
+  probe cooldown- 3965: total 979065682 twin-exact True
+  probe cooldown- 5032: total 822691475 twin-exact True
+  probe cooldown- 6397: total 693322898 twin-exact True
+  probe cooldown-  527: total 3971102819 twin-exact True
+Arm R stability (seed 20261374): hybrid [45142, 20780, 24120, 55383] cooldowns [1768, 1185]
+  probe hybrid-45142: total 26306417114 twin-exact True
+  probe hybrid-20780: total 26590492046 twin-exact True
+  probe hybrid-24120: total 26525015934 twin-exact True
+  probe hybrid-55383: total 26169137955 twin-exact True
+  probe cooldown- 1768: total 1722048788 twin-exact True
+  probe cooldown- 1185: total 2282226676 twin-exact True
+probes beating the Pi-best (hybrid-1000): 0
+presentation order (seed 20261375, reporting only): ['fixed-9', 'hybrid-100', 'fixed-2', 'hybrid-10000', 'fixed-16', 'never', 'hybrid-1000', 'cooldown-60', 'cooldown-300', 'fixed-25', 'hybrid-0', 'fixed-4', 'fixed-100', 'fixed-1', 'cooldown-3600']
+
+cooldown price table (fraction of Pi-best output):
+  tau=   60 (pinned): total 15237507974 fraction 0.5558861952997638
+  tau=  300 (pinned): total 5758125849 fraction 0.21006470846279554
+  tau=  527 (arm-r-main): total 3971102819 fraction 0.14487153942526143
+  tau=  976 (arm-r-main): total 2608510797 fraction 0.09516222369280478
+  tau= 1185 (arm-r-stability): total 2282226676 fraction 0.083258909914797
+  tau= 1387 (arm-r-main): total 2043473554 fraction 0.0745488528089381
+  tau= 1768 (arm-r-stability): total 1722048788 fraction 0.06282281528680955
+  tau= 3600 (pinned): total 1041938127 fraction 0.038011400692559996
+  tau= 3965 (arm-r-main): total 979065682 fraction 0.0357177235177963
+  tau= 5032 (arm-r-main): total 822691475 fraction 0.030012967653479685
+  tau= 6397 (arm-r-main): total 693322898 fraction 0.025293415993025568
+
+gates: F1=True F2=True F3=True F4=True F5=True F6=True
+
+decision (pre-registered order REJECT -> INVALID -> APPROVE -> NULL):
+  REJECT clause: fires=True beaters=['hybrid-1000', 'hybrid-10000'] (line: 100*total(pi) >= 101*25386048335)
+  argmax beater hybrid-1000: total 27411200535 = 1.079774219810647 x greedy
+  attribution: hybrid-1000 OFF total 9405520499 vs fixed-1 OFF 9607934390 -> beats OFF: False (attribution to the milestone fold holds: True)
+  grind clause: greedy = 1024.9724966640815 x never (>= 2x: True)
+  horizon-conditional (H/2, named never ruling): promoted clause holds at H/2: True; H/2 beaters: ['hybrid-1000']
+  CLASS: REJECT
+
+drafter-disclosed comparison (NEVER gated):
+  all 15 disclosed totals reproduced from scratch: True
+
+SELF-CHECKS: 72 passed, 0 failed
