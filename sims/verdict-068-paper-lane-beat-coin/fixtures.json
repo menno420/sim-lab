@@ -1,0 +1,127 @@
+{
+  "_meta": {
+    "verdict": "VERDICT 068",
+    "intake": "INTAKE 057",
+    "source_proposal": "## PROPOSAL 057 · 2026-07-14T03:30:10Z · status: sim-ready (idea-engine control/outbox.md @ main 665dca9c458ba4e90f63c138b9c638189d403183, landed via idea-engine PR #391)",
+    "idea_doc": "ideas/trading-strategy/paper-lane-beat-coin-2026-07-14.md @ idea-engine 665dca9 (blob pin 3d511a2269865e659bb3ff385f89c701f1f7b4d8 in the outbox idea: line)",
+    "hermetic": "the runner reads ONLY this fixtures.json; zero repo/network reads at verdict time; every registered constant below copied verbatim from the PROPOSAL 057 block / idea doc",
+    "cpython_pin": "3.11",
+    "rational_encoding": "all exact rationals are strings 'num/den' parsed to fractions.Fraction"
+  },
+  "protocol_quotes_at_d857e50": {
+    "pin": "trading-strategy @ d857e50ad7bc32bed5b2999cce16b4bf8a37246e",
+    "beat_rule": "BEAT iff strategy cycle return > B&H cycle return, strictly.",
+    "cycle_window": "Strategy return over the cycle = flat (0%) outside the outcome window plus the trade P&L inside it; benchmark = $10,000 of AAPL bought at the cycle start, sold at this exit fill, same costs both sides.",
+    "a6_less_favorable": "the meaningful reading that is *less* favorable to the strategy: it charges every flat day (warm-up included) at full B&H opportunity cost",
+    "a5_ties": "MISS otherwise — including exact ties (§9, ambiguity A5)",
+    "costs": "DEFAULT_SLIPPAGE_BPS = 5.0, DEFAULT_COMMISSION_BPS = 1.0 (src/trading_lab/config.py:60-61) — 6 bps per side both strategies",
+    "trade_rate": "17 trades in ~18 months on the holdout read … n will be single-digit for months. Verdicts are counted, not tested (§7, docs/paper-lane-protocol.md:217)",
+    "notional_usd": 10000
+  },
+  "market": {
+    "up_gross": "101/100",
+    "down_gross": "99/100",
+    "s": "1/100",
+    "drift_grid": { "ZERO": "1/2", "COMMITTED": "13/25", "DOUBLE": "27/50" },
+    "s_sensitivity_pairs": ["1/200", "1/50"]
+  },
+  "cycle": {
+    "F_pmf": { "6": "1/4", "12": "1/2", "24": "1/4" },
+    "T_pmf": { "4": "1/4", "8": "1/2", "16": "1/4" },
+    "mean_cycle_days": "45/2",
+    "trading_days_per_18mo": 378,
+    "trading_days_per_year": 252,
+    "windows_per_year": "56/5",
+    "implied_windows_per_18mo_band": ["15", "19"],
+    "F_mix_reporting_pairs": {
+      "short_heavy": { "6": "1/2", "12": "3/8", "24": "1/8" },
+      "long_heavy": { "6": "1/8", "12": "3/8", "24": "1/2" }
+    }
+  },
+  "skill": {
+    "flat_day_up_prob": "p_up - delta",
+    "delta_grid": { "NULL": "0", "SKILL": "1/25", "STRONG": "2/25", "ANTI": "-1/25" },
+    "decision_deltas": ["NULL", "SKILL"],
+    "reporting_deltas": ["STRONG", "ANTI"]
+  },
+  "accounting": {
+    "cost_bps_per_side": 6,
+    "cost_factor_per_side": "9994/10000",
+    "multiplicative": "strategy cycle wealth factor = R_T * c^2; benchmark = R_F * R_T * c^2; BEAT iff strategy > benchmark strictly",
+    "fixed_notional_dollar": "strategy $ = 10000*(R_T*(1-f) - (1+f)); benchmark $ = 10000*(R_F*R_T*(1-f) - (1+f)); f = 6/10000; the second-order asymmetry (sell cost on appreciated notional) computed exactly per lattice point, sign-flip count vs the multiplicative indicator reported"
+  },
+  "grading": {
+    "n_grid_decision": [8],
+    "n_grid_reporting": [16, 34],
+    "test": "one-sided Neyman-Pearson count test, non-randomized/conservative, size <= 1/20: smallest critical c with P(Bin(n, B_null) >= c) <= 1/20; power = P(Bin(n, B_alt) >= c)",
+    "size_bound": "1/20",
+    "n_star_targets": ["1/2", "4/5"],
+    "n_star_scan_max": 500
+  },
+  "bands": {
+    "reject_coin_floor": "13/25",
+    "approve_coin_ceiling": "1/2",
+    "approve_power_floor": "4/5",
+    "reject_power_ceiling": "1/2",
+    "agreement_abs": "1/100",
+    "agreement_se_mult": 4
+  },
+  "seeds": {
+    "headline": 20261365,
+    "stability": 20261366,
+    "reporting": 20261367,
+    "aux_reserved_never_constructed": 20261368
+  },
+  "arm_s": {
+    "N_cycles_per_decision_world": 200000,
+    "N_seasons_power_row": 50000,
+    "season_length_windows": 8,
+    "stability_N_cycles": 20000,
+    "stability_N_seasons": 5000,
+    "reporting_N_cycles": 20000,
+    "decision_worlds": [["ZERO", "NULL"], ["COMMITTED", "NULL"], ["COMMITTED", "SKILL"], ["DOUBLE", "NULL"]],
+    "se_convention": "SE = sqrt(B_exact*(1-B_exact)/N) with the EXACT Arm-A value (exact-variance convention, the V066/V067 precedent); for the power row SE = sqrt(power_exact*(1-power_exact)/N_seasons)",
+    "gate": "|EST - EXACT| <= 1/100 ABSOLUTE and |EST - EXACT| <= 4*SE, BOTH halves, on every decision-world B cell AND the power row"
+  },
+  "controls": {
+    "F1": "pmfs sum to 1 (F and T); E[X] - 1 = s*(2*p_up - 1) exact per drift world; mean cycle = 45/2; implied windows/18mo = 378/(45/2) in [15, 19]",
+    "F2": "no-tie theorem: 101^k * 99^(F-k) != 100^F for every F in support and 0 <= k <= F (101 prime, 101 does not divide 100^F) — asserted symbolically AND checked exhaustively over the support; k*(F) = F/2 exactly at every even F in support",
+    "F3": "B(NULL, ZERO) = 20656327/33554432 reproduced exactly",
+    "F4": "monotonicity: B(NULL, drift) non-increasing across ZERO -> COMMITTED -> DOUBLE; B(delta, drift) increasing in delta over {-1/25, 0, 1/25, 2/25} at every drift; power non-decreasing in n over {8, 16, 34} and in delta over {0, 1/25, 2/25}",
+    "F5": "hand fixture F = 2 world: k*(2) = 1 and P(BEAT) = 1 - p^2 by hand, matched exactly per drift world",
+    "sentinels": "draw-count sentinels: per cycle exactly 1 F-draw + F coin-draws + 1 T-draw + T coin-draws; totals asserted against a counting-RNG wrapper per leg",
+    "twin_evaluators": "two independently written BEAT decision evaluators — E1: threshold k <= k*(F) with k*(F) precomputed by integer scan; E2: full protocol arithmetic wealth-factor comparison in exact Fractions (both accountings) — must agree at every lattice point and every MC cycle"
+  },
+  "decision_rule_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+  "decision_rule": {
+    "REJECT": "(a) identity gate BEAT <=> R_F < 1 with ZERO exceptions over the full enumerated lattice (every F in support x every k in 0..F) under the multiplicative accounting AND (b) B(NULL, COMMITTED) >= 13/25 AND (c) exact NP power at n = 8, size <= 1/20, NULL vs SKILL at COMMITTED drift < 1/2 AND (d) Arm S confirms within the agreement gate on every decision cell",
+    "INVALID": "controls misbehaving — report, no ruling: any F1-F5 failure, draw-count sentinel failure, twin-evaluator disagreement, any agreement breach (headline decision cells, power row, or the stability leg failing to reproduce the ruling)",
+    "APPROVE": "power >= 4/5 at n = 8 AND B(NULL, COMMITTED) <= 1/2 AND the seed-20261366 stability leg reproduces through twin evaluators",
+    "NULL": "anything else — named axes: power-straddle (power in [1/2, 4/5)); coin-straddle (B(NULL, COMMITTED) in (1/2, 13/25)); sensitivity-conditional; arm disagreement surviving the INVALID diagnosis"
+  },
+  "fixture_level_choices_disclosed_before_runner": {
+    "C1_draw_order": "the registered pinned order 'F draw then F daily coins' is EXTENDED per cycle with a T-block (1 T-draw then T coin-draws) so Arm S evaluates BEAT through the full protocol arithmetic (both accountings) rather than through the identity shortcut; the identity makes the T-block decision-irrelevant — asserted per MC cycle by requiring both accounting indicators to equal [R_F < 1]",
+    "C2_crn": "common random numbers across delta worlds at the same drift: flat coin i is UP iff u_i < p_up - delta; in-position coin j is UP iff v_j < p_up + delta (the 'correspondingly up-tilted' reading, reporting-only by the identity)",
+    "C3_mc_exactness": "MC BEAT indicators are looked up from exact integer/Fraction lattice tables precomputed in Arm A from the protocol arithmetic of BOTH accountings (no float comparisons anywhere on a decision path)",
+    "C4_stability_parse": "the stability leg (seed 20261366, N = 20000 cycles per decision world + 5000 seasons) must land the SAME class as the headline through both twin evaluators; a stability-leg agreement breach or class mismatch routes to INVALID per the 'any agreement breach' clause",
+    "C5_reporting_mc": "reporting legs (seed 20261367) run N = 20000 cycles per reporting cell, deviations REPORTED never gated; reporting seed is read by reporting legs only",
+    "C6_aux_hygiene": "aux seed 20261368 is never passed to random.Random — never-construct hygiene, asserted",
+    "C7_size_row": "the n = 8 NULL-world season size row (COMMITTED drift) is simulated and reported ungated (the registered gate covers the power row)",
+    "C8_ev_rows": "EV rows use E[delta$] = 10000*(1-f)*E[R_T]*(1 - E[R_F]) exact per (drift, delta) decision world (dollar accounting; multiplicative-accounting EV differs only by the positive constant c^2 scale on wealth factors, reported alongside); exactly 0 at ZERO drift, negative at positive drift with delta = 0",
+    "C9_sensitivity_ties": "sensitivity s worlds recompute k*(F) by integer scan under their own up/down gross returns; any exact-tie lattice point counts as MISS per A5 and its count is reported (expected 0)"
+  },
+  "drafter_disclosed_landing_never_trusted": {
+    "class": "REJECT on all four conjuncts",
+    "B_NULL_COMMITTED": "1985628207794352919031012090343552/3552713678800500929355621337890625",
+    "B_NULL_COMMITTED_float": 0.5589,
+    "B_SKILL_COMMITTED_float": 0.6701,
+    "B_NULL_ZERO": "20656327/33554432",
+    "B_NULL_DOUBLE_float": 0.5012,
+    "power_n8_float": 0.0406,
+    "critical_count_n8": 8,
+    "power_strong_float": 0.12,
+    "n_star_50": 56,
+    "n_star_80": 124,
+    "note": "the sim re-derives everything from scratch and must not trust these; compared never gated"
+  }
+}

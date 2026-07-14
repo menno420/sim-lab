@@ -1,0 +1,53 @@
+VERDICT 068 — the paper lane's BEAT coin (INTAKE 057)
+========================================================================
+identity gate: 0 exceptions (mult), 0 (dollar), 0 sign flips, 0 ties over 1395 lattice points
+max |second-order cost asymmetry| = $1.896572 (exact 474142976416985461559951163878658207378442290513206587319126962409079710257069778991/250000000000000000000000000000000000000000000000000000000000000000000000000000000000)
+k*(F): k*(6)=3, k*(12)=6, k*(24)=12
+------------------------------------------------------------------------
+B(delta, drift) exact surface:
+  B(ANTI  , ZERO     ) = 0.501206  = 59748369046889335124913932944185923608199/119209289550781250000000000000000000000000
+  B(NULL  , ZERO     ) = 0.615607  = 20656327/33554432
+  B(SKILL , ZERO     ) = 0.721266  = 85981656071228481056225655016610546175399/119209289550781250000000000000000000000000
+  B(STRONG, ZERO     ) = 0.810466  = 96615089046229037535217034430640150454759/119209289550781250000000000000000000000000
+  B(ANTI  , COMMITTED) = 0.443783  = 1576634426529192104535746988256037/3552713678800500929355621337890625
+  B(NULL  , COMMITTED) = 0.558905  = 1985628207794352919031012090343552/3552713678800500929355621337890625
+  B(SKILL , COMMITTED) = 0.670089  = 2380632919922521366932349833365377/3552713678800500929355621337890625
+  B(STRONG, COMMITTED) = 0.768265  = 2729425452640151902305585796467812/3552713678800500929355621337890625
+  B(ANTI  , DOUBLE   ) = 0.387870  = 46237665723863769506261537203273646997159/119209289550781250000000000000000000000000
+  B(NULL  , DOUBLE   ) = 0.501206  = 59748369046889335124913932944185923608199/119209289550781250000000000000000000000000
+  B(SKILL , DOUBLE   ) = 0.615607  = 20656327/33554432
+  B(STRONG, DOUBLE   ) = 0.721266  = 85981656071228481056225655016610546175399/119209289550781250000000000000000000000000
+------------------------------------------------------------------------
+NP count test, size <= 1/20, NULL vs SKILL @ COMMITTED:
+  n=  8: crit=  8  size=0.009521  power=0.040650
+  n= 16: crit= 13  size=0.032967  power=0.173167
+  n= 34: crit= 25  size=0.026753  power=0.270161
+  n*(power >= 1/2) = 56 windows = 5.00 years at the committed rate
+  n*(power >= 4/5) = 124 windows = 11.07 years at the committed rate
+------------------------------------------------------------------------
+EV rows (E[dollar delta per cycle], strategy minus B&H, dollar accounting):
+  EV(NULL  , ZERO     ) = $+0.0000   (E[R_F]=1.000000)
+  EV(NULL  , COMMITTED) = $-54.3324   (E[R_F]=1.005417)
+  EV(SKILL , COMMITTED) = $+54.3835   (E[R_F]=0.994617)
+  EV(NULL  , DOUBLE   ) = $-109.4000   (E[R_F]=1.010868)
+  EV(STRONG, COMMITTED) = $+163.3080   (E[R_F]=0.983951)
+  EV(ANTI  , COMMITTED) = $-162.8483   (E[R_F]=1.016353)
+------------------------------------------------------------------------
+Arm S headline gates (seed 20261365):
+  B.ZERO.NULL              est=0.615695 dev=0.000088 abs_ok=True se_ok=True -> PASS
+  B.COMMITTED.NULL         est=0.557990 dev=0.000915 abs_ok=True se_ok=True -> PASS
+  B.COMMITTED.SKILL        est=0.669395 dev=0.000694 abs_ok=True se_ok=True -> PASS
+  B.DOUBLE.NULL            est=0.501205 dev=0.000001 abs_ok=True se_ok=True -> PASS
+  power.n8.SKILL           est=0.041820 dev=0.001170 abs_ok=True se_ok=True -> PASS
+  size row (ungated): est=0.008820 exact=0.009521
+Arm S stability gates (seed 20261366): ALL PASS
+------------------------------------------------------------------------
+conjunct (a) identity zero exceptions : True
+conjunct (b) B(NULL, COMMITTED) >= 13/25 : True  (B0 = 0.558905 vs 0.52)
+conjunct (c) power(n=8) < 1/2 : True  (power = 0.040650, crit = 8)
+conjunct (d) Arm-S agreement (headline) : True
+controls ok : True   stability reproduces : True (headline REJECT / stability REJECT)
+========================================================================
+CLASS: REJECT — all four REJECT conjuncts fire
+SELF-CHECKS: 68 passed, 0 failed
+drafter comparison (never gated): {"B_NULL_COMMITTED_match": true, "B_NULL_ZERO_match": true, "class_match": true, "crit_n8_match": true, "n_star_50_match": true, "n_star_80_match": true}
