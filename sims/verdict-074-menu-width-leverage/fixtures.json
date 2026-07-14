@@ -1,0 +1,131 @@
+{
+  "_provenance": {
+    "source_proposal": "idea-engine PROPOSAL 063 · 2026-07-14T11:42:16Z · status: sim-ready — read at idea-engine control/outbox.md @ main 6d6735f (landed via idea-engine PR #419); idea doc ideas/superbot-games/menu-width-leverage-inversion-2026-07-14.md @ the same pin; where the doc and the block disagree, the block wins — no disagreement found",
+    "subject_pin": "menno420/superbot-games @ e3930f134119dd36d9e7f37a7dccb4f4b33e3805 — re-verified FIRSTHAND this session (Q-0120): the pinned commit fetched into the session clone and games/dnd/core/resolver.py (_allowed_options prefix slice scene.options[:limit], limit = min(len, menu_width(xp), MAX_MENU_SIZE); clamp resolves scene.option(scene.default_option_id) on the FULL scene), games/exploration/quest/leverage.py (BASE_MENU_WIDTH=2, MAX_MENU_WIDTH=4, XP_PER_EXTRA_OPTION=500), games/dnd/data/scenes.py (3 scenes, tuples + defaults below), games/dnd/core/models.py (MAX_MENU_SIZE=4, the §4.1 'always ON the menu' clamp promise), games/dnd/core/effects.py (escort_step mints TIER_CAPS[RewardTier.I] per application via offer→accept→apply_event→grant_rewards), games/exploration/quest/catalog.py (TIER_CAPS/GLOBAL_MAX), games/dnd/sim/menu_sim.py (_FULL_MENU_XP = 5_000) all read at that SHA",
+    "hermetic": "the runner reads ONLY this fixtures.json — zero repo/network reads at verdict time (the P017–V073 precedent)",
+    "firsthand_finding_disclosed": "the literal shipped waystation_gate tuple is (enter_common_room, circle_to_treeline, rest_at_gate) — (N, M, Z)-positioned under the pinned role map, NOT (M, N, Z); the idea file's own §4(b) disclosure covers this (gate mints nothing, only the edge placement moves) and convention C1 + gate F1b make the equivalence an asserted check, never an assumption"
+  },
+  "cpython_minor_pinned": "3.11",
+  "width_law": {
+    "base_menu_width": 2,
+    "max_menu_width": 4,
+    "xp_per_extra_option": 500,
+    "max_menu_size": 4,
+    "formula": "menu_width(xp) = clamp(2 + max(0, xp) // 500, 2, 4)",
+    "fixture_table": {"0": 2, "499": 2, "500": 3, "999": 3, "1000": 4, "5000": 4},
+    "width_axis_xp": {"2": 0, "3": 500, "4": 1000}
+  },
+  "scenes": {
+    "start_scene": "waystation_road",
+    "role_semantics": "M = the mint/progress option, N = the flavour option, Z = the safe no-op clamp default (the idea file's pinned role map)",
+    "waystation_road": {
+      "roles": {
+        "M": {"option_id": "advance_escort", "effect_id": "escort_step", "mints": true, "next_scene_id": "waystation_gate"},
+        "N": {"option_id": "scout_ahead", "effect_id": "scout_narrate", "mints": false, "next_scene_id": "treeline_watch"},
+        "Z": {"option_id": "make_camp", "effect_id": "rest_noop", "mints": false, "next_scene_id": null}
+      },
+      "default_option_id": "make_camp",
+      "shipped_literal_order": ["advance_escort", "scout_ahead", "make_camp"],
+      "shipped_role_positions": "MNZ"
+    },
+    "waystation_gate": {
+      "roles": {
+        "M": {"option_id": "circle_to_treeline", "effect_id": "scout_narrate", "mints": false, "next_scene_id": "treeline_watch"},
+        "N": {"option_id": "enter_common_room", "effect_id": "scout_narrate", "mints": false, "next_scene_id": null},
+        "Z": {"option_id": "rest_at_gate", "effect_id": "rest_noop", "mints": false, "next_scene_id": null}
+      },
+      "default_option_id": "rest_at_gate",
+      "shipped_literal_order": ["enter_common_room", "circle_to_treeline", "rest_at_gate"],
+      "shipped_role_positions": "NMZ"
+    },
+    "treeline_watch": {
+      "roles": {
+        "M": {"option_id": "signal_escort", "effect_id": "escort_step", "mints": true, "next_scene_id": null},
+        "N": {"option_id": "hold_position", "effect_id": "scout_narrate", "mints": false, "next_scene_id": null},
+        "Z": {"option_id": "fall_back_camp", "effect_id": "rest_noop", "mints": false, "next_scene_id": null}
+      },
+      "default_option_id": "fall_back_camp",
+      "shipped_literal_order": ["signal_escort", "hold_position", "fall_back_camp"],
+      "shipped_role_positions": "MNZ"
+    }
+  },
+  "mint": {
+    "tier_caps_I": {"global_xp": 5, "game_xp": 25, "currency": 10},
+    "global_max": {"global_xp": 20, "game_xp": 120, "currency": 50},
+    "accountings": ["PER-APP", "ONCE"],
+    "note": "PER-APP = shipped semantics, every escort_step application mints (includes the double-mint arc); ONCE = mint-at-most-once per episode (the ORDER 006 item (6) alternative ruling); bands are evaluated on PER-APP, ONCE is the sensitivity leg"
+  },
+  "dedup_witness": {"_FULL_MENU_XP": 5000},
+  "policies": ["MNZ", "MZN", "NMZ", "NZM", "ZMN", "ZNM"],
+  "shipped_policy": "MNZ",
+  "behaviours": {
+    "B1": {"name": "UNIFORM", "rule": "uniform over the surfaced prefix"},
+    "B2": {"name": "GREEDY-FARMER", "rule": "picks a surfaced mint, else a surfaced progress edge (next_scene_id != null), else uniform over the prefix; ties by prefix position (never binds: at most one mint and at most one progress edge per scene)"},
+    "B3": {"name": "STORY-DM", "rule": "prefers role N, then Z, then M among surfaced options (deterministic)"},
+    "B4": {"name": "CLAMP-p", "rule": "with probability p returns an off-menu id and clamps to the FULL-scene default (role Z: rest_noop, stay); else B1 uniform over the prefix", "p_values": ["1/20", "1/4"]}
+  },
+  "horizons_T": [5, 20, 100],
+  "mc": {
+    "episodes_per_cell": 20000,
+    "tolerance_sigma": 3
+  },
+  "seeds_registered": {
+    "leg_A_main": 20261559,
+    "leg_B_twin": 20261560,
+    "leg_B4_clamp_stress": 20261561,
+    "leg_holdout": 20261562,
+    "fleet_high_water_prior": 20261558,
+    "new_registry_high_water": 20261562,
+    "re_registration_note": "the PROPOSAL 063 drafting-time seeds 20261389–20261392 were registered above the then-high-water 20261388, but the V075/V076 slice consumed 20261389–20261558 (sim-lab PR #139 @ d0a5a75, NEW FLEET HIGH-WATER 20261558) before this slice ran; per the registry convention (strictly-above, contiguous) this slice re-registers 20261559–20261562 in the same four roles, disclosed here BEFORE the runner"
+  },
+  "bands": {
+    "MONOTONE": "B1 PER-APP expected mints at T=20 non-decreasing w2 -> w3, and the w3 == w4 identity holds (exact-arm cells)",
+    "POSITIVE_FLOOR": {"metric": "B1 long-run (absorbing-regime) mint rate at w=2", "threshold": "1/6", "direction": ">="},
+    "FARMER": {"metric": "B2 PER-APP currency at T=20, w=2", "threshold": "3/4 x SHIPPED's same cell", "direction": "<="},
+    "CONFORM": "DEFAULT-IN-PREFIX(2) true: the clamp default (role Z) is legally surfaceable at width 2 (Z in the first two positions of the policy permutation)"
+  },
+  "decision_rule": {
+    "registered_order": "gates F1–F4 first (any F1/F4 failure -> NULL naming the mismatching pin); then APPROVE-REORDER iff >= 1 of the 6 policies passes ALL FOUR bands (name the passing set + the recommended data-only scenes.py reorder); REJECT-REORDER iff no policy passes all four (certify the {0, 1/2} width-2 B1 rate partition + the attainable band-profile table as the citable result; recommendation escalates to the named mechanic change — width must stop selecting by prefix, e.g. per-option min_width data or width-indexed option sets — intent staying the lane's per the V044/V046 posture, with NZM/ZNM priced as the interim zero-floor menu)",
+    "registered_claim_to_certify": "the w2 B1 long-run rate partition across all 6 policies is {0, 1/2} with nothing between (rate = [M in prefix(2)]/2), forcing MONOTONE and POSITIVE-FLOOR to be jointly unsatisfiable by ANY data-only reorder"
+  },
+  "gates": {
+    "F1": "fixture identity — the width formula reproduces fixture_table at every pinned xp; every scene's roles/effects/defaults/shipped positions internally consistent (defaults = role Z, index 2 in every shipped tuple; mints exactly on escort_step; treeline_watch absorbing at every width and ordering); TIER_CAPS[I] = (5, 25, 10); GLOBAL_MAX = (20, 120, 50); _FULL_MENU_XP = 5000 present as the dedup witness",
+    "F1b": "literal-shipped equivalence (convention C1, asserted not assumed) — for every scene and every width w in {2,3,4}, the surfaced option SET under the literal shipped tuple equals the surfaced SET under the MNZ policy permutation; hence the SHIPPED decision cell is the MNZ policy cell for every set-based behaviour",
+    "F2": {
+      "statement": "exact arm reproduces SHIPPED x B1 long-run mint rate 1/2 at w=2 and 1/3 at w=3/4, and E[mints, T=20] exactly:",
+      "E_mints_T20_w2": "9961473/1048576",
+      "E_mints_T20_w3": "21502885715/3486784401",
+      "longrun_w2": "1/2",
+      "longrun_w3": "1/3"
+    },
+    "F3": "w=4 == w=3 in EVERY exact-arm cell (3-option scenes; the pinned identity, not an assumption)",
+    "F4": {
+      "statement": "by-hand 2-turn SHIPPED x B1 x w=2 trace matches the recursion cell-for-cell in exact arithmetic",
+      "turn1": {"mint_prob": "1/2", "dist_after": {"waystation_gate": "1/2", "treeline_watch": "1/2"}},
+      "turn2": {"mint_prob": "1/4", "dist_after": {"waystation_gate": "1/4", "treeline_watch": "3/4"}},
+      "E_mints_T2": "3/4"
+    }
+  },
+  "conventions_disclosed_before_runner": {
+    "C1": "role-set behavioural equivalence: all four behaviours read the surfaced option SET plus role labels, never intra-prefix position (B2's positional tie-break never binds — at most one mint and at most one progress edge per scene menu); the literal shipped gate tuple is (N, M, Z)-positioned and prefix-SET-identical to MNZ at every width (gate F1b asserts this); the SHIPPED cell is therefore the MNZ policy cell, per the idea file's own §4(b) disclosure",
+    "C2": "episode sharing across accountings: dynamics are accounting-independent (no behaviour reads mint counts), so each MC episode yields BOTH PER-APP and ONCE metrics from one trajectory — paired arms, disclosed; exact-arm accountings are computed separately from the same recursion",
+    "C3": "per-cell MC substreams: random.Random seeded with int.from_bytes(sha256('{leg_seed}|{policy}|{behaviour}|w{width}').digest()[:8], 'big'); the four registered base seeds are the ONLY leg seeds; every constructed RNG is counted and the registry printed",
+    "C4": "at most ONE uniform draw per turn (single-threshold cumulative inversion over [clamp segment +] prefix segments); fully deterministic turns (B2/B3 with a forced pick) draw zero; total draws per leg counted and printed",
+    "C5": "metric definitions: a no-op turn resolves effect rest_noop (including B4 clamp turns); distinct scenes = |visited set| at the checkpoint; currency = 10 x mints (PER-APP) and 10 x E[mints_ONCE] (ONCE); P(>=1 mint) is the ONCE mean by construction",
+    "C6": "long-run mint rate = absorption-weighted per-turn mint probability over the behaviour-induced chain on the 3-scene DAG (road -> gate -> treeline, road -> treeline, no back-edges), computed exactly: every state is either absorbing (all chosen actions stay) or exits with positive probability, so the chain absorbs a.s. and the long-run rate is the absorbing state's per-turn mint probability, weighted by absorption probabilities",
+    "C7": "twin tolerance: |mc_mean - exact| <= 3 x (sample_std / sqrt(n)) per checked cell metric (E[mints] PER-APP and ONCE at each T); zero-variance cells require exact equality",
+    "C8": "w=4 MC cells run on their OWN substreams (F3 is asserted on the exact arm; MC w4 is checked against the same exact values within 3 sigma, not against MC w3 bytes)",
+    "C9": "B4 clamp semantics: the clamp resolves the FULL-scene default (role Z — rest_noop, stay), counts as a clamped no-op turn, and is NOT a legal surface (CONFORM reads the width-2 prefix only)",
+    "C10": "legs: A (20261559) = all 90 dynamic cells; B (20261560) = independent full twin; B4-stress (20261561) = the 36 B4 cells re-run; holdout (20261562) = the SHIPPED x B1 cells (3 widths) re-run; every leg checked against the exact arm under C7; serialization: exact values as canonical 'p/q' strings, floats via repr, json sort_keys=True"
+  },
+  "drafter_disclosed_never_gated": {
+    "note": "the drafter's disclosed landing, re-derived from scratch with zero trust and COMPARED, never gated (the V073 discipline)",
+    "shipped_longrun_fall": "1/2 -> 1/3 (-1/6 absolute, -33% relative)",
+    "shipped_E_T20_drop_pct": "-35.1%",
+    "shipped_B2_T20_w2": "19 mints / 190 currency at every width",
+    "w2_B1_partition": "{0, 1/2} with nothing between (rate = [M in prefix(2)]/2)",
+    "conform_false_policies": ["MNZ", "NMZ"],
+    "zero_floor_orderings": ["NZM", "ZNM"],
+    "predicted_verdict": "REJECT-REORDER"
+  }
+}
