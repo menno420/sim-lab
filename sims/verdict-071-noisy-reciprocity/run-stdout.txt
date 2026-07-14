@@ -1,0 +1,12 @@
+VERDICT 071 — noisy reciprocity (INTAKE 060)
+RULING: REJECT (twin tokens: REJECT / REJECT)
+conjuncts: gap>=2/5:True echo-9/4:True rank-inversion:True wsls>=14/5:True
+gap at 1/100 = 9345083308624553/19013690936000000 ~ 0.49149233255552865
+gap curve: 1/1000:0.5215700527781373 1/100:0.49149233255552865 1/20:0.37375728645577505 1/10:0.2581165627541339
+v(TFT,TFT) grid: 9/4 9/4 9/4 9/4 | orbit eps0: 3
+v(WSLS,WSLS) grid: 187188187/62500000 737773/250000 5553/2000 1301/500
+ranks TFT: [9, 9, 9, 9] | WSLS: [5, 5, 5, 5] | ALLD: [1, 1, 1, 1]
+vs-ALLD at 1/100: TFT 510001/500000 WSLS 107/200 | orbit: TFT 1 WSLS 1/2
+arm-R (reporting-only): max |est-exact| main = 1.0029261744966442 (pair 4-12-col), draws 1088000 + 272000
+drafter comparison (never gated): {"ALLD_tops_every_noisy_table": true, "gap_dec_match": true, "orbit_gap_match": true, "ranks_match_all_grid": false, "score_ALLD_dec_match": true, "score_TFT_dec_match": true, "score_WSLS_dec_match": true, "v_TFT_ALLD_dec_match": true, "v_WSLS_ALLD_dec_match": true, "v_WSLS_WSLS_grid_match": [true, true, true, true]}
+SELF-CHECKS: 54 passed, 0 failed
