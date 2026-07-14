@@ -1,0 +1,342 @@
+{
+ "verdict": "VERDICT 076",
+ "intake": "INTAKE simreq-011",
+ "registered_utc": "2026-07-14T12:20:00Z",
+ "numbering_note": "VERDICT 074 is RESERVED for idea-engine PROPOSAL 063 (constant +11 offset map, ORDER 008 item 3). This verdict takes 076; intake id simreq-011, next free after simreq-010 (VERDICT 075, this PR).",
+ "source_request": {
+  "block": "## SIM-REQUEST \u00b7 fishing-cook-economy \u00b7 2026-07-13",
+  "filed": "2026-07-13T18:18:29Z",
+  "status_at_read": "open",
+  "where": "menno420/superbot-games control/outbox.md @ main HEAD ed2fabbef58f3b97a03e6586a4e03ad0ab89c451 (games PR #92 commit 21937f3 carries the sibling roster request; the roster request's fold-in clause directs serving THIS entry's asks in the same batch run)",
+  "asks_verbatim": {
+   "a": "Per-species COOKED value \u2014 what one cooked fish is worth (coins, or whatever unit the sim prefers), keyed on the same species.py table the sell curve covers, so cook-vs-sell is a real player choice rather than a dominated branch of the V043 sell curve (8/13/27/80).",
+   "b": "Energy-restore constants \u2014 if cooked fish restore energy, the per-species restore amounts and any pricing guardrail. Cross-reference: VERDICT 042's FAUCET-BYPASS flag (control/outbox.md @ 9caf1b6) found rations (20 coins -> 25 energy) and energy drinks (40 -> 50) price energy at 0.8 coins/dig, below the faucet at every depth, with the follow-up already in flight as idea-engine PROPOSAL 035 (status sim-ready) \u2014 a cooked-fish energy faucet must not widen that same bypass, so please sim it against the same boundary (or fold it into the PROPOSAL 035 run)."
+  },
+  "request_claim_to_test": "The cook leg is UNWIRED today \u2014 there are no cooked-value or energy-restore constants anywhere in the repo (tested in B0; the flat mining-side constant exists)"
+ },
+ "cross_reference_v042_v046": {
+  "v042_flag_verbatim": "FAUCET-BYPASS \u2014 ration (20 coins -> 25 energy) and energy drink (40 -> 50) both price energy at 0.8 coins/dig, below the faucet at EVERY depth ... to make it bind, ration > ~183 coins \u2014 flagged, possibly intended per the shop's own comment (sim-lab control/outbox-archive-2026-07.md VERDICT 042 measured: line)",
+  "p035_disposition": "PROPOSAL 035 -> VERDICT 046 per the +11 offset map: NULL \u2014 a committed-shape booster-admission cap seals the mining sink ONLY at C = 60, the exact full-bar quantum (sim-lab control/outbox-archive-2026-07.md VERDICT 046 verdict: line); the shop bypass itself remains an OPEN intent call with the games seat",
+  "v043_g4_coupling": "V043 recommendation (3): once fish are BOTH sellable and cookable, wire sell-OR-cook, never both, and give any cook-value change its own sim \u2014 THIS verdict is that sim"
+ },
+ "packet": {
+  "repo": "menno420/superbot-games",
+  "pin": "ed2fabbef58f3b97a03e6586a4e03ad0ab89c451",
+  "closure": "same 16-file byte-copied closure as VERDICT 075 (bitwise-identical MANIFEST), own copy under ./fixtures/, re-verified before import"
+ },
+ "committed_constants_B0": {
+  "RESTORE_VALUES": {
+   "ration": 25,
+   "energy drink": 50,
+   "cooked fish": 30
+  },
+  "market_buy": {
+   "ration": 20,
+   "energy drink": 40
+  },
+  "shop_price_coins_per_energy": 0.8,
+  "cooked_fish_item": {
+   "value": 5,
+   "kind": "CONSUMABLE",
+   "sellable": false
+  },
+  "campfire_unlocks_cooking_at_level": 1,
+  "SELL_VALUES": {
+   "minnow": 8,
+   "bass": 13,
+   "pike": 27,
+   "legend_carp": 80
+  },
+  "CAST_COST": 2,
+  "REGEN_SECONDS": 10,
+  "MAX_ENERGY": 60,
+  "v043_faucet_band_coins_per_energy": [
+   4.42,
+   10.2
+  ],
+  "mining_ceiling_proxy": [
+   755,
+   56
+  ]
+ },
+ "worlds": {
+  "W4": "DECISION world: the committed 4-row species table + V043 sell curve, all pinned and live at the pin \u2014 the cook request was filed against exactly this surface ('keyed on the same species.py table the sell curve covers')",
+  "WR": "REPORTING world (adversarial upper bound): the VERDICT 075 round-1 candidate table (k=1.1, delta=0.4) \u2014 NOT-PINNED (V075 ruled NULL band-straddle); copied VERBATIM from verdict-075 results.json sha256 b9388721832d4f5d1d3001e7e95b58bd001e9afc05f0abbe47311ebe7cc91a05; no decision may gate on WR",
+  "WR_rows": [
+   [
+    "lanternfish",
+    "deepwater",
+    2,
+    20.6391,
+    19
+   ],
+   [
+    "spookfish",
+    "deepwater",
+    4,
+    18.1647,
+    22
+   ],
+   [
+    "lancetfish",
+    "deepwater",
+    6,
+    15.987,
+    25
+   ],
+   [
+    "wreckfish",
+    "deepwater",
+    8,
+    14.0704,
+    28
+   ],
+   [
+    "anglerfish",
+    "deepwater",
+    10,
+    9.3338,
+    43
+   ],
+   [
+    "gulper_eel",
+    "deepwater",
+    12,
+    5.9727,
+    67
+   ],
+   [
+    "oarfish",
+    "deepwater",
+    14,
+    4.8913,
+    82
+   ],
+   [
+    "frilled_shark",
+    "deepwater",
+    16,
+    4.0056,
+    100
+   ],
+   [
+    "giant_isopod",
+    "deepwater",
+    17,
+    3.6249,
+    110
+   ],
+   [
+    "colossal_squid",
+    "deepwater",
+    20,
+    2.6864,
+    149
+   ],
+   [
+    "deepwater_leviathan",
+    "deepwater",
+    21,
+    2.4311,
+    165
+   ],
+   [
+    "minnow",
+    "shore",
+    1,
+    50.0,
+    8
+   ],
+   [
+    "guppy",
+    "shore",
+    2,
+    51.5978,
+    8
+   ],
+   [
+    "sardine",
+    "shore",
+    3,
+    48.4061,
+    8
+   ],
+   [
+    "anchovy",
+    "shore",
+    4,
+    45.4119,
+    9
+   ],
+   [
+    "perch",
+    "shore",
+    5,
+    42.6028,
+    9
+   ],
+   [
+    "herring",
+    "shore",
+    6,
+    39.9675,
+    10
+   ],
+   [
+    "mackerel",
+    "shore",
+    7,
+    37.4952,
+    11
+   ],
+   [
+    "trout",
+    "shore",
+    8,
+    35.1759,
+    11
+   ],
+   [
+    "bass",
+    "shore",
+    9,
+    30.0,
+    13
+   ],
+   [
+    "carp",
+    "shore",
+    10,
+    23.3345,
+    17
+   ],
+   [
+    "pike",
+    "shore",
+    11,
+    15.0,
+    27
+   ],
+   [
+    "salmon",
+    "shore",
+    12,
+    14.9317,
+    27
+   ],
+   [
+    "snapper",
+    "shore",
+    13,
+    13.5125,
+    30
+   ],
+   [
+    "catfish",
+    "shore",
+    14,
+    12.2281,
+    33
+   ],
+   [
+    "cod",
+    "shore",
+    15,
+    11.0659,
+    36
+   ],
+   [
+    "barracuda",
+    "shore",
+    16,
+    10.0141,
+    40
+   ],
+   [
+    "tuna",
+    "shore",
+    17,
+    9.0622,
+    44
+   ],
+   [
+    "swordfish",
+    "shore",
+    18,
+    8.2009,
+    49
+   ],
+   [
+    "marlin",
+    "shore",
+    19,
+    7.4214,
+    54
+   ],
+   [
+    "shark",
+    "shore",
+    20,
+    6.716,
+    60
+   ],
+   [
+    "giant_squid",
+    "shore",
+    21,
+    6.0777,
+    66
+   ],
+   [
+    "legend_carp",
+    "shore",
+    22,
+    5.0,
+    80
+   ]
+  ],
+  "WR_rows_columns": [
+   "species_id",
+   "venue",
+   "size_rank",
+   "rarity_weight",
+   "sell"
+  ]
+ },
+ "cook_family": {
+  "formula": "E_s = max(1, round(S_s / P)) \u2014 cooked energy per fish of species s with sell value S_s; P = the implied coins-per-energy price of cooking (the forgone-sell value per energy point); Python 3 round (half-to-even)",
+  "P_grid": [
+   6,
+   8,
+   10,
+   12,
+   14,
+   16,
+   20,
+   24,
+   28
+  ],
+  "unit_answer_to_ask_a": "a cooked fish is worth ENERGY, not coins \u2014 the committed architecture already decides this (items.py: cooked fish is a CONSUMABLE, not sellable: 'you sell the raw fish; you cook it for a meal instead'), so asks (a) and (b) collapse into one per-species energy table + guardrail"
+ },
+ "criteria": {
+  "C1_PM": "no perpetual motion: rho(cell) = bite_rate x E[E_s|catch] / CAST_COST at every (spot,tier) cell in W4 must be <= 0.9 (registered margin bar; rho >= 1 is a self-sustaining energy loop). WR measured and REPORTED only.",
+  "C2_BYPASS": "V042 boundary non-widening: min over species of S_s/E_s >= 0.8 (cooked energy never prices below the already-flagged shop) AND the position of P vs the V043 faucet band [4.42, 10.20] stated (P above the band top = cooking can never amplify the fishing faucet).",
+  "C3_CHOICE": "choice-realness, split honestly: the COIN axis is arithmetic (cook beats sell for coin-maximizers iff E_s x maxFaucetRate > S_s \u2014 measured per species at P*); the TIME axis is measured (E_s x REGEN_SECONDS seconds of passive regen skipped per cooked fish) but its VALUE to a player is JUDGMENT-ONLY, labeled; shop-independence (campfire cooking needs no market access) stated as committed fact.",
+  "F_FLAT30_audit": "the committed flat 'cooked fish': 30 measured against C1_PM at every cell of BOTH worlds: rho_flat = bite_rate x 30 / 2 = 15 x bite_rate \u2014 with MIN_BITE_CHANCE 0.30 this is >= 4.5 by the packet's own floor constant, i.e. perpetual motion at EVERY cell of ANY world; the audit publishes measured per-cell values"
+ },
+ "selector_S1": "smallest P in P_grid with C1_PM (every W4 cell <= 0.9) AND C2_BYPASS pass; DECISION output = the four committed species' E_s at P* (wireable today) + the roster EXTENSION RULE E_s = max(1, round(S_s/P*)) (applies mechanically when a roster sell pin lands; per-species roster values inherit V075's NULL; WR reported as the adversarial bound and the roster wave re-derives P via this same registered selector at its own pin)",
+ "conventions": {
+  "K1": "measurement loop = the V075 C5 loop (per (spot,tier,seed) 40 casts, per-cast rng from the packet's own fishing_seed, tiers via the packet equipment model); catch streams are P-independent, so each world is measured ONCE (species counts per cell) and every P is folded arithmetically from the counts",
+  "K2": "seeds \u2014 eval 20261509..20261548 (40 world-seeds), stability 20261549..20261558 (10), all above 20261508 (V075's last); fleet high-water after this PR: 20261558 exactly as reserved in the V075 registration",
+  "K3": "worlds injected as DATA per the V075 C1 convention; committed table restored after each measurement",
+  "K4": "results.json canonical json.dumps sort_keys=True; floats round(x,6)",
+  "K5": "decision order: INVALID (B0 fails) -> REJECT (no P in grid passes) -> APPROVE-WITH-CONSTANTS (S1) -> NULL (stability band break on rho at P*)",
+  "K6": "stability leg: W4 re-measured on the 10 stability seeds; every-cell rho at P* must stay <= 0.9 + no cell may cross 1.0; break -> NULL per K5"
+ },
+ "disclosed_before_runner": "This file is committed BEFORE the runner exists (git trail on PR #139). The first complete run of the registered pipeline is the accepted run \u2014 no fix-forwards.",
+ "limits_registered": [
+  "the coin-axis domination analysis prices energy through the committed shop and measured faucet cells only; live player behaviour unmeasured (V043 G1 lineage)",
+  "the WR world is NOT-PINNED (V075 NULL) \u2014 adversarial reporting only",
+  "PROPOSAL 035 / VERDICT 046's C=60 admission conditional is quoted as context; whether cooked fish should count inside a future admission cap is a recommendation, not a wired constant"
+ ]
+}

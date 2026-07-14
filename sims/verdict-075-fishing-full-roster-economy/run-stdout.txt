@@ -1,0 +1,10 @@
+B0: running the packet harness catch_sim.run() at its own defaults ...
+sweep: evaluating W1 per k and W2 per (k, delta) on the packet resolver ...
+SELF-CHECK FAIL: stability:A1
+SELF-CHECK FAIL: stability:A3
+naming: DISTINCT
+eligible cells: 4/32
+winner: k=1.1 delta=0.4
+xp arm: APPROVE chosen_s=3
+RULING: APPROVE-WITH-CONSTANTS
+SELF-CHECKS: 83 passed, 2 failed

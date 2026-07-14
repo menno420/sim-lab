@@ -1,0 +1,878 @@
+{
+ "B0": {
+  "dock_fresh_bite_pct": 54.35625,
+  "mean_energy_cost": 2.0
+ },
+ "eligible_count": 4,
+ "naming_leg": {
+  "mechanics": "legend_carp@rank10=80 > pike@rank11=27 breaks weak monotonicity; distinct reading keeps carp; all 29 rows stand; legend_carp placed at shore rank 22 (strict apex)",
+  "reading": "DISTINCT"
+ },
+ "published_table": [
+  {
+   "game_xp": 2,
+   "rarity_weight": 20.6391,
+   "sell": 19,
+   "size_rank": 2,
+   "species_id": "lanternfish",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 4,
+   "rarity_weight": 18.1647,
+   "sell": 22,
+   "size_rank": 4,
+   "species_id": "spookfish",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 6,
+   "rarity_weight": 15.987,
+   "sell": 25,
+   "size_rank": 6,
+   "species_id": "lancetfish",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 8,
+   "rarity_weight": 14.0704,
+   "sell": 28,
+   "size_rank": 8,
+   "species_id": "wreckfish",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 10,
+   "rarity_weight": 9.3338,
+   "sell": 43,
+   "size_rank": 10,
+   "species_id": "anglerfish",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 12,
+   "rarity_weight": 5.9727,
+   "sell": 67,
+   "size_rank": 12,
+   "species_id": "gulper_eel",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 14,
+   "rarity_weight": 4.8913,
+   "sell": 82,
+   "size_rank": 14,
+   "species_id": "oarfish",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 16,
+   "rarity_weight": 4.0056,
+   "sell": 100,
+   "size_rank": 16,
+   "species_id": "frilled_shark",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 17,
+   "rarity_weight": 3.6249,
+   "sell": 110,
+   "size_rank": 17,
+   "species_id": "giant_isopod",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 20,
+   "rarity_weight": 2.6864,
+   "sell": 149,
+   "size_rank": 20,
+   "species_id": "colossal_squid",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 21,
+   "rarity_weight": 2.4311,
+   "sell": 165,
+   "size_rank": 21,
+   "species_id": "deepwater_leviathan",
+   "venue": "deepwater"
+  },
+  {
+   "game_xp": 1,
+   "rarity_weight": 50.0,
+   "sell": 8,
+   "size_rank": 1,
+   "species_id": "minnow",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 2,
+   "rarity_weight": 51.5978,
+   "sell": 8,
+   "size_rank": 2,
+   "species_id": "guppy",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 3,
+   "rarity_weight": 48.4061,
+   "sell": 8,
+   "size_rank": 3,
+   "species_id": "sardine",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 4,
+   "rarity_weight": 45.4119,
+   "sell": 9,
+   "size_rank": 4,
+   "species_id": "anchovy",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 5,
+   "rarity_weight": 42.6028,
+   "sell": 9,
+   "size_rank": 5,
+   "species_id": "perch",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 6,
+   "rarity_weight": 39.9675,
+   "sell": 10,
+   "size_rank": 6,
+   "species_id": "herring",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 7,
+   "rarity_weight": 37.4952,
+   "sell": 11,
+   "size_rank": 7,
+   "species_id": "mackerel",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 8,
+   "rarity_weight": 35.1759,
+   "sell": 11,
+   "size_rank": 8,
+   "species_id": "trout",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 9,
+   "rarity_weight": 30.0,
+   "sell": 13,
+   "size_rank": 9,
+   "species_id": "bass",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 10,
+   "rarity_weight": 23.3345,
+   "sell": 17,
+   "size_rank": 10,
+   "species_id": "carp",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 11,
+   "rarity_weight": 15.0,
+   "sell": 27,
+   "size_rank": 11,
+   "species_id": "pike",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 12,
+   "rarity_weight": 14.9317,
+   "sell": 27,
+   "size_rank": 12,
+   "species_id": "salmon",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 13,
+   "rarity_weight": 13.5125,
+   "sell": 30,
+   "size_rank": 13,
+   "species_id": "snapper",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 14,
+   "rarity_weight": 12.2281,
+   "sell": 33,
+   "size_rank": 14,
+   "species_id": "catfish",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 15,
+   "rarity_weight": 11.0659,
+   "sell": 36,
+   "size_rank": 15,
+   "species_id": "cod",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 16,
+   "rarity_weight": 10.0141,
+   "sell": 40,
+   "size_rank": 16,
+   "species_id": "barracuda",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 17,
+   "rarity_weight": 9.0622,
+   "sell": 44,
+   "size_rank": 17,
+   "species_id": "tuna",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 18,
+   "rarity_weight": 8.2009,
+   "sell": 49,
+   "size_rank": 18,
+   "species_id": "swordfish",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 19,
+   "rarity_weight": 7.4214,
+   "sell": 54,
+   "size_rank": 19,
+   "species_id": "marlin",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 20,
+   "rarity_weight": 6.716,
+   "sell": 60,
+   "size_rank": 20,
+   "species_id": "shark",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 21,
+   "rarity_weight": 6.0777,
+   "sell": 66,
+   "size_rank": 21,
+   "species_id": "giant_squid",
+   "venue": "shore"
+  },
+  {
+   "game_xp": 22,
+   "rarity_weight": 5.0,
+   "sell": 80,
+   "size_rank": 22,
+   "species_id": "legend_carp",
+   "venue": "shore"
+  }
+ ],
+ "registered_utc": "2026-07-14T11:40:26Z",
+ "ruling": {
+  "outcome": "APPROVE-WITH-CONSTANTS",
+  "winner": {
+   "delta": 0.4,
+   "k": 1.1
+  }
+ },
+ "seeds": {
+  "eval": [
+   20261389,
+   20261488
+  ],
+  "fleet_high_water_before": 20261388,
+  "reserved_through_this_pr": 20261558,
+  "stability": [
+   20261489,
+   20261508
+  ]
+ },
+ "self_checks": {
+  "failed": 2,
+  "failed_names": [
+   "stability:A1",
+   "stability:A3"
+  ],
+  "passed": 83
+ },
+ "stability": {
+  "hours_to_L25": 33.1785,
+  "max_coins_per_energy": 14.014375,
+  "parity_dock_fresh_W1": 4.929375,
+  "two_burst_xp": 251.3
+ },
+ "sweep_cells": [
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": false,
+   "deep_premium_median": 2.5,
+   "deep_ties": 0,
+   "delta": 0.4,
+   "eligible": false,
+   "k": 0.85,
+   "max_coins_per_energy": 16.58,
+   "parity_dock_fresh_W1": 5.83325,
+   "shore_ties": 1
+  },
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": false,
+   "deep_premium_median": 1.670588,
+   "deep_ties": 0,
+   "delta": 0.6,
+   "eligible": false,
+   "k": 0.85,
+   "max_coins_per_energy": 15.36275,
+   "parity_dock_fresh_W1": 5.83325,
+   "shore_ties": 1
+  },
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": false,
+   "deep_premium_median": 1.247059,
+   "deep_ties": 0,
+   "delta": 0.8,
+   "eligible": false,
+   "k": 0.85,
+   "max_coins_per_energy": 14.145375,
+   "parity_dock_fresh_W1": 5.83325,
+   "shore_ties": 1
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.0,
+   "deep_ties": 0,
+   "delta": 1.0,
+   "eligible": false,
+   "k": 0.85,
+   "max_coins_per_energy": 13.417375,
+   "parity_dock_fresh_W1": 5.83325,
+   "shore_ties": 1
+  },
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": false,
+   "deep_premium_median": 2.5,
+   "deep_ties": 0,
+   "delta": 0.4,
+   "eligible": false,
+   "k": 0.9,
+   "max_coins_per_energy": 15.8575,
+   "parity_dock_fresh_W1": 5.532625,
+   "shore_ties": 2
+  },
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": false,
+   "deep_premium_median": 1.666667,
+   "deep_ties": 0,
+   "delta": 0.6,
+   "eligible": false,
+   "k": 0.9,
+   "max_coins_per_energy": 14.528875,
+   "parity_dock_fresh_W1": 5.532625,
+   "shore_ties": 2
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.244898,
+   "deep_ties": 0,
+   "delta": 0.8,
+   "eligible": false,
+   "k": 0.9,
+   "max_coins_per_energy": 13.444875,
+   "parity_dock_fresh_W1": 5.532625,
+   "shore_ties": 2
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.0,
+   "deep_ties": 0,
+   "delta": 1.0,
+   "eligible": false,
+   "k": 0.9,
+   "max_coins_per_energy": 12.7305,
+   "parity_dock_fresh_W1": 5.532625,
+   "shore_ties": 2
+  },
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": true,
+   "deep_premium_median": 2.5,
+   "deep_ties": 0,
+   "delta": 0.4,
+   "eligible": false,
+   "k": 0.95,
+   "max_coins_per_energy": 15.116625,
+   "parity_dock_fresh_W1": 5.269625,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": true,
+   "deep_premium_median": 1.666667,
+   "deep_ties": 0,
+   "delta": 0.6,
+   "eligible": false,
+   "k": 0.95,
+   "max_coins_per_energy": 13.900375,
+   "parity_dock_fresh_W1": 5.269625,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.25,
+   "deep_ties": 0,
+   "delta": 0.8,
+   "eligible": false,
+   "k": 0.95,
+   "max_coins_per_energy": 12.854875,
+   "parity_dock_fresh_W1": 5.269625,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.0,
+   "deep_ties": 0,
+   "delta": 1.0,
+   "eligible": false,
+   "k": 0.95,
+   "max_coins_per_energy": 12.0765,
+   "parity_dock_fresh_W1": 5.269625,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": true,
+   "deep_premium_median": 2.484848,
+   "deep_ties": 0,
+   "delta": 0.4,
+   "eligible": false,
+   "k": 1.0,
+   "max_coins_per_energy": 14.55725,
+   "parity_dock_fresh_W1": 5.138875,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.651515,
+   "deep_ties": 0,
+   "delta": 0.6,
+   "eligible": false,
+   "k": 1.0,
+   "max_coins_per_energy": 13.383,
+   "parity_dock_fresh_W1": 5.138875,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.25,
+   "deep_ties": 0,
+   "delta": 0.8,
+   "eligible": false,
+   "k": 1.0,
+   "max_coins_per_energy": 12.317375,
+   "parity_dock_fresh_W1": 5.138875,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.0,
+   "deep_ties": 0,
+   "delta": 1.0,
+   "eligible": false,
+   "k": 1.0,
+   "max_coins_per_energy": 11.642625,
+   "parity_dock_fresh_W1": 5.138875,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": false,
+   "A5weak": true,
+   "deep_premium_median": 2.5,
+   "deep_ties": 0,
+   "delta": 0.4,
+   "eligible": false,
+   "k": 1.05,
+   "max_coins_per_energy": 13.913375,
+   "parity_dock_fresh_W1": 4.84975,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.673913,
+   "deep_ties": 0,
+   "delta": 0.6,
+   "eligible": false,
+   "k": 1.05,
+   "max_coins_per_energy": 12.77225,
+   "parity_dock_fresh_W1": 4.84975,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.25,
+   "deep_ties": 0,
+   "delta": 0.8,
+   "eligible": false,
+   "k": 1.05,
+   "max_coins_per_energy": 11.70775,
+   "parity_dock_fresh_W1": 4.84975,
+   "shore_ties": 3
+  },
+  {
+   "A1": false,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.0,
+   "deep_ties": 0,
+   "delta": 1.0,
+   "eligible": false,
+   "k": 1.05,
+   "max_coins_per_energy": 11.067,
+   "parity_dock_fresh_W1": 4.84975,
+   "shore_ties": 3
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 2.5,
+   "deep_ties": 0,
+   "delta": 0.4,
+   "eligible": true,
+   "k": 1.1,
+   "max_coins_per_energy": 13.411125,
+   "parity_dock_fresh_W1": 4.74725,
+   "shore_ties": 5
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.666667,
+   "deep_ties": 0,
+   "delta": 0.6,
+   "eligible": true,
+   "k": 1.1,
+   "max_coins_per_energy": 12.303,
+   "parity_dock_fresh_W1": 4.74725,
+   "shore_ties": 5
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.242424,
+   "deep_ties": 0,
+   "delta": 0.8,
+   "eligible": true,
+   "k": 1.1,
+   "max_coins_per_energy": 11.354625,
+   "parity_dock_fresh_W1": 4.74725,
+   "shore_ties": 5
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": true,
+   "deep_premium_median": 1.0,
+   "deep_ties": 0,
+   "delta": 1.0,
+   "eligible": true,
+   "k": 1.1,
+   "max_coins_per_energy": 10.6625,
+   "parity_dock_fresh_W1": 4.74725,
+   "shore_ties": 5
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 2.516129,
+   "deep_ties": 0,
+   "delta": 0.4,
+   "eligible": false,
+   "k": 1.15,
+   "max_coins_per_energy": 12.878625,
+   "parity_dock_fresh_W1": 4.45125,
+   "shore_ties": 2
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.666667,
+   "deep_ties": 0,
+   "delta": 0.6,
+   "eligible": false,
+   "k": 1.15,
+   "max_coins_per_energy": 11.778875,
+   "parity_dock_fresh_W1": 4.45125,
+   "shore_ties": 2
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.258065,
+   "deep_ties": 0,
+   "delta": 0.8,
+   "eligible": false,
+   "k": 1.15,
+   "max_coins_per_energy": 10.898125,
+   "parity_dock_fresh_W1": 4.45125,
+   "shore_ties": 2
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.0,
+   "deep_ties": 0,
+   "delta": 1.0,
+   "eligible": false,
+   "k": 1.15,
+   "max_coins_per_energy": 10.179125,
+   "parity_dock_fresh_W1": 4.45125,
+   "shore_ties": 2
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 2.5,
+   "deep_ties": 0,
+   "delta": 0.4,
+   "eligible": false,
+   "k": 1.2,
+   "max_coins_per_energy": 12.360625,
+   "parity_dock_fresh_W1": 4.4235,
+   "shore_ties": 3
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.666667,
+   "deep_ties": 0,
+   "delta": 0.6,
+   "eligible": false,
+   "k": 1.2,
+   "max_coins_per_energy": 11.443125,
+   "parity_dock_fresh_W1": 4.4235,
+   "shore_ties": 3
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.25,
+   "deep_ties": 0,
+   "delta": 0.8,
+   "eligible": false,
+   "k": 1.2,
+   "max_coins_per_energy": 10.442125,
+   "parity_dock_fresh_W1": 4.4235,
+   "shore_ties": 3
+  },
+  {
+   "A1": true,
+   "A3": true,
+   "A5weak": false,
+   "deep_premium_median": 1.0,
+   "deep_ties": 0,
+   "delta": 1.0,
+   "eligible": false,
+   "k": 1.2,
+   "max_coins_per_energy": 9.82025,
+   "parity_dock_fresh_W1": 4.4235,
+   "shore_ties": 3
+  }
+ ],
+ "theorem_F_STRICT": "Strict integer monotonicity is IMPOSSIBLE given the verbatim pins, by counting: minnow = 8 at unified shore rank 1 and bass = 13 at rank 9 leave SEVEN intermediate ranks (2..8) but only FOUR intermediate integers (9,10,11,12). No weight assignment, k, or delta can satisfy the strict reading \u2014 the failure is arithmetic, not a tuning miss. Derived from the pinned constants alone at registration; published in the verdict as finding F-STRICT (the V043 A5 strict invariant survives on any 4-species subtable but cannot extend to the 21-rank legacy scale at integer coins with those two pins verbatim).",
+ "verdict": "VERDICT 075",
+ "winning_cells_measured": {
+  "W1": {
+   "deep_water/fresh": {
+    "bite_rate": 0.47325,
+    "coins_per_energy": 4.457,
+    "mean_sell_per_catch": 18.835711,
+    "xp_per_hour": 682.92
+   },
+   "deep_water/geared": {
+    "bite_rate": 0.55375,
+    "coins_per_energy": 6.602375,
+    "mean_sell_per_catch": 23.84605,
+    "xp_per_hour": 977.445
+   },
+   "deep_water/master": {
+    "bite_rate": 0.71925,
+    "coins_per_energy": 9.641125,
+    "mean_sell_per_catch": 26.808829,
+    "xp_per_hour": 1405.125
+   },
+   "dock/fresh": {
+    "bite_rate": 0.5565,
+    "coins_per_energy": 4.74725,
+    "mean_sell_per_catch": 17.061096,
+    "xp_per_hour": 739.89
+   },
+   "dock/geared": {
+    "bite_rate": 0.63875,
+    "coins_per_energy": 7.129,
+    "mean_sell_per_catch": 22.321722,
+    "xp_per_hour": 1076.895
+   },
+   "dock/master": {
+    "bite_rate": 0.80125,
+    "coins_per_energy": 10.081125,
+    "mean_sell_per_catch": 25.163495,
+    "xp_per_hour": 1510.875
+   },
+   "tide_pool/fresh": {
+    "bite_rate": 0.64775,
+    "coins_per_energy": 5.074625,
+    "mean_sell_per_catch": 15.668468,
+    "xp_per_hour": 780.66
+   },
+   "tide_pool/geared": {
+    "bite_rate": 0.72625,
+    "coins_per_energy": 7.184375,
+    "mean_sell_per_catch": 19.784854,
+    "xp_per_hour": 1118.745
+   },
+   "tide_pool/master": {
+    "bite_rate": 0.889,
+    "coins_per_energy": 10.20625,
+    "mean_sell_per_catch": 22.961192,
+    "xp_per_hour": 1578.105
+   }
+  },
+  "W2": {
+   "deep_water/fresh": {
+    "bite_rate": 0.47325,
+    "coins_per_energy": 5.392625,
+    "mean_sell_per_catch": 22.789752,
+    "xp_per_hour": 664.29
+   },
+   "deep_water/geared": {
+    "bite_rate": 0.55375,
+    "coins_per_energy": 8.032125,
+    "mean_sell_per_catch": 29.009932,
+    "xp_per_hour": 960.975
+   },
+   "deep_water/master": {
+    "bite_rate": 0.71925,
+    "coins_per_energy": 11.595125,
+    "mean_sell_per_catch": 32.242266,
+    "xp_per_hour": 1375.785
+   },
+   "dock/fresh": {
+    "bite_rate": 0.5565,
+    "coins_per_energy": 5.985,
+    "mean_sell_per_catch": 21.509434,
+    "xp_per_hour": 752.175
+   },
+   "dock/geared": {
+    "bite_rate": 0.63875,
+    "coins_per_energy": 8.91625,
+    "mean_sell_per_catch": 27.917808,
+    "xp_per_hour": 1081.035
+   },
+   "dock/master": {
+    "bite_rate": 0.80125,
+    "coins_per_energy": 12.6585,
+    "mean_sell_per_catch": 31.59688,
+    "xp_per_hour": 1516.68
+   },
+   "tide_pool/fresh": {
+    "bite_rate": 0.64775,
+    "coins_per_energy": 6.407125,
+    "mean_sell_per_catch": 19.782709,
+    "xp_per_hour": 797.58
+   },
+   "tide_pool/geared": {
+    "bite_rate": 0.72625,
+    "coins_per_energy": 9.543,
+    "mean_sell_per_catch": 26.280207,
+    "xp_per_hour": 1167.435
+   },
+   "tide_pool/master": {
+    "bite_rate": 0.889,
+    "coins_per_energy": 13.411125,
+    "mean_sell_per_catch": 30.17126,
+    "xp_per_hour": 1624.185
+   }
+  }
+ },
+ "xp_arm": {
+  "P2_gear_gradient_W1": true,
+  "chosen_s": 3,
+  "outcome": "APPROVE",
+  "per_s": [
+   {
+    "P1": true,
+    "P3": false,
+    "hours_to_L25": 10.902866,
+    "s": 1
+   },
+   {
+    "P1": true,
+    "P3": false,
+    "hours_to_L25": 21.805733,
+    "s": 2
+   },
+   {
+    "P1": true,
+    "P3": true,
+    "hours_to_L25": 32.708599,
+    "s": 3
+   },
+   {
+    "P1": true,
+    "P3": true,
+    "hours_to_L25": 43.611465,
+    "s": 4
+   }
+  ],
+  "two_burst_xp_fresh_dock_W1": 247.5,
+  "xp_per_hour_master_deep_W2": 1375.785
+ }
+}

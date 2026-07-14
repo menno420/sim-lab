@@ -1,0 +1,16 @@
+a77ce7891c2de8a242be89eb9eaea88319e8bda8be7cbabc78810b56cfbe412e  ./games/__init__.py
+bf4822f31cdf54eeb004ccae574d4e584a5496f84733a5f2a33f537c76051963  ./games/fishing/__init__.py
+1ac7636605d1346fbf261e8bf33042f7bd8ed0f94471cc6d8b57018140d9f766  ./games/fishing/core/__init__.py
+5b12cf31fc263c6751000f3851b0aadc66186f5725302663146857e46828f5f5  ./games/fishing/core/catch.py
+c2c24c18912c4bf8701cee69ea3409b0077fa76db1c28c9e555832c7ac83ab22  ./games/fishing/core/economy.py
+cf3b6ca3a7a7307145b4072363d5c8a253d146a371c69cbe5fe249a3e06065f6  ./games/fishing/core/rng.py
+7b501821b6b8eed5f5027b1d68af64756e4fb28d603d6001bfd98c550ce4dcf9  ./games/fishing/core/species.py
+01248c659fa7c962bdcc201e57c7829cc455cbb2d400943bf63f13db935c91e3  ./games/fishing/core/spots.py
+fbd1dde6d7569459856e68b97f22bf3713f905a87898470fbab27f5cf489b48e  ./games/fishing/sim/__init__.py
+40ed65d04d6fc4a5ea2dd29a1a6a8ff72e0d2b9bc34a206760de1260e972f7ad  ./games/fishing/sim/catch_sim.py
+8495edeba90fb32401ae92112c1532177c6534e2bb7eb4f644fe09e6e134101c  ./games/mining/__init__.py
+2e037d86909a7afa24d909b8d298926f2eca278f787d1a29f20e68a29ee29384  ./games/mining/core/__init__.py
+9d13488609ae25084d1fef09459ac205170e79d09d6705395c7478167a264850  ./games/mining/core/energy.py
+34eabf4bfbeb8491fafba354092c0a714ccd3dee46b86c6bf1832345a54c984a  ./games/mining/core/equipment.py
+107fbd855506d1a74678c0a19c57577bb4e1aacd62955d25536a40a98610649e  ./games/mining/core/items.py
+a43c4b9b9944111acb84d20a7d3029127090ee996926e2b78a145e48db2a43c7  ./games/mining/core/market.py

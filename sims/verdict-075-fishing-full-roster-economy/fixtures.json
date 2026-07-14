@@ -1,0 +1,111 @@
+{
+  "verdict": "VERDICT 075",
+  "intake": "INTAKE simreq-010",
+  "registered_utc": "2026-07-14T11:40:26Z",
+  "numbering_note": "VERDICT 074 is RESERVED for idea-engine PROPOSAL 063 (constant +11 offset map, ORDER 008 item 3). This verdict takes 075, the next free number; intake id simreq-010, next free in the simreq-001..009 lineage.",
+  "source_request": {
+    "block": "## SIM-REQUEST · fishing-full-roster-economy · 2026-07-13",
+    "filed": "2026-07-13T22:06:03Z",
+    "status_at_read": "open",
+    "where": "menno420/superbot-games control/outbox.md @ main HEAD ed2fabbef58f3b97a03e6586a4e03ad0ab89c451 (filed via games PR #92 commit 21937f3 per the packet's own NIGHT HEADLINE block)",
+    "asks_verbatim": {
+      "a": "Sell values — a per-species sell value (coins) for every not-yet-pinned species above, on the same curve family V043 pinned for minnow/bass/pike/legend_carp, including where the deepwater venue premium (tougher to land per legacy utils/fishing/venue.py) should sit.",
+      "b": "XP — the per-species game_xp for every species above (V043 pinned game_xp = size_rank per catch; confirm or re-pin that mapping across the full 1–21 rank range and the deepwater scale), plus any xp_to_next / milestone consequence of a 21-rank table (V043's xp_to_next(L) = 50·L, milestones L10/L25).",
+      "fold_in": "the open ## SIM-REQUEST · fishing-cook-economy · 2026-07-13 ... please serve that entry's asks in the SAME batch run — its cook-leg asks apply to every species this request enumerates; they are NOT re-specified here. (served as VERDICT 076, sims/verdict-076-fishing-cook-economy/)",
+      "naming_note": "legend_carp does NOT exist in the legacy table — legacy has carp (shore, size_rank 10). ... The lab should state which reading its verdict uses."
+    },
+    "legacy_reference_verbatim": "in the legacy repo a raw fish sells for max(1, size_rank) coins (disbot/utils/mining/items.py _fish_value, @ a724e9d) and every catch awards a flat 5 XP (disbot/services/game_xp_service.py _AWARDS[\"fish\"] = 5, @ a724e9d) ... the legacy values are CONTEXT for the sim, not candidate constants."
+  },
+  "packet": {
+    "repo": "menno420/superbot-games",
+    "pin": "ed2fabbef58f3b97a03e6586a4e03ad0ab89c451",
+    "closure": "16 files byte-copied into fixtures/ (games/fishing full core+sim + games/mining/core {energy,equipment,items,market} + package __init__ files), sha256 in fixtures/MANIFEST.sha256, re-verified by the runner before import",
+    "drive_surface": "games.fishing.core.catch.resolve_cast + games.fishing.sim.catch_sim.run — the packet's own resolver and harness; zero logic edits"
+  },
+  "roster": {
+    "rank_mapping_derivation_R1": "The request enumerates 18 not-yet-pinned SHORE species on ranks {2..8,10,12..21}; shore is size_rank 1–21 complete, so the pinned trio takes the missing ranks {1,9,11}; local order minnow(1)<bass(2)<pike(3) forces minnow=1, bass=9, pike=11. The only consistent assignment; disclosed as derived.",
+    "shore_pinned": [["minnow", 1, 50.0, 8], ["bass", 9, 30.0, 13], ["pike", 11, 15.0, 27], ["legend_carp", 22, 5.0, 80]],
+    "shore_pinned_note": "columns: species_id, unified shore size_rank, committed rarity_weight (VERBATIM species.py), committed sell value (VERBATIM economy.py / V043). legend_carp placement at shore rank 22 is convention C10's DISTINCT reading (mechanically tested).",
+    "shore_new": [["guppy", 2], ["sardine", 3], ["anchovy", 4], ["perch", 5], ["herring", 6], ["mackerel", 7], ["trout", 8], ["carp", 10], ["salmon", 12], ["snapper", 13], ["catfish", 14], ["cod", 15], ["barracuda", 16], ["tuna", 17], ["swordfish", 18], ["marlin", 19], ["shark", 20], ["giant_squid", 21]],
+    "deepwater_new": [["lanternfish", 2], ["spookfish", 4], ["lancetfish", 6], ["wreckfish", 8], ["anglerfish", 10], ["gulper_eel", 12], ["oarfish", 14], ["frilled_shark", 16], ["giant_isopod", 17], ["colossal_squid", 20], ["deepwater_leviathan", 21]],
+    "deepwater_note": "11 boat-only fish on their OWN 1–21 scale (request verbatim); ranks quoted verbatim from the request enumeration."
+  },
+  "committed_constants_B0": {
+    "SELL_VALUES": {"minnow": 8, "bass": 13, "pike": 27, "legend_carp": 80},
+    "species_rows_local": [["minnow", 1, 50.0], ["bass", 2, 30.0], ["pike", 3, 15.0], ["legend_carp", 4, 5.0]],
+    "XP_PER_LEVEL": 50, "MILESTONE_LEVELS": [10, 25], "BASE_LEVEL": 1,
+    "CAST_COST": 2, "BASE_BITE_CHANCE": 0.55, "BITE_LUCK_PER_POINT": 0.08, "MAX_BITE_CHANCE": 0.9, "MIN_BITE_CHANCE": 0.3,
+    "POWER_BIAS_PER_POINT": 0.06, "SIZE_PER_RANK": 12, "SIZE_JITTER": 8, "MAX_FISHING_POWER": 6, "MAX_BITE_LUCK": 3,
+    "MAX_ENERGY": 60, "DIG_COST": 1, "REGEN_SECONDS": 10,
+    "RESTORE_VALUES": {"ration": 25, "energy drink": 50, "cooked fish": 30},
+    "market_buy": {"ration": 20, "energy drink": 40},
+    "spots": {
+      "tide_pool": {"bite_bias": 0.1, "weight_mult": {"minnow": 1.6, "bass": 1.2, "pike": 0.6, "legend_carp": 0.3}},
+      "dock": {"bite_bias": 0.0, "weight_mult": {}},
+      "deep_water": {"bite_bias": -0.08, "weight_mult": {"minnow": 0.5, "bass": 0.9, "pike": 1.6, "legend_carp": 2.2}}
+    },
+    "v043_family_identity": "round(8*50/w) == pinned sell for all four committed rows (the V043 registered family sell = round(c·50/rarity_weight), c=8) — asserted in B0",
+    "v043_s5_published_anchors": {
+      "dock_fresh_bite_rate_pct": 54.36,
+      "fresh_bite_counts_by_spot": {"tide_pool": 10483, "dock": 8697, "deep_water": 7539},
+      "dock_fresh_shares_pct": {"minnow": 49.66, "bass": 29.9, "pike": 15.01, "legend_carp": 5.44},
+      "aggregate_tier_bite_pct": {"fresh": 55.66, "geared": 63.7, "master": 79.86},
+      "mean_energy_cost": 2.0,
+      "source": "sim-lab control/outbox-archive-2026-07.md VERDICT 043 measured: line (originally @ 4d26aa7); reproduced via the packet's own catch_sim.run() defaults (seeds range(400), 40 casts/spot — packet protocol constants, not registry draws)"
+    },
+    "v043_parity_frame": {"parity_anchor": [32, 7], "A1_band_mult": [0.85, 1.05], "mining_ceiling_proxy": [755, 56], "coins_per_energy_band_v043": [4.42, 10.2]}
+  },
+  "sweep": {
+    "weight_law_C3": "piecewise log-linear interpolation of ln(w) through anchors (1,50),(9,30),(11,15),(22,5); new shore species: w = round(k*what(rank),4); deepwater: w = round(k*delta*what(own_rank),4); pinned 4 keep committed weights AND sells verbatim, never rescaled",
+    "k_grid": [0.85, 0.9, 0.95, 1.0, 1.05, 1.1, 1.15, 1.2],
+    "delta_grid": [0.4, 0.6, 0.8, 1.0],
+    "sell_fold_C4": "sell = round(400/w) — Python 3 round (half-to-even), the V043 family at c=8 verbatim",
+    "worlds_C2": {
+      "W4": "committed 4-row table (B0 world)",
+      "W1": "shore venue: 21 legacy shore + legend_carp@22 = 22 rows; deepwater ABSENT (the packet ships no boat venue — the shipped surface; parity A1' judged here)",
+      "W2": "full 33-row table, deepwater reachable ungated at base weights (upper-bound world; ceiling A3' and the premium judged here; the boat-gate guardrail rides on W2)"
+    },
+    "criteria": {
+      "A5prime": "AMENDED PRE-RUNNER (see amendment_A5): integer sell WEAKLY increasing (ties allowed) in size_rank within each venue's populated ranks (shore 1..22 incl. pinned; deepwater own ranks), with the adjacent-tie count published per cell; plus legend_carp remains the strict shore apex (sell(rank 21) < 80)",
+      "A1prime": "measured fresh@dock coins/energy in W1 within [0.85,1.05]*32/7 = [3.885714..., 4.8]",
+      "A3prime": "max over all (spot,tier) cells in W1 AND W2 of coins/energy <= 755/56 ~= 13.482 (mining diamond-tool depth-4 proxy, V043's own ceiling)",
+      "premium": "REPORTING: deep-vs-shore same-rank sell ratio (= ~1/delta by construction; measured and published per cell)"
+    },
+    "selector_S1": "eligible = A5' AND A1' AND A3'; pick MIN delta (max deepwater premium subject to safety); tie-break: k with |fresh@dock parity − 32/7| smallest; then lower k",
+    "xp_arm": {
+      "mapping": "game_xp = size_rank per catch on the unified/own scales (the V043 mapping, confirmed rather than re-pinned; the request's own 'confirm or re-pin' lever)",
+      "ladder_scale_grid_s": [1, 2, 3, 4],
+      "ladder": "xp_to_next(L) = (50*s)*L; milestones stay L10/L25 (recognition surfaces unchanged); s=1 = the committed ladder verbatim",
+      "P1prime": "mean two-burst (60 casts) fresh@dock XP in W1 >= xp_to_next(1) = 50*s",
+      "P2prime": "XP/h strictly increasing with gear tier at every spot in W1 (casts/h = 180 sustained per C12)",
+      "P3prime": "hours to L25 sustained master@deep_water in W2 within [24, 120] (V043 P3 band verbatim; cumulative XP to L25 = 15000*s)",
+      "selector_S2": "smallest s passing P1' AND P2' AND P3'; if none, the XP arm returns NULL-XP (sell arm may still approve; consequence named) — split-arm outcome per the V043 two-arm precedent"
+    }
+  },
+  "conventions": {
+    "C1": "species-table injection is DATA-only: the byte-copied species module's _SPECIES/_BY_ID/MAX_SIZE_RANK are rebuilt from candidate rows (the packet's own documented growth surface: 'grow it by adding rows'); resolver/harness code untouched, MANIFEST re-verified before import",
+    "C2": "worlds W4/W1/W2 as defined in sweep.worlds_C2",
+    "C3": "weight law as defined in sweep.weight_law_C3",
+    "C4": "sell fold as defined in sweep.sell_fold_C4",
+    "C5": "measurement loop mirrors the packet harness: per (world,spot,tier,seed) 40 casts; per-cast rng = random.Random(fishing_seed(seed, spot+':'+str(i))) shared across tiers (the packet's apples-to-apples convention); casts at full energy (sustained-throttle frame); coins/energy = total sell coins / total energy per (spot,tier) aggregated over seeds",
+    "C6": "seeds — eval 20261389..20261488 (100 world-seeds), stability 20261489..20261508 (20), all strictly above fleet high-water 20261388; B0 uses the packet's own protocol seeds range(400) (packet constants, not registry draws — the V043 disclosure); this PR's sibling VERDICT 076 reserves 20261509..20261558; new fleet high-water 20261558",
+    "C7": "XP measured in the C5 loop folding xp=size_rank on bites; two-burst = 60 consecutive casts fresh@dock per seed, mean over eval seeds",
+    "C8": "results.json canonical: json.dumps sort_keys=True; reported floats round(x,6); decision-bearing exact values also recorded as [num,den] where rational",
+    "C9": "decision order: INVALID (any B0 assertion fails) -> REJECT (zero eligible cells) -> APPROVE-WITH-CONSTANTS (S1 cell + S2 ladder) -> NULL (named axes: stability band break; split-arm NULL-XP)",
+    "C10": "naming leg: supersede reading tested mechanically — legend_carp at legacy carp's rank 10 with its VERBATIM 80 vs pinned pike 27 at rank 11 breaks A5' by construction => DISTINCT reading; carp stays; all 29 rows stand (the request's 'state which reading' ask, answered mechanically)",
+    "C11": "B0 bars: the five v043_s5_published_anchors groups reproduce EXACTLY at the published rounding (deterministic harness)",
+    "C12": "hours frame: 360 energy/h (REGEN_SECONDS 10) => 180 casts/h sustained — the V043 frame"
+  },
+  "amendment_A5": {
+    "when": "registration time, BEFORE the runner exists (separate commit in the PR #139 git trail; no run had happened)",
+    "what": "A5' re-registered from STRICTLY increasing to WEAKLY increasing (ties allowed, adjacent-tie count published), keeping legend_carp as the strict shore apex",
+    "why_theorem_F_STRICT": "Strict integer monotonicity is IMPOSSIBLE given the verbatim pins, by counting: minnow = 8 at unified shore rank 1 and bass = 13 at rank 9 leave SEVEN intermediate ranks (2..8) but only FOUR intermediate integers (9,10,11,12). No weight assignment, k, or delta can satisfy the strict reading — the failure is arithmetic, not a tuning miss. Derived from the pinned constants alone at registration; published in the verdict as finding F-STRICT (the V043 A5 strict invariant survives on any 4-species subtable but cannot extend to the 21-rank legacy scale at integer coins with those two pins verbatim).",
+    "discipline_note": "fixtures-before-runner is preserved: this amendment precedes the runner commit and the first run; the no-fix-forwards rule binds AFTER the first run, which has not happened"
+  },
+  "disclosed_before_runner": "This file is committed BEFORE the runner exists (git trail on PR #139). The first complete run of the registered pipeline is the accepted run — no fix-forwards.",
+  "limits_registered": [
+    "legacy rarity weights and the legacy venue difficulty (utils/fishing/venue.py) are NOT readable from this session (menno420/superbot not in scope) — the request quotes legacy sell/XP as CONTEXT only; the weight law is anchored solely to the packet's own committed rows, disclosed as C3",
+    "spot weight_mult rows for the 29 new species are the SEAM's wiring surface, not this verdict's — evaluation uses base weights at the committed spots (new species default multiplier 1.0, the packet's own silent-row semantics)",
+    "model-true engine arithmetic under sustained greedy play, not measured player behaviour (V043 G1 restated); live earn-rate telemetry supersedes wherever they disagree"
+  ]
+}
