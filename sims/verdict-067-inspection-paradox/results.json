@@ -1,0 +1,398 @@
+{
+ "anomalies": [
+  "stability-leg agreement gate FAILED on JITTER (stability class INVALID)",
+  "headline Arm-S agreement gate FAILED on SPREAD: {'E_W_exact': '11/2', 'E_W_est': 5.489243776602385, 'E_W_dev': 0.01075622339761484, 'E_W_rel': 0.001955676981384516, 'E_W_SE': 0.008088057039033952, 'E_W_dev_over_SE': 1.3298896565273945, 'E_W_rel_ok': True, 'E_W_4SE_ok': True, 'P_W_gt_10_exact': '3/22', 'P_W_gt_10_est': 0.134625, 'P_dev': 0.0017386363636363589, 'P_rel': 0.012749999999999966, 'P_SE': 0.0007673610461879151, 'P_dev_over_SE': 2.2657344574285223, 'P_rel_ok': False, 'P_4SE_ok': True, 'pass': False}"
+ ],
+ "arm_a_exact": {
+  "BUNCHED": {
+   "E_L": "178/5",
+   "E_W": "89/5",
+   "E_X": "10",
+   "E_X2": "356",
+   "E_X3": "14824",
+   "P_W_gt": {
+    "10": "16/25",
+    "15": "27/50",
+    "5": "37/50",
+    "8": "17/25"
+   },
+   "Var": "256",
+   "Var_W": "13297/75",
+   "exact_P90_W": "37",
+   "exact_median_W": "17",
+   "rho": "89/25",
+   "rho_float": 3.56
+  },
+  "CLOCKWORK": {
+   "E_L": "10",
+   "E_W": "5",
+   "E_X": "10",
+   "E_X2": "100",
+   "E_X3": "1000",
+   "P_W_gt": {
+    "10": "0",
+    "15": "0",
+    "5": "1/2",
+    "8": "1/5"
+   },
+   "Var": "0",
+   "Var_W": "25/3",
+   "exact_P90_W": "9",
+   "exact_median_W": "5",
+   "rho": "1",
+   "rho_float": 1.0
+  },
+  "JITTER": {
+   "E_L": "52/5",
+   "E_W": "26/5",
+   "E_X": "10",
+   "E_X2": "104",
+   "E_X3": "1120",
+   "P_W_gt": {
+    "10": "1/10",
+    "15": "0",
+    "5": "1/2",
+    "8": "1/5"
+   },
+   "Var": "4",
+   "Var_W": "772/75",
+   "exact_P90_W": "10",
+   "exact_median_W": "5",
+   "rho": "26/25",
+   "rho_float": 1.04
+  },
+  "MEMORYLESS": {
+   "E_L": "19",
+   "E_W": "19/2",
+   "E_X": "10",
+   "E_X2": "190",
+   "E_X3": "5410",
+   "P_W_gt": {
+    "10": "3486784401/10000000000",
+    "15": "205891132094649/1000000000000000",
+    "5": "59049/100000",
+    "8": "43046721/100000000"
+   },
+   "Var": "90",
+   "Var_W": "1081/12",
+   "exact_P90_W": "2391988663076883135479/109418989131512359209",
+   "exact_median_W": "3503056/531441",
+   "rho": "19/10",
+   "rho_float": 1.9
+  },
+  "SPREAD": {
+   "E_L": "11",
+   "E_W": "11/2",
+   "E_X": "10",
+   "E_X2": "110",
+   "E_X3": "1300",
+   "P_W_gt": {
+    "10": "3/22",
+    "15": "0",
+    "5": "1/2",
+    "8": "14/55"
+   },
+   "Var": "10",
+   "Var_W": "157/12",
+   "exact_P90_W": "54/5",
+   "exact_median_W": "5",
+   "rho": "11/10",
+   "rho_float": 1.1
+  }
+ },
+ "arm_s_headline_seed_20261361": {
+  "BUNCHED": {
+   "P_W_gt": {
+    "10": "0.63842",
+    "15": "0.53954",
+    "5": "0.739585",
+    "8": "0.679105"
+   },
+   "T": 991640,
+   "gate": {
+    "E_W_4SE_ok": true,
+    "E_W_SE": "0.029773590086965774",
+    "E_W_dev": "0.005818776513692114",
+    "E_W_dev_over_SE": "0.19543415814807794",
+    "E_W_est": "17.79418122348631",
+    "E_W_exact": "89/5",
+    "E_W_rel": "0.00032689755694899515",
+    "E_W_rel_ok": true,
+    "P_4SE_ok": true,
+    "P_SE": "0.001073312629199899",
+    "P_W_gt_10_est": "0.63842",
+    "P_W_gt_10_exact": "16/25",
+    "P_dev": "0.0015800000000000258",
+    "P_dev_over_SE": "1.4720780851873856",
+    "P_rel": "0.0024687500000000404",
+    "P_rel_ok": true,
+    "pass": true
+   },
+   "interval_draws": 100000,
+   "mean_L": "35.5526",
+   "mean_W": "17.79418122348631"
+  },
+  "JITTER": {
+   "P_W_gt": {
+    "10": "0.100725",
+    "15": "0.0",
+    "5": "0.49995",
+    "8": "0.20266"
+   },
+   "T": 1000972,
+   "gate": {
+    "E_W_4SE_ok": true,
+    "E_W_SE": "0.007174027227901123",
+    "E_W_dev": "0.008726930537399369",
+    "E_W_dev_over_SE": "1.2164618644683585",
+    "E_W_est": "5.2087269305373995",
+    "E_W_exact": "26/5",
+    "E_W_rel": "0.0016782558725768016",
+    "E_W_rel_ok": true,
+    "P_4SE_ok": true,
+    "P_SE": "0.0006708203932499369",
+    "P_W_gt_10_est": "0.100725",
+    "P_W_gt_10_exact": "1/10",
+    "P_dev": "0.0007249999999999895",
+    "P_dev_over_SE": "1.0807661891248828",
+    "P_rel": "0.007249999999999895",
+    "P_rel_ok": true,
+    "pass": true
+   },
+   "interval_draws": 100000,
+   "mean_L": "10.40926",
+   "mean_W": "5.2087269305373995"
+  },
+  "MEMORYLESS": {
+   "P_W_gt": {
+    "10": "0.347935",
+    "15": "0.204935",
+    "5": "0.59052",
+    "8": "0.430705"
+   },
+   "T": 997056,
+   "gate": {
+    "E_W_4SE_ok": true,
+    "E_W_SE": "0.02122302209080193",
+    "E_W_dev": "0.029948719669610213",
+    "E_W_dev_over_SE": "1.4111430286165516",
+    "E_W_est": "9.47005128033039",
+    "E_W_exact": "19/2",
+    "E_W_rel": "0.003152496807327391",
+    "E_W_rel_ok": true,
+    "P_4SE_ok": true,
+    "P_SE": "0.001065602612396926",
+    "P_W_gt_10_est": "0.347935",
+    "P_W_gt_10_exact": "3486784401/10000000000",
+    "P_dev": "0.0007434400999999924",
+    "P_dev_over_SE": "0.6976710561245026",
+    "P_rel": "0.0021321653836319098",
+    "P_rel_ok": true,
+    "pass": true
+   },
+   "interval_draws": 997056,
+   "mean_L": "18.917995",
+   "mean_W": "9.47005128033039"
+  },
+  "SPREAD": {
+   "P_W_gt": {
+    "10": "0.134625",
+    "15": "0.0",
+    "5": "0.499285",
+    "8": "0.25288"
+   },
+   "T": 1000186,
+   "gate": {
+    "E_W_4SE_ok": true,
+    "E_W_SE": "0.008088057039033952",
+    "E_W_dev": "0.01075622339761484",
+    "E_W_dev_over_SE": "1.3298896565273945",
+    "E_W_est": "5.489243776602385",
+    "E_W_exact": "11/2",
+    "E_W_rel": "0.001955676981384516",
+    "E_W_rel_ok": true,
+    "P_4SE_ok": true,
+    "P_SE": "0.0007673610461879151",
+    "P_W_gt_10_est": "0.134625",
+    "P_W_gt_10_exact": "3/22",
+    "P_dev": "0.0017386363636363589",
+    "P_dev_over_SE": "2.2657344574285223",
+    "P_rel": "0.012749999999999966",
+    "P_rel_ok": false,
+    "pass": false
+   },
+   "interval_draws": 100000,
+   "mean_L": "10.997665",
+   "mean_W": "5.489243776602385"
+  }
+ },
+ "aux_seed_20261364_read": false,
+ "boundaries_registered": {
+  "discretization": "the continuous-exponential analog gives rho exactly 2; the discrete geometric lands 19/10 \u2014 disclosed, not laundered",
+  "iid": "real bus bunching is positively correlated, which pushes the length-biased experience WORSE, so an i.i.d. REJECT is robust in the costly direction",
+  "incidence": "continuous-uniform landing within integer-minute gaps is the pin; integer-landing alternatives shift E[W] by <= 1/2 min, reporting-only"
+ },
+ "cpython": "3.11",
+ "decision_order_executed": [
+  "REJECT",
+  "INVALID",
+  "APPROVE",
+  "NULL"
+ ],
+ "drafter_reference_comparison_never_gated": {
+  "BUNCHED": true,
+  "BUNCHED_E_W": true,
+  "CLOCKWORK": true,
+  "JITTER": true,
+  "MEMORYLESS": true,
+  "SPREAD": true
+ },
+ "f_gates_all_pass": true,
+ "folk_rule_vs_exact": {
+  "BUNCHED_E_W": "89/5",
+  "BUNCHED_rho": "89/25",
+  "folk_E_W": "5",
+  "rider_vs_operator_BUNCHED": {
+   "interval_share_42_gaps": "1/5",
+   "rider_share_in_42_gap": "21/25"
+  }
+ },
+ "reporting_seed_20261363": {
+  "BUNCHED": {
+   "P90_W": "36.91927141995984",
+   "exact_P90_W": "37",
+   "exact_median_W": "17",
+   "median_W": "17.018671289959457"
+  },
+  "JITTER": {
+   "P90_W": "10.024468850402627",
+   "exact_P90_W": "10",
+   "exact_median_W": "5",
+   "median_W": "5.006215245099156"
+  },
+  "MEMORYLESS": {
+   "P90_W": "21.27291518315087",
+   "exact_P90_W": "2391988663076883135479/109418989131512359209",
+   "exact_median_W": "3503056/531441",
+   "median_W": "6.476802561577642"
+  },
+  "SPREAD": {
+   "P90_W": "10.810009458247805",
+   "exact_P90_W": "54/5",
+   "exact_median_W": "5",
+   "median_W": "5.007910827829619"
+  }
+ },
+ "rng_registry": [
+  20261361,
+  20261362,
+  20261363
+ ],
+ "rule_fired": "INVALID \u2014 controls misbehaving (F-gate or Arm-S agreement gate failure); report, no ruling",
+ "stability_seed_20261362": {
+  "cells": {
+   "BUNCHED": {
+    "P_W_gt_10": "0.63838",
+    "gate": {
+     "E_W_4SE_ok": true,
+     "E_W_SE": "0.05954718017393155",
+     "E_W_dev": "0.1059474664783302",
+     "E_W_dev_over_SE": "1.779218867608305",
+     "E_W_est": "17.69405253352167",
+     "E_W_exact": "89/5",
+     "E_W_rel": "0.005952104858333157",
+     "E_W_rel_ok": true,
+     "P_4SE_ok": true,
+     "P_SE": "0.002146625258399798",
+     "P_W_gt_10_est": "0.63838",
+     "P_W_gt_10_exact": "16/25",
+     "P_dev": "0.0016200000000000658",
+     "P_dev_over_SE": "0.7546729424062096",
+     "P_rel": "0.002531250000000103",
+     "P_rel_ok": true,
+     "pass": true
+    },
+    "mean_W": "17.69405253352167"
+   },
+   "JITTER": {
+    "P_W_gt_10": "0.09774",
+    "gate": {
+     "E_W_4SE_ok": true,
+     "E_W_SE": "0.014348054455802246",
+     "E_W_dev": "0.017818273920711114",
+     "E_W_dev_over_SE": "1.2418599312958098",
+     "E_W_est": "5.182181726079289",
+     "E_W_exact": "26/5",
+     "E_W_rel": "0.003426591138598291",
+     "E_W_rel_ok": true,
+     "P_4SE_ok": true,
+     "P_SE": "0.0013416407864998738",
+     "P_W_gt_10_est": "0.09774",
+     "P_W_gt_10_exact": "1/10",
+     "P_dev": "0.002260000000000012",
+     "P_dev_over_SE": "1.6845045430498506",
+     "P_rel": "0.02260000000000012",
+     "P_rel_ok": false,
+     "pass": false
+    },
+    "mean_W": "5.182181726079289"
+   },
+   "MEMORYLESS": {
+    "P_W_gt_10": "0.34878",
+    "gate": {
+     "E_W_4SE_ok": true,
+     "E_W_SE": "0.04244604418160386",
+     "E_W_dev": "0.08771592128014483",
+     "E_W_dev_over_SE": "2.066527587467408",
+     "E_W_est": "9.587715921280145",
+     "E_W_exact": "19/2",
+     "E_W_rel": "0.009233254871594192",
+     "E_W_rel_ok": true,
+     "P_4SE_ok": true,
+     "P_SE": "0.002131205224793852",
+     "P_W_gt_10_est": "0.34878",
+     "P_W_gt_10_exact": "3486784401/10000000000",
+     "P_dev": "0.00010155989999999226",
+     "P_dev_over_SE": "0.04765374015532267",
+     "P_rel": "0.0002912709485876591",
+     "P_rel_ok": true,
+     "pass": true
+    },
+    "mean_W": "9.587715921280145"
+   },
+   "SPREAD": {
+    "P_W_gt_10": "0.13688",
+    "gate": {
+     "E_W_4SE_ok": true,
+     "E_W_SE": "0.016176114078067905",
+     "E_W_dev": "0.009043092947828235",
+     "E_W_dev_over_SE": "0.5590398846215576",
+     "E_W_est": "5.509043092947828",
+     "E_W_exact": "11/2",
+     "E_W_rel": "0.0016441987177869518",
+     "E_W_rel_ok": true,
+     "P_4SE_ok": true,
+     "P_SE": "0.0015347220923758302",
+     "P_W_gt_10_est": "0.13688",
+     "P_W_gt_10_exact": "3/22",
+     "P_dev": "0.0005163636363636481",
+     "P_dev_over_SE": "0.33645416256717214",
+     "P_rel": "0.003786666666666753",
+     "P_rel_ok": true,
+     "pass": true
+    },
+    "mean_W": "5.509043092947828"
+   }
+  },
+  "class_te1": "INVALID",
+  "class_te2": "INVALID",
+  "reproduces_headline": true
+ },
+ "twin_evaluators": {
+  "headline_te1": "INVALID",
+  "headline_te2": "INVALID",
+  "stability_te1": "INVALID",
+  "stability_te2": "INVALID"
+ },
+ "verdict": "INVALID"
+}
