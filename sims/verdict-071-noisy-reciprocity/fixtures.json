@@ -1,0 +1,88 @@
+{
+  "_source": "idea-engine control/outbox.md `## PROPOSAL 060 · 2026-07-14T05:55:31Z · status: sim-ready` (idea-engine PR #404 -> main 0d307cc66516b9ab703ebe71ab7e06ee604fe43f) / idea doc ideas/fleet/noisy-reciprocity-tft-collapse-2026-07-14.md — every registered constant below copied verbatim; fully hermetic, the runner reads ONLY this file",
+  "stage_game": {
+    "u_CC": "3",
+    "u_CD": "0",
+    "u_DC": "5",
+    "u_DD": "1",
+    "preconditions": ["T > R > P > S", "2R > T + S"],
+    "T": "5", "R": "3", "P": "1", "S": "0"
+  },
+  "strategy_space": {
+    "description": "ALL 16 deterministic memory-one rules r = (c_CC, c_CD, c_DC, c_DD) in {0,1}^4 — intended move given last round's executed (my move, opponent's move); 1 = C, 0 = D; the COMPLETE field, no curation",
+    "named_rules": {
+      "TFT":  [1, 0, 1, 0],
+      "WSLS": [1, 0, 0, 1],
+      "ALLC": [1, 1, 1, 1],
+      "ALLD": [0, 0, 0, 0]
+    }
+  },
+  "noise": {
+    "grid_pinned_order": ["1/1000", "1/100", "1/20", "1/10"],
+    "decision_cell": "1/100",
+    "control_cells": {"degeneracy": "1/2", "orbit_leg": "0"},
+    "orbit_leg_convention": "both players open C (pinned convention, disclosed boundary); value = exact average over the deterministic orbit's cycle"
+  },
+  "tournament": {
+    "score": "score(i) = (1/16) * sum_j v(i,j) over all 16 opponents INCLUDING self (round-robin with self-play, uniform weights)",
+    "rank": "descending-score position, dense, exact-Fraction comparisons; ties broken lexicographically by rule tuple for the printed table only, never by any decision clause"
+  },
+  "decision_constants": {
+    "reject_gap_floor": "2/5",
+    "echo_identity_value": "9/4",
+    "wsls_selfplay_floor": "14/5"
+  },
+  "decision_rule_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+  "decision_rule": {
+    "REJECT": "at decision cell eps = 1/100: score(WSLS) - score(TFT) >= 2/5 exact AND v(TFT,TFT) = 9/4 exactly at EVERY grid eps AND rank(TFT) strictly worse (numerically larger) than rank(WSLS) at EVERY grid eps AND v(WSLS,WSLS) >= 14/5 at eps = 1/100",
+    "INVALID": "any F1-F6 gate failure (controls misbehaving — report, no ruling)",
+    "APPROVE": "rank(TFT) = 1 at eps = 1/100 AND rank(TFT) <= rank(WSLS) at EVERY grid eps",
+    "NULL": "anything else — named axes: margin-straddle (rank conjuncts hold, decision-cell gap in (0, 2/5)); noise-floor-conditional (eps = 1/1000 inverts the TFT/WSLS order vs the decision cell); echo-identity failure with all gates passing; twin-arm disagreement surviving the INVALID diagnosis"
+  },
+  "gates": {
+    "F1": "field & solve identities: 16 rules re-enumerated as all of {0,1}^4 with named indices reproduced; PD preconditions asserted; every stationary solve entries >= 0, sum pi = 1 exact, residual pi.P - pi = 0 exact",
+    "F2": "echo theorem: TFT-vs-TFT stationary = (1/4, 1/4, 1/4, 1/4) exactly at every grid eps; hence v = 9/4 exactly",
+    "F3_anchors": {
+      "v_ALLC_ALLC": "3(1-e)^2 + 5e(1-e) + e^2",
+      "v_ALLD_ALLD": "(1-e)^2 + 5e(1-e) + 3e^2",
+      "v_ALLD_ALLC": "5(1-e)^2 + 3e(1-e) + e(1-e)",
+      "reference_at_1_100": ["29899/10000", "10299/10000", "49401/10000"]
+    },
+    "F4": "transpose conservation: v(i,j) row-accounting = column-player value of the transposed solve (j,i), all 256 ordered pairs, every grid eps, exact",
+    "F5": "eps = 1/2 degeneracy: EVERY pairwise value = 9/4 exactly (uniform stationary for all 256 pairs)",
+    "F6": "battery: Arm B exact-equal on every Arm-A v(i,j) at every grid eps; eps = 0 orbit hand anchors v0(TFT,ALLD) = 1, v0(WSLS,ALLD) = 1/2, v0(TFT,TFT) = v0(WSLS,WSLS) = 3; twin decision evaluators agree on the ruling token; Arm-R draw-count sentinels 2T per game counted and asserted; aux seed never read; stdout + results.json byte-identical across two process runs; CPython minor pinned"
+  },
+  "orbit_hand_anchors": {
+    "v0_TFT_ALLD": "1",
+    "v0_WSLS_ALLD": "1/2",
+    "v0_TFT_TFT": "3",
+    "v0_WSLS_WSLS": "3"
+  },
+  "arm_r": {
+    "role": "REPORTING-ONLY — no statistical gate; only gates are the draw-count sentinel (2T per game) and byte reproducibility; a finite-horizon drift from the stationary value is a named mixing-time finding, never a ruling",
+    "eps": "1/100",
+    "pairs": "all 136 unordered pairs (120 distinct + 16 self-play), lexicographic rule order",
+    "T_main": 4000,
+    "T_stability": 1000,
+    "draws_per_round": 2
+  },
+  "seeds": {
+    "main": 20261377,
+    "stability": 20261378,
+    "presentation": 20261379,
+    "aux_never_read": 20261380,
+    "pinned_construction_order": [20261377, 20261378, 20261379]
+  },
+  "cpython_minor_pinned": [3, 11],
+  "fixture_level_choices_disclosed_before_runner": {
+    "C1_encoding": "moves C = 1, D = 0; state order pinned [(C,C), (C,D), (D,C), (D,D)] as (my executed, opp executed) from the row player's seat; rule index k = 0..15 with bits (c_CC, c_CD, c_DC, c_DD) = ((k>>3)&1, (k>>2)&1, (k>>1)&1, k&1) — lexicographic tuple order = ascending k (ALLD = 0, WSLS = 9, TFT = 10, ALLC = 15)",
+    "C2_rank": "dense rank by exact Fraction comparison: rank(i) = 1 + #(distinct score values strictly greater than score(i)); the printed table orders ties lexicographically by rule tuple — never any decision clause",
+    "C3_arm_a": "Gaussian elimination over Fractions on the system (P^T - I) with the LAST row replaced by all-ones, RHS (0,0,0,1); pivot = first row with nonzero entry in the column",
+    "C4_arm_b": "independently-written Cramer/adjugate twin: system assembled from rows 0..2 of (P^T - I) DROPPING row 3, plus an all-ones normalization row placed FIRST; each pi_k = det(M_k)/det(M) via recursive cofactor expansion — no code shared with C3 beyond the transition-matrix builder input",
+    "C5_orbit": "eps = 0 leg: initial state (C,C) (both open C per the registered convention); iterate the deterministic map next = (r_i(a,b), r_j(b,a)) recording the trajectory; the value is the exact Fraction average of u over the LIMIT CYCLE only (transient excluded) — matching the pinned hand anchors 1, 1/2, 3, 3",
+    "C6_arm_r_game": "per game: state initialized by round 1 where both INTEND C; EVERY round (including round 1) consumes exactly 2 uniforms from the leg RNG in pinned order (row player's tremble draw first, then column's); executed move = intended flipped iff draw < eps (strict); payoffs accumulated for both seats over T rounds; estimates v_hat(i,j) = row mean, v_hat(j,i) = column mean as exact Fractions of integer sums over T",
+    "C7_serialization": "Fractions serialized as canonical lowest-terms 'p/q' strings (integer 'p' when q = 1), floats via repr(), json.dumps(sort_keys=True), LF newlines, no wall-clock anywhere in output",
+    "C8_nice_subfield": "reporting-only nice-subfield table = restricted round-robin among the 8 rules with c_CC = 1, uniform 1/8 weights including self, per grid eps",
+    "C9_presentation": "seed 20261379 is read by presentation legs ONLY: one Fisher-Yates shuffle (random.Random(20261379).shuffle) of the 136 lexicographic pair labels fixes the order of the Arm-R presentation listing in results.json"
+  }
+}
