@@ -1,0 +1,96 @@
+VERDICT 066 — badge saturation: Coin Magnate vs the committed daily faucet (idea-engine PROPOSAL 055)
+python: cpython-3.11 (pinned) · stdlib-only · hermetic (reads only fixtures.json) · no wall-clock in output
+
+[F1] anchor: E[!daily] = 169201/100 = 1692.010000 exact · weights sum 100 · SD[claim] = 1197.779817 (exact Var 14346764899/10000)
+     threshold 10,000 coins = 1000000/169201 = 5.910131 expected dailies
+     per-value numerators over 10^5 (derived, asserted): [[500, 999, 90], [1000, 1999, 25], [2000, 2999, 15], [3000, 3999, 8], [4000, 4999, 5], [5000, 5000, 2000]]
+     ANOMALY A1: the registration writes the Common row as 9/10^5; exact is 9/10^4 (= 90/10^5) — denominator slip, decision unaffected
+
+[F3] static badge rows @ b983291 (re-implemented earned_achievements over the 7 fixture miners — calibration comments reproduce exactly):
+     DeepDelver    coins  18450 · earned: deep_diver, coin_magnate, the_answer
+     SilverSeeker  coins   7320 · earned: packrat, balanced_build
+     CavernCrawler coins   2140 · earned: packrat
+     PebblePicker  coins    480 · earned: (none)
+     MagmaMaven    coins  25990 · earned: deep_diver, coin_magnate
+     GearGoblin    coins   5620 · earned: fully_geared
+     RustyRelic    coins   3150 · earned: tool_breaker
+     deep_diver saturation note: record_depth ∈ {0..3} caps at the contract's own max_depth — 2 of 7 sample miners already hold it
+
+ARM A (DECISION, exact absorbing DP, alone decision-bearing) — sigma = 1/2:
+  p      P(T<=30)     P(T<=90)     P(T<=180)    median T  
+  1      1.000000     1.000000     1.000000     12        
+  1/2    0.788551     1.000000     1.000000     25        
+  1/4    0.089402     0.986615     1.000000     49        
+  1/10   0.000792     0.205567     0.897998     122       
+  exact decision cells P(T<=90): p=1: 1…/…1 digits · p=1/2: 154742504867…/…182 digits · p=1/4: 188997909507…/…209 digits · p=1/10: 256958486663…/…245 digits
+  full-engagement (p=1, sigma=0): median T = 7 · E[T] = 8325334770867566326333909023256113361930575182176144682513382770530489891/1250000000000000000000000000000000000000000000000000000000000000000000000 = 6.660268 · Var[T] = 3.075239 · CV[T] = 0.263298 (the age-badge concentration mark)
+
+sigma worlds (reporting-only, Arm A exact at H=90):
+  sigma    p      P(T<=90)     median T  
+  0        1      1.000000     7         
+  0        1/2    1.000000     13        
+  0        1/4    0.999949     25        
+  0        1/10   0.801463     63        
+  1/2      1      1.000000     12        
+  1/2      1/2    1.000000     25        
+  1/2      1/4    0.986615     49        
+  1/2      1/10   0.205567     122       
+  9/10     1      1.000000     60        
+  9/10     1/2    0.022956     >90       
+  9/10     1/4    0.000000     >90       
+  9/10     1/10   0.000000     >90       
+
+badge-share curves S(d) = P(T <= d), sigma = 1/2 (day · expected dailies claimed d·p · share):
+  p=1     d=7 (7.0): 0.010904 · d=14 (14.0): 0.787768 · d=21 (21.0): 0.999661 · d=30 (30.0): 1.000000 · d=45 (45.0): 1.000000 · d=60 (60.0): 1.000000 · d=90 (90.0): 1.000000
+  p=1/2   d=7 (3.5): 0.000211 · d=14 (7.0): 0.045746 · d=21 (10.5): 0.325321 · d=30 (15.0): 0.788551 · d=45 (22.5): 0.993471 · d=60 (30.0): 0.999948 · d=90 (45.0): 1.000000
+  p=1/4   d=7 (1.8): 0.000005 · d=14 (3.5): 0.001041 · d=21 (5.2): 0.013669 · d=30 (7.5): 0.089402 · d=45 (11.2): 0.414247 · d=60 (15.0): 0.759321 · d=90 (22.5): 0.986615
+  p=1/10  d=7 (0.7): 0.000000 · d=14 (1.4): 0.000006 · d=21 (2.1): 0.000087 · d=30 (3.0): 0.000792 · d=45 (4.5): 0.008193 · d=60 (6.0): 0.036349 · d=90 (9.0): 0.205567
+
+C* threshold menu (exact minimal C with P(T <= 90) <= 1/2, per decision cell) + committed threshold re-expressed:
+  p      C*        P90@10000      P90@20000      P90@50000      P90@100000    
+  1      76043     1.000000       1.000000       1.000000       0.000044      
+  1/2    37916     1.000000       0.999809       0.022093       0.000000      
+  1/4    18823     0.986615       0.397892       0.000000       0.000000      
+  1/10   7362      0.205567       0.000417       0.000000       0.000000      
+  C* in expected dailies: p=1: 44.942 · p=1/2: 22.409 · p=1/4: 11.125 · p=1/10: 4.351
+
+ARM S (seed 20261357, N = 20000/cell) — agreement vs Arm A exact (<= 1/100 abs; firing cells >= 4·SE headroom above 19/20):
+  p      est        exact      |dev|      SE(exact)    headroom/SE 
+  1      1.000000   1.000000   0.000000   0            inf         
+  1/2    1.000000   1.000000   0.000000   1.18707e-07  421204.93   
+  1/4    0.986350   0.986615   0.000265   0.00081258   44.73       
+  1/10   0.208150   0.205567   0.002583   0.00285753   -259.61     
+  draw totals: bernoulli 7200000 · value 3330986
+
+STABILITY (seed 20261358, N = 10000/cell): class REJECT — REPRODUCES
+REPORTING MC (seed 20261359, N = 10000/cell, sanity only):
+  sigma=0     p=1     exact 1.000000 · est 1.000000 · |dev| 0.000000
+  sigma=0     p=1/2   exact 1.000000 · est 1.000000 · |dev| 0.000000
+  sigma=0     p=1/4   exact 0.999949 · est 0.999900 · |dev| 0.000049
+  sigma=0     p=1/10  exact 0.801463 · est 0.799300 · |dev| 0.002163
+  sigma=9/10  p=1     exact 1.000000 · est 1.000000 · |dev| 0.000000
+  sigma=9/10  p=1/2   exact 0.022956 · est 0.022600 · |dev| 0.000356
+  sigma=9/10  p=1/4   exact 0.000000 · est 0.000000 · |dev| 0.000000
+  sigma=9/10  p=1/10  exact 0.000000 · est 0.000000 · |dev| 0.000000
+
+drafter-reference comparison (NEVER gated):
+  sigma=1/2 p=1      drafter 1.000000   re-derived 1.000000   MATCH
+  sigma=1/2 p=1/2    drafter 1.000000   re-derived 1.000000   MATCH
+  sigma=1/2 p=1/4    drafter 0.986615   re-derived 0.986615   MATCH
+  sigma=1/2 p=1/10   drafter 0.205567   re-derived 0.205567   MATCH
+  sigma=9/10 p=1     drafter 1.000000   re-derived 1.000000   MATCH
+  sigma=9/10 p=1/2   drafter 0.022956   re-derived 0.022956   MATCH
+  sigma=9/10 p=1/4   drafter 0.000000   re-derived 0.000000   MATCH
+  sigma=9/10 p=1/10  drafter 0.000000   re-derived 0.000000   MATCH
+  median (1,0)       drafter 7          re-derived 7          MATCH
+  median (1, 1/2)    drafter 12         re-derived 12         MATCH
+
+DECISION (pre-registered order, REJECT first; Arm A exact alone decision-bearing):
+  REJECT rule: P(T<=90) >= 19/20 at >= 3 of 4 cells at sigma=1/2 -> 3 of 4 fire (p=1, p=1/2, p=1/4)
+               median T <= 14 at (p=1, sigma=0) -> median = 7
+               every firing cell confirms in Arm S (1/100 + 4·SE) -> True
+  RULING: REJECT
+
+anomalies (first-class): A1 registration per-value Common-row denominator slip (9/10^5 written; 9/10^4 exact — forced by the registration's own weights-sum-100 and E = 169201/100) · A2 the outbox idea: blob pin 4df5043 is a pre-squash branch commit absent from idea-engine main history (HEAD 18f3171 copy verified constant-identical, authoritative) · A3 superbot _daily_weights streak-luck shift excluded by the registered base-weight model (streak-0 floor; direction REJECT-robust, anticipated by the registration)
+
+SELF-CHECKS: 166 passed, 0 failed
