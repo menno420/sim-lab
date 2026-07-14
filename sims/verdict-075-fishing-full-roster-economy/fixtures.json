@@ -66,7 +66,7 @@
       "W2": "full 33-row table, deepwater reachable ungated at base weights (upper-bound world; ceiling A3' and the premium judged here; the boat-gate guardrail rides on W2)"
     },
     "criteria": {
-      "A5prime": "integer sell strictly increasing in size_rank within each venue's populated ranks (shore 1..22 incl. pinned; deepwater own ranks) — the V043 A5 invariant extended",
+      "A5prime": "AMENDED PRE-RUNNER (see amendment_A5): integer sell WEAKLY increasing (ties allowed) in size_rank within each venue's populated ranks (shore 1..22 incl. pinned; deepwater own ranks), with the adjacent-tie count published per cell; plus legend_carp remains the strict shore apex (sell(rank 21) < 80)",
       "A1prime": "measured fresh@dock coins/energy in W1 within [0.85,1.05]*32/7 = [3.885714..., 4.8]",
       "A3prime": "max over all (spot,tier) cells in W1 AND W2 of coins/energy <= 755/56 ~= 13.482 (mining diamond-tool depth-4 proxy, V043's own ceiling)",
       "premium": "REPORTING: deep-vs-shore same-rank sell ratio (= ~1/delta by construction; measured and published per cell)"
@@ -95,6 +95,12 @@
     "C10": "naming leg: supersede reading tested mechanically — legend_carp at legacy carp's rank 10 with its VERBATIM 80 vs pinned pike 27 at rank 11 breaks A5' by construction => DISTINCT reading; carp stays; all 29 rows stand (the request's 'state which reading' ask, answered mechanically)",
     "C11": "B0 bars: the five v043_s5_published_anchors groups reproduce EXACTLY at the published rounding (deterministic harness)",
     "C12": "hours frame: 360 energy/h (REGEN_SECONDS 10) => 180 casts/h sustained — the V043 frame"
+  },
+  "amendment_A5": {
+    "when": "registration time, BEFORE the runner exists (separate commit in the PR #139 git trail; no run had happened)",
+    "what": "A5' re-registered from STRICTLY increasing to WEAKLY increasing (ties allowed, adjacent-tie count published), keeping legend_carp as the strict shore apex",
+    "why_theorem_F_STRICT": "Strict integer monotonicity is IMPOSSIBLE given the verbatim pins, by counting: minnow = 8 at unified shore rank 1 and bass = 13 at rank 9 leave SEVEN intermediate ranks (2..8) but only FOUR intermediate integers (9,10,11,12). No weight assignment, k, or delta can satisfy the strict reading — the failure is arithmetic, not a tuning miss. Derived from the pinned constants alone at registration; published in the verdict as finding F-STRICT (the V043 A5 strict invariant survives on any 4-species subtable but cannot extend to the 21-rank legacy scale at integer coins with those two pins verbatim).",
+    "discipline_note": "fixtures-before-runner is preserved: this amendment precedes the runner commit and the first run; the no-fix-forwards rule binds AFTER the first run, which has not happened"
   },
   "disclosed_before_runner": "This file is committed BEFORE the runner exists (git trail on PR #139). The first complete run of the registered pipeline is the accepted run — no fix-forwards.",
   "limits_registered": [
