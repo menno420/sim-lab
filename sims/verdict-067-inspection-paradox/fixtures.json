@@ -1,0 +1,98 @@
+{
+  "_purpose": "VERDICT 067 fixtures — every registered constant copied verbatim from the PROPOSAL 056 block (idea-engine control/outbox.md @ main adc641fe33c479d74ff60b0614725477058c53a8, landed via idea-engine PR #387) / idea doc ideas/fleet/inspection-paradox-wait-inflation-2026-07-14.md @ ae0e038. Committed BEFORE the runner. The runner reads ONLY this file. All exact values are strings parsed as fractions.Fraction.",
+  "registration": {
+    "proposal_header_verbatim": "## PROPOSAL 056 · 2026-07-14T02:52:22Z · status: sim-ready",
+    "mu_pin": "10",
+    "folk_rule": "mean headway mu => expected wait mu/2, i.e. rho = 1; mu = 10 => folk E[W] = 5",
+    "exact_laws": {
+      "E_W": "E[X^2]/(2*E[X])",
+      "E_L": "E[X^2]/E[X]",
+      "P_W_gt_w": "E[(X-w)^+]/E[X]",
+      "rho": "E[W]/(mu/2) = E[X^2]/E[X]^2 = 1 + CV^2"
+    },
+    "incidence_convention": "passenger lands uniformly at random over a long operating window; wait W = time to next arrival; continuous-uniform position within the containing integer-minute gap",
+    "cells": {
+      "CLOCKWORK": {"type": "pmf", "support": [10], "weights": ["1"], "registered_var": "0", "role": "degenerate control"},
+      "JITTER": {"type": "pmf", "support": [8, 12], "weights": ["1/2", "1/2"], "registered_var": "4"},
+      "SPREAD": {"type": "uniform_int", "lo": 5, "hi": 15, "registered_var": "10"},
+      "MEMORYLESS": {"type": "geometric", "q": "1/10", "support_note": "X on {1,2,...}, P(X=k) = (9/10)^(k-1)/10", "registered_var": "90"},
+      "BUNCHED": {"type": "pmf", "support": [2, 42], "weights": ["4/5", "1/5"], "registered_var": "256"}
+    },
+    "stochastic_cells": ["JITTER", "SPREAD", "MEMORYLESS", "BUNCHED"],
+    "geometric_crosscheck": {
+      "closed_forms": {"E_X": "1/q", "E_X2": "(2-q)/q^2"},
+      "partial_sum_K": 500,
+      "tail_method": "exact tail formulas via the memoryless shift identity: sum_{k>K} f(k) p(k) = r^K * E[f(K+Y)], Y ~ Geom(q), r = 1-q"
+    },
+    "exceedance_grid_w": [5, 8, 10, 15],
+    "bands": {
+      "reject_bunched_rho_min": "2",
+      "reject_cell_rho_min": "11/10",
+      "reject_cells_needed_of_4": 3,
+      "approve_rho_max": "21/20",
+      "agreement_gate_rel": "1/100",
+      "agreement_gate_se_mult": 4,
+      "agreement_gate_metrics": ["E_W", "P_W_gt_10"]
+    },
+    "decision_rules_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "decision_rules": {
+      "REJECT": "rho(BUNCHED) >= 2 AND rho >= 11/10 in >= 3 of the 4 stochastic cells AND Arm S confirms within the agreement gate on every stochastic cell — checked FIRST",
+      "INVALID": "controls misbehaving — report, no ruling: F1 pmf re-derivation (mass = 1, mean = 10, variances {0, 4, 10, 90, 256} exact; geometric closed-form vs partial-sum agreement), F2 size-bias identities (E[L] = E[X^2]/E[X] two independent ways AND E[W] = E[L]/2 exact), F3 CLOCKWORK degenerate (rho = 1, P(W > 10) = 0, E[W] = 5 exact), F4 monotonicity (rho = 1 + Var/100 exact per cell ranking the five cells by variance; P(W > w) non-increasing in w; the mean-preserving-spread ordering on rho), F5 hand identities (JITTER P(W > 8) = 1/5 and E[W] = 26/5; BUNCHED rider-share-in-the-42-gap = 21/25 and P(W > 10) = 16/25; MEMORYLESS P(W > 10) = (9/10)^10 exact), or the Arm-S agreement gate failing on any cell",
+      "APPROVE": "rho <= 21/20 at EVERY stochastic cell AND the seed-20261362 stability leg (K = 20,000, N = 50,000) reproduces the ruling through twin evaluators",
+      "NULL": "anything else — pre-registered axes: band-straddle (rho(BUNCHED) in (21/20, 2), or the 3-of-4 leg misses while BUNCHED fires); dispersion-sensitivity (the ruling flips between the low-CV and high-CV halves); arm disagreement"
+    },
+    "F5_hand_identities": {
+      "JITTER_P_W_gt_8": "1/5",
+      "JITTER_E_W": "26/5",
+      "BUNCHED_rider_share_in_42_gap": "21/25",
+      "BUNCHED_interval_share_42": "1/5",
+      "BUNCHED_P_W_gt_10": "16/25",
+      "MEMORYLESS_P_W_gt_10": "(9/10)^10"
+    },
+    "arm_a": "DECISION arm, seedless exact fractions.Fraction moment arithmetic per cell; geometric via closed forms cross-checked against exact rational partial sums to K = 500 plus exact tail formulas; byte-identical across process runs; platform-independent",
+    "arm_s": {
+      "seed_headline": 20261361,
+      "K_intervals": 100000,
+      "N_landings": 200000,
+      "draw_order_cells": ["JITTER", "SPREAD", "MEMORYLESS", "BUNCHED"],
+      "all_intervals_before_any_landing": true,
+      "geometric_sampling": "count-of-Bernoulli(q)-trials, no float log",
+      "wait_method": "N uniform landings on [0, T); waits via bisect; containing-gap lengths recorded"
+    },
+    "stability_leg": {"seed": 20261362, "K_intervals": 20000, "N_landings": 50000, "requirement": "reproduces the ruling through twin independently-written decision evaluators"},
+    "reporting_leg": {"seed": 20261363, "rows": ["median", "P90"], "note": "never decision-bearing"},
+    "aux_seed": {"value": 20261364, "rule": "reserved, NEVER read by any decision number"},
+    "seed_high_water_prev": 20261360,
+    "boundaries_registered": {
+      "iid": "real bus bunching is positively correlated, which pushes the length-biased experience WORSE, so an i.i.d. REJECT is robust in the costly direction",
+      "incidence": "continuous-uniform landing within integer-minute gaps is the pin; integer-landing alternatives shift E[W] by <= 1/2 min, reporting-only",
+      "discretization": "the continuous-exponential analog gives rho exactly 2; the discrete geometric lands 19/10 — disclosed, not laundered"
+    },
+    "drafter_reference_never_gated": {
+      "disclosed_landing": "REJECT",
+      "rho": {"CLOCKWORK": "1", "JITTER": "26/25", "SPREAD": "11/10", "MEMORYLESS": "19/10", "BUNCHED": "89/25"},
+      "BUNCHED_E_W": "89/5",
+      "geometric_moments": {"E_X": "1/q", "E_X2": "(2-q)/q^2"},
+      "note": "SPREAD disclosed exactly ON the 11/10 edge; JITTER disclosed genuinely APPROVE-side at 26/25; all re-derived from scratch, compared, never trusted"
+    }
+  },
+  "fixture_level_choices_disclosed": {
+    "rng_stream": "ONE random.Random per leg (headline 20261361 / stability 20261362 / reporting 20261363), consumed sequentially across the stochastic cells in the pinned order JITTER -> SPREAD -> MEMORYLESS -> BUNCHED; the registration's 'all intervals before any landing' is applied PER CELL: each cell's K intervals are fully drawn before that cell's N landings, then the stream moves to the next cell",
+    "uniform_only_draws": "every random variate is a single rng.random() U(0,1) draw (no randrange/choice/getrandbits), so draw sentinels count rng.random() calls exactly",
+    "interval_maps": {
+      "JITTER": "8 if u < 1/2 else 12 (one draw)",
+      "SPREAD": "5 + int(u * 11) (one draw; u < 1 so the bucket is in {0..10})",
+      "MEMORYLESS": "count of Bernoulli(1/10) trials to first success: draw u until u < 1/10; X = number of draws (X draws total)",
+      "BUNCHED": "2 if u < 4/5 else 42 (one draw)"
+    },
+    "landing_map": "t = u * T with T = sum of the cell's intervals (one draw per landing); containing gap and wait via bisect_right over the integer cumulative arrival times; W = cum[idx] - t, L = intervals[idx]",
+    "draw_sentinels": "per cell: interval draws == K for JITTER/SPREAD/BUNCHED and == T (sum of intervals) for MEMORYLESS; landing draws == N; asserted exactly per leg",
+    "se_convention": "exact-variance SE (the V064 precedent): SE(E[W]) = sqrt(Var_exact(W)/N) with Var(W) = E[X^3]/(3*E[X]) - E[W]^2 (E[W^2] = E[L^2]/3 = E[X^3]/(3*E[X]) under continuous-uniform position); SE(P(W>10)) = sqrt(p*(1-p)/N) with p exact; geometric E[X^3] closed form (6 - 6q + q^2)/q^3 cross-checked by partial sum to K = 500 plus the exact shift-identity tail",
+    "agreement_gate_literal": "PASS iff |est - exact|/exact <= 1/100 AND |est - exact| <= 4*SE, on E[W] AND on P(W > 10), per stochastic cell (the registered AND of both halves on both metrics)",
+    "stability_evaluation": "the stability leg reruns the identical MC pipeline at seed 20261362 (K = 20,000, N = 50,000) and the twin evaluators re-run the FULL registered rule order with the stability estimates in the Arm-S slot (gate SE at N = 50,000); reproduction = same class as the headline ruling",
+    "reporting_leg_size": "K = 20,000, N = 50,000 (not pinned by the registration; the V064 control-size precedent), seed 20261363; MC median/P90 = order statistics at ranks ceil(N/2) and ceil(9N/10) of the sorted waits; exact reference medians/P90s computed by piecewise-linear inversion of the exact exceedance G(w) = E[(X-w)^+]/E[X] between integer breakpoints (reporting only)",
+    "twin_evaluators": "evaluator TE1 compares fractions.Fraction objects directly; evaluator TE2 is independently written over (numerator, denominator) integer pairs using pure integer cross-multiplication; both execute the registered order REJECT -> INVALID -> APPROVE -> NULL and must agree on headline and stability classes",
+    "rng_registry": "the ONLY RNGs constructed are 20261361 / 20261362 / 20261363 in that order; aux 20261364 is asserted never-constructed and never-read",
+    "cpython_pin": "3.11 (asserted at runtime; Arm A is platform-independent exact rationals, Arm S byte-stability is pinned to this minor)"
+  }
+}
