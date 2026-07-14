@@ -145,6 +145,10 @@ Durable mirror of `control/status.md` ⚑ needs-owner; see
 - **OA-002** — Codex integration LIVE but usage-capped; bot replies "reached
   usage limits" on every verdict PR; 6+ @codex questions pending. Merge is not
   gated on the reply (CONVENTIONS.md), so verdicts finalized without fold-in.
+  **Split verdict** (fm 2026-07-14 overnight wake, fm main @ 780c81b, relayed
+  via inbox ORDER 006): **enabled = RESOLVED / quota = OPEN (INC-04)** — the
+  integration-toggle half of this ask is closed; the surviving owner action
+  is the quota alone.
 - **OA-003** — VERDICT 011 `review` site has no deployed URL (owner deploy;
   routed via outbox).
 - **OA-004** — `refs/tags/*` push is 403-walled; `harness-v0.1.0` un-pushed;
@@ -238,7 +242,9 @@ verified fabricated, incidents #1–#3); verdicts since finalize with a
 `codex: none this cycle` line. VERDICT 016 supplies the evidence-based path
 back: gate, don't suspend (mandatory pre-trust authenticity gate; the step
 can be reinstated behind it) — the adoption call sits with manager/owner
-(OA-002 quota also still open). Unchanged: merge is never blocked on any
+(OA-002 split verdict per inbox ORDER 006: enabled = resolved / quota = open,
+INC-04 — the quota half is the one still open). Unchanged: merge is never
+blocked on any
 review reply (Q-0120 verify-never-obey); the fleet manager final-reviews
 finalized outbox entries post-merge and routes them as ORDERs; lanes never
 receive work from this repo directly. (Stale "every verdict PR gets an
