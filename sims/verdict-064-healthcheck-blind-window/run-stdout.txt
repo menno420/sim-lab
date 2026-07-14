@@ -1,0 +1,64 @@
+VERDICT 064 — the healthcheck blind window (idea-engine PROPOSAL 053)
+Arm A (DECISION, exact, seedless) — headline pins q = 1/20, d ~ uniform{0..30}
+
+DET(T, D) table (exact Fractions; rows T, cols D; runs/day = 1440/T):
+T\D      D=5                     D=30                    D=60                    D=180                   D=360                   DET_mix(equi)           WINDOW(T)               runs/day
+T=60     19/240 (0.07916666667)  19/40 (0.475)           8113/9300 (0.8723655914)3718813/3720000 (0.999680914)29759998813/29760000000 (0.9999999601)33988034271/49600000000 (0.6852426264)7413/198400000000 (3.736391129e-08)24/1
+T=180    19/720 (0.02638888889)  19/120 (0.1583333333)   19/60 (0.3166666667)    25783/27900 (0.9241218638)555883/558000 (0.9962060932)675659/1395000 (0.4843433692)13613/3720000 (0.003659408602)8/1
+T=360    19/1440 (0.01319444444) 19/240 (0.07916666667)  19/120 (0.1583333333)   19/40 (0.475)           6536/6975 (0.9370609319)123709/372000 (0.3325510753)22913/372000 (0.06159408602)4/1
+T=720    19/2880 (0.006597222222)19/480 (0.03958333333)  19/240 (0.07916666667)  19/80 (0.2375)          19/40 (0.475)           2413/14400 (0.1675694444)7541/14400 (0.5236805556)2/1
+T=1440   19/5760 (0.003298611111)19/960 (0.01979166667)  19/480 (0.03958333333)  19/160 (0.11875)        19/80 (0.2375)          2413/28800 (0.08378472222)21941/28800 (0.7618402778)1/1
+
+Mixes at the shipped cell T=360: equiprobable 123709/372000 (0.3325510753) | short-heavy 612617/3348000 (0.1829799881) | long-heavy 322829/669600 (0.4821221625)
+
+E[L] per T x q (exact; minutes):
+  zero_noise(q=0,d=0)    T=60: 59/2 (29.5)  T=180: 179/2 (89.5)  T=360: 359/2 (179.5)  T=720: 719/2 (359.5)  T=1440: 1439/2 (719.5)
+  q=0,W=30               T=60: 185/6 (30.83333333)  T=180: 1619/18 (89.94444444)  T=360: 3235/18 (179.7222222)  T=720: 6473/18 (359.6111111)  T=1440: 6476/9 (719.5555556)
+  q=1/20,W=30            T=60: 19337/570 (33.9245614)  T=180: 169967/1710 (99.39590643)  T=360: 169853/855 (198.6584795)  T=720: 1359451/3420 (397.5002924)  T=1440: 5440141/6840 (795.3422515)
+  q=1/10,W=30            T=60: 1121/30 (37.36666667)  T=180: 1099/10 (109.9)  T=360: 2197/10 (219.7)  T=720: 2198/5 (439.6)  T=1440: 17591/20 (879.55)
+  derived zero-noise closed form: E[L] = (T-1)/2 at every grid T; registered sanity row (T+1)/2 matches: False
+
+Sensitivity worlds at the shipped cell T=360 (exact, reporting-only):
+  q0_W30       DET_mix(360) = 781/2232 (0.3499103943)  WINDOW(360) = 29/2232 (0.01299283154)
+  q10_W30      DET_mix(360) = 19541/62000 (0.3151774194) WINDOW(360) = 6837/62000 (0.1102741935)
+  q5_W0        DET_mix(360) = 2413/7200 (0.3351388889) WINDOW(360) = 7181/144000 (0.04986805556)
+  q5_W60       DET_mix(360) = 362387/1098000 (0.3300428051) WINDOW(360) = 651031/8784000 (0.074115551)
+  zero_noise   DET_mix(360) = 127/360 (0.3527777778)   WINDOW(360) = 0/1 (0)
+
+Arm B (seeded MC, CRN) — agreement gates: 315 cells gated, all passed (|EST-EXACT| <= 1/100 AND <= 4*SE)
+  worst absolute deviation: sens-q=0/1 WINDOW(720) dev=0.006488888889 (allowance 1/100 and 4SE=0.01414208106)
+  headline (seed 20261349, N=200000): DET_mix(360) est 66461/200000 (0.332305) exact 123709/372000 | WINDOW(360) est 6051/100000 (0.06051) exact 22913/372000
+  zero-noise control (seed 20261350, N=20000): per-draw transient + latency identities exact on every scenario x T
+  sensitivity (seed 20261351, 3 worlds x N=20000): q-sweep under CRN with per-scenario q-monotonicity exact; delay {0} and {0..60} worlds gated
+  stability (seed 20261352, N=20000): DET_mix(360) est 208/625 (0.3328) | WINDOW(360) est 613/10000 (0.0613) -> class REJECT through both twin evaluators; reproduces Arm A class: True
+  draw sentinels: 20261349=3800000 20261350=380000 20261351=1140000 20261352=380000 (exact)
+
+Drafter-reference comparison (never gated):
+  DET(360,180)               computed 19/40                  drafter 19/40                  exact-equal: True
+  DET(360,30)                computed 19/240                 drafter 19/240                 exact-equal: True
+  DET(360,360)               computed 6536/6975              drafter 6536/6975              exact-equal: True
+  DET(360,5)                 computed 19/1440                drafter 19/1440                exact-equal: True
+  DET(360,60)                computed 19/120                 drafter 19/120                 exact-equal: True
+  DET_mix(360)               computed 123709/372000          drafter 123709/372000          exact-equal: True
+  WINDOW(360)                computed 22913/372000           drafter 22913/372000           exact-equal: True
+  zero-noise DET_mix(360)    computed 127/360                drafter 127/360                exact-equal: True
+  zero-noise WINDOW(360)     computed 0/1                    drafter 0/1                    exact-equal: True
+  all disclosed exact Fractions reproduce: True
+  approx exhibits: T=60 DET_mix computed 0.6852426264 (drafter ~0.685) | T=60 WINDOW computed 3.736391129e-08 (drafter ~3.7e-11: see anomaly A2) | q=0,W=30 WINDOW(360) computed 0.01299283154 (drafter ~0.013)
+
+Anomalies (first-class, reporting-only):
+  - A1 (drafter, reporting-only): the registered zero-noise E[L] sanity row (T+1)/2 does NOT hold under the pinned model — the model forces E[L] = (T-1)/2 (verified exactly at every grid T). Proof of the drafter's internal inconsistency: the registered decision-side identity WINDOW(720) = 359/720 requires the onset-coincident fire to count (L(phi=0) = 0), which gives E[L] = (T-1)/2; the (T+1)/2 row would require it NOT to count, which would force WINDOW(720) = 360/720. The registered INVALID gates (MISS/WINDOW identities) hold exactly; only the reporting-row closed form is off by one.
+  - A2 (drafter, reporting-only): the disclosed T=60 exhibit 'WINDOW ~ 3.7e-11' is off by three orders of magnitude — exact WINDOW(60) = 7413/198400000000 = 3.736391129e-08 (~3.74e-08; the mantissa matches, the exponent does not). Direction of the falsifiability claim (WINDOW(60) tiny, far below every band) is unaffected.
+  - A3 (finding, reporting-only): the delay-{0} sensitivity world lands WINDOW(360) = 7181/144000 (0.04986805556) knife-edge BELOW the 1/20 REJECT edge (1/20 - 19/144000 = 0.0001319444444 short) — with q = 1/20 but zero delay spread the 'up to 6 hours' claim just barely holds; the headline delay {0..30} pushes it over. A named sensitivity straddle, never ruling.
+
+Decision (Arm A exact Fractions alone, registered order REJECT -> INVALID -> APPROVE -> NULL):
+  DET_mix(360) = 123709/372000 (0.3325510753) ; < 1/2: True
+  WINDOW(360)  = 22913/372000 (0.06159408602) ; > 1/20: True
+  band-straddle axis (reporting): DET_mix in [1/2,3/4): False ; WINDOW in (1/100,1/20]: False
+  sensitivity straddles (named, never ruling):
+    * q0_W30: WINDOW(360) = 29/2232 (0.01299283154) crosses the 1/20 edge (headline side: above)
+    * q5_W0: WINDOW(360) = 7181/144000 (0.04986805556) crosses the 1/20 edge (headline side: above)
+    * zero_noise: WINDOW(360) = 0/1 (0) crosses the 1/20 edge (headline side: above)
+
+RULING: REJECT
+SELF-CHECKS: 886 passed, 0 failed
