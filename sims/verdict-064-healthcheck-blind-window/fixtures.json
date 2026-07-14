@@ -1,0 +1,98 @@
+{
+  "verdict": "VERDICT 064",
+  "intake": "INTAKE 053",
+  "registration": {
+    "proposal": "idea-engine control/outbox.md ## PROPOSAL 053 · 2026-07-14T01:15:36Z · status: sim-ready (landed via idea-engine PR #379 -> main 39e35ec7a0021f50e9640a09c8b7dd39df4fe793)",
+    "idea_doc": "ideas/websites/healthcheck-blind-window-2026-07-14.md @ idea-engine main 39e35ec",
+    "harvest_source": "menno420/websites @ 3076e9d1a092b81fd88a982405cb70af483f3931 — .github/workflows/healthcheck.yml line 22 cron \"17 */6 * * *\"; delay-or-drop caveat lines 17-18; docs/ideas/backlog.md line 890 \"up to 6 hours\"; founding doc in-window miss lines 22-25 (citation only — this sim is fully hermetic, zero repo/network reads)"
+  },
+  "model": {
+    "time_unit": "integer minutes; all probabilities exact fractions on equiprobable integer lattices",
+    "T_grid_minutes": [60, 180, 360, 720, 1440],
+    "T_shipped": 360,
+    "fires": "scheduled at s_k = k*T, k = 0, 1, 2, ...; the wall-clock minute-17 phase is a fixed offset that cancels under the uniform onset phase",
+    "q_drop_headline": {"num": 1, "den": 20},
+    "q_drop_sensitivity": [{"num": 0, "den": 1}, {"num": 1, "den": 10}],
+    "delay_support_headline": {"lo": 0, "hi": 30},
+    "delay_support_sensitivity": [{"lo": 0, "hi": 0}, {"lo": 0, "hi": 60}],
+    "delivery_independence": "drops and delays independent across fires and of everything else; conditional on phi the per-fire failure events are independent so P(miss|phi) is an exact product",
+    "D_grid_minutes": [5, 30, 60, 180, 360],
+    "onset_phase": "phi ~ uniform integer {0..T-1}; transient outage occupies [phi, phi+D)",
+    "transient_detection": "DETECTED iff some non-dropped fire executes at t = s_k + d_k with phi <= t < phi+D",
+    "persistent_latency": "L = earliest successful execution at/after onset minus onset; WINDOW(T) = P(L > 360)",
+    "window_threshold_minutes": 360,
+    "mix_headline": {"weights": [1, 1, 1, 1, 1], "den": 5},
+    "mix_short_heavy": {"weights": [5, 4, 3, 2, 1], "den": 15},
+    "mix_long_heavy": {"weights": [1, 2, 3, 4, 5], "den": 15},
+    "runs_per_day_column": "1440/T"
+  },
+  "decision_rule": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "decision_arm": "Arm A exact Fractions ONLY, at the shipped cell T = 360 under headline pins q = 1/20, d ~ {0..30}",
+    "reject": "DET_mix(360) < 1/2 OR WINDOW(360) > 1/20 (checked FIRST)",
+    "invalid": "seed-20261350 zero-noise identities failing in either arm; OR a monotonicity theorem failing (DET(T,D) non-decreasing in D at fixed T; DET_mix(T) non-increasing in T; WINDOW(T) non-decreasing in q under common random numbers); OR the Arm-B agreement gate breaching on any cell — report, no ruling",
+    "approve": "DET_mix(360) >= 3/4 AND WINDOW(360) <= 1/100 AND the seed-20261352 stability leg reproduces the ruling through twin independently-written decision evaluators",
+    "null_axes": ["band-straddle: DET_mix(360) in [1/2, 3/4) and/or WINDOW(360) in (1/100, 1/20]", "stability non-reproduction", "sensitivity straddle: a reporting-only world lands a primary conjunct across a band edge (named, never ruling)"],
+    "bands": {
+      "reject_detmix_lt": {"num": 1, "den": 2},
+      "reject_window_gt": {"num": 1, "den": 20},
+      "approve_detmix_ge": {"num": 3, "den": 4},
+      "approve_window_le": {"num": 1, "den": 100}
+    }
+  },
+  "agreement_gate": {
+    "abs_tolerance": {"num": 1, "den": 100},
+    "se_multiplier": 4,
+    "scope": "every reported cell, both metric families: all 25 DET(T,D) cells, all 5 DET_mix(T), all 5 WINDOW(T); any breach is a control failure (INVALID), never overridden"
+  },
+  "arms": {
+    "arm_A": "DECISION (seedless, exact): full lattice enumeration, per (T, D) and per phi the exact product over the finitely many fires whose delayed execution could intersect the window; every probability an exact Fraction; byte-identical across process runs; no seed read; the ruling rides Arm A alone",
+    "arm_B": "VALIDATION (seeded MC): N = 200,000 scenario draws (phi, per-fire drops, per-fire delays), pinned draw order, COMMON RANDOM NUMBERS across all five T cells (one scenario set, five evaluations)"
+  },
+  "seeds": {
+    "20261349": "Arm B headline: N = 200,000 common-random-numbers validation run across the full T grid, both metric families",
+    "20261350": "Arm B control: zero-noise identity world (q = 0, d == 0); exact identities in both arms",
+    "20261351": "Arm B sensitivity confirmations: MC re-runs of the reporting-only sensitivity worlds, N = 20,000 each; reporting-only, can never flip the decision",
+    "20261352": "stability leg: re-run the headline at N = 20,000; PASS iff the ruling class reproduces through twin independently-written decision evaluators"
+  },
+  "N": {"headline": 200000, "stability": 20000, "sensitivity_per_world": 20000, "control": 20000},
+  "zero_noise_identities": {
+    "MISS_T_D": "(T-D)/T for D <= T, and 0 for D >= T",
+    "MISS_360_180": {"num": 1, "den": 2},
+    "WINDOW_360": {"num": 0, "den": 1},
+    "WINDOW_720": {"num": 359, "den": 720}
+  },
+  "registered_EL_sanity_row": "(T+1)/2 (zero-noise closed form as registered in the PROPOSAL 053 done-when; the runner re-derives E[L] from the pinned model itself and reports agreement or the exact derived form — E[L] is reporting-only and is NOT in the registered INVALID gate list)",
+  "drafter_reference_never_gated": {
+    "expected_landing": "REJECT on BOTH conjuncts",
+    "DET_mix_360": {"num": 123709, "den": 372000},
+    "WINDOW_360": {"num": 22913, "den": 372000},
+    "DET_360_by_D": {"5": {"num": 19, "den": 1440}, "30": {"num": 19, "den": 240}, "60": {"num": 19, "den": 120}, "180": {"num": 19, "den": 40}, "360": {"num": 6536, "den": 6975}},
+    "zero_noise_DET_mix_360": {"num": 127, "den": 360},
+    "zero_noise_WINDOW_360": {"num": 0, "den": 1},
+    "q0_d030_WINDOW_360_approx": 0.013,
+    "T60_DET_mix_approx": 0.685,
+    "T60_WINDOW_approx": 3.7e-11,
+    "note": "compared, reported first-class, never gated; the sim re-derives everything from the pinned constants and must not trust these"
+  },
+  "fixture_level_choices_disclosed_before_runner": {
+    "K_fire_variates_per_scenario": 9,
+    "K_coverage_assertion": "K*T > (T-1) + 360 for every grid T (asserted in-sim): no fire beyond index K-1 can execute inside any transient window (D <= 360) or the persistent 360-minute window, for any delay support in this registration",
+    "scenario_draw_order": "per scenario: u_phi, then for k = 0..K-1 the pair (u_drop_k, u_delay_k) — exactly 1 + 2*K = 19 rng.random() calls per scenario; one scenario set is evaluated at all five T cells (common random numbers)",
+    "phi_map": "phi = int(u_phi * T) per T cell",
+    "drop_map": "fire k dropped iff u_drop_k < q (thresholding the SHARED u_drop draws yields guaranteed per-scenario monotonicity of detection in q — the CRN form of the registered q-monotonicity theorem)",
+    "delay_map": "d_k = int(u_delay_k * (W+1)) for delay support {0..W}",
+    "mc_statistic": "per scenario per T: L_min = min{e_k - phi : e_k = k*T + d_k >= phi, fire k not dropped, k < K}; transient (T,D) detected iff L_min < D; persistent window violated iff L_min > 360 (L_min = +inf when no in-horizon success)",
+    "se_convention": "SE = sqrt(Var_exact / N) with Var_exact from Arm A exact values: p*(1-p) for Bernoulli cells (each DET(T,D) and WINDOW(T)); for DET_mix(T) the exact pmf variance of the per-scenario statistic X = #{D in grid : D > L_min}/5 (X is a deterministic function of L_min, whose exact distribution Arm A enumerates); the sqrt and the 4*SE comparison are float by disclosure, on gates whose absolute half (<= 1/100) is exact",
+    "control_leg": "N = 20,000 (the V060 precedent: the registration pins the world, not the control N); zero-noise world drawn with the SAME 19-draw scenario shape (q = 0 makes every drop threshold false; W = 0 makes every delay 0) so the draw sentinel is uniform; per-draw EXACT indicator identities asserted on every scenario x T x D (detected == [D >= T or phi == 0 or phi > T-D]) and on L (L == 0 if phi == 0 else T-phi), plus the estimate-level agreement gate against the exact identities",
+    "sensitivity_world_order": "seed 20261351, one RNG, pinned order: (1) q-sweep world at W = 30 — ONE set of N = 20,000 scenarios evaluated at q in {0, 1/20, 1/10} by thresholding the shared u_drop draws (common random numbers; per-scenario monotonicity in q asserted); (2) W = 0 world at q = 1/20, N = 20,000; (3) W = 60 world at q = 1/20, N = 20,000; short-/long-heavy mixes are exact reweightings of the per-D columns in every world (exact + MC)",
+    "EL_method": "exact first-catch decomposition with closed geometric tail (executions are strictly ordered for W < T, so at most one partial fire precedes the first fully-eligible fire): E[L|phi] = p_part*E[lat_part] + (1-p_part)*((k1*T - phi + W/2) + T*q/(1-q)); computed per T x q in {0, 1/20, 1/10} at W = 30 plus the zero-noise row (q = 0, W = 0); not computed for the W = 60 world (ordering premise does not cover W >= T at T = 60; E[L] is registered per T x q)",
+    "shipped_cell_brute_force": "independent second structure for EVERY decisive number: at T = 360 only fires k = 0, 1 can intersect any registered window, so the full per-fire outcome space ({DROP} + {d = 0..30})^2 = 1024 outcomes is exhaustively enumerated per phi with exact integer weights (31 for DROP, 19 per delay value, denominator 620^2) and must equal the product-form Arm A value on every DET(360, D) cell and WINDOW(360)",
+    "per_phi_table": "the full per-phi conditional DET(360, D | phi) (360 x 5, exact fractions) is emitted in results.json",
+    "stability_replication": "stability-leg estimates converted to exact count/N fractions and passed through BOTH twin evaluators with the registered rule order; PASS iff the class equals the Arm A class",
+    "twin_evaluators": "evaluator 1: Fraction comparisons; evaluator 2: pure integer cross-multiplication on (num, den) pairs, independently coded, no Fraction import",
+    "draw_sentinels": {"20261349": 3800000, "20261350": 380000, "20261351": 1140000, "20261352": 380000},
+    "cpython_pin": "3.11",
+    "determinism": "no wall-clock in any output; stdout + results.json byte-identical across two full process runs, verified by EXTERNAL sha256"
+  }
+}
