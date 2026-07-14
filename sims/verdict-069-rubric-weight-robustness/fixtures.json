@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "verdict": "VERDICT 069",
+    "intake": "INTAKE 058",
+    "source_proposal": "## PROPOSAL 058 · 2026-07-14T04:10:35Z · status: sim-ready (idea-engine control/outbox.md @ main 76aca1e, landed via idea-engine PR #395)",
+    "idea_doc": "ideas/venture-lab/rubric-weight-robustness-2026-07-14.md @ idea-engine 76aca1e (blob pin be6e1dd5becbb92e6a8c64c3167912573237a18a in the outbox idea: line)",
+    "harvest_source": "venture-lab docs/products/ideas-2026-07-13-night.md blob aa09f12 @ a9e202d69433dc69623a78dd3164ac4689d7c8f0 — re-verified at intake via GitHub MCP get_file_contents at the pinned commit SHA (returned blob SHA aa09f12fd8694ecc1e1e214ac2944482b1e3094f; all seven score rows, the weights line, and the band sentence reproduced verbatim); the runner reads NONE of it",
+    "hermetic": "the runner reads ONLY this fixtures.json; zero repo/network reads at verdict time; every registered constant below copied verbatim from the PROPOSAL 058 block / idea doc",
+    "cpython_pin": "3.11",
+    "rational_encoding": "all exact rationals are strings 'num/den' (or integers) parsed to fractions.Fraction",
+    "fixture_level_choices_disclosed_before_runner": {
+      "C1_uniform_draw": "each u_j is generated as (1 - x) + 2*x*rng.random() — exactly ONE core random() call per u_j, 5 per draw in criterion order, so the F6 sentinel counts core random() calls = 5*N per (seed, radius) leg",
+      "C2_band_eval_float": "MC band assignment uses float totals with the registered strict/inclusive reading (t < 3 no-build; 3 <= t <= 7/2 borderline; t > 7/2 best); exact-edge float hits are counted by the edge-hit counter (expected 0, measure-zero)",
+      "C3_x_star_edge_set": "x*_i = min positive solution in (0, 1) over all 32 vertex sign-patterns and BOTH edges {3, 7/2}, per the block's own specification; the crossed edge and vertex pattern of the minimizing solution are recorded",
+      "C4_stability_ruling": "the stability leg re-runs BOTH twin evaluators with p_hat_stab in place of p_hat_main (x* clauses unchanged — Arm A is seedless); it must reproduce the headline class, else the arm-disagreement NULL/INVALID axes apply per the registered order",
+      "C5_dirichlet_draw": "Dirichlet reporting worlds draw 5 gammavariate(kappa*w0_j, 1) calls per draw in criterion order via random.Random(20261371); gammavariate CALL count (5 per draw) is the sentinel for these legs — the underlying core-random() consumption of gammavariate is algorithm-internal (rejection sampling) and is not a registered constant",
+      "C6_containment_scope": "F4 containment is checked on every sampled per-concept total of every uniform-jitter leg (main + stability, all radii) against Arm A's exact 32-vertex range widened by 1e-9 absolute; Dirichlet legs are a different mechanism (unbounded support) and are registered reporting-only, so F4 does not ride them",
+      "C7_report_precision": "floats in results.json/stdout are serialized via repr (CPython-deterministic shortest round-trip); exact Fractions as 'num/den' strings"
+    }
+  },
+  "score_table_S": {
+    "axis_order": ["Distribution", "Buildability", "Launch-effort", "Speed", "WTP"],
+    "concepts": [
+      {"n": 1, "name": "AI Novella Production Kit", "scores": ["3", "9/2", "4", "4", "5/2"]},
+      {"n": 2, "name": "Fiction Vetting-Packet Kit", "scores": ["5/2", "9/2", "4", "4", "2"]},
+      {"n": 3, "name": "Pre-Registered Experiment Kit", "scores": ["5/2", "4", "4", "4", "5/2"]},
+      {"n": 4, "name": "Trilingual Edition Factory", "scores": ["2", "9/2", "4", "4", "5/2"]},
+      {"n": 5, "name": "Dead-Session Recovery Playbook", "scores": ["2", "9/2", "4", "4", "2"]},
+      {"n": 6, "name": "Agent Session Retro Kit", "scores": ["2", "9/2", "4", "4", "3/2"]},
+      {"n": 7, "name": "Provenance-Freshness Checker Kit", "scores": ["3/2", "4", "4", "4", "3/2"]}
+    ]
+  },
+  "weights_w0": ["7/20", "1/5", "3/20", "3/20", "3/20"],
+  "weights_quote": "fixed weights: Distribution 35 / Buildability 20 / Launch-effort 15 / Speed 15 / WTP 15",
+  "published_totals_identity_row": ["141/40", "131/40", "13/4", "127/40", "31/10", "121/40", "11/4"],
+  "bands": {
+    "no_build_edge": "3",
+    "best_edge": "7/2",
+    "rule": "no-build if t < 3; borderline if 3 <= t <= 7/2; best if t > 7/2",
+    "band_sentence_quote": "below ~3.0 = do not build; 3.0-3.5 = borderline, tight budget only; above 3.5 = best available",
+    "baseline_partition_B0": ["best", "borderline", "borderline", "borderline", "borderline", "borderline", "no-build"]
+  },
+  "jitter": {
+    "mechanism": "radius x; u_j i.i.d. Uniform[1-x, 1+x], j=1..5, one 5-vector per draw; perturbed weights w'_j = w0_j*u_j / sum_k w0_k*u_k; perturbed total t_i(u) = sum_j w'_j*S_ij under the SAME u; flip = the induced band vector differs from B0 in any coordinate",
+    "radius_grid_pinned_order": ["1/50", "1/20", "1/10", "1/5"],
+    "decision_cell": "1/10"
+  },
+  "decision_constants": {
+    "reject_p_floor": "1/10",
+    "approve_p_ceiling": "1/20",
+    "x_star_threshold": "1/20",
+    "reject_rule": "p_hat(1/10) on the main leg >= 1/10 AND x*_1 <= 1/20 AND x*_6 <= 1/20",
+    "approve_rule": "p_hat(1/10) on the main leg <= 1/20 AND x*_i > 1/20 for ALL seven concepts",
+    "evaluation_order": "REJECT first, then the INVALID controls gate, then APPROVE, then NULL",
+    "null_axes": ["p-straddle (p_hat(1/10) in (1/20, 1/10))", "arms-split", "mechanism-conditional", "arm disagreement surviving the INVALID diagnosis"]
+  },
+  "gates": {
+    "F1": "identity — w0 sums to 1 exactly; the seven recomputed exact totals equal the published Fractions concept-by-concept in table order; baseline band vector equals B0",
+    "F2": "critical-radius self-consistency — at x*_i - 1/1000 the exact 32-vertex range stays strictly inside the baseline band; at x*_i + 1/1000 the crossed edge lies inside the exact range; probe offset 1/1000 (min x* - 1/1000 = 953/47000 > 0)",
+    "F2_probe_offset": "1/1000",
+    "F3": "zero-flip identity — 1/50 < 1/47 = min_i x*_i (exact comparison recomputed in-sim); EVERY MC leg at x = 1/50 must record exactly zero band changes",
+    "F4": "containment — every sampled per-concept total at every radius within Arm A's exact 32-vertex range widened by 1e-9 absolute",
+    "F4_tolerance_abs": 1e-9,
+    "F5_hand_world": {
+      "weights": ["1/2", "1/2"],
+      "scores": ["3", "4"],
+      "expected_total": "7/2",
+      "expected_range_at_x_1_10": ["69/20", "71/20"]
+    },
+    "F6": "battery — core-random() draw-count sentinel 5*N per (seed, radius) uniform leg; twin independently-written decision evaluators; stdout + results.json byte-identical across two process runs (verified externally); CPython minor pinned",
+    "cross_seed_agreement_gate_abs": "1/50"
+  },
+  "seeds": {
+    "main": 20261369,
+    "stability": 20261370,
+    "reporting": 20261371,
+    "aux_reserved_never_read": 20261372
+  },
+  "draw_counts": {
+    "main_N_per_radius": 100000,
+    "stability_N_per_radius": 20000,
+    "reporting_N_per_world": 20000
+  },
+  "dirichlet_reporting_worlds": {
+    "kappas": [100, 400],
+    "mechanism": "w' ~ Dirichlet(kappa*w0) via random.gammavariate(kappa*w0_j, 1) renormalized; seed 20261371 ONLY; MC only, no exact counterpart, disclosed; never decision-bearing, no agreement gates ride them"
+  },
+  "drafter_disclosed_reference_never_gated": {
+    "x_star": ["1/27", "9/37", "1/3", "7/41", "1/11", "1/47", "1/5"],
+    "drafting_mc_throwaway_seed_999": {"p_1_50": "0 forced", "p_1_20": "~0.061", "p_1_10": "~0.225", "p_1_5": "~0.355"},
+    "note": "the sim re-derives from scratch and must not trust these; comparison is REPORTED, never gated"
+  }
+}
