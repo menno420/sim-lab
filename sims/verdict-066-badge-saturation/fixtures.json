@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "verdict": "VERDICT 066",
+    "intake": "INTAKE 055",
+    "proposal_header_verbatim": "## PROPOSAL 055 · 2026-07-14T02:25:10Z · status: sim-ready",
+    "proposal_source": "idea-engine control/outbox.md lines 457-462 @ main 18f31718b20cb1c5f3fad6cb2767babe124c691a (landed via idea-engine PR #385)",
+    "idea_doc": "ideas/superbot-mineverse/badge-saturation-coin-magnate-2026-07-14.md @ idea-engine main 18f3171 (the outbox idea: line pins pre-squash blob 4df5043249e86f250114394a6223c47bdcf9edaa - a squashed branch commit not in main history; the HEAD copy is authoritative and was verified constant-identical to the outbox block)",
+    "source_pins": {
+      "superbot-mineverse": "b983291cd9fc4b0d037a25a139c7ef5991e1236f",
+      "superbot": "34775943da081dd0a1dc7cf858efc0889726fcf6"
+    },
+    "hermetic": "the runner reads ONLY this fixtures.json - zero repo/network reads at verdict time; every constant below copied verbatim from the PROPOSAL 055 block / idea doc / the two firsthand pins at drafting-intake time",
+    "cpython_minor_pin": "3.11"
+  },
+  "faucet": {
+    "source": "disbot/services/economy_helpers.py @ superbot 3477594",
+    "daily_tiers_verbatim": "# Daily reward tiers  (label, rarity_emoji, min, max, base_weight)\n_DAILY_TIERS = [\n    (\"Common\", \"⬜\", 500, 999, 45),\n    (\"Uncommon\", \"🟩\", 1000, 1999, 25),\n    (\"Rare\", \"🟦\", 2000, 2999, 15),\n    (\"Epic\", \"🟪\", 3000, 3999, 8),\n    (\"Legendary\", \"🟧\", 4000, 4999, 5),\n    (\"Mythic\", \"🟥\", 5000, 5000, 2),\n]",
+    "pick_daily_verbatim": "def _pick_daily(streak: int) -> tuple[int, str, str]:\n    \"\"\"Return (amount, tier_label, rarity_emoji) for a daily claim.\"\"\"\n    weights = _daily_weights(streak)\n    tier = random.choices(_DAILY_TIERS, weights=weights, k=1)[0]\n    label, emoji, low, high, _ = tier\n    return random.randint(low, high), label, emoji",
+    "tiers": [[500, 999, 45], [1000, 1999, 25], [2000, 2999, 15], [3000, 3999, 8], [4000, 4999, 5], [5000, 5000, 2]],
+    "weight_denominator": 100,
+    "value_denominator": 100000,
+    "daily_cooldown_seconds": 86400,
+    "one_claim_per_day": true,
+    "E_daily_exact": "169201/100",
+    "per_value_numerators_over_1e5_derived": [[500, 999, 90], [1000, 1999, 25], [2000, 2999, 15], [3000, 3999, 8], [4000, 4999, 5], [5000, 5000, 2000]],
+    "registration_numerator_note_anomaly_A1": "the PROPOSAL 055 block and idea doc write the per-value table as '{9, 25, 15, 8, 5}/10^5 per ranged value + 2000/10^5 on the 5000 atom'. The Common row is a DENOMINATOR SLIP: Common spans 500 values (500..999), so 45/100 over 500 values = 9/10^4 per value = 90/10^5, not 9/10^5 (which would leave total pmf mass 0.595, contradicting the same registration's own 'weights sum 100' and E = 169201/100 exact). The committed source table is unambiguous; F1 asserts the source-derived exact table {90, 25, 15, 8, 5, atom 2000}/10^5 AND the reconciliation Fraction(9, 10^4) == Common per-value probability. Reported first-class; decision unaffected.",
+    "streak_weight_disclosure_anomaly_A3": "_daily_weights(streak) @ superbot 3477594 shifts weight from Common/Uncommon toward higher tiers as streak grows (luck = min(streak, 60), shift = luck * 0.25, taken from tiers 0/1, redistributed to tiers 2-5). The REGISTERED model rides the BASE weights (streak-0 / i.i.d. claims) - the streak-0 floor. Direction stated by the registration itself ('streak mechanics would concentrate T further - the age-badge direction'): real streaks only accelerate crossing, so a REJECT under base weights is robust to the disclosed streak mechanic. Reported first-class; decision unaffected."
+  },
+  "badge": {
+    "source": "server/views.py @ superbot-mineverse b983291",
+    "coin_magnate_threshold": 10000,
+    "banner_verbatim": "# --- achievements (fun layer) — deterministic badges over snapshot data ----\n#\n# Every threshold is documented here, next to the check that uses it.\n# Achievements are a pure derivation: same snapshot in, same badges out —\n# no state, no clock, no randomness.",
+    "calibration_comment_L1_packrat_verbatim": "# Packrat: total mining_inventory count at/above this. Chosen against the\n# committed sample so some miners hit it (SilverSeeker 212, CavernCrawler\n# 227) and some don't (DeepDelver 193, MagmaMaven 80, PebblePicker 51).\nPACKRAT_THRESHOLD = 200",
+    "calibration_comment_L2_coin_magnate_verbatim": "# Coin Magnate: coins at/above this. Sample: DeepDelver 18450 and\n# MagmaMaven 25990 hit; SilverSeeker 7320 and below don't.\nCOIN_MAGNATE_THRESHOLD = 10_000",
+    "badge_check_verbatim": "    if isinstance(miner.get(\"coins\"), int) \\\n            and miner[\"coins\"] >= COIN_MAGNATE_THRESHOLD:\n        earned.append(\"coin_magnate\")",
+    "shared_wallet_contract_verbatim": "mining state lives per `(suid, guild_id)` and is mutated only through\n`disbot/services/mining_workflow.py` (single-transaction ops); `coins` is\nmutated only by `economy_service`; `xp` comes from `game_xp_service`.",
+    "shared_wallet_field_row_verbatim": "| `coins` | integer ≥ 0 | yes | Coin balance. | `economy_service` (sole coin mutator) |",
+    "contract_source": "docs/mining-data-contract.md @ superbot-mineverse b983291",
+    "catalog_constants": {
+      "PACKRAT_THRESHOLD": 200,
+      "COIN_MAGNATE_THRESHOLD": 10000,
+      "TOOL_BREAKER_WEAR": 100,
+      "BALANCED_BUILD_MIN_SKILLS": 2,
+      "BALANCED_BUILD_MAX_SPREAD": 1,
+      "THE_ANSWER_COUNT": 42
+    },
+    "equipment_slots_closed_enum": ["tool", "light", "charm", "weapon", "shield", "helmet", "chestplate", "leggings", "boots"],
+    "catalog_order": ["deep_diver", "packrat", "coin_magnate", "fully_geared", "tool_breaker", "balanced_build", "the_answer"]
+  },
+  "sample": {
+    "source": "data/sample_snapshot.json @ superbot-mineverse b983291 (fields used by earned_achievements, copied verbatim)",
+    "max_depth": 3,
+    "miners": [
+      {"display_name": "DeepDelver", "coins": 18450, "record_depth": 3, "equipment": {"tool": "diamond pickaxe", "light": "diamond lantern", "charm": "lucky charm"}, "gear_wear": {"diamond pickaxe": 58, "diamond lantern": 22}, "mining_inventory": {"stone": 42, "iron": 63, "silver": 38, "gold": 21, "diamond": 9, "wood": 15, "torch": 3, "ration": 2}, "skills": {"mining": 4, "luck": 2}},
+      {"display_name": "SilverSeeker", "coins": 7320, "record_depth": 2, "equipment": {"tool": "gold pickaxe", "light": "lantern"}, "gear_wear": {"gold pickaxe": 31}, "mining_inventory": {"stone": 88, "bronze": 24, "iron": 41, "silver": 27, "wood": 30, "lantern": 1, "energy drink": 1}, "skills": {"mining": 2, "endurance": 1}},
+      {"display_name": "CavernCrawler", "coins": 2140, "record_depth": 2, "equipment": {"tool": "iron pickaxe", "light": "torch"}, "gear_wear": {"iron pickaxe": 9, "torch": 3}, "mining_inventory": {"stone": 130, "bronze": 33, "iron": 12, "wood": 44, "torch": 6, "cooked fish": 2}, "skills": {"mining": 1}},
+      {"display_name": "PebblePicker", "coins": 480, "record_depth": 1, "equipment": {"tool": "pickaxe"}, "gear_wear": {"pickaxe": 14}, "mining_inventory": {"stone": 37, "bronze": 4, "wood": 9, "pickaxe": 1}, "skills": {}},
+      {"display_name": "MagmaMaven", "coins": 25990, "record_depth": 3, "equipment": {"tool": "diamond pickaxe", "light": "diamond lantern", "charm": "lucky charm", "helmet": "iron helmet"}, "gear_wear": {"diamond pickaxe": 3, "diamond lantern": 47}, "mining_inventory": {"stone": 12, "gold": 44, "diamond": 17, "dynamite": 2, "ration": 5}, "skills": {"mining": 5, "luck": 3, "endurance": 2}},
+      {"display_name": "GearGoblin", "coins": 5620, "record_depth": 2, "equipment": {"tool": "silver pickaxe", "light": "lantern", "charm": "rabbit's foot", "weapon": "iron sword", "shield": "iron shield", "helmet": "iron helmet", "chestplate": "iron chestplate", "leggings": "iron leggings", "boots": "iron boots"}, "gear_wear": {"silver pickaxe": 26, "iron sword": 11, "iron shield": 8}, "mining_inventory": {"stone": 54, "iron": 18, "silver": 7, "wood": 12, "torch": 4}, "skills": {"mining": 3, "endurance": 1}},
+      {"display_name": "RustyRelic", "coins": 3150, "record_depth": 2, "equipment": {"tool": "battered pickaxe", "light": "torch"}, "gear_wear": {"battered pickaxe": 117, "torch": 5}, "mining_inventory": {"stone": 61, "bronze": 9, "iron": 6, "wood": 17, "torch": 2}, "skills": {"scavenging": 2}}
+    ],
+    "registered_derived_table": {
+      "pack_totals": {"DeepDelver": 193, "SilverSeeker": 212, "CavernCrawler": 227, "PebblePicker": 51, "MagmaMaven": 80, "GearGoblin": 95, "RustyRelic": 95},
+      "wear_max": {"DeepDelver": 58, "SilverSeeker": 31, "CavernCrawler": 9, "PebblePicker": 14, "MagmaMaven": 47, "GearGoblin": 26, "RustyRelic": 117},
+      "the_42_stone_row": "DeepDelver carries exactly 42 stone",
+      "record_depth_vs_max_depth": "max_depth 3; DeepDelver 3, MagmaMaven 3 (deep_diver saturates: record_depth in {0..3} caps at the contract's own max - two of seven sample miners already hold it)"
+    },
+    "registered_F3_hit_lists": {
+      "coin_magnate": ["DeepDelver", "MagmaMaven"],
+      "packrat": ["SilverSeeker", "CavernCrawler"],
+      "tool_breaker": ["RustyRelic"],
+      "balanced_build": ["SilverSeeker"],
+      "the_answer": ["DeepDelver"],
+      "fully_geared": ["GearGoblin"],
+      "deep_diver": ["DeepDelver", "MagmaMaven"]
+    }
+  },
+  "player_model": {
+    "description": "invented-but-pinned (registered): fresh wallet 0; per day, claim with probability p (one draw from the committed pmf), then spend floor(sigma*claim) back into sinks the same day - net increment = claim - floor(sigma*claim); savings never spent (direction stated: a sink that also taxes savings only slows T - generous to APPROVE); with probability 1-p no claim, wallet unchanged. T = first day wallet >= 10,000. Non-daily faucets EXCLUDED (direction stated: every extra faucet only accelerates T, REJECT-robust; V062 measured the farm alone at up to 4.77 dailies/day).",
+    "p_grid": ["1", "1/2", "1/4", "1/10"],
+    "sigma_grid": ["0", "1/2", "9/10"],
+    "decision_sigma": "1/2",
+    "season_horizon_days": 90,
+    "H_reporting_pair": [30, 180],
+    "p_denominator": 20,
+    "day_denominator": 2000000
+  },
+  "bands": {
+    "reject": {
+      "share_band": "19/20",
+      "cells_at_or_above_band_required": 3,
+      "cells_total": 4,
+      "median_conjunct_days": 14,
+      "median_conjunct_cell": {"p": "1", "sigma": "0"},
+      "arm_s_confirmation": "every firing cell within 1/100 absolute AND >= 4*SE headroom above 19/20"
+    },
+    "approve": {
+      "le_half_cells_required": 2,
+      "ge_band_cells_max": 1,
+      "both_arms": true,
+      "stability_reproduced": true
+    },
+    "null_axes": ["band-straddle (knob: the C* menu row)", "concentration-miss (P-band fires, median conjunct fails; knob: H)", "arm disagreement (a firing Arm-A cell loses the band in Arm S)"],
+    "evaluation_order": ["REJECT", "APPROVE", "NULL"],
+    "agreement_abs": "1/100",
+    "agreement_se_multiplier": 4
+  },
+  "seeds": {
+    "arm_s_headline": 20261357,
+    "stability": 20261358,
+    "reporting": 20261359,
+    "aux_never_read": 20261360,
+    "previous_high_water": 20261356,
+    "construction_convention": "RNGs constructed in pinned order 20261357 -> 20261358 -> 20261359 via a recording factory; the aux seed 20261360 is NEVER constructed and never read by any number (asserted); new registry high-water 20261360 (reserved by registration)"
+  },
+  "trajectory_counts": {
+    "decision_per_cell": 20000,
+    "stability_per_cell": 10000,
+    "reporting_per_cell": 10000
+  },
+  "cstar_menu": {
+    "rule": "C* = exact minimal integer C with P(T <= 90) <= 1/2, per decision cell",
+    "reexpress_thresholds": [20000, 50000, 100000],
+    "wallet_cap": 100000,
+    "machinery_note": "wallet is strictly non-decreasing (net = claim - floor(sigma*claim) >= 50 > 0 on every claim), so P(T <= 90 | threshold C) = P(W_90 >= C) exactly; the day-90 unabsorbed wallet law is computed exactly per decision cell via the binomial-mixture decomposition W_90 = S_K, K ~ Binomial(90, p) independent of claim values, S_k built by exact capped convolution (cap 100,000 + monotone overflow bucket); ASSERTED against the registered absorbing DP at C = 10,000 on every decision cell (exact Fraction equality)"
+  },
+  "F2_identities": {
+    "at_p1_sigma0": {"P_T_le_1": "0", "P_T_le_2": "1/2500", "P_T_le_2_derivation": "(2/100)^2 - the two-Mythic path is the only 2-day path (5000+5000 = 10000; any other pair <= 9999)", "T_le_20_certain": "P(T <= 20) = 1 exactly (min claim 500; 20*500 = 10000)"},
+    "at_sigma_half": {"P_T_le_3": "0", "derivation": "max net = 5000 - floor(2500) = 2500; 3*2500 = 7500 < 10000 (all p cells)"}
+  },
+  "fixture_level_choices_disclosed": {
+    "bernoulli_convention": "claim on day d iff rng.random() < float(p) - one RNG consumption every day of every trajectory including p = 1",
+    "value_draw_convention": "on claim days only: tier index via rng.choices(range(6), weights=[45,25,15,8,5,2], k=1)[0] then value via rng.randint(lo, hi) - tier-then-uniform exactly as economy_helpers._pick_daily draws it, at base (streak-0) weights",
+    "trajectory_shape": "every trajectory simulates the full 90-day horizon regardless of crossing day (T recorded at first crossing); draw sentinels: bernoulli draws == N*90 exactly per cell, value draws == claim events exactly per cell, and value draws == bernoulli draws on p = 1 cells",
+    "mc_loop_order": "sigma ascending, p descending, trajectories sequential (registered); decision leg has the single sigma 1/2; reporting leg order sigma 0 then 9/10, p descending within each",
+    "se_convention": "SE = sqrt(p_A * (1 - p_A) / N) with p_A the exact Arm-A value (exact-variance convention, float by disclosure - the V064 precedent)",
+    "reporting_leg_N": "10,000 per cell (fixture-level choice; the registration pins N only for the decision leg 20,000 and stability leg 10,000)",
+    "reporting_sanity_tolerance": "reporting-only MC cells must land within 0.025 (5*max SE at N = 10,000) of their exact Arm-A values - sanity self-check, never decision-bearing",
+    "median_convention": "median T = minimal n with P(T <= n) >= 1/2 (exact integer cross-multiplication); undefined within the computed horizon = +infinity for monotonicity comparisons",
+    "stdout_day_grid": [7, 14, 21, 30, 45, 60, 90],
+    "twin_evaluators": "two independently-written decision evaluators - one procedural on Fractions, one table-driven on pure-integer cross-multiplication - must agree on the headline ruling and the stability ruling",
+    "no_wall_clock": "no timestamps, no wall-clock, no environment paths in stdout or results.json; byte-identity across two process runs verified by EXTERNAL sha256",
+    "arm_a_horizon": "decision cells (sigma = 1/2) run 180 days (H pair 30/180 read off the same exact law); reporting sigma worlds (0, 9/10) run 90 days; the (p=1, sigma=0) cell runs 20 days (T <= 20 with probability exactly 1, asserted)"
+  },
+  "drafter_reference_never_gated": {
+    "sigma_half_P_T_le_90": ["1.000000", "1.000000", "0.986615", "0.205567"],
+    "sigma_half_order": "p = 1, 1/2, 1/4, 1/10",
+    "full_engagement_median_sigma0": 7,
+    "median_sigma_half_p1": 12,
+    "sigma_910_P_T_le_90": ["1.000000", "0.022956", "0.000000", "0.000000"],
+    "note": "drafting-time float DP, run and disclosed in PROPOSAL 055; the sim re-derives from scratch and must not trust these; compared, REPORTED, never gated (the V064 discipline)"
+  }
+}
