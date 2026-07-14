@@ -1,0 +1,123 @@
+{
+  "registration": {
+    "proposal_header": "## PROPOSAL 052 · 2026-07-14T00:26:42Z · status: sim-ready",
+    "proposal_source": "idea-engine control/outbox.md @ main cdf3e2ebe0dfb86806b7ab4fdb979b8810ffcb46 (landed via idea-engine PR #375)",
+    "idea_doc": "https://github.com/menno420/idea-engine/blob/751877c88e3b3cd76b0754ac30d83b7522a90db7/ideas/fleet/coupon-collector-tail-2026-07-14.md (ideas/fleet/coupon-collector-tail-2026-07-14.md @ idea-engine main cdf3e2e)",
+    "claim": "idea-engine PR #377 — control/claims/2026-07-14-verdict-063.md (claim-first; branch claude/verdict-063-coupon-collector-tail)",
+    "verdict": "VERDICT 063 (INTAKE 052; INTAKE number = proposal number per the established P050→V061 / P051→V062 offset map)",
+    "note": "fully hermetic — every constant below is pinned in the PROPOSAL 052 block / idea doc and copied verbatim here; zero repo/network reads at verdict time; the runner reads ONLY this fixtures.json"
+  },
+  "model": {
+    "draw_model": "uniform iid over N distinct items; one item per draw; the wait to go from j distinct held to j+1 is geometric with success (N−j)/N, expectation N/(N−j); all decision arithmetic exact fractions.Fraction",
+    "decision_grid_N": [20, 50, 100, 200],
+    "tail_rule": "m(N) = ceil(N/10) — the last-10% tail",
+    "tail_m": [2, 5, 10, 20],
+    "decision_cell_N": 50,
+    "last20_alternative_rule": "m = ceil(N/5) — reporting-only alternative tail",
+    "last20_alternative_m": [4, 10, 20, 40],
+    "formulas": {
+      "harmonic": "H_N = sum_{k=1..N} 1/k, exact rational",
+      "expected_total": "E[T_N] = sum_{j=0..N−1} N/(N−j) = N·H_N",
+      "expected_tail": "E[tail_m] = sum_{j=N−m..N−1} N/(N−j) = N·H_m",
+      "phi": "phi(N) = H_m/H_N — the tail-cost fraction",
+      "last_single_coupon_share": "1/H_N (the m = 1 tail share; the final coupon alone costs N draws in expectation)",
+      "cdf_inclusion_exclusion": "P(T_N <= t) = sum_{j=0..N} (−1)^j C(N,j) (1 − j/N)^t, exact rational — used for the F5 identity and the overshoot report"
+    },
+    "overshoot_report": {
+      "definition": "P(T_50 > 2·E[T_50]) via the inclusion–exclusion CDF, exact",
+      "integer_convention_disclosed": "T_50 is integer-valued and 2·E[T_50] = 13943237577224054960759/30990445042459967064 ≈ 449.9206 is NOT an integer, so P(T_50 > 2·E[T_50]) = P(T_50 > 449) = 1 − P(T_50 <= 449) EXACTLY with t* = floor(2·E[T_50]) = 449 — the floor convention loses nothing here (no probability mass sits between 449 and 2·E); disclosed fixture-level convention",
+      "t_star": 449
+    }
+  },
+  "decision_rule": {
+    "evaluation_order": ["REJECT (checked FIRST)", "INVALID (controls)", "APPROVE", "NULL (pre-registered axes)"],
+    "REJECT": "checked FIRST — 'the tail-is-minor folk belief FAILS in the costly direction': phi(50) >= 2/5 AND phi(N) >= 2/5 in >= 3 of the 4 grid cells AND Arm S confirms within tolerance (the agreement gate passes on every grid cell)",
+    "reject_band": {"num": 2, "den": 5},
+    "reject_cells_required": 3,
+    "INVALID": "controls misbehaving — report, no ruling: the H_N re-derivation gate (F1), the m=N identity phi=1 / m=1 identity phi=1/H_N (F3), the small-N exact-CDF identity (F5), or the Arm-S agreement gate failing on any grid cell; in this runner every control is a hard self-check — a failure prints SELF-CHECK FAIL and exits 1 with no ruling emitted (the INVALID landing)",
+    "APPROVE": "'the folk belief holds — the tail is minor': phi(N) <= 1/5 at EVERY grid N AND the seed-20261346 stability leg reproduces the ruling through the twin independently-written evaluators (mutually exclusive with REJECT by arithmetic)",
+    "approve_band": {"num": 1, "den": 5},
+    "NULL": "anything else — pre-registered axes: (i) band-straddle phi(50) in (1/5, 2/5); (ii) N-sensitivity — phi crosses a band across the grid, the finding being the phi(N) growth curve with its boundary named; (iii) weight-sensitivity — the weighted rarity-tier leg would flip a promoted decision, named never ruling; (iv) arm disagreement",
+    "agreement_tolerance": {
+      "relative": {"num": 1, "den": 100},
+      "se_multiplier": 4,
+      "rule": "per grid cell, on E[T_N] AND on phi: |mean_S − E_A|/E_A <= 1/100 AND |mean_S − E_A| <= 4·SE — both quantities, both conjuncts, every cell; any breach → INVALID"
+    }
+  },
+  "arm_A": {
+    "role": "DECISION arm — seedless, exact fractions.Fraction, alone decision-bearing; byte-identical across process runs",
+    "twin_computation": "H_N re-derived two independently-structured ways (direct ascending sum of 1/k vs the stage-expectation accounting (sum_j N/(N−j))/N) — identical rationals required (F1/F2)",
+    "outputs": "per grid cell: H_N, H_m, E[T_N], E[tail_m], phi(N), 1/H_N; plus the last-20% alternative column (exact), the overshoot report, and the F5 small-N CDF table"
+  },
+  "arm_S": {
+    "seed_main": 20261345,
+    "N_main": 200000,
+    "leg_order_main": "pinned: decision cells in N-ascending order (20, 50, 100, 200), then the F5 control cells (N = 2, then N = 3) — one RNG, seed 20261345, constructed first",
+    "f5_control_N_runs": 200000,
+    "f5_control_note": "the F5 'Arm S within tolerance there' legs at N in {2, 3} ride the MAIN seed after the four decision cells, 200,000 trajectories each — a disclosed fixture-level count choice (the registration pins 200,000 for the grid and leaves the small-N control count open)",
+    "draw_primitive_disclosed": "pinned per-draw RNG primitive: exactly ONE rng.random() call per draw, item index = int(u·N) with u = rng.random() (u < 1 so the index is always < N); per trajectory: draw until all N distinct items are held, recording the completion tick T and the tail draws T − mark, where mark = the tick at which the (N−m)-th distinct item was acquired (for m = N, mark = 0 — the tail is the whole trajectory)",
+    "estimators_disclosed": {
+      "mean_T": "mean_S(T) = (sum of recorded T)/n, kept as an exact Fraction",
+      "SE_T": "sample SD of T with Bessel correction (n−1), divided by sqrt(n), computed in float — the E[T_N] gate's SE",
+      "phi_hat": "ratio-of-means estimator phi_hat = (sum of tail draws)/(sum of total draws), an exact Fraction",
+      "SE_phi": "delta-method SE for the ratio of means: SE_phi = sqrt((s_q^2 − 2·phi_hat·s_qt + phi_hat^2·s_t^2)/n)/mean_T with s_q^2, s_t^2, s_qt the Bessel-corrected sample variances/covariance of (tail, total), computed in float — DISCLOSED fixture-level convention"
+    },
+    "seed_stability": 20261346,
+    "N_stability": 20000,
+    "leg_order_stability": "pinned: decision cells in N-ascending order (20, 50, 100, 200)",
+    "stability_rule": "the seed-20261346 leg must reproduce the ruling: the twin independently-written decision evaluators, applied to the stability phi-hat table (exact rationals sum_tail/sum_T), must both land the same arithmetic class as Arm A's ruling; no separate widened agreement gate is registered — reproduction through the twins IS the conjunct; worst deviations reported",
+    "seed_reporting": 20261347,
+    "N_reporting": 20000,
+    "leg_order_reporting": "pinned: last-20% alternative legs at the four grid N ascending (uniform model, tail m = ceil(N/5)), then weighted rarity-tier legs at the four grid N ascending (tail m = ceil(N/10)) — one RNG, seed 20261347; reporting-only, can NEVER flip the decision",
+    "seed_aux": 20261348,
+    "aux_role": "constructed in pinned order (fourth), RESERVED, NEVER read by any decision number; draw-count sentinel asserts exactly 0 calls",
+    "constructed_rngs": "the four registered seeds are the ONLY RNGs constructed, in pinned order 20261345 → 20261346 → 20261347 → 20261348, strictly above the P051/V062 registry high-water 20261344",
+    "sentinels": "per leg: total rng.random() calls consumed by the leg ≡ the sum of recorded total draws over its trajectories (recorded draws ≡ completion ticks — one call per draw, no other consumer); per seed: the counting wrapper's call total ≡ the sum over that seed's legs"
+  },
+  "weighted_rarity_tier": {
+    "role": "reporting-only (seed 20261347) — MC only, no simple exact closed form (disclosed); names the weight-sensitivity axis, never rules",
+    "tier_mass": [{"num": 7, "den": 10}, {"num": 1, "den": 4}, {"num": 1, "den": 20}],
+    "tier_item_fractions": "first 0.7·N items / next 0.25·N items / last 0.05·N items, per the registration",
+    "integer_split_convention_disclosed": "at each N the tier item-counts must be integers; 0.25·50 = 12.5 is not, so the pinned convention is c1 = floor(0.7·N), c2 = floor(0.25·N), c3 = N − c1 − c2 (remainder to the rare tier) — a DISCLOSED fixture-level choice, committed before the runner exists",
+    "tier_counts_by_N": {"20": [14, 5, 1], "50": [35, 12, 3], "100": [70, 25, 5], "200": [140, 50, 10]},
+    "within_tier": "uniform: per-item probability = tier mass / tier item-count",
+    "draw_construction_disclosed": "exactly ONE rng.random() call per draw: u < 7/10 → tier 1 with index int((u/0.7)·c1); 7/10 <= u < 19/20 → tier 2 with index c1 + int(((u − 0.7)/0.25)·c2); u >= 19/20 → tier 3 with index c1 + c2 + int(((u − 0.95)/0.05)·c3); every index clamped to its tier by min(count−1, ·) against float edge rounding — this construction realizes the pinned pmf exactly up to float granularity (~2^−53, negligible against the reporting resolution)",
+    "degeneracy_disclosure": "OBSERVED AT FIXTURE TIME, before the runner: the registered tier masses (70%/25%/5%) EQUAL the registered tier item-fractions (0.7/0.25/0.05), so wherever the counts divide evenly (N = 20, 100, 200) the per-item pmf is exactly uniform 1/N and the 'weighted' leg coincides with the uniform model by construction; only the N = 50 integer split (35/12/3) departs from uniform (per-item 1/50 vs 1/48 vs 1/60 — the rare tier rarer). The leg is run and reported exactly as registered; the amplification column therefore measures the rounding-induced departure at N = 50 and a pure re-measurement of uniform elsewhere. Disclosed here, direction still reported.",
+    "measured": "per grid N: mean total draws and phi_hat (ratio of means) with tail m = ceil(N/10), compared against the uniform Arm A exact values — reported, never gated"
+  },
+  "gates": {
+    "F1": {
+      "rule": "harmonic re-derivation exact: H_N by direct ascending sum of Fraction(1, k) must equal the independently-structured stage-sum derivation (sum_{j=0..N−1} N/(N−j))/N for every grid N and every F5 N; pinned anchors asserted",
+      "H5": {"num": 137, "den": 60},
+      "H10": {"num": 7381, "den": 2520}
+    },
+    "F2": "linearity identity: E[T_N] = sum_{j=0..N−1} N/(N−j) = N·H_N and E[tail_m] = sum_{j=N−m..N−1} N/(N−j) = N·H_m, with the stage-expectation accounting summing exactly — head stages (j = 0..N−m−1) + tail stages (j = N−m..N−1) = total, per grid cell, identical rationals from both structures",
+    "F3": "boundary identities exact, per grid N: phi(N, m=N) = 1 and phi(N, m=1) = 1/H_N",
+    "F4": "monotonicity theorems exact: (a) phi(N, m) non-decreasing in m over m = 1..N at every grid N; (b) E[T_N] strictly increasing in N over N = 1..200; (c) the last-coupon stage expectation is exactly N (stage j = N−1: N/(N−(N−1)) = N)",
+    "F5": {
+      "rule": "small-N exact-CDF identity: at N in {2, 3} the inclusion–exclusion P(T <= t) equals FULL ENUMERATION over all N^t draw sequences (count of sequences containing all N items, over N^t) for every t in the pinned range, exact rationals; E[T_2] = 3 and E[T_3] = 11/2 exact; and Arm S at N in {2, 3} (main seed, 200,000 trajectories) is within tolerance — the mean gate as on the grid, plus the CDF point gate",
+      "t_range": [1, 12],
+      "t_range_note": "t = 1..12 inclusive, both N — pinned, disclosed (2^12 = 4096 and 3^12 = 531441 sequences enumerated literally)",
+      "E_T2": {"num": 3, "den": 1},
+      "E_T3": {"num": 11, "den": 2},
+      "cdf_point_gate_disclosed": "|P_hat(T <= t) − P(T <= t)| <= 1/100 absolute AND <= 4·sqrt(P(1−P)/n) for every t in the pinned range, P the exact CDF value — a disclosed fixture-level convention for 'Arm S within tolerance there'"
+    },
+    "other": "transcription gates exact (grid, tail rules, bands, tolerance, seeds, tier constants); per-leg draw-count sentinels; twin independently-written decision evaluators (procedural-Fraction vs pure-integer cross-multiplication — both must agree on every table: Arm A decision, stability, last-20% reporting, weighted reporting); stdout + results.json byte-identical across two full process runs by external sha256 (no wall-clock/timestamps in any output); CPython minor pinned below and asserted in the runner"
+  },
+  "environment": {
+    "cpython_minor": [3, 11],
+    "stdlib_only": true,
+    "run": "python3 sims/verdict-063-coupon-collector-tail/coupon_tail_sim.py"
+  },
+  "drafter_reference_never_gated": {
+    "note": "the drafter's DISCLOSED expected landing (P048–P051 closed-form-arm norm) — re-derived from scratch with ZERO trust, compared in REPORT.md and stdout, never gated",
+    "expected_class": "REJECT",
+    "expected_phi": [
+      {"N": 20, "phi_expr": "(3/2)/H_20", "phi_approx": 0.417},
+      {"N": 50, "phi_expr": "(137/60)/H_50", "phi_approx": 0.508, "note": "the decision cell — 'the last 10% of a 50-item set costs about HALF the expected draws'"},
+      {"N": 100, "phi_expr": "H_10/H_100", "phi_approx": 0.565},
+      {"N": 200, "phi_expr": "H_20/H_200", "phi_approx": 0.612}
+    ],
+    "expected_sharpening": "the final SINGLE coupon alone costs N draws = 1/H_N of the total, ≈ 0.22 at N = 50"
+  }
+}
