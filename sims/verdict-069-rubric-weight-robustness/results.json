@@ -1,0 +1,482 @@
+{
+  "arm_a": {
+    "baseline_partition": [
+      "best",
+      "borderline",
+      "borderline",
+      "borderline",
+      "borderline",
+      "borderline",
+      "no-build"
+    ],
+    "baseline_totals": [
+      "141/40",
+      "131/40",
+      "13/4",
+      "127/40",
+      "31/10",
+      "121/40",
+      "11/4"
+    ],
+    "min_x_star": "1/47",
+    "vertex_ranges_per_radius": {
+      "1/10": [
+        [
+          "1383/400",
+          "1437/400"
+        ],
+        [
+          "1273/400",
+          "1347/400"
+        ],
+        [
+          "127/40",
+          "133/40"
+        ],
+        [
+          "1229/400",
+          "1311/400"
+        ],
+        [
+          "299/100",
+          "321/100"
+        ],
+        [
+          "1163/400",
+          "1257/400"
+        ],
+        [
+          "21/8",
+          "23/8"
+        ]
+      ],
+      "1/20": [
+        [
+          "2793/800",
+          "2847/800"
+        ],
+        [
+          "2583/800",
+          "2657/800"
+        ],
+        [
+          "257/80",
+          "263/80"
+        ],
+        [
+          "2499/800",
+          "2581/800"
+        ],
+        [
+          "609/200",
+          "631/200"
+        ],
+        [
+          "2373/800",
+          "2467/800"
+        ],
+        [
+          "43/16",
+          "45/16"
+        ]
+      ],
+      "1/5": [
+        [
+          "339/100",
+          "183/50"
+        ],
+        [
+          "309/100",
+          "173/50"
+        ],
+        [
+          "31/10",
+          "17/5"
+        ],
+        [
+          "297/100",
+          "169/50"
+        ],
+        [
+          "72/25",
+          "83/25"
+        ],
+        [
+          "279/100",
+          "163/50"
+        ],
+        [
+          "5/2",
+          "3"
+        ]
+      ],
+      "1/50": [
+        [
+          "7023/2000",
+          "7077/2000"
+        ],
+        [
+          "6513/2000",
+          "6587/2000"
+        ],
+        [
+          "647/200",
+          "653/200"
+        ],
+        [
+          "6309/2000",
+          "6391/2000"
+        ],
+        [
+          "1539/500",
+          "1561/500"
+        ],
+        [
+          "6003/2000",
+          "6097/2000"
+        ],
+        [
+          "109/40",
+          "111/40"
+        ]
+      ]
+    },
+    "x_star": [
+      {
+        "concept": 1,
+        "crossed_edge": "7/2",
+        "matches_drafter_disclosure": true,
+        "name": "AI Novella Production Kit",
+        "vertex_pattern": [
+          1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "x_star": "1/27",
+        "x_star_float": 0.037037037037037035
+      },
+      {
+        "concept": 2,
+        "crossed_edge": "7/2",
+        "matches_drafter_disclosure": true,
+        "name": "Fiction Vetting-Packet Kit",
+        "vertex_pattern": [
+          -1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "x_star": "9/37",
+        "x_star_float": 0.24324324324324326
+      },
+      {
+        "concept": 3,
+        "crossed_edge": "7/2",
+        "matches_drafter_disclosure": true,
+        "name": "Pre-Registered Experiment Kit",
+        "vertex_pattern": [
+          -1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "x_star": "1/3",
+        "x_star_float": 0.3333333333333333
+      },
+      {
+        "concept": 4,
+        "crossed_edge": "3",
+        "matches_drafter_disclosure": true,
+        "name": "Trilingual Edition Factory",
+        "vertex_pattern": [
+          1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "x_star": "7/41",
+        "x_star_float": 0.17073170731707318
+      },
+      {
+        "concept": 5,
+        "crossed_edge": "3",
+        "matches_drafter_disclosure": true,
+        "name": "Dead-Session Recovery Playbook",
+        "vertex_pattern": [
+          1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "x_star": "1/11",
+        "x_star_float": 0.09090909090909091
+      },
+      {
+        "concept": 6,
+        "crossed_edge": "3",
+        "matches_drafter_disclosure": true,
+        "name": "Agent Session Retro Kit",
+        "vertex_pattern": [
+          1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "x_star": "1/47",
+        "x_star_float": 0.02127659574468085
+      },
+      {
+        "concept": 7,
+        "crossed_edge": "3",
+        "matches_drafter_disclosure": true,
+        "name": "Provenance-Freshness Checker Kit",
+        "vertex_pattern": [
+          -1,
+          1,
+          1,
+          1,
+          -1
+        ],
+        "x_star": "1/5",
+        "x_star_float": 0.2
+      }
+    ]
+  },
+  "arm_s": {
+    "main": {
+      "N": 100000,
+      "label": "main",
+      "radii": [
+        {
+          "band_changes_per_concept": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "core_random_calls": 500000,
+          "edge_hits": 0,
+          "flips": 0,
+          "p_hat": 0.0,
+          "x": "1/50"
+        },
+        {
+          "band_changes_per_concept": [
+            143,
+            0,
+            0,
+            0,
+            0,
+            6007,
+            0
+          ],
+          "core_random_calls": 500000,
+          "edge_hits": 0,
+          "flips": 6007,
+          "p_hat": 0.06007,
+          "x": "1/20"
+        },
+        {
+          "band_changes_per_concept": [
+            9474,
+            0,
+            0,
+            0,
+            3,
+            22455,
+            0
+          ],
+          "core_random_calls": 500000,
+          "edge_hits": 0,
+          "flips": 22455,
+          "p_hat": 0.22455,
+          "x": "1/10"
+        },
+        {
+          "band_changes_per_concept": [
+            25938,
+            0,
+            0,
+            12,
+            5166,
+            35574,
+            0
+          ],
+          "core_random_calls": 500000,
+          "edge_hits": 0,
+          "flips": 35631,
+          "p_hat": 0.35631,
+          "x": "1/5"
+        }
+      ],
+      "seed": 20261369
+    },
+    "stability": {
+      "N": 20000,
+      "label": "stability",
+      "radii": [
+        {
+          "band_changes_per_concept": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "core_random_calls": 100000,
+          "edge_hits": 0,
+          "flips": 0,
+          "p_hat": 0.0,
+          "x": "1/50"
+        },
+        {
+          "band_changes_per_concept": [
+            26,
+            0,
+            0,
+            0,
+            0,
+            1203,
+            0
+          ],
+          "core_random_calls": 100000,
+          "edge_hits": 0,
+          "flips": 1203,
+          "p_hat": 0.06015,
+          "x": "1/20"
+        },
+        {
+          "band_changes_per_concept": [
+            1849,
+            0,
+            0,
+            0,
+            0,
+            4476,
+            0
+          ],
+          "core_random_calls": 100000,
+          "edge_hits": 0,
+          "flips": 4476,
+          "p_hat": 0.2238,
+          "x": "1/10"
+        },
+        {
+          "band_changes_per_concept": [
+            5207,
+            0,
+            0,
+            0,
+            1037,
+            7138,
+            0
+          ],
+          "core_random_calls": 100000,
+          "edge_hits": 0,
+          "flips": 7145,
+          "p_hat": 0.35725,
+          "x": "1/5"
+        }
+      ],
+      "seed": 20261370
+    }
+  },
+  "aux_seed_never_read": true,
+  "class": "reject",
+  "cpython": "3.11",
+  "cross_seed_gate": {
+    "abs_bound": "1/50",
+    "per_radius_abs_dev": [
+      0.0,
+      8.000000000000368e-05,
+      0.0007500000000000007,
+      0.0009399999999999964
+    ]
+  },
+  "decision": {
+    "evaluation_order": "REJECT -> INVALID -> APPROVE -> NULL",
+    "p_hat_main_at_decision_cell": {
+      "den": 20000,
+      "float": 0.22455,
+      "num": 4491
+    },
+    "p_hat_stability_at_decision_cell": {
+      "den": 5000,
+      "float": 0.2238,
+      "num": 1119
+    },
+    "reject_conjuncts": {
+      "p_main_ge_1_10": true,
+      "x_star_1_le_1_20": true,
+      "x_star_6_le_1_20": true
+    },
+    "twin_evaluators": {
+      "headline": [
+        "reject",
+        "reject"
+      ],
+      "stability": [
+        "reject",
+        "reject"
+      ]
+    }
+  },
+  "intake": "INTAKE 058",
+  "reporting_dirichlet": [
+    {
+      "N": 20000,
+      "band_changes_per_concept": [
+        7137,
+        190,
+        11,
+        934,
+        3597,
+        8244,
+        431
+      ],
+      "flips": 8758,
+      "gammavariate_calls": 100000,
+      "kappa": 100,
+      "p_hat": 0.4379
+    },
+    {
+      "N": 20000,
+      "band_changes_per_concept": [
+        4863,
+        0,
+        0,
+        6,
+        684,
+        6771,
+        1
+      ],
+      "flips": 6777,
+      "gammavariate_calls": 100000,
+      "kappa": 400,
+      "p_hat": 0.33885
+    }
+  ],
+  "rngs_constructed_in_order": [
+    20261369,
+    20261370,
+    20261371
+  ],
+  "self_checks": {
+    "failed": 0,
+    "failures": [],
+    "passed": 64
+  },
+  "verdict": "VERDICT 069"
+}
