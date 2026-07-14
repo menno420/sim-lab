@@ -1,0 +1,17 @@
+VERDICT 069 — rubric weight-robustness (INTAKE 058 / idea-engine PROPOSAL 058)
+class: reject
+x* table (exact):
+  concept 1 AI Novella Production Kit          x* = 1/27   (0.037037) edge 7/2  drafter-match=True
+  concept 2 Fiction Vetting-Packet Kit         x* = 9/37   (0.243243) edge 7/2  drafter-match=True
+  concept 3 Pre-Registered Experiment Kit      x* = 1/3    (0.333333) edge 7/2  drafter-match=True
+  concept 4 Trilingual Edition Factory         x* = 7/41   (0.170732) edge 3  drafter-match=True
+  concept 5 Dead-Session Recovery Playbook     x* = 1/11   (0.090909) edge 3  drafter-match=True
+  concept 6 Agent Session Retro Kit            x* = 1/47   (0.021277) edge 3  drafter-match=True
+  concept 7 Provenance-Freshness Checker Kit   x* = 1/5    (0.200000) edge 3  drafter-match=True
+p_hat main   per radius: ['1/50: 0.000000', '1/20: 0.060070', '1/10: 0.224550', '1/5: 0.356310']
+p_hat stab   per radius: ['1/50: 0.000000', '1/20: 0.060150', '1/10: 0.223800', '1/5: 0.357250']
+dirichlet    (reporting): ['kappa=100: 0.437900', 'kappa=400: 0.338850']
+attribution  main x=1/10: [9474, 0, 0, 0, 3, 22455, 0]
+edge hits total: 0
+rngs constructed (order): [20261369, 20261370, 20261371] ; aux 20261372 never read: True
+SELF-CHECKS: 64 passed, 0 failed
