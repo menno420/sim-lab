@@ -1,0 +1,79 @@
+SELF-CHECK FAIL: MC-A-MNZ-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+SELF-CHECK FAIL: MC-A-MNZ-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-A-MNZ-B4(p=1/4)-w2-T20-once mc 1.0 exact 0.9999172819387447 se 0.0
+SELF-CHECK FAIL: MC-A-MNZ-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-MNZ-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-MZN-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+SELF-CHECK FAIL: MC-A-MZN-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-A-MZN-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-MZN-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-NMZ-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+SELF-CHECK FAIL: MC-A-NMZ-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-A-NMZ-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-NMZ-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-NZM-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-NZM-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-ZMN-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+SELF-CHECK FAIL: MC-A-ZMN-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-A-ZMN-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-ZMN-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-ZNM-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-A-ZNM-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-MNZ-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+SELF-CHECK FAIL: MC-B-MNZ-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-B-MNZ-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-MNZ-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-MZN-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+SELF-CHECK FAIL: MC-B-MZN-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-B-MZN-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-MZN-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-NMZ-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+SELF-CHECK FAIL: MC-B-NMZ-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-B-NMZ-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-NMZ-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-NZM-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-NZM-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-ZMN-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+SELF-CHECK FAIL: MC-B-ZMN-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-B-ZMN-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-ZMN-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-ZNM-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B-ZNM-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-MNZ-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-MNZ-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-MNZ-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-MZN-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-MZN-B4(p=1/4)-w2-T20-once mc 1.0 exact 0.9999172819387447 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-MZN-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-MZN-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-NMZ-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-NMZ-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-NMZ-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-NZM-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-NZM-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-ZMN-B4(p=1/20)-w2-T20-once mc 1.0 exact 0.9999974696181249 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-ZMN-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-ZMN-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-ZNM-B4(p=1/4)-w3-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-B4-stress-ZNM-B4(p=1/4)-w4-T100-once mc 1.0 exact 0.9999999999996793 se 0.0
+SELF-CHECK FAIL: MC-holdout-MNZ-B1-w2-T20-once mc 1.0 exact 0.9999990463256836 se 0.0
+VERDICT 074 — menu-width leverage inversion (idea-engine PROPOSAL 063)
+gates: F1/F1b/F2/F3/F4 GREEN
+verdict: REJECT-REORDER — no ordering passes all four bands; w2 B1 long-run partition {0/1, 1/2} forces MONOTONE and POSITIVE-FLOOR to be jointly unsatisfiable
+
+band table (PER-APP, exact arm):
+policy  MONOTONE  FLOOR  FARMER  CONFORM     B1 E20 w2         w3  lr w2  B2 cur w2
+MNZ *   False     True   False   False        9.500001   6.166967    1/2      190.0
+MZN     False     True   False   True         9.000020   6.166967    1/2      190.0
+NMZ     False     True   False   False        9.500001   6.166967    1/2      190.0
+NZM     True      False  True    True         0.000000   6.166967    0/1        0.0
+ZMN     False     True   False   True         9.000020   6.166967    1/2      190.0
+ZNM     True      False  True    True         0.000000   6.166967    0/1        0.0
+  (* = SHIPPED)
+
+F2 exact: SHIPPED×B1 E[mints,T=20] w2 = 9961473/1048576 ≈ 9.500001, w3 = 21502885715/3486784401 ≈ 6.166967 (-35.1%)
+partition of w2 B1 long-run rates: {0/1, 1/2}
+drafter comparison (never gated): {"conform_false_policies": true, "predicted_verdict_matches": true, "shipped_B2_19_mints_190_currency_every_width": true, "shipped_E_T20_drop_pct": {"derived": -35.1, "disclosed": -35.1, "match": true}, "shipped_longrun_fall_1/2_to_1/3": true, "w2_B1_partition_0_half": true, "zero_floor_farmer_gated_to_zero": true, "zero_floor_orderings": true}
+MC draws per leg: {"A": 111960000, "B": 111960000, "B4-stress": 72000000, "holdout": 6000000}; RNGs constructed: 219
+
+SELF-CHECKS: 1537 passed, 59 failed
