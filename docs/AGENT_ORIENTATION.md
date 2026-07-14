@@ -35,7 +35,9 @@ touching the trigger registry) · `docs/seat-digest.md` (the kit-generated
 seat digest) · `docs/ideas/README.md` ·
 `docs/retro/questions.md` (the fleet retro self-review set) ·
 `docs/audits/2026-07-13-fleet-cleanup-audit.md` (external fleet-wide
-cleanup/audit pass, EAP final night) — plus the root
+cleanup/audit pass, EAP final night) ·
+[`docs/eap-closeout-walkthrough-2026-07-14.md`](eap-closeout-walkthrough-2026-07-14.md)
+(the owner-facing EAP close-out walkthrough, ORDER 008 item (b)) — plus the root
 `CONSTITUTION.md` (the working agreement), the lane contract (root `README.md` +
 `CONVENTIONS.md`), and `.session-journal.md`.
 
