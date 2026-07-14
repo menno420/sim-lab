@@ -1,0 +1,336 @@
+{
+ "B0_request_claim": {
+  "claim": "The cook leg is UNWIRED today \u2014 there are no cooked-value or energy-restore constants anywhere in the repo (tested in B0; the flat mining-side constant exists)",
+  "finding": "PARTIALLY FALSE at the pin: games/mining/core/energy.py RESTORE_VALUES carries a FLAT 'cooked fish': 30 (the legacy-inherited campfire meal); NO per-species constants exist \u2014 the ask stands, but the flat constant is committed reality the cook wiring must supersede or reconcile (audited as F-FLAT30)"
+ },
+ "C3_choice": {
+  "coin_axis_arithmetic": {
+   "bass": {
+    "E_s": 1,
+    "coin_dominated": false,
+    "cook_then_earn_at_max_faucet": 13.482143,
+    "sell": 13
+   },
+   "legend_carp": {
+    "E_s": 7,
+    "coin_dominated": false,
+    "cook_then_earn_at_max_faucet": 94.375,
+    "sell": 80
+   },
+   "minnow": {
+    "E_s": 1,
+    "coin_dominated": false,
+    "cook_then_earn_at_max_faucet": 13.482143,
+    "sell": 8
+   },
+   "pike": {
+    "E_s": 2,
+    "coin_dominated": true,
+    "cook_then_earn_at_max_faucet": 26.964286,
+    "sell": 27
+   }
+  },
+  "judgment_label": "the VALUE of the time axis (energy-now vs coins-later) and of campfire shop-independence is JUDGMENT-ONLY; the domination arithmetic above is measured",
+  "shop_context": "under the committed (V042-flagged, intent-open) shop at 0.8 coins/energy, sell-then-buy-rations yields 1.25 energy per forgone coin \u2014 cooking at P* is coin-dominated BY DESIGN (the anti-bypass direction); its niche is immediacy + campfire access",
+  "time_axis_measured": {
+   "bass": {
+    "regen_seconds_skipped": 10
+   },
+   "legend_carp": {
+    "regen_seconds_skipped": 70
+   },
+   "minnow": {
+    "regen_seconds_skipped": 10
+   },
+   "pike": {
+    "regen_seconds_skipped": 20
+   }
+  }
+ },
+ "F_FLAT30": {
+  "floor_bound": "rho_flat = 15 x bite_rate >= 15 x MIN_BITE_CHANCE(0.30) = 4.5 at ANY cell of ANY world \u2014 the committed flat 30 is a self-sustaining energy loop (perpetual motion) the moment a fishing-haul cook op wires it; it must be superseded by the per-species table",
+  "min_rho_flat": 7.134375,
+  "rho_flat_by_cell": {
+   "W4": {
+    "deep_water/fresh": 7.134375,
+    "deep_water/geared": 8.41875,
+    "deep_water/master": 10.809375,
+    "dock/fresh": 7.921875,
+    "dock/geared": 9.13125,
+    "dock/master": 11.6625,
+    "tide_pool/fresh": 9.4125,
+    "tide_pool/geared": 10.5,
+    "tide_pool/master": 13.134375
+   },
+   "WR": {
+    "deep_water/fresh": 7.134375,
+    "deep_water/geared": 8.41875,
+    "deep_water/master": 10.809375,
+    "dock/fresh": 7.921875,
+    "dock/geared": 9.13125,
+    "dock/master": 11.6625,
+    "tide_pool/fresh": 9.4125,
+    "tide_pool/geared": 10.5,
+    "tide_pool/master": 13.134375
+   }
+  }
+ },
+ "P_sweep": [
+  {
+   "C1_PM": false,
+   "C2_BYPASS": true,
+   "P": 6,
+   "min_implied_price_W4": 6.153846,
+   "pass": false,
+   "worst_rho_W4": 1.499687,
+   "worst_rho_WR": 2.211875
+  },
+  {
+   "C1_PM": false,
+   "C2_BYPASS": true,
+   "P": 8,
+   "min_implied_price_W4": 6.5,
+   "pass": false,
+   "worst_rho_W4": 1.215937,
+   "worst_rho_WR": 1.619375
+  },
+  {
+   "C1_PM": false,
+   "C2_BYPASS": true,
+   "P": 10,
+   "min_implied_price_W4": 8.0,
+   "pass": false,
+   "worst_rho_W4": 0.984687,
+   "worst_rho_WR": 1.315312
+  },
+  {
+   "C1_PM": true,
+   "C2_BYPASS": true,
+   "P": 12,
+   "min_implied_price_W4": 8.0,
+   "pass": true,
+   "worst_rho_W4": 0.814688,
+   "worst_rho_WR": 1.110313
+  },
+  {
+   "C1_PM": true,
+   "C2_BYPASS": true,
+   "P": 14,
+   "min_implied_price_W4": 8.0,
+   "pass": true,
+   "worst_rho_W4": 0.757812,
+   "worst_rho_WR": 1.010625
+  },
+  {
+   "C1_PM": true,
+   "C2_BYPASS": true,
+   "P": 16,
+   "min_implied_price_W4": 8.0,
+   "pass": true,
+   "worst_rho_W4": 0.700937,
+   "worst_rho_WR": 0.890625
+  },
+  {
+   "C1_PM": true,
+   "C2_BYPASS": true,
+   "P": 20,
+   "min_implied_price_W4": 8.0,
+   "pass": true,
+   "worst_rho_W4": 0.530937,
+   "worst_rho_WR": 0.7475
+  },
+  {
+   "C1_PM": true,
+   "C2_BYPASS": true,
+   "P": 24,
+   "min_implied_price_W4": 8.0,
+   "pass": true,
+   "worst_rho_W4": 0.474062,
+   "worst_rho_WR": 0.666875
+  },
+  {
+   "C1_PM": true,
+   "C2_BYPASS": true,
+   "P": 28,
+   "min_implied_price_W4": 8.0,
+   "pass": true,
+   "worst_rho_W4": 0.474062,
+   "worst_rho_WR": 0.604375
+  }
+ ],
+ "registered_utc": "2026-07-14T12:20:00Z",
+ "rho_at_P_star": {
+  "W4": {
+   "deep_water/fresh": {
+    "bite_rate": 0.475625,
+    "mean_cook_energy": 1.9159,
+    "rho": 0.455625
+   },
+   "deep_water/geared": {
+    "bite_rate": 0.56125,
+    "mean_cook_energy": 2.048998,
+    "rho": 0.575
+   },
+   "deep_water/master": {
+    "bite_rate": 0.720625,
+    "mean_cook_energy": 2.261058,
+    "rho": 0.814688
+   },
+   "dock/fresh": {
+    "bite_rate": 0.528125,
+    "mean_cook_energy": 1.491124,
+    "rho": 0.39375
+   },
+   "dock/geared": {
+    "bite_rate": 0.60875,
+    "mean_cook_energy": 1.573922,
+    "rho": 0.479063
+   },
+   "dock/master": {
+    "bite_rate": 0.7775,
+    "mean_cook_energy": 1.715434,
+    "rho": 0.666875
+   },
+   "tide_pool/fresh": {
+    "bite_rate": 0.6275,
+    "mean_cook_energy": 1.108566,
+    "rho": 0.347812
+   },
+   "tide_pool/geared": {
+    "bite_rate": 0.7,
+    "mean_cook_energy": 1.152679,
+    "rho": 0.403438
+   },
+   "tide_pool/master": {
+    "bite_rate": 0.875625,
+    "mean_cook_energy": 1.210564,
+    "rho": 0.53
+   }
+  },
+  "WR": {
+   "deep_water/fresh": {
+    "bite_rate": 0.475625,
+    "mean_cook_energy": 1.914586,
+    "rho": 0.455313
+   },
+   "deep_water/geared": {
+    "bite_rate": 0.56125,
+    "mean_cook_energy": 2.335189,
+    "rho": 0.655312
+   },
+   "deep_water/master": {
+    "bite_rate": 0.720625,
+    "mean_cook_energy": 2.64961,
+    "rho": 0.954687
+   },
+   "dock/fresh": {
+    "bite_rate": 0.528125,
+    "mean_cook_energy": 1.843787,
+    "rho": 0.486875
+   },
+   "dock/geared": {
+    "bite_rate": 0.60875,
+    "mean_cook_energy": 2.323409,
+    "rho": 0.707187
+   },
+   "dock/master": {
+    "bite_rate": 0.7775,
+    "mean_cook_energy": 2.62299,
+    "rho": 1.019687
+   },
+   "tide_pool/fresh": {
+    "bite_rate": 0.6275,
+    "mean_cook_energy": 1.843625,
+    "rho": 0.578437
+   },
+   "tide_pool/geared": {
+    "bite_rate": 0.7,
+    "mean_cook_energy": 2.285714,
+    "rho": 0.8
+   },
+   "tide_pool/master": {
+    "bite_rate": 0.875625,
+    "mean_cook_energy": 2.536046,
+    "rho": 1.110313
+   }
+  }
+ },
+ "ruling": {
+  "P_star": 12,
+  "cook_energy_committed_species": {
+   "bass": 1,
+   "legend_carp": 7,
+   "minnow": 1,
+   "pike": 2
+  },
+  "extension_rule": "E_s = max(1, round(S_s / 12)) for any later-pinned roster species (roster per-species values inherit VERDICT 075's NULL; the roster wave re-derives P via this same registered selector at its own pin)",
+  "outcome": "APPROVE-WITH-CONSTANTS"
+ },
+ "seeds": {
+  "eval": [
+   20261509,
+   20261548
+  ],
+  "fleet_high_water_after": 20261558,
+  "stability": [
+   20261549,
+   20261558
+  ]
+ },
+ "self_checks": {
+  "failed": 0,
+  "failed_names": [],
+  "passed": 37
+ },
+ "stability": {
+  "cells": {
+   "deep_water/fresh": {
+    "bite_rate": 0.4325,
+    "mean_cook_energy": 2.17341,
+    "rho": 0.47
+   },
+   "deep_water/geared": {
+    "bite_rate": 0.52,
+    "mean_cook_energy": 2.211538,
+    "rho": 0.575
+   },
+   "deep_water/master": {
+    "bite_rate": 0.6975,
+    "mean_cook_energy": 2.430108,
+    "rho": 0.8475
+   },
+   "dock/fresh": {
+    "bite_rate": 0.5525,
+    "mean_cook_energy": 1.375566,
+    "rho": 0.38
+   },
+   "dock/geared": {
+    "bite_rate": 0.6375,
+    "mean_cook_energy": 1.47451,
+    "rho": 0.47
+   },
+   "dock/master": {
+    "bite_rate": 0.7625,
+    "mean_cook_energy": 1.632787,
+    "rho": 0.6225
+   },
+   "tide_pool/fresh": {
+    "bite_rate": 0.63,
+    "mean_cook_energy": 1.075397,
+    "rho": 0.33875
+   },
+   "tide_pool/geared": {
+    "bite_rate": 0.7425,
+    "mean_cook_energy": 1.107744,
+    "rho": 0.41125
+   },
+   "tide_pool/master": {
+    "bite_rate": 0.89,
+    "mean_cook_energy": 1.252809,
+    "rho": 0.5575
+   }
+  },
+  "worst_rho_W4": 0.8475
+ },
+ "verdict": "VERDICT 076"
+}

@@ -1,0 +1,6 @@
+measuring W4 (committed 4-species, decision world) and WR (V075 candidate, reporting) ...
+F-FLAT30 min rho_flat: 7.134375 (perpetual motion everywhere)
+passing P cells: [12, 14, 16, 20, 24, 28]
+RULING: APPROVE-WITH-CONSTANTS P*=12
+cook energy (committed 4): {'minnow': 1, 'bass': 1, 'pike': 2, 'legend_carp': 7}
+SELF-CHECKS: 37 passed, 0 failed
