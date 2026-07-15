@@ -274,6 +274,12 @@ From PROPOSAL 010 onward the offset is a constant +2.
   d6610dc, `## VERDICT 088` / `## INTAKE 075` collision-grepped clean
   before the append and re-grepped at append time — origin/main unmoved;
   no owner-direct or simreq interleave occurred in this range).
+- Extension (V089 slice, 2026-07-15): the +13 offset holds — PROPOSAL 076
+  (check-digit-transposition-floor) → **VERDICT 089** (verified at the
+  live-outbox headers: newest `## VERDICT` was 088 at origin/main
+  17c4558, `## VERDICT 089` / `## INTAKE 076` collision-grepped clean
+  before the append and re-grepped at append time — origin/main unmoved;
+  no owner-direct or simreq interleave occurred in this range).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

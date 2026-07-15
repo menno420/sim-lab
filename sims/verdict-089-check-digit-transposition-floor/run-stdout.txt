@@ -1,0 +1,17 @@
+VERDICT 089 runner — the check-digit transposition floor (P076)
+ruling: REJECT (evaluators REJECT/REJECT)
+R1 floor: full 10! census total 3628800, min U = 2 at 46400 quotients, max 90 at 10 (rotations: True), no U=0 bin: True
+  certificate: sum(perm)=45, 45 mod 10 = 5 != 0 = sum(tau) mod 10 — injective tau impossible (symbolic + exhaustive)
+  histogram support: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 40, 42, 44, 56, 58, 90]
+  Luhn: census 2, miss set [(0, 9), (9, 0)] (ON the floor, x1.00 by construction); linear floor 10 (5x)
+R2 regression: ISBN-10 SUB 0/1100, transpositions 0/4950 (every distance); EAN-13 adj 10/90 per boundary, d2 90/90 per pair; full-code patterns 120 + 990
+R3 exits: Damm gates rows/cols/diag PASS, SUB 0/900, ADJ 0/900 (D2 honesty row 958/9000, reporting); 11-ary word-level 1331/0/0
+word-level (Arm B): LUHN 1000/0/60 · EAN 1000/0/300/1800 · DAMM 1000/0/0; contacts 60=3*2*10, 300=3*10*10, 1800=2*90*10, 0=0 (multiplicity law asserted)
+twin census: reduced 9! slice x10 == full census on every bin: True
+EAN escape pairs (presentation shuffle, seed 20261682): [(9, 4), (8, 3), (4, 9), (1, 6), (3, 8), (2, 7), (6, 1), (7, 2), (5, 0), (0, 5)]
+arm R (reporting-only): main seed 20261680 N=20000 draws=600000 | luhn_adj 412/17954 ~ 0.0229475 (exact 2/90) | ean_adj 1948/18026 ~ 0.108066 (exact 10/90) | ean_d2 17966/17966 ~ 1 (exact 90/90)
+  stability seed 20261681 N=8000 draws=240000 | luhn_adj 169/7195 ~ 0.0234885 | ean_adj 767/7241 ~ 0.105925 | ean_d2 7179/7179 ~ 1
+margin ledger: {'luhn_on_floor': True, 'ean_d2_saturated': True, 'damm_adj_zero': True}
+anomaly census (disclosure coverage): 19 compared-and-matched, 0 mismatched, 3 vacant
+anomalies: none
+self-checks: 179 passed, 0 failed
