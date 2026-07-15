@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "verdict": "084",
+    "intake": "071",
+    "proposal": "idea-engine PROPOSAL 071 . 2026-07-15T08:52:10Z . status: sim-ready",
+    "idea_file": "ideas/superbot/fishing-trophy-record-quantization-ceiling-2026-07-15.md",
+    "idea_engine_pin": "e17ebe7 (proposal landed at main e17ebe7 via idea-engine PR #435, merged 2026-07-15T08:55:30Z)",
+    "grounding_pin": "superbot f8e2313a087e18cb32e88269d468b0b30a41fad9",
+    "hermetic": "the runner reads ONLY this fixtures.json; zero repo/network reads at verdict time; every registered constant below is copied verbatim from the PROPOSAL 071 block / idea file, and every COMMITTED constant was re-verified FIRSTHAND at superbot f8e2313 (read-only shallow fetch of exactly that pin) BEFORE this file was written: weight.py _BASE 0.18 / _EXP 1.65 / _SPREAD_LO 0.65 / _SPREAD_HI 1.55, nominal = round(_BASE * rank**_EXP, 2), roll = max(0.01, round(nominal * r.uniform(0.65, 1.55), 2)); fishing_workflow.py:267 new_best = catch.weight > 0 and (prev_best is None or catch.weight > prev_best) (STRICTLY greater); rewards.py:48 the ONLY roll_weight call site and the line-46 mix law weights = 1.0 / (rank ** (1.0 / pull)); rods.py ROD_LADDER rarity_pull 1.00/1.10/1.25/1.45/1.70; weather.py rarity_mult 1.0/1.0/1.08/1.12/1.30; fish.py FISH_PER_LEVEL 3, MAX_LEVEL 7, band = 3*level clamped; fish.json 21 shore fish ranks 1..21 (rank 1 = minnow) + 11 deepwater rows at ranks 2/4/6/8/10/12/14/16/17/20/21; the 21 pinned nominals reproduce round(0.18*r**1.65, 2) exactly; db/games/fishing.py GREATEST(best_weight, EXCLUDED.best_weight) + the 'prior best is None or strictly less' docstring; the design-doc trophy sentences and the weight.py header sentences verbatim; bait.py/gear.py/venue.py grep 'weight' = 0 hits; n3 display probe: views/fishing/menu.py:106 renders the record as {best:g}kg (6 significant digits - NEVER coarser than the 2-dp storage grid, so the n3 axis stays disarmed at harvest) - ALL MATCHED, zero harvest anomalies"
+  },
+  "model": {
+    "weight_law": "per catch of rank-r species: W = round(N_r * f, 2) with f ~ U(13/20, 31/20); N_r = the pinned 2-decimal nominal; max(0.01, .) is inert (smallest reachable atom 0.12 at rank 1). Exact model: atom v = k/100 gets p = measure of f with N*f in [(2k-1)/200, (2k+1)/200), clipped to [13/20, 31/20], divided by the span 9/10; rounding-boundary ties are measure zero (half-open convention declared; Arm F is the committed-float honesty row)",
+    "record_law": "STRICT >: first catch of a species is always a PB; a later catch is a PB iff strictly heavier. round(x, 2) yields one deterministic double per grid point so equal displayed weights are equal stored values - strictness is real",
+    "mix_law": "decision cell = bare rod (pull = 1.00), level 7, shore: q_r = (1/r)/H21 exact rationals over ranks 1..21; other committed cells (pull x weather x level) are L1-gated reporting rows using the committed float formula 1.0/(r**(1.0/pull))",
+    "theorems": {
+      "T1": "atom census - the support of round(N*f, 2) is a finite set of consecutive 0.01-grid atoms with exact rational probabilities summing to 1; |A_r| ~ 90*N_r + 1",
+      "T2": "reachable ceiling - the top atom has strictly positive probability, so the strict-record chase is a.s. finite with E[catches of the species to completion] = 1/p_ceiling; kill-casts at a mix cell = 1/(q_r * p_ceiling)",
+      "T3": "terminating-record law - P(atom v_k is ever a record) = p_k / P(X >= v_k), so E[lifetime PBs] = sum_k p_k / S_k is FINITE; P(PB at catch t) = sum_k p_k * F_k^(t-1) with F_k = P(X < v_k), strictly below the continuous 1/t benchmark from t = 2 on",
+      "L1": "modal invariance (lemma) - the committed mix weights rank^(-1/pull) are strictly decreasing in rank for every finite pull >= 1 and every level band contains rank 1, so rank 1 (the shortest ladder, 17 atoms) is the modal catch at every committed rod x weather x level cell"
+    }
+  },
+  "committed_constants": {
+    "base": "0.18",
+    "exponent": "1.65",
+    "spread_lo": "13/20",
+    "spread_hi": "31/20",
+    "grid": "1/100",
+    "floor_note": "max(0.01, .) inert - smallest atom 0.12",
+    "nominals_by_rank": ["0.18", "0.56", "1.10", "1.77", "2.56", "3.46", "4.46", "5.56", "6.76", "8.04", "9.41", "10.86", "12.40", "14.01", "15.70", "17.46", "19.30", "21.21", "23.19", "25.23", "27.35"],
+    "nominals_note": "pinned verbatim from the registration AND re-verified this session against round(0.18*r**1.65, 2) at the committed formula - the runner re-gates the identity",
+    "shore_ranks": 21,
+    "deepwater_ranks": [2, 4, 6, 8, 10, 12, 14, 16, 17, 20, 21],
+    "fish_per_level": 3,
+    "max_level": 7,
+    "rod_pulls": ["1.00", "1.10", "1.25", "1.45", "1.70"],
+    "weather_rarity_mults": ["1.0", "1.08", "1.12", "1.30"],
+    "strict_record": true
+  },
+  "grids": {
+    "decision_cell": {"rod_pull": "1.00", "level": 7, "venue": "shore", "mix": "q_r = (1/r)/H21 exact"},
+    "onboarding_cell": {"level": 1, "band_ranks": [1, 2, 3], "q1": "6/11"},
+    "reporting_pulls": ["1.10", "1.25", "1.45", "1.70"],
+    "reporting_weather": ["1.08", "1.12", "1.30"],
+    "career_horizons": [50, 150, 500, 2000, 10000],
+    "benchmark_horizons": [2000, 100000],
+    "refinement_grids": ["1/1000", "1/10000"],
+    "cadence_t_range": [2, 50]
+  },
+  "decision": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "reject": {
+      "clause_i": "modal species' ladder has <= 20 rungs AND p_ceiling >= 1/50 (chase provably complete in <= 50 catches of the species in expectation), at the decision cell",
+      "clause_ii": "modal species' exact E[lifetime PBs] <= 4",
+      "clause_iii": "strict-record law P(PB at t) < 1/t holds for EVERY t in 2..50 (exact rationals)",
+      "reading": "all three AND-ed; the modal species at the decision cell is rank 1 per L1 (if L1 fails the n1 axis re-keys the census on the true modal species)"
+    },
+    "invalid": "any G1-G6 gate failure (controls misbehaving - reported; per the registered evaluation order REJECT is evaluated FIRST, so a gate failure with REJECT already fired is reported first-class beside the ruling, never silently)",
+    "approve": {
+      "clause_i": "modal species' ladder has >= 100 rungs",
+      "clause_ii": "expected completion horizon at the decision-cell mix >= 1000 casts",
+      "reading": "both AND-ed; mutually exclusive with REJECT by arithmetic"
+    },
+    "null_axes": [
+      "n1 mix axis: some committed cell demotes rank 1 from modal (L1 falsified) - census re-keys on the true modal species, tables attached",
+      "n2 float-boundary axis: Arm F support mismatch surviving the INVALID gate - the corrected census is the finding",
+      "n3 display axis: a render coarser than storage (probed at harvest: menu.py:106 {best:g}kg is NOT coarser - disarmed, disclosed)",
+      "n4 theorem failure without gate failure: the corrected law is the finding"
+    ]
+  },
+  "anchors": {
+    "A_table": [17, 52, 99, 160, 232, 312, 402, 502, 610, 724, 848, 978, 1117, 1262, 1413, 1572, 1737, 1910, 2088, 2272, 2462],
+    "rank1_atom_law": {"bottom": {"v": "0.12", "p": "4/81"}, "interior": {"v": "0.13..0.27", "count": 15, "p": "5/81"}, "top": {"v": "0.28", "p": "2/81"}},
+    "p_ceiling_rank1": "2/81",
+    "H21": "18858053/5173168",
+    "q1_decision": "5173168/18858053",
+    "kill_casts_rank1": "1527502293/10346336",
+    "E_life_rank1": "11736310749428605/3026966925030048",
+    "cadence_t2_rank1": {"value": "3083/6561", "disclosed_float": "0.4699"},
+    "q1_level1": "6/11",
+    "kill_casts_level1_float": "74.25",
+    "hand_world_g5": {"nominal": "0.10", "atoms": 9, "each_p": "1/9", "E_life": "7129/2520", "E_catches_to_ceiling": 9},
+    "disclosed_career_table": {"50": "24.9", "150": "44.0", "500": "67.4", "2000": "93.0", "10000": "118.8"},
+    "disclosed_lifetime_total": "153.38",
+    "disclosed_benchmark": {"2000": "99", "100000": "181"},
+    "disclosed_E_life_rank1_float": "3.877",
+    "disclosed_approve_world": {"rungs_3dp_rank1": "~163", "horizon_casts": "~1480", "note": "the drafter's DISCLOSED horizon; the runner re-derives the 3-dp world exactly and any mismatch is a first-class anomaly (see conventions C10/C12)"}
+  },
+  "gates": {
+    "G1": "twin arms - Arm B (independently-written boundary-point sweep census + explicit t-DP record laws) equals Arm A (closed-form interval census + suffix-sum record laws) as exact Fractions, in memory, on every atom probability (all 21 ranks + hand world + refinement grids), every E_life, every registered P(PB at t) and E[PBs in n]",
+    "G2": "T1 - per-rank atom probabilities sum to exactly 1, all 21 ranks; |A_r| table verbatim (anchors.A_table); the rank-1 atom law (4/81, fifteen x 5/81, 2/81) exact; the pinned nominals reproduce round(0.18*r**1.65, 2)",
+    "G3": "T2 - p_ceiling(1) = 2/81 exactly; kill-cast identity 1/(q1*p_ceiling(1)) = 1527502293/10346336 with q1 = 5173168/18858053 and H21 = 18858053/5173168",
+    "G4": "T3 - E_life(1) = 11736310749428605/3026966925030048 exactly; geometric-series identity: partial sums E[PBs in n] monotone non-decreasing and E_life - E[PBs in 1000] < 1/1000 (exact Fractions, minnow); P(PB at t) < 1/t STRICT for every t in 2..50 (exact)",
+    "G5": "hand world - nominal 0.10: exactly 9 atoms, each p = 1/9, E_life = H9 = 7129/2520, E[catches to ceiling] = 9 (both arms)",
+    "G6": "battery - refinement lemma: rank-1 E_life increments across grid decades 1/100 -> 1/1000 -> 1/10000 each within ln 10 +/- 1/10 (the STRICT per-decade reading, convention C12) and P(PB at t) -> 1/t from below for t in {2, 3, 5} (monotone increasing across grids, each < 1/t, exact); degeneracy: spread collapsed to a point => 1 atom, E_life = 1; E[PBs in n] non-decreasing in n and bounded by both H_n and E_life (minnow, n = 1..1000, exact); L1: committed float mix weights strictly decreasing in rank at every committed pull x weather cell and every level band contains rank 1"
+  },
+  "arm_f": {
+    "role": "committed-roll fidelity - the committed one-liner re-implemented VERBATIM from the harvested line (float round, random.uniform, max(0.01, .)); support equality with the exact model REQUIRED on ranks {1, 2, 3, 21}; frequencies are a REPORTING row (the drafter's drafting-time freq 0.0249 at the ceiling is the drafter's own draw, not an anchor)",
+    "n_draws_per_rank": 400000,
+    "ranks_gated": [1, 2, 3, 21],
+    "seed": 20261630
+  },
+  "arm_r": {
+    "role": "REPORTING-ONLY - seeded career traces (PB-event timelines at the decision cell); NO statistical gate rides Arm R; a trace drifting from the exact value is a named finding, never a ruling",
+    "n_main_careers": 2000,
+    "main_casts_per_career": 2000,
+    "n_stability_careers": 500,
+    "stability_casts_per_career": 2000,
+    "report_horizons": [50, 150, 500, 2000],
+    "seed_main": 20261631,
+    "seed_stability": 20261632,
+    "seed_aux_never_read": 20261633,
+    "draw_discipline": "per cast: one species draw (bisect over the exact-mix float cumulative) + one atom draw (bisect over the species' exact-atom float cumulative); PB events counted under strict >; per-seed draw counts recorded",
+    "seed_allocation_note": "seeds 20261630-633 are the drafter's registered set and ARE the session seed set (the V077-V083 precedent; no new allocation): 20261630 Arm F, 20261631 Arm R main, 20261632 Arm R stability, aux 20261633 reserved and asserted NEVER read (constructor registry); 20261620-623 are P070/V083's registered set and the gap 20261624-629 stays the disclosed in-flight buffer, unused; registry high-water after this slice: 20261633 (reserved; highest read 20261632)"
+  },
+  "battery": {
+    "twin": "Arm B census is an INDEPENDENTLY-WRITTEN boundary-point sweep (collects every clipped rounding boundary in f-space, sorts, sweeps segments, assigns each segment to the atom of its midpoint - never via Arm A's per-atom interval formula); Arm B record laws run an explicit per-t DP over prefix-CDF partial sums and compute E_life as p_i/(1 - F_i) from ITS OWN prefix sums; exact Fraction equality with Arm A required on every registered rational",
+    "evaluators": "twin independently-written decision evaluators (one fed Arm-A numbers, one recomputing from Arm-B numbers) must agree on the ruling token; both implement the registered order REJECT -> INVALID -> APPROVE -> NULL with REJECT evaluated FIRST",
+    "byte_identity": "stdout + results.json byte-identical across two full process runs (external diff + sha256; Arms A/B platform-independent exact rationals; Arms F/R pinned to a stated CPython minor)",
+    "cpython_pin": "3.11"
+  },
+  "consequence_rows": {
+    "option_a_3dp": "the one-character round(., 3) world: full 21-rank re-census at grid 1/1000 - rungs table, minnow p_ceiling and horizon at the decision mix, per-species E_life gain (reporting; the registered claim 'ladders x~10, horizon >= 1000, +~2.3 lifetime PBs per species' is re-derived exactly and mismatches are first-class anomalies)",
+    "option_b_continuous": "un-quantized comparison: the distribution-free continuous record law P(PB at t) = 1/t exactly, E[records in n] = H_n divergent - stated beside the quantized cadence",
+    "option_c_badge": "per-species ceiling table: the exact top atom (weight and probability) for all 21 shore ranks + the 11 deepwater rows (the 'perfect specimen' badge surface)"
+  },
+  "conventions": {
+    "C1": "half-open rounding intervals [(2k-1)/200, (2k+1)/200) in real arithmetic; the measure-zero banker's-rounding tie set is disclosed; Arm F is the committed-float honesty row (n2 catches survivors)",
+    "C2": "atoms are enumerated ascending; prefix F_i = P(X < v_i) and suffix S_i = P(X >= v_i) are exact Fractions; per-arm independent implementations",
+    "C3": "the decision numbers are: |A_1| (rungs), p_ceiling(1), E_life(1), and the exact cadence sequence P(PB at t) t in 2..50 - all at the decision cell with rank 1 as the modal species (L1-gated)",
+    "C4": "kill horizon (APPROVE clause ii) = 1/(q1 * p_ceiling(1)) casts at the decision-cell mix; the same identity re-keyed at grid 1/1000 prices the APPROVE world",
+    "C5": "band-margin ledger (the V083 margin-ledger lesson applied): the runner publishes the exact margin of EVERY decision clause to its band (rungs 20 - |A_1|; p_ceiling - 1/50; 4 - E_life(1); min over t in 2..50 of 1/t - P(PB at t)) plus the per-species band sweep (which ranks would satisfy each REJECT clause) - and re-verifies no decision clause lands margin-0 (exact zero)",
+    "C6": "career table (reporting): E[PB events in n casts] = sum_r sum_i p_i * (1 - (1 - q_r * S_i)^n) / S_i via the exact thinned-record identity, evaluated in floats (n up to 10000 makes exact powers infeasible - disclosed); the continuous benchmark sum_t sum_r (1 - (1 - q_r)^t)/t likewise; float reporting rows are twin-compared at 1e-9 relative, never as exact rationals",
+    "C7": "the lifetime total sum_r E_life(r) is computed exactly in memory (twin-gated as a Fraction) and REPORTED as a 12-significant-digit float",
+    "C8": "seed discipline: the ONLY random.Random constructors in the runner are the three registered read seeds in pinned order (F, R-main, R-stability); the aux seed 20261633 appears only in this fixture and the never-read assertion (constructor registry counted)",
+    "C9": "print discipline (the drafter's disclosed 4300-digit int-print hazard): exact rationals are PRINTED only for ranks 1-3 E_life, the |A|/p_ceiling tables, and the registered small anchors; every other exact value is gated by in-memory Fraction equality and reported as a 12-significant-digit float; no sys.set_int_max_str_digits bump; anomaly messages format big rationals through floats",
+    "C10": "disclosed-landing comparison: exact disclosed anchors compared as exact rationals; disclosed-rounded values (career table, lifetime total, benchmark, E_life floats, the APPROVE-world rungs/horizon) compared at stated precision as NEVER-GATED reporting rows (the V082-C10 norm; P071 registered no gate over them) - any mismatch is a named first-class anomaly (A1, A2, ... convention)",
+    "C11": "canonical serialization: results.json written with sort_keys=True, ensure_ascii=True, indent=2, LF newlines; Fractions serialized as 'p/q' strings only where C9 permits printing",
+    "C12": "the G6 refinement band 'ln 10 +/- 1/10 per decade' is applied in the STRICT per-decade reading (each of the two named decade steps separately); the per-two-decade average is published beside it as a reporting row. DISCLOSED BEFORE THE RUNNER: this session's pre-fixture verification (outside the repo, same discipline as the harvest re-verification) already measured the first decade step at ~2.17694 - OUTSIDE the strict band (ln 10 - 2.17694 ~ 0.1256 > 1/10) - and the second at ~2.29981 (inside). The gate will run as registered and its failure will be logged first-class; per the registered evaluation order REJECT is evaluated FIRST, so the ruling is unaffected if REJECT fires on its own exact clauses. The cause is pinned exactly: at 3 dp the support edges 0.117 = N*13/20 and 0.279 = N*31/20 land ON-GRID, restructuring both edge atoms to exact half-cells (2-dp edge cells are 0.8 and 0.4 of interior), a one-time correction; from 3 dp on the edge structure is self-similar and the increment converges to ln 10",
+    "C13": "anomaly convention: every mismatch against a disclosed value, every gate failure, and every registered-text ambiguity resolution is a named first-class anomaly row in results.json and stdout - nothing is silently absorbed"
+  }
+}
