@@ -1,0 +1,125 @@
+VERDICT 078 — outbox rollover stub saturation (idea-engine PROPOSAL 065)
+runtime: cpython 3.11.15, stdlib-only, hermetic
+
+== decision cell (P-STUB, T=204800, s=530, b=16000, W=2, h_r=1000, H0=500) ==
+N*_stub     = 233  (REJECT needs <= 300, APPROVE needs >= 500)
+K           = 51 rolls; first spacing 13; first floor 39330
+collapse    = roll 34 (proposal 209); thrash rolls (spacing <= 2) = 18 (REJECT needs >= 8)
+sat. floor  = 205930 = stub 122430 + receipts 51000 + window 32000 + header 500
+shares      = stub 59.4522% / receipts 24.7657% / window 15.5393% / header 0.2428%
+N*_range    = 671; multiplier 671/233 = 2.8798283261802573 (REJECT needs <= 4x)
+P-COMPACT   = constant floor 34030, constant spacing 11, over 99992 appends (unbounded)
+spacings    = 13,11,10,10,10,9,9,9,8,8,7,7,7,7,6,6,6,6,5,5,5,5,4,4,4,4,4,3,3,3,3,3,3,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1
+
+== P-STUB wall table N*(T, s, b, W) — order presentation-shuffled, seed 20261569 ==
+  P-STUB T=204800 s=530 b=16000 W=8      N* = 92
+  P-STUB T=102400 s=1060 b=16000 W=8     N* = 7
+  P-STUB T=409600 s=265 b=24000 W=8      N* = 442
+  P-STUB T=204800 s=1060 b=24000 W=2     N* = 115
+  P-STUB T=204800 s=265 b=24000 W=0      N* = 400
+  P-STUB T=102400 s=1060 b=8000 W=0      N* = 82
+  P-STUB T=409600 s=1060 b=8000 W=2      N* = 350
+  P-STUB T=102400 s=1060 b=8000 W=8      N* = 35
+  P-STUB T=102400 s=1060 b=16000 W=2     N* = 49
+  P-STUB T=409600 s=265 b=16000 W=8      N* = 701
+  P-STUB T=204800 s=530 b=8000 W=2       N* = 292
+  P-STUB T=409600 s=1060 b=24000 W=8     N* = 172
+  P-STUB T=204800 s=1060 b=16000 W=0     N* = 162
+  P-STUB T=409600 s=530 b=8000 W=8       N* = 578
+  P-STUB T=204800 s=265 b=16000 W=0      N* = 459
+  P-STUB T=102400 s=265 b=8000 W=8       N* = 68
+  P-STUB T=409600 s=530 b=16000 W=8      N* = 420
+  P-STUB T=204800 s=265 b=16000 W=8      N* = 127
+  P-STUB T=102400 s=530 b=8000 W=8       N* = 50
+  P-STUB T=204800 s=265 b=16000 W=2      N* = 369
+  P-STUB T=409600 s=530 b=24000 W=8      N* = 286
+  P-STUB T=409600 s=530 b=16000 W=2      N* = 581
+  P-STUB T=409600 s=1060 b=16000 W=8     N* = 239
+  P-STUB T=102400 s=530 b=8000 W=2       N* = 117
+  P-STUB T=204800 s=265 b=8000 W=2       N* = 503
+  P-STUB T=409600 s=265 b=8000 W=0       N* = 1257
+  P-STUB T=409600 s=265 b=24000 W=2      N* = 853
+  P-STUB T=102400 s=530 b=8000 W=0       N* = 142
+  P-STUB T=409600 s=1060 b=8000 W=8      N* = 311
+  P-STUB T=102400 s=530 b=24000 W=2      N* = 49
+  P-STUB T=409600 s=265 b=8000 W=8       N* = 1042
+  P-STUB T=409600 s=1060 b=8000 W=0      N* = 363
+  P-STUB T=102400 s=530 b=24000 W=8      N* = 5
+  P-STUB T=409600 s=265 b=8000 W=2       N* = 1203
+  P-STUB T=102400 s=530 b=16000 W=8      N* = 7
+  P-STUB T=409600 s=1060 b=24000 W=0     N* = 334
+  P-STUB T=102400 s=265 b=8000 W=2       N* = 186
+  P-STUB T=409600 s=1060 b=16000 W=0     N* = 346
+  P-STUB T=204800 s=265 b=24000 W=8      N* = 18
+  P-STUB T=102400 s=1060 b=24000 W=8     N* = 5
+  P-STUB T=204800 s=1060 b=24000 W=0     N* = 153
+  P-STUB T=102400 s=1060 b=8000 W=2      N* = 69
+  P-STUB T=204800 s=265 b=24000 W=2      N* = 279
+  P-STUB T=409600 s=530 b=8000 W=0       N* = 687
+  P-STUB T=102400 s=530 b=24000 W=0      N* = 107
+  P-STUB T=409600 s=530 b=24000 W=0      N* = 596
+  P-STUB T=204800 s=530 b=16000 W=0      N* = 283
+  P-STUB T=409600 s=530 b=8000 W=2       N* = 659
+  P-STUB T=204800 s=1060 b=8000 W=0      N* = 174
+  P-STUB T=102400 s=530 b=16000 W=2      N* = 76
+  P-STUB T=102400 s=265 b=24000 W=8      N* = 5
+  P-STUB T=409600 s=530 b=24000 W=2      N* = 516
+  P-STUB T=204800 s=1060 b=16000 W=2     N* = 136
+  P-STUB T=102400 s=265 b=16000 W=8      N* = 7
+  P-STUB T=409600 s=1060 b=24000 W=2     N* = 293
+  P-STUB T=409600 s=530 b=16000 W=0      N* = 635
+  P-STUB T=102400 s=265 b=24000 W=0      N* = 151
+  P-STUB T=102400 s=530 b=16000 W=0      N* = 121
+  P-STUB T=204800 s=530 b=24000 W=0      N* = 258
+  P-STUB T=204800 s=530 b=16000 W=2      N* = 233
+  P-STUB T=102400 s=1060 b=16000 W=0     N* = 73
+  P-STUB T=204800 s=530 b=24000 W=2      N* = 187
+  P-STUB T=204800 s=530 b=24000 W=8      N* = 17
+  P-STUB T=102400 s=265 b=8000 W=0       N* = 230
+  P-STUB T=102400 s=1060 b=24000 W=0     N* = 68
+  P-STUB T=204800 s=1060 b=24000 W=8     N* = 14
+  P-STUB T=204800 s=265 b=8000 W=0       N* = 553
+  P-STUB T=409600 s=265 b=16000 W=0      N* = 1107
+  P-STUB T=409600 s=265 b=24000 W=0      N* = 999
+  P-STUB T=409600 s=1060 b=16000 W=2     N* = 319
+  P-STUB T=102400 s=265 b=16000 W=0      N* = 179
+  P-STUB T=204800 s=1060 b=8000 W=8      N* = 124
+  P-STUB T=204800 s=1060 b=16000 W=8     N* = 60
+  P-STUB T=204800 s=530 b=8000 W=0       N* = 318
+  P-STUB T=204800 s=265 b=8000 W=8       N* = 356
+  P-STUB T=102400 s=265 b=24000 W=2      N* = 63
+  P-STUB T=409600 s=265 b=16000 W=2      N* = 1003
+  P-STUB T=102400 s=1060 b=24000 W=2     N* = 34
+  P-STUB T=204800 s=1060 b=8000 W=2      N* = 161
+  P-STUB T=204800 s=530 b=8000 W=8       N* = 215
+  P-STUB T=102400 s=265 b=16000 W=2      N* = 108
+
+== structure theorems ==
+FLOOR LAW + timing invariance (roll-every-25 alternate schedule): True — gated F2a
+RECEIPT-FREE INVARIANCE: wall = ceil((T-H0)/s) = 386, identical across b in {8000,16000,24000}: True — gated F2b
+COMPACT BOUNDEDNESS: floor constant 34030, spacing constant 11 over 99992 appends — gated F2c
+MONOTONE THRASH at every P-STUB cell: True — gated F2
+
+== hand world / degeneracies ==
+hand world: N*=18 K=8 spacings=[5, 3, 3, 2, 2, 1, 1, 1] floors=[43, 54, 65, 74, 83, 90, 97, 104]
+s=b=16000: N*=13; true deletion (s=0,h_r=0): unbounded, floor 32500 over 99992 appends
+
+== Arm R (seeded, REPORTING-ONLY; no statistical gate) ==
+main leg (n=10000): wall mean 227.4645 (exact 454929/2000), min 213, median 228, max 245; share below/at/above 233: 0.8625/0.0466/0.0909; draws 2274645 (1/proposal, asserted)
+stability leg (n=2000): wall mean 227.2985 (exact 454597/2000), min 214, median 227, max 241; share below/at/above 233: 0.866/0.0515/0.0825; draws 454597 (1/proposal, asserted)
+deterministic wall at the decision cell: 233 (mix drift is a named finding, never a ruling)
+
+== drafter comparison (NEVER gated) ==
+12/14 disclosed rows reproduced; mismatches: ["collapse proposal (drafter approx-tagged '~208')", 'stub share % (drafter 59.4, truncation of exact)']
+anomaly A1: as-written first-spacing expression = 11, anchored value = 13, event walk = 13 (expression slip, ruling-neutral)
+
+== reporting rows ==
+wall date at observed pace (63 intervals / 4.43 days, pipeline at 64): 2026-07-27 (days remaining 74867/6300 ~ 11.8837)
+retrodicted post-roll-1 floor 63710 vs measured live file 154629 (gap = un-modeled block families + pending fulls, REJECT-ward, disclosed F1 boundary)
+roll-2 forecast: 11 full blocks at trigger (live file held 7 at the drafting HEAD)
+T-as-200,000-decimal wall: 224 (immaterial to every band, disclosed)
+
+== self-checks: 33 total, 0 failed ==
+
+== RULING (pre-registered order REJECT -> INVALID -> APPROVE -> NULL) ==
+evaluator A: REJECT   evaluator B: REJECT

@@ -1,0 +1,2539 @@
+{
+ "anomalies": {
+  "A1": "the disclosed first-spacing derivation 'ceil((204800 - 32500)/16000)' evaluates to 11, not the anchored 13; the event-walk-correct expression is ceil((204800 - 500)/16000) = 13; the anchor VALUE 13 is confirmed by the walk and by the rest of the disclosed landing (N* = 233, K = 51); ruling-neutral"
+ },
+ "arm_R": {
+  "deterministic_wall": 233,
+  "main": {
+   "draws_ok": true,
+   "episodes": 10000,
+   "max": 245,
+   "mean_float": "227.4645",
+   "mean_fraction": "454929/2000",
+   "median": 228,
+   "min": 213,
+   "share_above_233": "0.0909",
+   "share_at_233": "0.0466",
+   "share_below_233": "0.8625",
+   "total_draws": 2274645
+  },
+  "note": "REPORTING-ONLY; no statistical gate",
+  "stability": {
+   "draws_ok": true,
+   "episodes": 2000,
+   "max": 241,
+   "mean_float": "227.2985",
+   "mean_fraction": "454597/2000",
+   "median": 227,
+   "min": 214,
+   "share_above_233": "0.0825",
+   "share_at_233": "0.0515",
+   "share_below_233": "0.866",
+   "total_draws": 454597
+  }
+ },
+ "decision_cell": {
+  "K": 51,
+  "Nstar_range": 671,
+  "Nstar_stub": 233,
+  "cell": {
+   "H0": 500,
+   "T": 204800,
+   "W": 2,
+   "b": 16000,
+   "h_r": 1000,
+   "policy": "P-STUB",
+   "s": 530
+  },
+  "collapse_index": 34,
+  "collapse_proposal": 209,
+  "compact_floor_constant": 34030,
+  "compact_spacing_constant": 11,
+  "composition": {
+   "header": 500,
+   "receipts": 51000,
+   "stub": 122430,
+   "window": 32000
+  },
+  "composition_shares_pct": {
+   "header": {
+    "exact": "5000/20593",
+    "float": "0.242800951779731"
+   },
+   "receipts": {
+    "exact": "510000/20593",
+    "float": "24.765697081532558"
+   },
+   "stub": {
+    "exact": "1224300/20593",
+    "float": "59.45224105278493"
+   },
+   "window": {
+    "exact": "320000/20593",
+    "float": "15.539260913902783"
+   }
+  },
+  "first_floor": 39330,
+  "first_spacing": 13,
+  "floor_series": [
+   39330,
+   46160,
+   52460,
+   58760,
+   65060,
+   70830,
+   76600,
+   82370,
+   87610,
+   92850,
+   97560,
+   102270,
+   106980,
+   111690,
+   115870,
+   120050,
+   124230,
+   128410,
+   132060,
+   135710,
+   139360,
+   143010,
+   146130,
+   149250,
+   152370,
+   155490,
+   158610,
+   161200,
+   163790,
+   166380,
+   168970,
+   171560,
+   174150,
+   176210,
+   178270,
+   180330,
+   182390,
+   184450,
+   186510,
+   188570,
+   190630,
+   192160,
+   193690,
+   195220,
+   196750,
+   198280,
+   199810,
+   201340,
+   202870,
+   204400,
+   205930
+  ],
+  "range_multiplier": {
+   "exact": "671/233",
+   "float": "2.8798283261802573"
+  },
+  "saturation_floor": 205930,
+  "spacing_series": [
+   13,
+   11,
+   10,
+   10,
+   10,
+   9,
+   9,
+   9,
+   8,
+   8,
+   7,
+   7,
+   7,
+   7,
+   6,
+   6,
+   6,
+   6,
+   5,
+   5,
+   5,
+   5,
+   4,
+   4,
+   4,
+   4,
+   4,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "thrash_roll_count": 18
+ },
+ "degeneracies": {
+  "s_eq_b_16000": {
+   "Nstar": 13
+  },
+  "true_deletion": {
+   "constant_floor": 32500,
+   "saturated": false,
+   "walk_appends": 99992
+  }
+ },
+ "drafter_comparison_never_gated": [
+  {
+   "computed": {
+    "0": [
+     318,
+     283,
+     258
+    ],
+    "2": [
+     292,
+     233,
+     187
+    ],
+    "8": [
+     215,
+     92,
+     17
+    ]
+   },
+   "disclosed": {
+    "0": [
+     318,
+     283,
+     258
+    ],
+    "2": [
+     292,
+     233,
+     187
+    ],
+    "8": [
+     215,
+     92,
+     17
+    ]
+   },
+   "match": true,
+   "name": "wall table N*(W, b) at T=204800 s=530"
+  },
+  {
+   "computed": {
+    "1060": 136,
+    "265": 369,
+    "530": 233
+   },
+   "disclosed": {
+    "1060": 136,
+    "265": 369,
+    "530": 233
+   },
+   "match": true,
+   "name": "s-grid walls"
+  },
+  {
+   "computed": {
+    "102400": 76,
+    "204800": 233,
+    "409600": 581
+   },
+   "disclosed": {
+    "102400": 76,
+    "204800": 233,
+    "409600": 581
+   },
+   "match": true,
+   "name": "T-grid walls"
+  },
+  {
+   "computed": true,
+   "disclosed": true,
+   "match": true,
+   "name": "T=409600 first-20 spacings all >= 12 (APPROVE cell)"
+  },
+  {
+   "computed": 504,
+   "disclosed": 504,
+   "match": true,
+   "name": "heading-only 150 B stub wall"
+  },
+  {
+   "computed": 224,
+   "disclosed": 224,
+   "match": true,
+   "name": "T = 200,000-decimal reading wall"
+  },
+  {
+   "computed": 209,
+   "disclosed": 208,
+   "match": false,
+   "name": "collapse proposal (drafter approx-tagged '~208')"
+  },
+  {
+   "computed": 59.5,
+   "disclosed": 59.4,
+   "match": false,
+   "name": "stub share % (drafter 59.4, truncation of exact)"
+  },
+  {
+   "computed": 24.8,
+   "disclosed": 24.8,
+   "match": true,
+   "name": "receipt share %"
+  },
+  {
+   "computed": 15.5,
+   "disclosed": 15.5,
+   "match": true,
+   "name": "window share %"
+  },
+  {
+   "computed": 2.88,
+   "disclosed": 2.88,
+   "match": true,
+   "name": "range multiplier ~2.88"
+  },
+  {
+   "computed": 63710,
+   "disclosed": 63710,
+   "match": true,
+   "name": "retrodicted post-roll-1 floor"
+  },
+  {
+   "computed": 11,
+   "disclosed": 11,
+   "match": true,
+   "name": "roll-2 forecast fulls"
+  },
+  {
+   "computed": "2026-07-27",
+   "disclosed": "2026-07-27",
+   "match": true,
+   "name": "wall date at observed pace"
+  }
+ ],
+ "evaluators": {
+  "A": "REJECT",
+  "B": "REJECT"
+ },
+ "hand_world": {
+  "K": 8,
+  "Nstar": 18,
+  "floors": [
+   43,
+   54,
+   65,
+   74,
+   83,
+   90,
+   97,
+   104
+  ],
+  "spacings": [
+   5,
+   3,
+   3,
+   2,
+   2,
+   1,
+   1,
+   1
+  ]
+ },
+ "reporting": {
+  "T_200000_decimal_wall": 224,
+  "days_remaining_exact": "74867/6300",
+  "heading_only_150B_stub_wall": 504,
+  "live_fulls_at_head": 7,
+  "measured_live_file": 154629,
+  "retrodicted_post_roll_1_floor": 63710,
+  "roll2_forecast_fulls": 11,
+  "wall_date_at_observed_pace": "2026-07-27"
+ },
+ "runtime": {
+  "python": "cpython 3.11",
+  "stdlib_only": true
+ },
+ "seed_registry": [
+  20261567,
+  20261568,
+  20261569
+ ],
+ "self_checks": {
+  "failed": 0,
+  "failures": [],
+  "total": 33
+ },
+ "theorems": {
+  "compact_boundedness": {
+   "constant_floor": 34030,
+   "constant_spacing": 11,
+   "held": true,
+   "walk_appends": 99992
+  },
+  "floor_law_timing_invariance": true,
+  "monotone_thrash": true,
+  "receipt_free_invariance": {
+   "b_grid_walls": [
+    386,
+    386,
+    386
+   ],
+   "identical": true,
+   "wall": 386
+  }
+ },
+ "verdict": "REJECT",
+ "wall_table": {
+  "P-COMPACT T=102400 s=1060 b=16000 W=0": {
+   "K": 14285,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 99995
+  },
+  "P-COMPACT T=102400 s=1060 b=16000 W=2": {
+   "K": 19999,
+   "constant_floor": 34560,
+   "unbounded": true,
+   "walk_appends": 99997
+  },
+  "P-COMPACT T=102400 s=1060 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-COMPACT T=102400 s=1060 b=24000 W=0": {
+   "K": 20000,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 100000
+  },
+  "P-COMPACT T=102400 s=1060 b=24000 W=2": {
+   "K": 33332,
+   "constant_floor": 50560,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=102400 s=1060 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-COMPACT T=102400 s=1060 b=8000 W=0": {
+   "K": 7692,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=102400 s=1060 b=8000 W=2": {
+   "K": 9090,
+   "constant_floor": 18560,
+   "unbounded": true,
+   "walk_appends": 99992
+  },
+  "P-COMPACT T=102400 s=1060 b=8000 W=8": {
+   "K": 19998,
+   "constant_floor": 66560,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=102400 s=265 b=16000 W=0": {
+   "K": 14285,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 99995
+  },
+  "P-COMPACT T=102400 s=265 b=16000 W=2": {
+   "K": 19999,
+   "constant_floor": 33765,
+   "unbounded": true,
+   "walk_appends": 99997
+  },
+  "P-COMPACT T=102400 s=265 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-COMPACT T=102400 s=265 b=24000 W=0": {
+   "K": 20000,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 100000
+  },
+  "P-COMPACT T=102400 s=265 b=24000 W=2": {
+   "K": 33332,
+   "constant_floor": 49765,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=102400 s=265 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-COMPACT T=102400 s=265 b=8000 W=0": {
+   "K": 7692,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=102400 s=265 b=8000 W=2": {
+   "K": 9090,
+   "constant_floor": 17765,
+   "unbounded": true,
+   "walk_appends": 99992
+  },
+  "P-COMPACT T=102400 s=265 b=8000 W=8": {
+   "K": 19998,
+   "constant_floor": 65765,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=102400 s=530 b=16000 W=0": {
+   "K": 14285,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 99995
+  },
+  "P-COMPACT T=102400 s=530 b=16000 W=2": {
+   "K": 19999,
+   "constant_floor": 34030,
+   "unbounded": true,
+   "walk_appends": 99997
+  },
+  "P-COMPACT T=102400 s=530 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-COMPACT T=102400 s=530 b=24000 W=0": {
+   "K": 20000,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 100000
+  },
+  "P-COMPACT T=102400 s=530 b=24000 W=2": {
+   "K": 33332,
+   "constant_floor": 50030,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=102400 s=530 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-COMPACT T=102400 s=530 b=8000 W=0": {
+   "K": 7692,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=102400 s=530 b=8000 W=2": {
+   "K": 9090,
+   "constant_floor": 18030,
+   "unbounded": true,
+   "walk_appends": 99992
+  },
+  "P-COMPACT T=102400 s=530 b=8000 W=8": {
+   "K": 19998,
+   "constant_floor": 66030,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=204800 s=1060 b=16000 W=0": {
+   "K": 7692,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=204800 s=1060 b=16000 W=2": {
+   "K": 9090,
+   "constant_floor": 34560,
+   "unbounded": true,
+   "walk_appends": 99992
+  },
+  "P-COMPACT T=204800 s=1060 b=16000 W=8": {
+   "K": 19998,
+   "constant_floor": 130560,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=204800 s=1060 b=24000 W=0": {
+   "K": 11111,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 99999
+  },
+  "P-COMPACT T=204800 s=1060 b=24000 W=2": {
+   "K": 14285,
+   "constant_floor": 50560,
+   "unbounded": true,
+   "walk_appends": 99997
+  },
+  "P-COMPACT T=204800 s=1060 b=24000 W=8": {
+   "K": 99992,
+   "constant_floor": 194560,
+   "unbounded": true,
+   "walk_appends": 100000
+  },
+  "P-COMPACT T=204800 s=1060 b=8000 W=0": {
+   "K": 3846,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=204800 s=1060 b=8000 W=2": {
+   "K": 4166,
+   "constant_floor": 18560,
+   "unbounded": true,
+   "walk_appends": 99986
+  },
+  "P-COMPACT T=204800 s=1060 b=8000 W=8": {
+   "K": 5555,
+   "constant_floor": 66560,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=204800 s=265 b=16000 W=0": {
+   "K": 7692,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=204800 s=265 b=16000 W=2": {
+   "K": 9090,
+   "constant_floor": 33765,
+   "unbounded": true,
+   "walk_appends": 99992
+  },
+  "P-COMPACT T=204800 s=265 b=16000 W=8": {
+   "K": 19998,
+   "constant_floor": 129765,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=204800 s=265 b=24000 W=0": {
+   "K": 11111,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 99999
+  },
+  "P-COMPACT T=204800 s=265 b=24000 W=2": {
+   "K": 14285,
+   "constant_floor": 49765,
+   "unbounded": true,
+   "walk_appends": 99997
+  },
+  "P-COMPACT T=204800 s=265 b=24000 W=8": {
+   "K": 99992,
+   "constant_floor": 193765,
+   "unbounded": true,
+   "walk_appends": 100000
+  },
+  "P-COMPACT T=204800 s=265 b=8000 W=0": {
+   "K": 3846,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=204800 s=265 b=8000 W=2": {
+   "K": 4166,
+   "constant_floor": 17765,
+   "unbounded": true,
+   "walk_appends": 99986
+  },
+  "P-COMPACT T=204800 s=265 b=8000 W=8": {
+   "K": 5555,
+   "constant_floor": 65765,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=204800 s=530 b=16000 W=0": {
+   "K": 7692,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=204800 s=530 b=16000 W=2": {
+   "K": 9090,
+   "constant_floor": 34030,
+   "unbounded": true,
+   "walk_appends": 99992
+  },
+  "P-COMPACT T=204800 s=530 b=16000 W=8": {
+   "K": 19998,
+   "constant_floor": 130030,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=204800 s=530 b=24000 W=0": {
+   "K": 11111,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 99999
+  },
+  "P-COMPACT T=204800 s=530 b=24000 W=2": {
+   "K": 14285,
+   "constant_floor": 50030,
+   "unbounded": true,
+   "walk_appends": 99997
+  },
+  "P-COMPACT T=204800 s=530 b=24000 W=8": {
+   "K": 99992,
+   "constant_floor": 194030,
+   "unbounded": true,
+   "walk_appends": 100000
+  },
+  "P-COMPACT T=204800 s=530 b=8000 W=0": {
+   "K": 3846,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=204800 s=530 b=8000 W=2": {
+   "K": 4166,
+   "constant_floor": 18030,
+   "unbounded": true,
+   "walk_appends": 99986
+  },
+  "P-COMPACT T=204800 s=530 b=8000 W=8": {
+   "K": 5555,
+   "constant_floor": 66030,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=409600 s=1060 b=16000 W=0": {
+   "K": 3846,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=409600 s=1060 b=16000 W=2": {
+   "K": 4166,
+   "constant_floor": 34560,
+   "unbounded": true,
+   "walk_appends": 99986
+  },
+  "P-COMPACT T=409600 s=1060 b=16000 W=8": {
+   "K": 5555,
+   "constant_floor": 130560,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=409600 s=1060 b=24000 W=0": {
+   "K": 5882,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 99995
+  },
+  "P-COMPACT T=409600 s=1060 b=24000 W=2": {
+   "K": 6666,
+   "constant_floor": 50560,
+   "unbounded": true,
+   "walk_appends": 99993
+  },
+  "P-COMPACT T=409600 s=1060 b=24000 W=8": {
+   "K": 11110,
+   "constant_floor": 194560,
+   "unbounded": true,
+   "walk_appends": 99999
+  },
+  "P-COMPACT T=409600 s=1060 b=8000 W=0": {
+   "K": 1960,
+   "constant_floor": 2560,
+   "unbounded": true,
+   "walk_appends": 99961
+  },
+  "P-COMPACT T=409600 s=1060 b=8000 W=2": {
+   "K": 2040,
+   "constant_floor": 18560,
+   "unbounded": true,
+   "walk_appends": 99963
+  },
+  "P-COMPACT T=409600 s=1060 b=8000 W=8": {
+   "K": 2325,
+   "constant_floor": 66560,
+   "unbounded": true,
+   "walk_appends": 99984
+  },
+  "P-COMPACT T=409600 s=265 b=16000 W=0": {
+   "K": 3846,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=409600 s=265 b=16000 W=2": {
+   "K": 4166,
+   "constant_floor": 33765,
+   "unbounded": true,
+   "walk_appends": 99986
+  },
+  "P-COMPACT T=409600 s=265 b=16000 W=8": {
+   "K": 5555,
+   "constant_floor": 129765,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=409600 s=265 b=24000 W=0": {
+   "K": 5882,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 99995
+  },
+  "P-COMPACT T=409600 s=265 b=24000 W=2": {
+   "K": 6666,
+   "constant_floor": 49765,
+   "unbounded": true,
+   "walk_appends": 99993
+  },
+  "P-COMPACT T=409600 s=265 b=24000 W=8": {
+   "K": 11110,
+   "constant_floor": 193765,
+   "unbounded": true,
+   "walk_appends": 99999
+  },
+  "P-COMPACT T=409600 s=265 b=8000 W=0": {
+   "K": 1960,
+   "constant_floor": 1765,
+   "unbounded": true,
+   "walk_appends": 99961
+  },
+  "P-COMPACT T=409600 s=265 b=8000 W=2": {
+   "K": 2040,
+   "constant_floor": 17765,
+   "unbounded": true,
+   "walk_appends": 99963
+  },
+  "P-COMPACT T=409600 s=265 b=8000 W=8": {
+   "K": 2325,
+   "constant_floor": 65765,
+   "unbounded": true,
+   "walk_appends": 99984
+  },
+  "P-COMPACT T=409600 s=530 b=16000 W=0": {
+   "K": 3846,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 99996
+  },
+  "P-COMPACT T=409600 s=530 b=16000 W=2": {
+   "K": 4166,
+   "constant_floor": 34030,
+   "unbounded": true,
+   "walk_appends": 99986
+  },
+  "P-COMPACT T=409600 s=530 b=16000 W=8": {
+   "K": 5555,
+   "constant_floor": 130030,
+   "unbounded": true,
+   "walk_appends": 99998
+  },
+  "P-COMPACT T=409600 s=530 b=24000 W=0": {
+   "K": 5882,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 99995
+  },
+  "P-COMPACT T=409600 s=530 b=24000 W=2": {
+   "K": 6666,
+   "constant_floor": 50030,
+   "unbounded": true,
+   "walk_appends": 99993
+  },
+  "P-COMPACT T=409600 s=530 b=24000 W=8": {
+   "K": 11110,
+   "constant_floor": 194030,
+   "unbounded": true,
+   "walk_appends": 99999
+  },
+  "P-COMPACT T=409600 s=530 b=8000 W=0": {
+   "K": 1960,
+   "constant_floor": 2030,
+   "unbounded": true,
+   "walk_appends": 99961
+  },
+  "P-COMPACT T=409600 s=530 b=8000 W=2": {
+   "K": 2040,
+   "constant_floor": 18030,
+   "unbounded": true,
+   "walk_appends": 99963
+  },
+  "P-COMPACT T=409600 s=530 b=8000 W=8": {
+   "K": 2325,
+   "constant_floor": 66030,
+   "unbounded": true,
+   "walk_appends": 99984
+  },
+  "P-RANGE T=102400 s=1060 b=16000 W=0": {
+   "K": 50,
+   "Nstar": 186,
+   "composition": {
+    "header": 500,
+    "receipts": 50000,
+    "stub": 53000,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=1060 b=16000 W=2": {
+   "K": 34,
+   "Nstar": 96,
+   "composition": {
+    "header": 500,
+    "receipts": 34000,
+    "stub": 36040,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=102400 s=1060 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-RANGE T=102400 s=1060 b=24000 W=0": {
+   "K": 50,
+   "Nstar": 133,
+   "composition": {
+    "header": 500,
+    "receipts": 50000,
+    "stub": 53000,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=1060 b=24000 W=2": {
+   "K": 27,
+   "Nstar": 47,
+   "composition": {
+    "header": 500,
+    "receipts": 27000,
+    "stub": 28620,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=102400 s=1060 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-RANGE T=102400 s=1060 b=8000 W=0": {
+   "K": 50,
+   "Nstar": 346,
+   "composition": {
+    "header": 500,
+    "receipts": 50000,
+    "stub": 53000,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=1060 b=8000 W=2": {
+   "K": 42,
+   "Nstar": 252,
+   "composition": {
+    "header": 500,
+    "receipts": 42000,
+    "stub": 44520,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=102400 s=1060 b=8000 W=8": {
+   "K": 19,
+   "Nstar": 63,
+   "composition": {
+    "header": 500,
+    "receipts": 19000,
+    "stub": 20140,
+    "window": 64000
+   }
+  },
+  "P-RANGE T=102400 s=265 b=16000 W=0": {
+   "K": 81,
+   "Nstar": 301,
+   "composition": {
+    "header": 500,
+    "receipts": 81000,
+    "stub": 21465,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=265 b=16000 W=2": {
+   "K": 56,
+   "Nstar": 154,
+   "composition": {
+    "header": 500,
+    "receipts": 56000,
+    "stub": 14840,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=102400 s=265 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-RANGE T=102400 s=265 b=24000 W=0": {
+   "K": 81,
+   "Nstar": 215,
+   "composition": {
+    "header": 500,
+    "receipts": 81000,
+    "stub": 21465,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=265 b=24000 W=2": {
+   "K": 43,
+   "Nstar": 74,
+   "composition": {
+    "header": 500,
+    "receipts": 43000,
+    "stub": 11395,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=102400 s=265 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-RANGE T=102400 s=265 b=8000 W=0": {
+   "K": 81,
+   "Nstar": 559,
+   "composition": {
+    "header": 500,
+    "receipts": 81000,
+    "stub": 21465,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=265 b=8000 W=2": {
+   "K": 68,
+   "Nstar": 405,
+   "composition": {
+    "header": 500,
+    "receipts": 68000,
+    "stub": 18020,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=102400 s=265 b=8000 W=8": {
+   "K": 30,
+   "Nstar": 96,
+   "composition": {
+    "header": 500,
+    "receipts": 30000,
+    "stub": 7950,
+    "window": 64000
+   }
+  },
+  "P-RANGE T=102400 s=530 b=16000 W=0": {
+   "K": 67,
+   "Nstar": 250,
+   "composition": {
+    "header": 500,
+    "receipts": 67000,
+    "stub": 35510,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=530 b=16000 W=2": {
+   "K": 46,
+   "Nstar": 128,
+   "composition": {
+    "header": 500,
+    "receipts": 46000,
+    "stub": 24380,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=102400 s=530 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-RANGE T=102400 s=530 b=24000 W=0": {
+   "K": 67,
+   "Nstar": 178,
+   "composition": {
+    "header": 500,
+    "receipts": 67000,
+    "stub": 35510,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=530 b=24000 W=2": {
+   "K": 36,
+   "Nstar": 62,
+   "composition": {
+    "header": 500,
+    "receipts": 36000,
+    "stub": 19080,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=102400 s=530 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-RANGE T=102400 s=530 b=8000 W=0": {
+   "K": 67,
+   "Nstar": 464,
+   "composition": {
+    "header": 500,
+    "receipts": 67000,
+    "stub": 35510,
+    "window": 0
+   }
+  },
+  "P-RANGE T=102400 s=530 b=8000 W=2": {
+   "K": 57,
+   "Nstar": 337,
+   "composition": {
+    "header": 500,
+    "receipts": 57000,
+    "stub": 30210,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=102400 s=530 b=8000 W=8": {
+   "K": 25,
+   "Nstar": 82,
+   "composition": {
+    "header": 500,
+    "receipts": 25000,
+    "stub": 13250,
+    "window": 64000
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=16000 W=0": {
+   "K": 100,
+   "Nstar": 690,
+   "composition": {
+    "header": 500,
+    "receipts": 100000,
+    "stub": 106000,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=16000 W=2": {
+   "K": 84,
+   "Nstar": 500,
+   "composition": {
+    "header": 500,
+    "receipts": 84000,
+    "stub": 89040,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=16000 W=8": {
+   "K": 38,
+   "Nstar": 118,
+   "composition": {
+    "header": 500,
+    "receipts": 38000,
+    "stub": 40280,
+    "window": 128000
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=24000 W=0": {
+   "K": 100,
+   "Nstar": 477,
+   "composition": {
+    "header": 500,
+    "receipts": 100000,
+    "stub": 106000,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=24000 W=2": {
+   "K": 76,
+   "Nstar": 291,
+   "composition": {
+    "header": 500,
+    "receipts": 76000,
+    "stub": 80560,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=24000 W=8": {
+   "K": 6,
+   "Nstar": 14,
+   "composition": {
+    "header": 500,
+    "receipts": 6000,
+    "stub": 6360,
+    "window": 192000
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=8000 W=0": {
+   "K": 100,
+   "Nstar": 1329,
+   "composition": {
+    "header": 500,
+    "receipts": 100000,
+    "stub": 106000,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=8000 W=2": {
+   "K": 92,
+   "Nstar": 1135,
+   "composition": {
+    "header": 500,
+    "receipts": 92000,
+    "stub": 97520,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=204800 s=1060 b=8000 W=8": {
+   "K": 69,
+   "Nstar": 649,
+   "composition": {
+    "header": 500,
+    "receipts": 69000,
+    "stub": 73140,
+    "window": 64000
+   }
+  },
+  "P-RANGE T=204800 s=265 b=16000 W=0": {
+   "K": 162,
+   "Nstar": 1119,
+   "composition": {
+    "header": 500,
+    "receipts": 162000,
+    "stub": 42930,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=265 b=16000 W=2": {
+   "K": 137,
+   "Nstar": 810,
+   "composition": {
+    "header": 500,
+    "receipts": 137000,
+    "stub": 36305,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=204800 s=265 b=16000 W=8": {
+   "K": 61,
+   "Nstar": 186,
+   "composition": {
+    "header": 500,
+    "receipts": 61000,
+    "stub": 16165,
+    "window": 128000
+   }
+  },
+  "P-RANGE T=204800 s=265 b=24000 W=0": {
+   "K": 162,
+   "Nstar": 774,
+   "composition": {
+    "header": 500,
+    "receipts": 162000,
+    "stub": 42930,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=265 b=24000 W=2": {
+   "K": 124,
+   "Nstar": 471,
+   "composition": {
+    "header": 500,
+    "receipts": 124000,
+    "stub": 32860,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=204800 s=265 b=24000 W=8": {
+   "K": 10,
+   "Nstar": 18,
+   "composition": {
+    "header": 500,
+    "receipts": 10000,
+    "stub": 2650,
+    "window": 192000
+   }
+  },
+  "P-RANGE T=204800 s=265 b=8000 W=0": {
+   "K": 162,
+   "Nstar": 2156,
+   "composition": {
+    "header": 500,
+    "receipts": 162000,
+    "stub": 42930,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=265 b=8000 W=2": {
+   "K": 149,
+   "Nstar": 1840,
+   "composition": {
+    "header": 500,
+    "receipts": 149000,
+    "stub": 39485,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=204800 s=265 b=8000 W=8": {
+   "K": 111,
+   "Nstar": 1045,
+   "composition": {
+    "header": 500,
+    "receipts": 111000,
+    "stub": 29415,
+    "window": 64000
+   }
+  },
+  "P-RANGE T=204800 s=530 b=16000 W=0": {
+   "K": 134,
+   "Nstar": 927,
+   "composition": {
+    "header": 500,
+    "receipts": 134000,
+    "stub": 71020,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=530 b=16000 W=2": {
+   "K": 113,
+   "Nstar": 671,
+   "composition": {
+    "header": 500,
+    "receipts": 113000,
+    "stub": 59890,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=204800 s=530 b=16000 W=8": {
+   "K": 50,
+   "Nstar": 155,
+   "composition": {
+    "header": 500,
+    "receipts": 50000,
+    "stub": 26500,
+    "window": 128000
+   }
+  },
+  "P-RANGE T=204800 s=530 b=24000 W=0": {
+   "K": 134,
+   "Nstar": 642,
+   "composition": {
+    "header": 500,
+    "receipts": 134000,
+    "stub": 71020,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=530 b=24000 W=2": {
+   "K": 103,
+   "Nstar": 392,
+   "composition": {
+    "header": 500,
+    "receipts": 103000,
+    "stub": 54590,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=204800 s=530 b=24000 W=8": {
+   "K": 9,
+   "Nstar": 17,
+   "composition": {
+    "header": 500,
+    "receipts": 9000,
+    "stub": 4770,
+    "window": 192000
+   }
+  },
+  "P-RANGE T=204800 s=530 b=8000 W=0": {
+   "K": 134,
+   "Nstar": 1786,
+   "composition": {
+    "header": 500,
+    "receipts": 134000,
+    "stub": 71020,
+    "window": 0
+   }
+  },
+  "P-RANGE T=204800 s=530 b=8000 W=2": {
+   "K": 124,
+   "Nstar": 1525,
+   "composition": {
+    "header": 500,
+    "receipts": 124000,
+    "stub": 65720,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=204800 s=530 b=8000 W=8": {
+   "K": 92,
+   "Nstar": 868,
+   "composition": {
+    "header": 500,
+    "receipts": 92000,
+    "stub": 48760,
+    "window": 64000
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=16000 W=0": {
+   "K": 199,
+   "Nstar": 2652,
+   "composition": {
+    "header": 500,
+    "receipts": 199000,
+    "stub": 210940,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=16000 W=2": {
+   "K": 184,
+   "Nstar": 2264,
+   "composition": {
+    "header": 500,
+    "receipts": 184000,
+    "stub": 195040,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=16000 W=8": {
+   "K": 137,
+   "Nstar": 1285,
+   "composition": {
+    "header": 500,
+    "receipts": 137000,
+    "stub": 145220,
+    "window": 128000
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=24000 W=0": {
+   "K": 199,
+   "Nstar": 1801,
+   "composition": {
+    "header": 500,
+    "receipts": 199000,
+    "stub": 210940,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=24000 W=2": {
+   "K": 176,
+   "Nstar": 1417,
+   "composition": {
+    "header": 500,
+    "receipts": 176000,
+    "stub": 186560,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=24000 W=8": {
+   "K": 106,
+   "Nstar": 543,
+   "composition": {
+    "header": 500,
+    "receipts": 106000,
+    "stub": 112360,
+    "window": 192000
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=8000 W=0": {
+   "K": 199,
+   "Nstar": 5203,
+   "composition": {
+    "header": 500,
+    "receipts": 199000,
+    "stub": 210940,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=8000 W=2": {
+   "K": 191,
+   "Nstar": 4811,
+   "composition": {
+    "header": 500,
+    "receipts": 191000,
+    "stub": 202460,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=409600 s=1060 b=8000 W=8": {
+   "K": 168,
+   "Nstar": 3727,
+   "composition": {
+    "header": 500,
+    "receipts": 168000,
+    "stub": 178080,
+    "window": 64000
+   }
+  },
+  "P-RANGE T=409600 s=265 b=16000 W=0": {
+   "K": 324,
+   "Nstar": 4311,
+   "composition": {
+    "header": 500,
+    "receipts": 324000,
+    "stub": 85860,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=265 b=16000 W=2": {
+   "K": 299,
+   "Nstar": 3678,
+   "composition": {
+    "header": 500,
+    "receipts": 299000,
+    "stub": 79235,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=409600 s=265 b=16000 W=8": {
+   "K": 223,
+   "Nstar": 2082,
+   "composition": {
+    "header": 500,
+    "receipts": 223000,
+    "stub": 59095,
+    "window": 128000
+   }
+  },
+  "P-RANGE T=409600 s=265 b=24000 W=0": {
+   "K": 324,
+   "Nstar": 2925,
+   "composition": {
+    "header": 500,
+    "receipts": 324000,
+    "stub": 85860,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=265 b=24000 W=2": {
+   "K": 286,
+   "Nstar": 2298,
+   "composition": {
+    "header": 500,
+    "receipts": 286000,
+    "stub": 75790,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=409600 s=265 b=24000 W=8": {
+   "K": 172,
+   "Nstar": 873,
+   "composition": {
+    "header": 500,
+    "receipts": 172000,
+    "stub": 45580,
+    "window": 192000
+   }
+  },
+  "P-RANGE T=409600 s=265 b=8000 W=0": {
+   "K": 324,
+   "Nstar": 8457,
+   "composition": {
+    "header": 500,
+    "receipts": 324000,
+    "stub": 85860,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=265 b=8000 W=2": {
+   "K": 311,
+   "Nstar": 7817,
+   "composition": {
+    "header": 500,
+    "receipts": 311000,
+    "stub": 82415,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=409600 s=265 b=8000 W=8": {
+   "K": 273,
+   "Nstar": 6050,
+   "composition": {
+    "header": 500,
+    "receipts": 273000,
+    "stub": 72345,
+    "window": 64000
+   }
+  },
+  "P-RANGE T=409600 s=530 b=16000 W=0": {
+   "K": 268,
+   "Nstar": 3566,
+   "composition": {
+    "header": 500,
+    "receipts": 268000,
+    "stub": 142040,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=530 b=16000 W=2": {
+   "K": 247,
+   "Nstar": 3043,
+   "composition": {
+    "header": 500,
+    "receipts": 247000,
+    "stub": 130910,
+    "window": 32000
+   }
+  },
+  "P-RANGE T=409600 s=530 b=16000 W=8": {
+   "K": 184,
+   "Nstar": 1723,
+   "composition": {
+    "header": 500,
+    "receipts": 184000,
+    "stub": 97520,
+    "window": 128000
+   }
+  },
+  "P-RANGE T=409600 s=530 b=24000 W=0": {
+   "K": 268,
+   "Nstar": 2422,
+   "composition": {
+    "header": 500,
+    "receipts": 268000,
+    "stub": 142040,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=530 b=24000 W=2": {
+   "K": 237,
+   "Nstar": 1904,
+   "composition": {
+    "header": 500,
+    "receipts": 237000,
+    "stub": 125610,
+    "window": 48000
+   }
+  },
+  "P-RANGE T=409600 s=530 b=24000 W=8": {
+   "K": 142,
+   "Nstar": 726,
+   "composition": {
+    "header": 500,
+    "receipts": 142000,
+    "stub": 75260,
+    "window": 192000
+   }
+  },
+  "P-RANGE T=409600 s=530 b=8000 W=0": {
+   "K": 268,
+   "Nstar": 6997,
+   "composition": {
+    "header": 500,
+    "receipts": 268000,
+    "stub": 142040,
+    "window": 0
+   }
+  },
+  "P-RANGE T=409600 s=530 b=8000 W=2": {
+   "K": 257,
+   "Nstar": 6468,
+   "composition": {
+    "header": 500,
+    "receipts": 257000,
+    "stub": 136210,
+    "window": 16000
+   }
+  },
+  "P-RANGE T=409600 s=530 b=8000 W=8": {
+   "K": 226,
+   "Nstar": 5008,
+   "composition": {
+    "header": 500,
+    "receipts": 226000,
+    "stub": 119780,
+    "window": 64000
+   }
+  },
+  "P-STUB T=102400 s=1060 b=16000 W=0": {
+   "K": 25,
+   "Nstar": 73,
+   "composition": {
+    "header": 500,
+    "receipts": 25000,
+    "stub": 77380,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=1060 b=16000 W=2": {
+   "K": 21,
+   "Nstar": 49,
+   "composition": {
+    "header": 500,
+    "receipts": 21000,
+    "stub": 49820,
+    "window": 32000
+   }
+  },
+  "P-STUB T=102400 s=1060 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-STUB T=102400 s=1060 b=24000 W=0": {
+   "K": 30,
+   "Nstar": 68,
+   "composition": {
+    "header": 500,
+    "receipts": 30000,
+    "stub": 72080,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=1060 b=24000 W=2": {
+   "K": 21,
+   "Nstar": 34,
+   "composition": {
+    "header": 500,
+    "receipts": 21000,
+    "stub": 33920,
+    "window": 48000
+   }
+  },
+  "P-STUB T=102400 s=1060 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-STUB T=102400 s=1060 b=8000 W=0": {
+   "K": 17,
+   "Nstar": 82,
+   "composition": {
+    "header": 500,
+    "receipts": 17000,
+    "stub": 86920,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=1060 b=8000 W=2": {
+   "K": 15,
+   "Nstar": 69,
+   "composition": {
+    "header": 500,
+    "receipts": 15000,
+    "stub": 71020,
+    "window": 16000
+   }
+  },
+  "P-STUB T=102400 s=1060 b=8000 W=8": {
+   "K": 11,
+   "Nstar": 35,
+   "composition": {
+    "header": 500,
+    "receipts": 11000,
+    "stub": 28620,
+    "window": 64000
+   }
+  },
+  "P-STUB T=102400 s=265 b=16000 W=0": {
+   "K": 55,
+   "Nstar": 179,
+   "composition": {
+    "header": 500,
+    "receipts": 55000,
+    "stub": 47435,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=265 b=16000 W=2": {
+   "K": 42,
+   "Nstar": 108,
+   "composition": {
+    "header": 500,
+    "receipts": 42000,
+    "stub": 28090,
+    "window": 32000
+   }
+  },
+  "P-STUB T=102400 s=265 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-STUB T=102400 s=265 b=24000 W=0": {
+   "K": 62,
+   "Nstar": 151,
+   "composition": {
+    "header": 500,
+    "receipts": 62000,
+    "stub": 40015,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=265 b=24000 W=2": {
+   "K": 38,
+   "Nstar": 63,
+   "composition": {
+    "header": 500,
+    "receipts": 38000,
+    "stub": 16165,
+    "window": 48000
+   }
+  },
+  "P-STUB T=102400 s=265 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-STUB T=102400 s=265 b=8000 W=0": {
+   "K": 41,
+   "Nstar": 230,
+   "composition": {
+    "header": 500,
+    "receipts": 41000,
+    "stub": 60950,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=265 b=8000 W=2": {
+   "K": 38,
+   "Nstar": 186,
+   "composition": {
+    "header": 500,
+    "receipts": 38000,
+    "stub": 48760,
+    "window": 16000
+   }
+  },
+  "P-STUB T=102400 s=265 b=8000 W=8": {
+   "K": 23,
+   "Nstar": 68,
+   "composition": {
+    "header": 500,
+    "receipts": 23000,
+    "stub": 15900,
+    "window": 64000
+   }
+  },
+  "P-STUB T=102400 s=530 b=16000 W=0": {
+   "K": 39,
+   "Nstar": 121,
+   "composition": {
+    "header": 500,
+    "receipts": 39000,
+    "stub": 64130,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=530 b=16000 W=2": {
+   "K": 31,
+   "Nstar": 76,
+   "composition": {
+    "header": 500,
+    "receipts": 31000,
+    "stub": 39220,
+    "window": 32000
+   }
+  },
+  "P-STUB T=102400 s=530 b=16000 W=8": {
+   "K": 1,
+   "Nstar": 7,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 112000
+   }
+  },
+  "P-STUB T=102400 s=530 b=24000 W=0": {
+   "K": 46,
+   "Nstar": 107,
+   "composition": {
+    "header": 500,
+    "receipts": 46000,
+    "stub": 56710,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=530 b=24000 W=2": {
+   "K": 30,
+   "Nstar": 49,
+   "composition": {
+    "header": 500,
+    "receipts": 30000,
+    "stub": 24910,
+    "window": 48000
+   }
+  },
+  "P-STUB T=102400 s=530 b=24000 W=8": {
+   "K": 1,
+   "Nstar": 5,
+   "composition": {
+    "header": 500,
+    "receipts": 1000,
+    "stub": 0,
+    "window": 120000
+   }
+  },
+  "P-STUB T=102400 s=530 b=8000 W=0": {
+   "K": 27,
+   "Nstar": 142,
+   "composition": {
+    "header": 500,
+    "receipts": 27000,
+    "stub": 75260,
+    "window": 0
+   }
+  },
+  "P-STUB T=102400 s=530 b=8000 W=2": {
+   "K": 25,
+   "Nstar": 117,
+   "composition": {
+    "header": 500,
+    "receipts": 25000,
+    "stub": 60950,
+    "window": 16000
+   }
+  },
+  "P-STUB T=102400 s=530 b=8000 W=8": {
+   "K": 16,
+   "Nstar": 50,
+   "composition": {
+    "header": 500,
+    "receipts": 16000,
+    "stub": 22260,
+    "window": 64000
+   }
+  },
+  "P-STUB T=204800 s=1060 b=16000 W=0": {
+   "K": 34,
+   "Nstar": 162,
+   "composition": {
+    "header": 500,
+    "receipts": 34000,
+    "stub": 171720,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=1060 b=16000 W=2": {
+   "K": 32,
+   "Nstar": 136,
+   "composition": {
+    "header": 500,
+    "receipts": 32000,
+    "stub": 142040,
+    "window": 32000
+   }
+  },
+  "P-STUB T=204800 s=1060 b=16000 W=8": {
+   "K": 22,
+   "Nstar": 60,
+   "composition": {
+    "header": 500,
+    "receipts": 22000,
+    "stub": 55120,
+    "window": 128000
+   }
+  },
+  "P-STUB T=204800 s=1060 b=24000 W=0": {
+   "K": 43,
+   "Nstar": 153,
+   "composition": {
+    "header": 500,
+    "receipts": 43000,
+    "stub": 162180,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=1060 b=24000 W=2": {
+   "K": 38,
+   "Nstar": 115,
+   "composition": {
+    "header": 500,
+    "receipts": 38000,
+    "stub": 119780,
+    "window": 48000
+   }
+  },
+  "P-STUB T=204800 s=1060 b=24000 W=8": {
+   "K": 6,
+   "Nstar": 14,
+   "composition": {
+    "header": 500,
+    "receipts": 6000,
+    "stub": 6360,
+    "window": 192000
+   }
+  },
+  "P-STUB T=204800 s=1060 b=8000 W=0": {
+   "K": 21,
+   "Nstar": 174,
+   "composition": {
+    "header": 500,
+    "receipts": 21000,
+    "stub": 184440,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=1060 b=8000 W=2": {
+   "K": 20,
+   "Nstar": 161,
+   "composition": {
+    "header": 500,
+    "receipts": 20000,
+    "stub": 168540,
+    "window": 16000
+   }
+  },
+  "P-STUB T=204800 s=1060 b=8000 W=8": {
+   "K": 19,
+   "Nstar": 124,
+   "composition": {
+    "header": 500,
+    "receipts": 19000,
+    "stub": 122960,
+    "window": 64000
+   }
+  },
+  "P-STUB T=204800 s=265 b=16000 W=0": {
+   "K": 83,
+   "Nstar": 459,
+   "composition": {
+    "header": 500,
+    "receipts": 83000,
+    "stub": 121635,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=265 b=16000 W=2": {
+   "K": 76,
+   "Nstar": 369,
+   "composition": {
+    "header": 500,
+    "receipts": 76000,
+    "stub": 97255,
+    "window": 32000
+   }
+  },
+  "P-STUB T=204800 s=265 b=16000 W=8": {
+   "K": 45,
+   "Nstar": 127,
+   "composition": {
+    "header": 500,
+    "receipts": 45000,
+    "stub": 31535,
+    "window": 128000
+   }
+  },
+  "P-STUB T=204800 s=265 b=24000 W=0": {
+   "K": 99,
+   "Nstar": 400,
+   "composition": {
+    "header": 500,
+    "receipts": 99000,
+    "stub": 106000,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=265 b=24000 W=2": {
+   "K": 84,
+   "Nstar": 279,
+   "composition": {
+    "header": 500,
+    "receipts": 84000,
+    "stub": 73405,
+    "window": 48000
+   }
+  },
+  "P-STUB T=204800 s=265 b=24000 W=8": {
+   "K": 10,
+   "Nstar": 18,
+   "composition": {
+    "header": 500,
+    "receipts": 10000,
+    "stub": 2650,
+    "window": 192000
+   }
+  },
+  "P-STUB T=204800 s=265 b=8000 W=0": {
+   "K": 58,
+   "Nstar": 553,
+   "composition": {
+    "header": 500,
+    "receipts": 58000,
+    "stub": 146545,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=265 b=8000 W=2": {
+   "K": 56,
+   "Nstar": 503,
+   "composition": {
+    "header": 500,
+    "receipts": 56000,
+    "stub": 132765,
+    "window": 16000
+   }
+  },
+  "P-STUB T=204800 s=265 b=8000 W=8": {
+   "K": 49,
+   "Nstar": 356,
+   "composition": {
+    "header": 500,
+    "receipts": 49000,
+    "stub": 92220,
+    "window": 64000
+   }
+  },
+  "P-STUB T=204800 s=530 b=16000 W=0": {
+   "K": 55,
+   "Nstar": 283,
+   "composition": {
+    "header": 500,
+    "receipts": 55000,
+    "stub": 149990,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=530 b=16000 W=2": {
+   "K": 51,
+   "Nstar": 233,
+   "composition": {
+    "header": 500,
+    "receipts": 51000,
+    "stub": 122430,
+    "window": 32000
+   }
+  },
+  "P-STUB T=204800 s=530 b=16000 W=8": {
+   "K": 33,
+   "Nstar": 92,
+   "composition": {
+    "header": 500,
+    "receipts": 33000,
+    "stub": 44520,
+    "window": 128000
+   }
+  },
+  "P-STUB T=204800 s=530 b=24000 W=0": {
+   "K": 68,
+   "Nstar": 258,
+   "composition": {
+    "header": 500,
+    "receipts": 68000,
+    "stub": 136740,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=530 b=24000 W=2": {
+   "K": 59,
+   "Nstar": 187,
+   "composition": {
+    "header": 500,
+    "receipts": 59000,
+    "stub": 98050,
+    "window": 48000
+   }
+  },
+  "P-STUB T=204800 s=530 b=24000 W=8": {
+   "K": 9,
+   "Nstar": 17,
+   "composition": {
+    "header": 500,
+    "receipts": 9000,
+    "stub": 4770,
+    "window": 192000
+   }
+  },
+  "P-STUB T=204800 s=530 b=8000 W=0": {
+   "K": 36,
+   "Nstar": 318,
+   "composition": {
+    "header": 500,
+    "receipts": 36000,
+    "stub": 168540,
+    "window": 0
+   }
+  },
+  "P-STUB T=204800 s=530 b=8000 W=2": {
+   "K": 35,
+   "Nstar": 292,
+   "composition": {
+    "header": 500,
+    "receipts": 35000,
+    "stub": 153700,
+    "window": 16000
+   }
+  },
+  "P-STUB T=204800 s=530 b=8000 W=8": {
+   "K": 31,
+   "Nstar": 215,
+   "composition": {
+    "header": 500,
+    "receipts": 31000,
+    "stub": 109710,
+    "window": 64000
+   }
+  },
+  "P-STUB T=409600 s=1060 b=16000 W=0": {
+   "K": 43,
+   "Nstar": 346,
+   "composition": {
+    "header": 500,
+    "receipts": 43000,
+    "stub": 366760,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=1060 b=16000 W=2": {
+   "K": 42,
+   "Nstar": 319,
+   "composition": {
+    "header": 500,
+    "receipts": 42000,
+    "stub": 336020,
+    "window": 32000
+   }
+  },
+  "P-STUB T=409600 s=1060 b=16000 W=8": {
+   "K": 38,
+   "Nstar": 239,
+   "composition": {
+    "header": 500,
+    "receipts": 38000,
+    "stub": 244860,
+    "window": 128000
+   }
+  },
+  "P-STUB T=409600 s=1060 b=24000 W=0": {
+   "K": 57,
+   "Nstar": 334,
+   "composition": {
+    "header": 500,
+    "receipts": 57000,
+    "stub": 354040,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=1060 b=24000 W=2": {
+   "K": 54,
+   "Nstar": 293,
+   "composition": {
+    "header": 500,
+    "receipts": 54000,
+    "stub": 308460,
+    "window": 48000
+   }
+  },
+  "P-STUB T=409600 s=1060 b=24000 W=8": {
+   "K": 44,
+   "Nstar": 172,
+   "composition": {
+    "header": 500,
+    "receipts": 44000,
+    "stub": 173840,
+    "window": 192000
+   }
+  },
+  "P-STUB T=409600 s=1060 b=8000 W=0": {
+   "K": 26,
+   "Nstar": 363,
+   "composition": {
+    "header": 500,
+    "receipts": 26000,
+    "stub": 384780,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=1060 b=8000 W=2": {
+   "K": 25,
+   "Nstar": 350,
+   "composition": {
+    "header": 500,
+    "receipts": 25000,
+    "stub": 368880,
+    "window": 16000
+   }
+  },
+  "P-STUB T=409600 s=1060 b=8000 W=8": {
+   "K": 24,
+   "Nstar": 311,
+   "composition": {
+    "header": 500,
+    "receipts": 24000,
+    "stub": 321180,
+    "window": 64000
+   }
+  },
+  "P-STUB T=409600 s=265 b=16000 W=0": {
+   "K": 117,
+   "Nstar": 1107,
+   "composition": {
+    "header": 500,
+    "receipts": 117000,
+    "stub": 293355,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=265 b=16000 W=2": {
+   "K": 112,
+   "Nstar": 1003,
+   "composition": {
+    "header": 500,
+    "receipts": 112000,
+    "stub": 265265,
+    "window": 32000
+   }
+  },
+  "P-STUB T=409600 s=265 b=16000 W=8": {
+   "K": 98,
+   "Nstar": 701,
+   "composition": {
+    "header": 500,
+    "receipts": 98000,
+    "stub": 183645,
+    "window": 128000
+   }
+  },
+  "P-STUB T=409600 s=265 b=24000 W=0": {
+   "K": 145,
+   "Nstar": 999,
+   "composition": {
+    "header": 500,
+    "receipts": 145000,
+    "stub": 264735,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=265 b=24000 W=2": {
+   "K": 136,
+   "Nstar": 853,
+   "composition": {
+    "header": 500,
+    "receipts": 136000,
+    "stub": 225515,
+    "window": 48000
+   }
+  },
+  "P-STUB T=409600 s=265 b=24000 W=8": {
+   "K": 103,
+   "Nstar": 442,
+   "composition": {
+    "header": 500,
+    "receipts": 103000,
+    "stub": 115010,
+    "window": 192000
+   }
+  },
+  "P-STUB T=409600 s=265 b=8000 W=0": {
+   "K": 76,
+   "Nstar": 1257,
+   "composition": {
+    "header": 500,
+    "receipts": 76000,
+    "stub": 333105,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=265 b=8000 W=2": {
+   "K": 75,
+   "Nstar": 1203,
+   "composition": {
+    "header": 500,
+    "receipts": 75000,
+    "stub": 318265,
+    "window": 16000
+   }
+  },
+  "P-STUB T=409600 s=265 b=8000 W=8": {
+   "K": 72,
+   "Nstar": 1042,
+   "composition": {
+    "header": 500,
+    "receipts": 72000,
+    "stub": 274010,
+    "window": 64000
+   }
+  },
+  "P-STUB T=409600 s=530 b=16000 W=0": {
+   "K": 74,
+   "Nstar": 635,
+   "composition": {
+    "header": 500,
+    "receipts": 74000,
+    "stub": 336550,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=530 b=16000 W=2": {
+   "K": 71,
+   "Nstar": 581,
+   "composition": {
+    "header": 500,
+    "receipts": 71000,
+    "stub": 306870,
+    "window": 32000
+   }
+  },
+  "P-STUB T=409600 s=530 b=16000 W=8": {
+   "K": 63,
+   "Nstar": 420,
+   "composition": {
+    "header": 500,
+    "receipts": 63000,
+    "stub": 218360,
+    "window": 128000
+   }
+  },
+  "P-STUB T=409600 s=530 b=24000 W=0": {
+   "K": 94,
+   "Nstar": 596,
+   "composition": {
+    "header": 500,
+    "receipts": 94000,
+    "stub": 315880,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=530 b=24000 W=2": {
+   "K": 89,
+   "Nstar": 516,
+   "composition": {
+    "header": 500,
+    "receipts": 89000,
+    "stub": 272420,
+    "window": 48000
+   }
+  },
+  "P-STUB T=409600 s=530 b=24000 W=8": {
+   "K": 70,
+   "Nstar": 286,
+   "composition": {
+    "header": 500,
+    "receipts": 70000,
+    "stub": 147340,
+    "window": 192000
+   }
+  },
+  "P-STUB T=409600 s=530 b=8000 W=0": {
+   "K": 45,
+   "Nstar": 687,
+   "composition": {
+    "header": 500,
+    "receipts": 45000,
+    "stub": 364110,
+    "window": 0
+   }
+  },
+  "P-STUB T=409600 s=530 b=8000 W=2": {
+   "K": 45,
+   "Nstar": 659,
+   "composition": {
+    "header": 500,
+    "receipts": 45000,
+    "stub": 348210,
+    "window": 16000
+   }
+  },
+  "P-STUB T=409600 s=530 b=8000 W=8": {
+   "K": 43,
+   "Nstar": 578,
+   "composition": {
+    "header": 500,
+    "receipts": 43000,
+    "stub": 302100,
+    "window": 64000
+   }
+  }
+ }
+}

@@ -1,0 +1,106 @@
+{
+  "_registration": "VERDICT 078 fixtures — idea-engine PROPOSAL 065 'outbox rollover stub saturation' (ideas/fleet/outbox-rollover-stub-saturation-2026-07-15.md @ idea-engine main 85114c5b6168e9ca5012ca35ad78556b4e56bf32, landed via idea-engine PR #428, head-ref f9f328d). Every model constant below is copied verbatim from the PROPOSAL 065 outbox block / idea doc (measured-then-pinned there; where the doc and the outbox block disagree, the block wins — no disagreement found; ONE internal inconsistency inside the shared F3 anchor text is recorded under anchors.first_spacing_formula_as_written and handled as anomaly A1, value gated, expression reported). Fully hermetic: the runner reads ONLY this file; zero repo/network reads at verdict time (the P017-P064 hermetic precedent). This file is committed BEFORE the runner exists (the V072-V077 registration discipline; no fix-forwards — the first complete run of the registered pipeline is the accepted run).",
+  "world": {
+    "composition": "live file = header H0 + roll receipts + pointer stubs + full blocks, all integer bytes",
+    "H0": 500,
+    "H0_note": "pinned 500 (measured 456)",
+    "T_grid": [102400, 204800, 409600],
+    "decision_T": 204800,
+    "T_note": "the committed '200KB' read as KiB; the 200,000-decimal reading lands N* = 224 — immaterial to every band, disclosed, reported as a reporting row",
+    "s_grid": [265, 530, 1060],
+    "decision_s": 530,
+    "s_note": "stub grammar grid: 265 ~ heading+target only, 530 = the committed heading+target+idea-URL (measured mean 529.9, min 517, max 543), 1060 ~ summary-quoting stub",
+    "b_grid": [8000, 16000, 24000],
+    "decision_b": 16000,
+    "b_note": "measured P058-P064: mean 16,212, min 8,168, max 19,263",
+    "h_r": 1000,
+    "h_r_note": "roll receipt appended to the live file at every roll (measured ROLLOVER 001 = 1,002 B; the committed shape — the receipt lives in the live outbox)",
+    "W_grid": [0, 2, 8],
+    "decision_W": 2,
+    "W_note": "newest W blocks are non-terminal (verdict pending) and stay full through a roll ('terminal-blocks-only'); roll 1 kept exactly one; ORDER 003 >=1-in-flight + WIP-3 cap bound normal operation 1-3; 8 = verdict-lag stress",
+    "policies": {
+      "P-STUB": "committed — one pointer stub (s bytes) per evicted block; stubs and receipts both permanent",
+      "P-RANGE": "one range stub (s bytes) per roll; receipts permanent",
+      "P-COMPACT": "one range stub per roll AND the receipt chain collapsed to the newest receipt — post-roll non-window mass is H0 + h_r + s exactly"
+    },
+    "process": "proposals append one full block each; a roll fires at the first append that makes the file >= T; the roll evicts every terminal full block (all but the newest W; evict count = max(0, fulls - W)), appends its receipt, and leaves tombstones per policy",
+    "saturation": "post-roll size >= T; N* = total proposals appended at saturation",
+    "spacing_definition": "spacing_j = appends between roll j-1 and roll j (spacing_1 = appends from the empty file to roll 1); Delta_k = ceil((T - F_k)/b) with F_k the post-roll-k size — the recurrence Arm A iterates and the event walk (Arm B) must re-derive",
+    "alternate_timing_schedule": {"rule": "roll every 25 appends regardless of size", "appends": 1000, "gate": "F2a — same post-roll size at the same terminal set: post-roll size == H0 + k*h_r + s*(25k - W) + W*b (P-STUB form; P-RANGE s*k; P-COMPACT s + h_r) at every alternate-schedule roll, exact"},
+    "unbounded_walk_appends": 100000
+  },
+  "metrics": {
+    "floor_series": "F_k = post-roll live-file size after roll k, exact integer",
+    "spacing_series": "Delta series with the collapse index = first roll whose spacing <= 2",
+    "roll_count": "K = index of the saturating roll",
+    "wall_table": "N*(policy, T, s, b, W) over the full 3x3x3x3 grid, all three policies (non-saturating cells reported as unbounded with the constant floor)",
+    "range_multiplier": "N*_range / N*_stub at the decision cell, exact rational",
+    "wall_composition": "stub mass / receipt mass / window mass / header at saturation, exact integers summing to the saturation floor",
+    "timing_invariance": "F2a check under the alternate schedule",
+    "wall_date": "REPORTING-ONLY arithmetic at the observed pace (see reporting_rows)"
+  },
+  "decision_rule": {
+    "evaluation_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "decision_cell": {"policy": "P-STUB", "T": 204800, "s": 530, "b": 16000, "W": 2, "h_r": 1000, "H0": 500},
+    "REJECT": {"Nstar_stub_max": 300, "thrash_rolls_min": 8, "thrash_spacing_max": 2, "range_multiplier_max": "4 x N*_stub exact", "compact_clause": "P-COMPACT holds a CONSTANT floor over 100,000 appends"},
+    "INVALID": "any F1-F6 gate failure (controls misbehaving — report, no ruling)",
+    "APPROVE": {"Nstar_stub_min": 500, "first_spacings": "every one of the first 20 spacings >= 4", "note": "mutually exclusive with REJECT via 300 vs 500 on the same exact integer"},
+    "NULL_axes": ["band-straddle (N*_stub in (300, 500), or the thrash clause alone fails, or the multiplier clause alone fails — the finding is the exact floor/spacing curves and the wall table)", "an invariance-theorem failure without gate failure (the drafter's receipt algebra is wrong — the corrected law is the finding)", "P-COMPACT saturating (the corrected boundedness condition is the finding)", "twin-arm disagreement surviving the INVALID diagnosis"]
+  },
+  "gates": {
+    "F1": "model & mechanism identities — conservation (proposals appended = stubbed + archived-window + live full blocks at every step, per policy semantics); the spacing identity Delta_k = ceil((T - F_k)/b) re-derived by the literal event walk; the floor law F_k = H0 + k*h_r + s*n_k + sum(newest W blocks) at EVERY roll under P-STUB (P-RANGE form s*k; P-COMPACT form s + h_r constant); file size == sum of parts, exact, at every append",
+    "F2": "the three structure theorems, exact — (a) FLOOR LAW timing invariance: the alternate pinned schedule (roll every 25 appends regardless of size) yields the SAME post-roll size at the same terminal set, every comparison exact; (b) RECEIPT-FREE INVARIANCE: at h_r = 0, W = 0 the wall equals ceil((T - H0)/s) = 386 and is IDENTICAL across the whole b grid {8000, 16000, 24000}; (c) COMPACT BOUNDEDNESS: under P-COMPACT the floor is the constant H0 + h_r + s + W*b = 34,030 and the spacing is constant 11, held over 100,000 appends; plus MONOTONE THRASH: F_k strictly increasing and Delta_k non-increasing under P-STUB at every grid cell",
+    "F3": "closed-form anchors (decision cell) — N*_stub = 233 with K = 51 rolls; first spacing 13 (see anchors.first_spacing_formula_as_written — value gated, the as-written expression is anomaly A1); first floor 39,330 = 500 + 1000 + 530*11 + 32000; collapse index 34 (rolls 34-51 all have spacing <= 2, count 18); saturation floor 205,930 with exact wall composition stub 122,430 / receipts 51,000 / window 32,000 / header 500; N*_range = 671 (multiplier 671/233 ~ 2.88); P-COMPACT floor 34,030",
+    "F4": "the hand world — T = 100, H0 = 10, h_r = 5, s = 2, b = 20, W = 1 -> N* = 18, K = 8, spacings (5, 3, 3, 2, 2, 1, 1, 1), floors (43, 54, 65, 74, 83, 90, 97, 104), by pencil",
+    "F5": "degeneracies — s = b = 16000 (stubs as big as blocks): N* = 13 at the decision cell's other constants; s = 0 AND h_r = 0 (true deletion): no saturation in 100,000 appends, floor constant H0 + W*b = 32,500",
+    "F6": "battery — Arm B reproduces every Arm-A published number exactly (every wall, every floor entry, every spacing entry, every composition row); twin independently-written decision evaluators agree on the ruling token; Arm-R draw-count sentinels (1 uniform per appended proposal) counted and asserted; aux seed 20261570 never read (constructor registry); stdout + results.json byte-identical across two process runs; CPython minor pinned (3.11) and asserted"
+  },
+  "anchors": {
+    "decision_cell": {"Nstar_stub": 233, "K": 51, "first_spacing": 13, "first_floor": 39330, "first_floor_decomposition": "500 + 1000 + 530*11 + 32000", "collapse_index": 34, "thrash_roll_count": 18, "saturation_floor": 205930, "composition": {"stub": 122430, "receipts": 51000, "window": 32000, "header": 500}, "Nstar_range": 671, "compact_floor": 34030, "compact_spacing": 11},
+    "first_spacing_formula_as_written": "the proposal/idea file writes 'first spacing 13 = ceil((204800 - 32500)/16000)' — the as-written expression evaluates to 11, NOT 13; the event-walk-correct expression is ceil((204800 - 500)/16000) = 13 (spacing_1 runs from the empty file, header only — the hand world's own first spacing 5 = ceil((100 - 10)/20) confirms the convention); the anchor VALUE 13 is gated, the expression slip is anomaly A1, ruling-neutral",
+    "receipt_free_wall": 386,
+    "hand_world": {"T": 100, "H0": 10, "h_r": 5, "s": 2, "b": 20, "W": 1, "Nstar": 18, "K": 8, "spacings": [5, 3, 3, 2, 2, 1, 1, 1], "floors": [43, 54, 65, 74, 83, 90, 97, 104]},
+    "degeneracy_s_eq_b": {"s": 16000, "Nstar": 13},
+    "degeneracy_true_deletion": {"s": 0, "h_r": 0, "no_saturation_appends": 100000, "constant_floor": 32500}
+  },
+  "arms": {
+    "A": "DECISION arm, seedless — the exact integer recurrence (Delta_k = ceil((T - F_k)/b) via -(-x//y), floor update per policy, evict = max(0, fulls - W)) over the full grid; byte-identical across process runs, stdlib only",
+    "B": "twin, seedless, INDEPENDENTLY-WRITTEN — a literal byte-ledger simulator: an actual list of (kind, size, terminal-state) records appended, scanned, and rolled; file size recomputed as sum of record sizes at EVERY append (F1); must reproduce every Arm-A published number EXACTLY, including every floor and spacing entry; powers the second decision evaluator",
+    "R": "seeded, REPORTING-ONLY — block sizes drawn per proposal from the pinned mix {8000: 1/4, 16000: 1/2, 24000: 1/4} (mean exactly 16000) via exact-rational comparison on one uniform per appended proposal; 10,000 process replications on random.Random(20261567) at the decision cell's other constants under P-STUB, reporting the wall DISTRIBUTION beside the deterministic wall; stability leg random.Random(20261568) at 2,000; presentation shuffle 20261569 (read by the presentation-shuffled stdout wall-table listing only); NO statistical gate rides Arm R — a mix-induced drift from the deterministic wall is a named finding, never a ruling"
+  },
+  "arm_R_params": {"mix": {"8000": "1/4", "16000": "1/2", "24000": "1/4"}, "episodes_main": 10000, "episodes_stability": 2000, "draws_per_episode": "1 per appended proposal (exactly N* draws per episode, counted and asserted)"},
+  "seeds": {"main": 20261567, "stability": 20261568, "presentation": 20261569, "aux_never_read": 20261570, "fleet_high_water_at_registration": 20261566, "note": "20261567-570 pinned by the P065 drafter, strictly above the tree high-water 20261566 (P064's registration) and the sim-lab genuine high-water 20261562 (V074's block); this verdict session allocates NO seeds of its own — the registered seeds are the contract (the V077 precedent: the drafter's allocation IS the session's seed set). Registry high-water after this slice: 20261570 (reserved aux; highest READ 20261569)."},
+  "drafter_disclosed_never_gated": {
+    "note": "the drafting prototype's disclosed landing beyond the F3-gated anchors, re-derived from scratch this session and COMPARED, never gated; any mismatch is a named finding",
+    "collapse_proposal_approx": 208,
+    "wall_table_stub_W_by_b": {"0": [318, 283, 258], "2": [292, 233, 187], "8": [215, 92, 17]},
+    "s_grid_walls": {"265": 369, "530": 233, "1060": 136},
+    "T_grid_walls": {"102400": 76, "204800": 233, "409600": 581},
+    "T_409600_first_20_spacings_min": 12,
+    "heading_only_150B_stub_wall": 504,
+    "T_200000_decimal_wall": 224,
+    "receipt_share_at_wall_pct": 24.8,
+    "stub_share_at_wall_pct": 59.4,
+    "window_share_at_wall_pct": 15.5,
+    "multiplier_approx": 2.88
+  },
+  "reporting_rows": {
+    "pace": {"proposal_intervals": 63, "days": "4.43", "pipeline_at": 64, "reference_date": "2026-07-15", "disclosed_wall_date_approx": "2026-07-27"},
+    "retrodiction": {"k": 1, "n": 57, "W": 2, "predicted_floor": 63710, "measured_live_file": 154629, "gap_note": "seven resident fulls + ~9.5 KB un-modeled ASK/ACK/CLOSE-OUT blocks account for the gap, disclosed F1 boundary, REJECT-ward only"},
+    "roll2_forecast": {"predicted_fulls_at_roll2": 11, "live_fulls_at_head": 7}
+  },
+  "fixture_level_conventions": {
+    "C1": "size-mix draw (Arm R): u = rng.random(); size = 8000 iff Fraction(u) < 1/4 strict, 16000 iff Fraction(u) < 3/4 strict, else 24000 (exact-rational comparison, no float thresholds); exactly one uniform per appended proposal",
+    "C2": "Arm-R episodes run the SAME event semantics as the deterministic arms with realized (variable) block sizes: floor law per realized sizes, roll at first append making file >= T, saturation = post-roll >= T; per-episode draw count == that episode's N*, asserted",
+    "C3": "unbounded cells: Arm A walks the full 100,000 appends; the published record for a non-saturating cell is {'unbounded', constant floor, constant spacing, walk length}; Arm B twins the decision-cell P-COMPACT and true-deletion walks at full 100,000-append length and every other non-saturating cell on a 5,000-append prefix that must match Arm A's floors/spacings exactly (the published prefix)",
+    "C4": "published exact surface scope: full wall table (3 policies x 81 cells), decision-cell floor + spacing series in full, composition rows for every saturating P-STUB/P-RANGE cell at the decision T/s/b/W margins, hand world, degeneracies, theorem checks; every published number integer or exact rational (num/den strings)",
+    "C5": "canonical serialization: exact rationals as reduced num/den decimal strings, floats via repr(), json sort_keys = True, no timestamps in results.json or stdout",
+    "C6": "the wall-date reporting row uses exact Fraction day arithmetic: days_remaining = (N*_stub - pipeline_at) / (intervals/days), date = reference_date + ceil(days_remaining) calendar days, reported beside the drafter's ~2026-07-27; reporting-only",
+    "C7": "twin decision evaluators: evaluator A reads Arm-A numbers, evaluator B reads Arm-B numbers, independently-coded band logic, registered order REJECT -> INVALID -> APPROVE -> NULL; INVALID short-circuits on any gate failure",
+    "C8": "the aux-seed assertion is enforced by a constructor registry: every random.Random construction logs its seed; the registry must equal [20261567, 20261568, 20261569] exactly and never contain 20261570",
+    "C9": "the F2a timing-invariance closed forms: P-STUB post-roll size H0 + k*h_r + s*(25k - W) + W*b; P-RANGE H0 + k*h_r + s*k + W*b; P-COMPACT H0 + h_r + s + W*b (k >= 1); checked at the decision cell for 1,000 alternate-schedule appends AND cross-checked against the threshold-schedule floor law at every threshold roll (same closed form in (k, appends))",
+    "C10": "conservation (F1) tokens per policy: P-STUB appended == stubbed + live fulls; P-RANGE/P-COMPACT appended == archived (evicted) + live fulls, with stub records counting rolls not blocks — the per-policy identity is asserted at every roll",
+    "C11": "anomaly convention: drafter-disclosed constants re-derived and compared line-by-line; every mismatch is a first-class named anomaly in REPORT.md (the V077 A1 precedent); the F3 first-spacing expression slip is pre-identified as A1 in anchors.first_spacing_formula_as_written and asserted in-sim (as-written expression == 11 != 13 == event walk)"
+  },
+  "runtime_pins": {"python": "CPython 3.11 (minor pinned and asserted)", "stdlib_only": true, "hermetic": "reads only this fixtures.json", "determinism": "stdout + results.json byte-identical across two full process runs (external diff + sha256, hashes in REPORT.md)"}
+}

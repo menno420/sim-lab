@@ -210,6 +210,11 @@ From PROPOSAL 010 onward the offset is a constant +2.
   offset BREAKS after P063: from **PROPOSAL 064 onward the offset is a
   constant +13** — PROPOSAL 064 (cascade-independence-quota) →
   **VERDICT 077**.
+- Extension (V078 slice, 2026-07-15): the +13 offset holds — PROPOSAL 065
+  (outbox-rollover-stub-saturation) → **VERDICT 078** (verified at the
+  live-outbox headers: newest `## VERDICT` was 077 at origin/main 71337e2,
+  `## VERDICT 078` / `## INTAKE 065` collision-grepped clean before the
+  append; no owner-direct or simreq interleave occurred in this range).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
