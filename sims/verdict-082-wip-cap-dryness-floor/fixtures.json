@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "verdict": "082",
+    "intake": "069",
+    "proposal": "idea-engine PROPOSAL 069 · 2026-07-15T07:39:22Z · status: sim-ready",
+    "idea_file": "ideas/fleet/wip-cap-dryness-floor-2026-07-15.md",
+    "idea_engine_pin": "dc155cb214b033893d8a1e07bc4eccb069989443 (grounding pin; proposal landed at main 10533ae via idea-engine PR #432)",
+    "idea_engine_pr": "#432 merged ~2026-07-15T07:45Z",
+    "hermetic": "the runner reads ONLY this fixtures.json; zero repo/network reads at verdict time; every registered constant below is copied verbatim from the PROPOSAL 069 block / idea file, and every MEASURED constant was re-verified FIRSTHAND at idea-engine origin/main (inbox:31/:50/:54/:188/:219 sentences; the P064-P068 header timestamps; the outbox:15 V078 finalization pointer; the archive header sweep reproducing 30847 s / 18 gaps and 391243 s / 67 gaps) BEFORE this file was written"
+  },
+  "model": {
+    "loop": "closed cyclic 2-station single-server network (CONWIP), population K tokens; station 1 = drafting (idea-engine), station 2 = verdicting (sim-lab)",
+    "state": "n = number of unverdicted proposals in flight, n in {0..K}; birth (drafting completion) at rate lambda iff n < K ('backpressure holds' - at n = K the drafter is blocked/harvest-diverted); death (verdict finalization) at rate mu iff n > 0",
+    "dry_definition": "DRY = the committed record's own words ('no unverdicted proposal exists', inbox:188) = state n = 0; the softer ORDER 003 'drafted-or-in-flight' reading is priced too: it equals 1 - B, and the REJECT's B clause prices exactly its cost (idea file, break-it (d))",
+    "stationary_law": "truncated geometric: pi(j) = r^j / sum_{i=0}^{K} r^i with r = lambda/mu = S_v/S_d; uniform at r = 1",
+    "service_model": "exponential (memoryless) is the pinned DECISION model, declared and directional (idea file, Model basis); the deterministic-service closed form D_det(K, r) = max(0, 1 - K*r/(1 + r)) is a pinned EXACT exhibit, reporting-only"
+  },
+  "measured_constants": {
+    "burst_gaps_seconds": [1622, 2674, 2263, 1387],
+    "burst_gaps_source": "P064->P065, P065->P066, P066->P067, P067->P068 from the '## PROPOSAL 0NN ·' headers in idea-engine control/outbox.md (04:33:17Z / 05:00:19Z / 05:44:53Z / 06:22:36Z / 06:45:43Z, 2026-07-15)",
+    "S_d": "3973/2",
+    "night_burst": {"total_seconds": 30847, "gaps": 18, "source": "P016->P034, 2026-07-13 night burst, archive headers"},
+    "lifetime": {"total_seconds": 391243, "gaps": 67, "source": "P001->P068 headers across outbox + both dated archives"},
+    "S_v": "2246",
+    "S_v_source": "the one committed append->finalization pair echoed on idea-engine's own bus: P065 appended 2026-07-15T05:00:19Z (block header) -> VERDICT 078 finalized 2026-07-15T05:37:45Z (outbox:15 ROLLOVER 002 pointer)",
+    "anchor_derivation_rule": "r_hat = S_v/S_d = 2246/(3973/2) = 4492/3973; r2 = 2246/(30847/18) = 40428/30847; r_life = 2246*67/391243 = 150482/391243 - all three re-derived from the pinned gap integers INSIDE the runner and gated (F3)"
+  },
+  "grids": {
+    "K": [1, 2, 3, 4, 6, 12],
+    "r": ["1/2", "3/4", "1", "4492/3973", "40428/30847", "2"],
+    "decision_cell": {"K": 3, "r": "4492/3973"},
+    "decision_cell_note": "K = 3 is the committed cap (inbox:50 'WIP cap 3, backpressure holds'); r_hat is the burst anchor - deliberately the dryness-MINIMIZING regime choice; r_life = 150482/391243 is a reporting cell, disclosed, where dryness is far worse",
+    "frontier_check_cell": {"K": 40, "r": "1/2"}
+  },
+  "metrics": {
+    "D": "pi(0) - the DRY fraction",
+    "B": "pi(K) - the blocked-drafter / backpressure-engaged fraction",
+    "TH": "mu * (1 - pi(0)) - throughput, with the flow identity lambda*(1 - pi(K)) = mu*(1 - pi(0)) GATED (F1)",
+    "E": "TH / min(lambda, mu) - efficiency",
+    "W": "K / TH - mean cycle time via Little (reporting)",
+    "Kstar": "K*(r, d) = min{K : D(K, r) <= d} for d in {1/10, 1/20, 1/100} (reporting - the consequence menu's table; 'unreachable' where the T2 frontier max(0, 1 - r) >= d makes no finite K suffice)",
+    "D_det": "max(0, 1 - K*r/(1 + r)) - deterministic-service station-2 idle fraction at the same means (exact exhibit, reporting-only); K_det(r) = ceil((1 + r)/r)"
+  },
+  "decision": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "reject": {
+      "D3_rhat_min": "1/10",
+      "D3_all_grid_r_min": "1/20",
+      "D12_rhat_min": "1/40",
+      "B3_rhat_min": "1/5",
+      "reading": "all four clauses AND-ed, exact-rational comparisons: D(3, r_hat) >= 1/10 AND D(3, r) >= 1/20 at EVERY grid r AND D(12, r_hat) >= 1/40 AND B(3, r_hat) >= 1/5"
+    },
+    "invalid": "any F1-F6 gate failure (controls misbehaving - report, no ruling)",
+    "approve": {
+      "D3_rhat_max": "1/50",
+      "B3_rhat_max": "1/20",
+      "reading": "D(3, r_hat) <= 1/50 AND B(3, r_hat) <= 1/20 - mutually exclusive with REJECT by arithmetic on both clauses"
+    },
+    "null_axes": [
+      "band-straddle: D(3, r_hat) in (1/50, 1/10), or the grid-robustness clause alone fails, or B(3, r_hat) in (1/20, 1/5) - the finding is the exact D/B table with the safe-cap scan",
+      "anchor fragility: r_hat and r2 disagree on the D >= 1/10 headline clause (disarmed at drafting: D(3, r2) ~ 0.159, both anchors clear)",
+      "theorem failure without gate failure: T1 positivity, T2 monotonicity/frontier, T3 balanced laws, or the swap symmetry fails while F1-F6 pass - the corrected law is the finding",
+      "twin-arm disagreement surviving the INVALID diagnosis"
+    ]
+  },
+  "anchors_f3": {
+    "D_3_rhat": "62712728317/304425042745",
+    "D_3_rhat_construction": "3973^3/(3973^3 + 3973^2*4492 + 3973*4492^2 + 4492^3)",
+    "B_3_rhat": "90639863488/304425042745",
+    "D_3_r2": "29352074455423/184314341266075",
+    "D_3_1": "1/4",
+    "D_3_half": "8/15",
+    "D_3_2": "1/15",
+    "D_12_rhat": "15467594593367231354493402010382429975895121/465777524392350112207277258435652957975602941",
+    "D_12_rhat_note": "the idea file discloses ~0.0332081 and says 'exact rational pinned in the fixture' - this is that pin, computed at fixture time as 3973^12/sum_{j=0}^{12}(4492^j * 3973^(12-j)) and re-derived independently by both arms at run time",
+    "D_det_3_rhat": "0",
+    "K_det_rhat": 2,
+    "r_hat": "4492/3973",
+    "r2": "40428/30847",
+    "r_life": "150482/391243"
+  },
+  "hand_worlds_f4": {
+    "K1": "D = 1/(1 + r) by pencil (a one-token loop is dry exactly while its token drafts) - checked at every grid r",
+    "K2_r2": "K = 2, r = 2 -> pi = (1/7, 2/7, 4/7) by pencil",
+    "K3_r1": "r = 1, K = 3 -> the uniform quarter: pi = (1/4, 1/4, 1/4, 1/4)"
+  },
+  "swap_symmetry_f5": "pi_j(K, r) = pi_{K-j}(K, 1/r) exactly at every grid cell (so D(K, r) = B(K, 1/r): one seat's dryness is the mirror seat's backpressure); grid-end direction checks as strict orderings: D(K, 1/2) > D(K, 2) and B(K, 1/2) < B(K, 2) for every K (the r -> 0 direction D -> 1, the r -> infinity direction D -> 0, B -> 1)",
+  "theorems_f2": {
+    "T1": "impossibility - D(K, r) = pi(0) > 0 strictly for every finite K and every grid r, with the exact lower bound D >= (1/(K + 1)) * min(1, r^(-K))",
+    "T2": "monotone frontier - D strictly decreasing in K along every r-row and in r along every K-column; frontier check: D(40, 1/2) in (1 - r, 1 - r + 1e-10), the max(0, 1 - r) floor approached from above, never crossed",
+    "T3": "balanced knee - pi uniform at r = 1 with D = B = 1/(K + 1) and TH = K/(K + 1)*mu exactly, and Delta-D(3->4, r = 1) = 1/20 exactly"
+  },
+  "arm_r": {
+    "role": "REPORTING-ONLY - NO statistical gate rides Arm R; a trace drifting from the exact value is a named finding, never a ruling",
+    "cell": "the decision cell (K = 3) at the pinned means S_d = 3973/2 s, S_v = 2246 s",
+    "shapes": ["exponential", "deterministic", "measured two-point empirical mix (the four burst gaps resampled uniformly on the drafting side; S_v degenerate at 2246)"],
+    "n_main_cycles": 100000,
+    "n_stability_cycles": 20000,
+    "seed_main": 20261610,
+    "seed_stability": 20261611,
+    "seed_presentation": 20261612,
+    "seed_aux_never_read": 20261613,
+    "draw_order": "pinned: per event epoch, station-1 draw then station-2 draw; draw counts counted and asserted per leg (deterministic leg draws 0)",
+    "seed_allocation_note": "seeds 20261610-613 are the drafter's registered set and ARE the session seed set (the V077-V081 precedent; no new allocation); 20261600-603 are P068/V081's registered set and the gap 20261604-609 stays the disclosed in-flight buffer, unused; registry high-water after this slice: 20261613 (reserved; highest read 20261612)"
+  },
+  "battery_f6": {
+    "twin": "Arm B (independently-written exact stationary solve: build the (K+1)-state generator Q and solve pi*Q = 0, sum(pi) = 1 by Fraction Gaussian elimination) must reproduce every Arm-A closed-form number EXACTLY",
+    "evaluators": "twin independently-written decision evaluators (one fed Arm-A numbers, one fed Arm-B numbers) must agree on the ruling token",
+    "byte_identity": "stdout + results.json byte-identical across two full process runs (external diff + sha256; Arms A/B platform-independent exact rationals; Arm R pinned to a stated CPython minor)",
+    "cpython_pin": "3.11"
+  },
+  "conventions": {
+    "C1": "rate normalization: mu = 1, lambda = r as exact Fractions - D/B/E and every pi are dimensionless and invariant to this choice; TH and W are published in units of mu and 1/mu (TH/mu, W*mu) so every published number is an exact rational in (K, r) alone",
+    "C2": "K*(r, d) scan bound: the scan walks K upward and declares 'unreachable' via the T2 frontier test (r <= 1 and 1 - r >= d, where lim_{K->inf} D = 1 - r >= d means no finite K reaches strictly below d... for r <= 1 with 1 - r >= d the limit itself is >= d and D > limit for every finite K, so unreachable is a THEOREM, not a search timeout); for reachable cells the walk terminates by T2 strict decrease",
+    "C3": "the grid-robustness REJECT clause reads 'D(3, r) >= 1/20 at every grid r' over the REGISTERED r grid {1/2, 3/4, 1, r_hat, r2, 2} exactly as listed - r_life is a reporting anchor, not a grid cell (idea file Grids line: the six-cell r grid is exhaustive)",
+    "C4": "Arm R measures D-hat and B-hat as TIME-average fractions (total time with n = 0, resp. n = K, over total simulated time), the stationary law's own estimand; a cycle = one station-2 completion; the trace runs to exactly n_cycles completions and truncates time there",
+    "C5": "Arm R initial condition: n = K at t = 0 (the pipe starts full - the transient is NOT the object, idea file Model basis (4); no warmup discard, disclosed - the bias is O(1/N) at N = 100,000 and Arm R carries no gate)",
+    "C6": "the empirical drafting shape resamples the four pinned burst gaps uniformly (each 1/4) via the same Random stream; S_v degenerate at 2246 (zero draws on the verdict side); draw counting: exponential leg = 2 draws per epoch pair as pinned, empirical leg = 1 draw per drafting start + 0 per verdict start, deterministic leg = 0 draws total",
+    "C7": "float renderings published beside every Fraction are repr(float(Fraction)) - presentation only, never compared",
+    "C8": "seed discipline: the ONLY random.Random constructors in the runner are the three registered read seeds in pinned order (main, stability, presentation); the aux seed 20261613 appears only in this fixture and the never-read assertion (constructor registry counted)",
+    "C9": "the presentation seed shuffles the PUBLISHED Arm-R table's row order only (a list of row keys), touching no numeric value",
+    "C10": "disclosed-landing comparison: the drafter's disclosed values (D(3,r_hat) = 62712728317/304425042745 ~ 0.206, B ~ 0.298, D(12,r_hat) ~ 0.033, D_det = 0, D(3,r_life) ~ 0.629, D(12,2) = 1/8191, frontier gap < 1e-10) are re-derived from scratch and compared as exact rationals where disclosed exact, at stated precision where disclosed rounded; mismatches are first-class anomalies, NEVER gated (the V080 lesson)",
+    "C11": "canonical serialization: results.json written with sort_keys=True, ensure_ascii=True, indent=2, LF newlines; Fractions serialized as 'p/q' strings"
+  }
+}
