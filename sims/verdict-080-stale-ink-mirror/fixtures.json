@@ -1,0 +1,144 @@
+{
+  "_registration": "VERDICT 080 fixtures — idea-engine PROPOSAL 067 'the stale-ink mirror' (ideas/gba-homebrew/wickroad-stale-ink-mirror-2026-07-15.md @ idea-engine main 1f304b0, landed via idea-engine PR #430; outbox PROPOSAL 067 block stamped 2026-07-15T06:22:36Z, live outbox post-ROLLOVER-002). Every model constant below is copied verbatim from the PROPOSAL 067 outbox block / idea doc (where the doc and the block disagree, the block wins — no disagreement found), and was independently re-verified FIRSTHAND this session against Wickroad's committed source at the registered pin menno420/gba-homebrew c0c688210bcb3db0004102e6c5b899943533f816 (games/wickroad/src/main.cpp + CONCEPT.md, read-only clone) BEFORE this file was written — every constant matched the tree. Fully hermetic from here on: the runner reads ONLY this file; zero repo/network reads at verdict time (the P017-P066 hermetic precedent; the sim never re-reads gba-homebrew). This file is committed BEFORE the runner exists (the V072-V079 registration discipline; no fix-forwards — the first complete run of the registered pipeline is the accepted run).",
+  "world": {
+    "towns": ["EMBERTON", "GLASSMERE", "SALTCOMBE", "THORNBY", "DUNWICK"],
+    "goods": ["TALLOW", "SALT", "IRON", "RESIN"],
+    "price_lo": [6, 10, 22, 14],
+    "price_hi": [26, 34, 60, 44],
+    "drift_step": [1, 2, 3, 2],
+    "produce_gap": [6, 8, 12, 10],
+    "start_gold": 60,
+    "gold_target": 300,
+    "last_day": 30,
+    "pack_capacity": 8,
+    "travel_toll": 2,
+    "lodging": 1,
+    "impact_cap": 9,
+    "outfit_fee": 4,
+    "seed_constant": 1465009995,
+    "seed_constant_hex": "0x5749434B ('WICK')",
+    "rng": "xorshift32: s ^= s<<13; s ^= s>>17; s ^= s<<5 (32-bit), consumed only at world init in a fixed order: 20 base draws base[t][g] = (lo[g]+hi[g])/2 - 3 + range(7), then 20 phase draws range(12), then the produce/crave rotation base[t][t mod 4] -= gap[t mod 4]; base[t][(t+2) mod 4] += gap[(t+2) mod 4]; range(n) = next() mod n",
+    "tri12": "tri12(m) = (m mod 12) <= 6 ? (m mod 12) - 3 : 9 - (m mod 12); value track over one period = (-3, -2, -1, 0, 1, 2, 3, 2, 1, 0, -1, -2)",
+    "price_law": "price(t, g, day) = clamp(base[t][g] + tri12(day + phase[t][g]) * drift_step[g] + impact[t][g] + shock(t, g, day), price_lo[g], price_hi[g])",
+    "verbs": "BUY one unit at price (impact +1 after, cap +9), SELL one unit at price - 1 (impact -1 after, cap -9), TRAVEL +-1 town (toll 2, a dawn), WAIT (lodging 1 floored at 0, a dawn); impact decays 1 toward 0 everywhere at every dawn; standing in a town at a dawn (and after every buy/sell) writes ALL four of its prices in dated ink (refresh_ledger); pass closes at dawn 31; travel requires gold >= toll; buy requires gold >= cost and pack < 8",
+    "hazard_resolution": "cross(leg) after a travel dawn with day = arrival day: a hired guard is consumed by the crossing whether the road bites or not; unguarded bandits seize min(seizure, gold); unguarded storm costs lodging (floored at 0) plus one extra dawn"
+  },
+  "decks": {
+    "rumors": {"deck": [[2, 5, 1, 2, 12], [8, 12, 0, 1, -6], [14, 18, 4, 3, 9]], "fields": "(announce_day, hit_day, town, good, delta)", "window": 3, "note": "shock active hit_day <= day < hit_day + window; public by announcement lines"},
+    "contracts": {"deck": [[2, 3, 3, 2, 8, 60], [10, 2, 1, 2, 14, 70]], "fields": "(offer_day, good, town, qty, deadline_day, premium)", "note": "UNUSED by all four arms — held fixed, disclosed at registration"},
+    "hazards": {"deck": [[13, 15, 16, 0, 0, 12], [17, 19, 22, 2, 1, 0], [23, 25, 28, 3, 0, 15]], "fields": "(announce_day, from_day, to_day, leg, kind 0=bandits 1=storm, seizure)", "guard_fee": 4}
+  },
+  "f1_anchors": {
+    "base": [[7, 21, 51, 32], [17, 16, 43, 39], [19, 22, 26, 30], [19, 33, 43, 19], [9, 25, 54, 29]],
+    "phase": [[4, 1, 9, 11], [0, 8, 11, 4], [1, 2, 8, 2], [8, 6, 3, 11], [11, 10, 6, 11]],
+    "day1_prices": [[9, 19, 48, 26], [15, 16, 34, 43], [18, 22, 26, 30], [19, 34, 46, 14], [6, 21, 60, 23]],
+    "witness_cell": {"town": 3, "good": 1, "name": "(THORNBY, SALT)", "base": 33, "phase": 6, "track_days_1_12": [34, 34, 33, 31, 29, 27, 29, 31, 33, 34, 34, 34]},
+    "receipt": "the registered F1 identity gate: base/phase re-derived from seed 0x5749434B must equal these tables; day-1 impact/shock-free prices and the witness track must match"
+  },
+  "f3_anchors": {
+    "E_sums_a_1_12": [669, 1131, 1596, 1838, 2075, 2067, 2064, 1828, 1591, 1127, 664, 0],
+    "I_staircase": {"a1_5": ["0/240", "60/240", "120/240", "180/240", "240/240"], "a6": "300/300", "a7_11": ["240/240", "180/240", "120/240", "60/240", "0/240"], "a12": "0/300"},
+    "surface_def": "impact/shock-free core law, d0 in 1..18 (360 cells per lag); E(a) = sum |price(d0) - price(d0+a)|; I(a) = #{ink_dev * true_dev < 0} / #{both != 0} with deviations measured against each cell's clamped neutral base clamp(base, lo, hi)",
+    "clamp_census_disclosed": "53/600 impact-free (t,g,day) cells clamp over days 1..30",
+    "round_trip_note": "the A-then-B round-trip net-0 edge at cap-free cells: buy at p (impact +1) then sell pays (p+1)-1 = p, exactly net 0 off-cap/off-clamp — the committed 'hammering A/B in place always loses gold' comment is measurably net-0, not negative: a disclosed micro-erratum, reporting-only"
+  },
+  "f4_hand_world": {
+    "towns": 2, "goods": 1, "step": 1, "lo": -100, "hi": 100,
+    "base": [10, 20], "phase": [0, 3], "days": "d0 in 1..12 (one full period per town, 24 cells per lag, no clamps)",
+    "pencil": {"E1": 24, "E3": 56, "E6": 72, "E12": 0, "I1": "0/16", "I3": "8/16", "I6": "20/20", "I12": "0/20"},
+    "receipt": "pencil derivation: per-town per-period sums S(1)=12, S(3)=28, S(6)=2*sum|tri12|=36, S(12)=0; I(6) inverts all 10 nonzero-tri residues per town; I(1) has 8 both-nonzero pairs per town, none inverted; I(3) inverts 4 of 8"
+  },
+  "f5_degeneracies": {
+    "step_zero": "drift_step = (0,0,0,0) on the committed base/phase -> E(a) = 0 for all a and every I(a) denominator = 0 (ink never lies)",
+    "lag_12k": "E(12k) = 0 exactly for k = 1, 2, 3 on the committed world"
+  },
+  "theorems": {
+    "T1": "photograph — tri12(m + 12) = tri12(m) for all m (ink of age 12 exactly current)",
+    "T2": "mirror — tri12(m + 6) = -tri12(m) for all m (every remembered deviation exactly inverted at lag 6)",
+    "T3a": "the 12 consecutive-value pairs (tri12(m), tri12(m+1)), m = 0..11, are pairwise distinct (enumeration)",
+    "T3b": "two-morning decode AS REGISTERED — unique (base, phase) recovery from every unclamped consecutive pair of dawn readings over the full achievable (base, phase) grid; the registered claim 'any unclamped consecutive pair of dawn readings pins (base, phase) uniquely' is MEASURED by exhaustive enumeration, and its truth value routes per the registered n4 axis (theorem failure without gate failure) — the enumeration machinery itself is twin-gated",
+    "achievable_base_grid": "per good g: {mid-3..mid+3} union {mid-3-gap..mid+3-gap} union {mid-3+gap..mid+3+gap}, mid = (lo+hi)/2 — the committed generator's exact output range including the produce/crave rotation; phase 0..11"
+  },
+  "planner": {
+    "shape": "SHARED deterministic greedy day-planner, identical code path across arms; only the belief function varies (registered)",
+    "registered_clauses": "solvency reserve toll*dist + guard fee; plan = best positive believed profit-per-day buy-here-sell-there pair, committed until the sell; guard hire on announced hazard windows; contracts unused by all arms; beliefs impact-free, execution impact-exact; early-win stop disabled for the scalar (first day gold >= 300 reported); metrics = final gold at the close of day 30 + SCRYER's identified-cell timeline",
+    "beliefs": {
+      "ORACLE": "the law, arrival-day aware: clamp(base + tri12(arrival + phase)*step + shock(dest, good, arrival)) — impact-free",
+      "SCRYER": "candidate-set inference over (base, phase) from its own dated ledger history — exactly the information the shipped UI gives a player, plus arithmetic (candidate model in conventions C4)",
+      "INKTRUTH": "ink read as today's truth — the concept's own player model (ledger value; midpoint for never-visited towns)",
+      "BLIND": "no memory: current town live, midpoint (lo+hi)/2 elsewhere"
+    }
+  },
+  "decision_rule": {
+    "evaluation_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "decision_cell": "the committed world (seed 0x5749434B), decks ON (rumors + hazards as shipped, contracts unused), registered-text scaffold",
+    "REJECT": {
+      "R1": "I(6) = 1 exactly (den >= 250) AND I(12) = 0 exactly AND E(12) = 0 exactly, clamps included, on the committed world",
+      "R2": "SCRYER >= (9/10) * ORACLE final gold at the committed world under the shared scaffold",
+      "R3": "T1/T2/T3 verified as exact identities (the theorem-gated conjunct, disclosed as such at registration — 'falsifiability rides R1/R2')"
+    },
+    "INVALID": "any F1-F6 gate failure (controls misbehaving — report, no ruling); per the registered n4 axis, a theorem whose truth value comes back FALSE while both independently-written arms agree exactly on the counterexample census is a FINDING (n4), not a gate failure",
+    "APPROVE": "I(6) <= 1/2 AND SCRYER <= (3/4) * ORACLE — mutually exclusive with REJECT by arithmetic",
+    "NULL_axes": {
+      "n1": "partial mirror (1/2 < I(6) < 1 — the clamp-conditional census IS the finding)",
+      "n2": "decodability straddle (3/4 < ratio < 9/10), or the greedy-nonmonotonicity overshoot (SCRYER > (11/10)*ORACLE)",
+      "n3": "world fragility (the committed-world clauses hold but Arm R's 200-world replication of R2 lands below 1/2 — the census ships with exact per-world rows)",
+      "n4": "theorem failure without gate failure (the drafter's tri12 algebra is wrong — the corrected law is the finding)"
+    },
+    "decision_constants": {"R2_line": "9/10", "APPROVE_ratio": "3/4", "overshoot_line": "11/10", "n1_band": "(1/2, 1)", "n3_line": "1/2", "R1_min_den": 250}
+  },
+  "gates": {
+    "F1": "world identity — base/phase tables re-derived from seed 0x5749434B match the f1_anchors; day-1 impact/shock-free price table matched; the (THORNBY, SALT) witness track matched",
+    "F2": "theorems — T1 and T2 verified for all m over a symmetric range and by residue-class exhaustion; T3a by the 12-pair enumeration; T3b by exhaustive candidate enumeration over the full achievable grid (truth value measured, twin-checked; routing per decision_rule.INVALID note)",
+    "F3": "closed-form anchors — the E sums and I staircase (f3_anchors) exact; E(12) = 0 and I(6) = 300/300 as identities of the committed world; the A-then-B round-trip net-0 edge at cap-free clamp-free cells",
+    "F4": "hand world — 2 towns x 1 good, step 1: pencil E/I values in f4_hand_world reproduced by the same generic surface code",
+    "F5": "degeneracies — drift_step 0 -> ink never lies (E identically 0, I census empty); lag-12k exactness k = 1, 2, 3",
+    "F6": "battery — Arm B (independently-written) exact-equal on every published number; twin decision evaluators agree on the token; stdout + results.json byte-identical across two process runs (external diff + sha256); CPython minor pinned (3.11) and asserted; aux seed never read via the constructor registry"
+  },
+  "arm_R": {
+    "worlds": 200,
+    "draw": "200 alternative 32-bit init seeds via random.Random(20261590).getrandbits(32), in order, fed into the SAME xorshift32 world generator (init order and rotation unchanged); per world: the four-arm census, decks ON, registered-text scaffold, committed decks (the decks are authored constants of the game, not of the world seed)",
+    "outputs": "R2-clause replication count (worlds with SCRYER >= (9/10)*ORACLE, exact Fraction comparison), the arm-ordering census, exact per-world gold rows",
+    "stability": "a fresh 200-world set via random.Random(20261591), replication + ordering census only",
+    "presentation": "random.Random(20261592) selects/shuffles the 12-row stdout sample of main per-world rows (read by that listing only)",
+    "no_statistical_gate": "Arm R carries NO statistical gate in the F1-F6 sense: no Arm-R value is required to match any drafting/disclosed number, and no stochastic ESTIMATE gates anything — every per-world row is itself a deterministic exact planner run; the registered n3 axis reads the main census's exact replication fraction as a decision input (registered in PROPOSAL 067's own NULL-axis list)"
+  },
+  "seeds": {"main": 20261590, "stability": 20261591, "presentation": 20261592, "aux_never_read": 20261593, "note": "20261590-593 pinned by the P067 drafter; 20261584-589 is the drafter's DISCLOSED deliberately-unallocated buffer for the then-in-flight V079 allocation (V079 allocated 20261580-583; the buffer stands disclosed and unused — the collision it guarded against never materialized); this verdict session allocates NO seeds of its own — the drafter's registered allocation IS the session seed set (the V077-V079 precedent). Registry high-water after this slice: 20261593 (reserved aux; highest READ 20261592)."},
+  "drafter_disclosed_never_gated": {
+    "note": "the drafting prototype's disclosed landing, re-derived from scratch this session and COMPARED, never gated; any mismatch is a first-class named anomaly (the V077-V079 convention)",
+    "four_arm_decks_on": {"ORACLE": 1309, "SCRYER": 1201, "INKTRUTH": 898, "BLIND": 0},
+    "four_arm_decks_off": {"ORACLE": 1237, "SCRYER": 1496},
+    "R2_ratio": "1201/1309 ~= 0.9175 (1.0194x over the 9/10 line, knife-edge disclosed)",
+    "decks_off_overshoot": "1496/1237 ~= 1.209 (the named planner boundary anecdote)",
+    "informed_cross_day": 6,
+    "scryer_identified_by_30": "16/20",
+    "alt_world_replication_drafting": "9/20",
+    "clamp_census": "53/600",
+    "E_sums": "as f3_anchors", "I_staircase": "as f3_anchors",
+    "committed_lane_pins_quoted_not_rederived": "proofs.sh P2 route wins in 13 days, gold 60 -> 328, at the 5th iron sale (F3 cross-check, quoted per registration)"
+  },
+  "harvested_sentences": {
+    "pin": "menno420/gba-homebrew @ c0c688210bcb3db0004102e6c5b899943533f816 ('wickroad: growth cut 3 — the road itself (v0.4)'), FIRSTHAND: fetched 2026-07-15T06:02:44Z by the P067 drafter AND re-read 2026-07-15T06:5xZ by this verdict session on an independent read-only clone at the same pin — every constant in this file matched the tree; quoted verbatim; the sim is hermetic and never re-reads them",
+    "hook_sentence": "prices are only visible in the town you are standing in — everywhere else you see what you wrote down the last time you were there, stamped with how many days old the ink is. You navigate an economy you remember, not one you see; every trip is a bet on your own stale information.",
+    "sellability_sentence": "the aging-ledger read is a genuinely ownable twist worth testing",
+    "law_sentence": "Prices are a CLOSED FORM of (day, impact): price = clamp(base + tri12(day + phase) * step + impact), where tri12 is a triangle wave over a 12-day period",
+    "seed_sentence": "The SAME world every run: the PRNG restarts at the fixed seed and is consumed only here, in a fixed order.",
+    "witness_sentence": "the harness pins frames where the ledger provably lies",
+    "post_pin_note": "gba-homebrew origin/main moved past the pin during this session (growth cut 4, v0.5, wider 7-town map at 18ddd08 — the legacy 5-town world init, tri12, seed and price law are unchanged there); the verdict conditions on the committed v0.4 law at the registered pin c0c6882 per the registered application guard (a later cut that de-periodizes prices or varies the world seed means re-run, not reuse)"
+  },
+  "fixture_level_conventions": {
+    "C1": "clamp-census reading: 'cells clamp' = the impact/shock-free price SITS AT a bound (== lo or == hi) — this at-bound reading reproduces the disclosed 53/600 exactly; the strictly-out-of-range reading (raw < lo or raw > hi) gives 35/600 and is published beside it",
+    "C2": "planner ranking: rate = (believed unit profit x plannable units) / travel days, unit profit = believed_sell(arrival) - 1 - live_buy(today), plannable units = min(pack space, floor((gold - reserve)/live buy price)), reserve = toll*dist + guard fee (the REGISTERED TEXT, applied verbatim); positive rate required; tie-break lexicographic (rate, then smaller dist, then lower good index, then lower dest index); arrival = today + dist (one leg per dawn)",
+    "C3": "day structure: at the plan's destination sell ALL held units of the plan good (same dawn), then replan; committing buys immediately (same dawn) while gold - cost >= reserve and pack < 8, then one travel leg per dawn toward dest; WAIT when no positive pair; a plan is never abandoned en route; guard hire immediately before a crossing whose ARRIVAL day (today + 1) lies inside an ANNOUNCED hazard window on that leg (announce_day <= today) when gold >= fee + toll",
+    "C4": "SCRYER candidate model: per (town, good) the candidate set starts as the full achievable (base, phase) grid (theorems.achievable_base_grid); every dawn standing in a town contributes that town's four dated readings; pruning keeps candidates whose clamped forecast (own impact KNOWN and added, announced shock KNOWN and added) equals the reading exactly (clamped readings prune by clamp-consistency); belief = clamped impact-free law forecast when the set is a singleton (identified), else the ledger's ink for visited towns (the shipped-UI residual), else midpoint; the arm never reads base/phase directly",
+    "C5": "canonical serialization: ints as ints, exact rationals as reduced 'num/den' strings, ratio renderings via exact scaled-integer round-half-up to the printed places (no float pathway anywhere in decision numbers), json sort_keys = True, no timestamps in results.json or stdout",
+    "C6": "decks-OFF reporting row: rumor shocks identically 0 AND hazard deck disabled (guard never hired); contracts unused everywhere (registered); the decision cell is decks ON",
+    "C7": "twin decision evaluators: evaluator A reads Arm-A numbers, evaluator B reads Arm-B numbers, independently-coded band logic, registered order REJECT -> INVALID -> APPROVE -> NULL; INVALID short-circuits on any gate failure; a theorem measured FALSE with both arms exact-equal on the counterexample census routes to n4 per the registered axis text ('theorem failure without gate failure'), never to INVALID",
+    "C8": "seed constructor registry: every random.Random construction logs its seed; the registry must equal [20261590, 20261591, 20261592] exactly and never contain 20261593",
+    "C9": "drafter-disclosed values re-derived from scratch and compared at their stated precision; every mismatch is a first-class named anomaly in REPORT.md, never smoothed and never gated",
+    "C10": "the registered scaffold text is the decision-bearing scaffold. The drafter-evident scaffold variant (reserve = toll*dist + toll, diagnosed from the disclosed landing: it reproduces the drafter's ORACLE 1309/1237 and INKTRUTH 898 exactly) is published as a REPORTING/sensitivity row and anomaly diagnosis only — never decision-bearing",
+    "C11": "n3 semantics: the registered NULL-axis list includes n3 'the committed-world clauses hold but Arm R's 200-world replication of R2 lands below 1/2'; under a dead-literal reading of the REJECT-first order that axis is unreachable exactly when its own precondition holds, so it is read as the drafter's registered carve-out of REJECT (REJECT additionally requires main-census replication >= 1/2); disclosed here BEFORE the runner ran; the arm_R.no_statistical_gate reading rides with it",
+    "C12": "corrected-decode census (n4 exhibit, reporting): candidate counts after k consecutive unclamped mornings (k = 2..8) over the full achievable grid, plus the lag-6 mirror-decode row (T2 corollary: base = (r_d + r_{d+6})/2 when both readings are unclamped)"
+  },
+  "runtime_pins": {"python": "CPython 3.11 (minor pinned and asserted)", "stdlib_only": true, "hermetic": "reads only this fixtures.json", "determinism": "stdout + results.json byte-identical across two full process runs (external diff + sha256, hashes in REPORT.md)"}
+}
