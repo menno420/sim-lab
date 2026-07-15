@@ -1,0 +1,23 @@
+VERDICT 083 runner — sample-window front-matter toll (P070)
+ruling: REJECT (evaluators REJECT/REJECT)
+decision cell alpha=1/10, q=19/20, k*=3 screens / 1 spread:
+  C(NOVELLA, F=1) = 130321/160000 ~ 0.81450625
+  C(NOVELLA, F=4) = 893871739/1280000000 ~ 0.69833729609375
+  toll = 8000/6859 ~ 1.166350779997084 (band 11/10)
+  toll@q=49/50 = 125000/117649 ~ 1.062482469039261 (< 11/10: clause-(ii) witness)
+  front-loaded cliff census (F=4): EPISODE: B=4 story=0 CLIFF  PB15: B=4 story=0 CLIFF  PB12: B=3 story=0 CLIFF  NOVELLA: B=12 story=8 survives  -> 3 of 4
+  PB12 legal-minimum F=2: B=3 story=1 CLIFF (hook needs 2) — under the cliff under ANY assembly
+  EPISODE F=1: B=4 story=3 margin=0 — named knife-edge, excluded, survives; cliffs from F=2
+S* @ alpha=1/10 (formula = scan, gated): {"k=1": {"F=1": 10, "F=2": 19, "F=3": 28, "F=4": 37, "F=5": 46}, "k=2": {"F=1": 20, "F=2": 29, "F=3": 38, "F=4": 47, "F=5": 56}, "k=3": {"F=1": 30, "F=2": 39, "F=3": 48, "F=4": 57, "F=5": 66}, "k=5": {"F=1": 50, "F=2": 59, "F=3": 68, "F=4": 77, "F=5": 86}}
+publishability at the decision hook: {"EPISODE": {"S": 36, "S*_front_loaded": 57, "S*_story_first": 30, "viable_front_loaded": false, "viable_story_first": true}, "NOVELLA": {"S": 112, "S*_front_loaded": 57, "S*_story_first": 30, "viable_front_loaded": true, "viable_story_first": true}, "PB12": {"S": 24, "S*_front_loaded": 47, "S*_story_first": 29, "viable_front_loaded": false, "viable_story_first": false}, "PB15": {"S": 30, "S*_front_loaded": 47, "S*_story_first": 29, "viable_front_loaded": false, "viable_story_first": true}}
+knife-edge ledger (margin-0 surviving cells, full grid): ['EPISODE|a=1/10|k=2|F=2', 'EPISODE|a=1/10|k=3|F=1', 'EPISODE|a=1/5|k=5|F=3', 'NOVELLA|a=1/20|k=2|F=4', 'NOVELLA|a=1/20|k=3|F=3', 'NOVELLA|a=1/20|k=5|F=1', 'PB12|a=1/5|k=1|F=4', 'PB12|a=1/5|k=2|F=2', 'PB15|a=1/10|k=1|F=2', 'PB15|a=1/5|k=2|F=3']
+T3 depth toll S(n)/S(n+3), n=1/4/8/16: [1.5019, 1.1739, 1.0786, 1.0628]
+arm R (reporting-only), published row order ['main/NOVELLA-F4', 'stability/NOVELLA-F4', 'stability/EPISODE-F1', 'stability/NOVELLA-F1', 'main/EPISODE-F1', 'main/NOVELLA-F1']:
+  main/NOVELLA-F4: C_hat=0.69935 draws=603800 beside exact 893871739/1280000000 ~ 0.69833729609375
+  stability/NOVELLA-F4: C_hat=0.703 draws=120887 beside exact 893871739/1280000000 ~ 0.69833729609375
+  stability/EPISODE-F1: C_hat=0.81945 draws=74410 beside exact 130321/160000 ~ 0.81450625
+  stability/NOVELLA-F1: C_hat=0.81135 draws=74187 beside exact 130321/160000 ~ 0.81450625
+  main/EPISODE-F1: C_hat=0.81653 draws=371261 beside exact 130321/160000 ~ 0.81450625
+  main/NOVELLA-F1: C_hat=0.81517 draws=370958 beside exact 130321/160000 ~ 0.81450625
+anomalies vs disclosed landing: NONE
+self-checks: 2267 passed, 0 failed
