@@ -1,0 +1,168 @@
+{
+  "_what": "VERDICT 088 fixture — idea-engine PROPOSAL 075 (the hint that hides — max_depth hint visibility clip). Every value copied verbatim from the P075 outbox block / idea file (ideas/superbot-mineverse/max-depth-hint-visibility-clip-2026-07-15.md @ idea-engine main 87bbb39, PR #439 merged 2026-07-15T11:09:44Z; outbox block stamped 2026-07-15T11:06:24Z). Committed BEFORE the runner (born-red card -> fixtures -> runner -> accepted run).",
+  "_grounding": {
+    "superbot_mineverse": {
+      "repo": "menno420/superbot-mineverse",
+      "pinned_head": "b9ade33ae6019eff45195684fa6fd6f02da4bee0",
+      "reverified_firsthand": "this slice, on a read-only PUBLIC-HTTPS shallow clone landing exactly at the pinned HEAD (the Q-0272 / P073-P075 transport precedent — the local git proxy may fail for fleet repos; public HTTPS worked, as it did for the drafter). Every pin below matched verbatim BEFORE this fixture was written. A scratch REHEARSAL additionally drove the ACTUAL committed server/views.py + server/snapshot_validation.py over the full 80-cell lattice, the T3 witness, the G5 hand world, and the three G6 repair worlds: every disclosed census reproduced (ALL PASS, exit 0). The committed sim below is an INDEPENDENT hermetic re-implementation and never reads that clone.",
+      "pins": {
+        "hint_optional": {"file": "schemas/mining_snapshot.v1.schema.json", "lines": "24-28", "text": "max_depth — OPTIONAL world-shape hint: deepest reachable depth index. Oracle-confirmed depth bands are 0-3. Consumers must fall back gracefully when absent. — type integer, minimum 0, maximum 3; NOT in the envelope's required tuple"},
+        "envelope_required": {"file": "schemas/mining_snapshot.v1.schema.json", "line": 8, "value": ["schema_version", "generated_at", "guild_id", "miners"]},
+        "miner_depth": {"file": "schemas/mining_snapshot.v1.schema.json", "text": "depth — Current depth index (0 = surface). Oracle-confirmed depth bands: 0-3. — integer, minimum 0, maximum 3, REQUIRED"},
+        "miner_record_depth": {"file": "schemas/mining_snapshot.v1.schema.json", "text": "record_depth — Deepest depth ever reached by this miner (same 0-3 bands). — integer, minimum 0, maximum 3, REQUIRED"},
+        "applicator_inventory": {"file": "schemas/mining_snapshot.v1.schema.json", "swept_keys": ["\"if\"", "\"then\"", "\"else\"", "\"allOf\"", "\"anyOf\"", "\"oneOf\"", "\"not\"", "\"dependentRequired\"", "\"dependentSchemas\"", "\"dependencies\""], "found": [], "note": "ZERO cross-field/conditional applicator KEYS anywhere in the schema (the only textual hit on 'not' is prose inside the schema_version description, line 11); the committed validator is a generic schema interpreter (server/snapshot_validation.py::validate_snapshot, :316) — bounds, required tuples, types; no cross-field rule exists"},
+        "contract_table_row": {"file": "docs/mining-data-contract.md", "line": 39, "text": "`max_depth` | integer 0-3 | no | World-shape hint: deepest reachable depth index (oracle-confirmed bands 0-3)."},
+        "ladder_band_loop": {"file": "server/views.py", "line": 216, "text": "for depth in range(max_depth + 1):"},
+        "ladder_ghost_elif": {"file": "server/views.py", "lines": "221-225", "text": "if miner.get(\"depth\") == depth: here.append(name)  elif miner.get(\"record_depth\") == depth: record_only.append(name) — the elif is PER-BAND, not per-miner: a live miner at band d also gets a record chip at band r != d"},
+        "minimap_band_loop": {"file": "server/views.py", "line": 316, "text": "for depth in range(max_depth + 1):"},
+        "minimap_band_filter": {"file": "server/views.py", "lines": "320-326", "text": "if miner.get(\"depth\") != depth: continue — a miner plots (points) or lists (unplotted) ONLY inside its own band's panel; a band past max_depth is never rendered, so its miners appear NOWHERE on the minimap"},
+        "badge_equality": {"file": "server/views.py", "lines": "446-448", "text": "if isinstance(miner.get(\"record_depth\"), int) and miner[\"record_depth\"] == max_depth: earned.append(\"deep_diver\")"},
+        "badge_catalog_description": {"file": "server/views.py", "lines": "401-402", "text": "deep_diver — Deep Diver — record depth equals the world's max depth"},
+        "absence_fallback": {"file": "server/views.py", "lines": "631-634", "text": "max_depth = snapshot.get(\"max_depth\"); if not isinstance(max_depth, int): max_depth = depth_max()  # schema fallback when the hint is absent — depth_max() reads the schema's miner depth maximum = 3"},
+        "fallback_pin_test": {"file": "tests/test_views.py", "line": 568, "text": "No max_depth hint -> the schema's depth bound backstops the ladder."},
+        "honest_listing_doctrine": {"file": "server/views.py", "lines": "310-311, 113-114, 155-156", "text": "minimap unplotted: names 'listed honestly, never silently dropped' (scoped to position-malformed miners at a RENDERED band); shape_gear: 'renders an honest empty slot instead of hiding it'; shape_position: an honest 'position unknown' instead of plotting garbage — honest-visibility is the committed house style of this exact file"},
+        "served_every_request": {"file": "server/app.py", "line": 90, "text": "The file is re-read fresh and v1-validated on EVERY request — schema-valid = rendered; the one load-validate-or-503 path"},
+        "ingest_persists": {"file": "server/ingest.py", "lines": "25-28", "text": "MINING_SNAPSHOT_PATH — the persist target: the SAME live-feed file the read seam re-reads fresh and v1-validates on every request, so an accepted snapshot is served on the very next read"},
+        "ordering_no_sequence_key": {"file": "docs/mining-data-contract.md", "lines": "193-197", "text": "Last-write-wins, replaced whole … v1 carries no sequence key"},
+        "frontend_meter": {"file": "web/app.js", "line": 1173, "text": "bar.style.width = `${world.max_depth ? (miner.depth / world.max_depth) * 100 : 0}%` — integer 0 is JS-falsy, so a valid m = 0 hint renders every meter at 0%"},
+        "frontend_ladder": {"file": "web/app.js", "lines": "1183, 1216-1222", "text": "renderLadder renders only the served bands ('bands 0-3, current + record markers'); record chips are 'Name · record'"},
+        "leaderboards_unclipped": {"file": "server/views.py", "lines": "245-272", "text": "build_leaderboards ranks ALL miners (depth board key (depth, mining XP); coins board key (coins,)) — the boards never read max_depth, which is what lets a world-view-invisible miner rank #1"}
+      },
+      "miner_template_pinned": {
+        "source": "data/sample_snapshot.json miners[0] (DeepDelver) @ b9ade33 — the pinned sample-derived valid values the registration holds all non-lattice miner fields at",
+        "value": {"suid": "100000000000000001", "guild_id": "987654321098765432", "display_name": "DeepDelver", "depth": 3, "record_depth": 3, "position": {"x": 4, "y": -2}, "energy": {"current": 41, "updated_at": 1783728000}, "coins": 18450, "xp": {"game": "mining", "game_total": 6240, "shared_total": 9310, "level": 14}, "equipment": {"tool": "diamond pickaxe", "light": "diamond lantern", "charm": "lucky charm"}, "gear_wear": {"diamond pickaxe": 58, "diamond lantern": 22}, "mining_inventory": {"stone": 42, "iron": 63, "silver": 38, "gold": 21, "diamond": 9, "wood": 15, "torch": 3, "ration": 2}, "vault": {"gold": 120, "diamond": 34, "silver": 76}, "vault_level": 3, "skills": {"mining": 4, "luck": 2}, "structures": {"forge": 3, "home": 1, "campfire": 1}},
+        "envelope": {"schema_version": "1", "generated_at": "2026-07-15T11:00:00Z", "guild_id": "987654321098765432"}
+      }
+    },
+    "harvest_anomalies": "ZERO — every pinned constant and quoted line matched verbatim at superbot-mineverse b9ade33, the applicator sweep came back EMPTY, and the scratch rehearsal against the actual committed modules reproduced every disclosed census"
+  },
+  "committed_constants": {
+    "depth_bands": [0, 1, 2, 3],
+    "depth_max_schema": 3,
+    "hint_domain": ["absent", 0, 1, 2, 3],
+    "m_eff_law": "m_eff = 3 when the hint is absent (or non-int), else m — the committed fallback is reserved for ABSENCE (views.py:633-634), never for out-of-range miners",
+    "lattice_size": 80,
+    "lattice": "hint m in {absent, 0, 1, 2, 3} x depth d in 0..3 x record r in 0..3, one miner per document, all other miner fields held at the pinned template values; multi-miner interactions are linear (per-miner shaping), pinned by the T3 two-miner witness"
+  },
+  "laws_registered": {
+    "live": "here chip iff d <= m_eff",
+    "ghost": "record chip iff r <= m_eff AND r != d (per-BAND elif — a drafting-run correction to the drafter's first hand-hypothesis, disclosed in the registration)",
+    "map": "minimap presence (points or unplotted) iff d <= m_eff",
+    "fully_invisible": "no here row, no record_only row, no minimap points, not even unplotted — iff d > m_eff AND r > m_eff",
+    "badge": "deep_diver iff r == m_eff",
+    "note": "the pinned template carries a valid position, so the unplotted list is empty on every lattice cell — unplotted can only name a miner whose BAND is rendered (views.py:320-326), which is exactly why it cannot rescue a clipped miner"
+  },
+  "censuses_registered": {
+    "fully_invisible_by_hint": {"0": 9, "1": 4, "2": 1, "3": 0},
+    "fully_invisible_total": 14,
+    "fully_invisible_closed_form": "(3 - m)^2 per present hint",
+    "minimap_invisible_total": 24,
+    "minimap_invisible_closed_form": "4 * (3 - m) summed over present hints",
+    "ghost_only_total": 10,
+    "ghost_only_closed_form": "(3 - m) * (m + 1) summed over present hints — a stale 'Name · record' chip at a shallow band is the ONLY trace of a miner whose live position renders nowhere",
+    "badge_earn_total": 20,
+    "badge_flip_cells": 12,
+    "badge_flip_def": "cells (m in {0,1,2}, d in 0..3) where raising the record from r = m to r = m + 1 — digging ONE band deeper — LOSES deep_diver",
+    "badge_overshoot_denials": 24,
+    "badge_overshoot_def": "cells with hint present and r > m: the record strictly EXCEEDS the world's stated max and the badge is denied",
+    "m0_inversion": "at m = 0 the never-dug newcomer (r = 0) EARNS Deep Diver while the r = 3 explorer is denied it",
+    "t4_domination": "over all 64 (m present, d, r) comparisons against the absent-hint twin: visibility(absent) >= visibility(m) EVERYWHERE, strictly greater on exactly the 14 fully-invisible cells — the optional field can only remove miners from the world views, never add one"
+  },
+  "t3_witness": {
+    "document": "m = 2; miner A (d = 3, r = 3, coins 59999, xp.game_total 9999 — top coins/XP); miner B (d = 2, r = 2, template values); all other fields at the pinned template",
+    "expected": "ACCEPTED by the re-derived validator; A is #1 on the depth board AND #1 on the coins board while appearing in ZERO ladder bands and ZERO minimap panels (not even unplotted); A is NOT deep_diver while the strictly shallower B IS; omitting the hint from the SAME document flips all three at once (A visible, A badged, B unbadged)"
+  },
+  "g5_hand_world": {
+    "document": "m = 0; four miners (d, r) = P(0,0), Q(1,0), S(2,2), T(3,3)",
+    "five_facts": ["ONE band rendered", "P(0,0) live", "Q(1,0) ghost chip 'Q · record' only (r = 0 band; not live there)", "S(2,2) and T(3,3) fully invisible", "deep_diver = {P, Q} — the never-dug pair earns 'deepest', the two divers are denied"]
+  },
+  "g6_repair_worlds": {
+    "a_conformance_applicator": {"rule": "require d <= m AND r <= m when the hint is present", "accepted_lattice": 46, "decomposition": "16 absent-hint + sum over m of (m+1)^2 = 1 + 4 + 9 + 16 = 30", "censuses": "every invisibility census ZERO and zero surviving flip pairs — REJECT flips to APPROVE, live"},
+    "b_overflow_bands": {"rule": "bands = range(max(m_eff, deepest miner d or r) + 1)", "fully_invisible": 0, "note": "0/80 — R1 flips"},
+    "c_badge_gte": {"rule": "deep_diver on record_depth >= max_depth", "earn_total": 44, "flips": 0, "byte_identity": "at m_eff = 3, r >= 3 is equivalent to r == 3 (r <= 3 by schema) — BYTE-IDENTICAL to the committed == law; today's sample sits exactly ON the degeneracy cell (sample m = 3), which is why the sample calibration cannot see the bug"}
+  },
+  "frontend_meter_reporting": {
+    "law": "width% = (d / m) * 100 when m truthy, else 0 (falsy-zero guard, app.js:1173)",
+    "rows": {"d3_m2": 150.0, "d3_m1": 300.0, "m0_all_miners": 0.0},
+    "note": "REPORTING only — the decision numbers are all server-side"
+  },
+  "decision_rule": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "REJECT": {
+      "R1": "the fully-invisible census over the accepted lattice is >= 1 (expected exactly 14) AND every such cell is verified absent from here, record_only, points, AND unplotted — genuinely unlisted anywhere in the served world views",
+      "R2": "the badge non-monotonicity census is >= 1 (expected exactly 12 flip cells), with the overshoot-denial census attached (expected 24)",
+      "R3": "hint-domination holds (T4: absence >= presence on all 64 comparisons, strict somewhere) — supplying the optional field is never safer and somewhere strictly worse"
+    },
+    "INVALID": "any G1-G6 gate failure",
+    "APPROVE": "fully-invisible census = 0 AND flip census = 0 over the accepted lattice — mutually exclusive with REJECT by arithmetic",
+    "NULL_axes": {
+      "n1_conformance": "if the pinned schema/validator text carries a cross-field rule binding d, r <= m (this fixture carries the schema constants and the applicator inventory; the sweep is the check), the drop cells are non-conforming input and the finalized finding is the corrected conformance boundary",
+      "n2_acceptance": "if the sim's re-derived validator disagrees with the pinned validator semantics on any lattice cell, the corrected acceptance table IS the finding",
+      "n3_intent": "if a committed mineverse sentence ratifies the hint as authoritative-not-hint (none found at drafting OR at this slice's firsthand re-verification — the fixture carries the claim-1 and claim-3 quotes to check against), direction signed: REJECT downgrades to a documentation gap on the same numbers, disclosed not ruled"
+    }
+  },
+  "gates": {
+    "G1_twin_arms": "Arm B equals Arm A on every census, every closed form, every cell verdict (exact integers); Arm F equals Arm B cell-by-cell on all 80 x 4 outputs (live, ghost, map, badge)",
+    "G2_acceptance": "all 80 lattice cells + the T3 witness pass the re-derived schema check (bounds, required fields, types), and the applicator inventory of the pinned schema is empty of conditional/cross-field keywords",
+    "G3_censuses": "fully-invisible {9, 4, 1, 0} = (3-m)^2, total 14; minimap-invisible 24; ghost-only 10; badge censuses 20 / 12 / 24; all exact",
+    "G4_laws": "live iff d <= m_eff; ghost iff r <= m_eff and r != d; map iff d <= m_eff; deep_diver iff r == m_eff; T4 domination on all 64 comparisons with strictness exactly on the 14",
+    "G5_hand_world": "the five pencil-checkable facts (fixture g5_hand_world) verified against the rendered structures",
+    "G6_consequence_battery": "repair world (a) 80 -> 46 accepted, all censuses zero, zero flip pairs; (b) overflow bands invisible 0/80; (c) >= badge 44/80, zero flips, byte-identical to == at m_eff = 3"
+  },
+  "margin_ledger": {
+    "must_equal_rows_registered_contacts": [
+      "fully-invisible census = 14 with per-hint {9, 4, 1, 0} = (3-m)^2 (closed form vs enumeration, exact)",
+      "minimap-invisible = 24; ghost-only = 10 (closed forms vs enumeration, exact)",
+      "badge censuses 20 earn / 12 flips / 24 overshoots (exact)",
+      "strict-domination count = 14 EXACTLY (T4 strictness lands on precisely the fully-invisible cells)",
+      "G6 repair-world numbers 46 / 0 / 44 (exact)",
+      "the m_eff = 3 byte-identity: (r == 3) equals (r >= 3) on every r in 0..3 — the registered margin-0 contact (iii): today's world sits exactly ON the degeneracy cell where the bug has no observable consequence",
+      "meter rows 150.0 / 300.0 / 0.0 (reporting)"
+    ],
+    "knife_edge_rows_two_sided": [
+      "(i) d = m_eff is the LAST visible band: live at d = m_eff, invisible-live at d = m_eff + 1 (checked at every present hint m < 3) — the entire drop census sits one integer past an exact contact",
+      "(ii) deep_diver's == is itself a two-sided margin-0 law: r = m earns; r = m - 1 and r = m + 1 do not (checked at every m where the neighbour exists)",
+      "(iv) the m = 0 meter row rides the falsy-zero boundary: 0 is a valid hint AND JavaScript-falsy — modeled as the committed ternary, reporting-only"
+    ],
+    "policy": "the V086 typed-ledger convention: must-equal rows (registered contacts) gate as two-sided EQUALITIES; the knife-edge rows are REGISTERED margin-0 contacts (the head's thesis), gated as the exact two-sided laws above; no UNregistered decision comparison sits at margin 0"
+  },
+  "arm_R": {
+    "role": "REPORTING-ONLY — seeded random fully-valid documents; rates of drop/ghost/badge events under uniform sampling; NO statistical gate rides Arm R",
+    "document_model": "k ~ uniform{1..7} miners per document; hint ~ uniform{absent, 0, 1, 2, 3}; per miner d ~ uniform{0..3}, r ~ uniform{0..3}, other fields at the pinned template (suid uniquified)",
+    "main": {"seed": 20261670, "documents": 10000},
+    "stability": {"seed": 20261671, "documents": 4000},
+    "presentation_shuffle_seed": 20261672,
+    "aux_seed_never_read": 20261673,
+    "draw_discipline": "random.Random(seed); draws counted and asserted (k, hint, d, r per miner); per-miner events evaluated by the Arm B evaluator; ties/order presentation-only",
+    "exact_expectations_per_miner": {"fully_invisible": "14/80", "ghost_only": "10/80", "deep_diver": "20/80", "minimap_invisible_given_hint_present": "24/64"},
+    "disclosed_reporting_landing": "NONE — the registration discloses the estimand (rates of drop/ghost/badge events) and the seed set only, no seeded counts; the empirical rates print beside the exact expectations and are not compared to any disclosed value (anomaly-census coverage: NOT-DISCLOSED, the V087 structured-census convention)"
+  },
+  "seeds": {
+    "registered_set": [20261670, 20261671, 20261672, 20261673],
+    "roles": {"20261670": "Arm R main (10,000 documents)", "20261671": "Arm R stability (4,000 documents)", "20261672": "presentation shuffle (presentation legs only)", "20261673": "aux, reserved, NEVER read (the P054-P074 aux convention)"},
+    "provenance": "the drafter's registered allocation IS the session seed set (V077-V087 precedent); 20261660-663 are P074/V087's registered set; the gap 20261665-669 is the drafter's disclosed in-flight buffer, unused; sweep of this clone at origin/main d6610dc maxes at genuine seed 20261663 — the lone in-tree hit on the digit-string 20261664 is a DATA numeral (0.00202616643 in verdict-032 results.json), not a seed"
+  },
+  "expected_landing_disclosed": "REJECT (the sim re-derives from scratch and must not trust these): R1 census 14 (per-hint {9, 4, 1, 0}), all 14 verified unlisted on all four surfaces; R2 flips 12 + overshoot 24 + the m = 0 inversion; R3 domination with strictness on exactly the 14. Repairs RAN at drafting: conformance applicator 80 -> 46 all-zero; overflow bands 0/80; >= badge 44/80 zero flips with the m_eff = 3 byte-identity. The REJECT indicts the unvalidated cross-field trust and the exact-equality badge law — never the hint field itself (world shape is real data), never the fallback (correct and pinned by the repo's own test), never the game",
+  "falsifiability_worlds": {
+    "g6_repairs": "all three G6 repair worlds flip the corresponding REJECT clause live (a: APPROVE on the 46-cell lattice; b: R1 dies; c: R2 dies with today's sample semantics provably untouched)",
+    "n1_n3_axes": "a cross-field applicator or an authoritative-hint sentence anywhere in the pinned tree kills the head — drafting swept and found neither; this slice's firsthand re-verification swept again and found neither",
+    "n2_axis": "any disagreement between the re-derived acceptance and the pinned validator semantics is the finding, not a re-run request"
+  },
+  "conventions": {
+    "C1": "all decision arithmetic exact small integers; no floats in any decision path (the meter rows are reporting-only and use the committed JS ternary semantics)",
+    "C2": "Arm B is INDEPENDENTLY WRITTEN: a dict-of-cells exhaustive enumerator evaluating each (m, d, r) cell by direct predicate scans over explicitly constructed band/panel index sets — no shared code with Arm A's closed forms and no shared code with Arm F's verbatim transcription; the second decision evaluator reads Arm B's cell table only",
+    "C3": "disclosed-anchor comparison: every registration numeral (censuses, closed forms, witness facts, repair-world numbers, meter rows) is a registered GATE; any mismatch between a re-derived value and a disclosed numeral raises a FIRST-CLASS ANOMALY, never a silent gate",
+    "C4": "the falsifiability worlds are named registration cells (the three G6 repair worlds; the n-axes); the APPROVE-liveness check confirms the branch fires in repair world (a) WITHOUT adding a decision path beyond the registered clause",
+    "C5": "typed margin ledger (the V086 convention): must-equal rows two-sided; the three registered knife-edges gated as their exact two-sided laws; no UNregistered decision comparison at margin 0",
+    "C6": "Arm R estimand + draw discipline pinned (document model above); draw counts asserted; NO statistical gate",
+    "C7": "seed constructor registry: exactly 20261670, 20261671, 20261672 constructed, in that order; aux 20261673 asserted never read; registry high-water 20261673 (reserved; highest read 20261672)",
+    "C8": "print discipline: every registered quantity is a small integer; gates compare in memory FIRST and print second",
+    "C9": "canonical serialization: sorted keys, no timestamps in results.json or stdout (byte-identity across process runs)",
+    "C10": "Arm F is the FIDELITY leg: the committed band loop, per-band elif, minimap band filter, badge equality, and absence fallback transcribed verbatim from the pinned quotes, run over real document dicts; it must equal Arm B cell-by-cell — a divergence is INVALID (G1), and a joint divergence of both from the registration is the n2 finding",
+    "C11": "anomaly census is STRUCTURED per the V087 convention (coverage line): per disclosed-numeral class, report compared-and-matched (count), compared-and-mismatched (anomalies), and NOT-DISCLOSED (vacancy) — Arm R's seeded rates are the vacancy class this slice",
+    "C12": "APPROVE/REJECT mutual exclusivity verified as arithmetic (census = 0 vs census >= 1 on the same enumeration), disclosed here before the runner",
+    "C13": "exit contract: exit 0 iff all self-checks pass and exactly one ruling token issues; anomalies do not affect the exit code"
+  },
+  "cpython_pin": "3.11",
+  "run_command": "python3 sims/verdict-088-max-depth-hint-visibility-clip/max_depth_hint_visibility_clip_sim.py"
+}
