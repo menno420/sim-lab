@@ -1,0 +1,23 @@
+VERDICT 084 runner — fishing trophy-record quantization ceiling (P071)
+ruling: REJECT (evaluators REJECT/REJECT)
+decision cell (bare rod pull 1.00, level 7, shore; modal species rank 1, L1 gated):
+  rungs(minnow) = 17 (band <= 20)   p_ceiling = 2/81 ~ 0.0246913580247 (band >= 1/50)
+  E[lifetime PBs](minnow) = 11736310749428605/3026966925030048 ~ 3.87725107017 (band <= 4)
+  kill horizon = 1527502293/10346336 ~ 147.637027543 casts (E[species catches] = 81/2 = 40.5; level-1 onboarding ~ 74.25 casts)
+  cadence: P(PB at 2) = 3083/6561 ~ 0.469897881421 < 1/2; strict < 1/t verified for every t in 2..50 (min gap 0.0119863484507 at t=50)
+band-margin ledger (C5): rungs margin 3; p_ceiling margin 0.00469135802469; E_life margin 0.122748929834; no clause margin-0
+species sweep (C5): rank 1 is the ONLY species inside the REJECT bands (rank 2: 52 rungs, E_life ~ 5.09908751521) — the ruling rides L1
+|A| table (gated verbatim): [17, 52, 99, 160, 232, 312, 402, 502, 610, 724, 848, 978, 1117, 1262, 1413, 1572, 1737, 1910, 2088, 2272, 2462]
+E_life exact ranks 1-3: ['11736310749428605/3026966925030048', '908624971337170720083802440210749242088220513481405870147543301860585168645089387305/178193641240222212679479868335310883973316784812158487934711733387777607918585818744', '360968703235711654233892612988250163157207/69720375229712477164533808935312303556800'] | floats all ranks: ['3.87725107017', '5.09908751521', '5.17737751764', '5.75272955097', '6.61117723347', '6.45769285639', '6.71121287102', '7.38559771492', '7.58084517338', '7.37638179496', '8.24001797642', '7.60041615122', '7.98146423109', '8.63782255182', '7.83103986289', '8.0750489899', '8.03741825614', '9.05238935579', '8.25374842122', '9.08239031521', '8.56125687555']
+lifetime total (exact in memory, twin-gated): ~ 153.382366285 (disclosed ~153.38)
+career table E[PB events in n casts] vs continuous benchmark:
+  quantized: {50: 24.88, 150: 44.02, 500: 67.42, 2000: 93.0, 10000: 118.84}
+  continuous: {2000: 99.2, 100000: 181.4} (divergent)
+refinement (G6, strict C12 reading): E_life rank 1 3.87725107017 -> 6.05419436866 -> 8.3540001121; decades 2.1769432985 / 2.29980574344 vs ln10 2.30258509299 -> pass False/True; avg per decade 2.23837452097 (reporting)
+consequence (a) round(.,3): rungs [163, 505, 991, '...', 24615]; minnow p_ceiling 1/324, horizon ~ 1181.09622034 casts; +E_life avg 2.18360507556/species (total 45.8557065867) -> lands APPROVE bands: True
+consequence (b) raw-float comparison: P(PB at t) = 1/t exact, H_n divergent
+consequence (c) badge ceilings: rank 1 = 0.28 kg @ 2/81 ... rank 21 = 42.39 kg @ 1/3282
+arm F (committed roll, seed 20261630): {"rank 1": {"atoms": "17/17", "ceiling_freq": "0.0249025", "exact": "0.0246913580247"}, "rank 2": {"atoms": "52/52", "ceiling_freq": "0.0060325", "exact": "0.00595238095238"}, "rank 21": {"atoms": "2462/2462", "ceiling_freq": "0.0002675", "exact": "0.000304692260817"}, "rank 3": {"atoms": "99/99", "ceiling_freq": "0.0102525", "exact": "0.010101010101"}}
+arm R (reporting-only): main {50: 24.97, 150: 44.08, 500: 67.5, 2000: 93.19} | stability {50: 24.91, 150: 43.98, 500: 67.25, 2000: 92.64} | exact {50: 24.88, 150: 44.02, 500: 67.42, 2000: 93.0}
+anomalies: A1: G6 refinement decade-1 increment 2.176943 misses ln10 = 2.302585 by 0.125642 (> 1/10 band; strict C12 reading). Cause pinned exactly: at 3 dp the support edges 0.117 = N*13/20 and 0.279 = N*31/20 land ON-GRID, restructuring both edge atoms to exact half-cells (2-dp edge cells are 0.8 and 0.4 of an interior cell) — a one-time edge correction; from 3 dp on the structure is self-similar and the increment converges to ln10 (decade-2 = 2.299806, inside the band). The lemma's DIRECTION and cause-attribution stand; the registered +/-1/10 band was too tight for the first decade. | A2: disclosed APPROVE-world horizon ~1480 is a drafter hand-slip: the exact 3-dp re-census gives p_ceiling(1) = 1/324 (0.279 = N*31/20 lands ON-GRID at 3 dp, halving the top cell), so the horizon is 1/(q1 * 1/324) = 1527502293/1293292 ~ 1181.09622034 casts, not ~1480 (the disclosed number is the naive x10 scaling 2/81 -> 2/810 => 405/q1 ~ 1476). The APPROVE flip SURVIVES the correction: rungs 163 >= 100 and horizon 1181.09622034 >= 1000.
+self-checks: 322 passed, 1 failed — G6 refinement decade 1 (1/100 -> 1/1000) within ln10 +/- 1/10
