@@ -1,0 +1,14 @@
+VERDICT 086 — write-contract rate-tier degeneracy (P073)
+ruling: REJECT (twin evaluators REJECT / REJECT)
+committed pair: B=10 per 10 s, S=60 per 60 s; B*T = S*w = 600
+census: slide60=60 fixed_adv60=70 aligned60=60 bucket60=69 bucket60_closed=70 straddle2=20 slide2=10 w7=90 bucket_min=50
+excesses: fixed 7/6 (margin 10/9), bucket 23/20 (margin 23/21), straddle 20 = 2B
+granularity triple: {"1": [60, 70, 69], "1/2": [60, 70, 69], "1/5": [60, 70, 69]}
+small worlds (exhaustive == closed form): {"5,5,3": 3, "6,2,2": 6, "7,3,2": 6, "8,4,1": 2, "9,3,3": 9}
+arm R main: admitted=23270 rejected=26730 worst60=60 draws=50000
+arm R stability: admitted=9183 rejected=10817 worst60=60 draws=20000
+obedient client: 3600 admits in 3600 s (rate exactly 1/s)
+presentation row order (seed 20261652): 5,10,10,10,20,10,10,7
+seed registry: [20261650, 20261651, 20261652] (aux 20261653 never read)
+anomalies: none
+self-checks: 141 passed, 0 failed

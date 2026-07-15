@@ -1,0 +1,170 @@
+{
+ "anomalies": [],
+ "arm_R": {
+  "main": {
+   "admitted": 23270,
+   "draws": 50000,
+   "events": 50000,
+   "horizon_s": 25174.579,
+   "rejected": 26730,
+   "seed": 20261650,
+   "worst_trailing_60s_window": 60
+  },
+  "obedient_client_admits": 3600,
+  "presentation_row_order": [
+   "5,10",
+   "10,10",
+   "20,10",
+   "10,7"
+  ],
+  "stability": {
+   "admitted": 9183,
+   "draws": 20000,
+   "events": 20000,
+   "horizon_s": 9962.017,
+   "rejected": 10817,
+   "seed": 20261651,
+   "worst_trailing_60s_window": 60
+  },
+  "statistical_gate": "none (reporting-only)"
+ },
+ "census": {
+  "N_bucket_60": 69,
+  "N_bucket_60_closed": 70,
+  "N_fixed_adv_2": 20,
+  "N_fixed_adv_60": 70,
+  "N_fixed_aligned_60": 60,
+  "N_slide_2": 10,
+  "N_slide_60": 60,
+  "bucket_pair_min_level": 50,
+  "w7_cell": 90
+ },
+ "clauses": {
+  "R1": true,
+  "R2": true,
+  "R3": true
+ },
+ "committed_constants": {
+  "B": 10,
+  "S": 60,
+  "T_s": 60,
+  "identity": 600,
+  "w_s": 10
+ },
+ "excesses": {
+  "bucket": "23/20",
+  "fixed": "7/6"
+ },
+ "falsifiability": {
+  "S50_world": "sustained LIVE under every discipline (witness above) \u2014 APPROVE's first clause flips one constant-step down",
+  "discipline_pin_world": "a one-sentence sliding pin would moot R2's fork; finding degrades to dead-ink only (reporting demonstration, not a code path)",
+  "w7_world": "redundancy dies by divisibility alone (90 > 60)"
+ },
+ "granularity_triple": {
+  "1": [
+   60,
+   70,
+   69
+  ],
+  "1/2": [
+   60,
+   70,
+   69
+  ],
+  "1/5": [
+   60,
+   70,
+   69
+  ]
+ },
+ "grid_rows_at_L60": {
+  "10,10": {
+   "N_bucket_60": 69,
+   "N_fixed_adv_60": 70,
+   "N_slide_60": 60,
+   "redundant_at_S": {
+    "100": true,
+    "50": false,
+    "60": true,
+    "70": true
+   }
+  },
+  "10,7": {
+   "N_bucket_60": 94,
+   "N_fixed_adv_60": 100,
+   "N_slide_60": 90,
+   "redundant_at_S": {
+    "100": true,
+    "50": false,
+    "60": false,
+    "70": false
+   }
+  },
+  "20,10": {
+   "N_bucket_60": 138,
+   "N_fixed_adv_60": 140,
+   "N_slide_60": 120,
+   "redundant_at_S": {
+    "100": false,
+    "50": false,
+    "60": false,
+    "70": false
+   }
+  },
+  "5,10": {
+   "N_bucket_60": 34,
+   "N_fixed_adv_60": 35,
+   "N_slide_60": 30,
+   "redundant_at_S": {
+    "100": true,
+    "50": true,
+    "60": true,
+    "70": true
+   }
+  }
+ },
+ "margin_ledger": {
+  "R2_bucket_margin": "23/21",
+  "R2_fixed_margin": "10/9",
+  "fat_margin": "bucket dead check: min level 50 vs 1-token threshold (49 tokens)",
+  "registered_margin0_contacts": [
+   "sliding N(60) == S (60 == 60)",
+   "aligned-fixed max aligned minute == S (60 == 60)",
+   "S=70 falsifiability world: fixed 70 == 70",
+   "R3 lattice equality B*ceil(T/w) == S (60 == 60)"
+  ],
+  "straddle": "exact equality by law (20 == 2B) \u2014 no margin concept"
+ },
+ "pencil_world": {
+  "bucket": 5,
+  "exhaustive_sliding": 4,
+  "fixed_adversarial": 6,
+  "sliding": 4
+ },
+ "seeds": {
+  "aux_never_read": 20261653,
+  "registry": [
+   20261650,
+   20261651,
+   20261652
+  ]
+ },
+ "self_checks": {
+  "failed": 0,
+  "failures": [],
+  "passed": 141
+ },
+ "separating_triple": {
+  "S50": "exists (six 10-bursts, 60 admits > 50)",
+  "S70": "none, doubly slack, fixed contact 70 == 70",
+  "committed_S60": "none (N_slide(60) = 60 <= 60)"
+ },
+ "small_worlds_exhaustive": {
+  "5,5,3": 3,
+  "6,2,2": 6,
+  "7,3,2": 6,
+  "8,4,1": 2,
+  "9,3,3": 9
+ },
+ "verdict": "REJECT"
+}
