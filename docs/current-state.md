@@ -220,6 +220,12 @@ From PROPOSAL 010 onward the offset is a constant +2.
   live-outbox headers: newest `## VERDICT` was 078 at origin/main b7a6859,
   `## VERDICT 079` / `## INTAKE 066` collision-grepped clean before the
   append; no owner-direct or simreq interleave occurred in this range).
+- Extension (V080 slice, 2026-07-15): the +13 offset holds — PROPOSAL 067
+  (wickroad-stale-ink-mirror) → **VERDICT 080** (verified at the
+  live-outbox headers: newest `## VERDICT` was 079 at origin/main 532649b,
+  `## VERDICT 080` / `## INTAKE 067` collision-grepped clean before the
+  append and re-grepped at append time — origin/main unmoved; no
+  owner-direct or simreq interleave occurred in this range).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

@@ -1,0 +1,2654 @@
+{
+ "anomalies": {
+  "diagnosis": {
+   "reserve_constant": "the drafter-evident scaffold (reserve = toll*dist + toll, C10) reproduces the disclosed ORACLE decks-on/off and INKTRUTH decks-on EXACTLY: measured 1309/1237 and 898 vs disclosed 1309/1237 and 898 \u2014 the drafting prototype's solvency reserve evidently added one TOLL, not the registered guard FEE",
+   "scryer_blind_cells": "no natural reading of the registered SCRYER/BLIND text reproduces the disclosed SCRYER 1201/1496 or BLIND 0 (nearest natural reading, C4: 1276/1288 and 18 under the drafter-evident scaffold); the identified-cell timeline (16/20 by day 30) and the day-6 crossing DO reproduce",
+   "t3b": "the registered T3b drafting verification ('unique (base,phase) recovery ... matched') cannot reproduce: uniqueness fails at EVERY one of the 24360 unclamped consecutive-pair grid cases (candidate counts 2..6); the drafting enumeration evidently checked T3a (tri-value pair distinctness) only \u2014 distinct tri PAIRS do not give reading-space identifiability because base translation composes with phase shift within a diff-sign class"
+  },
+  "matches": [
+   "E_sums: [669, 1131, 1596, 1838, 2075, 2067, 2064, 1828, 1591, 1127, 664, 0]",
+   "I(6): 300/300",
+   "I(12): 0/300",
+   "clamp_census(C1 at-bound): 53/600",
+   "informed_cross_day: 6",
+   "scryer_identified_by_30: 16/20"
+  ],
+  "mismatches": [
+   "decks_on.ORACLE: measured 1311 vs disclosed 1309",
+   "decks_on.SCRYER: measured 1278 vs disclosed 1201",
+   "decks_on.INKTRUTH: measured 900 vs disclosed 898",
+   "decks_on.BLIND: measured 9 vs disclosed 0",
+   "decks_off.ORACLE: measured 1239 vs disclosed 1237",
+   "decks_off.SCRYER: measured 1290 vs disclosed 1496",
+   "R2_ratio(4dp): measured 0.9748 vs disclosed 0.9175",
+   "decks_off_ratio(3dp): measured 1.041 vs disclosed 1.209",
+   "T3b_unique_decode_claim: measured FALSE (0/24360 unique) vs disclosed TRUE per registration ('enumeration in the theorem gate')",
+   "alt_world_replication: measured 56/200 (first-20 slice 5/20) vs disclosed 9/20 at drafting n=20"
+  ]
+ },
+ "arm_R": {
+  "main": {
+   "first_20_worlds_replication": 5,
+   "ordering_census": {
+    "INKTRUTH>ORACLE>SCRYER>BLIND": 17,
+    "INKTRUTH>SCRYER>ORACLE>BLIND": 6,
+    "ORACLE>INKTRUTH>BLIND>SCRYER": 1,
+    "ORACLE>INKTRUTH>SCRYER>BLIND": 58,
+    "ORACLE>SCRYER>BLIND>INKTRUTH": 1,
+    "ORACLE>SCRYER>INKTRUTH>BLIND": 83,
+    "SCRYER>INKTRUTH>ORACLE>BLIND": 9,
+    "SCRYER>ORACLE>INKTRUTH>BLIND": 25
+   },
+   "per_world_rows": [
+    {
+     "golds": {
+      "BLIND": 0,
+      "INKTRUTH": 1082,
+      "ORACLE": 972,
+      "SCRYER": 584
+     },
+     "r2_holds": false,
+     "seed": 1090299963
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 453,
+      "ORACLE": 745,
+      "SCRYER": 522
+     },
+     "r2_holds": false,
+     "seed": 3731226879
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 535,
+      "ORACLE": 775,
+      "SCRYER": 369
+     },
+     "r2_holds": false,
+     "seed": 1007585442
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 967,
+      "ORACLE": 1020,
+      "SCRYER": 1059
+     },
+     "r2_holds": true,
+     "seed": 884185252
+    },
+    {
+     "golds": {
+      "BLIND": 0,
+      "INKTRUTH": 349,
+      "ORACLE": 603,
+      "SCRYER": 327
+     },
+     "r2_holds": false,
+     "seed": 2986138732
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 471,
+      "ORACLE": 1068,
+      "SCRYER": 907
+     },
+     "r2_holds": false,
+     "seed": 301444134
+    },
+    {
+     "golds": {
+      "BLIND": 13,
+      "INKTRUTH": 367,
+      "ORACLE": 920,
+      "SCRYER": 722
+     },
+     "r2_holds": false,
+     "seed": 2110614056
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 700,
+      "ORACLE": 1033,
+      "SCRYER": 391
+     },
+     "r2_holds": false,
+     "seed": 3420738068
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 470,
+      "ORACLE": 797,
+      "SCRYER": 736
+     },
+     "r2_holds": true,
+     "seed": 858692476
+    },
+    {
+     "golds": {
+      "BLIND": 27,
+      "INKTRUTH": 825,
+      "ORACLE": 676,
+      "SCRYER": 1119
+     },
+     "r2_holds": true,
+     "seed": 2939170535
+    },
+    {
+     "golds": {
+      "BLIND": 16,
+      "INKTRUTH": 961,
+      "ORACLE": 849,
+      "SCRYER": 590
+     },
+     "r2_holds": false,
+     "seed": 2497567570
+    },
+    {
+     "golds": {
+      "BLIND": 22,
+      "INKTRUTH": 14,
+      "ORACLE": 471,
+      "SCRYER": 40
+     },
+     "r2_holds": false,
+     "seed": 1786993966
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 795,
+      "ORACLE": 736,
+      "SCRYER": 793
+     },
+     "r2_holds": true,
+     "seed": 3366668555
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 1173,
+      "ORACLE": 1667,
+      "SCRYER": 1342
+     },
+     "r2_holds": false,
+     "seed": 964755573
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 789,
+      "ORACLE": 1491,
+      "SCRYER": 683
+     },
+     "r2_holds": false,
+     "seed": 2576795571
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 796,
+      "ORACLE": 1191,
+      "SCRYER": 467
+     },
+     "r2_holds": false,
+     "seed": 1131247293
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 645,
+      "ORACLE": 981,
+      "SCRYER": 578
+     },
+     "r2_holds": false,
+     "seed": 2889285510
+    },
+    {
+     "golds": {
+      "BLIND": 59,
+      "INKTRUTH": 403,
+      "ORACLE": 472,
+      "SCRYER": 211
+     },
+     "r2_holds": false,
+     "seed": 1990252553
+    },
+    {
+     "golds": {
+      "BLIND": 49,
+      "INKTRUTH": 439,
+      "ORACLE": 366,
+      "SCRYER": 532
+     },
+     "r2_holds": true,
+     "seed": 3316705050
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 403,
+      "ORACLE": 739,
+      "SCRYER": 296
+     },
+     "r2_holds": false,
+     "seed": 3214546148
+    },
+    {
+     "golds": {
+      "BLIND": 33,
+      "INKTRUTH": 678,
+      "ORACLE": 814,
+      "SCRYER": 182
+     },
+     "r2_holds": false,
+     "seed": 4104277175
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 653,
+      "ORACLE": 865,
+      "SCRYER": 118
+     },
+     "r2_holds": false,
+     "seed": 3763791865
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 809,
+      "ORACLE": 1060,
+      "SCRYER": 765
+     },
+     "r2_holds": false,
+     "seed": 307595069
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 717,
+      "ORACLE": 1000,
+      "SCRYER": 781
+     },
+     "r2_holds": false,
+     "seed": 1781795416
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 551,
+      "ORACLE": 1315,
+      "SCRYER": 653
+     },
+     "r2_holds": false,
+     "seed": 173692868
+    },
+    {
+     "golds": {
+      "BLIND": 5,
+      "INKTRUTH": 397,
+      "ORACLE": 1302,
+      "SCRYER": 273
+     },
+     "r2_holds": false,
+     "seed": 2058506973
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 832,
+      "ORACLE": 884,
+      "SCRYER": 869
+     },
+     "r2_holds": true,
+     "seed": 1045712735
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 610,
+      "ORACLE": 711,
+      "SCRYER": 936
+     },
+     "r2_holds": true,
+     "seed": 1160143982
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 762,
+      "ORACLE": 1048,
+      "SCRYER": 948
+     },
+     "r2_holds": true,
+     "seed": 2851669695
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 487,
+      "ORACLE": 1029,
+      "SCRYER": 731
+     },
+     "r2_holds": false,
+     "seed": 2591885264
+    },
+    {
+     "golds": {
+      "BLIND": 133,
+      "INKTRUTH": 443,
+      "ORACLE": 1049,
+      "SCRYER": 671
+     },
+     "r2_holds": false,
+     "seed": 2356019601
+    },
+    {
+     "golds": {
+      "BLIND": 17,
+      "INKTRUTH": 910,
+      "ORACLE": 1193,
+      "SCRYER": 634
+     },
+     "r2_holds": false,
+     "seed": 639227520
+    },
+    {
+     "golds": {
+      "BLIND": 31,
+      "INKTRUTH": 598,
+      "ORACLE": 958,
+      "SCRYER": 358
+     },
+     "r2_holds": false,
+     "seed": 3840034880
+    },
+    {
+     "golds": {
+      "BLIND": 17,
+      "INKTRUTH": 317,
+      "ORACLE": 825,
+      "SCRYER": 262
+     },
+     "r2_holds": false,
+     "seed": 1142567599
+    },
+    {
+     "golds": {
+      "BLIND": 145,
+      "INKTRUTH": 686,
+      "ORACLE": 658,
+      "SCRYER": 493
+     },
+     "r2_holds": false,
+     "seed": 1931404366
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 863,
+      "ORACLE": 920,
+      "SCRYER": 89
+     },
+     "r2_holds": false,
+     "seed": 3401506754
+    },
+    {
+     "golds": {
+      "BLIND": 74,
+      "INKTRUTH": 205,
+      "ORACLE": 958,
+      "SCRYER": 502
+     },
+     "r2_holds": false,
+     "seed": 1281525896
+    },
+    {
+     "golds": {
+      "BLIND": 5,
+      "INKTRUTH": 858,
+      "ORACLE": 1116,
+      "SCRYER": 834
+     },
+     "r2_holds": false,
+     "seed": 3999180838
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 530,
+      "ORACLE": 783,
+      "SCRYER": 836
+     },
+     "r2_holds": true,
+     "seed": 3757086522
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 345,
+      "ORACLE": 352,
+      "SCRYER": 135
+     },
+     "r2_holds": false,
+     "seed": 841952233
+    },
+    {
+     "golds": {
+      "BLIND": 109,
+      "INKTRUTH": 1081,
+      "ORACLE": 1272,
+      "SCRYER": 1210
+     },
+     "r2_holds": true,
+     "seed": 3686289055
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 835,
+      "ORACLE": 1559,
+      "SCRYER": 1127
+     },
+     "r2_holds": false,
+     "seed": 1147731773
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 559,
+      "ORACLE": 1056,
+      "SCRYER": 906
+     },
+     "r2_holds": false,
+     "seed": 3041014842
+    },
+    {
+     "golds": {
+      "BLIND": 5,
+      "INKTRUTH": 300,
+      "ORACLE": 843,
+      "SCRYER": 911
+     },
+     "r2_holds": true,
+     "seed": 3398322969
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 239,
+      "ORACLE": 380,
+      "SCRYER": 502
+     },
+     "r2_holds": true,
+     "seed": 2779608076
+    },
+    {
+     "golds": {
+      "BLIND": 13,
+      "INKTRUTH": 762,
+      "ORACLE": 702,
+      "SCRYER": 459
+     },
+     "r2_holds": false,
+     "seed": 1410904959
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 414,
+      "ORACLE": 1080,
+      "SCRYER": 186
+     },
+     "r2_holds": false,
+     "seed": 1746294910
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 991,
+      "ORACLE": 672,
+      "SCRYER": 1032
+     },
+     "r2_holds": true,
+     "seed": 1534785275
+    },
+    {
+     "golds": {
+      "BLIND": 44,
+      "INKTRUTH": 410,
+      "ORACLE": 881,
+      "SCRYER": 640
+     },
+     "r2_holds": false,
+     "seed": 2327574793
+    },
+    {
+     "golds": {
+      "BLIND": 16,
+      "INKTRUTH": 358,
+      "ORACLE": 1528,
+      "SCRYER": 264
+     },
+     "r2_holds": false,
+     "seed": 315121318
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 438,
+      "ORACLE": 541,
+      "SCRYER": 276
+     },
+     "r2_holds": false,
+     "seed": 1660812478
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 619,
+      "ORACLE": 593,
+      "SCRYER": 777
+     },
+     "r2_holds": true,
+     "seed": 1628418
+    },
+    {
+     "golds": {
+      "BLIND": 20,
+      "INKTRUTH": 477,
+      "ORACLE": 587,
+      "SCRYER": 415
+     },
+     "r2_holds": false,
+     "seed": 3726781322
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 26,
+      "ORACLE": 1224,
+      "SCRYER": 756
+     },
+     "r2_holds": false,
+     "seed": 2303631026
+    },
+    {
+     "golds": {
+      "BLIND": 93,
+      "INKTRUTH": 515,
+      "ORACLE": 590,
+      "SCRYER": 334
+     },
+     "r2_holds": false,
+     "seed": 671973789
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 175,
+      "ORACLE": 653,
+      "SCRYER": 525
+     },
+     "r2_holds": false,
+     "seed": 27461383
+    },
+    {
+     "golds": {
+      "BLIND": 57,
+      "INKTRUTH": 760,
+      "ORACLE": 1131,
+      "SCRYER": 305
+     },
+     "r2_holds": false,
+     "seed": 3549571932
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 219,
+      "ORACLE": 717,
+      "SCRYER": 409
+     },
+     "r2_holds": false,
+     "seed": 591856128
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 864,
+      "ORACLE": 1124,
+      "SCRYER": 1103
+     },
+     "r2_holds": true,
+     "seed": 3771498523
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 237,
+      "ORACLE": 615,
+      "SCRYER": 379
+     },
+     "r2_holds": false,
+     "seed": 2783962255
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 651,
+      "ORACLE": 1159,
+      "SCRYER": 724
+     },
+     "r2_holds": false,
+     "seed": 3898192795
+    },
+    {
+     "golds": {
+      "BLIND": 5,
+      "INKTRUTH": 521,
+      "ORACLE": 925,
+      "SCRYER": 617
+     },
+     "r2_holds": false,
+     "seed": 170609003
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 660,
+      "ORACLE": 707,
+      "SCRYER": 875
+     },
+     "r2_holds": true,
+     "seed": 2098081927
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 838,
+      "ORACLE": 956,
+      "SCRYER": 673
+     },
+     "r2_holds": false,
+     "seed": 2532558373
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 554,
+      "ORACLE": 960,
+      "SCRYER": 298
+     },
+     "r2_holds": false,
+     "seed": 4068481758
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 532,
+      "ORACLE": 867,
+      "SCRYER": 991
+     },
+     "r2_holds": true,
+     "seed": 1537281043
+    },
+    {
+     "golds": {
+      "BLIND": 161,
+      "INKTRUTH": 891,
+      "ORACLE": 892,
+      "SCRYER": 764
+     },
+     "r2_holds": false,
+     "seed": 3416301044
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 884,
+      "ORACLE": 762,
+      "SCRYER": 996
+     },
+     "r2_holds": true,
+     "seed": 1161477988
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 939,
+      "ORACLE": 1130,
+      "SCRYER": 1210
+     },
+     "r2_holds": true,
+     "seed": 2277985009
+    },
+    {
+     "golds": {
+      "BLIND": 0,
+      "INKTRUTH": 687,
+      "ORACLE": 1284,
+      "SCRYER": 1015
+     },
+     "r2_holds": false,
+     "seed": 1588170370
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 235,
+      "ORACLE": 1130,
+      "SCRYER": 520
+     },
+     "r2_holds": false,
+     "seed": 4270117964
+    },
+    {
+     "golds": {
+      "BLIND": 19,
+      "INKTRUTH": 706,
+      "ORACLE": 848,
+      "SCRYER": 904
+     },
+     "r2_holds": true,
+     "seed": 4097261718
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 383,
+      "ORACLE": 864,
+      "SCRYER": 478
+     },
+     "r2_holds": false,
+     "seed": 2832904580
+    },
+    {
+     "golds": {
+      "BLIND": 18,
+      "INKTRUTH": 1028,
+      "ORACLE": 1348,
+      "SCRYER": 1109
+     },
+     "r2_holds": false,
+     "seed": 2531963694
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 459,
+      "ORACLE": 1066,
+      "SCRYER": 726
+     },
+     "r2_holds": false,
+     "seed": 1543553835
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 866,
+      "ORACLE": 1202,
+      "SCRYER": 1040
+     },
+     "r2_holds": false,
+     "seed": 266543959
+    },
+    {
+     "golds": {
+      "BLIND": 13,
+      "INKTRUTH": 538,
+      "ORACLE": 886,
+      "SCRYER": 520
+     },
+     "r2_holds": false,
+     "seed": 2506459252
+    },
+    {
+     "golds": {
+      "BLIND": 13,
+      "INKTRUTH": 908,
+      "ORACLE": 1157,
+      "SCRYER": 1183
+     },
+     "r2_holds": true,
+     "seed": 3938471870
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 565,
+      "ORACLE": 1068,
+      "SCRYER": 639
+     },
+     "r2_holds": false,
+     "seed": 2046928862
+    },
+    {
+     "golds": {
+      "BLIND": 31,
+      "INKTRUTH": 857,
+      "ORACLE": 1278,
+      "SCRYER": 634
+     },
+     "r2_holds": false,
+     "seed": 3849930856
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 358,
+      "ORACLE": 598,
+      "SCRYER": 620
+     },
+     "r2_holds": true,
+     "seed": 861008267
+    },
+    {
+     "golds": {
+      "BLIND": 5,
+      "INKTRUTH": 762,
+      "ORACLE": 1157,
+      "SCRYER": 800
+     },
+     "r2_holds": false,
+     "seed": 1813554871
+    },
+    {
+     "golds": {
+      "BLIND": 107,
+      "INKTRUTH": 1235,
+      "ORACLE": 1418,
+      "SCRYER": 1407
+     },
+     "r2_holds": true,
+     "seed": 1511822780
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 742,
+      "ORACLE": 748,
+      "SCRYER": 413
+     },
+     "r2_holds": false,
+     "seed": 931984454
+    },
+    {
+     "golds": {
+      "BLIND": 25,
+      "INKTRUTH": 1283,
+      "ORACLE": 1518,
+      "SCRYER": 1160
+     },
+     "r2_holds": false,
+     "seed": 3778585476
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 402,
+      "ORACLE": 884,
+      "SCRYER": 604
+     },
+     "r2_holds": false,
+     "seed": 857493792
+    },
+    {
+     "golds": {
+      "BLIND": 13,
+      "INKTRUTH": 457,
+      "ORACLE": 1248,
+      "SCRYER": 920
+     },
+     "r2_holds": false,
+     "seed": 1358355740
+    },
+    {
+     "golds": {
+      "BLIND": 27,
+      "INKTRUTH": 560,
+      "ORACLE": 871,
+      "SCRYER": 1167
+     },
+     "r2_holds": true,
+     "seed": 425854136
+    },
+    {
+     "golds": {
+      "BLIND": 16,
+      "INKTRUTH": 910,
+      "ORACLE": 399,
+      "SCRYER": 430
+     },
+     "r2_holds": true,
+     "seed": 1598504145
+    },
+    {
+     "golds": {
+      "BLIND": 131,
+      "INKTRUTH": 595,
+      "ORACLE": 1009,
+      "SCRYER": 543
+     },
+     "r2_holds": false,
+     "seed": 1760561598
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 930,
+      "ORACLE": 1074,
+      "SCRYER": 1139
+     },
+     "r2_holds": true,
+     "seed": 3689142925
+    },
+    {
+     "golds": {
+      "BLIND": 13,
+      "INKTRUTH": 810,
+      "ORACLE": 955,
+      "SCRYER": 1006
+     },
+     "r2_holds": true,
+     "seed": 880178378
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 285,
+      "ORACLE": 157,
+      "SCRYER": 53
+     },
+     "r2_holds": false,
+     "seed": 1957438322
+    },
+    {
+     "golds": {
+      "BLIND": 531,
+      "INKTRUTH": 1098,
+      "ORACLE": 657,
+      "SCRYER": 1080
+     },
+     "r2_holds": true,
+     "seed": 1816047088
+    },
+    {
+     "golds": {
+      "BLIND": 38,
+      "INKTRUTH": 956,
+      "ORACLE": 1033,
+      "SCRYER": 144
+     },
+     "r2_holds": false,
+     "seed": 4224768878
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 409,
+      "ORACLE": 503,
+      "SCRYER": 427
+     },
+     "r2_holds": false,
+     "seed": 4047526580
+    },
+    {
+     "golds": {
+      "BLIND": 21,
+      "INKTRUTH": 1096,
+      "ORACLE": 735,
+      "SCRYER": 1201
+     },
+     "r2_holds": true,
+     "seed": 3614843584
+    },
+    {
+     "golds": {
+      "BLIND": 35,
+      "INKTRUTH": 503,
+      "ORACLE": 810,
+      "SCRYER": 587
+     },
+     "r2_holds": false,
+     "seed": 1235096945
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 769,
+      "ORACLE": 1062,
+      "SCRYER": 845
+     },
+     "r2_holds": false,
+     "seed": 854198274
+    },
+    {
+     "golds": {
+      "BLIND": 29,
+      "INKTRUTH": 599,
+      "ORACLE": 857,
+      "SCRYER": 724
+     },
+     "r2_holds": false,
+     "seed": 1649065943
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 630,
+      "ORACLE": 1124,
+      "SCRYER": 694
+     },
+     "r2_holds": false,
+     "seed": 2169932147
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 601,
+      "ORACLE": 1033,
+      "SCRYER": 903
+     },
+     "r2_holds": false,
+     "seed": 17503414
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 870,
+      "ORACLE": 1095,
+      "SCRYER": 513
+     },
+     "r2_holds": false,
+     "seed": 618308872
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 325,
+      "ORACLE": 1053,
+      "SCRYER": 486
+     },
+     "r2_holds": false,
+     "seed": 3019591954
+    },
+    {
+     "golds": {
+      "BLIND": 38,
+      "INKTRUTH": 626,
+      "ORACLE": 906,
+      "SCRYER": 458
+     },
+     "r2_holds": false,
+     "seed": 1806011769
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 687,
+      "ORACLE": 808,
+      "SCRYER": 639
+     },
+     "r2_holds": false,
+     "seed": 1255446348
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 507,
+      "ORACLE": 613,
+      "SCRYER": 586
+     },
+     "r2_holds": true,
+     "seed": 49385712
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 803,
+      "ORACLE": 1013,
+      "SCRYER": 714
+     },
+     "r2_holds": false,
+     "seed": 3446364715
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 939,
+      "ORACLE": 676,
+      "SCRYER": 470
+     },
+     "r2_holds": false,
+     "seed": 2590952823
+    },
+    {
+     "golds": {
+      "BLIND": 16,
+      "INKTRUTH": 490,
+      "ORACLE": 946,
+      "SCRYER": 499
+     },
+     "r2_holds": false,
+     "seed": 70781684
+    },
+    {
+     "golds": {
+      "BLIND": 1,
+      "INKTRUTH": 355,
+      "ORACLE": 1334,
+      "SCRYER": 697
+     },
+     "r2_holds": false,
+     "seed": 187225838
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 363,
+      "ORACLE": 1056,
+      "SCRYER": 1004
+     },
+     "r2_holds": true,
+     "seed": 4015418488
+    },
+    {
+     "golds": {
+      "BLIND": 0,
+      "INKTRUTH": 697,
+      "ORACLE": 1429,
+      "SCRYER": 746
+     },
+     "r2_holds": false,
+     "seed": 1604894920
+    },
+    {
+     "golds": {
+      "BLIND": 13,
+      "INKTRUTH": 671,
+      "ORACLE": 999,
+      "SCRYER": 590
+     },
+     "r2_holds": false,
+     "seed": 2506608860
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 354,
+      "ORACLE": 257,
+      "SCRYER": 121
+     },
+     "r2_holds": false,
+     "seed": 503361569
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 184,
+      "ORACLE": 672,
+      "SCRYER": 244
+     },
+     "r2_holds": false,
+     "seed": 2662344634
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 893,
+      "ORACLE": 1342,
+      "SCRYER": 839
+     },
+     "r2_holds": false,
+     "seed": 1456592097
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 922,
+      "ORACLE": 1139,
+      "SCRYER": 956
+     },
+     "r2_holds": false,
+     "seed": 3265489814
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 775,
+      "ORACLE": 666,
+      "SCRYER": 518
+     },
+     "r2_holds": false,
+     "seed": 1472733451
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 761,
+      "ORACLE": 1315,
+      "SCRYER": 1071
+     },
+     "r2_holds": false,
+     "seed": 2945165283
+    },
+    {
+     "golds": {
+      "BLIND": 13,
+      "INKTRUTH": 415,
+      "ORACLE": 528,
+      "SCRYER": 773
+     },
+     "r2_holds": true,
+     "seed": 446997871
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 843,
+      "ORACLE": 959,
+      "SCRYER": 623
+     },
+     "r2_holds": false,
+     "seed": 1500593358
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 553,
+      "ORACLE": 1077,
+      "SCRYER": 890
+     },
+     "r2_holds": false,
+     "seed": 1204448648
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 672,
+      "ORACLE": 897,
+      "SCRYER": 698
+     },
+     "r2_holds": false,
+     "seed": 1800677027
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 887,
+      "ORACLE": 984,
+      "SCRYER": 831
+     },
+     "r2_holds": false,
+     "seed": 4156496778
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 774,
+      "ORACLE": 1298,
+      "SCRYER": 914
+     },
+     "r2_holds": false,
+     "seed": 1607763462
+    },
+    {
+     "golds": {
+      "BLIND": 0,
+      "INKTRUTH": 419,
+      "ORACLE": 1002,
+      "SCRYER": 514
+     },
+     "r2_holds": false,
+     "seed": 33231207
+    },
+    {
+     "golds": {
+      "BLIND": 24,
+      "INKTRUTH": 637,
+      "ORACLE": 1193,
+      "SCRYER": 189
+     },
+     "r2_holds": false,
+     "seed": 3448504137
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 729,
+      "ORACLE": 1062,
+      "SCRYER": 1080
+     },
+     "r2_holds": true,
+     "seed": 2852811994
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 571,
+      "ORACLE": 897,
+      "SCRYER": 807
+     },
+     "r2_holds": false,
+     "seed": 2475226064
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 506,
+      "ORACLE": 1343,
+      "SCRYER": 841
+     },
+     "r2_holds": false,
+     "seed": 1146405621
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 479,
+      "ORACLE": 728,
+      "SCRYER": 677
+     },
+     "r2_holds": true,
+     "seed": 2543520817
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 856,
+      "ORACLE": 670,
+      "SCRYER": 820
+     },
+     "r2_holds": true,
+     "seed": 1605386304
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 1012,
+      "ORACLE": 1165,
+      "SCRYER": 953
+     },
+     "r2_holds": false,
+     "seed": 429513577
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 687,
+      "ORACLE": 805,
+      "SCRYER": 715
+     },
+     "r2_holds": false,
+     "seed": 578060745
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 280,
+      "ORACLE": 796,
+      "SCRYER": 742
+     },
+     "r2_holds": true,
+     "seed": 2144500840
+    },
+    {
+     "golds": {
+      "BLIND": 21,
+      "INKTRUTH": 614,
+      "ORACLE": 1058,
+      "SCRYER": 271
+     },
+     "r2_holds": false,
+     "seed": 2616908340
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 28,
+      "ORACLE": 368,
+      "SCRYER": 459
+     },
+     "r2_holds": true,
+     "seed": 4068038132
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 766,
+      "ORACLE": 966,
+      "SCRYER": 507
+     },
+     "r2_holds": false,
+     "seed": 3774996468
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 970,
+      "ORACLE": 795,
+      "SCRYER": 1137
+     },
+     "r2_holds": true,
+     "seed": 2544478316
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 522,
+      "ORACLE": 1110,
+      "SCRYER": 550
+     },
+     "r2_holds": false,
+     "seed": 2777962149
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 581,
+      "ORACLE": 932,
+      "SCRYER": 836
+     },
+     "r2_holds": false,
+     "seed": 183475461
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 320,
+      "ORACLE": 654,
+      "SCRYER": 384
+     },
+     "r2_holds": false,
+     "seed": 3616449990
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 670,
+      "ORACLE": 523,
+      "SCRYER": 492
+     },
+     "r2_holds": true,
+     "seed": 4222526702
+    },
+    {
+     "golds": {
+      "BLIND": 17,
+      "INKTRUTH": 682,
+      "ORACLE": 595,
+      "SCRYER": 736
+     },
+     "r2_holds": true,
+     "seed": 3487281960
+    },
+    {
+     "golds": {
+      "BLIND": 21,
+      "INKTRUTH": 933,
+      "ORACLE": 503,
+      "SCRYER": 815
+     },
+     "r2_holds": true,
+     "seed": 150131380
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 710,
+      "ORACLE": 1202,
+      "SCRYER": 415
+     },
+     "r2_holds": false,
+     "seed": 2018810032
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 700,
+      "ORACLE": 1086,
+      "SCRYER": 692
+     },
+     "r2_holds": false,
+     "seed": 2366642306
+    },
+    {
+     "golds": {
+      "BLIND": 43,
+      "INKTRUTH": 911,
+      "ORACLE": 820,
+      "SCRYER": 688
+     },
+     "r2_holds": false,
+     "seed": 2863221484
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 760,
+      "ORACLE": 672,
+      "SCRYER": 418
+     },
+     "r2_holds": false,
+     "seed": 2706177778
+    },
+    {
+     "golds": {
+      "BLIND": 16,
+      "INKTRUTH": 320,
+      "ORACLE": 1397,
+      "SCRYER": 525
+     },
+     "r2_holds": false,
+     "seed": 1656215560
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 590,
+      "ORACLE": 832,
+      "SCRYER": 620
+     },
+     "r2_holds": false,
+     "seed": 2065435337
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 453,
+      "ORACLE": 1489,
+      "SCRYER": 862
+     },
+     "r2_holds": false,
+     "seed": 4128931184
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 1143,
+      "ORACLE": 1178,
+      "SCRYER": 981
+     },
+     "r2_holds": false,
+     "seed": 4141701636
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 1432,
+      "ORACLE": 1218,
+      "SCRYER": 1375
+     },
+     "r2_holds": true,
+     "seed": 578847822
+    },
+    {
+     "golds": {
+      "BLIND": 7,
+      "INKTRUTH": 1069,
+      "ORACLE": 549,
+      "SCRYER": 536
+     },
+     "r2_holds": true,
+     "seed": 3321842935
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 375,
+      "ORACLE": 288,
+      "SCRYER": 242
+     },
+     "r2_holds": false,
+     "seed": 4233293263
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 403,
+      "ORACLE": 710,
+      "SCRYER": 356
+     },
+     "r2_holds": false,
+     "seed": 454989661
+    },
+    {
+     "golds": {
+      "BLIND": 55,
+      "INKTRUTH": 981,
+      "ORACLE": 1004,
+      "SCRYER": 911
+     },
+     "r2_holds": true,
+     "seed": 412172962
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 271,
+      "ORACLE": 630,
+      "SCRYER": 485
+     },
+     "r2_holds": false,
+     "seed": 2307799764
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 853,
+      "ORACLE": 977,
+      "SCRYER": 471
+     },
+     "r2_holds": false,
+     "seed": 3980369592
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 596,
+      "ORACLE": 843,
+      "SCRYER": 1024
+     },
+     "r2_holds": true,
+     "seed": 880902680
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 289,
+      "ORACLE": 1381,
+      "SCRYER": 808
+     },
+     "r2_holds": false,
+     "seed": 856345435
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 433,
+      "ORACLE": 870,
+      "SCRYER": 545
+     },
+     "r2_holds": false,
+     "seed": 270745203
+    },
+    {
+     "golds": {
+      "BLIND": 50,
+      "INKTRUTH": 585,
+      "ORACLE": 890,
+      "SCRYER": 747
+     },
+     "r2_holds": false,
+     "seed": 1929172058
+    },
+    {
+     "golds": {
+      "BLIND": 19,
+      "INKTRUTH": 552,
+      "ORACLE": 724,
+      "SCRYER": 453
+     },
+     "r2_holds": false,
+     "seed": 59175329
+    },
+    {
+     "golds": {
+      "BLIND": 16,
+      "INKTRUTH": 492,
+      "ORACLE": 1226,
+      "SCRYER": 716
+     },
+     "r2_holds": false,
+     "seed": 3543548213
+    },
+    {
+     "golds": {
+      "BLIND": 19,
+      "INKTRUTH": 431,
+      "ORACLE": 1109,
+      "SCRYER": 491
+     },
+     "r2_holds": false,
+     "seed": 1896841390
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 764,
+      "ORACLE": 672,
+      "SCRYER": 569
+     },
+     "r2_holds": false,
+     "seed": 1721640912
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 1051,
+      "ORACLE": 1451,
+      "SCRYER": 904
+     },
+     "r2_holds": false,
+     "seed": 3498346919
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 678,
+      "ORACLE": 694,
+      "SCRYER": 922
+     },
+     "r2_holds": true,
+     "seed": 1357605130
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 356,
+      "ORACLE": 461,
+      "SCRYER": 565
+     },
+     "r2_holds": true,
+     "seed": 3394040692
+    },
+    {
+     "golds": {
+      "BLIND": 17,
+      "INKTRUTH": 398,
+      "ORACLE": 1052,
+      "SCRYER": 254
+     },
+     "r2_holds": false,
+     "seed": 2492831780
+    },
+    {
+     "golds": {
+      "BLIND": 0,
+      "INKTRUTH": 683,
+      "ORACLE": 1008,
+      "SCRYER": 510
+     },
+     "r2_holds": false,
+     "seed": 2109286443
+    },
+    {
+     "golds": {
+      "BLIND": 17,
+      "INKTRUTH": 420,
+      "ORACLE": 569,
+      "SCRYER": 182
+     },
+     "r2_holds": false,
+     "seed": 731231868
+    },
+    {
+     "golds": {
+      "BLIND": 22,
+      "INKTRUTH": 338,
+      "ORACLE": 805,
+      "SCRYER": 625
+     },
+     "r2_holds": false,
+     "seed": 2011696924
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 313,
+      "ORACLE": 1156,
+      "SCRYER": 1013
+     },
+     "r2_holds": false,
+     "seed": 3969308436
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 362,
+      "ORACLE": 1018,
+      "SCRYER": 392
+     },
+     "r2_holds": false,
+     "seed": 1850860657
+    },
+    {
+     "golds": {
+      "BLIND": 9,
+      "INKTRUTH": 571,
+      "ORACLE": 1432,
+      "SCRYER": 659
+     },
+     "r2_holds": false,
+     "seed": 1663565791
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 660,
+      "ORACLE": 797,
+      "SCRYER": 957
+     },
+     "r2_holds": true,
+     "seed": 1347446363
+    },
+    {
+     "golds": {
+      "BLIND": 14,
+      "INKTRUTH": 242,
+      "ORACLE": 868,
+      "SCRYER": 378
+     },
+     "r2_holds": false,
+     "seed": 1078289932
+    },
+    {
+     "golds": {
+      "BLIND": 47,
+      "INKTRUTH": 626,
+      "ORACLE": 871,
+      "SCRYER": 16
+     },
+     "r2_holds": false,
+     "seed": 156319476
+    },
+    {
+     "golds": {
+      "BLIND": 107,
+      "INKTRUTH": 369,
+      "ORACLE": 1020,
+      "SCRYER": 377
+     },
+     "r2_holds": false,
+     "seed": 908456803
+    },
+    {
+     "golds": {
+      "BLIND": 22,
+      "INKTRUTH": 809,
+      "ORACLE": 972,
+      "SCRYER": 424
+     },
+     "r2_holds": false,
+     "seed": 814158230
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 588,
+      "ORACLE": 799,
+      "SCRYER": 826
+     },
+     "r2_holds": true,
+     "seed": 760962853
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 737,
+      "ORACLE": 1117,
+      "SCRYER": 873
+     },
+     "r2_holds": false,
+     "seed": 1348953680
+    },
+    {
+     "golds": {
+      "BLIND": 4,
+      "INKTRUTH": 930,
+      "ORACLE": 806,
+      "SCRYER": 760
+     },
+     "r2_holds": true,
+     "seed": 2804296745
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 368,
+      "ORACLE": 866,
+      "SCRYER": 387
+     },
+     "r2_holds": false,
+     "seed": 3151089780
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 433,
+      "ORACLE": 928,
+      "SCRYER": 581
+     },
+     "r2_holds": false,
+     "seed": 3794578473
+    },
+    {
+     "golds": {
+      "BLIND": 12,
+      "INKTRUTH": 329,
+      "ORACLE": 718,
+      "SCRYER": 769
+     },
+     "r2_holds": true,
+     "seed": 2187929328
+    },
+    {
+     "golds": {
+      "BLIND": 15,
+      "INKTRUTH": 569,
+      "ORACLE": 423,
+      "SCRYER": 372
+     },
+     "r2_holds": false,
+     "seed": 2919948870
+    },
+    {
+     "golds": {
+      "BLIND": 10,
+      "INKTRUTH": 736,
+      "ORACLE": 871,
+      "SCRYER": 873
+     },
+     "r2_holds": true,
+     "seed": 2711714175
+    },
+    {
+     "golds": {
+      "BLIND": 17,
+      "INKTRUTH": 262,
+      "ORACLE": 571,
+      "SCRYER": 532
+     },
+     "r2_holds": true,
+     "seed": 528177511
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 118,
+      "ORACLE": 892,
+      "SCRYER": 517
+     },
+     "r2_holds": false,
+     "seed": 2381708736
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 894,
+      "ORACLE": 838,
+      "SCRYER": 960
+     },
+     "r2_holds": true,
+     "seed": 62709501
+    },
+    {
+     "golds": {
+      "BLIND": 19,
+      "INKTRUTH": 809,
+      "ORACLE": 701,
+      "SCRYER": 629
+     },
+     "r2_holds": false,
+     "seed": 3462507191
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 703,
+      "ORACLE": 778,
+      "SCRYER": 734
+     },
+     "r2_holds": true,
+     "seed": 3341348615
+    },
+    {
+     "golds": {
+      "BLIND": 8,
+      "INKTRUTH": 526,
+      "ORACLE": 833,
+      "SCRYER": 693
+     },
+     "r2_holds": false,
+     "seed": 1427210487
+    },
+    {
+     "golds": {
+      "BLIND": 11,
+      "INKTRUTH": 624,
+      "ORACLE": 756,
+      "SCRYER": 829
+     },
+     "r2_holds": true,
+     "seed": 3239501457
+    },
+    {
+     "golds": {
+      "BLIND": 6,
+      "INKTRUTH": 442,
+      "ORACLE": 648,
+      "SCRYER": 273
+     },
+     "r2_holds": false,
+     "seed": 3929437784
+    }
+   ],
+   "r2_replication": 56,
+   "r2_replication_fraction": "7/25",
+   "seed": 20261590,
+   "worlds": 200
+  },
+  "stability": {
+   "ordering_census": {
+    "INKTRUTH>ORACLE>BLIND>SCRYER": 1,
+    "INKTRUTH>ORACLE>SCRYER>BLIND": 20,
+    "INKTRUTH>SCRYER>ORACLE>BLIND": 8,
+    "ORACLE>INKTRUTH>BLIND>SCRYER": 4,
+    "ORACLE>INKTRUTH>SCRYER>BLIND": 71,
+    "ORACLE>SCRYER>BLIND>INKTRUTH": 2,
+    "ORACLE>SCRYER>INKTRUTH>BLIND": 71,
+    "SCRYER>INKTRUTH>ORACLE>BLIND": 6,
+    "SCRYER>ORACLE>INKTRUTH>BLIND": 17
+   },
+   "r2_replication": 41,
+   "seed": 20261591,
+   "worlds": 200
+  }
+ },
+ "clamp_census": {
+  "at_bound_per_C1": "53/600",
+  "strictly_out_of_range": "35/600"
+ },
+ "corrected_decode": {
+  "k_morning_candidate_histograms": {
+   "2": {
+    "2": 1160,
+    "3": 3828,
+    "4": 6264,
+    "5": 5800,
+    "6": 7308
+   },
+   "3": {
+    "1": 3472,
+    "2": 1344,
+    "3": 4872,
+    "4": 6272,
+    "5": 6440
+   },
+   "4": {
+    "1": 6696,
+    "2": 2592,
+    "3": 5184,
+    "4": 6048
+   },
+   "5": {
+    "1": 10296,
+    "2": 3120,
+    "3": 5304
+   },
+   "6": {
+    "1": 13200,
+    "2": 3800
+   },
+   "7": {
+    "1": 15360
+   },
+   "8": {
+    "1": 13800
+   }
+  },
+  "mirror_decode": "base = (r_d + r_{d+6})/2 EXACT at all 18624 unclamped anti-phase reading pairs (T2 corollary)"
+ },
+ "decision": {
+  "R1_detail": {
+   "E12": 0,
+   "I12": "0/300",
+   "I6": "300/300"
+  },
+  "R2_detail": {
+   "line": "9/10",
+   "margin_x": "1.0831",
+   "ratio": "426/437",
+   "ratio_6dp": "0.974828"
+  },
+  "R3_detail": {
+   "T1_photograph": true,
+   "T2_mirror": true,
+   "T3a_pair_distinctness": true,
+   "T3b_candidate_histogram": {
+    "2": 1160,
+    "3": 3828,
+    "4": 6264,
+    "5": 5800,
+    "6": 7308
+   },
+   "T3b_cases": 24360,
+   "T3b_committed_world_histogram": {
+    "2": 27,
+    "3": 100,
+    "4": 113,
+    "5": 100,
+    "6": 166
+   },
+   "T3b_two_morning_unique_decode": false,
+   "T3b_unique_cases": 0,
+   "T3b_worst_case": {
+    "consistent_candidates": [
+     [
+      7,
+      0
+     ],
+     [
+      8,
+      11
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      10,
+      9
+     ],
+     [
+      11,
+      8
+     ],
+     [
+      12,
+      7
+     ]
+    ],
+    "day": 5,
+    "good": 0,
+    "readings": [
+     9,
+     10
+    ],
+    "true_base_phase": [
+     7,
+     0
+    ]
+   }
+  },
+  "evaluator_A": {
+   "axes": [
+    "n3",
+    "n4"
+   ],
+   "clauses": {
+    "R1": true,
+    "R2": true,
+    "R3": false,
+    "n3_replication": "56/200"
+   },
+   "evaluator": "A",
+   "token": "null"
+  },
+  "evaluator_B": {
+   "axes": [
+    "n3",
+    "n4"
+   ],
+   "clauses": {
+    "R1": true,
+    "R2": true,
+    "R3": false,
+    "n3_replication": "56/200"
+   },
+   "evaluator": "B",
+   "token": "null"
+  },
+  "n3_detail": {
+   "line": "1/2",
+   "main_replication": "56/200",
+   "stability_replication": "41/200"
+  }
+ },
+ "f1": {
+  "base": [
+   [
+    7,
+    21,
+    51,
+    32
+   ],
+   [
+    17,
+    16,
+    43,
+    39
+   ],
+   [
+    19,
+    22,
+    26,
+    30
+   ],
+   [
+    19,
+    33,
+    43,
+    19
+   ],
+   [
+    9,
+    25,
+    54,
+    29
+   ]
+  ],
+  "day1_prices": [
+   [
+    9,
+    19,
+    48,
+    26
+   ],
+   [
+    15,
+    16,
+    34,
+    43
+   ],
+   [
+    18,
+    22,
+    26,
+    30
+   ],
+   [
+    19,
+    34,
+    46,
+    14
+   ],
+   [
+    6,
+    21,
+    60,
+    23
+   ]
+  ],
+  "phase": [
+   [
+    4,
+    1,
+    9,
+    11
+   ],
+   [
+    0,
+    8,
+    11,
+    4
+   ],
+   [
+    1,
+    2,
+    8,
+    2
+   ],
+   [
+    8,
+    6,
+    3,
+    11
+   ],
+   [
+    11,
+    10,
+    6,
+    11
+   ]
+  ],
+  "witness_track": [
+   34,
+   34,
+   33,
+   31,
+   29,
+   27,
+   29,
+   31,
+   33,
+   34,
+   34,
+   34
+  ]
+ },
+ "four_arm_census": {
+  "drafter_evident": {
+   "decks_off": {
+    "arms": {
+     "BLIND": {
+      "first_300_day": null,
+      "gold": 8
+     },
+     "INKTRUTH": {
+      "first_300_day": 6,
+      "gold": 790
+     },
+     "ORACLE": {
+      "first_300_day": 6,
+      "gold": 1237
+     },
+     "SCRYER": {
+      "empty_candidate_set_seen": false,
+      "first_300_day": 6,
+      "gold": 1288
+     }
+    },
+    "scryer_identified_timeline": {
+     "1": 0,
+     "10": 9,
+     "11": 9,
+     "12": 9,
+     "13": 9,
+     "14": 9,
+     "15": 9,
+     "16": 12,
+     "17": 12,
+     "18": 12,
+     "19": 12,
+     "2": 0,
+     "20": 12,
+     "21": 12,
+     "22": 12,
+     "23": 12,
+     "24": 12,
+     "25": 12,
+     "26": 12,
+     "27": 12,
+     "28": 12,
+     "29": 16,
+     "3": 0,
+     "30": 16,
+     "4": 0,
+     "5": 1,
+     "6": 1,
+     "7": 4,
+     "8": 5,
+     "9": 5
+    }
+   },
+   "decks_on": {
+    "arms": {
+     "BLIND": {
+      "first_300_day": null,
+      "gold": 18
+     },
+     "INKTRUTH": {
+      "first_300_day": 6,
+      "gold": 898
+     },
+     "ORACLE": {
+      "first_300_day": 6,
+      "gold": 1309
+     },
+     "SCRYER": {
+      "empty_candidate_set_seen": false,
+      "first_300_day": 6,
+      "gold": 1276
+     }
+    },
+    "scryer_identified_timeline": {
+     "1": 0,
+     "10": 9,
+     "11": 9,
+     "12": 9,
+     "13": 9,
+     "14": 9,
+     "15": 9,
+     "16": 12,
+     "17": 12,
+     "18": 12,
+     "19": 12,
+     "2": 0,
+     "20": 12,
+     "21": 12,
+     "22": 12,
+     "23": 12,
+     "24": 12,
+     "25": 12,
+     "26": 12,
+     "27": 12,
+     "28": 12,
+     "29": 16,
+     "3": 0,
+     "30": 16,
+     "4": 0,
+     "5": 1,
+     "6": 1,
+     "7": 4,
+     "8": 5,
+     "9": 5
+    }
+   }
+  },
+  "registered": {
+   "decks_off": {
+    "arms": {
+     "BLIND": {
+      "first_300_day": null,
+      "gold": 11
+     },
+     "INKTRUTH": {
+      "first_300_day": 6,
+      "gold": 792
+     },
+     "ORACLE": {
+      "first_300_day": 6,
+      "gold": 1239
+     },
+     "SCRYER": {
+      "empty_candidate_set_seen": false,
+      "first_300_day": 6,
+      "gold": 1290
+     }
+    },
+    "scryer_identified_timeline": {
+     "1": 0,
+     "10": 9,
+     "11": 9,
+     "12": 9,
+     "13": 9,
+     "14": 9,
+     "15": 9,
+     "16": 12,
+     "17": 12,
+     "18": 12,
+     "19": 12,
+     "2": 0,
+     "20": 12,
+     "21": 12,
+     "22": 12,
+     "23": 12,
+     "24": 12,
+     "25": 12,
+     "26": 12,
+     "27": 12,
+     "28": 12,
+     "29": 16,
+     "3": 0,
+     "30": 16,
+     "4": 0,
+     "5": 1,
+     "6": 1,
+     "7": 4,
+     "8": 5,
+     "9": 5
+    }
+   },
+   "decks_on": {
+    "arms": {
+     "BLIND": {
+      "first_300_day": null,
+      "gold": 9
+     },
+     "INKTRUTH": {
+      "first_300_day": 6,
+      "gold": 900
+     },
+     "ORACLE": {
+      "first_300_day": 6,
+      "gold": 1311
+     },
+     "SCRYER": {
+      "empty_candidate_set_seen": false,
+      "first_300_day": 6,
+      "gold": 1278
+     }
+    },
+    "scryer_identified_timeline": {
+     "1": 0,
+     "10": 9,
+     "11": 9,
+     "12": 9,
+     "13": 9,
+     "14": 9,
+     "15": 9,
+     "16": 12,
+     "17": 12,
+     "18": 12,
+     "19": 12,
+     "2": 0,
+     "20": 12,
+     "21": 12,
+     "22": 12,
+     "23": 12,
+     "24": 12,
+     "25": 12,
+     "26": 12,
+     "27": 12,
+     "28": 12,
+     "29": 16,
+     "3": 0,
+     "30": 16,
+     "4": 0,
+     "5": 1,
+     "6": 1,
+     "7": 4,
+     "8": 5,
+     "9": 5
+    }
+   }
+  }
+ },
+ "four_arm_census_note": "decision cell = registered/decks_on; the drafter_evident rows (reserve = toll*dist + toll, C10) are reporting/anomaly diagnosis only",
+ "round_trip_net0_cells": 547,
+ "runtime": {
+  "python": "3.11",
+  "stdlib_only": true
+ },
+ "seed_registry": {
+  "aux_never_read": 20261593,
+  "constructed": [
+   20261590,
+   20261591,
+   20261592
+  ]
+ },
+ "self_checks": {
+  "failed": [],
+  "total": 31
+ },
+ "surfaces": {
+  "E_sums": [
+   669,
+   1131,
+   1596,
+   1838,
+   2075,
+   2067,
+   2064,
+   1828,
+   1591,
+   1127,
+   664,
+   0
+  ],
+  "I_census": {
+   "1": "0/240",
+   "10": "60/240",
+   "11": "0/240",
+   "12": "0/300",
+   "2": "60/240",
+   "3": "120/240",
+   "4": "180/240",
+   "5": "240/240",
+   "6": "300/300",
+   "7": "240/240",
+   "8": "180/240",
+   "9": "120/240"
+  }
+ },
+ "theorems": {
+  "T1_photograph": true,
+  "T2_mirror": true,
+  "T3a_pair_distinctness": true,
+  "T3b_candidate_histogram": {
+   "2": 1160,
+   "3": 3828,
+   "4": 6264,
+   "5": 5800,
+   "6": 7308
+  },
+  "T3b_cases": 24360,
+  "T3b_committed_world_histogram": {
+   "2": 27,
+   "3": 100,
+   "4": 113,
+   "5": 100,
+   "6": 166
+  },
+  "T3b_two_morning_unique_decode": false,
+  "T3b_unique_cases": 0,
+  "T3b_worst_case": {
+   "consistent_candidates": [
+    [
+     7,
+     0
+    ],
+    [
+     8,
+     11
+    ],
+    [
+     9,
+     10
+    ],
+    [
+     10,
+     9
+    ],
+    [
+     11,
+     8
+    ],
+    [
+     12,
+     7
+    ]
+   ],
+   "day": 5,
+   "good": 0,
+   "readings": [
+    9,
+    10
+   ],
+   "true_base_phase": [
+    7,
+    0
+   ]
+  }
+ }
+}
