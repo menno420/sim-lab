@@ -1,0 +1,19 @@
+VERDICT 082 runner — WIP-cap dryness floor (P069)
+ruling: REJECT (evaluators REJECT/REJECT)
+decision cell K=3, r_hat=4492/3973:
+  D  = 62712728317/304425042745 ~ 0.20600384170605499
+  B  = 90639863488/304425042745 ~ 0.2977411538508808
+  D(12, r_hat) ~ 0.03320811714465214
+  D_det(3, r_hat) = 0/1 (K_det = 2)
+grid D(3, r): 1/2 -> 8/15  3/4 -> 64/175  1 -> 1/4  4492/3973 -> 62712728317/304425042745  40428/30847 -> 29352074455423/184314341266075  2 -> 1/15
+K* table (d = 1/10, 1/20, 1/100): {"1": [9, 19, 99], "1/2": ["unreachable", "unreachable", "unreachable"], "2": [3, 4, 6], "3/4": ["unreachable", "unreachable", "unreachable"], "40428/30847": [5, 7, 12], "4492/3973": [6, 10, 21]}
+D(3, r_life) = 59887990527825907/95189705338888425 ~ 0.6291435645757746
+arm R (reporting-only), published row order ['deterministic', 'exponential', 'empirical']:
+  main/deterministic: D_hat=0.0 B_hat=0.11554758014247551 draws=0
+  main/exponential: D_hat=0.20753206779859734 B_hat=0.2952133299574173 draws=200000
+  main/empirical: D_hat=0.00023100183508356338 B_hat=0.11646695880308511 draws=99999
+  stability/deterministic: D_hat=0.0 B_hat=0.11558295859305431 draws=0
+  stability/exponential: D_hat=0.20037895310694442 B_hat=0.30296613672273864 draws=39998
+  stability/empirical: D_hat=0.00018169004595180088 B_hat=0.11742429798431776 draws=20000
+anomalies vs disclosed landing: NONE
+self-checks: 606 passed, 0 failed
