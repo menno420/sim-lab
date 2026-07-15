@@ -1,0 +1,174 @@
+{
+  "_what": "VERDICT 086 fixture — idea-engine PROPOSAL 073 (write-contract rate-tier degeneracy). Every value copied verbatim from the P073 outbox block / idea file (ideas/superbot-mineverse/write-contract-rate-tier-degeneracy-2026-07-15.md @ idea-engine main 63c75cf, PR #437 head a9de291). Committed BEFORE the runner (born-red card -> fixtures -> runner -> accepted run).",
+  "_grounding": {
+    "mineverse": {
+      "repo": "menno420/superbot-mineverse",
+      "pinned_head": "b9ade33ae6019eff45195684fa6fd6f02da4bee0",
+      "reverified_firsthand": "2026-07-15T10:04:51Z on a read-only shallow clone landing exactly at the pinned HEAD",
+      "pins": {
+        "burst_line": {"file": "docs/mining-write-contract.md", "line": 164, "text": "- **Burst**: 10 actions per 10 seconds."},
+        "sustained_line": {"file": "docs/mining-write-contract.md", "line": 165, "text": "- **Sustained**: 60 actions per minute."},
+        "retry_after_429": {"file": "docs/mining-write-contract.md", "lines": "167-168", "text": "Over budget -> HTTP 429, reason_code rate_limited, plus a Retry-After header (integer seconds)"},
+        "executor_unbuilt": {"file": "docs/mining-write-contract.md", "line": 37, "text": "to be built in the superbot repo"},
+        "shim_rate_mode": {"file": "docs/mining-write-contract.md", "line": 333, "text": "SHIM_RATE_LIMIT=10/10"},
+        "done_criterion": {"file": "docs/mining-write-contract.md", "lines": "341-348", "text": "shim contract fixtures validate against the real endpoint (SHIM_CONFORMANCE_BASE_URL seam)"},
+        "shim_docstring": {"file": "tests/shim/shim_bot.py", "line": 29, "text": "the contract's burst default"},
+        "shim_single_knob": {"file": "tests/shim/shim_bot.py", "line": 115, "text": "rate_limit: tuple[int, float] | None = None,"},
+        "shim_consume_budget": {"file": "tests/shim/shim_bot.py", "lines": "340-366"},
+        "shim_eviction": {"file": "tests/shim/shim_bot.py", "line": 360, "text": "while times and now - times[0] >= window:"},
+        "shim_retry_after": {"file": "tests/shim/shim_bot.py", "line": 364, "text": "max(1, math.ceil(times[0] + window - now))"}
+      }
+    },
+    "superbot": {
+      "repo": "menno420/superbot",
+      "pinned_head": "f8e2313a087e18cb32e88269d468b0b30a41fad9",
+      "reverified_firsthand": "2026-07-15T10:05Z on a read-only shallow clone landing exactly at the pinned HEAD",
+      "pin": {"file": "docs/eap/night-review-2026-07-13.md", "line": 115, "text": "only on owner-side items: the MINING_WRITE_ENDPOINT/MINING_WRITE_SHARED_SECRET pair"}
+    },
+    "harvest_anomalies": "ZERO — every pinned constant and quoted line matched verbatim at the pinned HEADs"
+  },
+  "committed_constants": {
+    "B": 10, "w_seconds": 10, "S": 60, "T_seconds": 60,
+    "identity_BT_eq_Sw": 600
+  },
+  "model": {
+    "time": "slotted, slot delta seconds, arrivals per slot unbounded non-negative integers, admitted = the schedule itself when it satisfies the limiter (the adversary sends exactly what gets admitted)",
+    "delta_grid": ["1", "1/2", "1/5"],
+    "delta_primary": "1",
+    "span_convention": "half-open [a, a+L); the closed-interval bucket endpoint convention is the ONE disclosed reporting exhibit",
+    "disciplines": {
+      "SLIDING": "every w-second span carries <= B admits (the shim's semantics)",
+      "FIXED_ALIGNED": "tumbling w-windows anchored at 0, counter resets at boundaries",
+      "FIXED_ADVERSARIAL": "tumbling w-windows, alignment chosen by the adversary",
+      "BUCKET": "capacity B, refill B/w tokens per second applied at slot boundaries AFTER the slot, tokens capped, start full"
+    },
+    "closed_forms": {
+      "N_slide": "B * ceil(L/w)",
+      "N_fixed_adv": "B * (ceil((L-1)/w) + 1) at delta = 1; slotted general form B * (ceil((L-delta)/w) + 1)",
+      "N_fixed_aligned": "B * ceil(L/w) when w | L (aligned span)",
+      "N_bucket": "B + floor((L/delta - 1) * (B/w) * delta)",
+      "N_bucket_closed_interval": "B + floor(L * B / w)"
+    }
+  },
+  "grids": {
+    "Bw": [[10, 10], [10, 7], [5, 10], [20, 10]],
+    "S": [50, 60, 70, 100],
+    "T": 60,
+    "L": [2, 10, 60, 120]
+  },
+  "decision_cell": {"B": 10, "w": 10, "S": 60, "T": 60},
+  "theorems": {
+    "T1_dead_tier": {
+      "uniform_sliding_contact": 60,
+      "uniform_aligned_fixed_contact": 60,
+      "bucket_pair_min_level": 50,
+      "bucket_horizon_seconds": 600,
+      "note": "sustained NEVER rejects under any of the three disciplines applied uniformly; sliding and aligned-fixed contacts are registered margin-0 knife-edges (the head's thesis); bucket dead margin is the one fat margin (50 tokens vs the 1-token threshold)"
+    },
+    "T2_fork": {
+      "N_fixed_adv_60": 70, "excess_fixed": "7/6",
+      "N_bucket_60": 69, "excess_bucket": "23/20",
+      "N_bucket_60_closed_interval": 70,
+      "straddle_N_fixed_adv_2": 20, "straddle_is_2B": true,
+      "N_slide_2": 10,
+      "band": "21/20", "margin_fixed": "10/9", "margin_bucket": "23/21"
+    },
+    "T3_lattice": {
+      "redundancy_law": "sustained redundant under sliding iff B * ceil(T/w) <= S",
+      "committed_equality": [60, 60],
+      "S50_witness": {"schedule": "six 10-bursts at t = 0, 10, 20, 30, 40, 50", "admits": 60, "exceeds": 50},
+      "w7_world": {"value": 90, "exceeds": 60},
+      "S70_world_fixed_contact": [70, 70]
+    }
+  },
+  "census_anchors_F3": {
+    "N_slide_60": 60, "N_fixed_adv_60": 70, "N_fixed_aligned_60": 60,
+    "N_bucket_60": 69, "N_bucket_60_closed_interval": 70,
+    "N_fixed_adv_2": 20, "N_slide_2": 10,
+    "excesses": ["7/6", "23/20"], "margins": ["10/9", "23/21"],
+    "bucket_pair_min_level": 50, "bucket_pair_horizon_s": 600,
+    "w7_cell": 90,
+    "grid_row_20_10_at_L60": [120, 140, 138],
+    "grid_row_5_10_at_L60": [30, 35, 34],
+    "obedient_client": {"admits": 3600, "horizon_seconds": 3600, "long_run_rate": "1"}
+  },
+  "hand_world_F4": {
+    "B": 2, "w": 2, "L": 4,
+    "sliding": 4, "fixed_adversarial": 6, "bucket": 5,
+    "exhaustive_sliding_space": "3^4 per-slot schedules",
+    "pencil": "sliding: two disjoint windows x 2; fixed-adv: three windows touched 2+2+2; bucket: start 2 + refill 1/s x 3 boundaries"
+  },
+  "controls_F5": {
+    "granularity_triple": [60, 70, 69],
+    "bucket_endpoint_pair": [69, 70],
+    "bucket_endpoint_pair_band": "both >= 21/20 * S",
+    "discipline_ordering": "N_slide <= N_bucket <= N_fixed_adv at every grid cell",
+    "small_worlds_LwB": [[6, 2, 2], [7, 3, 2], [5, 5, 3], [8, 4, 1], [9, 3, 3]],
+    "small_world_law": "exhaustive max == B * ceil(L/w)"
+  },
+  "arm_R": {
+    "offered_rate_per_s": 2,
+    "gap_law": "exponential (expovariate(2.0)), one draw per event, event times cumulative from 0",
+    "limiter": "verbatim re-implementation of shim _consume_budget: deque, eviction now - times[0] >= window, reject when len >= max, Retry-After = max(1, ceil(times[0] + window - now)); rate_limit = (10, 10.0)",
+    "main": {"seed": 20261650, "events": 50000},
+    "stability": {"seed": 20261651, "events": 20000},
+    "presentation_shuffle_seed": 20261652,
+    "aux_seed_never_read": 20261653,
+    "per_trace_theorem_check": "worst trailing 60 s admitted-window <= 60, observed contact AT 60 reported",
+    "obedient_client": {"deterministic": true, "horizon_s": 3600, "behaviour": "send immediately; on 429 wait exactly the Retry-After header; expect exactly 3600 admits (long-run rate exactly 1/s = the sustained rate)"},
+    "no_statistical_gate": true,
+    "disclosed_reporting_landing": {
+      "main_admitted": 23270, "main_rejected": 26730,
+      "stability_admitted": 9183, "stability_rejected": 10817,
+      "worst_window_contact": 60,
+      "policy": "REPORTING-ONLY disclosed values — a mismatch is a first-class anomaly (convention C3), never a silent gate and never a gate failure"
+    }
+  },
+  "seeds": {
+    "registered_set": [20261650, 20261651, 20261652, 20261653],
+    "roles": {"20261650": "Arm R main", "20261651": "Arm R stability", "20261652": "presentation shuffle (presentation legs only)", "20261653": "aux, reserved, NEVER read"},
+    "provenance": "the drafter's registered allocation IS the session seed set (V077-V085 precedent); 20261640-643 are P072/V085's registered set; the gap 20261644-649 is the drafter's disclosed in-flight buffer, unused; sweep of this clone at origin/main 2370855 maxes at genuine 20261643"
+  },
+  "decision_rule": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "REJECT": {
+      "R1_dead_tier": "no separating schedule exists at the committed pair under sliding (N_slide(60) <= S, exhaustive-and-closed-form) AND all three uniform-discipline dead checks hold with their exact contacts (sliding 60 = S, aligned-fixed 60 = S, bucket min level = 50 >= 1)",
+      "R2_fork": "N_fixed_adv(60)/S >= 21/20 AND N_bucket(60)/S >= 21/20 (both endpoint conventions) AND the straddle N_fixed_adv(2) = 2B exactly",
+      "R3_lattice": "B*T = S*w exactly AND a separating schedule EXISTS at S = 50 under sliding AND N_slide(60) > S in the w = 7 world"
+    },
+    "INVALID": "any F1-F6 gate failure",
+    "APPROVE": "a separating schedule exists under sliding at the committed pair OR (N_fixed_adv(60) <= S AND N_bucket(60) <= S)",
+    "NULL_axes": ["band-straddle (exactly one of fixed/bucket clears 21/20)", "law failure without gate failure (corrected law is the finding)", "convention fragility (granularity triple or bucket endpoint pair flips a decision comparison)", "twin-arm disagreement surviving INVALID"]
+  },
+  "margin_ledger": {
+    "R2_fixed": "x10/9 over the 21/20 band (7/6 vs 21/20)",
+    "R2_bucket": "x23/21 over the 21/20 band (23/20 vs 21/20)",
+    "straddle": "exact equality BY LAW (2B) — no margin concept",
+    "registered_margin0_contacts": ["sliding 60 = S", "aligned-fixed 60 = S", "S = 70 falsifiability world fixed 70 = 70", "R3 lattice equality B*ceil(T/w) = S (60 = 60)"],
+    "fat_margin": "bucket dead check min level 50 vs the 1-token threshold",
+    "policy": "the registered contacts are knife-edges BY CONSTRUCTION (the head's thesis: the committed constants sit ON the degeneracy surface); gate = no UNregistered decision comparison sits at margin 0"
+  },
+  "expected_landing_disclosed": "REJECT (the sim re-derives everything from scratch and must not trust these): R1 contacts (60,60) sliding, (60,60) aligned-fixed, bucket 50/1 over 600 s; R2 70 (7/6, x10/9), 69 (23/20, x23/21; closed-interval 70), straddle 20 = 2B; R3 600 = 600, S = 50 witness 60 admits, w = 7 world 90 > 60",
+  "falsifiability_worlds": {
+    "S50": "one committed-constant step down: sustained LIVE under every discipline (sliding separating schedule exists) — APPROVE's first clause flips",
+    "w7": "redundancy dies by divisibility alone (90 > 60) — the T1 theorem is lattice-conditional",
+    "discipline_pin": "a one-sentence sliding pin in the contract would moot R2's fork and degrade the finding to dead-ink only (reporting demonstration, never a decision code path)"
+  },
+  "conventions": {
+    "C1": "half-open spans [a, a+L); arrivals at slot starts; the closed-interval bucket convention is the one disclosed alternative exhibit",
+    "C2": "Arm B is INDEPENDENTLY WRITTEN: greedy/DP maxima with feasibility-witness + matching upper bound, its own alignment enumeration, its own exhaustive small-world search, its own bucket trace, its own separating-schedule search — no closed-form reuse; the second decision evaluator reads Arm B numbers only",
+    "C3": "disclosed-anchor comparison: F3 anchors are registered GATES; the disclosed Arm-R reporting landing (admitted/rejected counts, worst-window contact) is compared and a mismatch raises a FIRST-CLASS ANOMALY, never a silent gate (the V085 precedent: an anomaly census that pins a real drafter error is a headline — run the census honestly)",
+    "C4": "the falsifiability worlds are named registration cells (S=50, w=7, S=70) plus the discipline-pin reporting demonstration; none adds a decision code path beyond its registered clause",
+    "C5": "margin ledger computed and the no-unregistered-margin-0 gate enforced; the four registered contacts are the thesis and are gated AS equalities",
+    "C6": "Arm R estimand + draw discipline pinned: one expovariate draw per event, draw counts asserted; worst trailing 60 s window computed over admitted timestamps; NO statistical gate rides Arm R",
+    "C7": "seed constructor registry: exactly 20261650, 20261651, 20261652 constructed, in that order; aux 20261653 asserted never read; registry high-water 20261653 (reserved; highest read 20261652)",
+    "C8": "print discipline: every registered quantity is a small integer or small Fraction; gates compare in memory FIRST and print second (the P071 hazard, inherited)",
+    "C9": "canonical serialization: sorted keys, Fractions as 'p/q' strings, no timestamps in results.json or stdout (byte-identity across process runs)",
+    "C10": "the obedient Retry-After client is DETERMINISTIC (no RNG); its 3600/3600 s anchor is an F3 gate",
+    "C11": "bucket refill convention pinned: refill (B/w)*delta at each slot boundary AFTER the slot, capped, start full; the closed-interval exhibit adds the final boundary refill; Fraction token levels, integer admits",
+    "C12": "the bucket-pair dead check carries BOTH the exact invariant argument (sustained - burst >= S - B = 50 whenever refill rates are equal and only capping breaks symmetry upward) AND an independent greedy front-load trace over the 600 s horizon; Arm B additionally verifies greedy-is-minimizer exhaustively on a scaled small world (caps 2/6, refill 1 per slot, 6 slots) as battery, disclosed here before the runner",
+    "C13": "exit contract: exit 0 iff all self-checks pass and exactly one ruling token issues; anomalies do not affect the exit code"
+  },
+  "cpython_pin": "3.11",
+  "run_command": "python3 sims/verdict-086-write-contract-rate-tier-degeneracy/rate_tier_degeneracy_sim.py"
+}
