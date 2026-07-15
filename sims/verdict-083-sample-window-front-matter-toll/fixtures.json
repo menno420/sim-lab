@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "verdict": "083",
+    "intake": "070",
+    "proposal": "idea-engine PROPOSAL 070 · 2026-07-15T08:11:11Z · status: sim-ready",
+    "idea_file": "ideas/venture-lab/sample-window-front-matter-toll-2026-07-15.md",
+    "idea_engine_pin": "d165876 (proposal landed at main d165876 via idea-engine PR #434, merged 2026-07-15T08:16:04Z; outbox block appended in commit 24514fc)",
+    "grounding_pin": "venture-lab 520bdfca71ca4f119808d1098cd4ecf7fc6e6732",
+    "hermetic": "the runner reads ONLY this fixtures.json; zero repo/network reads at verdict time; every registered constant below is copied verbatim from the PROPOSAL 070 block / idea file, and every MEASURED constant was re-verified FIRSTHAND at venture-lab 520bdfc (= origin/main, unmoved) BEFORE this file was written: ultramarine.md 27,890 words total with a 57-word front block before '## 1. Lapis' (awk rule), part-one.md 8,809 words (part-two 9,189, part-three 9,850), dormouse.en.md 'Word count: 634' pin + exactly 12 '[Spread' blocks + 116-word header before Spread 1, comet-biscuit book-1 'Format: 32-page picture book - 15 spreads' + 'Word count: ~520' verbatim, and the claim-5 negative (no committed sentence anywhere in docs/publishing/ or OWNER-QUEUE.md prices the sample window) - ALL MATCHED, zero harvest anomalies"
+  },
+  "model": {
+    "budget": "B = ceil(alpha * (F + S)) display units, counted from byte one; the artifact's own front matter F spends the first F units of the budget before the story's S units start",
+    "conversion": "C = q^(F + k) * 1[F + k <= B and k <= S] - a browsing reader survives each unit read with probability q (geometric attrition) and converts iff k hook story-units are read INSIDE the budget; conversion is priced up to a positive browse-to-sample constant that cancels from every ratio and indicator the decision reads",
+    "units": "prose = 250-word screens, ceiling division (NOVELLA 27,890 w -> 112 screens; EPISODE 8,809 w -> 36 screens); picture books = pages, hook stated in spreads with 1 spread = 2 pages; quantization is a declared convention, knife-edge cells are named and the decision rule may not rest on one",
+    "theorems": {
+      "T1": "exponential toll - within the budget, C(F)/C(0) = q^F exactly: front matter is a per-unit multiplicative tax, never additive; log C affine in F with slope log q",
+      "T2": "viability cliff - at F > B - k the sample contains no reachable hook and C = 0 for every q; the exact minimum viable story length S*(F, k, alpha) = smallest integer S with S >= k and alpha*(F+S) > F + k - 1; at alpha = 1/10 this is S* = 9F + 10k - 9, so each front unit raises the minimum viable book by (1-alpha)/alpha = 9 units",
+      "T3": "reader-mixture log-convexity - for any nondegenerate mixture q ~ mu, survival S(n) = E[q^n] is strictly log-convex: S(n)S(n+2) > S(n+1)^2; S(n) > S(1)^n for n >= 2 (single-q deep-toll numbers are overstatement bounds); implied per-unit hazard non-increasing (increasing measured hazard falsifies the whole mixture-of-geometrics class)"
+    }
+  },
+  "measured_constants": {
+    "novella_words": 27890,
+    "novella_front_block_words": 57,
+    "episode_words": 8809,
+    "episode_words_others": {"part_two": 9189, "part_three": 9850},
+    "dormouse_body_words": 634,
+    "dormouse_spreads": 12,
+    "dormouse_header_words": 116,
+    "comet_biscuit_format": "32-page picture book - 15 spreads (32 = 2 front pages + 15 spreads x 2 pages, internally exact)",
+    "source": "venture-lab @ 520bdfc: candidates/adult-novels/ultramarine/manuscript/ultramarine.md + part-one.md; candidates/childrens-books/dormouse/dormouse.en.md; candidates/childrens-books/comet-biscuit/en/book-1-the-great-jam-wobble.md"
+  },
+  "formats": {
+    "NOVELLA": {"kind": "prose", "S": 112, "S_derivation": "ceil(27890/250) = 112 screens (27890/250 = 111.56, not a quantization knife-edge)"},
+    "EPISODE": {"kind": "prose", "S": 36, "S_derivation": "ceil(8809/250) = 36 screens (35.236)"},
+    "PB15": {"kind": "picture_book", "S": 30, "S_derivation": "committed pin '32-page picture book - 15 spreads': 15 spreads x 2 pages = 30 story pages"},
+    "PB12": {"kind": "picture_book", "S": 24, "S_derivation": "dormouse committed 12-spread body: 12 x 2 = 24 story pages"}
+  },
+  "policies": {
+    "prose_F": [1, 2, 3, 4],
+    "picture_book_F": [2, 3, 4],
+    "labels": "prose STORY-FIRST = 1 (title/copyright/content-note merged on one screen), FRONT-LOADED = 4 (title, copyright, dedication + content note, TOC); picture book legal minimum = 2 (title + copyright, per the committed 32 = 2 + 30 arithmetic), FRONT-LOADED = 4",
+    "F0_note": "F = 0 is a THEOREM REFERENCE point for T1 only (C(F)/C(0) = q^F), never a policy row and never decision-bearing (convention C2)"
+  },
+  "grids": {
+    "alpha": ["1/20", "1/10", "1/5"],
+    "q": ["4/5", "9/10", "19/20", "49/50"],
+    "k_prose_screens": [2, 3, 5],
+    "k_pb_spreads": [1, 2],
+    "decision_cell": {"alpha": "1/10", "q": "19/20", "k_prose": 3, "k_pb_spreads": 1},
+    "mixture_T3": {"support": ["3/5", "49/50"], "weights": ["1/2", "1/2"], "note": "skimmer q = 3/5 w.p. 1/2, reader q = 49/50 w.p. 1/2 - pinned two-point mixture for the T3 legs only"},
+    "sstar_scan": {"S_range": [1, 400], "F_range": [1, 5], "k_values": [1, 2, 3, 5], "note": "T2 formula gate: closed form vs brute scan at every (grid alpha, F in 1..5, k in {1,2,3,5})"}
+  },
+  "decision": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "reject": {
+      "clause_i": "FRONT-LOADED (F = 4 prose / 4 PB) cliffs (C = 0 exactly) on >= 3 of the 4 committed formats at the decision cell",
+      "clause_ii": "the NOVELLA's front-loaded toll C(STORY-FIRST)/C(FRONT-LOADED) = C(F=1)/C(F=4) >= 11/10 at the decision cell",
+      "reading": "both clauses AND-ed, exact-rational comparisons at (alpha = 1/10, q = 19/20, k = 3 screens / 1 spread)"
+    },
+    "invalid": "any G1-G6 gate failure (controls misbehaving - report, no ruling)",
+    "approve": {
+      "clause_i": "zero front-loaded cliffs across all 4 committed formats at alpha = 1/10",
+      "clause_ii": "toll <= 21/20",
+      "reading": "both AND-ed; mutually exclusive with REJECT by arithmetic"
+    },
+    "null_axes": [
+      "the alpha axis: the real platform sampler is an invented-but-pinned model constant - ONE free observation of an actual Look-Inside cut on any published title settles it, no owner spend",
+      "the quantization axis: a knife-edge cell straddling a decision band",
+      "twin-arm disagreement surviving the INVALID diagnosis",
+      "theorem failure without gate failure: a wrong drafter hand-claim becomes a finalized corrected law, never a silent bad gate"
+    ],
+    "knife_edge_exclusion": "margin m = B - (F + k); m = 0 cells are named fragile and excluded from decision clauses; the registered instance is EPISODE at F = 1 (story screens in sample = 3 = k exactly); the runner re-verifies that NO decision clause rests on any m = 0 cell"
+  },
+  "anchors_g6": {
+    "C_NOV_F1": "130321/160000",
+    "C_NOV_F4": "893871739/1280000000",
+    "toll_NOV": "8000/6859",
+    "toll_NOV_q4950": "125000/117649",
+    "sstar_pb_F2_k1spread": 29,
+    "sstar_pb_F3_k1spread": 38,
+    "sstar_prose_k3": {"F1": 30, "F2": 39, "F4": 57},
+    "cliff_census_decision_F4": {
+      "EPISODE": {"B": 4, "story_in_sample": 0, "cliff": true},
+      "PB15": {"B": 4, "story_in_sample": 0, "cliff": true},
+      "PB12": {"B": 3, "story_in_sample": 0, "cliff": true},
+      "NOVELLA": {"B": 12, "story_in_sample": 8, "cliff": false},
+      "count": "3 of 4"
+    },
+    "PB12_legal_minimum": {"F": 2, "B": 3, "story_in_sample": 1, "hook_pages_needed": 2, "cliff": true, "note": "under the cliff even at legal minimum - a format decision, not an assembly one; cliffed at every F in {2,3,4}"},
+    "EPISODE_knife_edge": {"F": 1, "B": 4, "story_in_sample": 3, "margin": 0, "survives": true, "note": "margin-0, named fragile, excluded from decision clauses; cliffs from F = 2"},
+    "alpha_fifth_witness": "at alpha = 1/5 every committed format clears even front-loaded (the APPROVE-side witness on the cliff axis)",
+    "T3_depth_toll_endpoints": {"n1_over_n4": "~1.5019", "n16_over_n19": "~1.0628", "note": "disclosed rounded - compared at stated precision (4 dp)"}
+  },
+  "hand_worlds_g5": {
+    "world": "S = 10 pages, alpha = 1/2, k = 2, q = 1/2",
+    "F1": {"B": 6, "C": "1/8"},
+    "F5": {"B": 8, "C": "1/128"},
+    "toll": "16"
+  },
+  "gates": {
+    "G1": "twin arms - Arm B (brute unit walk) equals Arm A (closed form) on every rational at every grid cell (all format x alpha x q x k x F, F = 0 reference included)",
+    "G2": "T1 - within-budget ratio C(F+1)/C(F) = q exactly, constant across F, every format x q (pairs where both cells are within budget); and C(F)/C(0) = q^F on within-budget pairs",
+    "G3": "T2 - cliff indicator single-threshold in F (monotone non-increasing, scanned F = 0..12); S* closed form (9F + 10k - 9 at alpha = 1/10; general strict-inequality form at all grid alpha) matches the brute S = 1..400 scan at every (alpha, F in 1..5, k in {1,2,3,5})",
+    "G4": "T3 - pinned mixture: strict log-convexity S(n)S(n+2) > S(n+1)^2 for n in 0..29; S(n) > S(1)^n for n in 2..29; depth-decreasing toll S(n)/S(n+3) strictly decreasing over n in {1, 4, 8, 16} - all exact Fractions",
+    "G5": "hand worlds - derived by hand in the idea file, reproduced exactly",
+    "G6": "battery - q = 1 => every within-budget C = 1 and every toll = 1; alpha = 1 => no cliff anywhere with S >= k; C monotone non-increasing in F everywhere; census anchors (anchors_g6) reproduced verbatim (G6 gating of the disclosed census is P070's OWN registered text - a registered departure from the V082-C10 never-gate norm, applied as registered)"
+  },
+  "arm_r": {
+    "role": "REPORTING-ONLY - NO statistical gate rides Arm R; a trace drifting from the exact value is a named finding, never a ruling",
+    "cells": [
+      {"format": "NOVELLA", "F": 1, "note": "STORY-FIRST at the decision cell"},
+      {"format": "NOVELLA", "F": 4, "note": "FRONT-LOADED at the decision cell"},
+      {"format": "EPISODE", "F": 1, "note": "the named margin-0 knife-edge cell"}
+    ],
+    "cells_note": "the three surviving decision-grid cells (cliffed cells are C = 0 exactly - nothing for an MC to estimate); registered as 'seeded reader-trace MC at 3 cells' in the P070 outbox block; the specific cell choice is fixture-level convention C7, disclosed here before the runner existed",
+    "n_main_traces": 100000,
+    "n_stability_traces": 20000,
+    "seed_main": 20261620,
+    "seed_stability": 20261621,
+    "seed_presentation": 20261622,
+    "seed_aux_never_read": 20261623,
+    "draw_discipline": "one uniform draw per unit-read attempt; a trace ends at abandonment, conversion, or budget exhaustion; draw counts recorded per leg (reporting)",
+    "seed_allocation_note": "seeds 20261620-623 are the drafter's registered set and ARE the session seed set (the V077-V082 precedent; no new allocation); 20261610-613 are P069/V082's registered set and the gap 20261614-619 stays the disclosed in-flight buffer, unused; registry high-water after this slice: 20261623 (reserved; highest read 20261622)"
+  },
+  "battery": {
+    "twin": "Arm B is an INDEPENDENTLY-WRITTEN brute unit-walk enumeration (walks the truncated artifact unit by unit, multiplying survival and counting story units to the hook - never via the closed form) and must reproduce every Arm-A closed-form number EXACTLY",
+    "evaluators": "twin independently-written decision evaluators (one fed Arm-A numbers, one fed Arm-B numbers) must agree on the ruling token",
+    "byte_identity": "stdout + results.json byte-identical across two full process runs (external diff + sha256; Arms A/B platform-independent exact rationals; Arm R pinned to a stated CPython minor)",
+    "cpython_pin": "3.11"
+  },
+  "conventions": {
+    "C1": "unit ceilings: prose screens = ceil(words/250); B = ceil(alpha*(F+S)) computed on exact Fractions (two independent ceil implementations, one per arm); PB hook k stated in spreads and converted to pages as 2 per spread before any arithmetic",
+    "C2": "F = 0 is a theorem reference point for T1/G2 only - never a policy row, never decision-bearing",
+    "C3": "the decision toll (REJECT clause ii / APPROVE clause ii) = C(NOVELLA, F=1) / C(NOVELLA, F=4) at the decision cell - STORY-FIRST = F = 1 per the registered policy labels",
+    "C4": "within-budget ratio gates (G2) quantify over pairs where BOTH cells are within budget (the ratio is undefined at C = 0); cliff cells enter the census, not the ratio gates",
+    "C5": "knife-edge ledger: the runner enumerates EVERY margin-0 cell over the full grid and publishes the ledger; decision clauses are re-verified to rest on none of them (the registered exclusion instance is EPISODE F = 1)",
+    "C6": "S* brute scan: min S in 1..400 with S >= k and F + k <= ceil(alpha*(F+S)); closed form: S* = floor((F + k - 1)/alpha - F) + 1 (strict inequality: ceil(x) >= m iff x > m - 1); the alpha = 1/10 specialization 9F + 10k - 9 is gated separately",
+    "C7": "Arm-R cell choice: the three surviving decision-grid cells (NOVELLA F=1, NOVELLA F=4, EPISODE F=1); q drawn as float(19/20) = 0.95 (exactly representable); estimand = converted traces / total traces per cell",
+    "C8": "seed discipline: the ONLY random.Random constructors in the runner are the three registered read seeds in pinned order (main, stability, presentation); the aux seed 20261623 appears only in this fixture and the never-read assertion (constructor registry counted)",
+    "C9": "the presentation seed shuffles the PUBLISHED Arm-R table's row order only (a list of row keys), touching no numeric value",
+    "C10": "floats published beside Fractions are repr(float(Fraction)) - presentation only, never compared; disclosed-rounded anchors (the T3 endpoints) compared at stated precision (4 dp); every exact disclosed anchor compared as an exact rational; any mismatch is BOTH a G6 gate failure (P070's registered text) AND a named first-class anomaly (A1, A2, ... convention)",
+    "C11": "canonical serialization: results.json written with sort_keys=True, ensure_ascii=True, indent=2, LF newlines; Fractions serialized as 'p/q' strings"
+  }
+}
