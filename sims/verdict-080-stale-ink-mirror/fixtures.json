@@ -15,7 +15,7 @@
     "lodging": 1,
     "impact_cap": 9,
     "outfit_fee": 4,
-    "seed_constant": 1465009995,
+    "seed_constant": 1464419147,
     "seed_constant_hex": "0x5749434B ('WICK')",
     "rng": "xorshift32: s ^= s<<13; s ^= s>>17; s ^= s<<5 (32-bit), consumed only at world init in a fixed order: 20 base draws base[t][g] = (lo[g]+hi[g])/2 - 3 + range(7), then 20 phase draws range(12), then the produce/crave rotation base[t][t mod 4] -= gap[t mod 4]; base[t][(t+2) mod 4] += gap[(t+2) mod 4]; range(n) = next() mod n",
     "tri12": "tri12(m) = (m mod 12) <= 6 ? (m mod 12) - 3 : 9 - (m mod 12); value track over one period = (-3, -2, -1, 0, 1, 2, 3, 2, 1, 0, -1, -2)",
