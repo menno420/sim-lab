@@ -1,0 +1,281 @@
+{
+ "anomalies": [],
+ "arm_R": {
+  "main": {
+   "bundle_take": 20002,
+   "bundle_take_fraction": "10001/25000",
+   "draws": 50000,
+   "episodes": 50000,
+   "exact_expectation_mean": 53,
+   "exact_expectation_take": "2/5",
+   "mean_outlay": "132501/2500",
+   "pmf": "FLOOR_HEAVY",
+   "seed": 20261660
+  },
+  "presentation_row_order": [
+   "10",
+   "19",
+   "1",
+   "15",
+   "5",
+   "3",
+   "0"
+  ],
+  "stability": {
+   "bundle_take": 16111,
+   "bundle_take_fraction": "16111/20000",
+   "draws": 20000,
+   "episodes": 20000,
+   "exact_expectation_mean": 57,
+   "exact_expectation_take": "4/5",
+   "mean_outlay": "114111/2000",
+   "pmf": "SUGGESTED_ANCHORED",
+   "seed": 20261661
+  },
+  "statistical_gate": "none (reporting-only)"
+ },
+ "census_f_grid_at_p59": {
+  "0": {
+   "Delta": "951/100",
+   "coherent": false,
+   "gap": "19",
+   "pi": "10",
+   "sigma_ach": "-10"
+  },
+  "1": {
+   "Delta": "8639/1000",
+   "coherent": false,
+   "gap": "18",
+   "pi": "9",
+   "sigma_ach": "-9"
+  },
+  "10": {
+   "Delta": "4/5",
+   "coherent": true,
+   "gap": "9",
+   "pi": "0",
+   "sigma_ach": "0"
+  },
+  "15": {
+   "Delta": "-711/200",
+   "coherent": true,
+   "gap": "4",
+   "pi": "0",
+   "sigma_ach": "5"
+  },
+  "19": {
+   "Delta": "-7039/1000",
+   "coherent": true,
+   "gap": "0",
+   "pi": "0",
+   "sigma_ach": "9"
+  },
+  "3": {
+   "Delta": "6897/1000",
+   "coherent": false,
+   "gap": "16",
+   "pi": "7",
+   "sigma_ach": "-7"
+  },
+  "5": {
+   "Delta": "1031/200",
+   "coherent": false,
+   "gap": "14",
+   "pi": "5",
+   "sigma_ach": "-5"
+  }
+ },
+ "clauses": {
+  "R1": true,
+  "R2": true,
+  "R3": true
+ },
+ "committed_triple": {
+  "a": 49,
+  "copy_claim": 9,
+  "p": 59,
+  "s": 19
+ },
+ "decision_cell": {
+  "f": 0,
+  "pi": "10",
+  "seller_delta": "951/100",
+  "sigma_ach": "-10",
+  "sigma_adv": "9",
+  "window": "{49}"
+ },
+ "external_anchors": {
+  "net_49": "41879/1000",
+  "net_59": "50589/1000",
+  "net_64": "54944/1000",
+  "net_68": "58428/1000",
+  "nudge_cost_Delta19": "-7039/1000",
+  "plus_080_row": "4/5",
+  "retention_bar": "50589/54944"
+ },
+ "falsifiability": {
+  "approve_liveness_cells": [
+   10,
+   15,
+   19
+  ],
+  "basis_reading": "on the vs-suggested reading the copy is TRUE; the gap table s - f ships as the NULL-axis finding",
+  "r1_independent_of_margin0_cell": true,
+  "sibling_3_floor": {
+   "coherent": false,
+   "pi": "7"
+  }
+ },
+ "fstar_table": {
+  "59": "10",
+  "64": "15",
+  "68": "19"
+ },
+ "granularity_thresholds_cents": {
+  "q1c": {
+   "59": 1000,
+   "64": 1500,
+   "68": 1900
+  },
+  "q99c": {
+   "59": 1089,
+   "64": 1584,
+   "68": 1980
+  }
+ },
+ "margin_ledger": [
+  {
+   "lhs": "9",
+   "ok": true,
+   "rhs": "9",
+   "row": "sigma_adv = copy number 9",
+   "type": "must-equal"
+  },
+  {
+   "lhs": "-10",
+   "ok": true,
+   "rhs": "-10",
+   "row": "sigma_ach(0) = -(p-a) = -10",
+   "type": "must-equal"
+  },
+  {
+   "lhs": "19",
+   "ok": true,
+   "rhs": "19",
+   "row": "f*(68) = s (registered margin-0 contact)",
+   "type": "must-equal"
+  },
+  {
+   "lhs": "9",
+   "ok": true,
+   "rhs": "9",
+   "row": "mirror pi(1) = sigma_adv",
+   "type": "must-equal"
+  },
+  {
+   "lhs": "0",
+   "ok": true,
+   "rhs": "0",
+   "row": "sigma_ach(10) = 0 (repair threshold)",
+   "type": "must-equal"
+  },
+  {
+   "lhs": "19",
+   "ok": true,
+   "rhs": "19",
+   "row": "f(d=9) = s",
+   "type": "must-equal"
+  },
+  {
+   "lhs": "-7039/1000",
+   "ok": true,
+   "rhs": "-7039/1000",
+   "row": "Delta(19) = -7039/1000 (V040 nudge cost)",
+   "type": "must-equal"
+  },
+  {
+   "margin": "1/2",
+   "note": "ratio 20/19",
+   "ok": true,
+   "row": "f*(59) - s/2 (ratio 20/19)",
+   "type": "must-clear"
+  },
+  {
+   "margin": "10",
+   "note": "ratio 10/9",
+   "ok": true,
+   "row": "pi(0) - 0 vs sigma_adv (ratio 10/9)",
+   "type": "must-clear"
+  },
+  {
+   "margin": "10",
+   "note": "strict exclusion",
+   "ok": true,
+   "row": "incoherence margin f=0: p-(a+f)",
+   "type": "must-clear"
+  },
+  {
+   "margin": "9",
+   "note": "strict exclusion",
+   "ok": true,
+   "row": "incoherence margin f=1: p-(a+f)",
+   "type": "must-clear"
+  },
+  {
+   "margin": "7",
+   "note": "strict exclusion",
+   "ok": true,
+   "row": "incoherence margin f=3: p-(a+f)",
+   "type": "must-clear"
+  },
+  {
+   "margin": "5",
+   "note": "strict exclusion",
+   "ok": true,
+   "row": "incoherence margin f=5: p-(a+f)",
+   "type": "must-clear"
+  },
+  {
+   "margin": "5",
+   "note": "strict inclusion",
+   "ok": true,
+   "row": "coherence margin f=15: (a+f)-p",
+   "type": "must-clear"
+  },
+  {
+   "margin": "9",
+   "note": "strict inclusion",
+   "ok": true,
+   "row": "coherence margin f=19: (a+f)-p",
+   "type": "must-clear"
+  }
+ ],
+ "ruling": "REJECT",
+ "ruling_twin": {
+  "arm_A": "REJECT",
+  "arm_B": "REJECT"
+ },
+ "seeds": {
+  "aux_never_read": 20261663,
+  "registry": [
+   20261660,
+   20261661,
+   20261662
+  ]
+ },
+ "self_checks": {
+  "failed": 0,
+  "passed": 712
+ },
+ "strict_discount_law": {
+  "d": [
+   1,
+   9
+  ],
+  "f_of_d": [
+   11,
+   19
+  ]
+ },
+ "wstar": "10"
+}

@@ -1,0 +1,23 @@
+VERDICT 087 — bundle-PWYW floor lattice (P074)
+ruling: REJECT (twin evaluators REJECT / REJECT)
+committed triple: a=49 kit, s=19 suggested PWYW, p=59 bundle; copy claims +$9; floor f UNCOMMITTED (decision cell f=0)
+census f=0 : coherent=no  sigma_ach=-10 pi=10 gap=19 Delta=951/100
+census f=1 : coherent=no  sigma_ach=-9  pi=9  gap=18 Delta=8639/1000
+census f=3 : coherent=no  sigma_ach=-7  pi=7  gap=16 Delta=6897/1000
+census f=5 : coherent=no  sigma_ach=-5  pi=5  gap=14 Delta=1031/200
+census f=10: coherent=yes sigma_ach=0   pi=0  gap=9  Delta=4/5
+census f=15: coherent=yes sigma_ach=5   pi=0  gap=4  Delta=-711/200
+census f=19: coherent=yes sigma_ach=9   pi=0  gap=0  Delta=-7039/1000
+f* table: 59->10 64->15 68->19 (f*(68)=19=s registered margin-0 must-equal; f*(59)/(s/2)=20/19; pi(0)/sigma_adv=10/9)
+repair law: f(d)=10+d at d in {1,9} -> [11, 19]; committed $9 needs f=19=s (PWYW extinct)
+fee fork @ f=0: seller 951/100, buyer -10; f-invariant saving = 4/5 (the seller's saved second fee)
+external anchors: net49=41879/1000 net59=50589/1000 net64=54944/1000 net68=58428/1000 +080row=4/5 bar=50589/54944 Delta19=-7039/1000
+hand world (3,2,4): w*=1 f*=1 gap=2 window={3} pi=1 (armB cent-scan w*=100 cents)
+approve liveness (f>=10 cells fire APPROVE): [10, 15, 19]
+granularity thresholds (cents): {"q1c": {"59": 1000, "64": 1500, "68": 1900}, "q99c": {"59": 1089, "64": 1584, "68": 1980}}
+arm R main (FLOOR-HEAVY, 20261660): bundle=20002/50000 (10001/25000; exact 2/5) mean=132501/2500 (exact 53)
+arm R stability (SUGGESTED-ANCHORED, 20261661): bundle=16111/20000 (16111/20000; exact 4/5) mean=114111/2000 (exact 57)
+presentation row order (seed 20261662): 10,19,1,15,5,3,0
+seed registry: [20261660, 20261661, 20261662] (aux 20261663 never read)
+anomalies: none
+self-checks: 712 passed, 0 failed
