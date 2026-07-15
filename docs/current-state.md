@@ -200,6 +200,16 @@ From PROPOSAL 010 onward the offset is a constant +2.
   **V051**, P041 → **V052**, P042 → **V053**, P043 → **V054**, P044 →
   **V055**, P045 → **V056**, P046 → **V057**, P047 → **V058**, P048 →
   **V059**. No owner-direct interleave occurred in this range.
+- Extension (V077 slice, 2026-07-15): the +11 offset held unbroken through
+  **P049 → V060 … P063 → V074** (P049 → V060 re-verified against the
+  `## VERDICT 060` header's registration line in
+  `control/outbox-archive-2026-07.md`; P061 → V072, P062 → V073, P063 →
+  V074 verified at the live-outbox headers). **VERDICTs 075–076 are NOT
+  idea-engine proposals** — they are SIM-REQUESTs simreq-010/011
+  (superbot-games direct routing per inbox ORDER 008 item (2)), so the +11
+  offset BREAKS after P063: from **PROPOSAL 064 onward the offset is a
+  constant +13** — PROPOSAL 064 (cascade-independence-quota) →
+  **VERDICT 077**.
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

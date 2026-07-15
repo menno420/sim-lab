@@ -1,0 +1,55 @@
+VERDICT 077 — cascade independence quota (idea-engine PROPOSAL 064)
+runtime: cpython 3.11.15, stdlib-only, hermetic
+
+== decision cell (p=7/10, N=100) ==
+V(100,0)   = 37296100941391108894263442675431534563976356225907941976215976068586367341039679646981/444089209850062616169452667236328125000000000000000000000000000000000000000000000000 = 83.9833531510107
+k*         = 15 (ties 1; runner-up k=17 by 0.004925437565615269)
+V(100,k*)  = 1053133565318444038854469564105942692577804837743521323389961200270654767918067705664547/11368683772161602973937988281250000000000000000000000000000000000000000000000000000000 = 92.63460805350599
+G          = 491766906094158255806627158074477038700050591801390043994161064574218819937259533509167/56843418860808014869689941406250000000000000000000000000000000000000000000000000000000 = 8.651254902495284  (REJECT needs >= 6, APPROVE needs <= 2)
+e(0)       = 9/58 = 0.15517241379310345
+e(k*)      = 481791730791717/14500000000000000 = 0.03322701591667014  (halving line e(0)/2 = 0.07758620689655173)
+expected wrong agents per 100: 16.0166468489893 -> 7.365391946494014
+
+== 12-cell k*/gain table (order presentation-shuffled, seed 20261565) ==
+p=11/20 N=100  k*=33  gain=7.351348   runner-up=(k=35, 0.015198)
+p=9/10  N=25   k*=3   gain=0.090482   runner-up=(k=4, 0.072)
+p=11/20 N=25   k*=9   gain=0.41395    runner-up=(k=7, 0.004689)
+p=9/10  N=100  k*=5   gain=0.785894   runner-up=(k=6, 0.09144)
+p=7/10  N=100  k*=15  gain=8.651255   runner-up=(k=17, 0.004925)
+p=7/10  N=400  k*=29  gain=50.887722  runner-up=(k=31, 0.0529)
+p=7/10  N=25   k*=7   gain=0.740159   runner-up=(k=5, 0.002017)
+p=9/10  N=400  k*=7   gain=4.197333   runner-up=(k=9, 0.070705)
+p=4/5   N=25   k*=5   gain=0.380081   runner-up=(k=3, 0.022987)
+p=11/20 N=400  k*=109 gain=69.986699  runner-up=(k=111, 0.006753)
+p=4/5   N=400  k*=15  gain=20.246482  runner-up=(k=13, 0.04718)
+p=4/5   N=100  k*=9   gain=3.753888   runner-up=(k=11, 0.098123)
+
+== structure theorems ==
+QUOTA-NULL: k in {0,1,2} identical e and V at every grid cell — gated F2a
+PARITY: e(2m+1) = e(2m+2) for every m >= 1 at every grid p, and
+        V(N,2m+2) < V(N,2m+1) strictly at every grid cell — gated F2b
+KNIFE-EDGE: e(2m)-e(2m+1) = P(L=-2)(1-q-p*h(-1)) - P(L=+2)*q*h(1),
+        exact for every m >= 1 at every grid p; reference e(2)-e(3) @7/10 = 441/14500 — gated F2c
+k* is ODD at every one of the 12 cells: True (reporting; consequence of PARITY+strictness)
+
+== bounded-learning exhibit (reporting) ==
+p=11/20 crowd cap 1-e(0) = 121/202 = 0.599009900990099 (N-independent); majority-of-N: N=25: 0.693676, N=100: 0.8413478, N=400: 0.9774529; lock-in E = 3.9603960396039604 actions
+p=7/10  crowd cap 1-e(0) = 49/58 = 0.8448275862068966 (N-independent); majority-of-N: N=25: 0.9825303, N=100: 0.9999845, N=400: 1.0; lock-in E = 3.4482758620689653 actions
+p=4/5   crowd cap 1-e(0) = 16/17 = 0.9411764705882353 (N-independent); majority-of-N: N=25: 0.999631, N=100: 1.0, N=400: 1.0; lock-in E = 2.9411764705882355 actions
+p=9/10  crowd cap 1-e(0) = 81/82 = 0.9878048780487805 (N-independent); majority-of-N: N=25: 0.9999998, N=100: 1.0, N=400: 1.0; lock-in E = 2.4390243902439024 actions
+IR wedge @ decision cell: late free-rider acc_100(k=0) = 0.8448275862068966 > solo p = 0.7;
+  quota sacrifice = 1.673825764912896, recovery = 10.32508066740818, G = recovery - sacrifice (exact, C10)
+
+== Arm R (seeded, REPORTING-ONLY; no statistical gate) ==
+main leg (n=100000) k=0: mean correct/agent 0.840201 (exact 0.839834); wrong-casc@N 0.15481 (exact e = 0.155172); unabsorbed 0.0
+main leg (n=100000) k=15: mean correct/agent 0.926017 (exact 0.926346); wrong-casc@N 0.0336 (exact e = 0.033227); unabsorbed 0.0
+stability leg (n=20000) k=0: mean correct/agent 0.839661 (exact 0.839834); wrong-casc@N 0.1554 (exact e = 0.155172); unabsorbed 0.0
+stability leg (n=20000) k=15: mean correct/agent 0.925201 (exact 0.926346); wrong-casc@N 0.0344 (exact e = 0.033227); unabsorbed 0.0
+
+== drafter comparison (NEVER gated) ==
+16/18 disclosed values reproduced; mismatches: ['IR sacrifice', 'IR recovery']
+
+== self-checks: 139 total, 0 failed ==
+
+== RULING (pre-registered order REJECT -> INVALID -> APPROVE -> NULL) ==
+evaluator A: REJECT   evaluator B: REJECT

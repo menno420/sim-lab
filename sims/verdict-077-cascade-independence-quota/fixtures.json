@@ -1,0 +1,91 @@
+{
+  "_registration": "VERDICT 077 fixtures — idea-engine PROPOSAL 064 'cascade independence quota' (ideas/fleet/cascade-independence-quota-2026-07-15.md @ idea-engine main 256ea5c910d1d18856e0570cf3c8766685e7cde6, landed via idea-engine PR #427 merge head 10d460d). Every model constant below is copied verbatim from the PROPOSAL 064 outbox block / idea doc (invented-but-pinned there; where the doc and the outbox block disagree, the block wins — no disagreement found). Fully hermetic: the runner reads ONLY this file; zero repo/network reads at verdict time (the P017-P063 hermetic precedent). This file is committed BEFORE the runner exists (the V072-V076 registration discipline; no fix-forwards — the first complete run of the registered pipeline is the accepted run).",
+  "world": {
+    "states": ["A", "B"],
+    "prior": "1/2",
+    "signal_correct_prob_grid": ["11/20", "7/10", "4/5", "9/10"],
+    "decision_p": "7/10",
+    "control_p": {"degeneracy": "1/2", "perfect_anchor": "1"},
+    "horizon_grid": [25, 100, 400],
+    "decision_N": 100,
+    "conditioning": "all published accuracies computed conditioned theta = A; the in-sim SYMMETRY gate (relabel A<->B, signals flipped) certifies the unconditional values equal the conditioned ones",
+    "tie_break": "FOLLOW-OWN-SIGNAL (pinned convention token; theorems are convention-conditional; the random tie-break is the named follow-up)",
+    "bayes_rule": "action from likelihood ratios (p/q)^lead over the revealed lead; strict posterior preference acts on it; indifference follows own signal; gated consequences (F1, never assumed): pre-cascade agents act own signal, the revealed lead is a +/-1 walk absorbed at |lead| = 2, absorbed agents copy the herd, cascades never break",
+    "quota_mechanism": "independence quota k — agents 1..k mandated to act = own signal, indices public (their actions reveal their signals exactly); post-quota lead L_k = 2*Bin(k, p) - k; |L_k| >= 2 cascades immediately, else the walk resumes",
+    "quota_grid": "k in {0, 1, ..., min(N, 120)}",
+    "kstar_interiority_bound": 118
+  },
+  "metrics": {
+    "ruin": "h(l) = P(hit -2 before +2 | lead l), l in {-1, 0, 1}, exact Fraction",
+    "wrong_herd": "e(k, p) = P(L_k <= -2) + sum_{|l|<=1} P(L_k = l)*h(l)",
+    "welfare": "V(N, k, p) = k*p + sum_{i>k} acc_i (unweighted sum of per-agent correctness over the known horizon)",
+    "optimal_quota": "k*(N, p) = argmax_k V, ties broken to the smallest k, ties reported; runner-up margins reported",
+    "gain": "G(N, p) = V(N, k*) - V(N, 0)",
+    "lockin_time": "2/(1 - 2pq)",
+    "knife_edge": "e(2m) - e(2m+1) = P(L=-2)*(1 - q - p*h(-1)) - P(L=+2)*q*h(1)",
+    "majority_benchmark": "majority of N i.i.d. signals, exact, REPORTING-ONLY (convention C6: even-N ties credited 1/2)"
+  },
+  "decision_rule": {
+    "evaluation_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "REJECT": {"G_min": "6", "kstar_min": 5, "e_halving": "e(k*) <= (1/2)*e(0) exact", "cell": ["7/10", 100]},
+    "INVALID": "any F1-F6 gate failure (controls misbehaving — report, no ruling)",
+    "APPROVE": {"G_max": "2", "kstar_max": 2, "cell": ["7/10", 100]},
+    "NULL_axes": ["band-straddle (G in (2,6), or k* in {3,4}, or the e-halving clause alone fails)", "parity-theorem failure without gate failure", "knife-edge-decomposition failure without gate failure", "twin-arm disagreement surviving the INVALID diagnosis"]
+  },
+  "gates": {
+    "F1": "model & Bayes identities — action table re-derived from likelihood ratios incl. tie-break (pre-cascade agents provably act own signal; absorption at |lead|=2; cascades never break); state-mass conservation at every DP step (sum = 1 exact); every acc_i in [0,1]; V(N,N) = N*p exactly; the theta-relabeling SYMMETRY gate (the theta=B run reproduces every published number)",
+    "F2": "the three structure theorems, exact at every grid cell — (a) QUOTA-NULL: k in {0,1,2} identical e AND identical V at every (N,p); (b) PARITY: e(2m+1) = e(2m+2) for every published m >= 1 (and e(0)=e(1)=e(2)), with the finite-horizon strictness check V(N, 2m+2) < V(N, 2m+1) at every grid cell for every computed m >= 1; (c) harmonic identities h(0) = q*h(-1) + p*h(1), h(1) = q*h(0), h(-1) = q + p*h(0), plus the KNIFE-EDGE decomposition with reference 441/14500 at (7/10, m=1)",
+    "F3": "closed-form anchors — e(0) = q^2/(1-2pq) = {81/202, 9/58, 1/17, 1/82} across the p grid; h(-1), h(0), h(1) at 7/10 = {237/580, 9/58, 27/580}; lock-in 2/(1-2pq) = 100/29 at 7/10; the p = 1 anchor (e = 0, V = N exactly)",
+    "F4": "the hand world — p = 2/3: h = (7/15, 1/5, 1/15), e(3) = 23/135, V(6, 3) = 350/81, by the pinned pencil walk",
+    "F5": "the p = 1/2 degeneracy — e(k) = 1/2 for EVERY k and V(N, k) = N/2 exactly",
+    "F6": "battery — Arm B reproduces every Arm-A published number exactly; the 2^12 exhaustive path census at N = 12 (every grid p, every k <= 12) equals BOTH arms exactly; k* interior (k* <= 118); twin independently-written decision evaluators agree on the ruling token; Arm-R draw-count sentinels (1 + N per episode) counted and asserted; aux seed 20261566 never read; stdout + results.json byte-identical across two process runs; CPython minor pinned (3.11) and asserted"
+  },
+  "anchors": {
+    "knife_edge_reference": {"p": "7/10", "m": 1, "value": "441/14500"},
+    "e0_by_grid_p": {"11/20": "81/202", "7/10": "9/58", "4/5": "1/17", "9/10": "1/82"},
+    "h_at_7_10": {"h_minus1": "237/580", "h_0": "9/58", "h_plus1": "27/580"},
+    "lockin_at_7_10": "100/29",
+    "hand_world": {"p": "2/3", "h": ["7/15", "1/5", "1/15"], "e_3": "23/135", "V_6_3": "350/81"},
+    "degeneracy_p_half": {"e_k": "1/2", "V_N_k": "N/2"},
+    "perfect_anchor_p_1": {"e": "0", "V": "N"}
+  },
+  "arms": {
+    "A": "DECISION arm, seedless — forward exact-Fraction absorbing-walk DP over states {lead -1, 0, 1, cascade-A, cascade-B} with the Binomial quota initial condition; h by direct substitution closed-form solve; binomial pmf via math.comb",
+    "B": "twin, seedless, INDEPENDENTLY-WRITTEN — backward memoized recursion W(agents-remaining, lead-or-cascade); h by Fraction Gaussian elimination on the 3-state linear system; binomial pmf via Pascal-triangle recursion; must reproduce every Arm-A published number EXACTLY; powers the second decision evaluator (integer cross-multiplication band logic)",
+    "census": "algorithm-free gate — exhaustive enumeration of all 2^12 signal paths at N = 12, every grid p, every k <= 12; each free agent's action re-derived from the likelihood-ratio posterior over its literal observed action history (never the walk shortcut); V(12, k, p) and the per-agent accuracy trajectory equal to BOTH arms exactly",
+    "R": "seeded REPORTING-ONLY trace of the literal 100-agent process at the decision cell, k in {0, k*}: 100000 episodes on random.Random(20261563), pinned draw order 1 theta-uniform + N signal-uniforms per episode, draw counts (1 + N per episode) counted and asserted; stability leg random.Random(20261564) at 20000; presentation shuffle 20261565 (read by the shuffled stdout cell listing only); NO statistical gate rides Arm R — a trace drift from the exact curves is a named finding, never a ruling"
+  },
+  "seeds": {"main": 20261563, "stability": 20261564, "presentation": 20261565, "aux_never_read": 20261566, "fleet_high_water_at_registration": 20261562, "note": "20261563-566 strictly above the fleet high-water 20261562 (V074's registration; re-swept FIRSTHAND this session at sim-lab origin/main aa8627e with the boundary-aware regex — max genuine 20261562; 202670087 is the documented decimal-fraction data-not-seed specimen). NEW REGISTRY HIGH-WATER 20261566 (reserved; highest READ 20261565)."},
+  "arm_R_params": {"episodes_main": 100000, "episodes_stability": 20000, "draws_per_episode": "1 + N", "k_cells": "{0, k*}", "expected_draws_main": 10100000, "expected_draws_stability": 2020000},
+  "fixture_level_conventions": {
+    "C1": "theta draw: theta = A iff Fraction(u) < 1/2 strict, else B; signal correct iff Fraction(u) < p strict (exact-rational comparison, no float thresholds)",
+    "C2": "paired Arm-R evaluation: one (theta, signals) draw set per episode, evaluated on BOTH k cells {0, k*} (dynamics never read mint of the other cell; draw count stays 1 + N per episode)",
+    "C3": "Arm-R per-episode EXACTNESS cross-check (structural, pass probability 1 for a correct implementation): on every episode the literal likelihood-ratio agent process and the abstract walk-shortcut process run on the SAME draws and must produce identical action sequences — the reporting arm doubles as a grammar check of the F1 consequence on sampled paths",
+    "C4": "e(k, p) is the infinite-horizon wrong-cascade probability (N-independent); Arm R reports the finite-horizon wrong-cascade frequency at N = 100 plus the not-yet-absorbed fraction beside it — the difference is the horizon, disclosed, never gated",
+    "C5": "published exact surface scope: full exact e(k, p) curves (k 0..120, every grid p) and the full V(N, k, p) surface (every k in the window, all 12 grid cells) as canonical num/den strings + repr(float) renderings; per-agent accuracy trajectories published exact for the decision cell k in {0, k*} (Arm B reproduces them exactly; the census gates trajectories at N = 12); control-p surfaces gated (F3/F5), published as summary rows",
+    "C6": "majority-of-N-independent-signals benchmark (reporting-only): maj(N, p) = P(Bin(N, p) > N/2) + (1/2)*P(Bin(N, p) = N/2) — even-N ties credited half",
+    "C7": "canonical serialization: Fractions as {num, den} decimal strings (already-reduced), floats via repr(), json sort_keys = True, no timestamps in results.json or stdout",
+    "C8": "parity strictness (F2b second clause) evaluated at grid p only (at the p = 1/2 and p = 1 controls V is k-flat by F5/F3 — equality, not strictness, is the gated fact there), for every m >= 1 with 2m+2 <= min(N, 120)",
+    "C9": "knife-edge decomposition verified for every m >= 1 with 2m+1 <= 120 at every grid p (P(L = +/-2) means EXACTLY +/-2)",
+    "C10": "individual-rationality wedge (reporting-only): sacrifice = sum_{i<=k*}(acc_i(0) - p), recovery = sum_{i>k*}(acc_i(k*) - acc_i(0)), G = recovery - sacrifice asserted exactly",
+    "C11": "runner-up = the best k != k* by V (ties inside the runner-up set resolved to smallest k); margin = V(k*) - V(runner-up), reported never decision-read",
+    "C12": "the aux-seed assertion is enforced by a constructor registry: every random.Random construction logs its seed; the registry must equal {20261563, 20261564, 20261565} exactly and never contain 20261566"
+  },
+  "drafter_disclosed_never_gated": {
+    "note": "the drafting prototype's disclosed landing, re-derived from scratch this session and COMPARED, never gated (the P048-P063 closed-form-arm norm); any mismatch is a named finding",
+    "V_100_0": 83.983353,
+    "kstar_100_7_10": 15,
+    "runner_up": {"k": 17, "margin": 0.004925},
+    "V_100_15": 92.634608,
+    "G_100_7_10": 8.651255,
+    "e_0_7_10": "9/58",
+    "e_15_7_10": "481791730791717/14500000000000000",
+    "kstar_table_all_odd": {"11/20": [9, 33, 109], "7/10": [7, 15, 29], "4/5": [5, 9, 15], "9/10": [3, 5, 7]},
+    "gain_table": {"11/20": [0.4139, 7.3513, 69.9867], "7/10": [0.7402, 8.6513, 50.8877], "4/5": [0.3801, 3.7539, 20.2465], "9/10": [0.0905, 0.7859, 4.1973]},
+    "bounded_learning": {"baseline_crowd_accuracy_7_10": "49/58", "majority_100_7_10_approx": 0.9999845, "lockin_7_10": "100/29"},
+    "ir_wedge": {"late_agent": 0.845, "solo": 0.7, "sacrifice_approx": 2.2, "recovery_approx": 10.8},
+    "expected_wrong_agents_100": {"k0": 16.02, "kstar": 7.37},
+    "V_100_16_approx": 92.3846
+  },
+  "runtime_pins": {"python": "CPython 3.11 (minor pinned and asserted)", "stdlib_only": true, "hermetic": "reads only this fixtures.json", "determinism": "stdout + results.json byte-identical across two full process runs (external diff + sha256, hashes in REPORT.md)"}
+}
