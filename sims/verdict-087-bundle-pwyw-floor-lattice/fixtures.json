@@ -1,0 +1,193 @@
+{
+  "_what": "VERDICT 087 fixture — idea-engine PROPOSAL 074 (the bundle over a floorless PWYW). Every value copied verbatim from the P074 outbox block / idea file (ideas/venture-lab/bundle-pwyw-floor-lattice-2026-07-15.md @ idea-engine main c1b97be, PR #438 merged 2026-07-15T10:32:39Z; outbox block stamped 2026-07-15T10:29:16Z). Committed BEFORE the runner (born-red card -> fixtures -> runner -> accepted run).",
+  "_grounding": {
+    "venture_lab": {
+      "repo": "menno420/venture-lab",
+      "pinned_head": "520bdfca71ca4f119808d1098cd4ecf7fc6e6732",
+      "reverified_firsthand": "2026-07-15T10:37Z on a read-only PUBLIC-HTTPS shallow clone landing exactly at the pinned HEAD (the local git proxy route was reported failing for venture-lab by the P074 drafter; public HTTPS worked, as it did for the drafter)",
+      "pins": {
+        "kit_price": {"file": "candidates/membership-kit/LISTING.md", "line": 46, "text": "**$49** (one-time, lifetime updates to the v0.x line)."},
+        "pack_pwyw": {"file": "candidates/template-packs/LISTING.md", "line": 61, "text": "**Pay-what-you-want, $19 suggested** (one-time, free updates to the v0.x line)."},
+        "bundle_price_block": {"file": "candidates/BUNDLE-LISTING.md", "lines": "56-58", "text": "**$59** for the bundle — versus **$68** bought separately ($49 kit + $19 suggested for the pack). The $9 discount is a modest, honest nudge"},
+        "bundle_faq": {"file": "candidates/BUNDLE-LISTING.md", "lines": "73-74", "text": "Yes — each is sold separately (kit $49, pack $19 PWYW). The bundle is only for people who want both; it saves $9 and one checkout."},
+        "click_row_floor_open": {"file": "docs/publishing/OWNER-QUEUE.md", "line": 162, "text": "price set ($19 pay-what-you-want suggested (default); minimum owner's choice)"},
+        "sibling_committed_floor": {"file": "docs/publishing/OWNER-QUEUE.md", "line": 84, "text": "Price: $5 fixed per pack (default — §3 evidence; floor $3; ratified by ORDER 010 / V039 …)"},
+        "coherence_guard": {"file": "docs/publishing/vetting/bundle-starter.md", "section": "3", "text": "The bundle price is FIXED even though the pack alone is PWYW — inheriting PWYW would let the bundle undercut the $49 kit alone, which is incoherent pricing."},
+        "v040_ratification": {"file": "docs/publishing/vetting/bundle-starter.md", "section": "3", "text": "$59 one-time fixed RATIFIED — ORDER 010 / V040 … **$64 is PARKED-WITH-BAR** behind one named retention measurement — ≥ 50589/54944 ≈ 0.9207. **Never price at $68**"},
+        "fee_schedule": {"file": "candidates/photo-packs/MARKET-PLAN.md", "lines": "17-19", "text": "flat **10% platform fee + $0.50 per transaction** … payment processing (~2.9% + $0.30) … roughly **~12.9% + $0.80 per sale**"},
+        "hard_gate": {"file": "docs/publishing/vetting/bundle-starter.md", "section": "header", "text": "HARD-GATED: blocked until the ⚑B and ⚑D component publish clicks are executed."}
+      }
+    },
+    "sim_lab_v040": {
+      "repo": "menno420/sim-lab (IN-TREE — this repo's own finalized VERDICT 040 artifacts)",
+      "verified_at": "origin/main 9e22abbea87c2be15be94e1b00994dac95479948, this slice, before this fixture was written",
+      "pins": {
+        "g2_sentence": {"file": "sims/verdict-040-shipit-bundle-pricing/fixtures.json", "key": "pinned_constants/pwyw_minimum_unpinned", "text": "the PWYW minimum is an owner choice with NO committed value (gap G2)"},
+        "net_formula": {"file": "sims/verdict-040-shipit-bundle-pricing/fixtures.json", "text": "net(P) = P·(1 − 0.10 − 0.029) − (0.50 + 0.30) = P·871/1000 − 4/5"},
+        "net_49": "41879/1000 (kit-alone net 41.879, V040 fixtures G6 margin ladder)",
+        "net_59": "50589/1000 (V040 fixtures summary net_59)",
+        "net_64": "54944/1000 (V040 fixtures summary net_64)",
+        "net_68": "58428/1000 (V040 fixtures arms A68)",
+        "plus_080_row": "bundle68_minus_separate = 0.800 (V040 results.json; net(68) − [net(49) + net(19)] = 4/5, one fixed fee saved)",
+        "retention_bar": "50589/54944 (V040 results.json frontier_exact; ≈ 0.9207)",
+        "nudge_cost": "the $9 nudge costs the seller exactly $7.039 net per both-buyer (V040 results.json probe; = 0.871·9 − 0.80 saved fee; this head's Δ(19) = −7039/1000)"
+      }
+    },
+    "harvest_anomalies": "ZERO — every pinned constant and quoted line matched verbatim at venture-lab 520bdfc and in the in-tree V040 artifacts"
+  },
+  "committed_constants": {
+    "a_kit_usd": 49,
+    "s_suggested_usd": 19,
+    "p_bundle_usd": 59,
+    "advertised_saving_copy_usd": 9,
+    "anchor_family_p": [59, 64, 68],
+    "anchor_status": {"59": "ratified (V040)", "64": "parked-with-bar (V040)", "68": "banned (V040)"},
+    "floor_grid_f": [0, 1, 3, 5, 10, 15, 19],
+    "floor_grid_notes": {"0": "decision cell — the floorless default of the queued ⚑D click's 'minimum owner's choice'", "1": "the mirror knife-edge cell (π(1) = 9 = σ_adv)", "3": "the sibling photo-packs family's ONE committed floor (OWNER-QUEUE.md:84)", "19": "= s, the PWYW-degenerate world"},
+    "fee_affine": {"alpha": "871/1000", "beta": "4/5", "net_formula": "net(P) = (871/1000)·P − 4/5 per transaction (V040's committed reading of MARKET-PLAN.md:17-19)"}
+  },
+  "model": {
+    "buyer": "a both-buyer with two purchase paths: BUNDLE = one checkout, pay p; SEPARATE = two checkouts, pay a + max(w, f) where w is the intended pack payment; STRATEGIC buyer pays w = f; types exogenous — no demand size (V040 G1 territory), no conversion",
+    "quantities": {
+      "sigma_adv": "(a + s) − p (advertised saving, the copy's basis)",
+      "sigma_ach": "(a + f) − p (achievable saving, sign-free)",
+      "pi": "(p − a − f)+ (strategic premium)",
+      "wstar": "p − a (buyer-type indifference; bundle weakly cheaper iff w ≥ w*, ties to bundle)",
+      "coherence": "p lattice-coherent iff a ≤ p ≤ a + f (never undercuts the kit alone; never charges a strategic premium)",
+      "fstar": "f*(p) = p − a (floor threshold; = w* identity, an F1 gate)",
+      "seller_delta": "Δ(f) = net(p) − [net(a) + net(f)] = α·(p − a − f) + β (bundle-minus-strategic-separate seller net)"
+    },
+    "theorems": {
+      "T1_basis_gap": "σ_adv − σ_ach(f) = s − f EXACTLY, for every a and every p (both cancel); at f = 0 the '$9 saving' overstates the achievable by $19 = s exactly — the achievable saving is −$10",
+      "T2_coherence_window": "coherent iff p ∈ [a, a + f]; f*(p) = p − a unit slope; {59, 64, 68} → f* = {10, 15, 19}; f*(68) = 19 = s EXACTLY (registered margin-0 contact); f*(59) = 10 > 19/2 (ratio 20/19); at f = 0 the window is the single point {49}; strict achievable discount $d requires f ≥ (p − a) + d, so the committed '$9' needs f = 19 = s",
+      "T3_fee_invariant": "under ANY affine net(P) = αP − β (α ∈ (0,1), β ≥ 0): bundle-minus-strategic-separate seller net = α·(p − a − f) + β; at the decision cell the seller nets exactly +$9.51 while the buyer pays $10 over the achievable path; simultaneous-strict for every f < 10; the ONLY f-independent genuine saving is β = $0.80, the saved second fixed fee, accruing to the SELLER; Δ(19) = −7039/1000 reproduces V040's committed nudge cost"
+    }
+  },
+  "decision_cell": {"a": 49, "s": 19, "p": 59, "f": 0},
+  "census_anchors_F3": {
+    "f_grid_table_at_p59": {
+      "columns": ["f", "coherent", "sigma_ach", "pi", "gap", "Delta"],
+      "rows": [
+        [0, "no", -10, 10, 19, "951/100"],
+        [1, "no", -9, 9, 18, "8639/1000"],
+        [3, "no", -7, 7, 16, "6897/1000"],
+        [5, "no", -5, 5, 14, "1031/200"],
+        [10, "yes", 0, 0, 9, "4/5"],
+        [15, "yes", 5, 0, 4, "-711/200"],
+        [19, "yes", 9, 0, 0, "-7039/1000"]
+      ]
+    },
+    "fstar_table": {"59": 10, "64": 15, "68": 19},
+    "mirror_cell": "π(1) = 9 = σ_adv",
+    "delta_at_decision": "Δ(0) = 951/100",
+    "strict_discount_law": {"law": "f(d) = 10 + d", "checked_at_d": [1, 9], "values": [11, 19]}
+  },
+  "external_anchors_F1": {
+    "sigma_adv_equals_copy": 9,
+    "net_49": "41879/1000",
+    "net_59": "50589/1000",
+    "net_64": "54944/1000",
+    "net_68": "58428/1000",
+    "plus_080_row": "net(68) − [net(49) + net(19)] = 4/5",
+    "retention_bar": "net(59)/net(64) = 50589/54944",
+    "nudge_cost": "Δ(19) = −7039/1000 = −$7.039 (V040's committed nudge cost, external anchor)",
+    "wstar_fstar_identity": "w* = f* = p − a"
+  },
+  "hand_world_F4": {
+    "a": 3, "s": 2, "p": 4, "f": 0,
+    "wstar": 1, "fstar": 1, "gap": 2, "window": [3], "pi": 1,
+    "armB_cent_scan_wstar_cents": 100,
+    "pencil": "separate at floor = 3, bundle = 4 → π = 1; advertised basis 3+2 = 5 → σ_adv = 1; achievable 3+0 = 3 → σ_ach = −1; gap = 2 = s; only q = 3 satisfies 3 ≤ q ≤ 3"
+  },
+  "degeneracies_F5": {
+    "f_eq_s": "f = 19 = s → PWYW degenerate-fixed: gap 0, triple coherent, σ_ach = σ_adv = 9 (the world the committed copy implicitly assumes)",
+    "p_eq_a": "p = 49 = a → pack-free-with-kit: coherent at EVERY f with π = 0 (the guard sentence as arithmetic — the only coherent price at f = 0)",
+    "p_eq_a_plus_s": "p = 68 = a + s → f* = 19 = s (the banned-anchor contact)"
+  },
+  "t1_independence_controls": {
+    "perturbed_a": [3, 29, 49],
+    "perturbed_p": [4, 39, 59, 64, 68],
+    "s_held": 19,
+    "law": "gap(a, p, f) = s − f at EVERY (a, p, f) cell — any world where the gap moves with a or p kills T1"
+  },
+  "t3_affine_family_check": {
+    "alpha_grid": ["871/1000", "1/2", "9/10"],
+    "beta_grid": ["0", "4/5", "2"],
+    "law": "Δ computed as net(p) − [net(a) + net(f)] must equal α·(p − a − f) + β at every (α, β) × grid cell; decision clauses never ride the fee layer"
+  },
+  "arm_R": {
+    "role": "REPORTING-ONLY — buyer-type draws at the decision cell; NO statistical gate rides Arm R",
+    "pmfs": {
+      "FLOOR_HEAVY": {"0": "3/5", "10": "1/5", "19": "1/5"},
+      "SUGGESTED_ANCHORED": {"19": "3/5", "10": "1/5", "0": "1/5"}
+    },
+    "main": {"pmf": "FLOOR_HEAVY", "seed": 20261660, "episodes": 50000},
+    "stability": {"pmf": "SUGGESTED_ANCHORED", "seed": 20261661, "episodes": 20000},
+    "presentation_shuffle_seed": 20261662,
+    "aux_seed_never_read": 20261663,
+    "draw_discipline": "ONE uniform per episode (random.Random(seed).random()), mapped to w by cumulative pmf; path choice = min cost with ties to bundle (w ≥ w*); draw counts counted and asserted",
+    "exact_expectations": {
+      "bundle_take": {"FLOOR_HEAVY": "2/5", "SUGGESTED_ANCHORED": "4/5"},
+      "mean_outlay": {"FLOOR_HEAVY": 53, "SUGGESTED_ANCHORED": 57}
+    },
+    "disclosed_reporting_landing": "NONE — the registration discloses exact expectations only, no seeded counts; the empirical counts print beside the exact expectations and are not compared to any disclosed value"
+  },
+  "seeds": {
+    "registered_set": [20261660, 20261661, 20261662, 20261663],
+    "roles": {"20261660": "Arm R main (FLOOR-HEAVY, 50,000)", "20261661": "Arm R stability (SUGGESTED-ANCHORED, 20,000)", "20261662": "presentation shuffle (presentation legs only)", "20261663": "aux, reserved, NEVER read"},
+    "provenance": "the drafter's registered allocation IS the session seed set (V077–V086 precedent); 20261650–653 are P073/V086's registered set; the gap 20261654–659 is the drafter's disclosed in-flight buffer, unused; sweep of this clone at origin/main 9e22abb maxes at genuine seed 20261653 — the lone in-tree hit on the digit-string 20261664 is a DATA numeral (0.00202616643 in verdict-032 results.json), not a seed"
+  },
+  "decision_rule": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "REJECT": {
+      "R1_incoherence_at_default": "at the decision cell p ∉ [a, a + f] (the lane's own no-undercut guard formalized excludes the committed price) AND σ_ach(0) ≤ −(p − a) with σ_adv = 9 exactly reproducing the committed copy number (the same triple carries a +$9 advertised and a −$10 achievable saving simultaneously)",
+      "R2_anchor_family_lattice": "f*({59, 64, 68}) = {10, 15, 19} with f*(68) = s EXACTLY (margin-0, registered) and f*(59) > s/2 strictly (ratio 20/19)",
+      "R3_repair_thresholds": "f = 10 restores weak coherence with σ_ach = 0 exactly; strict achievable saving $d requires f ≥ 10 + d; the committed '$9' on the achievable basis requires f = 19 = s"
+    },
+    "INVALID": "any F1–F6 gate failure",
+    "APPROVE": "at the decision cell p ∈ [a, a + f] AND σ_ach ≥ 0 — mutually exclusive with R1 by arithmetic; fires on the f grid at every cell f ≥ 10 (liveness witnesses checked)",
+    "NULL_axes": ["basis-reading fork (vs-suggested reading TRUE as stated — ship the exact gap table s − f, repair = one clarifying phrase)", "floor-granularity convention (integer thresholds pre-checked non-flipping under sub-dollar quanta)", "theorem failure without gate failure (corrected law is the finding)", "twin-arm disagreement surviving INVALID"]
+  },
+  "margin_ledger": {
+    "must_equal_rows_registered_contacts": [
+      "σ_adv = 9 (the committed copy number)",
+      "σ_ach(0) = −(p − a) = −10 (R1 at equality by construction)",
+      "f*(68) = 19 = s (the registered margin-0 contact — the thesis: V040's banned anchor coheres only when PWYW is dead ink)",
+      "π(1) = 9 = σ_adv (the f = 1 mirror knife-edge)",
+      "σ_ach(10) = 0 (the repair threshold at exact weak coherence)",
+      "f(d = 9) = 19 = s (the committed '$9' needs PWYW extinct)",
+      "gap(f) = s − f at every grid cell (T1 as equality)",
+      "the five V040 external anchors (nets, +4/5 row, retention bar, Δ(19) = −7039/1000)"
+    ],
+    "must_clear_rows_strict": [
+      "f*(59)/(s/2) = 20/19 (thin, exact, strict)",
+      "π(0)/σ_adv = 10/9 (thin, exact, strict)",
+      "incoherence margins at f ∈ {0, 1, 3, 5}: p − (a + f) = 10, 9, 7, 5 all ≥ 1",
+      "coherence margins at f ∈ {15, 19}: (a + f) − p = 5, 9 all ≥ 1 (f = 10 is the registered boundary cell, must-equal)"
+    ],
+    "policy": "the V086 typed-ledger convention: must-equal rows (registered contacts) are gated as two-sided EQUALITIES — drift in either direction falsifies the boundary-location claim; must-clear rows gate margin > 0; gate = no UNregistered decision comparison sits at margin 0. Robustness note (reporting-only, never a decision code path): the R1 incoherence-at-default clause is arithmetically independent of the $68/f = s margin-0 cell — the ruling's core finding does not rest on the registered knife-edge"
+  },
+  "expected_landing_disclosed": "REJECT on all three conjuncts (the sim re-derives from scratch and must not trust these): R1 window at f = 0 is {49} ∌ 59, σ_adv = +9 and σ_ach = −10 simultaneously; R2 f* = {10, 15, 19} with 68 → 19 = s margin-0 and 10 > 9.5 at ratio 20/19; R3 f = 10 → σ_ach = 0 exactly, f(d = 9) = 19 = s. Reporting sharpenings: seller/buyer fork at f = 0 is +$9.51 vs −$10; the only f-invariant saving is the seller's $0.80 second fee; the sibling's committed $3 floor leaves a $7 premium (the repair needs a NEW committed value)",
+  "falsifiability_worlds": {
+    "f_ge_10_cells": "every f ≥ 10 grid cell lands the APPROVE clauses — a committed floor ≥ 10 anywhere in the packet flips the ruling to coherent-as-shipped (re-run with the measured f)",
+    "basis_reading": "on the vs-suggested reading the committed copy is TRUE as stated — the pre-registered NULL axis ships the gap table, not a scolding",
+    "t1_perturbation": "the T1 independence claim dies on any world where the gap moves with a or p (checked on the perturbed controls)"
+  },
+  "conventions": {
+    "C1": "all decision arithmetic exact: Arm A Fractions/ints, Arm B integer cents (paths) and integer milli-dollars (fee layer); no floats anywhere in a decision path",
+    "C2": "Arm B is INDEPENDENTLY WRITTEN: literal integer-cent enumeration — path costs by direct min() over enumerated w, w* by upward scan, window membership by scanning candidate bundle prices, the basis gap by direct subtraction, f* and the strict-discount law by upward floor scans — no closed-form reuse; the second decision evaluator reads Arm B numbers only",
+    "C3": "disclosed-anchor comparison: F3 census anchors are registered GATES; the drafter disclosed NO seeded Arm-R counts, so Arm R prints beside exact expectations with no comparison; any mismatch between a re-derived value and a disclosed registration numeral raises a FIRST-CLASS ANOMALY, never a silent gate",
+    "C4": "the falsifiability worlds are named registration cells (every f ≥ 10 cell; the perturbed-a/p controls); the APPROVE-liveness check confirms the branch fires there WITHOUT adding a decision path beyond the registered clause",
+    "C5": "typed margin ledger (the V086 💡, applied): must-equal rows gated as two-sided equalities, must-clear rows gated strictly positive; no UNregistered decision comparison at margin 0; the R1-independence-of-the-margin-0-cell robustness note is reporting-only",
+    "C6": "Arm R estimand + draw discipline pinned: one uniform per episode, cumulative-pmf mapping, ties to bundle (w ≥ w*), draw counts asserted; NO statistical gate",
+    "C7": "seed constructor registry: exactly 20261660, 20261661, 20261662 constructed, in that order; aux 20261663 asserted never read; registry high-water 20261663 (reserved; highest read 20261662)",
+    "C8": "print discipline: every registered quantity is a small integer or small Fraction; gates compare in memory FIRST and print second",
+    "C9": "canonical serialization: sorted keys, Fractions as 'p/q' strings, no timestamps in results.json or stdout (byte-identity across process runs)",
+    "C10": "the T3 affine-family check runs at every (α, β) grid pair; decision clauses read ONLY the committed (871/1000, 4/5) pair",
+    "C11": "floor-granularity control: thresholds re-scanned at quantum 1 cent and 99 cents (a '$0.99 platform minimum' style quantum) — the integer-dollar thresholds f* = {10, 15, 19} and f(d) = 10 + d must not flip (pre-checked non-flipping, an F5 control)",
+    "C12": "APPROVE/R1 mutual exclusivity verified as arithmetic on the full grid (no cell satisfies both), disclosed here before the runner",
+    "C13": "exit contract: exit 0 iff all self-checks pass and exactly one ruling token issues; anomalies do not affect the exit code"
+  },
+  "cpython_pin": "3.11",
+  "run_command": "python3 sims/verdict-087-bundle-pwyw-floor-lattice/bundle_pwyw_floor_lattice_sim.py"
+}

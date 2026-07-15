@@ -262,6 +262,12 @@ From PROPOSAL 010 onward the offset is a constant +2.
   2370855, `## VERDICT 086` / `## INTAKE 073` collision-grepped clean
   before the append and re-grepped at append time — origin/main unmoved;
   no owner-direct or simreq interleave occurred in this range).
+- Extension (V087 slice, 2026-07-15): the +13 offset holds — PROPOSAL 074
+  (bundle-pwyw-floor-lattice) → **VERDICT 087** (verified at the
+  live-outbox headers: newest `## VERDICT` was 086 at origin/main
+  9e22abb, `## VERDICT 087` / `## INTAKE 074` collision-grepped clean
+  before the append and re-grepped at append time — origin/main unmoved;
+  no owner-direct or simreq interleave occurred in this range).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
