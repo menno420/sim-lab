@@ -1,0 +1,110 @@
+{
+  "_registration": "VERDICT 079 fixtures — idea-engine PROPOSAL 066 'kill-clock anchor vs owner-gated funnel onset' (ideas/venture-lab/kill-clock-anchor-truncated-exposure-2026-07-15.md @ idea-engine main 848d6de70532520cc0cd310fd2a669094ba3b68a, landed via idea-engine PR #429; outbox PROPOSAL 066 block stamped 2026-07-15T05:44:53Z). Every model constant below is copied verbatim from the PROPOSAL 066 outbox block / idea doc (invented-but-pinned magnitudes disclosed there; where the doc and the outbox block disagree, the block wins — no disagreement found). Fully hermetic: the runner reads ONLY this file; zero repo/network reads at verdict time (the P017-P065 hermetic precedent; the sim never touches venture-lab). This file is committed BEFORE the runner exists (the V072-V078 registration discipline; no fix-forwards — the first complete run of the registered pipeline is the accepted run).",
+  "world": {
+    "time": "whole calendar days; listing-live = day 0; the committed kill window = calendar days 1..14 (T = 14 FIXED — the dial is V061's served territory); the committed 30-day signal window enters only as the cap constant of anchor A-CAP30; funnel-day d (d = 1, 2, ...) is calendar day tau + d",
+    "window_T": 14,
+    "cap": 30,
+    "threshold": ">= 1 organic sale inside the evidence window (the committed value; the qualified-inbound leg out of scope, P050's own scoping inherited)",
+    "tau_grid": [0, 3, 7, 10, 13, 20],
+    "tau_note": "funnel onset in whole days after listing-live; 0 = the lived launch's measured same-day wiring (listing verified live 2026-07-12T16:25:16Z, funnel-top article live 2026-07-12T17:18:47Z — both timestamps committed in the same log); 20 = the committed base case (funnel misses the listing-anchored window entirely); tau is exogenous owner click latency, never optimized",
+    "shapes": {
+      "SPIKE": {"formula": "v_d = 200 if d == 1 else 0", "adjective_verbatim": "Show HN ... Spiky: 0 to a few hundred visits ... One shot", "total_mass": 200},
+      "BURN": {"formula": "v_d = floor(60/d) for d = 1..60, else 0", "adjective_verbatim": "Dev.to ... Long-tail SEO, low ... Slow-burn", "total_mass": 261, "first_14_mass": 192, "note": "the DECISION shape — the lane's ONE actually-wired channel IS the slow-burn dev.to article"},
+      "DRIP": {"formula": "v_d = 2 for d = 1..365, else 0", "adjective_verbatim": "In-repo README buy badge ... Near-zero traffic, but free", "total_mass": 730}
+    },
+    "shapes_note": "pinned integer visit schedules, funnel-relative; magnitudes are invented-but-pinned readings of the channel table's own committed adjectives (docs/launch/distribution-channels.md @ 520bdfc), disclosed in the proposal and bracketed by the q and shape grids",
+    "q_grid": ["1/30", "1/100", "1/300"],
+    "decision_q": "1/100",
+    "q_degeneracies": ["0", "1"],
+    "q_note": "per-visit i.i.d. conversion; decision cell 1/100 (~1% landing-page conversion, conservative, invented-but-pinned, grid-bracketed); dead product q = 0 (degeneracy row F5 — the rule's SPECIFICITY is perfect by construction; this head prices SENSITIVITY only)",
+    "anchors": {
+      "A-LIST": {"predicate": "committed — evidence window = calendar days 1..14 -> visible funnel-days d with tau + d <= 14", "occupancy": "14"},
+      "A-FUNNEL": {"predicate": "evidence window = funnel-days 1..14 (calendar tau+1..tau+14)", "occupancy": "tau + 14 (unbounded)"},
+      "A-CAP30": {"predicate": "funnel-anchored, hard-capped at the committed 30-day signal window — funnel-days d with d <= 14 AND tau + d <= 30", "occupancy": "min(tau + 14, 30)"}
+    }
+  },
+  "metrics": {
+    "N": "evidence mass N(shape, anchor, tau) = sum of scheduled visits inside the evidence window, exact integer",
+    "FK": "false-kill probability FK = (1 - q)^N (zero sales among N i.i.d. Bernoulli(q) visits — exact rational bignum)",
+    "FK_profile": "the FK(tau) profile per anchor at every shape and q",
+    "doubling_onset": "min{tau on grid : FK(tau) >= 2*FK(0)} (exact Fraction comparison; 'off-grid-right' if no grid tau qualifies)",
+    "occupancy_row": "slot occupancy per anchor per tau, per the anchor formulas above",
+    "queue_row": "REPORTING-ONLY multiplication: expected false kills among the 10 publish-READY queued products at the decision cell, 10*FK(tau) per anchor (single-product arithmetic, no cross-product interaction — deliberately NOT the dropped release-cadence head)"
+  },
+  "decision_rule": {
+    "evaluation_order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "decision_cell": {"shape": "BURN", "anchor": "A-LIST", "q": "1/100"},
+    "REJECT": {
+      "R1": "FK(tau=13) >= 1/2 AND FK(tau=0) <= 1/5 (the SAME viable product flips risk class on click timing alone)",
+      "R2": "doubling onset min{tau in grid : FK(tau) >= 2*FK(0)} <= 13 (the doubling sits inside the window itself)",
+      "R3": "A-CAP30 holds FK(tau) = FK(0) EXACTLY at every grid tau <= 16 with worst-case slot occupancy <= 30 days (the theorem-gated conjunct, disclosed as such — falsifiability rides R1/R2)",
+      "checked_first_because": "the costly direction is fleet-wide: every calendar-anchored evidence deadline whose evidence channel is gated on a separate un-synchronized click inherits FK(tau)"
+    },
+    "INVALID": "any F1-F6 gate failure (controls misbehaving — report, no ruling; short-circuits the token per the registered convention C7)",
+    "APPROVE": {"clauses": "FK(tau=13) <= (6/5)*FK(tau=0) AND FK(tau=13) <= 1/4", "note": "mutually exclusive with R1 by arithmetic (1/4 < 1/2, and FK(0) <= 1/5 makes (6/5)*FK(0) <= 6/25 < 1/2)"},
+    "NULL_axes": ["band-straddle (FK(13) in (1/4, 1/2), or the doubling onset lands off-grid-right — the finding is the exact FK table)", "shape-conditional (the promoted clause flips at SPIKE — drafting says SPIKE lands the APPROVE clauses exactly: the truncation tax is a slow-burn phenomenon, named, never ruling)", "q-conditional (both q edges land outside R1, disclosed)", "a theorem failure without gate failure (the drafter's window algebra is wrong — the corrected law is the finding)", "twin-arm disagreement surviving the INVALID diagnosis"],
+    "decision_constants": {"R1_high_line": "1/2", "R1_low_line": "1/5", "R2_doubling_factor": "2", "R2_onset_max": 13, "APPROVE_ratio": "6/5", "APPROVE_abs_line": "1/4"}
+  },
+  "gates": {
+    "F1": "model identities — FK = (1-q)^N with N recomputed by both arms; conservation per cell (in-window + pre-window + post-window visits = shape total mass, exact); monotonicity (FK nonincreasing in q and in N); anchor coincidence at tau = 0 (all three anchors agree exactly, every cell)",
+    "F2": "the three structure theorems + monotone truncation, checked on the exact arithmetic across the FULL grid — (1) ANCHOR INVARIANCE: under A-FUNNEL the evidence window is funnel-days 1..14 for EVERY tau, so N and FK are exactly tau-invariant at every shape and every q; (2) SPIKE STEP: under A-LIST the spike's entire mass sits on funnel-day 1, so N = 200*1[tau <= 13] — FK constant at (1-q)^200 through tau = 13, exactly 1 at tau >= 14; (3) CAP-30 EQUIVALENCE + BOUNDEDNESS: A-CAP30 == A-FUNNEL exactly for all tau <= 16 (tau + 14 <= 30 <=> tau <= 16) with occupancy bounded by 30 (vs A-FUNNEL's unbounded tau + 14); truncation resumes only at tau > 16 (at tau = 20 the cap admits funnel-days 1..10: N = 174 at BURN); plus MONOTONE TRUNCATION: under A-LIST N(tau) nonincreasing in tau, zero at tau >= 14; FK nondecreasing, exactly 1 at tau >= 14 for every shape and q",
+    "F3": "closed-form anchors — the BURN pencil row N(tau) = (192, 179, 155, 125, 60, 0) across the tau grid under A-LIST from the cumulative schedule (60, 90, 110, 125, 137, 147, 155, 162, 168, 174, 179, 184, 188, 192); BURN total mass 261; DRIP N = 2*(14 - tau)^+ under A-LIST; (99/100)^5 = 9509900499/10000000000 exact; the CAP30 tau = 20 BURN cell N = 174",
+    "F4": "hand world — shape (3, 2, 1), window 3 days, q = 1/2, tau = 1: A-LIST admits funnel-days 1..2 -> N = 5, FK = 1/32 by pencil; the funnel anchor admits days 1..3 -> N = 6, FK = 1/64",
+    "F5": "degeneracies — q = 0 -> FK = 1 everywhere (the dead-product row: perfect specificity, disclosed boundary); q = 1 -> FK = 1[N = 0] (the anchor certainty edge); the tau = 20 A-LIST row = 1 exactly at every shape and q (the committed base case as arithmetic)",
+    "F6": "battery — Arm B exact-equal on every number; twin independently-written decision evaluators agree on the token; Arm-R draw-count sentinels counted and asserted; aux seed 20261583 never read (constructor registry); stdout + results.json byte-identical across two process runs; CPython minor pinned (3.11) and asserted"
+  },
+  "anchors": {
+    "burn_cumulative_schedule_first14": [60, 90, 110, 125, 137, 147, 155, 162, 168, 174, 179, 184, 188, 192],
+    "burn_alist_N_row": [192, 179, 155, 125, 60, 0],
+    "burn_total_mass": 261,
+    "drip_alist_N_formula": "2*(14 - tau)^+",
+    "q_pow_check": {"base": "99/100", "exp": 5, "value": "9509900499/10000000000"},
+    "cap30_tau20_burn_N": 174,
+    "hand_world": {"shape": [3, 2, 1], "window": 3, "q": "1/2", "tau": 1, "alist_N": 5, "alist_FK": "1/32", "funnel_N": 6, "funnel_FK": "1/64"},
+    "receipt": "every anchor value above is copied verbatim from the PROPOSAL 066 F3/F4 lists; the runner re-derives each from the pinned formulas and asserts equality"
+  },
+  "arms": {
+    "A": "DECISION arm, seedless — exact-Fraction schedule-sum arithmetic over the full grid (3 shapes x 3 anchors x 6 tau x 3 q + degeneracy rows), byte-identical across process runs, stdlib only",
+    "B": "twin, seedless, INDEPENDENTLY-WRITTEN — a literal calendar day-walk simulator: walks calendar days 1..(tau + 365), deposits each day's visits per (shape, tau), tests window membership per anchor as a date comparison, accumulates N (and pre-/post-window mass for conservation), computes FK by literal repeated multiplication — must reproduce every Arm-A number EXACTLY; powers the second decision evaluator",
+    "R": "seeded, REPORTING-ONLY — the literal Bernoulli visit process at the decision cell (BURN, q = 1/100), anchors {A-LIST, A-CAP30} x tau in {0, 13}: 100,000 episodes on random.Random(20261580) (draw order: one uniform per in-window visit in schedule order, counts counted and asserted), stability leg random.Random(20261581) at 20,000, presentation shuffle 20261582 (read by the presentation-shuffled stdout grid listing only), aux 20261583 NEVER read; NO statistical gate rides Arm R — a trace drift from the exact FK values is a named finding, never a ruling"
+  },
+  "arm_R_params": {"episodes_main": 100000, "episodes_stability": 20000, "cells": [["A-LIST", 0], ["A-LIST", 13], ["A-CAP30", 0], ["A-CAP30", 13]], "draws_per_episode": "exactly N(BURN, anchor, tau) uniforms — one per in-window visit in schedule order, counted and asserted per cell"},
+  "seeds": {"main": 20261580, "stability": 20261581, "presentation": 20261582, "aux_never_read": 20261583, "note": "20261580-583 pinned by the P066 drafter, strictly above the idea-engine tree high-water 20261570 (P065's registration) and sim-lab's genuine high-water 20261566 (V077's block); the gap 20261571-579 was DELIBERATELY left unallocated by the drafter as the in-flight VERDICT 078 allocation buffer (V078 allocated 20261567-570 — the buffer stands disclosed and unused, the collision it guarded against never materialized); this verdict session allocates NO seeds of its own — the drafter's registered allocation IS the session seed set (the V077/V078 precedent). Registry high-water after this slice: 20261583 (reserved aux; highest READ 20261582)."},
+  "drafter_disclosed_never_gated": {
+    "note": "the drafting prototype's disclosed landing beyond the F3/F4-gated anchors, re-derived from scratch this session and COMPARED, never gated; any mismatch is a named finding (the V077/V078 A1/A2 convention)",
+    "decision_cell_FK_by_tau": [0.145197, 0.165463, 0.210598, 0.284708, 0.547157, 1.0],
+    "R1_high_margin": "0.547157 >= 1/2 at 1.094x",
+    "R1_low_margin": "0.145197 <= 1/5 at 1.377x under",
+    "R2_onset": 13,
+    "R2_ratio_at_13": 3.768,
+    "R2_ratio_at_10": 1.9608,
+    "cap30_flat_value": 0.145197,
+    "cap30_tau20_FK": 0.17399,
+    "spike_FK_constant": 0.13398,
+    "q_1_30_FK13": 0.130799,
+    "q_1_30_ratio": 87.8,
+    "q_1_300_FK0": 0.526729,
+    "drip_FK0": 0.754719
+  },
+  "harvested_sentences": {
+    "pin": "menno420/venture-lab @ 520bdfca71ca4f119808d1098cd4ecf7fc6e6732 (FIRSTHAND, fetched 2026-07-15T05:31Z by the P066 drafter; quoted verbatim in the idea file — the sim is hermetic and never re-reads them)",
+    "anchor_sentence": "T+14 (deadline) = 2026-07-26 — signal = >=1 organic sale OR >=1 qualified inbound within 14 days of the listing going live. No signal by T+14 -> ledger flag-E a NEGATIVE and pause / delist the product.",
+    "base_case_sentence": "BASE CASE is 0 sales until a distribution channel is wired (the free gotcha article -> gist -> StackOverflow answer -> listing -> r/stripe funnel is still owner-gated), so payback is INDEFINITE absent traffic.",
+    "channel_adjectives": ["Show HN ... Spiky: 0 to a few hundred visits ... One shot", "Dev.to ... Long-tail SEO, low ... Slow-burn", "In-repo README buy badge ... Near-zero traffic, but free"],
+    "lived_launch_timestamps": {"listing_live": "2026-07-12T16:25:16Z", "funnel_top_article_live": "2026-07-12T17:18:47Z", "onset_tau_days": 0}
+  },
+  "fixture_level_conventions": {
+    "C1": "Arm-R Bernoulli draw: u = rng.random(); a visit converts iff Fraction(u) < q strict (exact-rational comparison, no float thresholds); exactly one uniform per in-window visit in schedule order (pre-/post-window visits draw nothing — the evidence mass IS the priced object; N is deterministic per cell, so the per-cell sentinel is episodes * N exactly)",
+    "C2": "Arm-R episode semantics: an episode is one product's evidence window at the cell; FK-hat = zero-sale episodes / episodes, reported beside the exact FK; per-episode draw count == N asserted",
+    "C3": "Arm-B day-walk horizon: calendar days 1..(tau + 365) — a superset of the registered 1..60 walk with identical membership tests, extended so the twin also verifies conservation against DRIP's full 730-visit mass (the registered 60-day walk covers every window, whose latest possible end is calendar day 34, but not DRIP's total mass); N/FK identical either way, disclosed",
+    "C4": "published exact surface scope: the full N table and FK table (3 shapes x 3 anchors x 6 tau x 3 q, Fractions as num/den strings + float renderings), the doubling-onset row per (shape, q) under A-LIST, the occupancy row per anchor per tau, degeneracy rows q in {0, 1}, theorem checks, hand world, the queue reporting row",
+    "C5": "canonical serialization: exact rationals as reduced num/den decimal strings, floats via repr(), 6-decimal renderings via exact scaled-integer rounding (round-half-up on the exact Fraction, no float pathway), json sort_keys = True, no timestamps in results.json or stdout",
+    "C6": "doubling-onset comparison is exact: FK(tau) >= 2*FK(0) as Fractions; a profile with no qualifying grid tau publishes the string 'off-grid-right'",
+    "C7": "twin decision evaluators: evaluator A reads Arm-A numbers, evaluator B reads Arm-B numbers, independently-coded band logic, registered order REJECT -> INVALID -> APPROVE -> NULL; INVALID short-circuits on any gate failure (the V078 C7 convention)",
+    "C8": "the aux-seed assertion is enforced by a constructor registry: every random.Random construction logs its seed; the registry must equal [20261580, 20261581, 20261582] exactly and never contain 20261583",
+    "C9": "the drafter's disclosed 6-decimal floats are compared by rounding the exact Fraction to 6 decimal places (round-half-up); ratio disclosures (1.094x, 1.377x, 3.768x, 1.9608x, 87.8x) are compared at their stated precision; every mismatch is a first-class named anomaly in REPORT.md, never smoothed",
+    "C10": "the R3/theorem-3 'every grid tau <= 16' set is {0, 3, 7, 10, 13} (the registered grid's members <= 16); worst-case occupancy is taken over the FULL tau grid including 20 (min(20+14, 30) = 30 <= 30)",
+    "C11": "anomaly convention: drafter-disclosed constants re-derived and compared line-by-line (the V077/V078 A1/A2 precedent); no expression slip was pre-identified in P066's anchor text at registration — the drafter machine-checked the disclosed landing per the V078 session-card recommendation"
+  },
+  "runtime_pins": {"python": "CPython 3.11 (minor pinned and asserted)", "stdlib_only": true, "hermetic": "reads only this fixtures.json", "determinism": "stdout + results.json byte-identical across two full process runs (external diff + sha256, hashes in REPORT.md)"}
+}
