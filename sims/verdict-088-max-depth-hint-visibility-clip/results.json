@@ -1,0 +1,756 @@
+{
+ "anomaly_census": {
+  "compared_and_matched": 29,
+  "compared_and_mismatched": [],
+  "not_disclosed": [
+   "arm_R seeded rates \u2014 the registration disclosed the estimand and the seed set only, no seeded counts; empirical rates print beside the exact expectations 14/80, 10/80, 20/80, 24/64 with nothing to compare"
+  ]
+ },
+ "arm_R": {
+  "exact_expectations": {
+   "deep_diver": "20/80",
+   "fully_invisible": "14/80",
+   "ghost_only": "10/80",
+   "minimap_invisible_given_hint_present": "24/64"
+  },
+  "main": {
+   "documents": 10000,
+   "draws": 99566,
+   "events": {
+    "deep_diver": 9946,
+    "fully_invisible": 6816,
+    "ghost_only": 4850,
+    "hint_present_miners": 31862,
+    "minimap_invisible_hint_present": 11666
+   },
+   "miners": 39783,
+   "seed": 20261670
+  },
+  "presentation_order": [
+   2,
+   3,
+   0,
+   4,
+   1
+  ],
+  "stability": {
+   "documents": 4000,
+   "draws": 39878,
+   "events": {
+    "deep_diver": 4031,
+    "fully_invisible": 2879,
+    "ghost_only": 1996,
+    "hint_present_miners": 12806,
+    "minimap_invisible_hint_present": 4875
+   },
+   "miners": 15939,
+   "seed": 20261671
+  }
+ },
+ "censuses": {
+  "badge_earn_total": 20,
+  "badge_flip_cell_list": [
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    3
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    2,
+    3
+   ]
+  ],
+  "badge_flip_cells": 12,
+  "badge_overshoot_denials": 24,
+  "fully_invisible_by_hint": {
+   "0": 9,
+   "1": 4,
+   "2": 1,
+   "3": 0
+  },
+  "fully_invisible_cells": [
+   [
+    0,
+    1,
+    1
+   ],
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    0,
+    1,
+    3
+   ],
+   [
+    0,
+    2,
+    1
+   ],
+   [
+    0,
+    2,
+    2
+   ],
+   [
+    0,
+    2,
+    3
+   ],
+   [
+    0,
+    3,
+    1
+   ],
+   [
+    0,
+    3,
+    2
+   ],
+   [
+    0,
+    3,
+    3
+   ],
+   [
+    1,
+    2,
+    2
+   ],
+   [
+    1,
+    2,
+    3
+   ],
+   [
+    1,
+    3,
+    2
+   ],
+   [
+    1,
+    3,
+    3
+   ],
+   [
+    2,
+    3,
+    3
+   ]
+  ],
+  "fully_invisible_total": 14,
+  "ghost_only_total": 10,
+  "minimap_invisible_total": 24,
+  "t4_domination_holds": true,
+  "t4_strict_count": 14
+ },
+ "g5_hand_world": {
+  "badges": {
+   "P": true,
+   "Q": true,
+   "S": false,
+   "T": false
+  },
+  "bands": 1,
+  "ladder_band0": {
+   "depth": 0,
+   "here": [
+    "P"
+   ],
+   "record_only": [
+    "Q"
+   ]
+  }
+ },
+ "g6_repair_worlds": {
+  "a_conformance": {
+   "accepted": 46,
+   "approve_fires": true,
+   "censuses_zero": true,
+   "flip_pairs": 0
+  },
+  "b_overflow_bands": {
+   "fully_invisible": 0
+  },
+  "c_badge_gte": {
+   "byte_identical_at_meff3": true,
+   "earn": 44,
+   "flips": 0
+  }
+ },
+ "lattice_table": {
+  "0|0|0": {
+   "badge": true,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "0|0|1": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "0|0|2": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "0|0|3": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "0|1|0": {
+   "badge": true,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "0|1|1": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "0|1|2": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "0|1|3": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "0|2|0": {
+   "badge": true,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "0|2|1": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "0|2|2": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "0|2|3": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "0|3|0": {
+   "badge": true,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "0|3|1": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "0|3|2": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "0|3|3": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "1|0|0": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "1|0|1": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "1|0|2": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "1|0|3": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "1|1|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "1|1|1": {
+   "badge": true,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "1|1|2": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "1|1|3": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "1|2|0": {
+   "badge": false,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "1|2|1": {
+   "badge": true,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "1|2|2": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "1|2|3": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "1|3|0": {
+   "badge": false,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "1|3|1": {
+   "badge": true,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "1|3|2": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "1|3|3": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "2|0|0": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "2|0|1": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "2|0|2": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "2|0|3": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "2|1|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "2|1|1": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "2|1|2": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "2|1|3": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "2|2|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "2|2|1": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "2|2|2": {
+   "badge": true,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "2|2|3": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "2|3|0": {
+   "badge": false,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "2|3|1": {
+   "badge": false,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "2|3|2": {
+   "badge": true,
+   "ghost": true,
+   "live": false,
+   "map": false
+  },
+  "2|3|3": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "3|0|0": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "3|0|1": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|0|2": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|0|3": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|1|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|1|1": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "3|1|2": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|1|3": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|2|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|2|1": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|2|2": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "3|2|3": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|3|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|3|1": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|3|2": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "3|3|3": {
+   "badge": true,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "absent|0|0": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "absent|0|1": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|0|2": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|0|3": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|1|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|1|1": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "absent|1|2": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|1|3": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|2|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|2|1": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|2|2": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "absent|2|3": {
+   "badge": true,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|3|0": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|3|1": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|3|2": {
+   "badge": false,
+   "ghost": true,
+   "live": true,
+   "map": true
+  },
+  "absent|3|3": {
+   "badge": true,
+   "ghost": false,
+   "live": true,
+   "map": true
+  }
+ },
+ "meter_rows_reporting": {
+  "d3_m1": 300.0,
+  "d3_m2": 150.0,
+  "m0": 0.0
+ },
+ "seed_registry": {
+  "aux_never_read": 20261673,
+  "constructed": [
+   20261670,
+   20261671,
+   20261672
+  ]
+ },
+ "self_checks": {
+  "failed": 0,
+  "failures": [],
+  "passed": 553
+ },
+ "t3_witness": {
+  "A_first_coins_board": true,
+  "A_first_depth_board": true,
+  "A_outputs": {
+   "badge": false,
+   "ghost": false,
+   "live": false,
+   "map": false
+  },
+  "B_outputs": {
+   "badge": true,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "absent_twin_A": {
+   "badge": true,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "absent_twin_B": {
+   "badge": false,
+   "ghost": false,
+   "live": true,
+   "map": true
+  },
+  "accepted": true
+ },
+ "twin_verdicts": {
+  "arm_A_closed_forms": "REJECT",
+  "arm_B_independent": "REJECT"
+ },
+ "verdict": "REJECT"
+}

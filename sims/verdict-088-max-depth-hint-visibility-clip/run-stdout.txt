@@ -1,0 +1,17 @@
+VERDICT 088 — max_depth hint visibility clip (P075)
+ruling: REJECT (twin evaluators REJECT / REJECT)
+lattice: hint {absent,0,1,2,3} x depth 0..3 x record 0..3 = 80 cells, ALL accepted by the re-derived v1 check (zero cross-field applicators — the pinned sweep is EMPTY)
+fully-invisible census: 14/80, per-hint {m0: 9, m1: 4, m2: 1, m3: 0} = (3-m)^2 exactly
+minimap-invisible: 24/80; ghost-chip-only: 10/80
+badge: earn 20/80 (iff r == m_eff); non-monotone flips 12 (dig one past the hint, lose 'Deep Diver'); overshoot denials 24; m=0 inversion CONFIRMED (never-dug r=0 earns, r=3 explorer denied)
+T4 domination: absence >= presence on all 64 comparisons (True), strict on exactly 14 cells == the invisible cells (True)
+T3 witness (m=2, A(3,3) top coins/XP, B(2,2)): accepted; A #1 on depth board True, #1 on coins board True; A world-view rows: live=False ghost=False map=False; badge A=False B=True; absent-hint twin flips all three: True
+G5 hand world (m=0; P(0,0) Q(1,0) S(2,2) T(3,3)): bands=1; P live; Q ghost-chip only; S,T fully invisible; deep_diver={P,Q} — five facts checked
+G6 repairs: (a) conformance applicator 80->46 accepted, censuses zero, flip pairs 0, APPROVE fires; (b) overflow bands invisible 0/80; (c) >= badge 44/80, flips 0, byte-identical to == at m_eff=3
+meter rows (reporting, committed JS ternary): d3/m2=150%, d3/m1=300%, m=0 -> 0% for every miner (falsy zero)
+arm R main (seed 20261670, 10000 docs, 39783 miners): invisible 6816/39783 (exact 14/80), ghost-only 4850/39783 (exact 10/80), deep_diver 9946/39783 (exact 20/80), minimap-invisible|hint 11666/31862 (exact 24/64)
+arm R stability (seed 20261671, 4000 docs, 15939 miners): invisible 2879/15939, ghost-only 1996/15939, deep_diver 4031/15939, minimap-invisible|hint 4875/12806
+presentation order (seed 20261672): 2,3,0,4,1
+seed registry: [20261670, 20261671, 20261672] (aux 20261673 never read)
+anomaly census (structured, V087 coverage convention): compared-and-matched 29, mismatched 0, not-disclosed 1 (arm-R seeded rates — vacancy, honestly stated)
+self-checks: 553 passed, 0 failed
