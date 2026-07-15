@@ -36,6 +36,8 @@ seat digest) · `docs/ideas/README.md` ·
 `docs/retro/questions.md` (the fleet retro self-review set) ·
 `docs/audits/2026-07-13-fleet-cleanup-audit.md` (external fleet-wide
 cleanup/audit pass, EAP final night) ·
+`docs/_merge_verification_2026-07-15.md` (one-off merge-automation
+verification probe, external audit session — historical, see its own badge) ·
 [`docs/eap-closeout-walkthrough-2026-07-14.md`](eap-closeout-walkthrough-2026-07-14.md)
 (the owner-facing EAP close-out walkthrough, ORDER 008 item (b)) — plus the root
 `CONSTITUTION.md` (the working agreement), the lane contract (root `README.md` +
