@@ -1,0 +1,83 @@
+VERDICT 080 — the stale-ink mirror (idea-engine PROPOSAL 067)
+hermetic runner: fixtures.json is the only input; CPython 3.11 asserted
+
+F1 world identity: base/phase/day-1/witness tables re-derived from seed 0x5749434B — matched by both arms
+E(a) sums a=1..12: [669, 1131, 1596, 1838, 2075, 2067, 2064, 1828, 1591, 1127, 664, 0]
+I(a) census a=1..12: 1:0/240 2:60/240 3:120/240 4:180/240 5:240/240 6:300/300 7:240/240 8:180/240 9:120/240 10:60/240 11:0/240 12:0/300
+clamp census days 1..30: at-bound 53/600 (C1 reading, disclosed 53/600); strictly-out 35/600
+A-then-B round trip at 547 cap-free clamp-free cells: net 0 exactly (the committed 'always loses gold' comment is a disclosed micro-erratum)
+
+F2 theorems:
+  T1 photograph  tri12(m+12) =  tri12(m): EXACT (all m)
+  T2 mirror      tri12(m+6)  = -tri12(m): EXACT (all m)
+  T3a the 12 consecutive-value pairs pairwise distinct: EXACT
+  T3b two-morning unique decode AS REGISTERED: FALSE — 0/24360 unclamped consecutive-pair grid cases decode uniquely; candidate histogram {'2': 1160, '3': 3828, '4': 6264, '5': 5800, '6': 7308}
+      committed-world own-cell histogram: {'2': 27, '3': 100, '4': 113, '5': 100, '6': 166}
+      counterexample (worst): good 0, true (base,phase)=(7,0), day 5, readings [9, 10] -> 6 indistinguishable in-grid candidates [[7, 0], [8, 11], [9, 10], [10, 9], [11, 8], [12, 7]]
+  corrected decode (C12): k consecutive unclamped mornings leave N in-grid candidates —
+      k=2: {2: 1160, 3: 3828, 4: 6264, 5: 5800, 6: 7308}
+      k=3: {1: 3472, 2: 1344, 3: 4872, 4: 6272, 5: 6440}
+      k=4: {1: 6696, 2: 2592, 3: 5184, 4: 6048}
+      k=5: {1: 10296, 2: 3120, 3: 5304}
+      k=6: {1: 13200, 2: 3800}
+      k=7: {1: 15360}
+      k=8: {1: 13800}
+      lag-6 mirror pair pins base exactly at all 18624 unclamped anti-phase pairs: base = (r_d + r_d+6)/2 (T2 corollary)
+
+F4 hand world (2 towns x 1 good, step 1): E(1,3,6,12) = (24, 56, 72, 0), I = (0/16, 8/16, 20/20, 0/20) — pencil values matched, both arms
+F5 degeneracies: drift_step 0 -> E = 0 and empty I census (ink never lies); E(12) = E(24) = E(36) = 0 exactly, both arms
+
+four-arm census (registered-text scaffold, C2/C3):
+  decks_on: ORACLE=1311(first300=6)  SCRYER=1278(first300=6)  INKTRUTH=900(first300=6)  BLIND=9(first300=None)
+  decks_off: ORACLE=1239(first300=6)  SCRYER=1290(first300=6)  INKTRUTH=792(first300=6)  BLIND=11(first300=None)
+  SCRYER/ORACLE decision ratio: 1278/1311 = 0.9748 (line 9/10; margin 1.0831x)
+  decks-off ratio 1.0412 (registered overshoot line 11/10)
+  SCRYER identified cells by day 30: 16/20
+drafter-evident scaffold rows (C10, reporting): decks_on ORACLE=1309 SCRYER=1276 INKTRUTH=898 BLIND=18 | decks_off ORACLE=1237 SCRYER=1288 INKTRUTH=790 BLIND=8
+
+Arm R (seeded; the drafter's registered allocation is the session seed set):
+  main (seed 20261590): R2 replication 56/200 = 0.2800 (n3 line: 1/2); first-20 slice 5/20
+  stability (seed 20261591): R2 replication 41/200 = 0.2050
+  main ordering census: {"ORACLE>SCRYER>INKTRUTH>BLIND": 83, "ORACLE>INKTRUTH>SCRYER>BLIND": 58, "SCRYER>ORACLE>INKTRUTH>BLIND": 25, "INKTRUTH>ORACLE>SCRYER>BLIND": 17, "SCRYER>INKTRUTH>ORACLE>BLIND": 9, "INKTRUTH>SCRYER>ORACLE>BLIND": 6, "ORACLE>INKTRUTH>BLIND>SCRYER": 1, "ORACLE>SCRYER>BLIND>INKTRUTH": 1}
+  presentation sample (12 of 200 main rows, seed 20261592):
+    world[072] seed=2832904580  O=864   S=478   I=383   B=6      R2 fails
+    world[004] seed=2986138732  O=603   S=327   I=349   B=0      R2 fails
+    world[128] seed=2852811994  O=1062  S=1080  I=729   B=8      R2 holds
+    world[108] seed=2590952823  O=676   S=470   I=939   B=12     R2 fails
+    world[028] seed=2851669695  O=1048  S=948   I=762   B=4      R2 holds
+    world[198] seed=3239501457  O=756   S=829   I=624   B=11     R2 holds
+    world[026] seed=1045712735  O=884   S=869   I=832   B=12     R2 holds
+    world[063] seed=2532558373  O=956   S=673   I=838   B=6      R2 fails
+    world[145] seed=0150131380  O=503   S=815   I=933   B=21     R2 holds
+    world[129] seed=2475226064  O=897   S=807   I=571   B=12     R2 fails
+    world[103] seed=3019591954  O=1053  S=486   I=325   B=6      R2 fails
+    world[165] seed=0059175329  O=724   S=453   I=552   B=19     R2 fails
+
+decision (registered order REJECT -> INVALID -> APPROVE -> NULL; C7/C11):
+  R1 mirror identities: I(6)=300/300 I(12)=0/300 E(12)=0 -> HOLDS
+  R2 decodability: 426/437 = 0.974828 >= 9/10 -> HOLDS
+  R3 theorem conjunct: T1 EXACT, T2 EXACT, T3a EXACT, T3b FALSE -> FAILS (T3b: 0 of 24360 unclamped consecutive-pair cases decode uniquely)
+  APPROVE clauses: I(6) <= 1/2 fails (I(6) = 1 exactly)
+  NULL axes fired: n3, n4
+
+VERDICT (both evaluators agree): NULL — axes n3+n4
+
+anomaly channel (C9, drafter-disclosed vs measured, never gated):
+  matches (6): E_sums: [669, 1131, 1596, 1838, 2075, 2067, 2064, 1828, 1591, 1127, 664, 0]; I(6): 300/300; I(12): 0/300; clamp_census(C1 at-bound): 53/600; informed_cross_day: 6; scryer_identified_by_30: 16/20
+  MISMATCHES (10):
+    decks_on.ORACLE: measured 1311 vs disclosed 1309
+    decks_on.SCRYER: measured 1278 vs disclosed 1201
+    decks_on.INKTRUTH: measured 900 vs disclosed 898
+    decks_on.BLIND: measured 9 vs disclosed 0
+    decks_off.ORACLE: measured 1239 vs disclosed 1237
+    decks_off.SCRYER: measured 1290 vs disclosed 1496
+    R2_ratio(4dp): measured 0.9748 vs disclosed 0.9175
+    decks_off_ratio(3dp): measured 1.041 vs disclosed 1.209
+    T3b_unique_decode_claim: measured FALSE (0/24360 unique) vs disclosed TRUE per registration ('enumeration in the theorem gate')
+    alt_world_replication: measured 56/200 (first-20 slice 5/20) vs disclosed 9/20 at drafting n=20
+  diagnosis.reserve_constant: the drafter-evident scaffold (reserve = toll*dist + toll, C10) reproduces the disclosed ORACLE decks-on/off and INKTRUTH decks-on EXACTLY: measured 1309/1237 and 898 vs disclosed 1309/1237 and 898 — the drafting prototype's solvency reserve evidently added one TOLL, not the registered guard FEE
+  diagnosis.scryer_blind_cells: no natural reading of the registered SCRYER/BLIND text reproduces the disclosed SCRYER 1201/1496 or BLIND 0 (nearest natural reading, C4: 1276/1288 and 18 under the drafter-evident scaffold); the identified-cell timeline (16/20 by day 30) and the day-6 crossing DO reproduce
+  diagnosis.t3b: the registered T3b drafting verification ('unique (base,phase) recovery ... matched') cannot reproduce: uniqueness fails at EVERY one of the 24360 unclamped consecutive-pair grid cases (candidate counts 2..6); the drafting enumeration evidently checked T3a (tri-value pair distinctness) only — distinct tri PAIRS do not give reading-space identifiability because base translation composes with phase shift within a diff-sign class
+
+self-checks: 31 run, 0 failed
+seed registry: constructed [20261590, 20261591, 20261592]; aux 20261593 never read
