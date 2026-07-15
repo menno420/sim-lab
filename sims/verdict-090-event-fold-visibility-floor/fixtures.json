@@ -1,0 +1,129 @@
+{
+  "_provenance": {
+    "source": "idea-engine PROPOSAL 077 (control/outbox.md block stamped 2026-07-15T23:10:50Z) + ideas/superbot-idle/event-fold-visibility-floor-2026-07-15.md @ idea-engine main 8aa71ba (landed via idea-engine PR #442, merged 2026-07-15T23:14:34Z by github-actions[bot], head cb9c2d9)",
+    "ground_truth": "COMMITTED external constants re-verified FIRSTHAND before this fixture was written, on a read-only clone of superbot-idle @ 884aeae9687742a389a2e2086a4cc930e5a4f3ee: docs/design/timed-events-scoping.md section 2 seventh-factor fold + graduation identity (code block verbatim), section 1a proportionality promise, section 5 SE-2 'credited exactly the window bonus', section 3 'state_version stays 2', section 6 'nothing in this doc is built'; idle_engine/engine.py six-factor fold // 100_000_000 with count INSIDE the single floor ('The floor division happens ONCE per generator per second'); idle_engine/economy.py UPGRADE_EFFECT_PERCENT=25, PRESTIGE_BONUS_PERCENT=10, MILESTONE_BONUS_PERCENT=5, 9 milestone rungs (3x3 threshold tuples); themes/*.yaml base_rate multiset {1: 18, 5: 17}, zero balance blocks, 18 packs; idle_engine/state.py rate_multiplier_pct bounds 90..110. All verbatim, zero harvest anomalies. The sim itself is hermetic: it reads ONLY this fixtures.json",
+    "note": "values copied verbatim from the registration; the runner re-derives everything from scratch and must not trust the anchors — a mismatch is a first-class anomaly"
+  },
+  "fold": {
+    "committed_event_fold": "rate_event = base_rate * count * upgrade_pct * prestige_pct * milestone_pct * theme_pct * event_pct // 10_000_000_000 (timed-events-scoping.md section 2, code block verbatim; count and event pct INSIDE the single floor, pinned by the doc's code block and engine.py's shipped precedent)",
+    "committed_today_fold": "rate_today = base_rate * count * upgrade_pct * prestige_pct * milestone_pct * theme_pct // 100_000_000 (engine.py production_per_second, shipped)",
+    "event_denominator": 10000000000,
+    "today_denominator": 100000000,
+    "graduation_identity": "(x * 100) // 10_000_000_000 == x // 100_000_000 asserted on EVERY lattice cell (F1)"
+  },
+  "economy_percents": {
+    "upgrade_pct_per_level": 25,
+    "prestige_pct_per_unit": 10,
+    "milestone_pct_per_earned": 5,
+    "milestone_rungs_max": 9,
+    "upgrade_pct_law": "100 + 25*L",
+    "prestige_pct_law": "100 + 10*u",
+    "milestone_pct_law": "100 + 5*m"
+  },
+  "base_rate_multiset": { "1": 18, "5": 17, "packs": 18, "balance_blocks": 0 },
+  "theme_grid": [90, 100, 110],
+  "lattice": {
+    "base": [1, 5],
+    "count": [1, 25],
+    "upgrade_level": [0, 12],
+    "prestige_units": [0, 10],
+    "milestones": [0, 9],
+    "iteration_order": "itertools.product order over (base, count, L, u, m, theme)",
+    "size": 214500,
+    "size_contact": "214,500 = 2*25*13*11*10*3",
+    "alive": 214496,
+    "zero_rate_cells": [[1, 1, 0, 0, 0, 90], [1, 1, 0, 0, 1, 90], [1, 1, 0, 0, 2, 90], [1, 1, 0, 1, 0, 90]],
+    "cap_note": "caps count<=25, L<=12, u<=10 are the axis-cap convention (NULL axis ii); R1/R3 cap-free by construction; census rows cap-relative and disclosed"
+  },
+  "event_grid": [110, 125, 150, 175, 200],
+  "t1_all_e_sweep": [101, 199],
+  "repair_arms": {
+    "a_min_delta": "V038's registered min-visible-delta fallback: rate_event' = max(rate_event, rate_today + 1) during a window",
+    "b_milli_ledger": { "G": 1000, "law": "milli rates: R0m = x*1000 // 10^8, REm = x*E*1000 // 10^10; price = save v3 + golden-corpus same-PR policy + economy re-registration (breaks the doc's section 3 promise)" },
+    "c_rate_floor": { "R_star": 20, "law": "event proportionality promised only at rate_today >= R_star; price = the start state stays dead (concedes Horn 2's 'for idlers and actives alike')" }
+  },
+  "f3_census_anchors": {
+    "lattice_size": 214500,
+    "alive": 214496,
+    "zero_rate_cell_count": 4,
+    "dead_census_row": [4151, 675, 56, 14, 0],
+    "dead_at_rate_ge_20_row": [0, 0, 0, 0, 0],
+    "e200_zero_certificate": "floor(2r) >= 2*floor(r) > floor(r) for r >= 1",
+    "jackpot_ratio": "20/11",
+    "jackpot_witness_cell": [1, 1, 0, 2, 8, 110],
+    "minimum_ratios_per_e": ["10/11", "4/5", "2/3", "4/7", "1"],
+    "staircase_envelope": "floor(R*E/100) <= RE <= ceil((R+1)*E/100) - 1 on every alive cell, BOTH edges attained at every grid E",
+    "arm_a_overshoot_canonical_x110": "20/11",
+    "arm_b_milli_census": 0,
+    "arm_b_milli_certificate_bound": 99,
+    "arm_b_milli_canonical_minimum": 100,
+    "arm_c_deviation_bound": "1/22",
+    "first_paying_e": 200,
+    "dead_e_count": 99,
+    "one_upgrade_dead_at_150": "x = 1.25e8, 1.25*1.5 = 1.875 -> rate still 1",
+    "first_paying_neighbour": "upgrade + two milestones: 1.375*1.5 = 2.0625 -> rate 2 (x*150 == 20_625_000_000 with x = 137_500_000)"
+  },
+  "pencil_worlds": {
+    "festival_seconds": 3600,
+    "canonical_cell": [1, 1, 0, 0, 0, 100],
+    "canonical_festival_extra_at_x110": 0,
+    "jackpot_festival_extra_at_x110": 3600,
+    "calendar_segments": [[7, "off"], [5, "on"], [11, "off"], [3, "on"], [2, "off"]],
+    "calendar_law": "piecewise closed-form credit == 1-second tick loop, byte-equal, on four lattice cells x all five grid multipliers, including the degenerate all-zero-delta trace",
+    "calendar_cells_sim_chosen": [[1, 1, 0, 0, 0, 100], [1, 1, 0, 2, 8, 110], [1, 1, 1, 0, 0, 100], [5, 25, 12, 10, 9, 110]],
+    "calendar_cells_note": "VACANCY: the registration pins 'four lattice cells' by COUNT only — the four cells are sim-chosen (canonical, jackpot witness, one-upgrade neighbour, lattice max) and disclosed here; the degenerate all-zero-delta trace is the canonical cell at x1.10"
+  },
+  "typed_must_equal_contacts": {
+    "contact_1": "dead-E count 99 == 199 - 101 + 1",
+    "contact_2": "arm (a) min-delta overshoot on the canonical cell at x1.10 == the x1.10 lattice jackpot ratio, both exactly 20/11",
+    "contact_3": "the x1.10 dead census (Arm A integer) == the independent Fraction-classifier count (Arm B)",
+    "contact_4": "payers-at-x2.00 == alive exactly (214,496)"
+  },
+  "arm_r": {
+    "traces_per_seed": 10000,
+    "draw_order_grammar": "REGISTERED (the V089 lesson, applied by the drafter): one random.Random(seed) per trace set; per trace exactly three draws in this order: (1) cell index uniform over the alive-cell list in lattice iteration order (base, count, L, u, m, theme — itertools.product order), (2) E uniform over the grid tuple, (3) window length W uniform integer in 600..86400 s",
+    "draws_per_trace": 3,
+    "draw_count_sentinel_per_seed": 30000,
+    "seeds_reporting_only": [20261690, 20261691, 20261692],
+    "aux_seed_never_read": 20261693,
+    "seed_gap_disclosed": "20261684-689 is the disclosed in-flight buffer; 20261680-683 are P076/V089's registered set",
+    "disclosed_previews": {
+      "20261690": { "dead_traces": 49, "total_extra_units": 40533190487 },
+      "20261691": { "dead_traces": 41, "total_extra_units": 39898597051 },
+      "20261692": { "dead_traces": 43, "total_extra_units": 39906644697 }
+    },
+    "no_statistical_gate": true
+  },
+  "controls": {
+    "theme_100_sublattice": "NULL axis (i): committed-packs sub-lattice (theme = 100 only) — pre-checked non-flipping at drafting (the canonical cell is a theme-100 cell and is dead at four grid multipliers); the verdict re-derives it",
+    "cap_bump": "NULL axis (ii): count/L/u caps moved up one notch (26/13/11) must not flip R1/R3 — R1 is cap-free by construction",
+    "e_grid_convention": "NULL axis (iii): T1's all-E sweep is grid-free; census rows are per-E findings, never aggregated",
+    "e100_neutrality": "F5: at E = 100 the event delta is identically 0 on every alive cell (the graduation identity restated)",
+    "alt_fold_named_control": "VACANCY (sim-chosen value, control registered by NAME only): the alternative fold reading (count OUTSIDE the single floor: rate = count * (per-unit fold)) is carried as a named REPORTING-ONLY control — a different fold reading would dissolve T1; the committed reading (count inside) is pinned by the doc's code block and engine.py"
+  },
+  "decision_rule": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "REJECT": "R1 (dead band): canonical-cell event delta = 0 for all 99 integer E in 101..199 AND first paying E = 200 exactly AND the one-upgrade neighbour still dead at E = 150. AND R2 (census + jackpot): alive-cell dead censuses exactly (4,151 / 675 / 56 / 14 / 0) AND the x1.10 realized/nominal maximum exactly 20/11 on a rate-1 witness AND the staircase envelope holds with both edges attained at every grid E. AND R3 (repair fork): arm (a) overshoot = 20/11 exactly AND arm (b) milli-census = 0 with the >= 99 certificate AND arm (c) deviation bound = 1/22 exactly with zero dead cells at rate >= 20.",
+    "INVALID": "any F1-F6 gate failure (controls misbehaving — report, no ruling)",
+    "APPROVE": "every grid E has dead census 0 AND realized/nominal in [20/21, 21/20] on all alive cells — satisfied by the arm-(b) milli-granular engine, mutually exclusive with REJECT by arithmetic",
+    "NULL": "anything else; pre-registered axes: (i) theme-100 committed-packs sub-lattice, (ii) axis-cap convention, (iii) E-grid convention — every NULL a finalized citable finding with exact censuses attached, never a re-run request"
+  },
+  "margin_ledger_registered_cells": {
+    "first_paying_e_contact": "E = 200 is a registered margin-0 contact (canonical rate 1 -> 2, the minimal positive delta)",
+    "dead_band_saturated": "99/99 dead is a saturated cell (every E in the sane band — no room above)",
+    "e200_census_zero_cell": "the x2.00 dead census 0 is a zero cell, certified by floor(2r) >= 2*floor(r) > floor(r) for r >= 1",
+    "jackpot_equality": "the x1.10 maximum realized/nominal is EXACTLY 20/11 (equality, not clearance)",
+    "overshoot_equals_jackpot": "arm (a) overshoot == jackpot ratio, both 20/11 (typed contact 2)",
+    "deviation_equality": "arm (c) deviation bound is EXACTLY 1/22, attained at x1.10 on a rate-20 cell",
+    "milli_minimum": "arm (b) canonical milli-delta EXACTLY 100; lattice minimum a clearance >= the certified 99",
+    "payers_at_x2_equals_alive": "payers-at-x2.00 == alive (typed contact 4; saturated — every alive cell pays)"
+  },
+  "perception_boundary": "V038's committed definition imported verbatim: 'felt = integer rate delta > 0' — a fractional-rate UI would change the question and the engine exposes none",
+  "value_boundary": "the doc registers NO bonus values by design — every theorem is per-E, T1 quantifies over the whole sane band 101..199, and no ruling here proposes or blesses a bonus value",
+  "expected_landing_disclosed": "REJECT on R1 AND R2 AND R3 at the drafter's exact values (26/26 drafting checks PASS, exit 0, ~11 s); the sim re-derives everything from scratch and must not trust these",
+  "battery": {
+    "cpython_pin": "3.11",
+    "byte_identity": "stdout + results.json byte-identical across two process runs (Arms A/B seedless exact integer/Fraction arithmetic, platform-independent; Arm R pinned to the stated CPython minor)",
+    "anomaly_census_convention": "structured by disclosure coverage (V087-V089): compared-and-matched / compared-and-mismatched / not-disclosed(vacant); mismatches are first-class anomalies"
+  }
+}

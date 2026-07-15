@@ -1,0 +1,293 @@
+{
+  "anomaly_census": {
+    "compared_and_matched": 20,
+    "compared_and_mismatched": [],
+    "vacant": [
+      "envelope edge-attainment counts per E (attainment registered as a boolean; counts undisclosed)",
+      "per-E realized/nominal MAXIMA beyond x1.10 (only the x1.10 jackpot 20/11 is disclosed; the other grid rows are reported in results.json)",
+      "pencil-calendar cell set (registered by COUNT 'four lattice cells' only; sim-chosen, disclosed in fixtures.json)",
+      "theme-100 sub-lattice dead-census values (axis registered as non-flipping; values undisclosed \u2014 reported in results.json)",
+      "alt-fold (count OUTSIDE the floor) x1.10 dead census (control registered by NAME only; reporting)"
+    ]
+  },
+  "arm_r_reporting_only": {
+    "20261690": {
+      "dead_traces": 49,
+      "draws": 30000,
+      "total_extra_units": 40533190487
+    },
+    "20261691": {
+      "dead_traces": 41,
+      "draws": 30000,
+      "total_extra_units": 39898597051
+    },
+    "20261692": {
+      "dead_traces": 43,
+      "draws": 30000,
+      "total_extra_units": 39906644697
+    }
+  },
+  "cap_bump_control": {
+    "arm_b_milli_census": 0,
+    "arm_c_deviation_max": "1/22",
+    "dead_at_rate_ge_20": 0
+  },
+  "evaluators": {
+    "arm_a": "REJECT",
+    "arm_b": "REJECT"
+  },
+  "lattice": {
+    "alive": 214496,
+    "size": 214500,
+    "zero_rate_cells": [
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        90
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        1,
+        90
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        2,
+        90
+      ],
+      [
+        1,
+        1,
+        0,
+        1,
+        0,
+        90
+      ]
+    ]
+  },
+  "margin_ledger": {
+    "dead_band_saturated_99_of_99": true,
+    "deviation_equality_1_22": true,
+    "e200_census_zero_cell_certified": true,
+    "first_paying_e_contact_margin0": true,
+    "jackpot_equality_20_11": true,
+    "milli_minimum_exactly_100": true,
+    "overshoot_equals_jackpot": true,
+    "payers_at_x2_equals_alive_saturated": true
+  },
+  "seed_registry": {
+    "aux_never_read": 20261693,
+    "reporting_only": [
+      20261690,
+      20261691,
+      20261692
+    ],
+    "seeds_read": [
+      20261690,
+      20261691,
+      20261692
+    ]
+  },
+  "self_checks": {
+    "failed": 0,
+    "failures": [],
+    "passed": 74
+  },
+  "t1_dead_band": {
+    "canonical_cell": [
+      1,
+      1,
+      0,
+      0,
+      0,
+      100
+    ],
+    "dead_e_count": 99,
+    "dead_e_range": [
+      101,
+      199
+    ],
+    "festival_3600s_extra_at_x110": 0,
+    "first_paying_e": 200,
+    "first_paying_neighbour": {
+      "cell": [
+        1,
+        1,
+        1,
+        0,
+        2,
+        100
+      ],
+      "rate_during": 2,
+      "x": 137500000,
+      "x_times_150": 20625000000
+    },
+    "one_upgrade_dead_at_150": true,
+    "pre_floor_product": 100000000,
+    "rate_today": 1
+  },
+  "t2_census": {
+    "alt_fold_control_dead_x110_reporting": 60824,
+    "dead_at_rate_ge_20_row": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "dead_census_row": [
+      4151,
+      675,
+      56,
+      14,
+      0
+    ],
+    "grid": [
+      110,
+      125,
+      150,
+      175,
+      200
+    ],
+    "theme_100_sublattice_dead_row": [
+      1390,
+      224,
+      18,
+      4,
+      0
+    ]
+  },
+  "t3_jackpot": {
+    "envelope_hi_edge_hits_per_e": [
+      99250,
+      102382,
+      99639,
+      69413,
+      104146
+    ],
+    "envelope_holds": true,
+    "envelope_lo_edge_hits_per_e": [
+      115246,
+      112114,
+      114857,
+      85102,
+      110350
+    ],
+    "jackpot_festival_extra_3600s": 3600,
+    "max_ratio_per_e": {
+      "110": "20/11",
+      "125": "8/5",
+      "150": "4/3",
+      "175": "12/7",
+      "200": "3/2"
+    },
+    "max_ratio_witness_x110": [
+      1,
+      1,
+      0,
+      2,
+      8,
+      110
+    ],
+    "min_ratio_per_e": {
+      "110": "10/11",
+      "125": "4/5",
+      "150": "2/3",
+      "175": "4/7",
+      "200": "1"
+    }
+  },
+  "t4_repair_fork": {
+    "arm_a_overshoot_canonical_x110": "20/11",
+    "arm_b_milli_canonical_delta_x110": 100,
+    "arm_b_milli_census_lattice_x_grid": 0,
+    "arm_b_milli_min_delta_x110": 100,
+    "arm_c_deviation_attained_at": [
+      110,
+      20
+    ],
+    "arm_c_deviation_max": "1/22"
+  },
+  "t5_partition_equivalence": {
+    "calendar_segments": [
+      [
+        7,
+        "off"
+      ],
+      [
+        5,
+        "on"
+      ],
+      [
+        11,
+        "off"
+      ],
+      [
+        3,
+        "on"
+      ],
+      [
+        2,
+        "off"
+      ]
+    ],
+    "cells": [
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        100
+      ],
+      [
+        1,
+        1,
+        0,
+        2,
+        8,
+        110
+      ],
+      [
+        1,
+        1,
+        1,
+        0,
+        0,
+        100
+      ],
+      [
+        5,
+        25,
+        12,
+        10,
+        9,
+        110
+      ]
+    ],
+    "closed_form_equals_tick_loop": true,
+    "degenerate_zero_delta_trace_included": true
+  },
+  "typed_contacts": {
+    "contact_1_dead_e_99": true,
+    "contact_2_overshoot_equals_jackpot_20_11": true,
+    "contact_3_dead_census_x110_a_equals_b": [
+      4151,
+      4151
+    ],
+    "contact_4_payers_at_x2_equals_alive": [
+      214496,
+      214496
+    ]
+  },
+  "verdict": "REJECT"
+}

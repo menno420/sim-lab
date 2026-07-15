@@ -280,6 +280,13 @@ From PROPOSAL 010 onward the offset is a constant +2.
   17c4558, `## VERDICT 089` / `## INTAKE 076` collision-grepped clean
   before the append and re-grepped at append time — origin/main unmoved;
   no owner-direct or simreq interleave occurred in this range).
+- Extension (V090 slice, 2026-07-15): the +13 offset holds — PROPOSAL 077
+  (event-fold-visibility-floor) → **VERDICT 090** (verified at the
+  live-outbox headers: newest `## VERDICT` was 089 at origin/main
+  d212882 — the d212882 tip itself is the merge-automation probe #160,
+  not a verdict — `## VERDICT 090` / `## INTAKE 077` collision-grepped
+  clean before the append and re-grepped at append time — origin/main
+  unmoved; no owner-direct or simreq interleave occurred in this range).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

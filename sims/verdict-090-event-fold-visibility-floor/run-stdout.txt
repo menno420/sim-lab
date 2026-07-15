@@ -1,0 +1,17 @@
+VERDICT 090 runner — the event-fold visibility floor (P077)
+ruling: REJECT (evaluators REJECT/REJECT)
+T1 dead band: canonical x = 100000000, rate 1/s; delta = 0 for 99/99 integer E in 101..199; first paying E = 200 (rate 1 -> 2); one-upgrade dead at x1.50: True; first paying neighbour 1.375*1.5 = 2.0625 -> 2
+T2 census: lattice 214500 = 2*25*13*11*10*3, alive 214496, zero-rate cells 4 [[1, 1, 0, 0, 0, 90], [1, 1, 0, 0, 1, 90], [1, 1, 0, 0, 2, 90], [1, 1, 0, 1, 0, 90]]
+  dead row [4151, 675, 56, 14, 0] over E [110, 125, 150, 175, 200]; dead at rate >= 20: [0, 0, 0, 0, 0]; theme-100 sub-lattice [1390, 224, 18, 4, 0]
+T3 jackpot: max realized/nominal at x1.10 = 20/11 at cell [1, 1, 0, 2, 8, 110] (rate 1 -> 2); minima per E ['10/11', '4/5', '2/3', '4/7', '1']; envelope holds: True, both edges attained at every E: True
+T4 repair fork: arm (a) overshoot 20/11 == jackpot; arm (b) milli census 0 (min delta 100, canonical 100); arm (c) deviation 1/22 at [110, 20]
+T5 partition equivalence: closed form == tick loop on 4 cells x 5 E: True (degenerate zero-delta trace included: True); festival 3600 s pays canonical 0, jackpot 3600
+controls: E = 100 neutral; cap-bump non-flip (dev 1/22, milli 0, dead-R>=20 0); alt-fold control dead census at x1.10 = 60824 (reporting, named control)
+arm R (reporting-only): seed 20261690 N=10000 draws=30000 | dead traces 49 | total extra units 40533190487
+arm R (reporting-only): seed 20261691 N=10000 draws=30000 | dead traces 41 | total extra units 39898597051
+arm R (reporting-only): seed 20261692 N=10000 draws=30000 | dead traces 43 | total extra units 39906644697
+typed contacts: 99 = 199-101+1 | overshoot == jackpot == 20/11 | dead census x1.10 A == B == 4151 | payers at x2 == alive == 214496
+margin ledger: {'first_paying_e_contact_margin0': True, 'dead_band_saturated_99_of_99': True, 'e200_census_zero_cell_certified': True, 'jackpot_equality_20_11': True, 'overshoot_equals_jackpot': True, 'deviation_equality_1_22': True, 'milli_minimum_exactly_100': True, 'payers_at_x2_equals_alive_saturated': True}
+anomaly census (disclosure coverage): 20 compared-and-matched, 0 mismatched, 5 vacant
+anomalies: none
+self-checks: 74 passed, 0 failed
