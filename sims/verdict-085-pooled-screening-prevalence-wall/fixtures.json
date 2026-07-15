@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "verdict": "085",
+    "intake": "072",
+    "proposal": "idea-engine PROPOSAL 072 . 2026-07-15T09:15:21Z . status: sim-ready",
+    "idea_file": "ideas/fleet/pooled-screening-prevalence-wall-2026-07-15.md",
+    "idea_engine_pin": "4d1b86b (proposal landed via idea-engine PR #436, merged 2026-07-15T09:19:39Z; grounding pin e17ebe7)",
+    "grounding_pin": "idea-engine e17ebe7d733ecc431556b0e8e3d6788b27783b34 (the dedup-sweep HEAD; the only read the head takes)",
+    "hermetic": "the runner reads ONLY this fixtures.json; zero repo/network reads at verdict time. Every model constant is invented-but-pinned in the PROPOSAL 072 block / idea file and copied verbatim below; the DECISION arms are seedless exact fractions.Fraction with ZERO repo/network reads (the P017-P071 hermetic precedent). There is no external grounding pin to re-verify: the whole world is the pinned cost law T(n,p) = 1/n + 1 - (1-p)^n and its committed grids. Values disclosed under anchors.disclosed_* are the drafter's expected landing, re-derived from scratch and NOT trusted (the P048-P071 exact-arm norm)."
+  },
+  "model": {
+    "cost_law": "Dorfman two-stage screening, pool size n: one test per disjoint pool of size n; a negative pool clears all n items, a positive pool retests all n members individually (n more tests). Items defective i.i.d. Bernoulli(p), q = 1 - p. Cost metric T(n, p) = expected TESTS PER ITEM = 1/n + 1 - q^n for n >= 2; T(1) = 1 exactly (individual baseline). Tests are PERFECT (no false neg/pos, no dilution). Test count is the ONLY cost.",
+    "outcome_tree": "T(n, p) = (1/n) * sum_{k=0..n} C(n,k) p^k q^(n-k) * cost(k), cost(0) = 1 (negative pool, one test), cost(k>=1) = 1 + n (positive pool: pool test + n retests). Arm B recomputes T from this tree independently and must equal Arm A exactly.",
+    "falsifiability_world": "delete the pool test's own 1/n cost (the accounting slip 'the pool test is basically free'): T~(n, p) = 1 - q^n < 1 for every n >= 2 and every p < 1, so the wall VANISHES and the verdict flips to APPROVE outright. The entire mechanism lives in the 1/n term. This is a NAMED reporting world, never a decision code path (F1: the 1/n term is present in every decision T).",
+    "theorems": {
+      "T1_wall": "pooling at size n beats individual testing iff T(n,q) < 1 iff q^n > 1/n iff q > n^(-1/n). The most forgiving pool size minimizes n^(-1/n); on integers that minimum is n = 3, certified by INTEGER-POWER comparisons (n^(-1/n) < m^(-1/m) iff n^m > m^n): 3^2=9>8=2^3, 3^4=81>64=4^3, 3^5=243>125=5^3, and (n+1)^n < n^(n+1) for every n>=3 (n^(-1/n) strictly increasing from n=3 on). Hence pooling at ANY size helps iff q > 3^(-1/3), i.e. iff p < p* = 1 - 3^(-1/3) ~ 0.306566. At a rational p the certificate is one multiplication: is 3q^3 > 1? Boundary law T(3,q) = 1 iff 3q^3 = 1 (symbolic).",
+      "T2_pair_dominance": "the exact polynomial identity T(2,q) - T(3,q) = (q - 2/3)^2 (q + 1/3) + 1/54: the pair-pool is strictly dominated by the triple at EVERY prevalence, minimum gap exactly 1/54 attained ONLY at q = 2/3 (p = 1/3) - a named knife-edge equality cell. Either batch >= 3 or don't batch at all.",
+      "T3_degeneracy": "the companion identity T(2,q) - T(4,q) = (q^2 - 1/2)^2: pool 4 weakly dominates pool 2 everywhere with a genuine MARGIN-0 knife-edge at q^2 = 1/2, where both pools simultaneously break even against individual testing (q2* = q4* = 2^(-1/2), because 2^4 = 4^2 - the unique integer coincidence in the n^(1/n) family). q^2 = 1/2 is irrational, so no rational grid point lands on it (the family's one true zero, certified symbolically)."
+    }
+  },
+  "committed_constants": {
+    "cost_law_note": "T(n, p) = 1/n + 1 - (1-p)^n for n >= 2; T(1) = 1. All p exact rationals.",
+    "wall_p_star": "1 - 3^(-1/3) ~ 0.306566 (irrational; the rational certificate is 3q^3 > 1)",
+    "test_model": "perfect (no false neg/pos, no dilution)",
+    "cost_metric": "expected tests per item; test count is the only cost"
+  },
+  "grids": {
+    "pool_grid": {"lo": 1, "hi": 64, "note": "n in {1..64}; T(1) = 1 is the individual baseline"},
+    "practical_subgrid": {"lo": 2, "hi": 8, "note": "the R1 damage clause quantifies min over n in {2..8}"},
+    "prevalence_grid": ["1/100", "1/50", "1/20", "1/10", "1/5", "1/4", "3/10", "1/3", "2/5", "1/2", "2/3", "9/10"],
+    "identity_grid_note": "q in {k/100 : k = 0..100} union {2/3}; the appended point 2/3 is the T2 equality cell",
+    "identity_grid_extra_q": "2/3",
+    "decision_cells": {"wall_cell": "2/5", "savings_cell": "1/100"}
+  },
+  "decision": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "reading": "evaluation order REJECT FIRST; both independently-written decision evaluators (Arm A numbers, Arm B numbers) must agree on the ruling token; a gate (F1-F6) failure is reported first-class beside the ruling but, with REJECT already fired on exact arithmetic, the INVALID stage is never reached (the P059-P071 REJECT-first precedent)",
+    "reject": {
+      "R1": "at p = 2/5: T(n, 2/5) > 1 for EVERY n in {2..64} (the strict wall clause) AND min over the practical grid n in {2..8} of T(n, 2/5) >= 21/20 (every practical pool wastes >= 5%)",
+      "R2": "T(2, q) - T(3, q) >= 1/54 at every q on the identity grid, with the identity T(2,q) - T(3,q) = (q - 2/3)^2 (q + 1/3) + 1/54 verified by exact coefficient match (equality attained ONLY at q = 2/3)",
+      "R3": "at p = 1/100: T*(1/100) <= 1/4 (pooling saves >= 75% where the folk belief lives)"
+    },
+    "invalid": "any F1-F6 gate failure (controls misbehaving - reported, no ruling on its own; REJECT-first means a fired REJECT is unaffected)",
+    "approve": "min over n in {2..64} of T(n, 2/5) <= 1 AND T(2, q) <= T(3, q) at some identity-grid q (mutually exclusive with REJECT by arithmetic)",
+    "null_axes": "wall-straddle (R1 holds but R3 fails, or the >= 21/20 clause fails while the strict clause holds); identity failure without gate failure (a T2/T3 coefficient mismatch - the corrected law is the finding); margin-erosion (min over {2..8} of T(n,2/5) in (1, 21/20)); twin-arm disagreement surviving the INVALID diagnosis"
+  },
+  "gates": {
+    "F1": "model identities: T(1) = 1 exactly; probability normalization sum_k C(n,k) p^k q^(n-k) = 1 at every grid cell; the stage-1 test ALWAYS counted (the 1/n term present in every decision T); the rearrangement T(n,p) = 1 + 1/n - q^n",
+    "F2": "the three structure theorems exact at every cell: (a) WALL integer-power certificate chain (3^2>2^3, 3^4>4^3, 3^5>5^3, 2^4=4^2, (n+1)^n < n^(n+1) for n in {3..64}) establishing argmin over the grid of n^(-1/n) at n = 3; the wall statement at every rational grid p: pooling helps for some n in {2..64} iff 3q^3 > 1; the boundary law T(3,q) = 1 iff 3q^3 = 1; (b) PAIR-DOMINANCE identity by exact coefficient match AND on the identity grid, equality exactly and only at q = 2/3; (c) 2-4 DEGENERACY identity by exact coefficient match AND on the identity grid; break-even q2* = q4* = 2^(-1/2) certified via 2^4 = 4^2; the margin-0 knife-edge named symbolically",
+    "F3": "census anchors (exact reference values): the helping cells n*(p) and T*(p) below the wall; the above-wall summaries. See anchors.census_helping (RAN, gated exact) and anchors.disclosed_above_wall (the drafter's expected-landing summaries, re-derived and compared as reporting per C3 - see the disclosed-anomaly convention)",
+    "F4": "the hand world: T(2, 1/2) = 5/4 exactly (both clean prob 1/4 -> 1 test; else -> 3 tests; E = (1/4)*1 + (3/4)*3 = 5/2 per pool = 5/4 per item)",
+    "F5": "degeneracy controls: p = 0 -> T(n) = 1/n exactly; p = 1 -> T(n) = 1 + 1/n exactly; T(n, p) strictly increasing in p at fixed n on the identity grid",
+    "F6": "battery: Arm B reproduces every Arm-A number exactly (outcome tree vs closed form, independent n* search, independent wall check q^n vs 1/n); twin decision evaluators agree on the ruling token; Arm-R draw-count sentinels (n Bernoulli draws per pool) counted and asserted; presentation seed 20261642 read by presentation legs only; aux seed 20261643 never read; stdout + results.json byte-identical across two process runs"
+  },
+  "anchors": {
+    "wall_helps_expected": {
+      "1/100": true, "1/50": true, "1/20": true, "1/10": true, "1/5": true, "1/4": true, "3/10": true,
+      "1/3": false, "2/5": false, "1/2": false, "2/3": false, "9/10": false
+    },
+    "census_helping": {
+      "1/100": {"n_star": 11, "T_star": "21512792031541191037911/110000000000000000000000"},
+      "1/50":  {"n_star": 8,  "T_star": "10712381930399/39062500000000"},
+      "1/20":  {"n_star": 5,  "T_star": "1363901/3200000"},
+      "1/10":  {"n_star": 4,  "T_star": "5939/10000"},
+      "1/5":   {"n_star": 3,  "T_star": "308/375"},
+      "1/4":   {"n_star": 3,  "T_star": "175/192"},
+      "3/10":  {"n_star": 3,  "T_star": "2971/3000"}
+    },
+    "T_at_n3_wall_cell": "419/375",
+    "T_wall_cell_gridtail_n64": "the grid-tail min over {2..64} at p=2/5 is T(64,2/5) = 1 + 1/64 - (3/5)^64 ~ 1.015625 at n = 64",
+    "T_at_n3_p_third": "28/27",
+    "hand_world_F4": {"n": 2, "p": "1/2", "T": "5/4"},
+    "T2_floor": "1/54",
+    "T2_knife_edge_q": "2/3",
+    "reject_margins_disclosed": {"R1_practical": "1.0641 (min 419/375 at n=3 vs 21/20)", "R2_knife_edge": "1.00 at q=2/3 (equality)", "R3": "1.2783 (T*(1/100) vs 1/4)"},
+    "disclosed_above_wall": {
+      "note": "the drafter's expected-landing SUMMARIES for the two above-wall decision/census cells. RE-DERIVED from scratch and compared as reporting (C3): a mismatch is a first-class ANOMALY, never a silent gate. Both summaries name n = 3 as the argmin of T over a POOL grid at an above-wall prevalence.",
+      "wall_cell_practical_min": {"claim": "min over {2..8} of T(n,2/5) = 419/375 at n = 3", "value": "419/375", "argmin_n": 3},
+      "p_third_grid_min": {"claim": "min over {2..64} of T(n,1/3) = 28/27 at n = 3", "value": "28/27", "argmin_n": 3},
+      "best_batch_waste_pct": {"claim": "the BEST batch above the wall (p=2/5) wastes 11.7%", "value_pct": 11.73}
+    },
+    "small_p_sharpenings": {
+      "note": "reporting-only: T* ~ 2 sqrt(p) with n* ~ 1/sqrt(p)",
+      "1/400": {"n_star": 21, "T_star_approx": 0.0988},
+      "1/2500": {"n_star": 51, "T_star_approx": 0.0398}
+    },
+    "arm_r_preview": {"cell": "(p=1/10, n=4)", "measured_disclosed": 0.591920, "exact": "5939/10000"}
+  },
+  "arm_r": {
+    "note": "seeded, REPORTING-ONLY - NO statistical gate rides Arm R; its only gates are the draw-count sentinel (n Bernoulli draws per pool) and byte-identical reproducibility",
+    "cells": [{"p": "1/100", "n": 11}, {"p": "1/10", "n": 4}, {"p": "2/5", "n": 3}],
+    "main_N": 100000,
+    "seed_main": 20261640,
+    "stability_N": 40000,
+    "seed_stability": 20261641,
+    "seed_presentation": 20261642,
+    "seed_aux_never_read": 20261643,
+    "seed_note": "the drafter's registered set 20261640-643 IS the session seed set; NO new allocation. 20261634-639 is the disclosed in-flight gap, unused. High-water after this slice: 20261643 (reserved; highest READ 20261642)."
+  },
+  "conventions": {
+    "C1": "half-open pool accounting: cost(0) = 1 test (negative pool), cost(k>=1) = 1 + n tests (positive pool retests all n); metric is tests PER ITEM (divide pool cost by n)",
+    "C2": "Arm B is INDEPENDENTLY WRITTEN: it recomputes T from the binomial outcome tree, runs its own n* search, and does its own wall check (q^n vs 1/n directly), never reusing Arm A's closed form or certificate; the second decision evaluator recomputes every decision number from Arm B alone",
+    "C3": "disclosed-anchor comparison: values under anchors.disclosed_* are the drafter's expected landing, re-derived from scratch and compared as REPORTING; a mismatch raises a first-class ANOMALY (not a gate check failure), the corrected value pinned - the P048-P071 exact-arm 'do not trust the disclosed landing' norm, and the V084-A2 disclosed()-anomaly mechanism",
+    "C4": "the falsifiability world (delete 1/n) is computed as a NAMED reporting demonstration that APPROVE is reachable; it is never a decision code path (F1 keeps the 1/n term in every decision T)",
+    "C5": "the margin ledger (V083 practice): a grid-wide margin-0 census over the decision geometry, with a gate that NO decision clause rests on a margin-0 cell; the R2 q=2/3 equality and the T3 q^2=1/2 zero are registered knife-edges, disclosed not discovered",
+    "C6": "Arm-R estimand pinned: mean tests-per-item over N items simulated under the exact two-stage protocol; draw discipline = n Bernoulli(p) draws per pool, counted and asserted; no statistical gate",
+    "C7": "seed constructor registry (C8-of-V084 kin): the ONLY RNGs constructed are seed_main, seed_stability, seed_presentation in pinned order; aux seed asserted never read",
+    "C8": "print discipline (the P071 hazard, inherited): decision numbers gated by in-memory Fraction equality FIRST, printed second; the p=1/100 cell numerators are ~23 digits, well under CPython's 4300-digit int-print default - no large-rank hazard, but the fixture still gates before printing",
+    "C9": "canonical serialization: results.json written with sort_keys, ensure_ascii, indent=2, trailing newline, newline='\\n' - byte-identical across process runs"
+  }
+}
