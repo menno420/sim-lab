@@ -1,0 +1,46 @@
+VERDICT 081 — deferred-acceptance proposer advantage (P068)
+hermetic run: fixtures.json only; stdlib; CPython 3.11
+
+Arm A census n=1 (1 profiles): Pbar=1 (1.000000)  Rbar=1 (1.000000)  Delta=0 (0.000000)  f=0 (0.000000)  E|S|=1 (1.000000)
+  Delta|unique-sum=0  Delta|multi=0 (0.000000)  unique=1  M_prop=0  M_recv=0 (0.000000)
+Arm A census n=2 (16 profiles): Pbar=5/4 (1.250000)  Rbar=11/8 (1.375000)  Delta=1/8 (0.125000)  f=1/8 (0.125000)  E|S|=9/8 (1.125000)
+  Delta|unique-sum=0  Delta|multi=1 (1.000000)  unique=7/8  M_prop=0  M_recv=0 (0.000000)
+Arm A census n=3 (46656 profiles): Pbar=35/24 (1.458333)  Rbar=371/216 (1.717593)  Delta=7/27 (0.259259)  f=131/486 (0.269547)  E|S|=5027/3888 (1.292953)
+  Delta|unique-sum=0  Delta|multi=126/131 (0.961832)  unique=355/486  M_prop=0  M_recv=1/54 (0.018519)
+
+F2 theorems: polarization=True  gap-localization=True  strategy-proofness-asymmetry=True
+F4 hand world: S=[[0, 1], [1, 0]], men-proposing -> [0, 1], women-proposing -> [1, 0]
+F5 degeneracy n=3: all-men-identical 1296 profiles (multi 0, g-sum 0, naive slice gap -5/9), all-women-identical 1296 (multi 0, g-sum 0, naive 5/9)
+
+Arm B twin: exact-equal on every published census number (see checks)
+
+Arm R main n=4 (200000 eps, seed 20261600): Pbar-hat=1.637681  Rbar-hat=2.037474  Delta-hat=0.399792  f-hat=0.403070
+Arm R main n=5 (200000 eps, seed 20261600): Pbar-hat=1.796414  Rbar-hat=2.339764  Delta-hat=0.543350  f-hat=0.513735
+Arm R main n=6 (200000 eps, seed 20261600): Pbar-hat=1.936517  Rbar-hat=2.629696  Delta-hat=0.693179  f-hat=0.605355
+Arm R stability n=4 (40000 eps, seed 20261601): E|S|-hat=1.486375  f-hat=0.402700  Delta|multi-hat=0.991821  M_recv-hat=0.050475 (prefix 40000)
+Arm R stability n=5 (40000 eps, seed 20261601): E|S|-hat=1.697525  f-hat=0.511825  Delta|multi-hat=1.058028  M_recv-hat=0.091875 (prefix 8000)
+Arm R stability n=6 (40000 eps, seed 20261601): E|S|-hat=1.931325  f-hat=0.603225  Delta|multi-hat=1.142097  M_recv-hat=0.136000 (prefix 2000)
+Arm R presentation rows (seed 20261602, C11):
+  n=4 ep=2561 |S|=1 multi=False Delta-episode=1/2
+  n=4 ep=8832 |S|=1 multi=False Delta-episode=-3/4
+  n=4 ep=30274 |S|=1 multi=False Delta-episode=-1/4
+  n=4 ep=36943 |S|=1 multi=False Delta-episode=-1/4
+  n=4 ep=37537 |S|=1 multi=False Delta-episode=0
+  n=5 ep=5391 |S|=4 multi=True Delta-episode=8/5
+  n=5 ep=11885 |S|=2 multi=True Delta-episode=7/5
+  n=5 ep=20089 |S|=2 multi=True Delta-episode=2/5
+  n=5 ep=34416 |S|=2 multi=True Delta-episode=3/5
+  n=5 ep=34628 |S|=3 multi=True Delta-episode=8/5
+  n=6 ep=4751 |S|=3 multi=True Delta-episode=8/3
+  n=6 ep=11523 |S|=2 multi=True Delta-episode=1/2
+  n=6 ep=13649 |S|=1 multi=False Delta-episode=-1
+  n=6 ep=14068 |S|=2 multi=True Delta-episode=-5/6
+  n=6 ep=29220 |S|=1 multi=False Delta-episode=1/6
+
+decision (registered order REJECT -> INVALID -> APPROVE -> NULL):
+  evaluator-1 (Arm A, Fractions):        REJECT []
+  evaluator-2 (Arm B, integer x-mult):   REJECT []
+  RULING: REJECT
+
+anomalies vs the disclosed landing: 0
+self-checks: 107 run, 0 failed

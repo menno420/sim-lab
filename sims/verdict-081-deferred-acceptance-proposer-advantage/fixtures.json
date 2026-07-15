@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "verdict": "081",
+    "intake": "068",
+    "proposal": "idea-engine PROPOSAL 068 · 2026-07-15T06:45:43Z · status: sim-ready",
+    "idea_file": "ideas/fleet/deferred-acceptance-proposer-advantage-2026-07-15.md",
+    "idea_engine_pin": "dc155cb214b033893d8a1e07bc4eccb069989443",
+    "idea_engine_pr": "#431 merged 2026-07-15T06:49:09Z",
+    "hermetic": "the runner reads ONLY this fixtures.json; zero repo/network reads at verdict time; every constant below is copied verbatim from the PROPOSAL 068 block / idea file at the pin above"
+  },
+  "model": {
+    "sides": "n proposers (labelled men) x n receivers (labelled women), each with a STRICT COMPLETE ranking of the other side",
+    "rank_convention": "1-indexed, 1 = top choice (internal arrays are 0-based; every published rank adds 1)",
+    "profile_space": "uniform: all (n!)^(2n) profiles equally weighted; exact census at every n in n_exact",
+    "n_exact": [1, 2, 3],
+    "decision_cell": 3,
+    "n3_profile_count": 46656,
+    "n2_profile_count": 16,
+    "arm_r_sizes": [4, 5, 6],
+    "proposing_side": "men (men-proposing deferred acceptance returns mu_M; women-proposing returns mu_W)",
+    "random_partner_baseline": "(n+1)/2, = 2 at n = 3 (reporting-only benchmark)",
+    "stable_set": "obtained INDEPENDENTLY of GS by exhaustive stability testing of all n! perfect matchings (stable iff no (m, w) mutually prefer each other to their assigned partners); GS optimality is a checked claim (F6), never an assumption"
+  },
+  "metrics": {
+    "pbar": "E[man rank in mu_M] (= E[woman rank in mu_W] by the symmetry gate)",
+    "rbar": "E[woman rank in mu_M] (= E[man rank in mu_W])",
+    "delta": "rbar - pbar >= 0 (the side-gap)",
+    "f": "P(|S| >= 2) (multiplicity fraction)",
+    "esize": "E[|S|]",
+    "delta_conditional": "via the per-profile receiver tax g(p) = mean_w rank_w(mu_M) - mean_w rank_w(mu_W) >= 0 (convention C5): delta|unique = E[g | unique], delta|multi = E[g | multi]; E[g] = rbar - pbar is an exact relabelling identity and is GATED",
+    "m_prop": "P(some proposer has a profitable misreport under men-proposing DA, others fixed)",
+    "m_recv": "P(some receiver has a profitable misreport under men-proposing DA, others fixed)",
+    "misreport_space": "all n! - 1 alternative strict complete rankings for one agent, everyone else truthful; profitable = strictly better partner under the TRUE preference (convention C2)"
+  },
+  "decision": {
+    "order": ["REJECT", "INVALID", "APPROVE", "NULL"],
+    "reject": {
+      "delta3_min": "1/5",
+      "f3_min": "1/5",
+      "m_prop3_equals": "0",
+      "m_recv3_min": "1/100",
+      "reading": "all three clauses AND-ed at the decision cell n = 3, exact-rational comparisons"
+    },
+    "invalid": "any F1-F6 gate failure (controls misbehaving - report, no ruling)",
+    "approve": {
+      "delta3_max": "1/20",
+      "f3_max": "1/20"
+    },
+    "null_axes": [
+      "band-straddle: delta(3) in (1/20, 1/5), or f(3) in (1/20, 1/5), or the manipulation-asymmetry clause alone fails",
+      "polarization-theorem failure without gate failure",
+      "gap-localization failure without gate failure (delta(3|unique) != 0 exactly)",
+      "strategy-proofness-asymmetry failure (M_prop(3) > 0)",
+      "twin-arm disagreement surviving the INVALID diagnosis"
+    ]
+  },
+  "anchors_f3": {
+    "n3": {
+      "pbar": "35/24",
+      "rbar": "371/216",
+      "delta": "7/27",
+      "f": "131/486",
+      "esize": "5027/3888",
+      "delta_multi": "126/131",
+      "unique_fraction": "355/486",
+      "m_prop": "0",
+      "m_recv": "1/54"
+    },
+    "n2": {
+      "pbar": "5/4",
+      "rbar": "11/8",
+      "delta": "1/8",
+      "f": "1/8",
+      "esize": "9/8",
+      "m_prop": "0",
+      "m_recv": "0"
+    },
+    "n1": {
+      "delta": "0",
+      "f": "0",
+      "esize": "1"
+    }
+  },
+  "hand_world_f4": {
+    "note": "the two n = 2 multi-stable profiles, walked by hand at registration (0-based indices)",
+    "profile_1": {
+      "men_prefs": [[0, 1], [1, 0]],
+      "women_prefs": [[1, 0], [0, 1]],
+      "stable_matchings": [[0, 1], [1, 0]],
+      "men_proposing_lands": [0, 1],
+      "women_proposing_lands": [1, 0],
+      "reading": "men (w0 > w1, w1 > w0), women (m1 > m0, m0 > m1); men-proposing gives each man his top; women-proposing gives each woman her top; matching rendered as wife[m]"
+    },
+    "profile_2_is": "the relabel-mirror of profile_1 (men_prefs [[1,0],[0,1]], women_prefs [[0,1],[1,0]])",
+    "f2_pencil": "2/16 = 1/8 over the full 16-profile n = 2 census"
+  },
+  "degeneracy_f5": {
+    "slice": "all men share one identical ranking OR all women share one identical ranking (union slice; the two families reported separately)",
+    "claim": "unique stable matching on every slice profile (serial dictatorship of the agreed order): f = 0 on each family exactly, per-profile receiver tax g = 0 on every slice profile exactly (C5 reading - the side-choice has zero leverage there)"
+  },
+  "arm_r": {
+    "status": "REPORTING-ONLY - no statistical gate rides Arm R; its sole gates are the draw-count sentinel and exact reproducibility",
+    "sizes": [4, 5, 6],
+    "main_leg": {
+      "episodes_per_size": 200000,
+      "seed": 20261600,
+      "per_episode": "draw 2n uniform rankings (pinned order: all n men then all n women, each an in-runner Fisher-Yates shuffle, C9), run GS both ways; estimates delta-hat(n) and f-hat(n) (f via the corner inequality mu_M != mu_W, C4)"
+    },
+    "stability_leg": {
+      "episodes_per_size": 40000,
+      "seed": 20261601,
+      "per_episode": "same draw discipline; GS both ways PLUS the bounded exhaustive stability enumeration (n <= 6 -> <= 720 matchings, C12); estimates E|S|, f (enumerated), delta|multi; re-verifies C4 and the corner landing on every episode"
+    },
+    "m_recv_prefix": {
+      "4": 40000,
+      "5": 8000,
+      "6": 2000,
+      "reading": "M_recv-hat(n) is measured on the deterministic PREFIX of the stability-leg episode stream (no extra RNG draws), full n!-1 misreport search per receiver with the DGS prune (C6)"
+    },
+    "presentation_seed": 20261602,
+    "aux_seed": 20261603,
+    "aux_rule": "reserved, NEVER read by any leg (the P054-P067 aux convention; constructor-registry assertion, C8)"
+  },
+  "seeds_registration": {
+    "allocated": [20261600, 20261601, 20261602, 20261603],
+    "note": "the drafter's registered set IS the session seed set (V077-V080 precedent; no new allocation this slice); 20261590-593 are P067/V080's registered set and the gap 20261594-599 is the disclosed in-flight buffer, unused; registry high-water after this slice: 20261603 (reserved; highest READ 20261602)"
+  },
+  "runtime_pins": {
+    "cpython": [3, 11],
+    "stdlib_only": true,
+    "byte_identity": "stdout and results.json byte-identical across two full process runs (external diff + sha256)"
+  },
+  "conventions": {
+    "C1": "encoding: preferences are 0-based permutation tuples (mp[m] = m's ranked women best-first; wp[w] likewise); a matching is wife[m]; every PUBLISHED rank is 1-indexed; profiles uniform weight 1",
+    "C2": "manipulation: misreports range over all n!-1 alternative complete strict rankings of ONE agent (everyone else truthful); profitable = strictly better partner under the TRUE preference; at the census cells the misreported profile is itself a census profile, so both arms resolve misreports by corner LOOKUP into their own full-census corner tables (Arm A: GS corners; Arm B: enumerated-lattice corners)",
+    "C3": "the F1 symmetry gate is realized as same-pass relabelled accumulators: E[man rank in mu_M] == E[woman rank in mu_W] and E[woman rank in mu_M] == E[man rank in mu_W] exactly, f/E|S| relabelling-invariant by construction, and the manipulation counts computed in BOTH directions (some-woman-gains under women-proposing == M_prop count; some-man-gains under women-proposing == M_recv count)",
+    "C4": "Arm-R main-leg multiplicity reads f-hat = P(mu_M != mu_W): mu_M = mu_W <=> |S| = 1 is the polarization-sandwich corollary, proven exhaustively at every census cell by F2a and RE-VERIFIED by enumeration on every stability-leg episode; a single counterexample reds the battery",
+    "C5": "conditional gaps ride the per-profile receiver tax g(p) = mean_w rank_w(mu_M) - mean_w rank_w(mu_W) >= 0: delta|unique = E[g|unique] with the stronger per-profile gate g == 0 on EVERY unique profile; delta|multi = E[g|multi]; the relabelling identity E[g] = rbar - pbar is gated EXACTLY (this is the reading under which the registered decomposition delta = f * delta|multi and the registered F5 'delta = 0 on the slice' are simultaneously exact; the naive slice-restricted rbar - pbar is NOT relabelling-closed on the F5 families and is published beside it as reporting)",
+    "C6": "Arm-R M_recv-hat: deterministic prefix of the stability-leg stream (sizes in arm_r.m_recv_prefix), full misreport search with the Demange-Gale-Sotomayor prune (only receivers with mu_M(w) != mu_W(w) can gain, and no gain can beat mu_W(w)); the prune is VERIFIED exhaustively at every census cell (every successful census misreport is checked against both DGS clauses)",
+    "C7": "twin decision evaluators: evaluator 1 reads Arm-A Fractions with Fraction comparisons; evaluator 2 reads Arm-B integers with cross-multiplied integer comparisons; both apply the registered order literally (REJECT first, then INVALID on any F1-F6 failure, then APPROVE, then NULL with named axes) and must agree on the token AND the axes",
+    "C8": "seed registry: every random.Random construction appends to a registry; the accepted run asserts the registry == [20261600, 20261601, 20261602] in that order and that 20261603 is never constructed or read",
+    "C9": "Fisher-Yates implemented IN-RUNNER (never random.shuffle): for i in n-1..1: j = rng.randrange(i+1); swap; draw order per episode: men 0..n-1 then women 0..n-1; the shuffle sentinel asserts exactly 2n * episodes shuffles per leg per size",
+    "C10": "canonical serialization: results.json with sort_keys and explicit separators; every exact value rendered as the canonical Fraction string p/q (or integer); float renderings are 6-decimal strings derived from the Fractions; no timestamps, no environment reads beyond the version assert",
+    "C11": "presentation: Random(20261602) selects 5 stability-leg display rows per size for stdout; read by the presentation leg ONLY",
+    "C12": "stability enumeration: exhaustive over all n! permutation matchings with an early-exit blocking-pair scan in the proposer's preference order; bound n <= 6 (<= 720 matchings) as registered"
+  },
+  "disclosed_landing": {
+    "expected_ruling": "REJECT",
+    "note": "drafter-disclosed, re-derived from scratch and never trusted; the F3 anchors above ARE the disclosed n <= 3 values (a mismatch is simultaneously an INVALID gate finding and a first-class anomaly); clause margins disclosed at registration: delta 1.30x, f 1.31x, m_recv 1.85x over their lines; the n = 2 cell is the registered NULL straddle (delta = f = 1/8 in-band, m_recv = 0); arm-R expected to continue the rise toward the classic ln n vs n/ln n asymptotic (reporting-only)"
+  }
+}
