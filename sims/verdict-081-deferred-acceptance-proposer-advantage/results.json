@@ -1,0 +1,169 @@
+{
+ "anomalies": [],
+ "arm_a": {
+  "n1": {
+   "baseline_random_partner": "1",
+   "degeneracy": {
+    "all_men_identical": {
+     "count": 1,
+     "g_sum": 0,
+     "multi": 0,
+     "naive_slice_gap": "0"
+    },
+    "all_women_identical": {
+     "count": 1,
+     "g_sum": 0,
+     "multi": 0,
+     "naive_slice_gap": "0"
+    }
+   },
+   "delta": "0",
+   "delta_multi": "0",
+   "esize": "1",
+   "f": "0",
+   "g_unique_sum": 0,
+   "m_prop": "0",
+   "m_recv": "0",
+   "pbar": "1",
+   "profiles": 1,
+   "rbar": "1",
+   "unique_fraction": "1"
+  },
+  "n2": {
+   "baseline_random_partner": "3/2",
+   "degeneracy": {
+    "all_men_identical": {
+     "count": 8,
+     "g_sum": 0,
+     "multi": 0,
+     "naive_slice_gap": "-1/4"
+    },
+    "all_women_identical": {
+     "count": 8,
+     "g_sum": 0,
+     "multi": 0,
+     "naive_slice_gap": "1/4"
+    }
+   },
+   "delta": "1/8",
+   "delta_multi": "1",
+   "esize": "9/8",
+   "f": "1/8",
+   "g_unique_sum": 0,
+   "m_prop": "0",
+   "m_recv": "0",
+   "pbar": "5/4",
+   "profiles": 16,
+   "rbar": "11/8",
+   "unique_fraction": "7/8"
+  },
+  "n3": {
+   "baseline_random_partner": "2",
+   "degeneracy": {
+    "all_men_identical": {
+     "count": 1296,
+     "g_sum": 0,
+     "multi": 0,
+     "naive_slice_gap": "-5/9"
+    },
+    "all_women_identical": {
+     "count": 1296,
+     "g_sum": 0,
+     "multi": 0,
+     "naive_slice_gap": "5/9"
+    }
+   },
+   "delta": "7/27",
+   "delta_multi": "126/131",
+   "esize": "5027/3888",
+   "f": "131/486",
+   "g_unique_sum": 0,
+   "m_prop": "0",
+   "m_recv": "1/54",
+   "pbar": "35/24",
+   "profiles": 46656,
+   "rbar": "371/216",
+   "unique_fraction": "355/486"
+  }
+ },
+ "arm_b_equal": true,
+ "arm_r": {
+  "n4": {
+   "main": {
+    "delta_hat": "159917/400000",
+    "f_hat": "40307/100000",
+    "pbar_hat": "262029/160000",
+    "rbar_hat": "1629979/800000"
+   },
+   "stability": {
+    "delta_multi_hat": "63905/64432",
+    "esize_hat": "11891/8000",
+    "f_hat_enum": "4027/10000",
+    "m_recv_hat": "2019/40000",
+    "m_recv_prefix": 40000
+   }
+  },
+  "n5": {
+   "main": {
+    "delta_hat": "10867/20000",
+    "f_hat": "102747/200000",
+    "pbar_hat": "898207/500000",
+    "rbar_hat": "584941/250000"
+   },
+   "stability": {
+    "delta_multi_hat": "21661/20473",
+    "esize_hat": "67901/40000",
+    "f_hat_enum": "20473/40000",
+    "m_recv_hat": "147/1600",
+    "m_recv_prefix": 8000
+   }
+  },
+  "n6": {
+   "main": {
+    "delta_hat": "166363/240000",
+    "f_hat": "121071/200000",
+    "pbar_hat": "116191/60000",
+    "rbar_hat": "631127/240000"
+   },
+   "stability": {
+    "delta_multi_hat": "82673/72387",
+    "esize_hat": "77253/40000",
+    "f_hat_enum": "24129/40000",
+    "m_recv_hat": "17/125",
+    "m_recv_prefix": 2000
+   }
+  }
+ },
+ "decision": {
+  "axes": [],
+  "evaluator_1": [
+   "REJECT",
+   []
+  ],
+  "evaluator_2": [
+   "REJECT",
+   []
+  ],
+  "ruling": "REJECT"
+ },
+ "proposal": "idea-engine PROPOSAL 068",
+ "runtime": {
+  "python": "3.11",
+  "stdlib_only": true
+ },
+ "seeds_constructed": [
+  20261600,
+  20261601,
+  20261602
+ ],
+ "self_checks": {
+  "failed": [],
+  "total": 107
+ },
+ "theorems": {
+  "T1_polarization": true,
+  "T2_gap_localization": true,
+  "T3_strategy_proofness_asymmetry": true
+ },
+ "verdict_id": "081"
+}
