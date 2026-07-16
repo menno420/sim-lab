@@ -1,0 +1,433 @@
+{
+ "checks": [
+  {
+   "detail": "CPython 3.11 (pinned 3.11; Arms A/B are platform-independent exact arithmetic)",
+   "name": "F0.python-minor-pinned",
+   "ok": true
+  },
+  {
+   "detail": "P1..P5 == 1/2, 5/12, 23/60, 307/840, 893/2520 (exact Fractions)",
+   "name": "F1.P1-P5",
+   "ok": true
+  },
+  {
+   "detail": "24 / 720 / 40,320 permutations enumerated",
+   "name": "F1.factorial-counts",
+   "ok": true
+  },
+  {
+   "detail": "cycle lengths of every enumerated permutation sum to m (m in {4, 6, 8})",
+   "name": "F1.cycle-partition",
+   "ok": true
+  },
+  {
+   "detail": "fixed element's cycle length uniform: (m-1)! per length, summing to m! (m in {4, 6, 8})",
+   "name": "C2.uniform-cycle-length",
+   "ok": true
+  },
+  {
+   "detail": "budget marginals at m = 6: [240, 360, 480] of 720 (registered 240/360/480)",
+   "name": "F2b.marginals-m6",
+   "ok": true
+  },
+  {
+   "detail": "enumerated marginal == b/m exactly at every (m, b), m in {4, 6, 8} \u2014 R2's law",
+   "name": "F2b.marginal-law-b-over-m",
+   "ok": true
+  },
+  {
+   "detail": "10 (registered 10)",
+   "name": "F2a.brute-census-m4",
+   "ok": true
+  },
+  {
+   "detail": "276 (registered 276)",
+   "name": "F2a.brute-census-m6",
+   "ok": true
+  },
+  {
+   "detail": "14736 (registered 14,736)",
+   "name": "F2a.brute-census-m8",
+   "ok": true
+  },
+  {
+   "detail": "m! * P_{m/2} == brute census at m in {4, 6, 8}",
+   "name": "F2a.harmonic-law-vs-brute",
+   "ok": true
+  },
+  {
+   "detail": "#{perms with a cycle of length exactly k > 3} = 6!/k: [180, 144, 120] (registered 180/144/120)",
+   "name": "F2a.per-length-law-m6",
+   "ok": true
+  },
+  {
+   "detail": "14736 == brute 14736 (independent counting method)",
+   "name": "F2a.partition-census-m8",
+   "ok": true
+  },
+  {
+   "detail": "1285920 == 10! * 893/2520 (registered 1,285,920)",
+   "name": "F2a.partition-census-m10",
+   "ok": true
+  },
+  {
+   "detail": "brute == harmonic closed form at m in {4, 6, 8}; partition == brute at (8, 4); partition == closed form at (10, 5) \u2014 three methods, one number",
+   "name": "C1.counting-triangle",
+   "ok": true
+  },
+  {
+   "detail": "P50 = 0.3118278207 (registered 0.3118278207), exact 41/41-digit fraction",
+   "name": "F2a.headline-P50",
+   "ok": true
+  },
+  {
+   "detail": "P50 * 2^100 = 3.953e29 (registered 3.953e29)",
+   "name": "F2a.ratio",
+   "ok": true
+  },
+  {
+   "detail": "2^-100 = 7.889e-31 (registered 7.889e-31)",
+   "name": "F2a.pole-independent",
+   "ok": true
+  },
+  {
+   "detail": "same-set joint census 0 for every 2-set at m = 4 and the fixed 3-set at m = 6 (pigeonhole)",
+   "name": "F2a.pole-same-set",
+   "ok": true
+  },
+  {
+   "detail": "true 632736 = naive 560160 + 72576 (registered 632,736 = 560,160 + 72,576)",
+   "name": "F2c.true-census-10-4",
+   "ok": true
+  },
+  {
+   "detail": "true 5916 (partition == brute) = naive 4656 + 1260 (registered 5,916 = 4,656 + 1,260)",
+   "name": "F2c.true-census-8-3",
+   "ok": true
+  },
+  {
+   "detail": "corrections exactly +10!/50 = 72,576 at (10, 4) and +8!/32 = 1,260 at (8, 3)",
+   "name": "C4.below-n-corrections",
+   "ok": true
+  },
+  {
+   "detail": "deterministic pointer on the 6-cycle: all 6 players fail at once (joint success 0)",
+   "name": "F2d.adversarial-6cycle-zero",
+   "ok": true
+  },
+  {
+   "detail": "the m = 100 rotation is a single 100-cycle: every player's cycle exceeds b = 50 \u2014 all 100 fail at once",
+   "name": "F2d.adversarial-100cycle-witness",
+   "ok": true
+  },
+  {
+   "detail": "one-sided remap census 276/720 on identity (registered 276)",
+   "name": "F2d.remap-identity",
+   "ok": true
+  },
+  {
+   "detail": "one-sided remap census 276/720 on the 6-cycle (registered 276)",
+   "name": "F2d.remap-6cycle",
+   "ok": true
+  },
+  {
+   "detail": "one-sided remap census 276/720 on 3+3 (registered 276)",
+   "name": "F2d.remap-3plus3",
+   "ok": true
+  },
+  {
+   "detail": "conjugation censuses {720, 0, 720} (registered {720, 0, 720} \u2014 cycle type frozen)",
+   "name": "F2d.conjugation-censuses",
+   "ok": true
+  },
+  {
+   "detail": "remap == 276 == the uniform census for ALL THREE arrangements; conjugation {720, 0, 720}",
+   "name": "C3.repair-contact",
+   "ok": true
+  },
+  {
+   "detail": "E[# failing | joint failure] = 50/T50 = 72.6562 of 100 (registered 72.6562)",
+   "name": "F2e.concentration",
+   "ok": true
+  },
+  {
+   "detail": "P(b) at b = 55/60/75/90 = 0.4062346943 / 0.4924928953 / 0.7139781129 / 0.8951930852; b = 99 == 99/100 exactly",
+   "name": "F2e.budget-rows",
+   "ok": true
+  },
+  {
+   "detail": "T_{n+1} - T_n == 1/((2n+1)(2n+2)) exactly for n = 1..199",
+   "name": "F2e.decrement-identity",
+   "ok": true
+  },
+  {
+   "detail": "hence P_n strictly decreasing (every decrement > 0), n = 1..199",
+   "name": "F2e.monotone",
+   "ok": true
+  },
+  {
+   "detail": "T_n == the 2n-th partial sum of the alternating harmonic series, n = 1..199 (the pencil route to T_n < ln 2 FOREVER)",
+   "name": "F2e.alternating-identity",
+   "ok": true
+  },
+  {
+   "detail": "S_60 < ln 2 < S_60 + 1/(61*2^60): T50 < S_60 certifies P50 > 1 - ln 2 (bracket width < 1e-19)",
+   "name": "F2e.ln2-bracket",
+   "ok": true
+  },
+  {
+   "detail": "gap = ln 2 - T50 in [0.0049750, 0.0049750] at 7 places (registered 0.0049750)",
+   "name": "F2e.floor-gap",
+   "ok": true
+  },
+  {
+   "detail": "m = 2: pointer P1 = 1/2 (succeeds iff identity) vs independent baseline 1/4 \u2014 the lever visible in a two-box world",
+   "name": "F4.m2-lever",
+   "ok": true
+  },
+  {
+   "detail": "1/(2n+1) + 1/(2n+2) - 1/(n+1) == 1/((2n+1)(2n+2)) exactly, n = 1..199",
+   "name": "F4.decrement-three-lines",
+   "ok": true
+  },
+  {
+   "detail": "any fixed n-set leaves n numbers unseen \u2014 joint success 0 (enumerated at m = 4 for every 2-set and at m = 6)",
+   "name": "F4.same-set-pigeonhole",
+   "ok": true
+  },
+  {
+   "detail": "independent uniform n-subsets at m = 4, fixed arrangement: 81 of 1296 == (1/2)^4",
+   "name": "F4.independent-product",
+   "ok": true
+  },
+  {
+   "detail": "b = m gives P = 1 (closed form; brute census == m! at m in {4, 6})",
+   "name": "F5.b-eq-m",
+   "ok": true
+  },
+  {
+   "detail": "b = m - 1 gives exactly 1 - 1/m (only the full m-cycle kills; brute at m in {4, 6})",
+   "name": "F5.b-eq-m-minus-1",
+   "ok": true
+  },
+  {
+   "detail": "b = 99 at m = 100 == 99/100 exactly",
+   "name": "F5.b99-m100",
+   "ok": true
+  },
+  {
+   "detail": "the identity arrangement succeeds under the deterministic pointer and under conjugation for every sigma (720/720)",
+   "name": "F5.identity-succeeds",
+   "ok": true
+  },
+  {
+   "detail": "3+3 stays won 720/720 \u2014 relabeling cannot break what cycle type already blessed",
+   "name": "F5.conjugation-control-3plus3",
+   "ok": true
+  },
+  {
+   "detail": "(wins, failing, mass) = [6131, 13869, 1007767] (registered [6131, 13869, 1007767])",
+   "name": "ArmR.preview-20261714",
+   "ok": true
+  },
+  {
+   "detail": "(wins, failing, mass) = [2455, 5545, 403116] (registered [2455, 5545, 403116])",
+   "name": "ArmR.preview-20261715",
+   "ok": true
+  },
+  {
+   "detail": "exactly 99N randrange draws: 1980000 / 792000 (registered 1,980,000 / 792,000)",
+   "name": "ArmR.draw-sentinels",
+   "ok": true
+  },
+  {
+   "detail": "each seed reproduced itself exactly (in-process double run per seed)",
+   "name": "ArmR.determinism",
+   "ok": true
+  },
+  {
+   "detail": "measured mean failing mass 72.6633 vs exact 50/T50 = 72.6562 (reporting-only; drafter's disclosed trace 72.6633)",
+   "name": "ArmR.concentration-trace",
+   "ok": true
+  },
+  {
+   "detail": "seed ledger [20261714, 20261715, 20261714, 20261715, 20261716] \u2014 20261716 read by the presentation leg only, after every decision and preview leg finished",
+   "name": "ArmR.presentation-seed-scoped",
+   "ok": true
+  },
+  {
+   "detail": "seed 20261717 never constructed (no random.Random(20261717) exists in this runner)",
+   "name": "ArmR.aux-seed-never-read",
+   "ok": true
+  },
+  {
+   "detail": "the Fisher-Yates loop consumes exactly m - 1 = 99 draws per episode (i = 99..1)",
+   "name": "F1.fisher-yates-draws",
+   "ok": true
+  },
+  {
+   "detail": "every registered integer census reproduced verbatim (10 / 276 / 14,736 / 1,285,920 / 632,736 = 560,160 + 72,576 / 5,916 / 240/360/480 / 276 x3 / {720, 0, 720} / 0)",
+   "name": "F3.integer-anchors",
+   "ok": true
+  },
+  {
+   "detail": "every registered decimal anchor reproduced under the disclosed round-half-up convention (P50, ratio, pole, concentration, budget rows, floor gap)",
+   "name": "F3.decimal-anchors",
+   "ok": true
+  },
+  {
+   "detail": "the C1 triangle (10 / 276 / 14,736 / 1,285,920), P50 = 0.3118278207, ratio 3.953e29, poles 2^-100 and 0 \u2014 all exact",
+   "name": "R1.lever",
+   "ok": true
+  },
+  {
+   "detail": "every enumerated marginal exactly b/m ((m-1)! per length; 240/360/480 at m = 6) \u2014 the entire lift is pure dependence",
+   "name": "R2.marginal-invariance",
+   "ok": true
+  },
+  {
+   "detail": "50/T50 = 72.6562 of 100; decrement exactly 1/((2n+1)(2n+2)); P_n > 1 - ln 2 certified (gap 0.0049750)",
+   "name": "R3.concentration-floor",
+   "ok": true
+  },
+  {
+   "detail": "adversarial 2n-cycle zeroes the pointer; conjugation {720, 0, 720} (no-op); one-sided remap restores 276/720 == the uniform census on all three arrangements",
+   "name": "R4.repairs",
+   "ok": true
+  },
+  {
+   "detail": "pointer census != the 2^-m product census at every enumerated m (276/720 != 720/2^6/720) and no enumerated marginal moved off b/m \u2014 APPROVE cannot fire beside the C1 triangle",
+   "name": "F6.approve-witness-excluded",
+   "ok": true
+  },
+  {
+   "detail": "all 64 enumerated boolean inputs agree; measured inputs -> REJECT / REJECT",
+   "name": "F6.twin-evaluators",
+   "ok": true
+  }
+ ],
+ "clauses": {
+  "R1": true,
+  "R2": true,
+  "R3": true,
+  "R4": true
+ },
+ "decision_inputs": {
+  "R1": true,
+  "R2": true,
+  "R3": true,
+  "R4": true,
+  "approve_cond": false,
+  "gates_ok": true
+ },
+ "environment": {
+  "cpython_minor": "3.11",
+  "decision_arms": "seedless exact integer/Fraction arithmetic (platform-independent)"
+ },
+ "measured": {
+  "P50": {
+   "decimal_10": "0.3118278207",
+   "denominator": "69720375229712477164533808935312303556800",
+   "denominator_digits": 41,
+   "numerator": "21740752665556690246055199895649405434183",
+   "numerator_digits": 41
+  },
+  "P_small": [
+   [
+    1,
+    2
+   ],
+   [
+    5,
+    12
+   ],
+   [
+    23,
+    60
+   ],
+   [
+    307,
+    840
+   ],
+   [
+    893,
+    2520
+   ]
+  ],
+  "arm_r": {
+   "20261714": {
+    "draws": 1980000,
+    "failing": 13869,
+    "mass": 1007767,
+    "trace_mean_dec4": "72.6633",
+    "wins": 6131
+   },
+   "20261715": {
+    "draws": 792000,
+    "failing": 5545,
+    "mass": 403116,
+    "wins": 2455
+   },
+   "seed_ledger": [
+    20261714,
+    20261715,
+    20261714,
+    20261715,
+    20261716
+   ]
+  },
+  "budget_rows": {
+   "b55": "0.4062346943",
+   "b60": "0.4924928953",
+   "b75": "0.7139781129",
+   "b90": "0.8951930852",
+   "b99": "99/100 exactly"
+  },
+  "censuses": {
+   "m10_b4_naive": 560160,
+   "m10_b4_true": 632736,
+   "m10_b5_partition": 1285920,
+   "m4_b2": 10,
+   "m6_b3": 276,
+   "m8_b3_brute": 5916,
+   "m8_b3_naive": 4656,
+   "m8_b3_true": 5916,
+   "m8_b4": 14736,
+   "m8_b4_partition": 14736
+  },
+  "concentration_exact_dec4": "72.6562",
+  "conjugation_censuses": {
+   "identity": 720,
+   "six_cycle": 0,
+   "three_plus_three": 720
+  },
+  "floor_gap_bracket_dec7": [
+   "0.0049750",
+   "0.0049750"
+  ],
+  "ln2_bracket_K": 60,
+  "marginals_m6": [
+   240,
+   360,
+   480
+  ],
+  "per_length_law_m6": {
+   "4": 180,
+   "5": 144,
+   "6": 120
+  },
+  "pole_2pow_minus100_sig4": "7.889e-31",
+  "ratio_sig4": "3.953e29",
+  "remap_censuses": {
+   "identity": 276,
+   "six_cycle": 276,
+   "three_plus_three": 276
+  }
+ },
+ "self_checks": {
+  "failed": 0,
+  "passed": 61,
+  "total": 61
+ },
+ "verdict": "REJECT"
+}
