@@ -1,0 +1,535 @@
+{
+ "_provenance": {
+  "source": "idea-engine PROPOSAL 078 (control/outbox.md block stamped 2026-07-15T23:49:54Z, live post-ROLLOVER 003) + ideas/venture-lab/impulse-price-blanket-series-collapse-2026-07-15.md @ idea-engine main dcc0991 (landed via idea-engine PR #443, merged 2026-07-16T00:04:35Z by github-actions[bot], head 3778279)",
+  "ground_truth": "COMMITTED external constants re-verified FIRSTHAND before this fixture was written, on a public-HTTPS shallow clone of venture-lab @ 021cba9422ff838128c3af2c23e4212824173471: docs/publishing/PUBLISHING-PLAN.md section 1 royalty hard fact verbatim ('KDP pays 70% only on ebooks priced $2.99-$9.99 (inclusive) ... below $2.99 or above $9.99 pays 35%, and a per-MB delivery fee is deducted from the 70% tier'); the 26-packet blanket census reproduced exactly under the drafter's four-pattern census grammar; the two 'at any plausible volume ratio' packets (the-twelfth-cake.md:106-107, de-driekoningentaart.md:106-108 'holds unchanged in EUR'); the one fork packet (the-marmalade-post.md:93-95) with its committed Peridale '36 book series' comp and 'series read-through' channel (section 3); the sellable guide sentence (candidates/ai-novella-production-kit/guide/06-pricing-and-listing.md:9-16, 'the *procedure* transfers'); the complete 3-book Night Kiln at EN word counts exactly 16180/16192/23610 (len(split()), the wc -w rule) with committed series-matched $4.99 (the-night-kiln.md:84,145) and 4.99 EUR (de-morgendeur.md:237) and 'Book Two of a three-book series' (de-morgendeur.md:95-97). The V049 external anchor roy(0.99) = 693/2000 read at this repo's own sims/verdict-049-ku-exclusivity/REPORT.md:27. The sim itself is hermetic: it reads ONLY this fixtures.json",
+  "harvest_observation": "zero harvest anomalies; one OBSERVATION: three further packets (the-night-kiln.md, the-marginalia-society.md, the-painted-stones.md) carry variant impulse-rejection phrasings the registered grammar does not match - the blanket is if anything WIDER than the registered 26; the registered count is the match claim and reproduces exactly",
+  "note": "values copied verbatim from the registration (exact rationals as [numerator, denominator] VALUE PAIRS, compared as Fraction values with the spelling derived, never compared - the V090 session idea applied); the runner re-derives everything from scratch and must not trust the anchors - a mismatch is a first-class anomaly"
+ },
+ "royalty": {
+  "tier_hi": [
+   7,
+   10
+  ],
+  "tier_lo": [
+   7,
+   20
+  ],
+  "band_lo": [
+   299,
+   100
+  ],
+  "band_hi": [
+   999,
+   100
+  ],
+  "band_inclusive": true,
+  "delivery_fee_law": "per-MB fee delta deducted from the 70% tier ONLY (plan section 1 verbatim); registered at delta = 0 for decision cells, with the signed lemma swept on the grid",
+  "delta_grid": [
+   [
+    0,
+    1
+   ],
+   [
+    1,
+    100
+   ],
+   [
+    1,
+    10
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  "promo_price_p0": [
+   99,
+   100
+  ],
+  "committed_prices": {
+   "twelfth_cake_marmalade_3.99": [
+    399,
+    100
+   ],
+   "night_kiln_slow_word_4.99": [
+    499,
+    100
+   ],
+   "band_floor_2.99": [
+    299,
+    100
+   ]
+  },
+  "series_price": [
+   499,
+   100
+  ],
+  "v049_external_anchor_roy_p0": [
+   693,
+   2000
+  ],
+  "v049_anchor_source": "sims/verdict-049-ku-exclusivity/REPORT.md:27 @ this repo (imported, never re-derived by hand; the sim re-derives it from the tier law and must match)"
+ },
+ "series_model": {
+  "K_anchors": [
+   1,
+   3,
+   36
+  ],
+  "K_meaning": "standalone / the complete committed 3-book Night Kiln / the committed Peridale 36-book comp",
+  "r_grid": [
+   [
+    1,
+    10
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    4
+   ],
+   [
+    9,
+    10
+   ]
+  ],
+  "witness_cells": [
+   [
+    3,
+    [
+     3,
+     4
+    ]
+   ],
+   [
+    36,
+    [
+     3,
+     4
+    ]
+   ]
+  ],
+  "funnel_law": "geometric per-boundary read-through: buyers of book k+1 = r x buyers of book k; promo arm moves book 1 to p0 ONLY, books 2..K stay at the committed series price under BOTH arms; I(p1) = roy(p1) + sum_{k=2..K} r^(k-1) roy(p); m*(K, r) = I(full)/I(promo); K->inf closed form m*_inf(r) = roy(p) / ((1-r) roy(p0) + r roy(p))",
+  "model_conventions": "downstream prices fixed; read-through promo-independent; buyers-only attrition (declared conventions per the idea file's Model basis; promo-degrades-read-through direction signed as bar-raising, named follow-up)"
+ },
+ "ku_mixture": {
+  "beta_grid": [
+   [
+    0,
+    1
+   ],
+   [
+    1,
+    4
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  "J_grid_relative": [
+   "roy/2",
+   "roy",
+   "2*roy"
+  ],
+  "law": "m*_ku = ((1-beta) I_full + beta J) / ((1-beta) I_promo + beta J); decision content is the MONOTONE lemma (strictly decreasing in beta toward 1 at every J, beta = 0 recovers the sales-only bar), not any J cell",
+  "named_cell": {
+   "K": 3,
+   "r": [
+    1,
+    2
+   ],
+   "beta": [
+    1,
+    2
+   ],
+   "J": "roy",
+   "value": [
+    5489,
+    3691
+   ]
+  }
+ },
+ "census": {
+  "grammar_patterns": [
+   "impulse price recommended (drops to 35%)",
+   "impulse-price trade-off recommended (drops to 35%)",
+   "impulse pricing explicitly not recommended (35% tier)",
+   "impulse-price trade-off is"
+  ],
+  "grammar_note": "VACANCY-derived disclosure: the registration pins the census by COUNT (26/2/1) and partial naming only; the four-pattern grammar and the exact 26-file list are recovered from the drafter's drafting script (scratchpad draft_p078.py, cited in the P078 PR body), verified firsthand at 021cba9, and disclosed here; matching is over whitespace-collapsed text; the registered COUNTS are the match claims",
+  "fork_pattern": "book-1 promo price becomes a real",
+  "ratio_pattern": "at any plausible volume ratio",
+  "guide_pattern": "the *procedure* transfers",
+  "blanket_count": 26,
+  "ratio_count": 2,
+  "fork_count": 1,
+  "expected_blanket_files": [
+   "de-driekoningentaart.md",
+   "de-geborgen-boomgaard.md",
+   "de-glazen-pastorie.md",
+   "de-marmeladepost.md",
+   "de-morgendeur.md",
+   "de-nachtoven.md",
+   "de-oogstslag.md",
+   "de-papieren-sinaasappel.md",
+   "de-waag.md",
+   "de-zoete-zee.md",
+   "het-trage-woord.md",
+   "liefde-in-de-kantlijn.md",
+   "the-glass-rectory.md",
+   "the-halfway-ferry.md",
+   "the-marmalade-post.md",
+   "the-paper-orange.md",
+   "the-pepper-ledger.md",
+   "the-salvage-orchard.md",
+   "the-seed-catalogue-courtship.md",
+   "the-slow-word.md",
+   "the-sweetwater-sea.md",
+   "the-twelfth-cake.md",
+   "the-weigh-house.md",
+   "the-wire-garden.md",
+   "ultramarine.md",
+   "weduwenblauw.md"
+  ],
+  "expected_ratio_files": [
+   "de-driekoningentaart.md",
+   "the-twelfth-cake.md"
+  ],
+  "expected_fork_files": [
+   "the-marmalade-post.md"
+  ],
+  "night_kiln_series_packets_in_list": [
+   "de-nachtoven.md",
+   "de-morgendeur.md",
+   "de-oogstslag.md"
+  ],
+  "vetting_file_universe": [
+   "agent-fleet-field-manual.md",
+   "ai-novella-production-kit.md",
+   "bundle-starter.md",
+   "de-driekoningentaart.md",
+   "de-geborgen-boomgaard.md",
+   "de-glazen-pastorie.md",
+   "de-marmeladepost.md",
+   "de-morgendeur.md",
+   "de-nachtoven.md",
+   "de-oogstslag.md",
+   "de-papieren-sinaasappel.md",
+   "de-waag.md",
+   "de-zoete-zee.md",
+   "false-green-test-trap.md",
+   "github-webhook-test-kit.md",
+   "het-trage-woord.md",
+   "kill-rule-intake-kit.md",
+   "liefde-in-de-kantlijn.md",
+   "membership-kit.md",
+   "merge-wall-cookbook.md",
+   "multi-agent-control-plane-pack.md",
+   "owner-click-queue-kit.md",
+   "photo-packs.md",
+   "stripe-webhook-test-kit.md",
+   "template-packs.md",
+   "the-glass-rectory.md",
+   "the-halfway-ferry.md",
+   "the-marginalia-society.md",
+   "the-marmalade-post.md",
+   "the-night-kiln.md",
+   "the-painted-stones.md",
+   "the-paper-orange.md",
+   "the-pepper-ledger.md",
+   "the-puddle-museum.md",
+   "the-salvage-orchard.md",
+   "the-seed-catalogue-courtship.md",
+   "the-slow-word.md",
+   "the-sweetwater-sea.md",
+   "the-twelfth-cake.md",
+   "the-weigh-house.md",
+   "the-windmill-mouse.md",
+   "the-wire-garden.md",
+   "ultramarine.md",
+   "v020-probe-audience-separation.md",
+   "weduwenblauw.md"
+  ],
+  "pinned_excerpts": {
+   "de-driekoningentaart.md": "(≈ €3.49–€5.49)** → **recommended €3.99** (the EN packet recommends the band's floor — holiday novellas are gift-adjacent impulse reads; Amazon.nl storefront pricing in EUR; 70% band respected). NOT re-derived from NL comps — flagged in §3; owner may adjust at click time. … click time. - [x] No impulse-price trade-off recommended (drops to 35%) — the EN packet's arithmetic (70% of $3.99 beats 35% of $0.99 at any plausible volume ratio) holds unchanged in EUR. - [x] Print: not in first-release scope — ebook-only, cover-only gate. … 6. **Price:** **€3.99** (70% tier; inherited band floor per the EN packet's holiday-impulse call, not NL-re-derived — owner may adjust). 7. **Categories/keywords:** the two §6 categories + 7 Dutch keywords verbatim; paste the §6 Dutch blurb + content note. 8. **KDP Select (KU):** **Yes** — enroll (90-day exclusive, reversible);",
+   "de-geborgen-boomgaard.md": "adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "de-glazen-pastorie.md": "adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "de-marmeladepost.md": "§3; owner may adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "de-morgendeur.md": "in §3; owner may adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "de-nachtoven.md": "adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "de-oogstslag.md": "stays €4.99 for series consistency.) - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "de-papieren-sinaasappel.md": "flagged in §3; owner may adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "de-waag.md": "from NL comps — flagged in §3; owner may adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "de-zoete-zee.md": "owner may adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "het-trage-woord.md": "from NL comps — flagged in §3; owner may adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "liefde-in-de-kantlijn.md": "adjust at click time. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "the-glass-rectory.md": "$4.99** (inside the verified $2.99–$9.99 KDP 70% band). - [ ] No $0.99 impulse price recommended (drops to 35%). - [ ] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "the-halfway-ferry.md": "KDP 70% tier). - [ ] No $0.99 impulse price recommended (drops to 35%). - [ ] Print: MG is a print-heavy age band — a paperback edition is a REAL candidate here (unlike the adult novellas), but is deferred to graduation with the ⚑ owner packaging call; ebook-only first release.",
+   "the-marginalia-society.md": "dark academia buyers are genre-committed; still 70% tier). - [ ] $0.99 impulse pricing not recommended (35% tier). - [ ] Print: not in first-release scope. ## 5. Packaging (production gate)",
+   "the-marmalade-post.md": "$2.99–$9.99 KDP 70% band). - [ ] No $0.99 impulse price recommended (drops to 35%); if a later series has 3+ books, a book-1 promo price becomes a real ⚑ owner decision — flagged for then, not now. - [ ] Print: not in first-release scope — ebook-only, cover-only gate.",
+   "the-night-kiln.md": "(inside the verified KDP 70% band). - [ ] No $0.99 impulse price (35% tier trade-off not worth it here). - [ ] Print: not in first-release scope — ebook-only. ## 5. Packaging (production gate)",
+   "the-painted-stones.md": "title** twice over: picture books are fixed-layout, not reflowable, and ebook is not the lead format. No $0.99 impulse price is recommended (35% tier). ## 5. Packaging (production gate)",
+   "the-paper-orange.md": "€4.99); recommendation unchanged. - [x] No $0.99 impulse price recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "the-pepper-ledger.md": "manuscript lands ≥35k words, else $2.99; both hold the 70% tier. - [ ] $0.99 impulse pricing explicitly not recommended (35% tier). - [ ] Print: not in first-release scope. ## 5. Packaging (production gate)",
+   "the-salvage-orchard.md": "price higher, so $4.99 undercuts while staying mid-band). - [ ] No $0.99 impulse price recommended (drops to 35%). - [ ] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "the-seed-catalogue-courtship.md": "band). - [ ] No $0.99 impulse price recommended (drops to 35%). - [ ] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "the-slow-word.md": "- [x] 70%-royalty threshold respected: $4.99 sits inside the verified $2.99–$9.99 KDP 70% band. No $0.99 impulse-price trade-off is recommended (would drop to 35%). - [x] Print: **not in scope** for this title's first release — ebook-only (cover-only gate, §5). A print edition is a later owner option; no",
+   "the-sweetwater-sea.md": "class; inside the verified $2.99–$9.99 KDP 70% band). - [x] No $0.99 impulse price recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "the-twelfth-cake.md": "- [ ] Band: adult/literary novella ebook **$3.99–$5.99** → **recommended $3.99** (holiday novellas are gift-adjacent impulse reads; floor of the band, inside the verified $2.99–$9.99 KDP 70% band). - [ ] No $0.99 impulse price recommended (drops to 35%) — even in a seasonal spike, 70% of $3.99 beats 35% of $0.99 at any plausible volume ratio.",
+   "the-weigh-house.md": "- [x] 70%-royalty threshold respected: $4.99 sits inside the verified $2.99–$9.99 KDP 70% band. No $0.99 impulse-price trade-off is recommended (would drop to 35%). - [x] Print: **not in scope** for first release — ebook-only (cover-only gate, §5). A print edition is a later owner option; no print royalty",
+   "the-wire-garden.md": "band). - [x] No $0.99 impulse price recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)",
+   "ultramarine.md": "- [x] 70%-royalty threshold respected: $4.99 sits inside the verified $2.99–$9.99 KDP 70% band. No $0.99 impulse-price trade-off is recommended (would drop to 35%). - [x] Print: **not in scope** for first release — ebook-only (cover-only gate, §5). A print edition is a later owner option; no print royalty",
+   "weduwenblauw.md": "flagged in §3; owner may adjust at click time. Fallback €3.99. - [x] No impulse-price trade-off recommended (drops to 35%). - [x] Print: not in first-release scope — ebook-only, cover-only gate. ## 5. Packaging (production gate)"
+  },
+  "pinned_excerpt_rule": "per vetting file, every line matching /impuls|plausible volume ratio|book-1 promo/i with a [-1, +3]-line window, whitespace-collapsed, windows joined by ' … ' - copied verbatim from venture-lab @ 021cba9; files absent from pinned_excerpts carry no such line",
+  "guide_pinned_excerpt": "pattern for adult/literary novellas: band $3.99–$5.99 inside the platform's 70%-royalty range ($2.99–$9.99); a seasonal gift-adjacent title priced at the floor ($3.99 ≈ $2.79/sale at 70%); and the explicit rejection of $0.99 impulse pricing because dropping to the 35% tier means 70%-of-$3.99 beats 35%-of-$0.99 at any plausible volume ratio. Whatever your genre's numbers are, the *procedure* transfers: verify the band, cite it, do the tier arithmetic, write the reasoning down where the next book can reuse it.",
+  "night_kiln_word_counts": {
+   "the-night-kiln.md": 16180,
+   "the-morning-door.md": 16192,
+   "the-harvest-rows.md": 23610
+  },
+  "word_count_rule": "len(open(p).read().split()) - the wc -w rule; measured firsthand at 021cba9 (harvest-time match claims; carried constants in-sim)"
+ },
+ "f_census_anchors": {
+  "jump_ratio": [
+   2,
+   1
+  ],
+  "forbidden_band_width": [
+   2093,
+   2000
+  ],
+  "forbidden_band_width_equals_lower_edge": true,
+  "attainable_set_edges": [
+   [
+    693,
+    2000
+   ],
+   [
+    2093,
+    2000
+   ],
+   [
+    2093,
+    1000
+   ],
+   [
+    6993,
+    1000
+   ]
+  ],
+  "standalone_bars": {
+   "3.99": [
+    266,
+    33
+   ],
+   "4.99": [
+    998,
+    99
+   ],
+   "2.99": [
+    598,
+    99
+   ]
+  },
+  "bar_law": "m*(1) = (tier ratio 2) x (p / p0) exactly, at every committed price",
+  "fee_row_at_3.99_rendered_4dp": [
+   "8.0317",
+   "7.7720",
+   "6.6176"
+  ],
+  "fee_row_deltas": [
+   [
+    1,
+    100
+   ],
+   [
+    1,
+    10
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  "m3_row": [
+   [
+    55389,
+    10439
+   ],
+   [
+    10479,
+    3287
+   ],
+   [
+    3493,
+    1695
+   ],
+   [
+    18463,
+    11271
+   ],
+   [
+    135229,
+    90279
+   ]
+  ],
+  "m3_row_floats_disclosed": [
+   "5.3060",
+   "3.1880",
+   "2.0608",
+   "1.6381",
+   "1.4979"
+  ],
+  "thin_cell_m3_half": {
+   "value": [
+    3493,
+    1695
+   ],
+   "note": "DISCLOSED thin cell: m*(3, 1/2) = 2.0608 sits ONE grid step above the REJECT witness line m* <= 2; clause (b) survives at r in {3/4, 9/10} only"
+  },
+  "m36_34_band": {
+   "le": [
+    4,
+    3
+   ],
+   "float_disclosed": "1.2907",
+   "margin_note": "margin to 4/3 approx 0.043, modest, disclosed"
+  },
+  "m36_910_float_disclosed": "1.1015",
+  "r_star_inf": [
+   400,
+   899
+  ],
+  "knife_edge": {
+   "m_inf_910": [
+    69860,
+    63567
+   ],
+   "vs": [
+    11,
+    10
+   ],
+   "margin": [
+    91,
+    90810
+   ],
+   "status": "registered and EXCLUDED from decision clauses (the P070 knife-edge rule): no clause may rest on the 11/10 comparison; the finite-K ordering m*(36, 9/10) > m*_inf(9/10) IS a gate (G4), the 11/10 comparison is NOT"
+  },
+  "ku_named_cell": [
+   5489,
+   3691
+  ],
+  "hand_worlds": {
+   "g5a_standalone_4.00": [
+    800,
+    99
+   ],
+   "g5b_K2_r_half_4.00": [
+    8400,
+    3493
+   ]
+  },
+  "c4_geometric_sum": [
+   34359738367,
+   34359738368
+  ],
+  "approve_side_witnesses": "falsifiability live on both sides: at r <= 1/4 every K = 3 cell clears 3; any catalog whose series geometry stays under r*_inf = 400/899 at K -> inf keeps every bar above 2",
+  "exact_cohort_mean_armR": "80775.625"
+ },
+ "typed_must_equal_contacts": {
+  "contact_C1": "Arm B ledger full-price income == Arm A closed-form full-price income at all 15 (K, r) cells",
+  "contact_C2": "Arm B ledger promo income == Arm A closed-form promo income at all 15 (K, r) cells",
+  "contact_C3": "Arm B ledger ratio == Arm A m*(K, r) at all 15 (K, r) cells",
+  "contact_C4": "geometric-sum identity at (r = 1/2, K = 36): sum_{k=2..36} (1/2)^(k-1) == (1/2 - (1/2)^36) / (1 - 1/2) == 34359738367/34359738368 exactly",
+  "margin0_royalty_contacts": [
+   "tier jump ratio == 2 exactly (price-independent, = (7/10)/(7/20))",
+   "forbidden-band width == its own lower edge exactly (2093/2000 == 2093/2000)"
+  ],
+  "r_independence_contact": "m*(1, r) == the standalone bar at EVERY grid r (r-free)"
+ },
+ "arm_r": {
+  "N_per_seed": 10000,
+  "cohort_cell": {
+   "K": 3,
+   "r": [
+    3,
+    4
+   ],
+   "series_price": [
+    499,
+    100
+   ]
+  },
+  "draw_order_grammar": "REGISTERED (fixture line, the V089 lesson, applied by the drafter): for reader i = 0..N-1 ascending, for boundary k = 2..K ascending, draw exactly ONE uniform u = rng.random(); the reader continues to book k iff u < float(r), else break; no other draws are made; one random.Random(seed) per trace; the aux seed is never read",
+  "seeds_reporting_only": [
+   20261700,
+   20261701,
+   20261702
+  ],
+  "aux_seed_never_read": 20261703,
+  "seed_gap_disclosed": "20261694-699 is the disclosed in-flight buffer; 20261690-693 are P077/V090's registered set",
+  "disclosed_previews_full_price_arm": {
+   "20261700": "80607.96",
+   "20261701": "80618.44",
+   "20261702": "81041.09"
+  },
+  "exact_cohort_mean": "80775.625",
+  "accumulation_convention": "VACANCY-derived disclosure: the grammar pins the DRAW order, not the income accumulation; the drafting convention is float(roy(series_price)) added per purchased book in reader order, round(total, 2) at the end - disclosed here and checked against the three registered previews; the promo-arm cohort value per seed is UNDISCLOSED in the registration (reported here as a vacancy, derived from the same trace with book 1 at p0, zero extra draws)",
+  "reporting_sanity": "G6: previews within 2% of the exact cohort mean - a reporting-sanity gate; NO statistical gate touches any decision",
+  "no_statistical_gate": true
+ },
+ "decision_rule": {
+  "order": [
+   "REJECT",
+   "INVALID",
+   "APPROVE",
+   "NULL"
+  ],
+  "REJECT": "the catalog-wide blanket (scope defect, not sentence defect) iff ALL of: (a) standalone home ground real - m*(1) >= 6 at every committed price pair (266/33, 998/99, 598/99); (b) series collapse - m*(3, r) <= 2 for at least one r in the registered grid at the committed $4.99; (c) comp-scale collapse - m*(36, 3/4) <= 4/3",
+  "INVALID": "any G1-G6 gate failure (report, no ruling)",
+  "APPROVE": "m*(K, r) > 4 at every committed series cell (K in {3, 36} x the full r grid) - mutually exclusive with REJECT via clause (b)",
+  "NULL": "otherwise, on named axes: the r axis (no committed read-through measurement - cheapest live probe: the KDP series dashboard read-through report on the FIRST published pair, zero spend); the beta/KU axis; the delta fee axis; the EUR basis (NL packets price EUR 3.99/4.99 and assert '70% band respected' - band constants inherited, not re-verified). Every NULL a finalized citable finding with exact tables, never a re-run request",
+  "knife_edge_exclusion_gate": "the decision evaluators receive an ENUMERATED input set (standalone bars, the m*(3, r) row, the m*(36, r) row); m*_inf values and the 11/10 comparison appear in NO clause - asserted structurally"
+ },
+ "gates": {
+  "G1": "twin arms: Arm B (per-mass ledger walk) == Arm A (closed forms) on every rational at all 15 (K, r) cells - full income, promo income, AND ratio (C1/C2/C3); C4 exact",
+  "G2": "T1: jump ratio == 2 exactly; forbidden-band width == lower edge exactly; attainable-set edges == {693/2000, 2093/2000, 2093/1000, 6993/1000}; roy(0.99) == 693/2000 (the V049 external anchor); every committed price in the upper branch",
+  "G3": "T2: m*(1) == 2 p/p0 at every committed price; the delta lemma strictly lowers the bar at every grid delta",
+  "G4": "T3: m* strictly decreasing in K and in r across the grid; m*(1, r) r-free; the K->inf closed form verified against the ladder (m*(36, 9/10) > m*_inf(9/10)); m*_inf(r*) == 2 exactly at r* = 400/899",
+  "G5": "hand worlds: p = $4.00 standalone bar == 800/99 (= 2 x 4/0.99); K = 2, r = 1/2, p = $4.00: m* == 8400/3493",
+  "G6": "battery: beta-monotonicity strict at every J with beta = 0 recovering the sales-only bar; census recount from the fixture's pinned copies reproduces 26/2/1; Arm R previews within 2% of the exact cohort mean (reporting sanity, no gate on decisions); census anchors reproduced verbatim"
+ },
+ "margin_ledger_registered_cells": {
+  "jump_ratio_margin0": "tier jump ratio == 2 EXACTLY (equality, price-independent)",
+  "band_width_margin0": "forbidden-band width == its own lower edge EXACTLY (2093/2000 == 2093/2000)",
+  "r_independence": "m*(1, r) identical across the whole r grid (equality row)",
+  "thin_cell_disclosed": "m*(3, 1/2) = 3493/1695 = 2.0608 - ONE grid step above the clause-(b) witness line (clearance 0.0608, thin, disclosed; clause (b) is an EXISTENTIAL over the grid and fires at r in {3/4, 9/10})",
+  "comp_cell_margin": "m*(36, 3/4) = 1.2907 vs 4/3 - clearance approx 0.043, modest, disclosed",
+  "knife_edge_excluded": "m*_inf(9/10) vs 11/10 margin EXACTLY 91/90810 - registered, reported, and EXCLUDED from every decision clause",
+  "home_ground_clearances": "standalone bars 8.06/10.08/6.04 vs the >= 6 line - clearances 2.06/4.08/0.04; the 2.99 bar 598/99 = 6.0404 is a THIN clearance (0.0404), disclosed here (the band floor sits nearest the line)"
+ },
+ "controls_and_null_axes": {
+  "r_axis": "no committed read-through measurement exists - the grid brackets 1/10..9/10; the named zero-spend probe is the KDP series dashboard on the first published pair",
+  "beta_ku_axis": "T5 monotone lemma is the decision content; J relative-pinned (KENP page counts uncommitted)",
+  "delta_fee_axis": "signed lemma: delta > 0 hits the 70% side only, so the true bar is strictly BELOW 2 p/p0 - direction known, swept on the grid",
+  "eur_basis": "NL packets price EUR 3.99/4.99 and assert '70% band respected' - the EUR band constants are inherited, not re-verified (named NULL axis; no EUR decision cell exists)"
+ },
+ "expected_landing_disclosed": "REJECT on (a) AND (b) AND (c) at the drafter's exact values (50/50 drafting checks PASS, exit 0, ~0.4 s; twin-arm mismatches 0); the sim re-derives everything from scratch and must not trust these",
+ "battery": {
+  "cpython_pin": "3.11",
+  "byte_identity": "stdout + results.json byte-identical across two process runs (Arms A/B seedless exact Fraction arithmetic, platform-independent; Arm R pinned to the stated CPython minor)",
+  "anomaly_census_convention": "structured by disclosure coverage (V087-V090): compared-and-matched / compared-and-mismatched / not-disclosed(vacant); mismatches are first-class anomalies; exact rationals compared as Fraction VALUES with the spelling derived, never compared (the V090 session idea applied)"
+ }
+}
