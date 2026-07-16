@@ -1,6 +1,6 @@
 # Session — VERDICT 099 — series read-through concentrate-vs-spread saturation crossover (P086, venture-lab). On the pinned N=4-book multiplicative read-through funnel (entry cohort C=2000/seed, seeds S=[1,2,3,4,5], r_base=0.30, ceiling r_max=0.85 the stability bound, linear map r_k=min(r_max, r_base+slope·b_k) with slope=0.05 so a single step saturates at b=11 budget units, CONCENTRATE=(B,0,0) vs SPREAD=(B/3,B/3,B/3), budget grid B∈{6,11,16,22,33}, common random numbers per seed — both allocations evaluated on the SAME per-reader uniform matrix, else NULL) P086 pre-registers an ACCEPT rule requiring ALL of R1–R4: R1 reach-regime (B=6 CONCENTRATE > SPREAD all 5 seeds, paired margin ≥3σ), R2 saturation reversal (B=33 SPREAD > CONCENTRATE all 5 seeds, margin ≥3σ), R3 well-posedness (every realized r_k∈[0.30,0.85] AND mean revenue monotone non-decreasing in B for BOTH allocations), R4 crossover-at-ceiling (B* smallest grid B with SPREAD≥CONCENTRATE lies strictly in (11,22] AND CONCENTRATE mean revenue FLAT across B∈{11,16,22,33}). Disclosed expected landing ACCEPT (the crossover exists and is bound-located). Independent hermetic re-implementation of the Bernoulli funnel under common random numbers; twin evaluators (if-chain + table-driven) must agree on token AND first-failing gate (idea-engine PROPOSAL 086, `## PROPOSAL 086 · 2026-07-16T17:48:11Z · status: sim-ready`, `ideas/venture-lab/series-readthrough-saturation-crossover-2026-07-16.md`; P086 → V099 under the +13 offset, twenty-third row; SEEDLESS ledger baton — seeds are the in-file constants S=[1..5], no seed-ledger block consumed, next free block stays 20261730)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus 4 family · high effort · verifier-build task-class
 
 Objective: produce VERDICT 099 for idea-engine PROPOSAL 086 (the series
@@ -28,9 +28,11 @@ and a table-driven scorer) that must agree on the ruling token AND the first fai
 gate. The seeds are the in-file constants S=[1,2,3,4,5] (RNG = `random.Random(seed)`),
 NOT a draw from the fleet seed ledger — this slice consumes NO seed-ledger block and
 the next free block stays **20261730**, untouched (inherited from the V098 baton).
-This card holds the substrate gate red deliberately until the flip (the born-red
-discipline — the designed hold is the only red this branch produces itself); the flip
-is the owner-reviewed LAST step, not taken this session.
+This card held the substrate gate red deliberately until the flip (the born-red
+discipline — the designed hold was the only red this branch produced itself); the flip
+to `complete` is this session's owner-reviewed LAST step (checkpoint reviewed and
+APPROVED — verdict ACCEPT confirmed, all gates verified, determinism + twin evaluators +
+self-checks all good), taken as the release-landing commit.
 
 ## What happened
 
@@ -54,9 +56,57 @@ reads at verdict time.
 
 ## Results
 
-_Pending owner-reviewed checkpoint — filled at flip (this card ships born-red; the
-verdict token, gate table, margins, B*, twin-evaluator agreement, and determinism
-digests land here when the owner clears the flip)._
+**VERDICT 099 — ACCEPT** (first failing gate: **None**). Per the pre-registered rule
+(ACCEPT iff R1 AND R2 AND R3 AND R4, evaluated in order R1→R2→R3→R4; else REJECT at the
+first failing gate) all four gates pass, and the measured table reproduces P086's
+disclosed dry-sim calibration to the book from an INDEPENDENT re-implementation.
+
+Mean revenue over seeds S=[1,2,3,4,5] (total books bought across the C=2000 cohort):
+
+| B  | CONCENTRATE | SPREAD  | SPREAD−CONC |
+|----|-------------|---------|-------------|
+| 6  | 3641.80     | 3225.00 | −416.80     |
+| 11 | 4336.60     | 3651.60 | −685.00     |
+| 16 | 4336.60     | 4129.40 | −207.20     |
+| 22 | 4336.60     | 4804.80 | +468.20     |
+| 33 | 4336.60     | 6344.40 | +2007.80    |
+
+Gate outcomes (fire in order R1→R2→R3→R4):
+
+- **R1 reach regime @ B=6 — PASS.** CONCENTRATE beats SPREAD for all 5 seeds; per-seed
+  diffs CONC−SPREAD = [454, 435, 388, 381, 426] (all >0); mean 416.80 books, SEM 13.98
+  → **29.81σ ≥ 3**.
+- **R2 saturation reversal @ B=33 — PASS.** SPREAD beats CONCENTRATE for all 5 seeds;
+  per-seed diffs SPREAD−CONC = [1974, 2042, 2002, 1989, 2032] (all >0); mean 2007.80
+  books, SEM 12.82 → **156.67σ ≥ 3**.
+- **R3 well-posedness — PASS.** Every realized r_k ∈ [0.30, 0.85]; mean revenue monotone
+  non-decreasing in B for BOTH allocations (CONCENTRATE [3641.8, 4336.6, 4336.6, 4336.6,
+  4336.6], SPREAD [3225.0, 3651.6, 4129.4, 4804.8, 6344.4]).
+- **R4 crossover at the entry-step ceiling — PASS.** B\*=22 ∈ (11, 22]; CONCENTRATE mean
+  revenue FLAT at 4336.6 books across B∈{11,16,22,33} (0.0-book variation — r_1 clamped
+  at r_max=0.85 for b_1≥11, identical uniform matrix → identical per-reader books).
+
+All four gates pass → ACCEPT, first failing gate **None**. Twin evaluators agree:
+A(if-chain)=ACCEPT/None, B(table)=ACCEPT/None. Self-checks 7/7 passed
+(fixture_matches_committed, twin_evaluators_agree_verdict, twin_evaluators_agree_reason,
+common_random_numbers_shared_per_seed, realized_rates_within_stability_bound,
+cohort_size_is_C, budget_grid_straddles_saturation). Exit 0, byte-identical double run.
+
+Digests (double run, external diff + sha256):
+
+- `results.json` sha256 `14e7a4d57db265c7f042759e401c4c2521c9036493f961fa3ed1b152cfbbfb3d`
+- `run-stdout.txt` sha256 `4d43e3194fdd1c8da0402e8d1e7f348c355c39f665c40160f103648600c7d9d8`
+- `fixtures.json` sha256 `69fe5aa13d4ea78519843880cad930f91dc6a6211ddfaceb78f9cd9a87fa74d5`
+
+Mechanism: CONCENTRATE's entry step saturates at b_1=(r_max−r_base)/slope=(0.85−0.30)/
+0.05=11, past which extra budget on book 1 is wasted at the r_max ceiling (its marginal
+revenue is exactly zero), while SPREAD's three unsaturated transitions keep converting.
+The two mean-revenue curves cross between B=16 (SPREAD 4129.4 < CONC 4336.6) and B=22
+(SPREAD 4804.8 > CONC 4336.6), locating B\*=22 — the CONCENTRATE→SPREAD optimum flips at
+the world's own stability bound, exactly the ceiling-located reversal P086 registered.
+This is the direct successor to V098's lesson: where P085 caught a gate mis-anchored
+ABOVE a capacity crossover, P086 anchors its flip ON the bound by construction and the
+ACCEPT confirms it. PR #171 (head 8f2d4f2); the born-red hold cleared on this flip.
 
 ## ⟲ Previous-session review
 
