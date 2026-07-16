@@ -1,0 +1,36 @@
+VERDICT-098 - RR vs LQF domain-rotation starvation (P085)
+====================================================================
+
+Per-load means over seeds S=[1,2,3,4,5], window rounds [500, 10000):
+
+rho    | fill_RR    fill_LQF   | maxbk_RR     maxbk_LQF    | var_RR       var_LQF     
+--------------------------------------------------------------------------------------
+0.70   | 0.33314    0.30021    | 334.40       9.60         | 7991.62      1.50        
+0.90   | 0.21461    0.10114    | 1140.80      24.20        | 95381.80     16.77       
+1.00   | 0.15579    0.00558    | 1561.20      109.20       | 177413.57    756.45      
+1.10   | 0.11697    0.00000    | 2185.20      1010.20      | 349297.29    74472.73    
+
+Per-domain mean(q_d) at rho=1.10 (RR) [R4 argmax]:
+  fleet      RR=1011.968    LQF=134.923   
+  venture    RR=141.988     LQF=135.095   
+  game       RR=2.924       LQF=135.263   
+  unrelated  RR=0.836       LQF=135.362   
+  -> RR most-starved domain = fleet
+
+Gate outcomes (pre-registered, fire in order R1->R2->R3->R4):
+  R1 crossover      : FAIL   (low leg FAIL, high leg PASS)
+  R2 divergence@1.0 : PASS
+  R3 low-load Var   : FAIL
+  R4 starvation loc : PASS   (argmax=fleet)
+
+Twin evaluators: A(if-chain)=REJECT/R1  B(table)=REJECT/R1
+
+  [ok] fixture_trace_matches_committed
+  [ok] twin_evaluators_agree_verdict
+  [ok] twin_evaluators_agree_reason
+  [ok] window_n_is_T_minus_W
+  [ok] shared_arrivals_specified_not_null
+  [ok] r4_domain_is_a_real_domain
+Self-checks: 6/6 passed
+
+VERDICT: REJECT (first failing gate: R1)

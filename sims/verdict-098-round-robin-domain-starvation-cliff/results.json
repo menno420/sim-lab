@@ -1,0 +1,573 @@
+{
+  "first_failing_gate": "R1",
+  "gates": {
+    "R1": false,
+    "R1_high": true,
+    "R1_low": false,
+    "R2": true,
+    "R3": false,
+    "R4": true,
+    "R4_argmax_domain": "fleet"
+  },
+  "grid": {
+    "0.70": {
+      "mean": {
+        "filler_rate_lqf": 0.3002105263157895,
+        "filler_rate_rr": 0.3331368421052632,
+        "max_backlog_lqf": 9.6,
+        "max_backlog_rr": 334.4,
+        "mean_q_lqf": {
+          "fleet": 0.10292631578947369,
+          "game": 0.21153684210526316,
+          "unrelated": 0.24934736842105262,
+          "venture": 0.16172631578947366
+        },
+        "mean_q_rr": {
+          "fleet": 168.86736842105262,
+          "game": 0.5095578947368421,
+          "unrelated": 0.2890315789473684,
+          "venture": 1.0295789473684211
+        },
+        "var_tot_lqf": 1.4971027257617728,
+        "var_tot_rr": 7991.624205509141
+      },
+      "per_seed": [
+        {
+          "filler_rate_lqf": 0.30326315789473685,
+          "filler_rate_rr": 0.33473684210526317,
+          "max_backlog_lqf": 8,
+          "max_backlog_rr": 328,
+          "mean_q_lqf": {
+            "fleet": 0.09463157894736843,
+            "game": 0.21463157894736842,
+            "unrelated": 0.24810526315789475,
+            "venture": 0.15305263157894736
+          },
+          "mean_q_rr": {
+            "fleet": 163.91684210526316,
+            "game": 0.5413684210526316,
+            "unrelated": 0.32421052631578945,
+            "venture": 0.8772631578947369
+          },
+          "var_tot_lqf": 1.3840387700831025,
+          "var_tot_rr": 7074.854185163436,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.30694736842105264,
+          "filler_rate_rr": 0.34042105263157896,
+          "max_backlog_lqf": 11,
+          "max_backlog_rr": 350,
+          "mean_q_lqf": {
+            "fleet": 0.1108421052631579,
+            "game": 0.20705263157894738,
+            "unrelated": 0.23357894736842105,
+            "venture": 0.16410526315789473
+          },
+          "mean_q_rr": {
+            "fleet": 190.60715789473684,
+            "game": 0.4696842105263158,
+            "unrelated": 0.2894736842105263,
+            "venture": 1.0087368421052632
+          },
+          "var_tot_lqf": 1.5801572963988917,
+          "var_tot_rr": 9229.970388155125,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.292,
+          "filler_rate_rr": 0.328,
+          "max_backlog_lqf": 8,
+          "max_backlog_rr": 365,
+          "mean_q_lqf": {
+            "fleet": 0.10947368421052632,
+            "game": 0.22873684210526316,
+            "unrelated": 0.2808421052631579,
+            "venture": 0.17326315789473684
+          },
+          "mean_q_rr": {
+            "fleet": 193.11442105263157,
+            "game": 0.5090526315789474,
+            "unrelated": 0.3076842105263158,
+            "venture": 1.12
+          },
+          "var_tot_lqf": 1.546446216066482,
+          "var_tot_rr": 8850.206435501386,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.2986315789473684,
+          "filler_rate_rr": 0.32694736842105265,
+          "max_backlog_lqf": 9,
+          "max_backlog_rr": 280,
+          "mean_q_lqf": {
+            "fleet": 0.09252631578947368,
+            "game": 0.2006315789473684,
+            "unrelated": 0.23642105263157895,
+            "venture": 0.15136842105263157
+          },
+          "mean_q_rr": {
+            "fleet": 132.65642105263157,
+            "game": 0.543578947368421,
+            "unrelated": 0.2654736842105263,
+            "venture": 1.0281052631578946
+          },
+          "var_tot_lqf": 1.3077843656509696,
+          "var_tot_rr": 5951.015642980605,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.3002105263157895,
+          "filler_rate_rr": 0.33557894736842103,
+          "max_backlog_lqf": 12,
+          "max_backlog_rr": 349,
+          "mean_q_lqf": {
+            "fleet": 0.1071578947368421,
+            "game": 0.20663157894736842,
+            "unrelated": 0.24778947368421053,
+            "venture": 0.1668421052631579
+          },
+          "mean_q_rr": {
+            "fleet": 164.042,
+            "game": 0.48410526315789476,
+            "unrelated": 0.2583157894736842,
+            "venture": 1.1137894736842104
+          },
+          "var_tot_lqf": 1.6670869806094182,
+          "var_tot_rr": 8852.074375745153,
+          "window_n": 9500
+        }
+      ]
+    },
+    "0.90": {
+      "mean": {
+        "filler_rate_lqf": 0.10113684210526316,
+        "filler_rate_rr": 0.21461052631578945,
+        "max_backlog_lqf": 24.2,
+        "max_backlog_rr": 1140.8,
+        "mean_q_lqf": {
+          "fleet": 0.7016,
+          "game": 0.9637684210526316,
+          "unrelated": 1.0526105263157894,
+          "venture": 0.8348631578947368
+        },
+        "mean_q_rr": {
+          "fleet": 593.0784842105262,
+          "game": 1.0305263157894737,
+          "unrelated": 0.4795789473684211,
+          "venture": 4.023894736842105
+        },
+        "var_tot_lqf": 16.770119871468147,
+        "var_tot_rr": 95381.80263934184
+      },
+      "per_seed": [
+        {
+          "filler_rate_lqf": 0.1003157894736842,
+          "filler_rate_rr": 0.21726315789473685,
+          "max_backlog_lqf": 24,
+          "max_backlog_rr": 1165,
+          "mean_q_lqf": {
+            "fleet": 0.7712631578947369,
+            "game": 1.0418947368421052,
+            "unrelated": 1.126,
+            "venture": 0.9036842105263158
+          },
+          "mean_q_rr": {
+            "fleet": 600.4817894736842,
+            "game": 1.0306315789473683,
+            "unrelated": 0.5347368421052632,
+            "venture": 2.724421052631579
+          },
+          "var_tot_lqf": 19.609301396121886,
+          "var_tot_rr": 98242.79371855955,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.11610526315789474,
+          "filler_rate_rr": 0.22673684210526315,
+          "max_backlog_lqf": 28,
+          "max_backlog_rr": 1132,
+          "mean_q_lqf": {
+            "fleet": 0.6846315789473684,
+            "game": 0.9192631578947369,
+            "unrelated": 0.9989473684210526,
+            "venture": 0.7983157894736842
+          },
+          "mean_q_rr": {
+            "fleet": 595.698,
+            "game": 0.9590526315789474,
+            "unrelated": 0.45842105263157895,
+            "venture": 3.2906315789473686
+          },
+          "var_tot_lqf": 18.977072343490306,
+          "var_tot_rr": 94037.33823641,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.09178947368421053,
+          "filler_rate_rr": 0.20810526315789474,
+          "max_backlog_lqf": 26,
+          "max_backlog_rr": 1162,
+          "mean_q_lqf": {
+            "fleet": 0.7984210526315789,
+            "game": 1.0628421052631578,
+            "unrelated": 1.1636842105263159,
+            "venture": 0.9412631578947368
+          },
+          "mean_q_rr": {
+            "fleet": 613.5351578947368,
+            "game": 1.143578947368421,
+            "unrelated": 0.4916842105263158,
+            "venture": 4.129052631578947
+          },
+          "var_tot_lqf": 17.61306879778393,
+          "var_tot_rr": 99074.64410498616,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.0968421052631579,
+          "filler_rate_rr": 0.20463157894736841,
+          "max_backlog_lqf": 18,
+          "max_backlog_rr": 1081,
+          "mean_q_lqf": {
+            "fleet": 0.5543157894736842,
+            "game": 0.8456842105263158,
+            "unrelated": 0.9307368421052632,
+            "venture": 0.6933684210526316
+          },
+          "mean_q_rr": {
+            "fleet": 565.4401052631579,
+            "game": 1.0669473684210526,
+            "unrelated": 0.4693684210526316,
+            "venture": 6.110736842105263
+          },
+          "var_tot_lqf": 10.22141893628809,
+          "var_tot_rr": 85109.83998244879,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.10063157894736842,
+          "filler_rate_rr": 0.2163157894736842,
+          "max_backlog_lqf": 25,
+          "max_backlog_rr": 1164,
+          "mean_q_lqf": {
+            "fleet": 0.6993684210526315,
+            "game": 0.9491578947368421,
+            "unrelated": 1.0436842105263158,
+            "venture": 0.8376842105263158
+          },
+          "mean_q_rr": {
+            "fleet": 590.2373684210527,
+            "game": 0.952421052631579,
+            "unrelated": 0.4436842105263158,
+            "venture": 3.8646315789473684
+          },
+          "var_tot_lqf": 17.42973788365651,
+          "var_tot_rr": 100444.39715430472,
+          "window_n": 9500
+        }
+      ]
+    },
+    "1.00": {
+      "mean": {
+        "filler_rate_lqf": 0.005578947368421053,
+        "filler_rate_rr": 0.15578947368421053,
+        "max_backlog_lqf": 109.2,
+        "max_backlog_rr": 1561.2,
+        "mean_q_lqf": {
+          "fleet": 10.868273684210527,
+          "game": 11.244315789473685,
+          "unrelated": 11.365642105263158,
+          "venture": 11.06141052631579
+        },
+        "mean_q_rr": {
+          "fleet": 795.1996210526315,
+          "game": 1.6495368421052632,
+          "unrelated": 0.6409684210526315,
+          "venture": 27.013599999999997
+        },
+        "var_tot_lqf": 756.4522580764544,
+        "var_tot_rr": 177413.56963098727
+      },
+      "per_seed": [
+        {
+          "filler_rate_lqf": 0.0,
+          "filler_rate_rr": 0.15463157894736843,
+          "max_backlog_lqf": 163,
+          "max_backlog_rr": 1543,
+          "mean_q_lqf": {
+            "fleet": 18.459263157894735,
+            "game": 18.846736842105262,
+            "unrelated": 18.994842105263157,
+            "venture": 18.652421052631578
+          },
+          "mean_q_rr": {
+            "fleet": 802.2312631578948,
+            "game": 1.7061052631578948,
+            "unrelated": 0.753578947368421,
+            "venture": 12.937894736842106
+          },
+          "var_tot_lqf": 965.9963419833794,
+          "var_tot_rr": 170130.5489786592,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.02126315789473684,
+          "filler_rate_rr": 0.16757894736842105,
+          "max_backlog_lqf": 63,
+          "max_backlog_rr": 1507,
+          "mean_q_lqf": {
+            "fleet": 4.0713684210526315,
+            "game": 4.425473684210527,
+            "unrelated": 4.524210526315789,
+            "venture": 4.233263157894737
+          },
+          "mean_q_rr": {
+            "fleet": 792.9266315789474,
+            "game": 1.4977894736842106,
+            "unrelated": 0.6027368421052631,
+            "venture": 11.492631578947368
+          },
+          "var_tot_lqf": 215.2001655844876,
+          "var_tot_rr": 165687.20771363983,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.0016842105263157896,
+          "filler_rate_rr": 0.14736842105263157,
+          "max_backlog_lqf": 155,
+          "max_backlog_rr": 1573,
+          "mean_q_lqf": {
+            "fleet": 16.911578947368422,
+            "game": 17.29063157894737,
+            "unrelated": 17.41557894736842,
+            "venture": 17.103157894736842
+          },
+          "mean_q_rr": {
+            "fleet": 812.4432631578948,
+            "game": 2.0306315789473683,
+            "unrelated": 0.6837894736842105,
+            "venture": 18.04757894736842
+          },
+          "var_tot_lqf": 1848.5887612077568,
+          "var_tot_rr": 184696.49049861496,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.0023157894736842107,
+          "filler_rate_rr": 0.15368421052631578,
+          "max_backlog_lqf": 68,
+          "max_backlog_rr": 1553,
+          "mean_q_lqf": {
+            "fleet": 6.764736842105263,
+            "game": 7.158315789473685,
+            "unrelated": 7.261684210526316,
+            "venture": 6.975578947368421
+          },
+          "mean_q_rr": {
+            "fleet": 764.2708421052631,
+            "game": 1.594421052631579,
+            "unrelated": 0.6157894736842106,
+            "venture": 67.93621052631579
+          },
+          "var_tot_lqf": 261.86050937396124,
+          "var_tot_rr": 175157.94757566776,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.002631578947368421,
+          "filler_rate_rr": 0.15568421052631579,
+          "max_backlog_lqf": 97,
+          "max_backlog_rr": 1630,
+          "mean_q_lqf": {
+            "fleet": 8.134421052631579,
+            "game": 8.500421052631578,
+            "unrelated": 8.631894736842105,
+            "venture": 8.342631578947369
+          },
+          "mean_q_rr": {
+            "fleet": 804.1261052631579,
+            "game": 1.418736842105263,
+            "unrelated": 0.5489473684210526,
+            "venture": 24.653684210526315
+          },
+          "var_tot_lqf": 490.61551223268725,
+          "var_tot_rr": 191395.65338835458,
+          "window_n": 9500
+        }
+      ]
+    },
+    "1.10": {
+      "mean": {
+        "filler_rate_lqf": 0.0,
+        "filler_rate_rr": 0.11696842105263157,
+        "max_backlog_lqf": 1010.2,
+        "max_backlog_rr": 2185.2,
+        "mean_q_lqf": {
+          "fleet": 134.92324210526317,
+          "game": 135.2633684210526,
+          "unrelated": 135.3623368421053,
+          "venture": 135.09517894736842
+        },
+        "mean_q_rr": {
+          "fleet": 1011.9675157894737,
+          "game": 2.923852631578947,
+          "unrelated": 0.8357894736842105,
+          "venture": 141.98791578947367
+        },
+        "var_tot_lqf": 74472.72708952022,
+        "var_tot_rr": 349297.2888218637
+      },
+      "per_seed": [
+        {
+          "filler_rate_lqf": 0.0,
+          "filler_rate_rr": 0.11042105263157895,
+          "max_backlog_lqf": 1023,
+          "max_backlog_rr": 2123,
+          "mean_q_lqf": {
+            "fleet": 149.93526315789472,
+            "game": 150.28894736842105,
+            "unrelated": 150.38957894736842,
+            "venture": 150.09294736842105
+          },
+          "mean_q_rr": {
+            "fleet": 1023.5512631578947,
+            "game": 2.7077894736842105,
+            "unrelated": 1.0437894736842106,
+            "venture": 124.33547368421053
+          },
+          "var_tot_lqf": 70030.04704935185,
+          "var_tot_rr": 327860.91023716354,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.0,
+          "filler_rate_rr": 0.12557894736842104,
+          "max_backlog_lqf": 866,
+          "max_backlog_rr": 2125,
+          "mean_q_lqf": {
+            "fleet": 118.31631578947369,
+            "game": 118.6498947368421,
+            "unrelated": 118.74,
+            "venture": 118.47515789473684
+          },
+          "mean_q_rr": {
+            "fleet": 1018.2923157894737,
+            "game": 2.295157894736842,
+            "unrelated": 0.7703157894736842,
+            "venture": 114.61136842105263
+          },
+          "var_tot_lqf": 53706.95605286426,
+          "var_tot_rr": 324184.2183119226,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.0,
+          "filler_rate_rr": 0.10631578947368421,
+          "max_backlog_lqf": 1122,
+          "max_backlog_rr": 2207,
+          "mean_q_lqf": {
+            "fleet": 145.39463157894735,
+            "game": 145.73073684210527,
+            "unrelated": 145.8463157894737,
+            "venture": 145.5658947368421
+          },
+          "mean_q_rr": {
+            "fleet": 1016.8863157894737,
+            "game": 4.408,
+            "unrelated": 0.8992631578947369,
+            "venture": 132.63557894736843
+          },
+          "var_tot_lqf": 99469.14016677014,
+          "var_tot_rr": 363330.7450235011,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.0,
+          "filler_rate_rr": 0.12126315789473684,
+          "max_backlog_lqf": 974,
+          "max_backlog_rr": 2182,
+          "mean_q_lqf": {
+            "fleet": 128.32736842105263,
+            "game": 128.68042105263157,
+            "unrelated": 128.76305263157894,
+            "venture": 128.51694736842106
+          },
+          "mean_q_rr": {
+            "fleet": 976.0268421052632,
+            "game": 2.8585263157894736,
+            "unrelated": 0.7738947368421053,
+            "venture": 196.66726315789472
+          },
+          "var_tot_lqf": 71489.95717721875,
+          "var_tot_rr": 349716.4759068808,
+          "window_n": 9500
+        },
+        {
+          "filler_rate_lqf": 0.0,
+          "filler_rate_rr": 0.12126315789473684,
+          "max_backlog_lqf": 1066,
+          "max_backlog_rr": 2289,
+          "mean_q_lqf": {
+            "fleet": 132.64263157894737,
+            "game": 132.96684210526317,
+            "unrelated": 133.07273684210526,
+            "venture": 132.82494736842105
+          },
+          "mean_q_rr": {
+            "fleet": 1025.0808421052632,
+            "game": 2.3497894736842104,
+            "unrelated": 0.6916842105263158,
+            "venture": 141.6898947368421
+          },
+          "var_tot_lqf": 77667.53500139614,
+          "var_tot_rr": 381394.0946298505,
+          "window_n": 9500
+        }
+      ]
+    }
+  },
+  "params": {
+    "Lambda": {
+      "fleet": 0.4,
+      "game": 0.2,
+      "unrelated": 0.15,
+      "venture": 0.25
+    },
+    "T": 10000,
+    "W": 500,
+    "rhos": [
+      0.7,
+      0.9,
+      1.0,
+      1.1
+    ],
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "self_checks": {
+    "fixture_trace_matches_committed": true,
+    "r4_domain_is_a_real_domain": true,
+    "shared_arrivals_specified_not_null": true,
+    "twin_evaluators_agree_reason": true,
+    "twin_evaluators_agree_verdict": true,
+    "window_n_is_T_minus_W": true
+  },
+  "twin": {
+    "agree": true,
+    "if_chain": [
+      "REJECT",
+      "R1"
+    ],
+    "table": [
+      "REJECT",
+      "R1"
+    ]
+  },
+  "verdict": "REJECT"
+}
