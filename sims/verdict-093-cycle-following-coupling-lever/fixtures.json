@@ -1,0 +1,132 @@
+{
+ "_provenance": {
+  "proposal": "idea-engine PROPOSAL 080 · 2026-07-16T02:41:50Z · status: sim-ready",
+  "proposal_block": "idea-engine control/outbox.md (live outbox; the P080 block read verbatim this session)",
+  "idea_file": "ideas/fleet/cycle-following-coupling-lever-2026-07-16.md (idea-engine; grounding pin idea-engine @ 16480dbf0a630df3fe9d6b81bd1df7698e124b9f per the file's own header; the seat claim rides idea-engine PR #447)",
+  "verdict": "VERDICT 093 (P080 -> V093, the +13 offset's seventeenth row)",
+  "head_type": "PURE-MATH fleet-external head (kin: the P028/P032/P048/P060/P072/P076 exact-counting family) - no lane pin, no vendor tree, every registered numeral invented-but-pinned in the idea file itself; zero repo/network reads at verdict time",
+  "committed": "2026-07-16, BEFORE the runner (the P017-P079 hermetic pre-registered discipline)",
+  "rational_convention": "all decision arithmetic is seedless exact integer/Fraction arithmetic; no floats in any decision path; irrational-valued anchors are registered as DECIMAL STRINGS at a stated precision and matched by round-half-up on the exact Fraction (see _disclosures.decimal_display)"
+ },
+ "world": {
+  "definition": "m = 2n boxes and players; one uniform random permutation pi of {0..m-1} (box b holds number pi(b)); each player opens up to b boxes ADAPTIVELY; group success = every player finds their own number",
+  "headline": {"m": 100, "n": 50, "b": 50},
+  "strategies": {
+   "pointer": "start at own label, follow contents (player i succeeds iff the cycle of pi containing i has length <= b; the group succeeds iff no cycle exceeds b)",
+   "independent": "each player an independent uniform n-subset - joint success exactly 2^-m given ANY fixed arrangement (pencil, F4d)",
+   "same_set": "all open one fixed n-set - joint success exactly 0 (pigeonhole, F4c)",
+   "one_sided_remap": "shared uniform sigma: start at sigma(i), read content c as sigma(c) - effective permutation pi o sigma, uniform for ANY fixed pi",
+   "conjugation": "shared relabeling sigma^-1 o pi o sigma - the folk repair, priced as the cycle-type-preserving no-op it is"
+  },
+  "adversary_arrangements_m6": {
+   "identity": [0, 1, 2, 3, 4, 5],
+   "six_cycle": [1, 2, 3, 4, 5, 0],
+   "three_plus_three": [1, 2, 0, 4, 5, 3]
+  },
+  "adversary_witness_m100": "any single 100-cycle (the sim uses the rotation i -> i+1 mod 100)",
+  "enumeration_sizes": {"brute": [4, 6, 8], "partition": [8, 10], "closed_form": "every m (the harmonic law)"},
+  "budget_grid_m100": [50, 55, 60, 75, 90, 99],
+  "below_n_cells": [[10, 4], [8, 3]]
+ },
+ "laws": {
+  "T_n": "T_n = sum_{k=n+1}^{2n} 1/k (exact Fraction)",
+  "P_n": "P_n = 1 - T_n = joint pointer success at m = 2n, b = n",
+  "harmonic_law": "for b >= n: joint pointer success = 1 - sum_{k=b+1}^{m} 1/k exactly (at most one cycle can exceed b; #{perms with a cycle of length exactly k > b} = m!/k)",
+  "per_length_law_m6": {"k4": 180, "k5": 144, "k6": 120, "note": "6!/k for k = 4, 5, 6"},
+  "uniform_cycle_length_law": "the cycle length of a FIXED element of a uniform permutation is uniform on {1..m}: exactly (m-1)! permutations per length",
+  "marginal_law": "each player's own success at budget b is exactly b/m",
+  "decrement_identity": "T_{n+1} - T_n = 1/((2n+1)(2n+2)), verified exactly for n = 1..199",
+  "alternating_identity": "T_n = sum_{j=1}^{2n} (-1)^{j+1}/j (the even partial sums of the alternating harmonic series - the pencil route to T_n < ln 2 forever), verified exactly for n = 1..199",
+  "P_small": {"P1": [1, 2], "P2": [5, 12], "P3": [23, 60], "P4": [307, 840], "P5": [893, 2520]}
+ },
+ "anchors_F3": {
+  "census_m4_b2": 10,
+  "census_m6_b3": 276,
+  "census_m8_b4": 14736,
+  "census_m10_b5": 1285920,
+  "census_m10_b5_identity": "1285920 == 10! * 893/2520",
+  "census_m10_b4_true": 632736,
+  "census_m10_b4_naive": 560160,
+  "census_m10_b4_correction": 72576,
+  "census_m10_b4_correction_identity": "72576 == 10!/50 (the (5,5) double count)",
+  "census_m8_b3_true": 5916,
+  "census_m8_b3_naive": 4656,
+  "census_m8_b3_correction": 1260,
+  "census_m8_b3_correction_identity": "1260 == 8!/32 (the (4,4) double count)",
+  "P50_decimal_10": "0.3118278207",
+  "P50_fraction_digits": [41, 41],
+  "ratio_P50_times_2pow100": "3.953e29",
+  "pole_2_pow_minus_100": "7.889e-31",
+  "pole_same_set": 0,
+  "E_failing_given_failure": "72.6562",
+  "E_failing_given_failure_exact": "50/T_50",
+  "budget_rows_decimal_10": {
+   "b55": "0.4062346943",
+   "b60": "0.4924928953",
+   "b75": "0.7139781129",
+   "b90": "0.8951930852",
+   "b99": "exactly 99/100"
+  },
+  "marginals_m6_of_720": {"b2": 240, "b3": 360, "b4": 480},
+  "repair_one_sided_census": 276,
+  "repair_one_sided_note": "276/720 against EVERY pinned arrangement (identity, 6-cycle, 3+3) - equality with the uniform census BY THE COMPOSITION THEOREM",
+  "conjugation_censuses": {"identity": 720, "six_cycle": 0, "three_plus_three": 720},
+  "adversarial_pointer_m6_six_cycle": 0,
+  "adversarial_note": "a single 2n-cycle zeroes the deterministic pointer - all 2n players fail at once",
+  "floor": "P_n > 1 - ln 2 forever, certified by a rational ln-2 bracket",
+  "floor_gap_n50_decimal_7": "0.0049750"
+ },
+ "contacts": {
+  "C1": "three-method counting triangle: brute joint census == m! * P_{m/2} at m in {4, 6, 8} (10 / 276 / 14736) AND partition census == brute at (8, 4) AND partition census at m = 10 == 1285920 == 10! * 893/2520 - three independent counting methods, one number",
+  "C2": "per-length counts of a fixed element's cycle == (m-1)! each, summing to m! (m in {4, 6, 8})",
+  "C3": "one-sided-remap census == 276 for ALL THREE pinned arrangements; conjugation census == {720, 0, 720}, frozen to cycle type",
+  "C4": "true census == naive harmonic + the exact inclusion-exclusion term at (10, 4) (+10!/50) and (8, 3) (+8!/32; the (8, 3) partition census additionally confirmed by brute force)"
+ },
+ "arm_r": {
+  "grammar": "m = 100 episodes; one Fisher-Yates permutation per episode: p = list(range(100)); for i in range(99, 0, -1): j = rng.randrange(i + 1); swap p[i], p[j] - exactly m - 1 = 99 randrange draws per episode, i from 99 down to 1; ONE random.Random(seed) per seed for all N episodes; REPORTING-ONLY, no statistical gate",
+  "triple_definition": "(wins, failing_episodes, total_failing_player_mass) where a win is max cycle <= 50 and the failing-player mass of a failing episode is the number of players on cycles longer than 50",
+  "seeds": {
+   "20261714": {"N": 20000, "preview": [6131, 13869, 1007767], "draws": 1980000},
+   "20261715": {"N": 8000, "preview": [2455, 5545, 403116], "draws": 792000},
+   "20261716": {"role": "presentation shuffle - presentation legs ONLY (see _disclosures.presentation_leg)"},
+   "20261717": {"role": "aux - reserved, NEVER read by any leg"}
+  },
+  "allocation_note": "seeds 20261714-717 allocated from 20261714 per the P079 card's baton: 20261710-713 are P079/V092's registered set (aux 20261713 never read), so 20261714 is the next free index",
+  "sentinel": "draw counter == exactly 99 * N per seed (1,980,000 / 792,000)",
+  "cpython_pin": "3.11 (the minor this verdict session runs and asserts; Arms A/B are platform-independent exact arithmetic - only Arm R and the presentation shuffle depend on the pinned minor's random module)"
+ },
+ "decision_rule": {
+  "order": "REJECT -> INVALID -> APPROVE -> NULL (REJECT evaluated FIRST)",
+  "REJECT": "R1 AND R2 AND R3 AND R4",
+  "R1_lever": "joint pointer success == 1 - sum_{k=b+1}^{m} 1/k exactly for b >= n; C1's three counting methods agreeing (10 / 276 / 14736 / 1285920); P50 landing 0.3118278207 with ratio to the independent baseline exactly P50 * 2^100 (approx 3.953e29) and the same-set pole exactly 0",
+  "R2_marginal_invariance": "each player's own success at budget b == b/m exactly at every enumerated m (the (m-1)!-per-length law; 240/360/480 at m = 6)",
+  "R3_concentration_floor": "E[# failing | joint failure] = 50/T_50 (approx 72.6562 of 100); P_n strictly decreasing with decrement exactly 1/((2n+1)(2n+2)); P_n > 1 - ln 2 certified by the rational bracket (gap at n = 50 approx 0.0049750)",
+  "R4_repairs": "the adversarial 2n-cycle zeroes the deterministic pointer (all 2n fail at once); the conjugation repair stays 0/720 on the 6-cycle (cycle type frozen: {720, 0, 720} across the three arrangements); the one-sided remap restores exactly 276/720 == the uniform census against EVERY pinned arrangement",
+  "INVALID": "any F1-F6 gate failure (controls misbehaving - report, no ruling)",
+  "APPROVE": "the pointer census equals the 2^-m product census at any enumerated m (arithmetically excluded by C1), or some enumerated marginal lands off b/m; mutually exclusive with REJECT",
+  "NULL_axes": ["census-contact mismatch (a C1/C4 counting method disagrees while each arm internally reproduces - the corrected law is the finding)", "repair-algebra mismatch (remap != 276 or conjugation off {720, 0, 720} - the corrected algebra is the finding)", "floor-bracket failure (the bracket fails its own tail bound - R3's floor clause falls back to the finite decrement law alone)", "twin-arm disagreement surviving the INVALID diagnosis"]
+ },
+ "gates": {
+  "F1": "model identities: cycle lengths partition m (sum == m) for every enumerated permutation; factorial counts 24 / 720 / 40320; per-length counts sum to m! with each == (m-1)!; T_n/P_n definitions reproduce P1..P5 = 1/2, 5/12, 23/60, 307/840, 893/2520; Fisher-Yates consumes exactly m - 1 draws per episode",
+  "F2": "the five structure theorems re-derived from scratch: (a) LEVER - m!/k at m = 6 (180/144/120), the harmonic censuses at m in {4, 6, 8}, the partition census at m = 10, the headline P50/ratio/2^-100; (b) MARGINAL - the uniform-cycle-length law at m in {4, 6, 8}, budget marginals 240/360/480; (c) BREAKDOWN - the below-n corrections at (10, 4) and (8, 3) with brute confirmation at (8, 3); (d) REPAIRS - the adversarial 6-cycle zero, the 720-sigma one-sided and conjugation censuses across all three arrangements; (e) FLOOR - the decrement identity n = 1..199, the ln-2 bracket inside its own tail bound, P50 > 1 - ln 2 with the gap value",
+  "F3": "census anchors verbatim (the anchors_F3 block above)",
+  "F4": "pencil worlds: (a) m = 2 lever - pointer P1 = 1/2 vs independent baseline 1/4; (b) the decrement identity in three lines: 1/(2n+1) + 1/(2n+2) - 1/(n+1) == 1/((2n+1)(2n+2)); (c) same-set pigeonhole - joint success 0 by inspection (enumerated); (d) independent baseline given a fixed arrangement == (1/2)^m (enumerated at m = 4: 81 of 1296)",
+  "F5": "degeneracy controls: b = m gives P = 1; b = m - 1 gives exactly 1 - 1/m; b = 99 at m = 100 == 99/100 exactly; the identity arrangement succeeds under the deterministic pointer and under conjugation for every sigma; the conjugation control on identity and 3+3 (720/720 - relabeling cannot break what cycle type already blessed)",
+  "F6": "battery: Arm B enumerations equal Arm A closed forms through the FOUR typed contacts C1-C4; twin independently-written decision evaluators agree on the ruling token over an ENUMERATED boolean input set; Arm-R draw-count sentinel (exactly 99N) and exact reproducibility (in-process double run per seed); presentation seed 20261716 read by presentation legs only; aux seed 20261717 never read; stdout + results.json byte-identical across two process runs"
+ },
+ "drafter_disclosed_landing": {
+  "note": "the drafter's expected landing, DISCLOSED per the P048-P076 exact-arm norm - the sim re-derives everything from scratch and must not trust these",
+  "verdict": "REJECT on all four conjuncts",
+  "measured_concentration_trace": "72.6633 (seed-20261714 measured mean vs exact 72.6562)",
+  "drafting_battery": "41/41 checks PASS exit 0, ~1.2 s (scratchpad draft_p080.py, idea-engine side)"
+ },
+ "_disclosures": {
+  "note": "sim-chosen realizations of shape-registered slots - vacancy-derived disclosures, never match claims",
+  "decimal_display": "irrational-valued anchors are matched by ROUND-HALF-UP on the exact Fraction at the registered precision: P50 and budget rows at 10 decimal places; the concentration value at 4 decimal places; the floor gap at 7 decimal places; the ratio and the 2^-100 pole as 4-significant-digit mantissa exponent forms (the ratio's integer part is computed exactly and its leading digits rounded)",
+  "ln2_bracket_K": "K = 60: S_60 = sum_{k=1}^{60} 1/(k*2^k) rational, tail bound 1/(61*2^60); the bracket [S_60, S_60 + tail] certifies ln 2, so T_50 < S_60 certifies P_50 > 1 - ln 2 and the gap bracket is [S_60 - T_50, S_60 + tail - T_50] (width approx 8e-20; any K >= 9 already separates at 7 decimals)",
+  "forever_route": "the FOREVER half of the floor claim rides the alternating-series pencil argument (T_n is the even partial sum of the alternating harmonic series, increasing to ln 2 from below), gated finitely by the alternating identity + the decrement identity for n = 1..199 plus the n = 50 rational certificate",
+  "adversarial_m100_witness": "the rotation permutation i -> i+1 mod 100 realizes 'any single 100-cycle'",
+  "presentation_leg": "seed 20261716 shuffles the display order of the F3 anchor-name roster in ONE reporting-only stdout line (no decision value passes through it)",
+  "m4_independent_enumeration": "the F4d pencil check enumerates all 6^4 subset choices at m = 4 against one fixed arrangement (success census 81 of 1296 == (1/2)^4)"
+ }
+}

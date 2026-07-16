@@ -1,0 +1,67 @@
+VERDICT 093 sim — cycle-following coupling lever (PROPOSAL 080)
+pure-math head: m = 2n boxes/players, one shared uniform permutation
+  [PASS] F0.python-minor-pinned: CPython 3.11 (pinned 3.11; Arms A/B are platform-independent exact arithmetic)
+  [PASS] F1.P1-P5: P1..P5 == 1/2, 5/12, 23/60, 307/840, 893/2520 (exact Fractions)
+  [PASS] F1.factorial-counts: 24 / 720 / 40,320 permutations enumerated
+  [PASS] F1.cycle-partition: cycle lengths of every enumerated permutation sum to m (m in {4, 6, 8})
+  [PASS] C2.uniform-cycle-length: fixed element's cycle length uniform: (m-1)! per length, summing to m! (m in {4, 6, 8})
+  [PASS] F2b.marginals-m6: budget marginals at m = 6: [240, 360, 480] of 720 (registered 240/360/480)
+  [PASS] F2b.marginal-law-b-over-m: enumerated marginal == b/m exactly at every (m, b), m in {4, 6, 8} — R2's law
+  [PASS] F2a.brute-census-m4: 10 (registered 10)
+  [PASS] F2a.brute-census-m6: 276 (registered 276)
+  [PASS] F2a.brute-census-m8: 14736 (registered 14,736)
+  [PASS] F2a.harmonic-law-vs-brute: m! * P_{m/2} == brute census at m in {4, 6, 8}
+  [PASS] F2a.per-length-law-m6: #{perms with a cycle of length exactly k > 3} = 6!/k: [180, 144, 120] (registered 180/144/120)
+  [PASS] F2a.partition-census-m8: 14736 == brute 14736 (independent counting method)
+  [PASS] F2a.partition-census-m10: 1285920 == 10! * 893/2520 (registered 1,285,920)
+  [PASS] C1.counting-triangle: brute == harmonic closed form at m in {4, 6, 8}; partition == brute at (8, 4); partition == closed form at (10, 5) — three methods, one number
+  [PASS] F2a.headline-P50: P50 = 0.3118278207 (registered 0.3118278207), exact 41/41-digit fraction
+  [PASS] F2a.ratio: P50 * 2^100 = 3.953e29 (registered 3.953e29)
+  [PASS] F2a.pole-independent: 2^-100 = 7.889e-31 (registered 7.889e-31)
+  [PASS] F2a.pole-same-set: same-set joint census 0 for every 2-set at m = 4 and the fixed 3-set at m = 6 (pigeonhole)
+  [PASS] F2c.true-census-10-4: true 632736 = naive 560160 + 72576 (registered 632,736 = 560,160 + 72,576)
+  [PASS] F2c.true-census-8-3: true 5916 (partition == brute) = naive 4656 + 1260 (registered 5,916 = 4,656 + 1,260)
+  [PASS] C4.below-n-corrections: corrections exactly +10!/50 = 72,576 at (10, 4) and +8!/32 = 1,260 at (8, 3)
+  [PASS] F2d.adversarial-6cycle-zero: deterministic pointer on the 6-cycle: all 6 players fail at once (joint success 0)
+  [PASS] F2d.adversarial-100cycle-witness: the m = 100 rotation is a single 100-cycle: every player's cycle exceeds b = 50 — all 100 fail at once
+  [PASS] F2d.remap-identity: one-sided remap census 276/720 on identity (registered 276)
+  [PASS] F2d.remap-6cycle: one-sided remap census 276/720 on the 6-cycle (registered 276)
+  [PASS] F2d.remap-3plus3: one-sided remap census 276/720 on 3+3 (registered 276)
+  [PASS] F2d.conjugation-censuses: conjugation censuses {720, 0, 720} (registered {720, 0, 720} — cycle type frozen)
+  [PASS] C3.repair-contact: remap == 276 == the uniform census for ALL THREE arrangements; conjugation {720, 0, 720}
+  [PASS] F2e.concentration: E[# failing | joint failure] = 50/T50 = 72.6562 of 100 (registered 72.6562)
+  [PASS] F2e.budget-rows: P(b) at b = 55/60/75/90 = 0.4062346943 / 0.4924928953 / 0.7139781129 / 0.8951930852; b = 99 == 99/100 exactly
+  [PASS] F2e.decrement-identity: T_{n+1} - T_n == 1/((2n+1)(2n+2)) exactly for n = 1..199
+  [PASS] F2e.monotone: hence P_n strictly decreasing (every decrement > 0), n = 1..199
+  [PASS] F2e.alternating-identity: T_n == the 2n-th partial sum of the alternating harmonic series, n = 1..199 (the pencil route to T_n < ln 2 FOREVER)
+  [PASS] F2e.ln2-bracket: S_60 < ln 2 < S_60 + 1/(61*2^60): T50 < S_60 certifies P50 > 1 - ln 2 (bracket width < 1e-19)
+  [PASS] F2e.floor-gap: gap = ln 2 - T50 in [0.0049750, 0.0049750] at 7 places (registered 0.0049750)
+  [PASS] F4.m2-lever: m = 2: pointer P1 = 1/2 (succeeds iff identity) vs independent baseline 1/4 — the lever visible in a two-box world
+  [PASS] F4.decrement-three-lines: 1/(2n+1) + 1/(2n+2) - 1/(n+1) == 1/((2n+1)(2n+2)) exactly, n = 1..199
+  [PASS] F4.same-set-pigeonhole: any fixed n-set leaves n numbers unseen — joint success 0 (enumerated at m = 4 for every 2-set and at m = 6)
+  [PASS] F4.independent-product: independent uniform n-subsets at m = 4, fixed arrangement: 81 of 1296 == (1/2)^4
+  [PASS] F5.b-eq-m: b = m gives P = 1 (closed form; brute census == m! at m in {4, 6})
+  [PASS] F5.b-eq-m-minus-1: b = m - 1 gives exactly 1 - 1/m (only the full m-cycle kills; brute at m in {4, 6})
+  [PASS] F5.b99-m100: b = 99 at m = 100 == 99/100 exactly
+  [PASS] F5.identity-succeeds: the identity arrangement succeeds under the deterministic pointer and under conjugation for every sigma (720/720)
+  [PASS] F5.conjugation-control-3plus3: 3+3 stays won 720/720 — relabeling cannot break what cycle type already blessed
+  [PASS] ArmR.preview-20261714: (wins, failing, mass) = [6131, 13869, 1007767] (registered [6131, 13869, 1007767])
+  [PASS] ArmR.preview-20261715: (wins, failing, mass) = [2455, 5545, 403116] (registered [2455, 5545, 403116])
+  [PASS] ArmR.draw-sentinels: exactly 99N randrange draws: 1980000 / 792000 (registered 1,980,000 / 792,000)
+  [PASS] ArmR.determinism: each seed reproduced itself exactly (in-process double run per seed)
+  [PASS] ArmR.concentration-trace: measured mean failing mass 72.6633 vs exact 50/T50 = 72.6562 (reporting-only; drafter's disclosed trace 72.6633)
+  [info] presentation-shuffle (seed 20261716, reporting-only): marginal-law, floor-bracket, repair-pair, below-n-corrections, concentration, budget-rows, headline-P50, census-triangle
+  [PASS] ArmR.presentation-seed-scoped: seed ledger [20261714, 20261715, 20261714, 20261715, 20261716] — 20261716 read by the presentation leg only, after every decision and preview leg finished
+  [PASS] ArmR.aux-seed-never-read: seed 20261717 never constructed (no random.Random(20261717) exists in this runner)
+  [PASS] F1.fisher-yates-draws: the Fisher-Yates loop consumes exactly m - 1 = 99 draws per episode (i = 99..1)
+  [PASS] F3.integer-anchors: every registered integer census reproduced verbatim (10 / 276 / 14,736 / 1,285,920 / 632,736 = 560,160 + 72,576 / 5,916 / 240/360/480 / 276 x3 / {720, 0, 720} / 0)
+  [PASS] F3.decimal-anchors: every registered decimal anchor reproduced under the disclosed round-half-up convention (P50, ratio, pole, concentration, budget rows, floor gap)
+  [PASS] R1.lever: the C1 triangle (10 / 276 / 14,736 / 1,285,920), P50 = 0.3118278207, ratio 3.953e29, poles 2^-100 and 0 — all exact
+  [PASS] R2.marginal-invariance: every enumerated marginal exactly b/m ((m-1)! per length; 240/360/480 at m = 6) — the entire lift is pure dependence
+  [PASS] R3.concentration-floor: 50/T50 = 72.6562 of 100; decrement exactly 1/((2n+1)(2n+2)); P_n > 1 - ln 2 certified (gap 0.0049750)
+  [PASS] R4.repairs: adversarial 2n-cycle zeroes the pointer; conjugation {720, 0, 720} (no-op); one-sided remap restores 276/720 == the uniform census on all three arrangements
+  [PASS] F6.approve-witness-excluded: pointer census != the 2^-m product census at every enumerated m (276/720 != 720/2^6/720) and no enumerated marginal moved off b/m — APPROVE cannot fire beside the C1 triangle
+  [PASS] F6.twin-evaluators: all 64 enumerated boolean inputs agree; measured inputs -> REJECT / REJECT
+decision inputs: {"R1": true, "R2": true, "R3": true, "R4": true, "approve_cond": false, "gates_ok": true}
+RULING: REJECT (twin evaluators agree: REJECT / REJECT)
+self-checks: 61 total, 61 passed, 0 failed

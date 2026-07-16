@@ -302,6 +302,16 @@ From PROPOSAL 010 onward the offset is a constant +2.
   re-grepped at append time — origin/main unmoved; no owner-direct or
   simreq interleave occurred in this range). Next expected: PROPOSAL 080
   → **VERDICT 093** (P080 not yet drafted at this refresh).
+- Extension (V093 slice, 2026-07-16): the +13 offset holds — PROPOSAL 080
+  (cycle-following-coupling-lever) → **VERDICT 093** (verified at the
+  live-outbox headers: newest `## VERDICT` was 092 at origin/main
+  418de3e — the tip IS the V092 merge #163 — `## VERDICT 093` /
+  `## INTAKE 080` collision-grepped clean before the append (the only
+  prior "VERDICT 093" strings were V092's own "next expected"
+  heartbeat/map pointers — predictions, not claims) and re-grepped at
+  append time — origin/main unmoved; no owner-direct or simreq
+  interleave occurred in this range). Next expected: PROPOSAL 081 →
+  **VERDICT 094** (P081 not yet drafted at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
