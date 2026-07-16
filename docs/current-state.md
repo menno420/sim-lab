@@ -22,11 +22,11 @@ v1.7.0; `python3 bootstrap.py check --strict` exits 0.
 
 ## In flight
 
-> **Currency note (2026-07-16, V097 slice):** this section and "Recently
-> shipped" below summarize the session-2/3 seam only and are NOT re-derived
-> each verdict — the LIVE surfaces are the § Verdict-numbering map below
-> (extended through **V097**) and the coordinator heartbeat
-> `control/status.md`. As of this stamp: VERDICT 097 (idea-engine PROPOSAL
+> **Currency note (2026-07-16T21:26:22Z, V101 slice):** this section and
+> "Recently shipped" below summarize the session-2/3 seam only and are NOT
+> re-derived each verdict — the LIVE surfaces are the § Verdict-numbering map
+> below (extended through **V101**, high-water V101) and the coordinator
+> heartbeat `control/status.md`. As of this stamp: VERDICT 097 (idea-engine PROPOSAL
 > 084, simpsons-paradox-aggregation-reversal — **REJECT**) rides sim-lab
 > PR #169 for merge-on-green; last shipped is #168 → 34ff0c9 (VERDICT 096,
 > P083 combo-grace-budget-cliff — REJECT). This slice also backfilled the
@@ -464,6 +464,43 @@ From PROPOSAL 010 onward the offset is a constant +2.
   draw; no seed-ledger block consumed, the next free block stays 20261730,
   untouched. Next expected: PROPOSAL 088 → **VERDICT 101** (P088 not yet drafted
   at this refresh).
+- Extension (V101 slice, 2026-07-16): the +13 offset holds — PROPOSAL 088
+  (berkson-admission-collider) → **VERDICT 101** (APPROVE, first-failing-gate
+  None; verified at the live-outbox headers: newest `## VERDICT` was 100 at the
+  branch base origin/main c172698 — `## VERDICT 101` / `verdict-101` / `v101`
+  collision-grepped clean in control/outbox.md before the append (no ledger
+  header, no `sims/verdict-101-*` competing ledger claim, no competing remote
+  ref; the only prior "VERDICT 101" strings were the born-red session card
+  `.sessions/2026-07-16-verdict-101-berkson-admission-collider.md`, the V100
+  baton's next-2 pointer, and the control/status.md next-expected line —
+  predictions + the card, not claims) and re-checked at append time; no
+  owner-direct or simreq interleave occurred in this range). Gate outcomes:
+  **R1 PASS** (null anchor: full-2000 pooled ρ_full(N,R) +0.000251, SE 0.004738,
+  |mean|+3·SE = 0.014465 ≤ 0.03 — ≥3σ inside the ±0.03 null band, N ⟂ R by
+  construction via separate random.Random streams offset by +10000), **R2 PASS**
+  (effect @T=0.25: OR-gate admitted-cohort pooled ρ_OR −0.587329, SE 0.006550,
+  clears the −0.45 floor by 20.97σ), **R3 PASS** (dose-response strictly
+  monotone −0.457816 (50%) > −0.587329 (25%) > −0.685281 (10%), adjacent
+  separations 14.34σ and 8.92σ, both ≥3σ), **R4 PASS** (mechanism isolation:
+  single-gate control ρ_single −0.013478, |mean| ≤ 0.03 on the disclosed
+  pooled-mean reading, 43.35σ from ρ_OR) — all four gates pass → APPROVE.
+  Achieved marginal admit rates 0.5009/0.2513/0.1005 (OR @ 50/25/10%) and 0.2497
+  (single @ 25%), all within 0.02 of target; calibrated thresholds 0.544952 /
+  1.107798 / 1.632219 (OR) and 0.674490 (single), matched to 6dp. Mechanism: a
+  disjunctive selection gate (admit iff N≥t OR R≥t) over two INDEPENDENT axes
+  manufactures a spurious negative correlation among admitted items (Berkson's
+  paradox) — the population correlation is zero, the admitted-cohort correlation
+  goes strongly negative and STRENGTHENS as admission tightens, and the
+  single-gate control isolates the disjunction as the sole cause. The measured
+  table reproduces the proposal's disclosed dry-sim calibration to the book from
+  an independent re-implementation. **Verdict high-water is now V101.** V101 is
+  SEEDLESS — the seeds are the in-file constants S=[1–5] (two random.Random
+  instances per seed, one per axis, the R stream offset by +10000), NOT a ledger
+  draw; no seed-ledger block consumed, the next free block stays 20261730,
+  untouched. Note: ORDER-010(c) kit upgrade v1.15.0 → v1.18.0 remains **PARKED**
+  on owner authorization (NOT executed by this verdict slice; carried forward per
+  the V100 baton). Next expected: PROPOSAL 089 → **VERDICT 102** (P089 not yet
+  drafted at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

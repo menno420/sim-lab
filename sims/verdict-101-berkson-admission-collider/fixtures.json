@@ -1,0 +1,129 @@
+{
+  "expected_thresholds_6dp": {
+    "or_10pct": 1.632219,
+    "or_25pct": 1.107798,
+    "or_50pct": 0.544952,
+    "single_25pct": 0.67449
+  },
+  "pinned_world": {
+    "axes": "N ~ Normal(0,1) via random.Random(seed).gauss; R ~ Normal(0,1) via random.Random(seed+10000).gauss; separate streams => corr(N,R)=0 in population by construction",
+    "levels_T": [
+      0.5,
+      0.25,
+      0.1
+    ],
+    "metric": "Pearson r; rho_full over full 2000; rho_admit over OR subset; rho_single over single-gate subset",
+    "n_items": 2000,
+    "or_gate": "admit iff N>=t OR R>=t, t=Phi^-1(sqrt(1-T))",
+    "pooling": "pooled mean = mean of 5 per-seed rho; sigma = sample SD (ddof=1); SE = sigma/sqrt(5)",
+    "r_stream_offset": 10000,
+    "reference_T": 0.25,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "single_T": 0.25,
+    "single_gate": "admit iff N>=a ALONE, a=Phi^-1(1-T) at T=0.25"
+  },
+  "preregistered_gates": {
+    "R1": "null anchor: |mean(rho_full)|<=0.03 AND |mean|+3*SE<=0.03",
+    "R2": "effect @T=0.25: mean(rho_OR)+3*SE <= -0.45",
+    "R3": "dose-response: mean rho_OR 50% > 25% > 10%, each adjacent pair separated |ma-mb|/sqrt(SEa^2+SEb^2) >= 3",
+    "R4": "mechanism isolation: |mean(rho_single)|<=0.03 (pooled-mean reading) AND |mean_OR@25 - mean_single|/sqrt(SE_OR25^2+SE_single^2) >= 3",
+    "decision_rule": "APPROVE iff R1 and R2 and R3 and R4 (order R1->R2->R3->R4); REJECT if R1 or R3 or R4 fail; NULL if R2 sub-threshold; INVALID if rates miss targets or non-deterministic"
+  },
+  "proposal": "## PROPOSAL 088 * 2026-07-16 * status: sim-ready (idea-engine PROPOSAL 088, registered spec berkson-admission-collider-2026-07-16); offset +13 -> VERDICT 101",
+  "seed1_ref25_admit_size": 537,
+  "seed1_ref25_first20_NR_repr": [
+    [
+      "1.2881847531554629",
+      "-1.1558034759528237"
+    ],
+    [
+      "1.449445608699771",
+      "1.465370828449941"
+    ],
+    [
+      "-1.022103170010873",
+      "1.7485336956920015"
+    ],
+    [
+      "-1.4368294451025299",
+      "1.9555190000202847"
+    ],
+    [
+      "-0.9139709437353126",
+      "1.319778036463504"
+    ],
+    [
+      "2.389112043240686",
+      "0.6342949788140021"
+    ],
+    [
+      "0.20296917730996422",
+      "1.1252183182651667"
+    ],
+    [
+      "1.2327571750289237",
+      "1.4093403239253337"
+    ],
+    [
+      "1.024288678487018",
+      "1.121603993932667"
+    ],
+    [
+      "-1.0823080245960446",
+      "1.1721320741862038"
+    ],
+    [
+      "0.6667764386256495",
+      "1.191842451668037"
+    ],
+    [
+      "1.980615719523246",
+      "0.4036930953251845"
+    ],
+    [
+      "-0.09286202565608458",
+      "1.8887670024068797"
+    ],
+    [
+      "0.7179566567448998",
+      "1.886489903730064"
+    ],
+    [
+      "1.2568213446053613",
+      "0.2659650621976749"
+    ],
+    [
+      "1.4310039880525183",
+      "0.7693302075587852"
+    ],
+    [
+      "1.1168523411368356",
+      "-1.4261315359091429"
+    ],
+    [
+      "0.7616580058369826",
+      "1.604721051203816"
+    ],
+    [
+      "1.5012073963034007",
+      "-0.7713665879245376"
+    ],
+    [
+      "0.42071044360788035",
+      "1.3636031508086532"
+    ]
+  ],
+  "source": "scratchpad/v101 :: verdict-101-berkson-admission-collider",
+  "thresholds": {
+    "or_10pct": 1.6322187877767134,
+    "or_25pct": 1.107797703589272,
+    "or_50pct": 0.5449521362323797,
+    "single_25pct": 0.6744897502234225
+  }
+}
