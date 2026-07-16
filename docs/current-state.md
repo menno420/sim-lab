@@ -323,6 +323,19 @@ From PROPOSAL 010 onward the offset is a constant +2.
   and re-grepped at append time — origin/main unmoved; no owner-direct
   or simreq interleave occurred in this range). Next expected: PROPOSAL
   082 → **VERDICT 095** (P082 not yet drafted at this refresh).
+- Extension (V095 slice, 2026-07-16): the +13 offset holds — PROPOSAL 082
+  (owner-gate-recognition-cliff) → **VERDICT 095** (verified at the
+  live-outbox headers: newest `## VERDICT` was 094 at origin/main
+  5cf86de — the tip was the V094 merge #165 at session start —
+  `## VERDICT 095` / `## INTAKE 082` collision-grepped before the append
+  with hit CLASSIFICATION per the V093 taxonomy (the only hits were the
+  V094 refresh's own "next expected" heartbeat/map pointers plus
+  idea-engine batons — predictions, not claims; zero claim-class hits)
+  and re-grepped at append time — origin/main moved ONCE mid-session,
+  5cf86de → 0d87f6b, an inbox-only fleet-manager ORDER 010 dispatch
+  (#166), classified non-claim; the V095 branch rebased onto it before
+  the append). Next expected: PROPOSAL 083 → **VERDICT 096** (P083 not
+  yet drafted at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

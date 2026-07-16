@@ -1,0 +1,76 @@
+VERDICT 095 sim — owner-gate parser recognition cliff (P082)
+==========================================================================
+  [PASS] F0.python-minor-pinned: running CPython 3.11 vs pinned 3.11
+  [PASS] F0.corpus-shape: C0 21 lines, C1 20 (line-18 deletion), C2 21
+  [PASS] F1.baseline-C0-echo: steps 3 decisions 1 pending 4 done 1 non-owner 1 parsed 2 armed 2 blocked True lint 0 manual 0
+  [PASS] F1.baseline-C1-echo: once-live pair (parsed 2, armed 0), pending 4 done 0 lint 0
+  [PASS] F1.baseline-C2-echo: two decisions lint-clean (decisions 2 lint 0), rest unchanged
+  [PASS] F1.conservation-C0: pending+done+non-owner = 6 == 6 checkbox rows
+  [PASS] F1.real-edit-sentinel: all 26 cells produce a real single edit on C0
+  [PASS] F1.conservation-cells: recognized+merged+vanished == checkbox-ish heads on all 26 cells (6 heads except OP4/OP5 shape-destroying cells at 5)
+  [PASS] F2a.census-twin-verified: Arm B == Arm A on the full observable tuple and class of every cell (C2 contact)
+  [PASS] F3.class-totals: census {"ALARMED-LOSSY": 3, "ALARMED-SAFE": 4, "SILENT-LOSSY": 18, "SILENT-REGRADE": 1} == registered {"ALARMED-LOSSY": 3, "ALARMED-SAFE": 4, "SILENT-LOSSY": 18, "SILENT-REGRADE": 1}
+  [PASS] F3.silent-list-verbatim: 18-cell SILENT-LOSSY membership list matches the registration verbatim, with cell coordinates (the V094 anchor-coordinates rule)
+  [PASS] F3.key-cell-tuples: OP10@r5 [4, 1, 2, 1]; OP11@r5 [5, 0, 0, 1]; OP1@r1 [3, 1, 2, 0]; OP1@r5 [4, 0, 0, 0]; OP2@r5 [4, 0, 0, 0]; OP3@r1 [3, 1, 2, 0]; OP3@r2 [3, 1, 2, 0]; OP3@r5 [4, 0, 0, 1]; OP4@r5 [4, 0, 0, 0]
+  [PASS] F3.OP12-tuple: OP12 parsed 0 armed 0 lint 0
+  [PASS] F3.OP13-tuple: OP13 pending 0 manual 1 lint 1
+  [PASS] F2d.position-law: OP3@r1 VANISH (pending 3, vanished 1) vs OP3@r2 MERGE (pending 3, merged 1, merged WHAT contains both clicks' text)
+  [PASS] F2e.lint-downstream-law: every SILENT cell lands lint == 0 AND manual == 0 (18/18) — the guard and the hazard share one predicate
+  [PASS] F2c.cascade-triple: OP1@r5/OP2@r5/OP4@r5 each (pending 4, done 0, armed 0, lint 0) — one character disarms every kill-clock checkpoint
+  [PASS] F3.once-live-pair: C1 (no-DONE) parsed 2 / armed 0
+  [PASS] F2b.disposition-2x2: NO-OP [4,1,2,0] · queue+lint [4,1,2,1] · queue+lint [4,1,2,1] · RETIRE-LIVE [3,2,2,0]; zero silent cells on the sentence's own grid; twin-verified
+  [PASS] F2f.granularity-inversion: breaking the FILE (OP13) is guarded (manual 1, lint 1); breaking a ROW is silent (the 18 R2 cells)
+  [PASS] F3.repair-census: conservation lint catches 18/18 SILENT-LOSSY + extras ['OP13@heading', 'OP3@r5']; false positives none; silent cells missed ['OP14@cont4'] (the semantic-regrade cell, disclosed open)
+  [PASS] F5.repair-zero-false-positives: repair arm fires on ZERO unmutated corpora (C0, C1, C2)
+  [PASS] F4a.substring-cell: '**Owner:**' is not a substring of '*Owner:**' — one lost asterisk defeats the literal-token conjunct
+  [PASS] F4b.bolded-flag-prefix: '**⚑ Owner:**'.lstrip() starts with '*', not ⚑ — bolding defeats the prefix conjunct
+  [PASS] F4c.bracket-shape: '- []' fails the single-char bracket shape (both arms)
+  [PASS] F4d.lowercase-done-requeues: lowercase '— done 2026-07-13' unmatched by the case-sensitive DONE scan (both arms) — the row re-queues, the fail-safe direction
+  [PASS] F5.C1-once-live-control: C1 reproduces the once-live rule with everything else unchanged (same 4 pending texts, lint 0)
+  [PASS] F5.C2-multi-decision-control: C2 (two decisions) parses lint-clean — decision cells are not an artifact of single-decision files
+  [PASS] F5.taxonomy-total: the classify taxonomy is total on all 26 C0 cells (no SILENT-IDENTICAL, no INAPPLICABLE/NO-EDIT on the registered grid)
+  [PASS] F6.armR-census-20261722: {"ALARMED-LOSSY": 1820, "ALARMED-SAFE": 2770, "INAPPLICABLE": 257, "NO-EDIT": 1004, "SILENT-LOSSY": 12856, "SILENT-REGRADE": 1293}
+  [PASS] F6.armR-census-20261723: {"ALARMED-LOSSY": 694, "ALARMED-SAFE": 1095, "INAPPLICABLE": 85, "NO-EDIT": 407, "SILENT-LOSSY": 5203, "SILENT-REGRADE": 516}
+  [PASS] F6.armR-digest-20261722: class-stream digest e8d8812b3f9c == registered e8d8812b3f9c
+  [PASS] F6.armR-digest-20261723: class-stream digest fc2709073718 == registered fc2709073718
+  [PASS] F1.armR-draw-sentinels: draw counters exactly 3N: 60000 / 24000
+  [PASS] F6.armR-per-trace-twin: Arm B == Arm A on every trace of both seeds (C4 contact)
+  [PASS] F6.armR-in-process-double-run: census + digest identical on a second in-process pass per seed
+  [PASS] F5.armR-honest-classes: INAPPLICABLE and NO-EDIT counted, never silently skipped; censuses sum to N
+  [PASS] F6.contact-C1-baselines: Arm B == Arm A on the three baseline tuples
+  [PASS] F6.contact-C2-cells: Arm B == Arm A on all 26 grid cells and all four 2x2 cells
+  census table (display order via presentation seed 20261724):
+    OP2@r2        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP10@r5       ALARMED-SAFE   pending/done/armed/lint = [4, 1, 2, 1]  repair:-
+    OP3@r5        ALARMED-LOSSY  pending/done/armed/lint = [4, 0, 0, 1]  repair:CAUGHT
+    OP14@cont4    SILENT-REGRADE pending/done/armed/lint = [4, 1, 2, 0]  repair:-
+    OP6@step2     SILENT-LOSSY   pending/done/armed/lint = [4, 1, 2, 0]  repair:CAUGHT
+    OP3@r2        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP2@r4        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP2@r5        SILENT-LOSSY   pending/done/armed/lint = [4, 0, 0, 0]  repair:CAUGHT
+    OP1@r3        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP13@heading  ALARMED-LOSSY  pending/done/armed/lint = [0, 0, 0, 1]  repair:CAUGHT
+    OP9@r2        ALARMED-SAFE   pending/done/armed/lint = [4, 1, 2, 1]  repair:-
+    OP3@r1        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP2@r1        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP1@r2        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP4@r3        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP7@step2     ALARMED-SAFE   pending/done/armed/lint = [4, 1, 2, 1]  repair:-
+    OP5@r1        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP4@r1        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP12@kill     SILENT-LOSSY   pending/done/armed/lint = [4, 1, 0, 0]  repair:CAUGHT
+    OP11@r5       ALARMED-LOSSY  pending/done/armed/lint = [5, 0, 0, 1]  repair:-
+    OP2@r3        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP1@r4        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP1@r5        SILENT-LOSSY   pending/done/armed/lint = [4, 0, 0, 0]  repair:CAUGHT
+    OP1@r1        SILENT-LOSSY   pending/done/armed/lint = [3, 1, 2, 0]  repair:CAUGHT
+    OP8@r1        ALARMED-SAFE   pending/done/armed/lint = [4, 1, 2, 1]  repair:-
+    OP4@r5        SILENT-LOSSY   pending/done/armed/lint = [4, 0, 0, 0]  repair:CAUGHT
+  [PASS] F6.presentation-seed-scope: seed ledger [20261722, 20261723, 20261722, 20261723, 20261724] — presentation seed read by the presentation leg only, after every decision leg finished
+  [PASS] F6.aux-seed-never-read: aux seed 20261725 reserved and never read
+  [PASS] F6.contact-C3-evaluators: twin evaluators agree on all 64 enumerated inputs and rule REJECT/REJECT
+  [PASS] decision.approve-arithmetically-excluded: APPROVE requires zero SILENT-LOSSY cells; measured 18 (the OP1@r1 pencil cell alone excludes it)
+decision inputs: {"R1": true, "R2": true, "R3": true, "R4": true, "gates_ok": true, "zero_silent": false}
+VERDICT: REJECT (evaluator 1) / REJECT (evaluator 2)
+==========================================================================
+self-checks: 43/43 passed
