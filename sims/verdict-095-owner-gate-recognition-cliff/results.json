@@ -1,0 +1,488 @@
+{
+ "arm_r": {
+  "20261722": {
+   "census": {
+    "ALARMED-LOSSY": 1820,
+    "ALARMED-SAFE": 2770,
+    "INAPPLICABLE": 257,
+    "NO-EDIT": 1004,
+    "SILENT-LOSSY": 12856,
+    "SILENT-REGRADE": 1293
+   },
+   "digest": "e8d8812b3f9c",
+   "draws": 60000,
+   "salt_first5": [
+    2,
+    490,
+    698,
+    211,
+    767
+   ],
+   "salt_sum": 10032486
+  },
+  "20261723": {
+   "census": {
+    "ALARMED-LOSSY": 694,
+    "ALARMED-SAFE": 1095,
+    "INAPPLICABLE": 85,
+    "NO-EDIT": 407,
+    "SILENT-LOSSY": 5203,
+    "SILENT-REGRADE": 516
+   },
+   "digest": "fc2709073718",
+   "draws": 24000,
+   "salt_first5": [
+    184,
+    276,
+    781,
+    449,
+    206
+   ],
+   "salt_sum": 4043539
+  },
+  "seed_ledger": [
+   20261722,
+   20261723,
+   20261722,
+   20261723,
+   20261724
+  ]
+ },
+ "baselines": {
+  "C0": {
+   "armed": 2,
+   "blocked": true,
+   "decisions": 1,
+   "done": 1,
+   "lint": 0,
+   "manual": 0,
+   "non_owner": 1,
+   "parsed": 2,
+   "pending": 4,
+   "steps": 3
+  },
+  "C1": {
+   "armed": 0,
+   "blocked": true,
+   "decisions": 1,
+   "done": 0,
+   "lint": 0,
+   "manual": 0,
+   "non_owner": 1,
+   "parsed": 2,
+   "pending": 4,
+   "steps": 3
+  },
+  "C2": {
+   "armed": 2,
+   "blocked": true,
+   "decisions": 2,
+   "done": 1,
+   "lint": 0,
+   "manual": 0,
+   "non_owner": 1,
+   "parsed": 2,
+   "pending": 4,
+   "steps": 3
+  }
+ },
+ "cascade_triple": {
+  "OP1@r5": [
+   4,
+   0,
+   0,
+   0
+  ],
+  "OP2@r5": [
+   4,
+   0,
+   0,
+   0
+  ],
+  "OP4@r5": [
+   4,
+   0,
+   0,
+   0
+  ]
+ },
+ "checks": {
+  "failed": [],
+  "passed": 43,
+  "total": 43
+ },
+ "class_totals": {
+  "ALARMED-LOSSY": 3,
+  "ALARMED-SAFE": 4,
+  "SILENT-LOSSY": 18,
+  "SILENT-REGRADE": 1
+ },
+ "decision_inputs": {
+  "R1": true,
+  "R2": true,
+  "R3": true,
+  "R4": true,
+  "gates_ok": true,
+  "zero_silent": false
+ },
+ "environment": {
+  "cpython_minor": "3.11",
+  "decision_arms": "seedless exact parsing and integer counting (platform-independent)"
+ },
+ "grid": {
+  "OP10@r5": {
+   "class": "ALARMED-SAFE",
+   "pending_done_armed_lint": [
+    4,
+    1,
+    2,
+    1
+   ],
+   "repair_fires": false
+  },
+  "OP11@r5": {
+   "class": "ALARMED-LOSSY",
+   "pending_done_armed_lint": [
+    5,
+    0,
+    0,
+    1
+   ],
+   "repair_fires": false
+  },
+  "OP12@kill": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    4,
+    1,
+    0,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP13@heading": {
+   "class": "ALARMED-LOSSY",
+   "pending_done_armed_lint": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "repair_fires": true
+  },
+  "OP14@cont4": {
+   "class": "SILENT-REGRADE",
+   "pending_done_armed_lint": [
+    4,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": false
+  },
+  "OP1@r1": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP1@r2": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP1@r3": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP1@r4": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP1@r5": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    4,
+    0,
+    0,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP2@r1": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP2@r2": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP2@r3": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP2@r4": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP2@r5": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    4,
+    0,
+    0,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP3@r1": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP3@r2": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP3@r5": {
+   "class": "ALARMED-LOSSY",
+   "pending_done_armed_lint": [
+    4,
+    0,
+    0,
+    1
+   ],
+   "repair_fires": true
+  },
+  "OP4@r1": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP4@r3": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP4@r5": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    4,
+    0,
+    0,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP5@r1": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP6@step2": {
+   "class": "SILENT-LOSSY",
+   "pending_done_armed_lint": [
+    4,
+    1,
+    2,
+    0
+   ],
+   "repair_fires": true
+  },
+  "OP7@step2": {
+   "class": "ALARMED-SAFE",
+   "pending_done_armed_lint": [
+    4,
+    1,
+    2,
+    1
+   ],
+   "repair_fires": false
+  },
+  "OP8@r1": {
+   "class": "ALARMED-SAFE",
+   "pending_done_armed_lint": [
+    4,
+    1,
+    2,
+    1
+   ],
+   "repair_fires": false
+  },
+  "OP9@r2": {
+   "class": "ALARMED-SAFE",
+   "pending_done_armed_lint": [
+    4,
+    1,
+    2,
+    1
+   ],
+   "repair_fires": false
+  }
+ },
+ "once_live_pair_C1": [
+  2,
+  0
+ ],
+ "position_law": {
+  "OP3@r1": {
+   "pending": 3,
+   "vanished": 1
+  },
+  "OP3@r2": {
+   "containment": true,
+   "merged": 1,
+   "pending": 3
+  }
+ },
+ "repair": {
+  "caught": [
+   "OP12@kill",
+   "OP13@heading",
+   "OP1@r1",
+   "OP1@r2",
+   "OP1@r3",
+   "OP1@r4",
+   "OP1@r5",
+   "OP2@r1",
+   "OP2@r2",
+   "OP2@r3",
+   "OP2@r4",
+   "OP2@r5",
+   "OP3@r1",
+   "OP3@r2",
+   "OP3@r5",
+   "OP4@r1",
+   "OP4@r3",
+   "OP4@r5",
+   "OP5@r1",
+   "OP6@step2"
+  ],
+  "extras": [
+   "OP13@heading",
+   "OP3@r5"
+  ],
+  "false_positives": [],
+  "missed_silent": [
+   "OP14@cont4"
+  ]
+ },
+ "silent_lossy_list": [
+  "OP1@r1",
+  "OP1@r2",
+  "OP1@r3",
+  "OP1@r4",
+  "OP1@r5",
+  "OP2@r1",
+  "OP2@r2",
+  "OP2@r3",
+  "OP2@r4",
+  "OP2@r5",
+  "OP3@r1",
+  "OP3@r2",
+  "OP4@r1",
+  "OP4@r3",
+  "OP4@r5",
+  "OP5@r1",
+  "OP6@step2",
+  "OP12@kill"
+ ],
+ "two_by_two": {
+  "A_noop": [
+   4,
+   1,
+   2,
+   0
+  ],
+  "B_checked_nodone": [
+   4,
+   1,
+   2,
+   1
+  ],
+  "C_unchecked_done": [
+   4,
+   1,
+   2,
+   1
+  ],
+  "D_full_flip": [
+   3,
+   2,
+   2,
+   0
+  ]
+ },
+ "verdict": "REJECT"
+}
