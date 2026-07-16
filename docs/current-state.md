@@ -287,6 +287,13 @@ From PROPOSAL 010 onward the offset is a constant +2.
   not a verdict — `## VERDICT 090` / `## INTAKE 077` collision-grepped
   clean before the append and re-grepped at append time — origin/main
   unmoved; no owner-direct or simreq interleave occurred in this range).
+- Extension (V091 slice, 2026-07-16): the +13 offset holds — PROPOSAL 078
+  (impulse-price-blanket-series-collapse) → **VERDICT 091** (verified at
+  the live-outbox headers: newest `## VERDICT` was 090 at origin/main
+  161aa7f — the tip IS the V090 merge #161 — `## VERDICT 091` /
+  `## INTAKE 078` collision-grepped clean before the append and
+  re-grepped at append time — origin/main unmoved; no owner-direct or
+  simreq interleave occurred in this range).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
