@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/menno420/superbot-idle/main/schema/theme.schema.json",
+  "title": "superbot-idle theme pack — schema v1",
+  "description": "A data-only theme pack (themes/<name>.yaml). Human-readable twin: docs/theme-schema.md (field-for-field parity is test-enforced). Unknown top-level keys are rejected everywhere (additionalProperties: false) so a theme cannot smuggle new mechanics. String budgets are hard limits derived from chat-embed caps (title 256, field value 1024, 25 fields per embed): every render slot fits by construction, so overflow is a red gate, never a live render bug.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "theme", "currencies", "generators"],
+  "properties": {
+    "schema_version": {
+      "description": "Theme-schema version this pack targets. v1 packs declare exactly 1; a future v2 bumps this and the gate validates each pack against its declared version.",
+      "type": "integer",
+      "const": 1
+    },
+    "theme": {
+      "description": "Theme identity + the embed frame (title, description, color).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "emoji", "embed_color"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug", "description": "Stable machine id of the theme (slug)." },
+        "name": { "$ref": "#/$defs/display_name", "description": "Player-visible theme name; composes into embed titles (budget 64 of the 256-char title cap, leaving headroom for emoji + suffixes)." },
+        "description": { "$ref": "#/$defs/flavor_text", "description": "Theme flavor text; renders as the embed description / a field value (1024-char cap)." },
+        "emoji": { "$ref": "#/$defs/emoji", "description": "Theme emoji, prefixes titles." },
+        "embed_color": {
+          "description": "Embed accent color, #RRGGBB hex only.",
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        }
+      }
+    },
+    "currencies": {
+      "description": "Display skins for the engine's currency ids. 1-5 entries: together with the 20-generator cap, any per-entry render stays within the 25-fields-per-embed cap.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "description", "emoji"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug", "description": "Engine currency id this skin maps onto." },
+          "name": { "$ref": "#/$defs/display_name", "description": "Player-visible currency name; renders in field names/titles." },
+          "description": { "$ref": "#/$defs/flavor_text", "description": "Currency flavor text; renders as a field value (1024-char cap)." },
+          "emoji": { "$ref": "#/$defs/emoji", "description": "Currency emoji." }
+        }
+      }
+    },
+    "generators": {
+      "description": "Display skins + base rates for the engine's generator ids. 1-20 entries (see currencies for the 25-field budget math).",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "description", "emoji", "produces", "base_rate"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug", "description": "Engine generator id this skin maps onto." },
+          "name": { "$ref": "#/$defs/display_name", "description": "Player-visible generator name; renders in field names/titles." },
+          "description": { "$ref": "#/$defs/flavor_text", "description": "Generator flavor text; renders as a field value (1024-char cap)." },
+          "emoji": { "$ref": "#/$defs/emoji", "description": "Generator emoji." },
+          "produces": { "$ref": "#/$defs/slug", "description": "Currency id this generator produces; MUST reference a declared currencies[].id (referential check lives in the gate — not expressible here)." },
+          "base_rate": {
+            "description": "Units of `produces` per generator per second. Bounded 1-1000 in v1 so a theme cannot smuggle economy balance; baseline numbers are slated to move engine-side (bounded multipliers) in the economy slice.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          }
+        }
+      }
+    },
+    "balance": {
+      "description": "OPTIONAL (added in the bounded-multipliers slice, additive within v1). The founding contract's ONE bounded balance lane: per-generator rate multipliers as integer percents, HARD-BOUNDED 90..110 right here in the schema (100 = neutral; an absent block or unlisted generator means 100). The bounds are deliberate: +-10% is flavor-level variance — two packs still play the SAME game — never progression-defining balance; anything wider is an engine-side economy change (idle_engine/economy.py, pre-registered + sim-pinned). The multiplier folds into the engine's single-floor integer rate composition and touches RATES ONLY: costs, thresholds, upgrade effects and prestige math are untouched. Every SHIPPED pack stays neutral (no balance block) until the Simulator blesses a non-neutral tuning — Q-0264, docs/design/theme-balance-v0.md. Referential checks in the gate: each entry's generator MUST reference a declared generators[].id, at most one entry per generator. The loader re-validates the bounds independently (defense in depth).",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["generator", "rate_multiplier_pct"],
+        "properties": {
+          "generator": { "$ref": "#/$defs/slug", "description": "Generator id this multiplier applies to; MUST reference a declared generators[].id, at most once (referential + uniqueness checks live in the gate)." },
+          "rate_multiplier_pct": {
+            "description": "Rate multiplier as an integer percent (100 = neutral/x1). SCHEMA-DECLARED HARD BOUNDS 90..110 — the founding contract's 'only within schema-declared bounds' clause, literally these min/max keywords. Loader twin: RATE_MULTIPLIER_MIN/MAX in idle_engine/theme.py (parity test-pinned).",
+            "type": "integer",
+            "minimum": 90,
+            "maximum": 110
+          }
+        }
+      }
+    },
+    "upgrades": {
+      "description": "OPTIONAL (added in slice (b), additive within v1). Display skins for engine upgrade ids. 1-20 entries: upgrades render on their OWN shop embed, so the 25-fields-per-embed cap holds with headroom. DATA ONLY: cost curves, effect sizes and every other economy number live engine-side (idle_engine/economy.py, pre-registered in docs/design/upgrades-prestige-v0.md) — a numeric field here is rejected by additionalProperties.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "description", "emoji", "target"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug", "description": "Engine upgrade id this skin maps onto." },
+          "name": { "$ref": "#/$defs/display_name", "description": "Player-visible upgrade name; renders in field names/titles." },
+          "description": { "$ref": "#/$defs/shop_flavor_text", "description": "Upgrade flavor text; composed into the shop field value below the cost line (shop-composition slice). Budget 768 by composition arithmetic: description (768) + newline (1) + themed cost-line text (mark 1 + level label 32 + currency emoji 32 + currency name 64 + separators 10 = 139) + digit floor (116) = the 1024-char field-value cap exactly. Tightened from the generic 1024 flavor budget when the render layer first consumed this field — the field rendered NOWHERE before, so no render contract relied on the wider budget, and every shipped pack passes unchanged (catalog max at the tighten: 100 chars)." },
+          "emoji": { "$ref": "#/$defs/emoji", "description": "Upgrade emoji." },
+          "target": { "$ref": "#/$defs/slug", "description": "Generator id this upgrade boosts; MUST reference a declared generators[].id (referential check lives in the gate — not expressible here)." }
+        }
+      }
+    },
+    "labels": {
+      "description": "OPTIONAL (added in the themed-label-slots slice, additive within v1). Themed overrides for the labels the render layer otherwise fills with neutral scaffolding (docs/render-layer.md). EVERY slot inside is optional — an absent slot falls back to the neutral default, so packs without this block render exactly as before. Budgets leave documented headroom for the numeric substitutions (arithmetic in docs/theme-schema.md § labels).",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "offline_return": {
+          "description": "Flavor line for offline gains in the status view. TEMPLATE: must contain the substitution token {gains} exactly once and no other braces (gate check); the render layer replaces that token with the formatted gains text (clamped to fit) and appends the whole line to the theme description. Budget 256 (token included): 1024 description + 2 joiner + 249 fixed template chars leaves >= 2821 of the 4096 description cap for the substituted gains.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "status_title": {
+          "description": "Themed title for the status view, rendered VERBATIM (replaces the neutral '{emoji} {name}' composition). Nothing is composed into it, so the budget is the full 256-char title cap.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "shop_title": {
+          "description": "Themed title for the upgrade-shop view, rendered VERBATIM (replaces the neutral '{emoji} {name}' composition). Nothing is composed into it, so the budget is the full 256-char title cap.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "shop_description": {
+          "description": "Themed description for the upgrade-shop view, rendered VERBATIM as the embed description (replaces theme.description there). Budget 1024 = flavor-text budget, well under the 4096 description cap.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "level": {
+          "description": "Themed level label in shop field values (replaces the neutral 'Lv'). Composes as '{mark} {level} N -> N+1 · cost {emoji} {name}' inside the 1024-char field value: mark+label+emoji+name+separators <= ~140 chars, leaving >= 880 for digits before the numeric clamp.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "prestige_progress": {
+          "description": "Themed label for the prestige view's progress value (the neutral default is the bare numbers). Composes as '{mark} {label} N / M' inside the 1024-char field value: mark+label+separators <= ~70 chars, leaving >= 950 for digits before the numeric clamp.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        }
+      }
+    },
+    "milestones": {
+      "description": "OPTIONAL (added in the achievements slice, additive within v1). Noun skins for the engine-derived milestone slots. The slot SET is mechanics (CORE side): every pack gets the same pre-registered threshold ladders (idle_engine/economy.py, docs/design/achievements-v0.md) — three 'owned' rungs (total generators owned), three 'lifetime' rungs (run-lifetime earnings of the measured currency), and, when the pack declares a prestige block, three 'prestige' rungs (prestige units held). An entry here skins ONE canonical slot id with name/flavor/emoji; any subset may be skinned, and an unskinned slot renders as neutral scaffolding. DATA ONLY: thresholds, bonus percents and track bindings live engine-side — a numeric or mechanical field here is rejected by additionalProperties. The prestige-* ids require the pack's prestige block (gate check — a noun for a slot that does not exist is a red gate).",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "description", "emoji"],
+        "properties": {
+          "id": {
+            "description": "Canonical engine milestone slot id being skinned (kind-rank over the three pre-registered ladders).",
+            "enum": [
+              "owned-1",
+              "owned-2",
+              "owned-3",
+              "lifetime-1",
+              "lifetime-2",
+              "lifetime-3",
+              "prestige-1",
+              "prestige-2",
+              "prestige-3"
+            ]
+          },
+          "name": { "$ref": "#/$defs/display_name", "description": "Player-visible milestone name; renders in the achievements view's field names ({emoji} {name}, 32 + 64 of the 256-char cap)." },
+          "description": { "$ref": "#/$defs/shop_flavor_text", "description": "Milestone flavor text; composed into the achievements field value below the progress line (same two-tier arithmetic as the shop value: description (768) + newline (1) leaves >= 255 for the number-bearing progress line, which clamps — the description itself never truncates)." },
+          "emoji": { "$ref": "#/$defs/emoji", "description": "Milestone emoji." }
+        }
+      }
+    },
+    "prestige": {
+      "description": "OPTIONAL (added in slice (b), additive within v1). Display skin for the engine's prestige track: which declared currency is the persistent prestige currency, which declared currency's lifetime earnings it measures, and the reset action's nouns. Thresholds and award curves live engine-side (idle_engine/economy.py) — a numeric field here is rejected by additionalProperties.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["currency", "measures", "action_name", "action_description", "action_emoji"],
+      "properties": {
+        "currency": { "$ref": "#/$defs/slug", "description": "Currency id of the persistent prestige currency; MUST reference a declared currencies[].id and differ from `measures` (gate check)." },
+        "measures": { "$ref": "#/$defs/slug", "description": "Currency id whose lifetime earnings drive eligibility/award; MUST reference a declared currencies[].id and differ from `currency` (gate check)." },
+        "action_name": { "$ref": "#/$defs/display_name", "description": "Player-visible name of the reset action; renders in buttons/titles." },
+        "action_description": { "$ref": "#/$defs/flavor_text", "description": "Reset action flavor text; renders as a field value (1024-char cap)." },
+        "action_emoji": { "$ref": "#/$defs/emoji", "description": "Reset action emoji." }
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 32
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "flavor_text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "shop_flavor_text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 768
+    },
+    "emoji": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32
+    }
+  }
+}

@@ -1,0 +1,401 @@
+{
+ "_provenance": {
+  "proposal": "idea-engine PROPOSAL 079 · 2026-07-16T00:39:30Z · status: sim-ready",
+  "proposal_block": "idea-engine control/outbox.md @ main 636e21d6f4158eef83664f92a9ad584938177fbd (landed via idea-engine PR #444)",
+  "idea_file": "ideas/superbot-idle/owned-track-launch-flag-dial-2026-07-16.md @ idea-engine main 636e21d",
+  "verdict": "VERDICT 092 (P079 -> V092, the +13 offset's sixteenth row)",
+  "lane_pin": "menno420/superbot-idle @ 884aeae9687742a389a2e2086a4cc930e5a4f3ee (the drafter's registered pin, re-fetched FIRSTHAND this session on a fresh public-HTTPS clone; the lane's HEAD had not moved)",
+  "firsthand": "Every committed constant below was re-verified on the fresh clone BEFORE this fixture was written: the ladder constants and fold, the runtime grant and _prestige re-grant, the dispatch verb set, the lock-line composition, the seven committed sentences, the 18-pack catalog censuses (roster/base-rate multisets, zero balance blocks), and the theme gate + schema bounds. The vendored tree below is byte-identical to the clone (sha256 per file).",
+  "committed": "2026-07-16, BEFORE the runner (the P017-P078 hermetic pre-registered discipline)",
+  "rational_convention": "all decision arithmetic is exact integer arithmetic on the vendored engine; no rationals, no floats in any decision arm (the V090 value-pair rule is moot on this head - every registered numeral is a plain integer)"
+ },
+ "vendor": {
+  "layout": "vendor/ mirrors the lane's repo layout (idle_engine/, tools/, schema/, themes/, docs/design/) so tools/play.py and tools/theme_gate.py resolve REPO_ROOT to vendor/ unchanged",
+  "manifest_sha256": {
+   "docs/design/achievements-v0.md": "e8c81e1f6ede74f9b7a26fcf86e8dd1f1f42d9de484b25cbbcdd3fe9ebb19710",
+   "docs/design/economy-v1.md": "c872a30c2503a832f228fd58cf3d775d3fe61aa9fe664cbcac5ecaf10f48681c",
+   "docs/design/theme-balance-v0.md": "8a5cf64600c711141c842c2473b3273651b813cec4c17093b4a0caa3930cc07b",
+   "idle_engine/__init__.py": "c90971a0c226b667fb32b635b21cfe9e4efc7eb63a964852538b62b86b4e89c0",
+   "idle_engine/achievements.py": "6b37fef6df6b8f798f34a9f2c199f5c0255c6ef7b5da2580aa79a693c94bc37a",
+   "idle_engine/economy.py": "4379e14ddb1a976547dd7ef976852596556511c10aeff20126d85e8fb3c2067f",
+   "idle_engine/engine.py": "a1b43b87b4a7541e87a205bdc01489df71b49c3a8fae491fbda505e8470ca091",
+   "idle_engine/persistence.py": "308a45be56ae40f2f3ffa5ba82dcafd8bbe876bedc521f21bb72a90a74272755",
+   "idle_engine/prestige.py": "448a61474c400c400eb9f08dc279706a2677d133456cbe5c29b3c4097157e088",
+   "idle_engine/provisioning.py": "0bb2060cb3938c811357da181bfc2b64ecb84777f0f78ab88421972c7e440f06",
+   "idle_engine/render.py": "6ce9e4a28284f2c43b98d466869e131377614acba931496f0db576a88bbab154",
+   "idle_engine/state.py": "b2ad9674b44813903a24ae53e8e467270bff12c13e636aa11cb7226dbcf21400",
+   "idle_engine/theme.py": "19451cf67fed3c3576f6a771ce631f62fcda57baec11e5bb4a73c4d8bc991d45",
+   "idle_engine/upgrades.py": "4ad83652c71855840e31830c2a3fa081b65a76391ef3b6f94ff385399530dad6",
+   "schema/theme.schema.json": "11a657e72d4f1b7ed8f26508647d0123a4e94a83bded95865ff039816abc7c17",
+   "themes/ant-colony.yaml": "95d354ad5a318049162233aa68fe897952a4da94a9d86c56723a549fd20b50c6",
+   "themes/arctic-outpost.yaml": "39fecb222f029154d1f50d240faa288bb87ef647d7691452853c0680c02e19a7",
+   "themes/candy-factory.yaml": "b3fc466464ec67a5483a1e528ebc2dcc31fba2d8b8fd36b3164e3e1dfa9e305c",
+   "themes/clockwork-atelier.yaml": "74b3dd6eb9bb621d008f470aaf9810f75973198e77ee078708416e73530f48c4",
+   "themes/coffee-roastery.yaml": "cd3a9731f9528885de0631485ccdaa1da013583da7b125dd6b0f35257beb094d",
+   "themes/cyber-city.yaml": "5395c135816f6ac39845b8bf76eeca3852761d1b97d6f4f9d6f0cf6cfe9f8139",
+   "themes/deep-sea-station.yaml": "7c6297012b4c0e84859f129d2260d776c5b47c740058587f09d7094953c5af0c",
+   "themes/dragon-hoard.yaml": "289bd54f352a2e8e0fe2545d61f151935ec278275b49bbb7b174b5ff1c496802",
+   "themes/egg-farm.yaml": "6490d83a1b84244b291ecfed15f454c546bb49257f8e77ac89ab6302ecce6f6b",
+   "themes/haunted-manor.yaml": "592d74b99ad017d825f87845fa4cb64543b7221345a55feca7593d1f48764c40",
+   "themes/idol-agency.yaml": "85a65c85ac29a503b9a14adeeaaadead259df50950939f3be3ba450856a0e125",
+   "themes/lighthouse-keep.yaml": "b35d8357131313f202b0bf8731bedc46a496883e46092e424743811d495f7fe7",
+   "themes/pirate-cove.yaml": "f4f0430c07a1a6ad3bd435a09106da0e2b68041dbf5945601fad2111cce22122",
+   "themes/potion-brewery.yaml": "2569235dd2f4d65b062a8f3c7eea67e666fc7868d3813c4124895b881c88d5bc",
+   "themes/ramen-stand.yaml": "14d688fe4d28a69bb6490e9a2c8bbaec06f4890d325dc6f3047cde529e8bd294",
+   "themes/royal-bakery.yaml": "c897cddef2d8ee894d31e68e1851e2ef7a14683c6b91c00a717ae385df0c3023",
+   "themes/space-colony.yaml": "3187b57441505a667b5da2550e04c4755a508773311676077f962b751e26ba55",
+   "themes/wizard-tower.yaml": "fc6370e2537a127b388823ec58b6c16b12804f3c48fc2617503dec03fd3d8887",
+   "tools/play.py": "b0338295470e9883f85165d554ad70a6adf86a3b881728bce928f5568bbe49f6",
+   "tools/theme_gate.py": "871d50c61455030ef1c617509542cefc52be1e11d7b6f3d81b51a18c302e0802"
+  },
+  "third_party_note": "the vendored engine's theme loader imports PyYAML and the vendored theme gate imports jsonschema - the lane's own committed dependencies (theme_gate.py docstring: 'the theme-gate workflow pip-installs it'); the sim's decision computations are stdlib + the vendored engine only"
+ },
+ "ladder": {
+  "MILESTONE_OWNED_THRESHOLDS": [
+   10,
+   100,
+   1000
+  ],
+  "MILESTONE_LIFETIME_THRESHOLDS": [
+   1000,
+   100000,
+   10000000
+  ],
+  "MILESTONE_PRESTIGE_THRESHOLDS": [
+   1,
+   5,
+   25
+  ],
+  "MILESTONE_BONUS_PERCENT": 5,
+  "fold": "base_rate * count * upgrade_pct * prestige_pct * milestone_pct * theme_pct // 100_000_000 (one floor per generator per second, idle_engine/engine.py)",
+  "grant": "new_session: owned = {gid: start_count for gid in theme.generators} if start_count else {}; _prestige re-grants the identical set after apply_prestige (tools/play.py)",
+  "default_flag": 1
+ },
+ "catalog": {
+  "packs_sorted": [
+   "ant-colony",
+   "arctic-outpost",
+   "candy-factory",
+   "clockwork-atelier",
+   "coffee-roastery",
+   "cyber-city",
+   "deep-sea-station",
+   "dragon-hoard",
+   "egg-farm",
+   "haunted-manor",
+   "idol-agency",
+   "lighthouse-keep",
+   "pirate-cove",
+   "potion-brewery",
+   "ramen-stand",
+   "royal-bakery",
+   "space-colony",
+   "wizard-tower"
+  ],
+  "pack_count": 18,
+  "roster_multiset": {
+   "1": 1,
+   "2": 17
+  },
+  "single_generator_pack": "egg-farm",
+  "base_rate_multiset": {
+   "1": 18,
+   "5": 17
+  },
+  "two_gen_rates": {
+   "tier1": 1,
+   "tier2": 5
+  },
+  "skinned_owned_slots": 54,
+  "balance_blocks": 0
+ },
+ "flag_grid": [
+  0,
+  1,
+  4,
+  5,
+  9,
+  10,
+  19,
+  20,
+  49,
+  50,
+  499,
+  500
+ ],
+ "canonical_corpus": {
+  "commands": [
+   "wait 30",
+   "wait 30",
+   "achievements",
+   "status",
+   "buy boost1 max",
+   "shop",
+   "offline 200000",
+   "prestige do",
+   "achievements",
+   "wait 60",
+   "offline 3600"
+  ],
+  "note": "REGISTERED BY SHAPE (11 commands, full dispatch surface incl. a full prestige cycle via offline 200000); this exact listing is the sim-chosen realization, disclosed as a vacancy-derived fixture per the registration's own convention controls (F5: a corpus extension must not flip R1). 'prestige do' is eligible on every s>=1 cell after the 200000 s offline span and REFUSED on every s=0 cell (the registered F5 degeneracy control).",
+  "extension_control": [
+   "wait 7200",
+   "buy boost2 max",
+   "offline 86400",
+   "prestige do",
+   "wait 1"
+  ],
+  "grid_bump_control": [
+   2,
+   7,
+   1000
+  ]
+ },
+ "registered_anchors": {
+  "cells": 216,
+  "cells_identity": "216 = 18 packs x 12 flag-grid values",
+  "cell_rungs": 648,
+  "cell_rungs_identity": "648 = 216 x 3 owned rungs",
+  "flip_law": "s* = ceil(theta_k / n)",
+  "flip_rows": {
+   "egg-farm": [
+    10,
+    100,
+    1000
+   ],
+   "two-generator packs": [
+    5,
+    50,
+    500
+   ]
+  },
+  "margin0_rows": [
+   {
+    "pack_class": "two-gen",
+    "s_star": 5,
+    "theta": 10,
+    "rung": "owned-1",
+    "refused_at": 4
+   },
+   {
+    "pack_class": "egg-farm",
+    "s_star": 10,
+    "theta": 10,
+    "rung": "owned-1",
+    "refused_at": 9
+   },
+   {
+    "pack_class": "two-gen",
+    "s_star": 50,
+    "theta": 100,
+    "rung": "owned-2",
+    "refused_at": 49
+   },
+   {
+    "pack_class": "two-gen",
+    "s_star": 500,
+    "theta": 1000,
+    "rung": "owned-3",
+    "refused_at": 499
+   }
+  ],
+  "lock_lines": {
+   "two-gen owned-1": "🔒 2 / 10",
+   "egg-farm owned-1": "🔒 1 / 10",
+   "note": "the two registered byte-forms; owned-2/3 render the same frozen metric against 100 / 1,000 via the engine's _format_amount"
+  },
+  "dial_cells": {
+   "egg-farm": [
+    [
+     10,
+     10,
+     10
+    ],
+    [
+     19,
+     19,
+     19
+    ],
+    [
+     20,
+     20,
+     21
+    ]
+   ],
+   "two-gen s=5": {
+    "total": [
+     30,
+     31
+    ],
+    "tier1_split": [
+     5,
+     5
+    ],
+    "tier2_split": [
+     25,
+     26
+    ]
+   },
+   "two-gen s=500 owned-only": [
+    3000,
+    3450
+   ],
+   "dial_cell_convention": "pre/post rates around the first award boundary; the (3000, 3450) cell is evaluated on the registered owned-only pinned GameStates (earned sets {}, {owned-1}, {owned-1..3}) because a live 1 s span at 3000/s crosses lifetime-1 and would pollute the owned-only reading - disclosed, per the registration's own wedge-probe-state pin"
+  },
+  "back_door": {
+   "gate_exit": 0,
+   "catalog_size": 20,
+   "ten_gen_rate": 210,
+   "nine_gen_rate": 180,
+   "witness_base_rate": 20,
+   "born_blessed_rung": "owned-1"
+  },
+  "lag_pairs": {
+   "span30": [
+    900,
+    930
+   ],
+   "span3600": [
+    108000,
+    118800
+   ],
+   "world": "two-gen pack, s=5, spans measured on consecutive advance() calls; the 3600 s second span runs at pct 115 (owned-1 + lifetime-1 + lifetime-2 banked together at the first boundary)"
+  }
+ },
+ "sentence_pins": {
+  "normalization": "whitespace-collapse (every run of whitespace -> one space) then substring containment in the named vendored file",
+  "pins": [
+   {
+    "id": "S1",
+    "file": "tools/play.py",
+    "text": "The starting grant is a RUNTIME entrypoint choice (see the module docstring) — it lives entirely in this tool and touches no economy constant."
+   },
+   {
+    "id": "S2",
+    "file": "tools/play.py",
+    "text": "the engine has no generator purchase verb yet (a separate, economy-number-bearing slice), so without a starting grant a fresh save produces nothing and there is no loop to watch."
+   },
+   {
+    "id": "S3",
+    "file": "docs/design/achievements-v0.md",
+    "text": "No pay-to-win: no purchase path exists or is planned that buys milestones or their bonuses."
+   },
+   {
+    "id": "S4",
+    "file": "docs/design/achievements-v0.md",
+    "text": "rung 1 is a first-session target once generator purchase lands"
+   },
+   {
+    "id": "S5",
+    "file": "docs/design/theme-balance-v0.md",
+    "text": "no non-neutral value ships without Q-0264 approval"
+   },
+   {
+    "id": "S6",
+    "file": "idle_engine/economy.py",
+    "text": "MILESTONE_OWNED_THRESHOLDS = (10, 100, 1_000)"
+   },
+   {
+    "id": "S7",
+    "file": "docs/design/economy-v1.md",
+    "text": "no generator purchase path exists yet in the engine"
+   }
+  ]
+ },
+ "armR": {
+  "role": "REPORTING-ONLY (no statistical gate; the registered previews are reproduction anchors)",
+  "seeds": [
+   20261710,
+   20261711,
+   20261712
+  ],
+  "aux_seed_never_read": 20261713,
+  "traces_per_seed": 2000,
+  "draw_order_grammar": "one random.Random(seed) per trace set; per trace, draws in exactly this order: (1) pack index uniform over the sorted 18-id list [randrange(18)], (2) flag s uniform over the registered grid tuple [randrange(12) indexing the tuple], (3) L uniform 3..10 [randint(3,10)], then per step exactly TWO draws: (4a) command index uniform over the 5-tuple ('wait','offline','buy-max','prestige-do','achievements') [randrange(5)], (4b) duration uniform 60..7200 [randint(60,7200)], drawn EVERY step and consumed only by wait/offline",
+  "registered_previews": {
+   "20261710": [
+    0,
+    1392,
+    12874
+   ],
+   "20261711": [
+    0,
+    1395,
+    12779
+   ],
+   "20261712": [
+    0,
+    1415,
+    13179
+   ]
+  },
+  "preview_triple": "(invariance violations across all trace boundaries, blessed traces, boundaries)",
+  "disclosed_conventions": {
+   "boundaries": "sum of L over the 2,000 traces (one boundary per dispatched command)",
+   "blessed": "a trace whose live earned set contains at least one owned rung at trace end; closed form (verified equal, a self-check): config s*n >= theta_1 AND the trace contains at least one wait/offline step (the only award-carrying boundaries reachable from a fresh save - buy needs funds that only wait/offline produce, 'prestige do' needs lifetime >= 100,000, 'achievements' renders without awarding)",
+   "buy_max_mapping": "'buy-max' dispatches 'buy <first-declared-upgrade-id> max' (boost1 on every shipped pack)",
+   "vacancy_note": "the registered previews pin the TRIPLES; these two byte-level conventions are sim-chosen, disclosed here, and ledgered as vacancy-derived disclosures - the registered triples are the match claims"
+  }
+ },
+ "witness_packs": {
+  "construction": "invented-but-pinned (the registration's own class: a 10-generator base-20 pack and its 9-generator twin, base_rate 20 = the smallest committed-bounds rate where +5% pays exactly at count 1, ledger-clean 20*105//100 = 21). Ids/nouns are sim-chosen skin; the packs differ ONLY in roster length (asserted field-by-field, F5).",
+  "files_sha256": {
+   "witness-ten.yaml": "0822c809948af53d1341932a533d4496dec02bdf68103345c8b12f104c3a13f8",
+   "witness-nine.yaml": "04c48bf51071b36f02f4721be5a7b8a68a728c061971ecc9a9b15b4c5fec07c6"
+  },
+  "ten": {
+   "id": "witness-ten",
+   "generators": 10,
+   "base_rate": 20
+  },
+  "nine": {
+   "id": "witness-nine",
+   "generators": 9,
+   "base_rate": 20
+  },
+  "gate_run": "the REAL vendored tools/theme_gate.py as a subprocess over an assembled 20-pack catalog directory (the 18 shipped packs + both witnesses); recorded facts are path-free (exit code, pack count line)"
+ },
+ "typed_contacts": {
+  "C1": "18 == vendored themes/*.yaml glob count == census rows",
+  "C2": "54 == 18*3 == frozen rendered owned fields at the default flag (byte-stable across the whole corpus)",
+  "C3": "the four margin-0 rows: s**n == theta exactly AND earned at s* AND refused at s*-1",
+  "C4": "Arm-A closed-form predicate {owned-k : s*n >= theta_k} == Arm-B live award set on all 648 cell-rungs (first boundary AND post-corpus)"
+ },
+ "decision_rule": {
+  "evaluation_order": [
+   "REJECT",
+   "INVALID",
+   "APPROVE",
+   "NULL"
+  ],
+  "REJECT": "R1 AND R2 AND R3 AND R4 (the owned track, as shipped, is a configuration predicate - achievements-v0's progression framing and play.py's touches-no-economy-constant sentence cannot both stand)",
+  "R1": "invariance (total owned == s*n at every boundary of the canonical corpus on all 216 cells) AND dichotomy (earned set == closed-form predicate at the first boundary and after the full corpus, 648 cell-rungs) AND the prestige re-grant fixed point",
+  "R2": "catalog census: exactly (18 packs, roster multiset {1x1, 2x17}, 54 skinned owned slots) AND at the default flag all 54 unreachable with lock lines exactly '🔒 2 / 10' / '🔒 1 / 10', byte-stable across the corpus",
+  "R3": "flip thresholds exactly ceil(theta/n) with the four margin-0 rows earned-at-s*/not-at-s*-1 AND the wedge table exact (10->10, 19->19, 20->21; 30->31 with the 5->5 / 25->26 split; 3000->3450) AND the boundary-lag pairs (900/930, 108000/118800)",
+  "R4": "the constructed 10/9-generator pair passes the committed theme gate (exit 0, 20 packs) AND the 10-gen pack is born-blessed at the default flag with rates exactly 210 vs 180",
+  "APPROVE": "some committed no-load command sequence at the default flag changes total owned or earns any owned rung (the V017-unlock-verb witness world satisfies it; mutually exclusive with REJECT by construction)",
+  "NULL_axes": [
+   "the load escape hatch (load is blob-authoritative by committed design; persistence validates types, not rosters - every reachability claim is scoped to the no-load command surface)",
+   "the corpus/grid convention (R1 is also structural: single-writer + fixed point; corpus-extension and grid-bump must not flip it - carried as F5 controls)",
+   "the future-mechanic boundary (the ruling binds the SHIPPED surface at 884aeae only; V017's conditional registration row is the named arming event)"
+  ],
+  "INVALID": "any F1-F6 gate failure",
+  "evaluator_inputs": "ENUMERATED: {R1, R2, R3, R4, approve_witness} booleans only - the twin evaluators receive no other values"
+ },
+ "wedge_states": {
+  "probe": "owned-only earned sets {}, {owned-1}, {owned-1,owned-2,owned-3} on pinned GameStates (the registration's invented-but-pinned wedge probe states)",
+  "expected_percents": [
+   100,
+   105,
+   115
+  ]
+ },
+ "gates": {
+  "F1": "identities: 18 = pack glob = census rows; 54 = 18*3; roster multiset {1x1,2x17}; base-rate multiset {1x18,5x17}; 216 = 18*12; 648 = 216*3; the seven sentence pins present (whitespace-normalized) at the vendored pin",
+  "F2": "theorems T1-T6 re-derived from scratch on the vendored engine (zero trust in the idea file's numbers)",
+  "F3": "census anchors (registered_anchors above) reproduced exactly",
+  "F4": "pencil worlds: 30*30 = 900; 31*30 = 930; the prestige fixed point {tier1: 5, tier2: 5}; 3450 = 3000 + 15% exactly with no floor loss at that fold (575 + 2875)",
+  "F5": "degeneracy/convention controls: s=0 (empty grant, zero production, prestige refused, invariant 0); corpus-extension and grid-bump non-flipping on R1; the back-door pair differs ONLY in roster length (field-by-field)",
+  "F6": "battery: twin evaluators exact-equal through the four typed contacts; Arm-R determinism (each seed reproduces itself byte-identically) and the draw-order grammar asserted by draw-count sentinels (3 + 2L draws per trace)"
+ }
+}
