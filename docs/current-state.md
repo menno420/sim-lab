@@ -312,6 +312,17 @@ From PROPOSAL 010 onward the offset is a constant +2.
   append time — origin/main unmoved; no owner-direct or simreq
   interleave occurred in this range). Next expected: PROPOSAL 081 →
   **VERDICT 094** (P081 not yet drafted at this refresh).
+- Extension (V094 slice, 2026-07-16): the +13 offset holds — PROPOSAL 081
+  (guard-fires-dedupe-regime-cliff) → **VERDICT 094** (verified at the
+  live-outbox headers: newest `## VERDICT` was 093 at origin/main
+  ce5d1a6 — the tip IS the V093 merge #164 — `## VERDICT 094` /
+  `## INTAKE 081` collision-grepped before the append with hit
+  CLASSIFICATION per the V093 card's taxonomy (the only hits were the
+  V093 refresh's own "next expected" heartbeat/map pointers plus
+  idea-engine batons — predictions, not claims; zero claim-class hits)
+  and re-grepped at append time — origin/main unmoved; no owner-direct
+  or simreq interleave occurred in this range). Next expected: PROPOSAL
+  082 → **VERDICT 095** (P082 not yet drafted at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

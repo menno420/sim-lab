@@ -1,0 +1,58 @@
+VERDICT 094 sim — guard-fires dedupe regime cliff (PROPOSAL 081)
+shipped-algorithm replay: W = 600 s window, S = 200-line tail scan, verdict rows exempt-but-slot-occupying
+  [PASS] F0.python-minor-pinned: CPython 3.11 (pinned 3.11; Arms A/B are seedless exact integer arithmetic, platform-independent)
+  [PASS] F1.constants-echo: S = 200, W = 600 echo the pinned source constants (_GUARD_FIRES_DEDUPE_SCAN / GUARD_FIRES_DEDUPE_WINDOW_S)
+  [PASS] C1.day-table: replay day counts [131, 121, 97, 81, 73, 144, 131, 97, 73] == closed law floor(86400/p(c))+1 == registered (131/121/97/81/73/144/131/97/73)
+  [PASS] F1.p-mod-c: p(c) = c*(floor(600/c)+1) == 0 (mod c) on all 9 cadences
+  [PASS] F2a.witness-pair: p(600) = 1200, p(601) = 601; steady-rate ratio r(601)/r(600) = p(600)/p(601) = 1200/601 exactly (checking less often writes ~2x more)
+  [PASS] F2a.non-monotone: day count at c = 601 (144) > at c = 600 (73) and is the grid maximum — the record rate is NON-monotone in cadence
+  [PASS] F1.ledger-length-identity: ledger length == sum fire appends + sum verdict rows at every run boundary, all 40 grid cells
+  [PASS] F1.keyset-structural: scan key set == the last-S-lines in-window verdict-less keys (independent second pass) and no verdict row ever enters it (instrumented probe cells)
+  [PASS] F2b.leak-row: V = 0 steady leak [0, 0, 0, 0, 1, 50, 100, 200] == max(0, F-200) == registered (0/0/0/0/1/50/100/200)
+  [PASS] F2b.margin0-pair: F = 200 leaks 0/run forever; F = 201 leaks 1/run forever — the scan bound is a CLIFF, not a graceful degrader
+  [PASS] C2.rotation-first-repeat: periods F/gcd(F, F-200) = [201, 5, 3, 2] (registered 201/5/3/2); run-2 leaked set first repeats at run 2 + period on all 4 cells (F = 201 at run 203)
+  [PASS] F2b.rotation-blocks-F250: F = 250 leaked blocks runs 2/3/4 = 0-49 / 50-99 / 100-149 — the leaked identity ROTATES through a constant finding population
+  [PASS] F2c.saturated-law: steady leak == min(F, F-200+V) on all 13 qualifying cells (incl. the (400,V) row 201/205/250/400 and (300,50) = 150)
+  [PASS] F2c.saturated-400-row: (400, V) row = [201, 205, 250, 400] (registered 201/205/250/400)
+  [PASS] F2c.saturated-300-50: (300, 50) = 150 (registered 150; the F >= 2(S-V) boundary holds)
+  [PASS] F2c.boundary-pair: (398, 1) constant 199/run from run 2 (the saturated-law boundary); (397, 1) already non-constant (alternates [198, 199])
+  [PASS] F2c.orbit-200-1: (200, 1): prefix [200, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], leak-phase peak 19 first at run 20, tail mean exactly 14 (sum 560 over 40 runs), total 1025 over runs 2-80 vs the naive one-for-one 79 — ONE suppression per run compounds ~13x
+  [PASS] F2c.orbit-200-5: (200, 5) sustains exactly 30/run (runs 41-80)
+  [PASS] F2c.orbit-200-50: (200, 50) settles at exactly 100/run — 2x the naive 50
+  [PASS] F2c.orbit-250-50: (250, 50) locks the exact 2-cycle {100, 150} (runs 41-80 alternate), total 9850 over runs 2-80 (registered 9850)
+  [PASS] F2c.orbit-1-50: (1, 50) re-records the single finding every 4th run by pure line displacement (period 4, no time expiry at c = 1)
+  [PASS] F3.compounding-totals: all 13 registered compounding totals reproduced at their cells (969/2236/7771 @ F=199; 2315/7850 @ F=200; 1068/2389/7890 @ F=201; 4260/5125/9850 @ F=250; 8057/8685 @ F=300)
+  [PASS] C3.twin-sequences: Arm B (depth-arithmetic) == Arm A (tail-slice) per-run sequences EXACTLY on all 20 compounding cells x 80 runs and all 13 saturated cells (and on the whole 40-cell grid: True — extra coverage)
+  [PASS] F2d.breathing-orbit: (201, 300, 24) orbit == 201, (1,1,199)x7, 1, 1 — total 1610 (registered 1610 vs the naive 'leaks 1/run' 224)
+  [PASS] F2d.breathing-twin: Arm B reproduces the breathing orbit exactly (extra twin coverage)
+  [PASS] F5.window-off-control: W -> infinity collapses the breathing cell to exactly 1/run after run 1 — the 199-bursts are EXPIRY, not the line bound
+  [PASS] C4.read-census: (400, 0, 60, 11): 13000 cumulative lines read == the closed quadratic sum (registered 13,000; the last run alone reads 2200) vs 2000 JSON parses (registered 2,000) — 'bounded scan' bounds parses, not reads
+  [PASS] F2e.breathing-reads: breathing scenario pays 20122 lines read for 4600 parses (registered 20,122 / 4,600)
+  [PASS] F5.scan-off-control: scan off (parse the whole file), window kept: the (400, 60) scenario leaks exactly 0 — the cap defends a cost already paid and buys the leak in exchange
+  [PASS] F2f.design-point: F in {1, 50, 200}, V = 0, c = 60, R = 3: re-runs append exactly 0 — at its own design point the dedupe works exactly as designed
+  [PASS] F5.V-ge-S-saturation: V = 200 >= S: leak == F exactly on all 8 F cells (the run's own verdict rows fill the whole tail before the scan)
+  [PASS] F5.order-flip: verdict-first vs fires-first per-run sequences IDENTICAL on the 8 probed cells (F grid at V = 5, the disclosed realization; the V = 1 and V = 50 rows also invariant: True — extra coverage) — the pinned order is not load-bearing there, verified not assumed
+  [PASS] F5.batch-split: 250 split as 125+125: steady per-run leak set {50, 75} vs one-batch {50} — the one-batch convention is LOAD-BEARING, census registered
+  [PASS] F5.naive-ts-fail-open: naive-timestamp rows dedupe nothing: (200, 0, c=1, R=3) appends [200, 200, 200] vs aware [200, 0, 0] — the fail-open pre-fix world
+  [PASS] F5.S-prime-relocation: S' = 1000: whole F-grid leak 0; margin cell F = 1001 leaks exactly 1/run — the cliff RELOCATES, it does not dissolve
+  [PASS] F5.keyed-index-repair: keyed {key: last_append_ts} index: leak 0 at EVERY (F, V) grid cell, and the renewal day table is PRESERVED on all 9 cadences (the repair kills displacement, not the window semantics)
+  [PASS] F4.two-runs-60s: F = 1, two runs 60 s apart: the second scan sees one 60-s-old record -> 0 appends
+  [PASS] F4.p601-one-line: floor(600/601) = 0 => p(601) = 601 — a 601-second checker re-records EVERY run
+  [PASS] F4.cliff-by-inspection: 201 findings against a 200-line tail: exactly one invisible, every run, forever
+  [PASS] F4.depth-arithmetic-1-50: the fire sits at depth 50j+1 after j verdict-bearing runs; invisible iff 50j >= 200 => j = 4 — matches the replayed period
+  [PASS] ArmR.preview-20261718: (leak-regime, max burst, total appends) = [19095, 400, 21187561] (registered [19095, 400, 21187561])
+  [PASS] ArmR.preview-20261719: (leak-regime, max burst, total appends) = [7653, 400, 8512842] (registered [7653, 400, 8512842])
+  [PASS] F1.armr-draw-sentinel: exactly 4N randint draws in registered order (F, V, c, R): 80000 / 32000 (registered 80,000 / 32,000)
+  [PASS] ArmR.determinism: each seed reproduced itself exactly (in-process double run per seed)
+  [info] presentation-shuffle (seed 20261720, reporting-only): repairs, saturated-law, orbit-200-1, rotation, day-table, compounding-totals, read-census, breathing-orbit, leak-row, witness-pair
+  [PASS] ArmR.presentation-seed-scoped: seed ledger [20261718, 20261719, 20261718, 20261719, 20261720] — 20261720 read by the presentation leg only, after every decision and preview leg finished
+  [PASS] ArmR.aux-seed-never-read: seed 20261721 never constructed (no random.Random(20261721) exists in this runner)
+  [PASS] R1.renewal-non-monotonicity: the day table exact on all 9 cadences; p(600) = 1200 / p(601) = 601 with rate ratio exactly 1200/601
+  [PASS] R2.cliff-plus-alibi: steady leak == max(0, F-200) at V = 0 with the (200, 201) margin-0 pair; rotation periods 201/5/3/2 with the F = 250 block census
+  [PASS] R3.compounding-displacement: the saturated law min(F, F-200+V) exact on every qualifying cell with the (398,1)/(397,1) boundary pair; the registered compounding orbits ((200,1) peak 19 @ run 20, tail mean 14, total 1025; (200,50) -> 100/run; (250,50) -> {100,150}; (1,50) -> period 4)
+  [PASS] R4.breathing-plus-read-bill: the (201,300,24) orbit total 1610 with the window-off control at 1/run; read censuses 13,000/2,000 and 20,122/4,600 with the scan-off control at leak 0
+  [PASS] F6.approve-witness-excluded: the shipped algorithm does NOT reproduce the keyed arm's zero-leak census (the (201, 0) cell leaks 1/run) and the renewal rate is NOT monotone (73 -> 144 at the 600 -> 601 step) — APPROVE cannot fire; checked honestly
+  [PASS] F6.twin-evaluators: all 64 enumerated boolean inputs agree; measured inputs -> REJECT / REJECT
+decision inputs: {"R1": true, "R2": true, "R3": true, "R4": true, "approve_cond": false, "gates_ok": true}
+RULING: REJECT (twin evaluators agree: REJECT / REJECT)
+self-checks: 52 total, 52 passed, 0 failed
