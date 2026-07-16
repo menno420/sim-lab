@@ -117,7 +117,7 @@
   "strict_inequality_margin": "SILENT-LOSSY >= 15 in the evaluator carries margin 3 below the registered 18"
  },
  "classification_taxonomy": {
-  "LOSSY": "pending < baseline OR decisions < baseline OR done < baseline OR armed < baseline (a pending click, a queue decision, a DONE row, or an armed checkpoint LOST)",
+  "LOSSY": "(pending+done) < baseline (pending+done) OR decisions < baseline OR done < baseline OR armed < baseline (a pending click, a queue decision, a DONE row, or an armed checkpoint LOST; a full valid flip that RETIRES a row to Live moves pending->done and is disposition, not loss — rehearsal fix 1, disclosed)",
   "ALARMED": "lint > 0 OR manual > 0",
   "classes": ["SILENT-LOSSY", "ALARMED-LOSSY", "ALARMED-SAFE", "SILENT-REGRADE", "NO-EDIT", "INAPPLICABLE"]
  },
