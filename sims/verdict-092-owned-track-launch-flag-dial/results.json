@@ -1,0 +1,510 @@
+{
+ "R1": {
+  "c4_contacts": 648,
+  "dichotomy_final": 216,
+  "dichotomy_first": 216,
+  "invariance_cells": 216,
+  "prestige_cycles": 198,
+  "prestige_refusals": 18
+ },
+ "R2": {
+  "lock_lines": {
+   "ant-colony": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "arctic-outpost": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "candy-factory": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "clockwork-atelier": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "coffee-roastery": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "cyber-city": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "deep-sea-station": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "dragon-hoard": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "egg-farm": [
+    "🔒 1 / 10",
+    "🔒 1 / 100",
+    "🔒 1 / 1,000"
+   ],
+   "haunted-manor": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "idol-agency": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "lighthouse-keep": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "pirate-cove": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "potion-brewery": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "ramen-stand": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "royal-bakery": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "space-colony": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ],
+   "wizard-tower": [
+    "🔒 2 / 10",
+    "🔒 2 / 100",
+    "🔒 2 / 1,000"
+   ]
+  }
+ },
+ "R3_dial": {
+  "egg-farm-s10": [
+   10,
+   10
+  ],
+  "egg-farm-s19": [
+   19,
+   19
+  ],
+  "egg-farm-s20": [
+   20,
+   21
+  ],
+  "two-gen-s5": {
+   "tier1": [
+    5,
+    5
+   ],
+   "tier2": [
+    25,
+    26
+   ],
+   "total": [
+    30,
+    31
+   ]
+  },
+  "two-gen-s500-owned-only": {
+   "percents": [
+    100,
+    105,
+    115
+   ],
+   "rates": [
+    3000,
+    3150,
+    3450
+   ]
+  }
+ },
+ "R3_lag": {
+  "span30": [
+   900,
+   930
+  ],
+  "span3600": [
+   108000,
+   118800
+  ],
+  "span3600_second_span_pct": 115
+ },
+ "R4": {
+  "gate_exit": 0,
+  "gate_line": "theme-gate: all 20 pack(s) valid (schema v1)",
+  "nine_rate": 180,
+  "ten_rate": 210
+ },
+ "armR": {
+  "20261710": {
+   "trace_digest": "390224e954e80d36a310998738ecd9031ce5d5ff6cf2d290a505a61f5084c067",
+   "triple": [
+    0,
+    1392,
+    12874
+   ]
+  },
+  "20261711": {
+   "trace_digest": "ea790d4dd425e0f09ec2a9eb053a9bb97bb3a55b5568590bacc7873f88706f9b",
+   "triple": [
+    0,
+    1395,
+    12779
+   ]
+  },
+  "20261712": {
+   "trace_digest": "aba51bbbed0c1b9f6cfcc45eb7f774d2a6bdbee5a5e4b3e0e15eb0d2f8eef229",
+   "triple": [
+    0,
+    1415,
+    13179
+   ]
+  }
+ },
+ "checks": [
+  {
+   "detail": "CPython 3.11 (pinned 3.11)",
+   "name": "F0.python-minor-pinned",
+   "ok": true
+  },
+  {
+   "detail": "35 files sha256-verified vs superbot-idle 884aeae; mismatched=[] extra=[]",
+   "name": "F0.vendor-manifest",
+   "ok": true
+  },
+  {
+   "detail": "mismatched=[]",
+   "name": "F0.witness-manifest",
+   "ok": true
+  },
+  {
+   "detail": "play resolved to the vendored copy",
+   "name": "F0.vendored-import",
+   "ok": true
+  },
+  {
+   "detail": "18 packs",
+   "name": "F1.pack-glob",
+   "ok": true
+  },
+  {
+   "detail": "[(1, 1), (2, 17)]",
+   "name": "F1.roster-multiset",
+   "ok": true
+  },
+  {
+   "detail": "[(1, 18), (5, 17)]",
+   "name": "F1.base-rate-multiset",
+   "ok": true
+  },
+  {
+   "detail": "0 non-neutral pcts",
+   "name": "F1.zero-balance-blocks",
+   "ok": true
+  },
+  {
+   "detail": "slots=54 skinned=54",
+   "name": "F1.54-slots",
+   "ok": true
+  },
+  {
+   "detail": "18 x 12",
+   "name": "F1.216-cells",
+   "ok": true
+  },
+  {
+   "detail": "216 x 3",
+   "name": "F1.648-cell-rungs",
+   "ok": true
+  },
+  {
+   "detail": "(10, 100, 1000) +5%",
+   "name": "F1.ladder-constants",
+   "ok": true
+  },
+  {
+   "detail": "tools/play.py",
+   "name": "F1.sentence-S1",
+   "ok": true
+  },
+  {
+   "detail": "tools/play.py",
+   "name": "F1.sentence-S2",
+   "ok": true
+  },
+  {
+   "detail": "docs/design/achievements-v0.md",
+   "name": "F1.sentence-S3",
+   "ok": true
+  },
+  {
+   "detail": "docs/design/achievements-v0.md",
+   "name": "F1.sentence-S4",
+   "ok": true
+  },
+  {
+   "detail": "docs/design/theme-balance-v0.md",
+   "name": "F1.sentence-S5",
+   "ok": true
+  },
+  {
+   "detail": "idle_engine/economy.py",
+   "name": "F1.sentence-S6",
+   "ok": true
+  },
+  {
+   "detail": "docs/design/economy-v1.md",
+   "name": "F1.sentence-S7",
+   "ok": true
+  },
+  {
+   "detail": "11 commands incl. a full prestige cycle",
+   "name": "F1.corpus-shape",
+   "ok": true
+  },
+  {
+   "detail": "216/216 cells, zero violations",
+   "name": "R1.invariance-216",
+   "ok": true
+  },
+  {
+   "detail": "216/216",
+   "name": "R1.dichotomy-first-boundary",
+   "ok": true
+  },
+  {
+   "detail": "216/216",
+   "name": "R1.dichotomy-post-corpus",
+   "ok": true
+  },
+  {
+   "detail": "648/648 Arm-A==Arm-B cell-rungs",
+   "name": "C4.contact-648",
+   "ok": true
+  },
+  {
+   "detail": "198 performed (every s>=1 cell), 18 refused (every s=0 cell)",
+   "name": "R1.prestige-cycle",
+   "ok": true
+  },
+  {
+   "detail": "re-grant == birth grant on every performed cycle",
+   "name": "R1.prestige-fixed-point",
+   "ok": true
+  },
+  {
+   "detail": "{'tier1': 5, 'tier2': 5}",
+   "name": "F4.fixed-point-cell",
+   "ok": true
+  },
+  {
+   "detail": "18/18 packs with s*n < theta_1 at the default flag",
+   "name": "R2.census-rows",
+   "ok": true
+  },
+  {
+   "detail": "54/54 owned fields byte-stable across the corpus",
+   "name": "R2.frozen-54",
+   "ok": true
+  },
+  {
+   "detail": "17/17 packs render exactly '🔒 2 / 10'",
+   "name": "R2.lock-line-two-gen",
+   "ok": true
+  },
+  {
+   "detail": "1/1 pack renders exactly '🔒 1 / 10'",
+   "name": "R2.lock-line-egg-farm",
+   "ok": true
+  },
+  {
+   "detail": "s*n == theta exactly; earned at s*, refused at s*-1 (whole pack class)",
+   "name": "R3.m0.egg-s10",
+   "ok": true
+  },
+  {
+   "detail": "s*n == theta exactly; earned at s*, refused at s*-1 (whole pack class)",
+   "name": "R3.m0.two-gen-s5",
+   "ok": true
+  },
+  {
+   "detail": "s*n == theta exactly; earned at s*, refused at s*-1 (whole pack class)",
+   "name": "R3.m0.two-gen-s50",
+   "ok": true
+  },
+  {
+   "detail": "s*n == theta exactly; earned at s*, refused at s*-1 (whole pack class)",
+   "name": "R3.m0.two-gen-s500",
+   "ok": true
+  },
+  {
+   "detail": "10 -> 10 (registered 10 -> 10)",
+   "name": "R3.dial-egg-s10",
+   "ok": true
+  },
+  {
+   "detail": "19 -> 19 (registered 19 -> 19)",
+   "name": "R3.dial-egg-s19",
+   "ok": true
+  },
+  {
+   "detail": "20 -> 21 (registered 20 -> 21)",
+   "name": "R3.dial-egg-s20",
+   "ok": true
+  },
+  {
+   "detail": "total 30->31, tier1 5->5 (floor-eaten), tier2 25->26",
+   "name": "R3.dial-two-gen-s5",
+   "ok": true
+  },
+  {
+   "detail": "[100, 105, 115]",
+   "name": "R3.wedge-percents",
+   "ok": true
+  },
+  {
+   "detail": "3000 -> 3450 (+15% exactly)",
+   "name": "R3.dial-two-gen-s500",
+   "ok": true
+  },
+  {
+   "detail": "575 + 2875 == 3450 == 3000 + 15%",
+   "name": "F4.s500-no-floor-loss",
+   "ok": true
+  },
+  {
+   "detail": "[900, 930]",
+   "name": "R3.lag-span30",
+   "ok": true
+  },
+  {
+   "detail": "[108000, 118800] at second-span pct 115",
+   "name": "R3.lag-span3600",
+   "ok": true
+  },
+  {
+   "detail": "30*30 == 900; 31*30 == 930",
+   "name": "F4.pencil-30s",
+   "ok": true
+  },
+  {
+   "detail": "exit 0: theme-gate: all 20 pack(s) valid (schema v1)",
+   "name": "R4.gate-exit-0",
+   "ok": true
+  },
+  {
+   "detail": "theme-gate: all 20 pack(s) valid (schema v1)",
+   "name": "R4.gate-20-packs",
+   "ok": true
+  },
+  {
+   "detail": "10-gen pack earns owned-1 at its first boundary at the DEFAULT flag; the 9-gen twin earns nothing",
+   "name": "R4.born-blessed",
+   "ok": true
+  },
+  {
+   "detail": "210 vs 180, permanently",
+   "name": "R4.rates-210-180",
+   "ok": true
+  },
+  {
+   "detail": "closed-form fold reproduces 210/180",
+   "name": "R4.arm-a-twin",
+   "ok": true
+  },
+  {
+   "detail": "empty grant, zero production, prestige refused, invariant 0",
+   "name": "F5.s0-degenerate",
+   "ok": true
+  },
+  {
+   "detail": "invariance holds on all 216 cells under the 16-command extension",
+   "name": "F5.corpus-extension",
+   "ok": true
+  },
+  {
+   "detail": "invariance + dichotomy hold at s in {2, 7, 1000} on all 18 packs",
+   "name": "F5.grid-bump",
+   "ok": true
+  },
+  {
+   "detail": "the pair differs ONLY in roster length (field-by-field)",
+   "name": "F5.witness-roster-only",
+   "ok": true
+  },
+  {
+   "detail": "(violations, blessed, boundaries) = [0, 1392, 12874] (registered [0, 1392, 12874])",
+   "name": "ArmR.preview-20261710",
+   "ok": true
+  },
+  {
+   "detail": "(violations, blessed, boundaries) = [0, 1395, 12779] (registered [0, 1395, 12779])",
+   "name": "ArmR.preview-20261711",
+   "ok": true
+  },
+  {
+   "detail": "(violations, blessed, boundaries) = [0, 1415, 13179] (registered [0, 1415, 13179])",
+   "name": "ArmR.preview-20261712",
+   "ok": true
+  },
+  {
+   "detail": "each seed reproduced itself byte-identically (double run in-process)",
+   "name": "ArmR.determinism",
+   "ok": true
+  },
+  {
+   "detail": "3 + 2L draws per trace asserted on every one of the 6,000 traces x2",
+   "name": "ArmR.draw-grammar-sentinels",
+   "ok": true
+  },
+  {
+   "detail": "seed 20261713 never constructed (no random.Random(20261713) call exists in this runner)",
+   "name": "ArmR.aux-seed-never-read",
+   "ok": true
+  },
+  {
+   "detail": "REJECT / REJECT",
+   "name": "F6.twin-evaluators",
+   "ok": true
+  }
+ ],
+ "decision_inputs": {
+  "R1": true,
+  "R2": true,
+  "R3": true,
+  "R4": true,
+  "approve_witness": false,
+  "gates_ok": true
+ },
+ "proposal": "idea-engine PROPOSAL 079 · 2026-07-16T00:39:30Z",
+ "ruling": "REJECT",
+ "self_checks": {
+  "failed": 0,
+  "passed": 61,
+  "total": 61
+ },
+ "verdict_id": "VERDICT 092"
+}

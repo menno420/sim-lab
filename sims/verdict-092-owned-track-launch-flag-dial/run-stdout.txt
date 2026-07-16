@@ -1,0 +1,66 @@
+VERDICT 092 sim — owned-track launch-flag dial (PROPOSAL 079)
+vendored engine: superbot-idle @ 884aeae (35 files sha256-verified)
+  [PASS] F0.python-minor-pinned: CPython 3.11 (pinned 3.11)
+  [PASS] F0.vendor-manifest: 35 files sha256-verified vs superbot-idle 884aeae; mismatched=[] extra=[]
+  [PASS] F0.witness-manifest: mismatched=[]
+  [PASS] F0.vendored-import: play resolved to the vendored copy
+  [PASS] F1.pack-glob: 18 packs
+  [PASS] F1.roster-multiset: [(1, 1), (2, 17)]
+  [PASS] F1.base-rate-multiset: [(1, 18), (5, 17)]
+  [PASS] F1.zero-balance-blocks: 0 non-neutral pcts
+  [PASS] F1.54-slots: slots=54 skinned=54
+  [PASS] F1.216-cells: 18 x 12
+  [PASS] F1.648-cell-rungs: 216 x 3
+  [PASS] F1.ladder-constants: (10, 100, 1000) +5%
+  [PASS] F1.sentence-S1: tools/play.py
+  [PASS] F1.sentence-S2: tools/play.py
+  [PASS] F1.sentence-S3: docs/design/achievements-v0.md
+  [PASS] F1.sentence-S4: docs/design/achievements-v0.md
+  [PASS] F1.sentence-S5: docs/design/theme-balance-v0.md
+  [PASS] F1.sentence-S6: idle_engine/economy.py
+  [PASS] F1.sentence-S7: docs/design/economy-v1.md
+  [PASS] F1.corpus-shape: 11 commands incl. a full prestige cycle
+  [PASS] R1.invariance-216: 216/216 cells, zero violations
+  [PASS] R1.dichotomy-first-boundary: 216/216
+  [PASS] R1.dichotomy-post-corpus: 216/216
+  [PASS] C4.contact-648: 648/648 Arm-A==Arm-B cell-rungs
+  [PASS] R1.prestige-cycle: 198 performed (every s>=1 cell), 18 refused (every s=0 cell)
+  [PASS] R1.prestige-fixed-point: re-grant == birth grant on every performed cycle
+  [PASS] F4.fixed-point-cell: {'tier1': 5, 'tier2': 5}
+  [PASS] R2.census-rows: 18/18 packs with s*n < theta_1 at the default flag
+  [PASS] R2.frozen-54: 54/54 owned fields byte-stable across the corpus
+  [PASS] R2.lock-line-two-gen: 17/17 packs render exactly '🔒 2 / 10'
+  [PASS] R2.lock-line-egg-farm: 1/1 pack renders exactly '🔒 1 / 10'
+  [PASS] R3.m0.egg-s10: s*n == theta exactly; earned at s*, refused at s*-1 (whole pack class)
+  [PASS] R3.m0.two-gen-s5: s*n == theta exactly; earned at s*, refused at s*-1 (whole pack class)
+  [PASS] R3.m0.two-gen-s50: s*n == theta exactly; earned at s*, refused at s*-1 (whole pack class)
+  [PASS] R3.m0.two-gen-s500: s*n == theta exactly; earned at s*, refused at s*-1 (whole pack class)
+  [PASS] R3.dial-egg-s10: 10 -> 10 (registered 10 -> 10)
+  [PASS] R3.dial-egg-s19: 19 -> 19 (registered 19 -> 19)
+  [PASS] R3.dial-egg-s20: 20 -> 21 (registered 20 -> 21)
+  [PASS] R3.dial-two-gen-s5: total 30->31, tier1 5->5 (floor-eaten), tier2 25->26
+  [PASS] R3.wedge-percents: [100, 105, 115]
+  [PASS] R3.dial-two-gen-s500: 3000 -> 3450 (+15% exactly)
+  [PASS] F4.s500-no-floor-loss: 575 + 2875 == 3450 == 3000 + 15%
+  [PASS] R3.lag-span30: [900, 930]
+  [PASS] R3.lag-span3600: [108000, 118800] at second-span pct 115
+  [PASS] F4.pencil-30s: 30*30 == 900; 31*30 == 930
+  [PASS] R4.gate-exit-0: exit 0: theme-gate: all 20 pack(s) valid (schema v1)
+  [PASS] R4.gate-20-packs: theme-gate: all 20 pack(s) valid (schema v1)
+  [PASS] R4.born-blessed: 10-gen pack earns owned-1 at its first boundary at the DEFAULT flag; the 9-gen twin earns nothing
+  [PASS] R4.rates-210-180: 210 vs 180, permanently
+  [PASS] R4.arm-a-twin: closed-form fold reproduces 210/180
+  [PASS] F5.s0-degenerate: empty grant, zero production, prestige refused, invariant 0
+  [PASS] F5.corpus-extension: invariance holds on all 216 cells under the 16-command extension
+  [PASS] F5.grid-bump: invariance + dichotomy hold at s in {2, 7, 1000} on all 18 packs
+  [PASS] F5.witness-roster-only: the pair differs ONLY in roster length (field-by-field)
+  [PASS] ArmR.preview-20261710: (violations, blessed, boundaries) = [0, 1392, 12874] (registered [0, 1392, 12874])
+  [PASS] ArmR.preview-20261711: (violations, blessed, boundaries) = [0, 1395, 12779] (registered [0, 1395, 12779])
+  [PASS] ArmR.preview-20261712: (violations, blessed, boundaries) = [0, 1415, 13179] (registered [0, 1415, 13179])
+  [PASS] ArmR.determinism: each seed reproduced itself byte-identically (double run in-process)
+  [PASS] ArmR.draw-grammar-sentinels: 3 + 2L draws per trace asserted on every one of the 6,000 traces x2
+  [PASS] ArmR.aux-seed-never-read: seed 20261713 never constructed (no random.Random(20261713) call exists in this runner)
+  [PASS] F6.twin-evaluators: REJECT / REJECT
+decision inputs: {"R1": true, "R2": true, "R3": true, "R4": true, "approve_witness": false, "gates_ok": true}
+RULING: REJECT (twin evaluators agree: REJECT / REJECT)
+self-checks: 61 total, 61 passed, 0 failed
