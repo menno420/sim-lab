@@ -433,6 +433,37 @@ From PROPOSAL 010 onward the offset is a constant +2.
   block consumed, the next free block stays 20261730, untouched. Next
   expected: PROPOSAL 087 → **VERDICT 100** (P087 not yet drafted at this
   refresh).
+- Extension (V100 slice, 2026-07-16): the +13 offset holds — PROPOSAL 087
+  (htk-breakpoint-variance-comb) → **VERDICT 100** (ACCEPT, first-failing-gate
+  None; verified at the live-outbox headers: newest `## VERDICT` was 099 at
+  origin/main ce3dace — the tip was the V099 merge #171 at session start —
+  `## VERDICT 100` / `verdict-100` / `v100` collision-grepped clean before the
+  append (no ledger header, no `sims/verdict-100-*` competing path, no session
+  card, no competing remote ref; the only prior "VERDICT 100" strings were the
+  V099 refresh's own "next expected" heartbeat/map pointers — predictions, not
+  claims) and re-checked at append time — origin/main unmoved; no owner-direct
+  or simreq interleave occurred in this range). Gate outcomes: **R1 PASS**
+  (H=100 mean HTK TIGHT < WILD all 5 seeds, per-seed WILD−TIGHT diffs
+  [+0.2785,+0.2730,+0.2920,+0.2705,+0.2785], 74.90σ ≥ 3), **R2 PASS** (H=500
+  mean HTK WILD < TIGHT all 5 seeds, diffs
+  [−0.3012,−0.3175,−0.3130,−0.3060,−0.3098], 110.60σ ≥ 3), **R3 PASS** (every
+  realized HTK ≥ 1 and mean HTK monotone non-decreasing in H for both builds —
+  TIGHT [1.0,1.0,2.0,3.0,5.0], WILD [1.0547,1.2785,1.7193,3.0413,4.6905]),
+  **R4 PASS** (R4a comb signs [+,+,−,+,−] match the registration; R4b
+  variance-free control ceil(H/mean) has WILD ≤ TIGHT at every H) — all four
+  gates pass → ACCEPT. Per-H margins 49.75/74.90/99.54/40.28/110.60σ. Mechanism:
+  hits-to-kill is the CEILING of an HP/damage ratio — a discrete comb — so the
+  favored distribution FLIPS as HP sweeps the breakpoint lattice; near a
+  low-variance build's exact-kill band the lower-mean TIGHT build wins on mean
+  HTK (H∈{80,100,300}), while far from any breakpoint the higher-mean WILD wins
+  the mean race (H∈{140,500}), and R4b's control proves the TIGHT wins are
+  variance-driven not mean-driven. The measured means reproduce the proposal's
+  disclosed dry-sim calibration to the book from an independent
+  re-implementation. **Verdict high-water is now V100.** V100 is SEEDLESS — the
+  seeds are the in-file constants S=[1–5] (random.Random(seed)), NOT a ledger
+  draw; no seed-ledger block consumed, the next free block stays 20261730,
+  untouched. Next expected: PROPOSAL 088 → **VERDICT 101** (P088 not yet drafted
+  at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
