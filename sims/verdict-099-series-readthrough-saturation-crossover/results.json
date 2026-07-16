@@ -1,0 +1,242 @@
+{
+  "b_star": 22,
+  "first_failing_gate": null,
+  "gates": {
+    "R1": true,
+    "R1_all_seeds_positive": true,
+    "R1_diffs": [
+      454,
+      435,
+      388,
+      381,
+      426
+    ],
+    "R1_margin_sigma": 29.80642604624721,
+    "R1_sem": 13.98356177803066,
+    "R1_std": 31.268194703244383,
+    "R2": true,
+    "R2_all_seeds_positive": true,
+    "R2_diffs": [
+      1974,
+      2042,
+      2002,
+      1989,
+      2032
+    ],
+    "R2_margin_sigma": 156.66824616698332,
+    "R2_sem": 12.815615474880634,
+    "R2_std": 28.65658737533135,
+    "R3": true,
+    "R3_monotone_concentrate": true,
+    "R3_monotone_spread": true,
+    "R3_rates_in_range": true,
+    "R4": true,
+    "R4_b_star": 22,
+    "R4_b_star_in_window": true,
+    "R4_concentrate_flat": true,
+    "R4_concentrate_flat_values": [
+      4336.6,
+      4336.6,
+      4336.6,
+      4336.6
+    ]
+  },
+  "mean_revenue": {
+    "CONCENTRATE": {
+      "11": 4336.6,
+      "16": 4336.6,
+      "22": 4336.6,
+      "33": 4336.6,
+      "6": 3641.8
+    },
+    "SPREAD": {
+      "11": 3651.6,
+      "16": 4129.4,
+      "22": 4804.8,
+      "33": 6344.4,
+      "6": 3225.0
+    }
+  },
+  "params": {
+    "C": 2000,
+    "N_books": 4,
+    "N_transitions": 3,
+    "budgets": [
+      6,
+      11,
+      16,
+      22,
+      33
+    ],
+    "r_base": 0.3,
+    "r_max": 0.85,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "slope": 0.05
+  },
+  "per_seed_revenue": {
+    "CONCENTRATE": {
+      "11": [
+        4362,
+        4325,
+        4342,
+        4318,
+        4336
+      ],
+      "16": [
+        4362,
+        4325,
+        4342,
+        4318,
+        4336
+      ],
+      "22": [
+        4362,
+        4325,
+        4342,
+        4318,
+        4336
+      ],
+      "33": [
+        4362,
+        4325,
+        4342,
+        4318,
+        4336
+      ],
+      "6": [
+        3667,
+        3621,
+        3659,
+        3611,
+        3651
+      ]
+    },
+    "SPREAD": {
+      "11": [
+        3647,
+        3633,
+        3676,
+        3637,
+        3665
+      ],
+      "16": [
+        4150,
+        4109,
+        4181,
+        4084,
+        4123
+      ],
+      "22": [
+        4827,
+        4800,
+        4831,
+        4755,
+        4811
+      ],
+      "33": [
+        6336,
+        6367,
+        6344,
+        6307,
+        6368
+      ],
+      "6": [
+        3213,
+        3186,
+        3271,
+        3230,
+        3225
+      ]
+    }
+  },
+  "realized_rates": {
+    "CONCENTRATE": {
+      "11": [
+        0.85,
+        0.3,
+        0.3
+      ],
+      "16": [
+        0.85,
+        0.3,
+        0.3
+      ],
+      "22": [
+        0.85,
+        0.3,
+        0.3
+      ],
+      "33": [
+        0.85,
+        0.3,
+        0.3
+      ],
+      "6": [
+        0.6000000000000001,
+        0.3,
+        0.3
+      ]
+    },
+    "SPREAD": {
+      "11": [
+        0.48333333333333334,
+        0.48333333333333334,
+        0.48333333333333334
+      ],
+      "16": [
+        0.5666666666666667,
+        0.5666666666666667,
+        0.5666666666666667
+      ],
+      "22": [
+        0.6666666666666667,
+        0.6666666666666667,
+        0.6666666666666667
+      ],
+      "33": [
+        0.85,
+        0.85,
+        0.85
+      ],
+      "6": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    }
+  },
+  "seed_matrix_fingerprints": {
+    "1": "66e0d7e9a860bcd98e2c88215ced8e2189ae40673384cefb8c212247388a6067",
+    "2": "5d29a8a615bed899440e69471ee4235fe71f8ec3855ff8a6257ca3f84fbb4cc8",
+    "3": "6914caa36ca02b5090e408896ee641c25a5522ec964da55bb7dc85bab756a44b",
+    "4": "8de4171f1801914bd8605acda3d33669df2fce3258c6ee6d0b76fb0620987d42",
+    "5": "c70aa41bc31e4f353d2940005c88ef35a7ac541be70d40c50f18a170f4895be2"
+  },
+  "self_checks": {
+    "budget_grid_straddles_saturation": true,
+    "cohort_size_is_C": true,
+    "common_random_numbers_shared_per_seed": true,
+    "fixture_matches_committed": true,
+    "realized_rates_within_stability_bound": true,
+    "twin_evaluators_agree_reason": true,
+    "twin_evaluators_agree_verdict": true
+  },
+  "twin": {
+    "agree": true,
+    "if_chain": [
+      "ACCEPT",
+      null
+    ],
+    "table": [
+      "ACCEPT",
+      null
+    ]
+  },
+  "verdict": "ACCEPT"
+}

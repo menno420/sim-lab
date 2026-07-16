@@ -405,6 +405,34 @@ From PROPOSAL 010 onward the offset is a constant +2.
   block consumed, the next free block stays 20261730, untouched. Next
   expected: PROPOSAL 086 → **VERDICT 099** (P086 not yet drafted at this
   refresh).
+- Extension (V099 slice, 2026-07-16): the +13 offset holds — PROPOSAL 086
+  (series-readthrough-saturation-crossover) → **VERDICT 099** (ACCEPT,
+  first-failing-gate None; verified at the live-outbox headers: newest
+  `## VERDICT` was 098 at origin/main 5d8a45e — the tip was the V098 merge
+  #170 at session start — `## VERDICT 099` / `verdict-099` / `v099`
+  collision-grepped clean before the append (no ledger header, no
+  `sims/verdict-099-*` competing path, no session card, no competing remote
+  ref; the only prior "VERDICT 099" strings were the V098 refresh's own "next
+  expected" heartbeat/map pointers — predictions, not claims) and re-checked
+  at append time — origin/main unmoved; no owner-direct or simreq interleave
+  occurred in this range). Gate outcomes: **R1 PASS** (B=6 CONCENTRATE >
+  SPREAD all 5 seeds, per-seed diffs [454,435,388,381,426], 29.81σ ≥ 3),
+  **R2 PASS** (B=33 SPREAD > CONCENTRATE all 5 seeds, diffs
+  [1974,2042,2002,1989,2032], 156.67σ ≥ 3), **R3 PASS** (all realized
+  r_k∈[0.30,0.85] and mean revenue monotone non-decreasing in B for both
+  allocations), **R4 PASS** (crossover B*=22 ∈ (11,22] with CONCENTRATE mean
+  revenue flat at 4336.6 books across B∈{11,16,22,33}) — all four gates pass →
+  ACCEPT. Mechanism: the entry step saturates at b_1=(r_max−r_base)/slope=11,
+  past which CONCENTRATE's revenue is pinned at the r_max=0.85 ceiling while
+  SPREAD's three unsaturated transitions keep converting, so the optimal
+  allocation flips CONCENTRATE→SPREAD exactly at the world's own stability
+  bound. The measured table reproduces the proposal's disclosed dry-sim
+  calibration to the book from an independent re-implementation. **Verdict
+  high-water is now V099.** V099 is SEEDLESS — the seeds are the in-file
+  constants S=[1–5] (random.Random(seed)), NOT a ledger draw; no seed-ledger
+  block consumed, the next free block stays 20261730, untouched. Next
+  expected: PROPOSAL 087 → **VERDICT 100** (P087 not yet drafted at this
+  refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
