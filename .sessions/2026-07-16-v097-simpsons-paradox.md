@@ -1,6 +1,6 @@
 # Session — VERDICT 097 — the pooled rate that hides one confounded allocation: Simpson's-paradox aggregation-reversal trap — the folk rule "a treatment better in EVERY subgroup is better overall" priced where it exactly breaks, when the subgroup allocation is confounded with the subgroup baseline; on the pinned Charig et al. (1986) kidney-stone table (A·S=81/87, A·L=192/263, pooled A=273/350=39/50≈0.780; B·S=234/270, B·L=55/80, pooled B=289/350≈0.826) treatment A beats B in BOTH strata yet LOSES the pool by exactly 16/350=8/175≈0.046 — the reversal — because the pooled rate is a SIZE-WEIGHTED mean whose weights belong to the ALLOCATION (A loads the hard large stratum 263/350 vs B's 80/350); the reversal is a CLIFF (pooled_A(x) strictly decreasing, one crossing of 289/350 at x*=184, real table x=263 past it) and the priced repair is STANDARDIZATION to a common weight (std_A=634983/762700≈0.8325 > std_B=6231/8000≈0.7789, weight-invariant over four mixes) restoring the true per-stratum ordering at the price of one recorded covariate (idea-engine PROPOSAL 084, the round-17 COMPLETELY-UNRELATED-domain CLOSER slot — STATISTICS / CAUSAL INFERENCE; P084 → V097 under the +13 offset, twenty-first row; SEEDLESS pure-math head, no Arm R seed block consumed)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-class · high · simulation/verification
 
 Objective: produce VERDICT 097 for idea-engine PROPOSAL 084 (the Simpson's-paradox
