@@ -1,0 +1,107 @@
+== Arm A — T1: the border halves exactly; the forbidden band ==
+[PASS] anchor T1 jump ratio == 2 (margin-0 contact i) — disclosed 2 / derived 2
+[PASS] anchor T1 forbidden-band width (2093/2000) — disclosed 2093/2000 / derived 2093/2000
+[PASS] T1 width == its own lower edge EXACTLY (margin-0 contact ii) — 2093/2000 == 2093/2000
+[PASS] anchor T1 attainable-set edges — disclosed [693/2000, 2093/2000, 2093/1000, 6993/1000] / derived [693/2000, 2093/2000, 2093/1000, 6993/1000]
+[PASS] anchor T1 V049 external anchor roy(0.99) == 693/2000 — disclosed 693/2000 / derived 693/2000
+[PASS] T1 every committed price in the upper branch
+
+== Arm A — T2: the standalone bar law m*(1) = 2 * p / p0 ==
+[PASS] T2 bar law at twelfth_cake_marmalade_3.99: m*(1) == 2*p/p0 — m* = 266/33 ~ 8.0606
+[PASS] anchor T2 standalone bar twelfth_cake_marmalade_3.99 — disclosed 266/33 / derived 266/33
+[PASS] T2 bar law at night_kiln_slow_word_4.99: m*(1) == 2*p/p0 — m* = 998/99 ~ 10.0808
+[PASS] anchor T2 standalone bar night_kiln_slow_word_4.99 — disclosed 998/99 / derived 998/99
+[PASS] T2 bar law at band_floor_2.99: m*(1) == 2*p/p0 — m* = 598/99 ~ 6.0404
+[PASS] anchor T2 standalone bar band_floor_2.99 — disclosed 598/99 / derived 598/99
+[PASS] T2 home ground: every standalone bar >= 6 (REJECT clause (a) input)
+[PASS] T2 fee lemma delta=1/100 strictly lowers the bar — m* ~ 8.0317
+[PASS] T2 fee lemma delta=1/10 strictly lowers the bar — m* ~ 7.7720
+[PASS] T2 fee lemma delta=1/2 strictly lowers the bar — m* ~ 6.6176
+[PASS] anchor T2 fee row at $3.99 (4dp renderings) — disclosed ['8.0317', '7.7720', '6.6176'] / derived ['8.0317', '7.7720', '6.6176']
+[VACANT] fee sweep at committed prices other than $3.99 — registration discloses the $3.99 row only; full grid reported — sim value: {"band_floor_2.99": {"0": "598/99", "1/10": "3986/693", "1/100": "4166/693", "1/2": "354/77"}, "night_kiln_slow_word_4.99": {"0": "998/99", "1/10": "754/77", "1/100": "774/77", "1/2": "5986/693"}, "twelfth_cake_marmalade_3.99": {"0": "266/33", "1/10": "5386/693", "1/100": "506/63", "1/2": "4586/693"}}
+
+== Arm A — T3: the series funnel collapse m*(K, r) ==
+   K= 1: 998/99 ~ 10.0808 · 998/99 ~ 10.0808 · 998/99 ~ 10.0808 · 998/99 ~ 10.0808 · 998/99 ~ 10.0808
+   K= 3: 55389/10439 ~ 5.3060 · 10479/3287 ~ 3.1880 · 3493/1695 ~ 2.0608 · 18463/11271 ~ 1.6381 · 135229/90279 ~ 1.4979
+   K=36: 55444444444444444444444444444444444389/10494444444444444444444444444444444389 ~ 5.2832 · 785486958317317653877935/254811024804841272988847 ~ 3.0826 · 34291018890765/18846316494349 ~ 1.8195 · 2356385977728939759072925/1825710044216463378183837 ~ 1.2907 · 487758328627075351968491766210488452141/442808328627075351968491766210488452141 ~ 1.1015
+[PASS] T3 m*(1, r) r-independent == standalone bar (equality row)
+[PASS] T3 strictly decreasing in K at every r
+[PASS] T3 strictly decreasing in r at K in {3, 36}
+[PASS] anchor T3 m*(3, r) row (5 exact rationals) — disclosed [55389/10439, 10479/3287, 3493/1695, 18463/11271, 135229/90279] / derived [55389/10439, 10479/3287, 3493/1695, 18463/11271, 135229/90279]
+[PASS] anchor T3 m*(3, r) row float renderings — disclosed ['5.3060', '3.1880', '2.0608', '1.6381', '1.4979'] / derived ['5.3060', '3.1880', '2.0608', '1.6381', '1.4979']
+[PASS] anchor T3 disclosed thin cell m*(3, 1/2) == 3493/1695 (one step above 2) — disclosed 3493/1695 / derived 3493/1695
+[PASS] T3 thin cell sits ABOVE the witness line (2.0608 > 2) — clearance 103/1695 ~ 0.0608
+[PASS] anchor T3 m*(36, 3/4) 4dp rendering — disclosed 1.2907 / derived 1.2907
+[PASS] T3 comp cell m*(36, 3/4) <= 4/3 (REJECT clause (c) input) — margin to 4/3 = 25964693742114915057397/608570014738821126061279 ~ 0.0427
+[PASS] anchor T3 m*(36, 9/10) 4dp rendering — disclosed 1.1015 / derived 1.1015
+[VACANT] m*(36, r) full row beyond the two named cells — registration disclosed the (36, 3/4) and (36, 9/10) cells only — sim value: [55444444444444444444444444444444444389/10494444444444444444444444444444444389 ~ 5.2832, 785486958317317653877935/254811024804841272988847 ~ 3.0826, 34291018890765/18846316494349 ~ 1.8195, 2356385977728939759072925/1825710044216463378183837 ~ 1.2907, 487758328627075351968491766210488452141/442808328627075351968491766210488452141 ~ 1.1015]
+[PASS] anchor T3 exact K->inf crossing r* == 400/899 — disclosed 400/899 / derived 400/899
+[PASS] T3 m*_inf(r*) == 2 exactly
+[PASS] anchor T3 m*_inf(9/10) == 69860/63567 (EXCLUDED from decisions) — disclosed 9980/9081 / derived 9980/9081
+[PASS] anchor T3 knife-edge margin vs 11/10 == 91/90810 (EXCLUDED from decisions) — disclosed 91/90810 / derived 91/90810
+[PASS] T3 finite-K ordering m*(36, 9/10) > m*_inf(9/10) (this IS the gate)
+[PASS] T3 APPROVE-side witness: at r <= 1/4 every K=3 cell clears 3
+[PASS] T3 APPROVE-side witness: below r*_inf the K->inf bar stays above 2
+
+== Arm A — T5: the KU mixture dampens the lever, monotonically ==
+[PASS] T5 m* strictly decreasing in beta at every J (the monotone lemma)
+[PASS] T5 beta = 0 recovers the sales-only bar at every J
+[PASS] T5 every KU-dampened bar stays > 1 (direction never flips)
+[PASS] anchor T5 named KU cell (K=3, r=1/2, beta=1/2, J=roy) == 5489/3691 — disclosed 5489/3691 / derived 5489/3691
+
+== G5 — hand worlds (derived by hand in the registration) ==
+[PASS] anchor G5a standalone $4.00 bar == 800/99 (== 2*4/0.99 by hand) — disclosed 800/99 / derived 800/99
+[PASS] G5a the law reproduces the hand value
+[PASS] anchor G5b hand world m*(2, 1/2) at $4.00 == 8400/3493 — disclosed 1200/499 / derived 1200/499
+
+== Arm B — per-mass ledger twin (typed contacts C1/C2/C3/C4) ==
+[PASS] C1 ledger full-price income == closed form at 15/15 cells — 15/15
+[PASS] C2 ledger promo income == closed form at 15/15 cells — 15/15
+[PASS] C3 ledger ratio == m*(K, r) at 15/15 cells — 15/15
+[PASS] anchor C4 geometric-sum identity (r=1/2, K=36) == 34359738367/34359738368 — disclosed 34359738367/34359738368 / derived 34359738367/34359738368
+
+== G6 — census recount from the fixture's pinned copies ==
+[PASS] anchor census blanket count == 26 — disclosed 26 / derived 26
+[PASS] census blanket file list == the disclosed 26-file list
+[PASS] anchor census 'any plausible volume ratio' count == 2 — disclosed 2 / derived 2
+[PASS] census ratio files == {de-driekoningentaart, the-twelfth-cake}
+[PASS] anchor census fork count == 1 (the Marmalade packet) — disclosed 1 / derived 1
+[PASS] census fork file == the-marmalade-post.md
+[PASS] census: all three Night Kiln NL packets carry the blanket
+[PASS] census: the justification packets are blanket packets too
+[PASS] census: the guide teaches the blanket ('the *procedure* transfers')
+[PASS] census: Night Kiln word counts carried (harvest-matched 16180/16192/23610)
+
+== Arm R — seeded cohort traces (reporting-only; registered grammar) ==
+[PASS] anchor Arm R exact cohort mean (full-price arm) == 80775.625 — disclosed 80775.625 / derived 80775.625
+[PASS] Arm R seed 20261700 reproduces itself in-process — 17471 draws
+[PASS] anchor Arm R preview seed 20261700 (full-price arm) — disclosed 80607.96 / derived 80607.96
+[PASS] Arm R seed 20261700 within 2% of the exact cohort mean (reporting sanity)
+[VACANT] Arm R seed 20261700 promo-arm cohort value (same trace, zero extra draws) — undisclosed in the registration; derived from the same trace — sim value: 49142.96 (empirical bar 1.6403)
+[PASS] Arm R seed 20261701 reproduces itself in-process — 17475 draws
+[PASS] anchor Arm R preview seed 20261701 (full-price arm) — disclosed 80618.44 / derived 80618.44
+[PASS] Arm R seed 20261701 within 2% of the exact cohort mean (reporting sanity)
+[VACANT] Arm R seed 20261701 promo-arm cohort value (same trace, zero extra draws) — undisclosed in the registration; derived from the same trace — sim value: 49153.44 (empirical bar 1.6401)
+[PASS] Arm R seed 20261702 reproduces itself in-process — 17570 draws
+[PASS] anchor Arm R preview seed 20261702 (full-price arm) — disclosed 81041.09 / derived 81041.09
+[PASS] Arm R seed 20261702 within 2% of the exact cohort mean (reporting sanity)
+[VACANT] Arm R seed 20261702 promo-arm cohort value (same trace, zero extra draws) — undisclosed in the registration; derived from the same trace — sim value: 49576.09 (empirical bar 1.6347)
+[PASS] Arm R aux seed 20261703 NEVER read by any leg — asserted: no code path constructs random.Random(20261703)
+[PASS] Arm R carries NO statistical gate on any decision
+
+== Decision (registered order: REJECT -> INVALID -> APPROVE -> NULL) ==
+[PASS] knife-edge exclusion gate: decision input set is ENUMERATED and carries no m*_inf value and no 11/10 comparison
+[PASS] REJECT clause (a) home ground real (bars 266/33, 998/99, 598/99 all >= 6)
+[PASS] REJECT clause (b) series collapse witness exists (m*(3, 3/4) = 18463/11271 <= 2; m*(3, 9/10) too)
+[PASS] REJECT clause (c) comp-scale collapse (m*(36, 3/4) <= 4/3)
+[PASS] twin decision evaluators agree — REJECT / REJECT
+[PASS] clause bits agree across evaluators
+[PASS] APPROVE mutually exclusive with REJECT via clause (b)
+
+VERDICT 091 RULING: REJECT
+
+Anomaly census (disclosure coverage): 27 compared-and-matched, 0 mismatched, 5 vacant
+[PASS] anomaly census: zero mismatches (every disclosed value reproduced)
+
+75 self-checks, 75 passed, 0 failed
+results written: results.json (sorted keys, no timestamps)

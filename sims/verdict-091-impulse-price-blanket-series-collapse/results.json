@@ -1,0 +1,387 @@
+{
+ "anomaly_census": {
+  "compared_and_matched": 27,
+  "mismatched": 0,
+  "rows": [
+   {
+    "anchor": "T1 jump ratio == 2 (margin-0 contact i)",
+    "derived": "2",
+    "disclosed_or_note": "2",
+    "status": "matched"
+   },
+   {
+    "anchor": "T1 forbidden-band width (2093/2000)",
+    "derived": "2093/2000",
+    "disclosed_or_note": "2093/2000",
+    "status": "matched"
+   },
+   {
+    "anchor": "T1 attainable-set edges",
+    "derived": "[693/2000, 2093/2000, 2093/1000, 6993/1000]",
+    "disclosed_or_note": "[693/2000, 2093/2000, 2093/1000, 6993/1000]",
+    "status": "matched"
+   },
+   {
+    "anchor": "T1 V049 external anchor roy(0.99) == 693/2000",
+    "derived": "693/2000",
+    "disclosed_or_note": "693/2000",
+    "status": "matched"
+   },
+   {
+    "anchor": "T2 standalone bar twelfth_cake_marmalade_3.99",
+    "derived": "266/33",
+    "disclosed_or_note": "266/33",
+    "status": "matched"
+   },
+   {
+    "anchor": "T2 standalone bar night_kiln_slow_word_4.99",
+    "derived": "998/99",
+    "disclosed_or_note": "998/99",
+    "status": "matched"
+   },
+   {
+    "anchor": "T2 standalone bar band_floor_2.99",
+    "derived": "598/99",
+    "disclosed_or_note": "598/99",
+    "status": "matched"
+   },
+   {
+    "anchor": "T2 fee row at $3.99 (4dp renderings)",
+    "derived": "['8.0317', '7.7720', '6.6176']",
+    "disclosed_or_note": "['8.0317', '7.7720', '6.6176']",
+    "status": "matched"
+   },
+   {
+    "anchor": "fee sweep at committed prices other than $3.99",
+    "derived": "{\"band_floor_2.99\": {\"0\": \"598/99\", \"1/10\": \"3986/693\", \"1/100\": \"4166/693\", \"1/2\": \"354/77\"}, \"night_kiln_slow_word_4.99\": {\"0\": \"998/99\", \"1/10\": \"754/77\", \"1/100\": \"774/77\", \"1/2\": \"5986/693\"}, \"twelfth_cake_marmalade_3.99\": {\"0\": \"266/33\", \"1/10\": \"5386/693\", \"1/100\": \"506/63\", \"1/2\": \"4586/693\"}}",
+    "disclosed_or_note": "registration discloses the $3.99 row only; full grid reported",
+    "status": "vacant"
+   },
+   {
+    "anchor": "T3 m*(3, r) row (5 exact rationals)",
+    "derived": "[55389/10439, 10479/3287, 3493/1695, 18463/11271, 135229/90279]",
+    "disclosed_or_note": "[55389/10439, 10479/3287, 3493/1695, 18463/11271, 135229/90279]",
+    "status": "matched"
+   },
+   {
+    "anchor": "T3 m*(3, r) row float renderings",
+    "derived": "['5.3060', '3.1880', '2.0608', '1.6381', '1.4979']",
+    "disclosed_or_note": "['5.3060', '3.1880', '2.0608', '1.6381', '1.4979']",
+    "status": "matched"
+   },
+   {
+    "anchor": "T3 disclosed thin cell m*(3, 1/2) == 3493/1695 (one step above 2)",
+    "derived": "3493/1695",
+    "disclosed_or_note": "3493/1695",
+    "status": "matched"
+   },
+   {
+    "anchor": "T3 m*(36, 3/4) 4dp rendering",
+    "derived": "1.2907",
+    "disclosed_or_note": "1.2907",
+    "status": "matched"
+   },
+   {
+    "anchor": "T3 m*(36, 9/10) 4dp rendering",
+    "derived": "1.1015",
+    "disclosed_or_note": "1.1015",
+    "status": "matched"
+   },
+   {
+    "anchor": "m*(36, r) full row beyond the two named cells",
+    "derived": "[55444444444444444444444444444444444389/10494444444444444444444444444444444389 ~ 5.2832, 785486958317317653877935/254811024804841272988847 ~ 3.0826, 34291018890765/18846316494349 ~ 1.8195, 2356385977728939759072925/1825710044216463378183837 ~ 1.2907, 487758328627075351968491766210488452141/442808328627075351968491766210488452141 ~ 1.1015]",
+    "disclosed_or_note": "registration disclosed the (36, 3/4) and (36, 9/10) cells only",
+    "status": "vacant"
+   },
+   {
+    "anchor": "T3 exact K->inf crossing r* == 400/899",
+    "derived": "400/899",
+    "disclosed_or_note": "400/899",
+    "status": "matched"
+   },
+   {
+    "anchor": "T3 m*_inf(9/10) == 69860/63567 (EXCLUDED from decisions)",
+    "derived": "9980/9081",
+    "disclosed_or_note": "9980/9081",
+    "status": "matched"
+   },
+   {
+    "anchor": "T3 knife-edge margin vs 11/10 == 91/90810 (EXCLUDED from decisions)",
+    "derived": "91/90810",
+    "disclosed_or_note": "91/90810",
+    "status": "matched"
+   },
+   {
+    "anchor": "T5 named KU cell (K=3, r=1/2, beta=1/2, J=roy) == 5489/3691",
+    "derived": "5489/3691",
+    "disclosed_or_note": "5489/3691",
+    "status": "matched"
+   },
+   {
+    "anchor": "G5a standalone $4.00 bar == 800/99 (== 2*4/0.99 by hand)",
+    "derived": "800/99",
+    "disclosed_or_note": "800/99",
+    "status": "matched"
+   },
+   {
+    "anchor": "G5b hand world m*(2, 1/2) at $4.00 == 8400/3493",
+    "derived": "1200/499",
+    "disclosed_or_note": "1200/499",
+    "status": "matched"
+   },
+   {
+    "anchor": "C4 geometric-sum identity (r=1/2, K=36) == 34359738367/34359738368",
+    "derived": "34359738367/34359738368",
+    "disclosed_or_note": "34359738367/34359738368",
+    "status": "matched"
+   },
+   {
+    "anchor": "census blanket count == 26",
+    "derived": "26",
+    "disclosed_or_note": "26",
+    "status": "matched"
+   },
+   {
+    "anchor": "census 'any plausible volume ratio' count == 2",
+    "derived": "2",
+    "disclosed_or_note": "2",
+    "status": "matched"
+   },
+   {
+    "anchor": "census fork count == 1 (the Marmalade packet)",
+    "derived": "1",
+    "disclosed_or_note": "1",
+    "status": "matched"
+   },
+   {
+    "anchor": "Arm R exact cohort mean (full-price arm) == 80775.625",
+    "derived": "80775.625",
+    "disclosed_or_note": "80775.625",
+    "status": "matched"
+   },
+   {
+    "anchor": "Arm R preview seed 20261700 (full-price arm)",
+    "derived": "80607.96",
+    "disclosed_or_note": "80607.96",
+    "status": "matched"
+   },
+   {
+    "anchor": "Arm R seed 20261700 promo-arm cohort value (same trace, zero extra draws)",
+    "derived": "49142.96 (empirical bar 1.6403)",
+    "disclosed_or_note": "undisclosed in the registration; derived from the same trace",
+    "status": "vacant"
+   },
+   {
+    "anchor": "Arm R preview seed 20261701 (full-price arm)",
+    "derived": "80618.44",
+    "disclosed_or_note": "80618.44",
+    "status": "matched"
+   },
+   {
+    "anchor": "Arm R seed 20261701 promo-arm cohort value (same trace, zero extra draws)",
+    "derived": "49153.44 (empirical bar 1.6401)",
+    "disclosed_or_note": "undisclosed in the registration; derived from the same trace",
+    "status": "vacant"
+   },
+   {
+    "anchor": "Arm R preview seed 20261702 (full-price arm)",
+    "derived": "81041.09",
+    "disclosed_or_note": "81041.09",
+    "status": "matched"
+   },
+   {
+    "anchor": "Arm R seed 20261702 promo-arm cohort value (same trace, zero extra draws)",
+    "derived": "49576.09 (empirical bar 1.6347)",
+    "disclosed_or_note": "undisclosed in the registration; derived from the same trace",
+    "status": "vacant"
+   }
+  ],
+  "vacant": 5
+ },
+ "arm_r": {
+  "aux_seed_never_read": 20261703,
+  "exact_cohort_mean": "80775.625",
+  "seeds": {
+   "20261700": {
+    "books_sold": 23077,
+    "draws": 17471,
+    "empirical_bar": "1.6403",
+    "full": "80607.96",
+    "promo": "49142.96"
+   },
+   "20261701": {
+    "books_sold": 23080,
+    "draws": 17475,
+    "empirical_bar": "1.6401",
+    "full": "80618.44",
+    "promo": "49153.44"
+   },
+   "20261702": {
+    "books_sold": 23201,
+    "draws": 17570,
+    "empirical_bar": "1.6347",
+    "full": "81041.09",
+    "promo": "49576.09"
+   }
+  }
+ },
+ "census": {
+  "blanket_files": [
+   "de-driekoningentaart.md",
+   "de-geborgen-boomgaard.md",
+   "de-glazen-pastorie.md",
+   "de-marmeladepost.md",
+   "de-morgendeur.md",
+   "de-nachtoven.md",
+   "de-oogstslag.md",
+   "de-papieren-sinaasappel.md",
+   "de-waag.md",
+   "de-zoete-zee.md",
+   "het-trage-woord.md",
+   "liefde-in-de-kantlijn.md",
+   "the-glass-rectory.md",
+   "the-halfway-ferry.md",
+   "the-marmalade-post.md",
+   "the-paper-orange.md",
+   "the-pepper-ledger.md",
+   "the-salvage-orchard.md",
+   "the-seed-catalogue-courtship.md",
+   "the-slow-word.md",
+   "the-sweetwater-sea.md",
+   "the-twelfth-cake.md",
+   "the-weigh-house.md",
+   "the-wire-garden.md",
+   "ultramarine.md",
+   "weduwenblauw.md"
+  ],
+  "counts": [
+   26,
+   2,
+   1
+  ],
+  "fork_files": [
+   "the-marmalade-post.md"
+  ],
+  "ratio_files": [
+   "de-driekoningentaart.md",
+   "the-twelfth-cake.md"
+  ]
+ },
+ "decision": {
+  "clauses_reject": {
+   "a_home_ground": true,
+   "b_series_collapse": true,
+   "c_comp_scale": true
+  },
+  "evaluator_A": "REJECT",
+  "evaluator_B": "REJECT",
+  "order_applied": [
+   "REJECT",
+   "INVALID",
+   "APPROVE",
+   "NULL"
+  ],
+  "ruling": "REJECT"
+ },
+ "g5": {
+  "g5a": "800/99",
+  "g5b": "1200/499"
+ },
+ "seeds": {
+  "aux_never_read": 20261703,
+  "gap_disclosed": "20261694-699 is the disclosed in-flight buffer; 20261690-693 are P077/V090's registered set",
+  "registered_set": "20261700-703",
+  "reporting_only": [
+   20261700,
+   20261701,
+   20261702
+  ]
+ },
+ "self_checks": {
+  "failed": 0,
+  "passed": 75,
+  "total": 75
+ },
+ "t1": {
+  "attainable_set": "[693/2000, 2093/2000) U [2093/1000, 6993/1000]",
+  "forbidden_band": "[2093/2000, 2093/1000) per-sale royalties unattainable; width 2093/2000 == lower edge",
+  "jump_ratio": "2"
+ },
+ "t2": {
+  "bars": {
+   "band_floor_2.99": "598/99",
+   "night_kiln_slow_word_4.99": "998/99",
+   "twelfth_cake_marmalade_3.99": "266/33"
+  },
+  "fee_row_3.99": [
+   "8.0317",
+   "7.7720",
+   "6.6176"
+  ],
+  "fee_sweep": {
+   "band_floor_2.99": {
+    "0": "598/99",
+    "1/10": "3986/693",
+    "1/100": "4166/693",
+    "1/2": "354/77"
+   },
+   "night_kiln_slow_word_4.99": {
+    "0": "998/99",
+    "1/10": "754/77",
+    "1/100": "774/77",
+    "1/2": "5986/693"
+   },
+   "twelfth_cake_marmalade_3.99": {
+    "0": "266/33",
+    "1/10": "5386/693",
+    "1/100": "506/63",
+    "1/2": "4586/693"
+   }
+  }
+ },
+ "t3": {
+  "knife_edge_margin_vs_11_10": "91/90810 (EXCLUDED from decision clauses)",
+  "m_inf_910": "9980/9081",
+  "m_table": {
+   "K=1,r=1/10": "998/99",
+   "K=1,r=1/2": "998/99",
+   "K=1,r=1/4": "998/99",
+   "K=1,r=3/4": "998/99",
+   "K=1,r=9/10": "998/99",
+   "K=3,r=1/10": "55389/10439",
+   "K=3,r=1/2": "3493/1695",
+   "K=3,r=1/4": "10479/3287",
+   "K=3,r=3/4": "18463/11271",
+   "K=3,r=9/10": "135229/90279",
+   "K=36,r=1/10": "55444444444444444444444444444444444389/10494444444444444444444444444444444389",
+   "K=36,r=1/2": "34291018890765/18846316494349",
+   "K=36,r=1/4": "785486958317317653877935/254811024804841272988847",
+   "K=36,r=3/4": "2356385977728939759072925/1825710044216463378183837",
+   "K=36,r=9/10": "487758328627075351968491766210488452141/442808328627075351968491766210488452141"
+  },
+  "r_star_inf": "400/899"
+ },
+ "t5": {
+  "named_cell": "5489/3691",
+  "rows_by_J": {
+   "2*roy": [
+    "3493/1695",
+    "499/313",
+    "7485/5687",
+    "499/441"
+   ],
+   "roy": [
+    "3493/1695",
+    "12475/7081",
+    "5489/3691",
+    "9481/7683"
+   ],
+   "roy/2": [
+    "3493/1695",
+    "11477/6083",
+    "4491/2693",
+    "6487/4689"
+   ]
+  }
+ }
+}
