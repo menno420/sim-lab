@@ -1,0 +1,82 @@
+{
+ "proposal": {
+  "block": "## PROPOSAL 083 · 2026-07-16T14:28:18Z · status: sim-ready",
+  "idea": "ideas/superbot-games/combo-grace-budget-cliff-2026-07-16.md (idea-engine)",
+  "verdict": "VERDICT 096 (the +13 offset's twentieth row — P083 -> V096)",
+  "grounding": "https://github.com/menno420/superbot-games@5db902a36b377d007b226445c2eb5bc20bf4d70f · fetched 2026-07-16T14:14:06Z",
+  "claim_priced": "the forgiving-streak grace contract verbatim: 'any action within the grace window is safe — miss the ideal beat by up to G and your streak survives; you only ever lose the multiplier on a REAL miss (an action later than G)'",
+  "honest_scope": "DESIGN head: the lane ships NO combo/streak/grace multiplier at the grounding HEAD; the sim transfers the STRUCTURE of the shipped shared-budget pace surface games/mining/core/energy.py onto a proposed combo-multiplier surface, and the design-transfer NULL prices that transfer"
+ },
+ "pinned_model": {
+  "P": 10,
+  "G": 3,
+  "B0": 10,
+  "Bmax": 10,
+  "R": 1,
+  "M": 25,
+  "Rprime_repair_b": 1,
+  "transition": "break check evaluated BEFORE the budget update; break at the FIRST action where (a) B - l < 0 (budget cannot cover the lateness) OR (b) l > G (real miss); either way m -> 1 and the accumulated m-1 bonus is wiped; else the action is recognized: B <- min(Bmax, B - l + R*[l <= 0]) and m <- min(M, m + 1)",
+  "budget_boundary": "strict: B - l < 0 (NOT <= 0) — the < boundary moves every break step by one if misread as <=; the model-semantics NULL axis prices exactly that",
+  "replenish_rule_baseline": "R = 1 added ONLY on a clean action l <= 0; a within-grace late action 0 < l <= G spends l with no replenish",
+  "replenish_rule_repair_b": "R' = 1 added on ANY within-grace action 0 < l <= G (in addition to the clean-action replenish); net within-grace budget change becomes -(l-1)",
+  "steady_family": "constant lateness l in {0,1,2,3,4} — the folk belief's own case ('I'm always a little late'); a witness family, not a measure over all input sequences"
+ },
+ "anchors_F3": {
+  "steady_break_step_map": {"l0": "inf", "l1": 11, "l2": 6, "l3": 4, "l4": "1(miss)"},
+  "steady_multiplier_loss_map": {"l1": 10, "l2": 5, "l3": 3},
+  "loss_equals": "break_step - 1 == floor(B0/l); strictly DECREASING in l; max at l=1 (10 of M=25)",
+  "repair_a_warning_step_map": {"l1": 10, "l2": 5, "l3": 3, "l0": 0},
+  "repair_b_break_step_map": {"l1": "inf", "l2": 10, "l3": 5},
+  "closed_form_C1": "steady sim break_step == floor(B0/l) + 1 for l in {1,2,3}",
+  "closed_form_C2": "repair-(b) sim break_step == floor((B0 - l)/(l - 1)) + 2 for l in {2,3}, and l=1 survives to the horizon",
+  "hand_worlds_F4": {
+   "a": "B0=10 is exhausted after 10 spends of l=1, so the l=1 streak breaks at step 11, not inf — APPROVE excluded by inspection",
+   "b": "floor(10/3) + 1 = 4 — the l=3 cliff by inspection",
+   "c": "at l=0 the clean-action replenish pins B at Bmax, so the budget never drains — the survive cell by inspection",
+   "d": "repair (b) net change at l=1 is -1 + 1 = 0 — l=1 survives by inspection"
+  }
+ },
+ "arm_r": {
+  "draw_grammar": "per trace EXACTLY 3 rng.randint draws in registered order — lateness pattern l in [0,4], horizon cap in [5,50], salt in [1,1000] (drawn-and-logged, unused in classification); one random.Random per seed; NO statistical gate (sole gates: the 3N draw sentinel and exact reproducibility, pass probability 1 for a correct implementation)",
+  "classes": ["SURVIVE", "SILENT-BREAK", "REAL-MISS"],
+  "class_rule": "run the pinned automaton with the drawn constant lateness l for up to the drawn horizon cap H actions; REAL-MISS if a real miss (l>G) break occurs at step <= H (l=4 breaks at step 1); SILENT-BREAK if a budget break (l in {1,2,3}) occurs at step <= H; SURVIVE otherwise (l=0 pins at cap; or a within-grace break_step beyond the drawn horizon)",
+  "class_stream_digest_procedure": "sha256 of the UTF-8 bytes of ''.join(the FIRST character of each trace's class label in trace order — SURVIVE->'S', SILENT-BREAK->'S', REAL-MISS->'R'), hexdigest truncated to the first 12 chars",
+  "seeds": {
+   "20261726": {"N": 20000, "draws": 60000, "census": {"SURVIVE": 4595, "SILENT-BREAK": 11427, "REAL-MISS": 3978}, "class_stream_digest": "3bfa073726f7"},
+   "20261727": {"N": 8000, "draws": 24000, "census": {"SURVIVE": 1844, "SILENT-BREAK": 4534, "REAL-MISS": 1622}, "class_stream_digest": "6f857d0afcf4"}
+  },
+  "presentation_seed": 20261728,
+  "aux_seed_never_read": 20261729,
+  "prior_block": "20261722-725 are P082/V095's registered set — untouched",
+  "next_free_block": 20261730
+ },
+ "decision_rule": {
+  "order": "REJECT -> INVALID -> APPROVE -> NULL, REJECT evaluated FIRST",
+  "REJECT": "R1 (the folk belief made precise: the census over l in {0,1,2,3} lands {l=0 survives; l=1,2,3 break at 11,6,4} — NOT 'all within-grace survive' — with the l>G control breaking at step 1) AND R2 (steady sim break_step == floor(B0/l)+1 exact across the pinned grid — C1) AND R3 (the forgiveness inversion: silent loss = break_step-1 = floor(B0/l) = {10,5,3} strictly DECREASING in l, max at l=1) AND R4 (repair (a) fires once per streak at break_step-1 with zero false positives on the l=0 cohort; repair (b) at R'=1 makes l=1 survive and moves l=2 to step 10, l=3 to step 5, each == its closed form — C2)",
+  "INVALID": "any F1-F5 gate failure (controls misbehaving — report, no ruling)",
+  "APPROVE": "every steady within-grace pattern l in {1,2,3} survives to the horizon — arithmetically excluded by the l=1 cell (B0=10 exhausted after 10 unit spends, break at 11); mutually exclusive with REJECT",
+  "NULL": "anything else; named axes: model-semantics mismatch (the < 0 boundary / break-before-update order / replenish-only-on-clean / checked-first miss misread — the corrected law + re-derived census is the finding), constant-convention (a defensible alternative B0/G/R tuple that flips a clause ships the corrected tuple), design-transfer (the transfer of the energy-budget STRUCTURE to a multiplier the lane has not built judged unsound as a model of any plausible combo mechanic — a finalized NULL, never a re-run request)",
+  "gate_power": "the sim is FULLY DETERMINISTIC in every decision leg; the only seeded arm is reporting-only with NO statistical gate; JOINT pass probability across all gates for a correct implementation = 1 EXACTLY"
+ },
+ "gates": {
+  "F1": "model identities: break check evaluated BEFORE the budget update on every step; B <= Bmax invariant holds; the multiplier reset wipes exactly m-1; every steady trace deterministic (two runs identical); the Arm-R draw counter == 3N exactly",
+  "F2": "structure results, exact: (a) the steady census over l in {0,1,2,3,4} at the registered break steps; (b) the loss map and its strict monotonicity; (c) repair-(a) once-per-streak at break_step-1 + the l=0 zero-false-positive; (d) repair-(b) break steps sim == closed form",
+  "F3": "census anchors (reference values, exact): the break-step map, the loss map, the repair maps, and the Arm-R previews/digests, verbatim from the Pinned model block",
+  "F4": "the hand worlds (pencil): (a) B0=10 exhausted after 10 spends of 1 -> break at 11; (b) floor(10/3)+1=4; (c) l=0 cap-pin survivor; (d) repair (b) net-0 at l=1",
+  "F5": "degeneracy/convention controls: the l=0 survivor and the l>G immediate real-miss both present; repair (a) fires zero times on the survivor cohort; repair (b) strictly EXTENDS survival vs baseline (never shortens); the Arm-R taxonomy is total on all N traces (SURVIVE + SILENT-BREAK + REAL-MISS == N); stdout + results byte-identical across two process runs (Arm R pinned to a stated CPython minor)"
+ },
+ "typed_contacts": {
+  "C1": "Arm A (stepwise automaton) steady break_step == the closed form floor(B0/l)+1 for l in {1,2,3}",
+  "C2": "Arm A repair-(b) break_step == the closed form floor((B0-l)/(l-1))+2 for l in {2,3}, l=1 survives",
+  "twin_machine": "Arm B (an INDEPENDENTLY-shaped automaton: a full-trajectory budget walk over an explicit horizon list, no early-return closed form) == Arm A on every steady pattern and every Arm-R trace",
+  "twin_evaluators": "two independently-written decision evaluators (an if-chain and a table-driven scorer) emit the same ruling token over an ENUMERATED boolean input set"
+ },
+ "vacancy_derived_disclosures": {
+  "note": "sim-chosen realizations of shape-registered slots — disclosed here BEFORE the runner, never match claims; every REGISTERED value above (the break-step map, the loss map, both repair maps, both closed forms, both Arm-R censuses AND both class-stream digests) is a match claim and must reproduce exactly",
+  "decision_horizon": "the decision-arm steady walks run to a fixed horizon of 1000 actions (safely beyond every finite break step 11/6/4 and every repair-(b) step 10; a non-breaking walk to the horizon is reported as SURVIVE/inf)",
+  "class_stream_digest_procedure": "the digest concatenates the FIRST character of each class label (SURVIVE/SILENT-BREAK both -> 'S', REAL-MISS -> 'R') — a survive-vs-real-miss position stream; the SURVIVE vs SILENT-BREAK split is asserted SEPARATELY and exactly by the per-seed census counts, so the digest and the census are independent witnesses",
+  "salt_logging": "the per-trace salt draw is logged in aggregate (sum + first 5 salts per seed) in results.json; the salt does not enter classification or the class stream",
+  "presentation_target": "seed 20261728 shuffles the display order of the steady-census table in stdout (presentation leg only)"
+ },
+ "environment": {"cpython_minor_pinned": "3.11"}
+}
