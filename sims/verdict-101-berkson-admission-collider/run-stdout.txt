@@ -1,0 +1,50 @@
+VERDICT-101 - Berkson admission-collider anticorrelation trap (P088)
+==================================================================================
+
+Pinned world: two INDEPENDENT axes N,R ~ Normal(0,1) from SEPARATE streams
+  rngN=random.Random(seed); rngR=random.Random(seed+10000) -> corr(N,R)=0 by construction.
+  n=2000 items/run; seeds S=[1, 2, 3, 4, 5]. OR-gate admit iff N>=t OR R>=t, t=Phi^-1(sqrt(1-T)).
+  Levels T=[0.5, 0.25, 0.1] (reference T=0.25). Single-gate control: admit iff N>=a, a=Phi^-1(1-T)@0.25.
+  Metric: Pearson r. Pooled mean over 5 seeds; sigma=sample SD (ddof=1); SE=sigma/sqrt(5).
+
+Calibrated thresholds (Phi^-1 via Acklam):
+  OR t(50%)=0.544952  OR t(25%)=1.107798  OR t(10%)=1.632219  single a=0.674490
+  expected 6dp: 0.544952 / 1.107798 / 1.632219 / 0.674490 -> match True
+
+Achieved pooled admit rates (target | achieved | within 0.02):
+  OR   T=0.50 | 0.5009 | True
+  OR   T=0.25 | 0.2513 | True
+  OR   T=0.10 | 0.1005 | True
+  single T=0.25 | 0.2497 | True
+
+Correlation table (per-seed rho + pooled mean +/- SE over S=[1, 2, 3, 4, 5]):
+
+  R1 rho_full        mean=+0.000251 se=0.004738  per-seed=['-0.001344', '+0.009758', '-0.016553', '+0.000564', '+0.008829']
+  R2/R3 rho_OR@50%   mean=-0.457816 se=0.006216  per-seed=['-0.479498', '-0.451610', '-0.456768', '-0.441687', '-0.459516']
+  R2/R3 rho_OR@25%   mean=-0.587329 se=0.006550  per-seed=['-0.598931', '-0.601798', '-0.591207', '-0.567328', '-0.577383']
+  R2/R3 rho_OR@10%   mean=-0.685281 se=0.008810  per-seed=['-0.699610', '-0.693032', '-0.680951', '-0.699971', '-0.652843']
+  R4 rho_single@25   mean=-0.013478 se=0.011502  per-seed=['-0.044648', '-0.024512', '-0.022217', '+0.021447', '+0.002543']
+
+Gate outcomes (pre-registered, fire in order R1->R2->R3->R4):
+  R1 null anchor      : PASS   (|mean|=0.000251<=0.03 True; |mean|+3se=0.014465<=0.03 True)
+  R2 effect @T=0.25   : PASS   (mean=-0.587329 se=0.006550; mean+3se=-0.567680<=-0.450000; clears -rho* by 20.97 sigma)
+  R3 dose-response    : PASS   (-0.457816 > -0.587329 > -0.685281 True; sep50-25=14.34 sep25-10=8.92, need>=3)
+  R4 mechanism isolate: PASS   (|mean_single|=0.013478<=0.03 True [pooled-mean reading]; |rho_OR-rho_single| sep=43.35 sigma, need>=3 True)
+      disclosed: R4 control |mean|+3se=0.047985 pokes past 0.03 (finite-sample envelope of exactly zero;
+      registered on the pooled-MEAN reading, NOT R1's >=3-sigma-inside test; decisive clause is the separation).
+
+Twin evaluators: A(if-chain)=APPROVE/None  B(table)=APPROVE/None
+
+  [ok] phi_inv_known_points_6dp
+  [ok] thresholds_match_expected_6dp
+  [ok] stream_independence_r1_band
+  [ok] achieved_admit_rates_within_tol
+  [ok] twin_evaluators_agree
+  [ok] R2_effect_clears
+  [ok] R3_monotone_and_separated
+  [ok] R4_mechanism_isolation
+  [ok] fixture_matches_committed
+  [ok] canonical_json_stable
+Self-checks: 10/10 passed
+
+VERDICT: APPROVE
