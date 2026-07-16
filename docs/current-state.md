@@ -294,6 +294,14 @@ From PROPOSAL 010 onward the offset is a constant +2.
   `## INTAKE 078` collision-grepped clean before the append and
   re-grepped at append time — origin/main unmoved; no owner-direct or
   simreq interleave occurred in this range).
+- Extension (V092 slice, 2026-07-16): the +13 offset holds — PROPOSAL 079
+  (owned-track-launch-flag-dial) → **VERDICT 092** (verified at the
+  live-outbox headers: newest `## VERDICT` was 091 at origin/main
+  7ec0d64 — the tip IS the V091 merge #162 — `## VERDICT 092` /
+  `## INTAKE 079` collision-grepped clean before the append and
+  re-grepped at append time — origin/main unmoved; no owner-direct or
+  simreq interleave occurred in this range). Next expected: PROPOSAL 080
+  → **VERDICT 093** (P080 not yet drafted at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
