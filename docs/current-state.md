@@ -379,9 +379,32 @@ From PROPOSAL 010 onward the offset is a constant +2.
   (PR #168 finalized V096 but its outbox append never landed on main; the
   two blocks are reconstructed faithfully from the idea-engine mirror + the
   V096 sim REPORT, each flagged with an HTML-comment backfill note).
-  **Verdict high-water is now V097.** V097 is SEEDLESS — no seed-ledger
-  block consumed, the next free block stays 20261730. Next expected:
-  PROPOSAL 085 → **VERDICT 098** (P085 not yet drafted at this refresh).
+  V097 is SEEDLESS — no seed-ledger block consumed, the next free block stays
+  20261730. Next expected: PROPOSAL 085 → **VERDICT 098** (P085 not yet drafted
+  at this refresh).
+- Extension (V098 slice, 2026-07-16): the +13 offset holds — PROPOSAL 085
+  (round-robin-domain-starvation-cliff) → **VERDICT 098** (REJECT,
+  first-failing-gate R1; verified at the live-outbox headers: newest
+  `## VERDICT` was 097 at origin/main 51567b4 — the tip was the V097 merge
+  #169 at session start — `## VERDICT 098` / `verdict-098` / `v098`
+  collision-grepped clean before the append (no ledger header, no
+  `sims/verdict-098-*` competing path, no session card, no competing remote
+  ref; the only prior "VERDICT 098" strings were the V097 refresh's own "next
+  expected" heartbeat/map pointers — predictions, not claims) and re-checked
+  at append time — origin/main unmoved; no owner-direct or simreq interleave
+  occurred in this range). Gate outcomes: **R1 FAIL** (low leg: ρ=0.70
+  filler(RR)=0.33314 > filler(LQF)+0.02=0.32021; high leg PASS), **R2 PASS**
+  (ρ=1.00 max_backlog RR 1561.20 ≥ 3× LQF 109.20), **R3 FAIL** (ρ=0.70
+  Var[total_backlog] RR 7991.62 ≫ LQF 1.50), **R4 PASS** (ρ=1.10 RR
+  most-starved domain = fleet) — two of four fail → REJECT. Root cause: RR's
+  fixed 1/4=0.25 per-domain share is below fleet's arrival rate ρ·0.40 once
+  ρ>0.625, so the RR-capacity crossover ρ≈0.625 sits BELOW the registered
+  ρ=0.70 low anchor — fleet is already unstable under RR at ρ=0.70. **Verdict
+  high-water is now V098.** V098 is SEEDLESS — the seeds are the in-file
+  constants S=[1–5] (random.Random(seed)), NOT a ledger draw; no seed-ledger
+  block consumed, the next free block stays 20261730, untouched. Next
+  expected: PROPOSAL 086 → **VERDICT 099** (P086 not yet drafted at this
+  refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
