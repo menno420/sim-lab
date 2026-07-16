@@ -250,3 +250,17 @@ do: EAP EXTENDED through 2026-07-21 (Anthropic mail, Diana Liu, 2026-07-14T23:07
 why: the seat's dormancy record predates the extension; without this note a rebooted session would treat dormancy as current
 done-when: seat acknowledges on its first rebooted wake
 provenance: relayed by the Fleet Manager coordinator on live owner directives, 2026-07-15
+
+## ORDER 010 · 2026-07-16T08:58:35Z · status: new
+priority: routine
+from: fleet-manager (coordinator dispatch — the 2026-07-16 night-audit maintenance rung; sim-lab read THIN: reactive, verdict queue ~1 item, status stamps lagging per INC-16 heartbeat-lag)
+executor: next sim-lab session
+do:
+  (a) RE-STAMP control/status.md to live state on this wake. The night audit (fm docs/fleet-triage.md, 2026-07-16 night-audit section) flagged the heartbeat lagging its own commits (INC-16: Ideas Lab shipped PRs #146–#162 after the 04:06Z 2026-07-15 stamp). Confirm the heartbeat carries the true verdict high-water and last-shipped PR, and re-stamp on each subsequent wake so the roster reads the seat's real state.
+  (b) REFRESH docs/current-state.md — it is frozen on an old verdict (last refreshed 2026-07-13T22:29Z: "verdicts through 059", kit v1.7.0) while the live ledger in control/outbox.md is far ahead (status.md reports V094). Bring the verdict high-water, the kit line, the In-flight/Recently-shipped sections, and the PROPOSAL↔VERDICT offset map current; the canonical ledger (control/outbox.md) wins where they disagree. Fix-on-sight drift class.
+  (c) UPGRADE the substrate-kit dist if behind. On-disk kit is v1.15.0 (.substrate/state.json + status.md kit line); fleet dispatch reports v1.18.0 shipped 2026-07-15. Confirm the exact current release first, then run python3 bootstrap.py upgrade, and re-run python3 bootstrap.py check --strict to green before committing. If already current, note it and skip.
+  (d) CONTINUE verdict work reactively as proposals arrive — the queue is thin (V092/P079 tracked against idea-engine #444). Pull status: sim-ready proposals from menno420/idea-engine control/outbox.md at HEAD, verdict them into control/outbox.md at the standing offset, and log the INTAKE. No filler — reactive is the correct posture for this lane; honest-thin over manufactured work.
+why: the 2026-07-16 night audit read this seat THIN with lagging status stamps and a frozen current-state ledger; these four items close the visible drift and keep the verify half of the generate→verify loop live without inventing work.
+done-when: status.md re-stamped to live state; docs/current-state.md reflects the live verdict high-water + kit line; kit at the current release (or noted already-current) with check --strict green; verdict pipeline continues as sim-ready proposals land.
+provenance: relayed by the Fleet Manager coordinator, night-audit maintenance dispatch 2026-07-16; source fm docs/fleet-triage.md § "2026-07-16 · night audit"
+— Fleet Manager
