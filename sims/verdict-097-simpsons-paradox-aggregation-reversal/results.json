@@ -1,0 +1,140 @@
+{
+  "arm_a": {
+    "a_dominates_each": {
+      "large": true,
+      "small": true
+    },
+    "margin": "8/175",
+    "pooled": {
+      "A": "39/50",
+      "B": "289/350"
+    },
+    "real_past_crossing": true,
+    "real_x": 263,
+    "repair_restores": true,
+    "reversal": true,
+    "standardization": {
+      "a_marginal": {
+        "A_gt_B": true,
+        "std_A": "39/50",
+        "std_B": "20497/28000"
+      },
+      "b_marginal": {
+        "A_gt_B": true,
+        "std_A": "33753/38135",
+        "std_B": "289/350"
+      },
+      "pooled_marginal": {
+        "A_gt_B": true,
+        "std_A": "634983/762700",
+        "std_B": "6231/8000"
+      },
+      "uniform": {
+        "A_gt_B": true,
+        "std_A": "12669/15254",
+        "std_B": "373/480"
+      }
+    },
+    "x_star": 184
+  },
+  "arm_b": {
+    "pooled": {
+      "A": "39/50",
+      "B": "289/350"
+    },
+    "std_pooled_marginal": {
+      "A_gt_B": true,
+      "std_A": "634983/762700",
+      "std_B": "6231/8000"
+    },
+    "x_star": 184
+  },
+  "arm_r": {
+    "census": {
+      "970": {
+        "degenerate": 0,
+        "no_reversal": 3,
+        "reversal": 0
+      },
+      "971": {
+        "degenerate": 0,
+        "no_reversal": 3,
+        "reversal": 0
+      },
+      "972": {
+        "degenerate": 0,
+        "no_reversal": 3,
+        "reversal": 0
+      }
+    },
+    "class_digest": "631122cdf513",
+    "draws_per_seed": 3,
+    "reversal_requires_differential_weighting": true,
+    "seeds": [
+      970,
+      971,
+      972
+    ]
+  },
+  "contacts": {
+    "C1_pooled": true,
+    "C2_x_star": true,
+    "C3_std_pooled_marginal": true,
+    "C_margin": true,
+    "C_reversal": true
+  },
+  "gates": {
+    "F1": true,
+    "F2": true,
+    "F3": true,
+    "F4": true,
+    "F5": true
+  },
+  "proposal": "idea-engine PROPOSAL 084 \u00b7 2026-07-16T15:25:14Z \u00b7 status: sim-ready",
+  "self_checks": {
+    "detail": {
+      "C1_pooled_agree": true,
+      "C2_x_star_agree": true,
+      "C3_std_agree": true,
+      "C_margin_agree": true,
+      "C_reversal_agree": true,
+      "F1_integer_cells": true,
+      "F2_per_stratum_A_dominates": true,
+      "F3_pooled_reversal": true,
+      "F4_differential_weighting": true,
+      "F5_standardization_welldefined": true,
+      "a_large_dominates": true,
+      "a_small_dominates": true,
+      "armR_digest_len_12": true,
+      "armR_reporting_only_diffweight": true,
+      "evaluators_agree_actual": true,
+      "margin_16_350": true,
+      "margin_reduced_8_175": true,
+      "pooled_A_273_350": true,
+      "pooled_B_289_350": true,
+      "real_past_crossing": true,
+      "real_x_263": true,
+      "repair_restores_all_mixes": true,
+      "reversal_present": true,
+      "std_A_pooled_634983_762700": true,
+      "std_B_pooled_6231_8000": true,
+      "std_a_marginal_A_gt_B": true,
+      "std_b_marginal_A_gt_B": true,
+      "std_pooled_marginal_A_gt_B": true,
+      "std_uniform_A_gt_B": true,
+      "twin_evaluators_enum_agree": true,
+      "verdict_is_REJECT": true,
+      "weight_invariance_four_mixes": true,
+      "x_star_184": true
+    },
+    "passed": 33,
+    "total": 33
+  },
+  "source": "Charig et al. (1986) kidney-stone table, BMJ 292:879",
+  "twin_evaluators": {
+    "enumerated_agreement": true,
+    "ifchain": "REJECT",
+    "table": "REJECT"
+  },
+  "verdict": "REJECT"
+}

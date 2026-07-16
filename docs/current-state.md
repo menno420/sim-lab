@@ -22,6 +22,16 @@ v1.7.0; `python3 bootstrap.py check --strict` exits 0.
 
 ## In flight
 
+> **Currency note (2026-07-16, V097 slice):** this section and "Recently
+> shipped" below summarize the session-2/3 seam only and are NOT re-derived
+> each verdict — the LIVE surfaces are the § Verdict-numbering map below
+> (extended through **V097**) and the coordinator heartbeat
+> `control/status.md`. As of this stamp: VERDICT 097 (idea-engine PROPOSAL
+> 084, simpsons-paradox-aggregation-reversal — **REJECT**) rides sim-lab
+> PR #169 for merge-on-green; last shipped is #168 → 34ff0c9 (VERDICT 096,
+> P083 combo-grace-budget-cliff — REJECT). This slice also backfilled the
+> INTAKE 083 + VERDICT 096 outbox blocks (PR #168 omitted the V096 append).
+
 None — the session-2 seam is CLEARED: VERDICT 046 (idea-engine PROPOSAL 035,
 mining booster bypass — null) landed via PR #96 → 61d2f6e on 2026-07-13, and
 the wave continued through **VERDICT 059** (idea-engine PROPOSAL 048,
@@ -37,6 +47,14 @@ ORDER 005 (EAP final-night worklist) progress read the coordinator heartbeat
 
 ## Recently shipped (newest first)
 
+- **Verdict wave 072–097 (idea-engine intake, +13 offset)** — condensed to a
+  pointer, NOT re-listed here: per-verdict rulings live in the canonical ledger
+  `control/outbox.md` (`## VERDICT nnn` headers) and the proposal pairing in the
+  § Verdict-numbering map below. Newest three: V095 (P082 owner-gate-recognition-
+  cliff — reject, #167 → 35dc520) · V096 (P083 combo-grace-budget-cliff — reject,
+  #168 → 34ff0c9) · V097 (P084 simpsons-paradox-aggregation-reversal — reject,
+  rides #169). The V096 outbox blocks (INTAKE 083 + VERDICT 096) were backfilled
+  by the V097 slice — PR #168 finalized V096 but its outbox append never landed.
 - **Session-3 wave, VERDICTs 046–059 (14, PRs #96–#112)** — rulings counted
   from the `verdict:` lines at HEAD (94cdfba): V046 null · V047 approve ·
   V048 null-conditional · V049 reject · V050 approve · V051 approve · V052
@@ -347,6 +365,23 @@ From PROPOSAL 010 onward the offset is a constant +2.
   and re-grepped at append time — origin/main unmoved; no owner-direct
   or simreq interleave occurred in this range). Next expected: PROPOSAL
   084 → **VERDICT 097** (P084 not yet drafted at this refresh).
+- Extension (V097 slice, 2026-07-16): the +13 offset holds — PROPOSAL 084
+  (simpsons-paradox-aggregation-reversal) → **VERDICT 097** (REJECT;
+  verified at the live-outbox headers: newest `## VERDICT` was 096 at
+  origin/main 34ff0c9 — the tip was the V096 merge #168 at session start —
+  `## VERDICT 097` / `verdict-097` / `v097` collision-grepped before the
+  append (no ledger header, no `sims/verdict-097-*` path, no session card,
+  no competing remote ref — `git ls-remote` returned no v097 branch and the
+  open-PR list was empty; the only hits were the V096 refresh's own "next
+  expected" heartbeat/map pointers plus idea-engine batons — predictions,
+  not claims) and re-checked at append time — origin/main unmoved. This
+  slice ALSO backfilled the missing INTAKE 083 + VERDICT 096 outbox blocks
+  (PR #168 finalized V096 but its outbox append never landed on main; the
+  two blocks are reconstructed faithfully from the idea-engine mirror + the
+  V096 sim REPORT, each flagged with an HTML-comment backfill note).
+  **Verdict high-water is now V097.** V097 is SEEDLESS — no seed-ledger
+  block consumed, the next free block stays 20261730. Next expected:
+  PROPOSAL 085 → **VERDICT 098** (P085 not yet drafted at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

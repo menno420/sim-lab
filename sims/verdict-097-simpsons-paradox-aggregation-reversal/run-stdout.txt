@@ -1,0 +1,22 @@
+VERDICT-097 - Simpson's-paradox aggregation-reversal trap
+verifies idea-engine PROPOSAL 084 (P084 -> V097, +13 offset)
+
+Per-stratum success rate (A vs B):
+  small: A=27/29 (0.9310)  B=13/15 (0.8667)  A>B=True
+  large: A=192/263 (0.7300)  B=11/16 (0.6875)  A>B=True
+Pooled: A=39/50 (0.7800)  B=289/350 (0.8257)  -> reversal=True
+Reversal margin (B-A): 8/175 (0.04571)
+Crossing x*: 184  (real large-stratum load x=263, past crossing=True)
+Standardization (common weights) restores A>B on all 4 mixes:
+  a_marginal       std_A=0.78000 std_B=0.73204  A>B=True
+  b_marginal       std_A=0.88509 std_B=0.82571  A>B=True
+  pooled_marginal  std_A=0.83255 std_B=0.77887  A>B=True
+  uniform          std_A=0.83054 std_B=0.77708  A>B=True
+Twin contacts (Arm A == Arm B): {'C1_pooled': True, 'C2_x_star': True, 'C3_std_pooled_marginal': True, 'C_margin': True, 'C_reversal': True}
+Twin evaluators (if-chain / table) enumerated agreement: True
+Arm R (seeded, REPORTING-ONLY, no gate) census: {'970': {'reversal': 0, 'no_reversal': 3, 'degenerate': 0}, '971': {'reversal': 0, 'no_reversal': 3, 'degenerate': 0}, '972': {'reversal': 0, 'no_reversal': 3, 'degenerate': 0}}
+Arm R class-stream digest: 631122cdf513  (reversal-needs-diff-weight=True)
+
+Self-checks: 33/33 PASS
+VERDICT: REJECT
+results.json sha256: 7abe38549d01bc2abb30f535c351eabd40d02ad2200b58cdecfb187698c7eeee

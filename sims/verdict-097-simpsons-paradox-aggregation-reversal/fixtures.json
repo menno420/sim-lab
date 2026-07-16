@@ -1,0 +1,27 @@
+{
+  "source": "Charig et al. (1986) kidney-stone table, BMJ 292:879",
+  "proposal": "idea-engine PROPOSAL 084 · 2026-07-16T15:25:14Z · status: sim-ready",
+  "cells": [
+    {"treatment": "A", "stratum": "small", "successes": 81, "total": 87},
+    {"treatment": "A", "stratum": "large", "successes": 192, "total": 263},
+    {"treatment": "B", "stratum": "small", "successes": 234, "total": 270},
+    {"treatment": "B", "stratum": "large", "successes": 55, "total": 80}
+  ],
+  "registered_seeds": [970, 971, 972],
+  "draws_per_seed": 3,
+  "weight_sets": {
+    "pooled_marginal": [357, 343],
+    "uniform": [1, 1],
+    "a_marginal": [87, 263],
+    "b_marginal": [270, 80]
+  },
+  "preregistered": {
+    "expected_margin": "8/175",
+    "expected_x_star": 184,
+    "expected_real_x": 263,
+    "expected_std_A_pooled_marginal": "634983/762700",
+    "expected_std_B_pooled_marginal": "6231/8000",
+    "expected_verdict": "REJECT",
+    "decision_precedence": ["REJECT", "INVALID", "APPROVE", "NULL"]
+  }
+}
