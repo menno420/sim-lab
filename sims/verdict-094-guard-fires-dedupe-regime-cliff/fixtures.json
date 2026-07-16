@@ -1,0 +1,147 @@
+{
+ "_provenance": {
+  "proposal": "idea-engine PROPOSAL 081 · 2026-07-16T07:10:30Z · status: sim-ready",
+  "proposal_block": "idea-engine control/outbox.md (live outbox; the P081 block read verbatim this session)",
+  "idea_file": "ideas/substrate-kit/guard-fires-dedupe-regime-cliff-2026-07-16.md (idea-engine; landed via idea-engine PR #448, merged @ 98c15e7; grounding pin idea-engine @ c750904139a601903a43a45c6b8b1b462006669e per the file's own header)",
+  "verdict": "VERDICT 094 (P081 -> V094, the +13 offset's eighteenth row)",
+  "head_type": "SHIPPED-ALGORITHM deterministic-replay head (nearest method kin: P079's deterministic replay of a shipped mechanism; P077's true-sentence-survives move; P080/V093's no-stochastic-gate + margin-ledger + aux conventions) - the model replays three PINNED source behaviors read from ~150 lines of vendored source (bootstrap.py module engine/loop/telemetry.py at the grounding HEAD), not the function object itself; the source-semantics NULL axis prices exactly that; zero repo/network reads at verdict time",
+  "committed": "2026-07-16, BEFORE the runner (the P017-P080 hermetic pre-registered discipline)",
+  "arithmetic_convention": "every decision leg is seedless exact integer counting - no floats, no Fractions needed anywhere in a decision path except the single registered rate ratio 1200/601, carried as an exact integer pair"
+ },
+ "world": {
+  "source_constants": {
+   "W": 600,
+   "S": 200,
+   "W_name": "GUARD_FIRES_DEDUPE_WINDOW_S",
+   "S_name": "_GUARD_FIRES_DEDUPE_SCAN",
+   "key": "(guard, path, message)"
+  },
+  "pinned_source_behaviors": {
+   "age_boundary": "strictly > W escapes the dedupe; age exactly W (600) still dedupes",
+   "slot_accounting": "the scan tail is the last S LINES - verdict-carrying and malformed/naive-ts rows occupy slots while contributing no keys",
+   "call_order": "cmd_check appends the suppressed (verdict) batch FIRST, then the finding batch; verdict rows always append and never enter the key set",
+   "read_vs_parse": "the scan is path.read_text() - the WHOLE file - with only the JSON parsing capped at the last S lines"
+  },
+  "model_conventions": {
+   "time": "integer-second time; R check runs at uniform cadence c, run r at t = r*c starting at t = 0",
+   "day_horizon": "86400 s inclusive - the T1 day census counts appends over every run with t <= 86400",
+   "batching": "per run V verdict rows then ONE batch of F persisting findings in stable order (keys 0..F-1); the scan key set is computed ONCE per fire batch, at batch start (the record_guard_fires call boundary); the one-batch convention is measured LOAD-BEARING and the split control is registered below",
+   "ledger": "born empty; steady-state claims are stated as tail behavior (runs 41..80) per the registration"
+  },
+  "grids": {
+   "cadence_grid": [60, 120, 300, 540, 600, 601, 660, 900, 1200],
+   "F_grid": [1, 50, 199, 200, 201, 250, 300, 400],
+   "V_grid": [0, 1, 5, 50, 200],
+   "line_bound_regime": "c = 1, R = 80 (the pure line-bound regime for the F x V grid)",
+   "breathing_cell": [201, 300, 24],
+   "read_scenario": [400, 0, 60, 11],
+   "design_point": {"F": [1, 50, 200], "c": 60, "R": 3},
+   "saturation_boundary_pair": [[398, 1], [397, 1]],
+   "repair_cells": "S' = 1000 over the full F grid + margin cell F = 1001"
+  },
+  "saturated_region": "V >= S or F >= 2*(S-V); on it the steady leak is exactly min(F, F-S+V); 13 grid cells qualify",
+  "compounding_region": "V in {1, 5, 50} and not saturated - 20 grid cells; no constant law, registered exact orbits instead"
+ },
+ "laws": {
+  "renewal": "a single persisting finding re-records with period exactly p(c) = c*(floor(W/c)+1); day-horizon appends = floor(86400/p(c)) + 1",
+  "cliff": "with V = 0 the steady per-run leak is exactly max(0, F-S)",
+  "rotation": "the leaked identity rotates through the finding list in blocks of F-S with period exactly F/gcd(F, F-S); the run-2 leaked set first repeats at run 2 + F/gcd(F, F-S)",
+  "saturated": "steady leak = min(F, F-S+V) exactly iff V >= S or F >= 2*(S-V)",
+  "reads": "read_text() reads the whole ledger every fire batch: cumulative lines read on the (400, 0, 60, 11) scenario = the closed quadratic sum 400*10 + 200*(0+1+...+9) = 13,000; parse calls = sum of min(len, S) = 2,000"
+ },
+ "anchors_F3": {
+  "day_table": [131, 121, 97, 81, 73, 144, 131, 97, 73],
+  "witness_pair": {"p600": 1200, "p601": 601, "rate_ratio": [1200, 601]},
+  "leak_row_V0": [0, 0, 0, 0, 1, 50, 100, 200],
+  "rotation_periods": {"F201": 201, "F250": 5, "F300": 3, "F400": 2},
+  "rotation_F250_blocks": [[0, 49], [50, 99], [100, 149]],
+  "saturated_400_row": {"V1": 201, "V5": 205, "V50": 250, "V200": 400},
+  "saturated_300_50": 150,
+  "boundary_pair": {"398_1": "constant 199/run from run 2", "397_1": "non-constant (alternates 198/199)"},
+  "orbit_200_1": {"prefix_12": [200, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "leak_phase_peak": 19, "peak_first_at_run": 20, "tail_mean_runs_41_80": 14, "total_runs_2_80": 1025, "naive_one_for_one_total": 79},
+  "orbit_200_5_tail": 30,
+  "orbit_200_50_tail": 100,
+  "orbit_250_50": {"cycle": [100, 150], "total_runs_2_80": 9850},
+  "orbit_1_50_period": 4,
+  "compounding_totals_runs_2_80": {
+   "note": "the registration lists these 13 totals 'on the registered cells' without naming the cell order; the F-major mapping below (F in {199, 200, 201, 250, 300} x V in {1, 5, 50}, skipping (200,1) - registered separately as 1025 - and (300,50) - saturated, registered 150) was resolved at prototype rehearsal and every value matches positionally",
+   "199_1": 969, "199_5": 2236, "199_50": 7771,
+   "200_5": 2315, "200_50": 7850,
+   "201_1": 1068, "201_5": 2389, "201_50": 7890,
+   "250_1": 4260, "250_5": 5125, "250_50": 9850,
+   "300_1": 8057, "300_5": 8685
+  },
+  "breathing_orbit": {"pattern": "201, then (1, 1, 199) x 7, then 1, 1", "total_24_runs": 1610, "naive_leaks_1_per_run_total": 224},
+  "reads": {"scenario_400_0_60_11": {"lines_read": 13000, "parses": 2000, "last_run_lines": 2200}, "breathing_201_300_24": {"lines_read": 20122, "parses": 4600}},
+  "repairs": {
+   "S_prime_1000_grid": "steady leak 0 on the whole F grid (V = 0)",
+   "S_prime_margin_cell": "F = 1001 leaks exactly 1/run",
+   "keyed_index": "leak 0 at EVERY (F, V) grid cell; renewal preserved (the day table reproduces under the keyed arm on all 9 cadences)",
+   "scan_off": "leak 0 on the (400, 0, 60, 11) scenario (pure window)"
+  },
+  "design_point": "F in {1, 50, 200}, V = 0, c = 60, R = 3: re-runs append exactly 0 (the TRUE SENTENCE survives)"
+ },
+ "controls_F5": {
+  "window_off": "W -> infinity on the breathing cell (201, 300, 24): collapses to exactly 1/run after run 1 - the 199-bursts are EXPIRY, not the line bound",
+  "scan_off": "parse the whole file (S -> infinity), window kept: (400, 0, 60, 11) leaks 0",
+  "V_ge_S_saturation": "V = 200 >= S: leak == F exactly on all 8 F cells (the run's own verdict rows fill the whole tail)",
+  "order_flip": "verdict-first vs fires-first per-run fire-append sequences IDENTICAL on the 8 probed uniform-V cells (see _disclosures.order_flip_cells) - verified not assumed",
+  "batch_split": "250 split as 125+125 (two record_guard_fires calls per run, each with its own scan): steady per-run leak set {50, 75} vs one-batch {50} - the one-batch convention is LOAD-BEARING, census registered",
+  "naive_ts": "naive-timestamp rows dedupe nothing (fail-open, the pre-fix behavior): (200, 0, c=1, R=3) appends [200, 200, 200] vs aware [200, 0, 0]",
+  "S_prime_relocation": "S' = 1000: whole F-grid leak 0 + margin cell F = 1001 -> 1/run (the cliff RELOCATES exactly)"
+ },
+ "contacts": {
+  "C1": "T1 replay day counts == the closed renewal law floor(86400/p(c))+1 on all 9 cadences (131/121/97/81/73/144/131/97/73)",
+  "C2": "V = 0 steady leak == max(0, F-S) on all 8 F cells AND rotation first-repeat run == 2 + F/gcd(F, F-S) on all 4 rotation cells (F = 201 observed at run 203 on the extended rotation leg)",
+  "C3": "Arm B per-run sequence == Arm A per-run sequence EXACTLY on all 20 compounding-region cells (80 runs each) AND all 13 saturated cells",
+  "C4": "Arm A measured lines-read == the closed quadratic sum (13,000) AND parse calls == sum of min(len, S) (2,000) on the read scenario"
+ },
+ "arm_r": {
+  "grammar": "per trace EXACTLY 4 rng.randint draws in registered order: F = randint(1, 400), V = randint(0, 8), c = randint(60, 1200), R = randint(2, 12); ONE random.Random(seed) per seed for all N traces; each trace replayed under the pinned model; REPORTING-ONLY, no statistical gate",
+  "triple_definition": "(leak_regime_traces, max_per_run_burst, total_appends) - see _disclosures.arm_r_census_fields for the sim-chosen field realizations",
+  "seeds": {
+   "20261718": {"N": 20000, "preview": [19095, 400, 21187561], "draws": 80000},
+   "20261719": {"N": 8000, "preview": [7653, 400, 8512842], "draws": 32000},
+   "20261720": {"role": "presentation shuffle - presentation legs ONLY (see _disclosures.presentation_leg)"},
+   "20261721": {"role": "aux - reserved, NEVER read by any leg"}
+  },
+  "allocation_note": "seeds 20261718-721 allocated from 20261718 per the v093 heartbeat baton: 20261714-717 are P080/V093's registered set (aux 20261717 never read), so 20261718 is the next free index; the next free block after this allocation starts at 20261722",
+  "sentinel": "draw counter == exactly 4N per seed (80,000 / 32,000)",
+  "cpython_pin": "3.11 (the minor this verdict session runs and asserts; Arms A/B are seedless exact integer arithmetic, platform-independent - only Arm R and the presentation shuffle touch the pinned minor's random module)"
+ },
+ "decision_rule": {
+  "order": "REJECT -> INVALID -> APPROVE -> NULL (REJECT evaluated FIRST)",
+  "REJECT": "R1 AND R2 AND R3 AND R4",
+  "R1_renewal_non_monotonicity": "p(c) = c*(floor(W/c)+1) with the day table exact on all 9 cadences AND the witness pair p(600) = 1200 / p(601) = 601 with rate ratio exactly 1200/601",
+  "R2_cliff_plus_alibi": "steady leak == max(0, F-S) at V = 0 with the margin-0 pair (200 -> 0/run, 201 -> 1/run) AND rotation periods 201/5/3/2 with the F = 250 block census",
+  "R3_compounding_displacement": "the saturated law min(F, F-S+V) exact on every qualifying cell with the boundary pair ((398,1) constant 199, (397,1) non-constant) AND the registered compounding orbits - (200,1): run-2 leak 1, peak 19 at run 20, tail mean exactly 14, total 1025 vs naive 79; (200,50) -> exactly 100/run; (250,50) -> the 2-cycle {100,150}; (1,50) -> period 4",
+  "R4_breathing_plus_read_bill": "the (201,300,24) orbit == 201, (1,1,199)x7, 1, 1 (total 1610) with the window-off control at exactly 1/run AND the read censuses (13,000/2,000; 20,122/4,600) with the scan-off control at leak 0",
+  "INVALID": "any F1-F6 gate failure (controls misbehaving - report, no ruling)",
+  "APPROVE": "the shipped algorithm reproduces the keyed-index arm's zero-leak census on the full (F, V) grid AND the renewal rate is monotone non-increasing in c on the cadence grid - arithmetically excluded by the (201, 0) cell and the (600, 601) pair; mutually exclusive with REJECT",
+  "NULL_axes": ["source-semantics mismatch (the verdict session's own read of the pinned source contradicts a pinned behavior - the strict-> boundary, the lines-not-records slot accounting, or the suppressed-first call order; the corrected semantics + re-derived censuses are the finding)", "replay-fidelity mismatch (Arm A and Arm B disagree on a registered sequence and the INVALID diagnosis does not localize it - the corrected orbit is the finding)", "convention axis (the batch-split control's registered census fails to reproduce - the one-batch convention finding ships with corrected censuses)"]
+ },
+ "gates": {
+  "F1": "model identities: ledger length == sum of fire appends + sum of verdict rows at every run boundary (asserted on instrumented probe cells); the scan key set is always a subset of the last S lines' in-window verdict-less keys and verdict rows never appear in any key set (structural probe); p(c) == 0 mod c on the grid; S and W echo the pinned constants; the Arm-R draw counter == 4N exactly",
+  "F2": "the six structure theorems re-derived from scratch: (a) RENEWAL - the day table and the closed law on all 9 cadences (C1); the witness pair and its exact ratio; (b) CLIFF - the V = 0 leak row and margin-0 pair; the rotation periods with the F = 250 blocks (C2); (c) COMPOUNDING - the saturated law on every qualifying cell, the boundary pair, and the 20 registered orbits twin-verified (C3); (d) BREATHING - the (201,300,24) orbit and its window-off control; (e) READS - the quadratic read census and parse census (C4) with the scan-off control; (f) TRUE SENTENCE - the design-point cells [F, 0, 0]",
+  "F3": "census anchors verbatim (the anchors_F3 block above)",
+  "F4": "pencil worlds: (a) F = 1, two runs 60 s apart - the second run's scan sees one 60-s-old record -> 0 appends; (b) p(601) in one line: floor(600/601) = 0 => p = 601; (c) the cliff by inspection: 201 findings, a 200-line tail - exactly one invisible, every run; (d) the (1,50) period by depth arithmetic: the fire sits at depth 50j+1 after j verdict-bearing runs, invisible iff 50j >= 200 => j = 4",
+  "F5": "degeneracy/convention controls (the controls_F5 block above)",
+  "F6": "battery: Arm B equals Arm A through the four typed contacts on every registered sequence; twin independently-written decision evaluators agree on the ruling token over an ENUMERATED boolean input set; Arm-R draw-count sentinel (exactly 80,000 / 32,000) and exact reproducibility (in-process double run per seed); presentation seed 20261720 read by presentation legs only; aux seed 20261721 never read; stdout + results.json byte-identical across two process runs; CPython minor pinned and asserted"
+ },
+ "drafter_disclosed_landing": {
+  "note": "the drafter's expected landing, DISCLOSED per the P048-P080 exact-arm norm - the sim re-derives everything from scratch and must not trust these",
+  "verdict": "REJECT on all four conjuncts",
+  "drafting_battery": "91/91 checks PASS, exit 0, ~7 s (scratchpad draft_p081.py, idea-engine side)",
+  "real_ledger_color": "this repo's own tracked .substrate/guard-fires.jsonl at the grounding HEAD: 646 records over 71 distinct keys, top key 282 copies, 435 records on 2026-07-11 alone (pre-dedupe era) - reporting-only color per the P019/P029 realized-probe precedent, never a fixture"
+ },
+ "_disclosures": {
+  "note": "sim-chosen realizations of shape-registered slots - vacancy-derived disclosures, never match claims",
+  "arm_r_census_fields": "the registered preview triple's field labels are realized as: leak_regime_traces = traces whose FIRE appends over runs 2..R total > 0; max_per_run_burst = the maximum single-run fire-append count over all runs INCLUDING run 1; total_appends = total FIRE appends over all runs and traces (verdict rows excluded - they are counted separately by the F1 ledger-length identity); both registered preview triples reproduce exactly under these realizations",
+  "order_flip_cells": "the 8 probed uniform-V cells of the order-flip control are realized as the full F grid {1, 50, 199, 200, 201, 250, 300, 400} at V = 5; the runner additionally sweeps the V = 1 and V = 50 rows as unregistered extra coverage (reported, not load-bearing)",
+  "rotation_leg_horizon": "the rotation first-repeat contact needs the run count to exceed 2 + period, so rotation legs run R = period + 3 runs (F = 201 -> 204 runs; the F = 250/300/400 repeats are also visible inside the registered R = 80); every leak/orbit census stays at the registered R = 80",
+  "unregistered_small_cells": "the six compounding cells at F in {1, 50} have no registered totals; their measured totals ((1,1) 0 / (1,5) 1 / (1,50) 19 / (50,1) 0 / (50,5) 100 / (50,50) 950) are reported as color, not gated - except (1,50) whose PERIOD 4 is registered and gated",
+  "naive_ts_cell": "the naive-ts fail-open control's probe cell is (200, 0, c = 1, R = 3)",
+  "presentation_leg": "seed 20261720 shuffles the display order of the F3 anchor-name roster in ONE reporting-only stdout line (no decision value passes through it)",
+  "prototype_rehearsal": "the drafting-side prototype reproduced every registered anchor on its FIRST pass (untracked scratchpad, before this file was written); two realization details were pinned at that rehearsal - the leak-phase peak definition for (200,1) (max over runs >= 2, the initial burst of 200 excluded) and the rotation-leg horizon above; no decision value was adjusted"
+ }
+}
