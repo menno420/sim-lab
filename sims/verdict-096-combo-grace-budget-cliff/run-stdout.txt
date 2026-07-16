@@ -1,0 +1,47 @@
+VERDICT 096 sim — combo grace-budget cliff (P083)
+==========================================================================
+  [PASS] F0.python-minor-pinned: running CPython 3.11 vs pinned 3.11
+  [PASS] F0.constants: P=10 G=3 B0=10 Bmax=10 R=1 M=25 R'=1
+  [PASS] F2a.steady-census: l0 survives; l1=11 l2=6 l3=4 (budget); l4=1 (miss)
+  [PASS] F3.break-step-map: registered {l0:inf, l1:11, l2:6, l3:4, l4:1(miss)} reproduced
+  [PASS] F1.break-before-update: the break check ran BEFORE the budget update on every step of every steady trace (budget unchanged at the check point)
+  [PASS] F1.bmax-invariant: B <= Bmax on every step of every trace
+  [PASS] F1.exact-m-minus-1-wipe: the reset wipes exactly m-1: l1 wiped 10 (m=11), l2 5, l3 3
+  [PASS] F1.deterministic: two in-process runs of every steady trace return identical dicts
+  [PASS] F2.C1-closed-form-contact: steady sim break_step == floor(B0/l)+1: [11, 6, 4] == [11, 6, 4]
+  [PASS] F2a.twin-steady: Arm B (full-trajectory walk) == Arm A (stepwise) on all five steady patterns (break step + kind)
+  [PASS] F3.loss-map: silent loss = break_step-1 = floor(B0/l): l1=10 l2=5 l3=3 (== {10,5,3})
+  [PASS] F2b.loss-strict-monotone: loss strictly DECREASING in l (10 > 5 > 3), max at l=1; all < M=25 (cap never binds)
+  [PASS] F2c.repair-a-once-per-streak: repair (a) fires exactly once per streak at break_step-1: l1@[10] l2@[5] l3@[3]; l0 fires 0 (zero false positives on the clean cohort)
+  [PASS] F3.repair-a-warning-map: warning-step map {l1:10, l2:5, l3:3, l0:0} reproduced
+  [PASS] F2d.repair-b-closed-form: repair (b) R'=1: l1 survives (net 0), l2->10, l3->5 == floor((B0-l)/(l-1))+2 {10,5}; Arm B agrees (C2)
+  [PASS] F3.repair-b-break-map: repair-(b) break map {l1:inf, l2:10, l3:5} reproduced
+  [PASS] F4a.l1-exhausts-at-11: B0=10 exhausted after 10 unit spends -> break at step 11, not inf (APPROVE dead by inspection)
+  [PASS] F4b.l3-cliff-at-4: floor(10/3)+1 = 4 — the l=3 cliff by inspection
+  [PASS] F4c.l0-cap-pin-survivor: at l=0 the clean-action replenish pins B at Bmax; the budget never drains — the survive cell by inspection
+  [PASS] F4d.repair-b-net0-at-l1: repair (b) net change at l=1 is -1 + 1 = 0 — l=1 survives by inspection
+  [PASS] F5.true-cells-present: the contract's two TRUE cells are registered: the l=0 survivor AND the l>G immediate real miss (step 1)
+  [PASS] F5.repair-a-zero-fp-on-survivor: repair (a) fires zero times on the l=0 survivor cohort
+  [PASS] F5.repair-b-strictly-extends: repair (b) strictly EXTENDS survival vs baseline (never shortens): l1 6->inf-cohort, l2 6->10, l3 4->5
+  [PASS] F3.armR-census-20261726: {"REAL-MISS": 3978, "SILENT-BREAK": 11427, "SURVIVE": 4595}
+  [PASS] F3.armR-census-20261727: {"REAL-MISS": 1622, "SILENT-BREAK": 4534, "SURVIVE": 1844}
+  [PASS] F3.armR-digest-20261726: class-stream digest 3bfa073726f7 == registered 3bfa073726f7
+  [PASS] F3.armR-digest-20261727: class-stream digest 6f857d0afcf4 == registered 6f857d0afcf4
+  [PASS] F1.armR-draw-sentinels: draw counters exactly 3N: 60000 / 24000
+  [PASS] F5.armR-taxonomy-total: SURVIVE + SILENT-BREAK + REAL-MISS == N on both seeds (total taxonomy, no trace unclassified)
+  [PASS] F2a.armR-per-trace-twin: Arm B == Arm A on every trace of both seeds
+  [PASS] F5.armR-in-process-double-run: census + digest identical on a second in-process pass per seed
+  steady census table (display order via presentation seed 20261728):
+    l=1 break@11 loss10
+    l=4 miss@1
+    l=2 break@6 loss5
+    l=0 survive
+    l=3 break@4 loss3
+  [PASS] F5.presentation-seed-scope: seed ledger [20261726, 20261727, 20261726, 20261727, 20261728] — presentation seed read by the presentation leg only, after every decision leg finished
+  [PASS] F5.aux-seed-never-read: aux seed 20261729 reserved and never read
+  [PASS] F2.twin-evaluators-agree: twin evaluators agree on all 64 enumerated inputs and rule REJECT/REJECT
+  [PASS] decision.approve-arithmetically-excluded: APPROVE requires every within-grace steady pattern to survive; the l=1 cell breaks at 11 (B0=10 exhausted after 10 unit spends) — excluded
+decision inputs: {"R1": true, "R2": true, "R3": true, "R4": true, "all_within_grace_survive": false, "gates_ok": true}
+VERDICT: REJECT (evaluator 1) / REJECT (evaluator 2)
+==========================================================================
+self-checks: 35/35 passed

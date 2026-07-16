@@ -336,6 +336,17 @@ From PROPOSAL 010 onward the offset is a constant +2.
   (#166), classified non-claim; the V095 branch rebased onto it before
   the append). Next expected: PROPOSAL 083 → **VERDICT 096** (P083 not
   yet drafted at this refresh).
+- Extension (V096 slice, 2026-07-16): the +13 offset holds — PROPOSAL 083
+  (combo-grace-budget-cliff) → **VERDICT 096** (verified at the
+  live-outbox headers: newest `## VERDICT` was 095 at origin/main
+  35dc520 — the tip was the V095 merge #167 at session start —
+  `## VERDICT 096` / `verdict-096` collision-grepped before the append
+  with hit CLASSIFICATION per the V093 taxonomy (the only hits were the
+  V095 refresh's own "next expected" heartbeat/map pointers plus
+  idea-engine batons — predictions, not claims; zero claim-class hits)
+  and re-grepped at append time — origin/main unmoved; no owner-direct
+  or simreq interleave occurred in this range). Next expected: PROPOSAL
+  084 → **VERDICT 097** (P084 not yet drafted at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

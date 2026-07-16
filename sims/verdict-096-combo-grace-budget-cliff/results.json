@@ -1,0 +1,129 @@
+{
+ "arm_r": {
+  "20261726": {
+   "census": {
+    "REAL-MISS": 3978,
+    "SILENT-BREAK": 11427,
+    "SURVIVE": 4595
+   },
+   "digest": "3bfa073726f7",
+   "draws": 60000,
+   "salt_first5": [
+    141,
+    936,
+    766,
+    369,
+    703
+   ],
+   "salt_sum": 10048238
+  },
+  "20261727": {
+   "census": {
+    "REAL-MISS": 1622,
+    "SILENT-BREAK": 4534,
+    "SURVIVE": 1844
+   },
+   "digest": "6f857d0afcf4",
+   "draws": 24000,
+   "salt_first5": [
+    589,
+    877,
+    288,
+    898,
+    67
+   ],
+   "salt_sum": 4023282
+  },
+  "seed_ledger": [
+   20261726,
+   20261727,
+   20261726,
+   20261727,
+   20261728
+  ]
+ },
+ "checks": {
+  "failed": [],
+  "passed": 35,
+  "total": 35
+ },
+ "closed_forms": {
+  "C1_floor_B0_over_l_plus_1": {
+   "1": 11,
+   "2": 6,
+   "3": 4
+  },
+  "C2_repair_b": {
+   "1": null,
+   "2": 10,
+   "3": 5
+  }
+ },
+ "decision_inputs": {
+  "R1": true,
+  "R2": true,
+  "R3": true,
+  "R4": true,
+  "all_within_grace_survive": false,
+  "gates_ok": true
+ },
+ "environment": {
+  "cpython_minor": "3.11",
+  "decision_arms": "seedless deterministic integer arithmetic (platform-independent)"
+ },
+ "loss_map": {
+  "1": 10,
+  "2": 5,
+  "3": 3
+ },
+ "repair_a_warning_map": {
+  "0": [],
+  "1": [
+   10
+  ],
+  "2": [
+   5
+  ],
+  "3": [
+   3
+  ]
+ },
+ "repair_b_break_map": {
+  "1": null,
+  "2": 10,
+  "3": 5
+ },
+ "steady_census": {
+  "0": {
+   "break_step": null,
+   "kind": null,
+   "mult_before_break": 25,
+   "wiped": 24
+  },
+  "1": {
+   "break_step": 11,
+   "kind": "budget",
+   "mult_before_break": 11,
+   "wiped": 10
+  },
+  "2": {
+   "break_step": 6,
+   "kind": "budget",
+   "mult_before_break": 6,
+   "wiped": 5
+  },
+  "3": {
+   "break_step": 4,
+   "kind": "budget",
+   "mult_before_break": 4,
+   "wiped": 3
+  },
+  "4": {
+   "break_step": 1,
+   "kind": "miss",
+   "mult_before_break": 1,
+   "wiped": 0
+  }
+ },
+ "verdict": "REJECT"
+}
