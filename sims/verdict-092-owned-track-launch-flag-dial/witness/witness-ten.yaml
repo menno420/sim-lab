@@ -1,0 +1,77 @@
+# witness-ten — constructed witness pack (P079 T5 back-door probe; data only).
+schema_version: 1
+
+theme:
+  id: witness-ten
+  name: Witness Station Ten
+  description: A relay station whose identical signal banks differ from its twin only in how many the manifest declares.
+  emoji: "📡"
+  embed_color: "#3A7BD5"
+
+currencies:
+  - id: primary
+    name: signals
+    description: Clean relayed signals, the station's sole export.
+    emoji: "📡"
+
+generators:
+  - id: tier1
+    name: relay bank 1
+    description: Bank 1 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier2
+    name: relay bank 2
+    description: Bank 2 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier3
+    name: relay bank 3
+    description: Bank 3 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier4
+    name: relay bank 4
+    description: Bank 4 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier5
+    name: relay bank 5
+    description: Bank 5 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier6
+    name: relay bank 6
+    description: Bank 6 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier7
+    name: relay bank 7
+    description: Bank 7 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier8
+    name: relay bank 8
+    description: Bank 8 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier9
+    name: relay bank 9
+    description: Bank 9 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20
+  - id: tier10
+    name: relay bank 10
+    description: Bank 10 of the station's identical signal relays, humming in lockstep.
+    emoji: "📡"
+    produces: primary
+    base_rate: 20

@@ -1,0 +1,103 @@
+# potion-brewery — theme pack #3 (data only; validated by theme-gate against
+# docs/theme-schema.md / schema/theme.schema.json). Skins the SAME opaque
+# engine ids as egg-farm (primary/prestige, tier1/tier2, boost1/boost2):
+# identical mechanics, different world.
+schema_version: 1
+
+theme:
+  id: potion-brewery
+  name: Potion Brewery
+  description: A crooked little brewery where the pots mutter to themselves and every bottle glows.
+  emoji: "⚗️"
+  embed_color: "#7B3FA0"
+
+currencies:
+  - id: primary
+    name: potions
+    description: Bottled magic, corked, labeled, and ready to sell.
+    emoji: "🧪"
+  - id: prestige
+    name: arcane essence
+    description: Distilled mastery — the shimmering residue of every brewery given up for the craft.
+    emoji: "🔮"
+
+generators:
+  - id: tier1
+    name: cauldron
+    description: A pot-bellied cauldron that bubbles out potion after potion, day and night.
+    emoji: "🍲"
+    produces: primary
+    base_rate: 1
+  - id: tier2
+    name: apprentice alchemist
+    description: An eager apprentice who brews almost as fast as they spill.
+    emoji: "🧙"
+    produces: primary
+    base_rate: 5
+
+upgrades:
+  - id: boost1
+    name: hotter flames
+    description: Stoke the fire under the cauldron; a fiercer boil means faster brewing.
+    emoji: "🔥"
+    target: tier1
+  - id: boost2
+    name: dog-eared grimoire
+    description: A hand-annotated grimoire; every apprentice who studies it brews with fewer mistakes.
+    emoji: "📖"
+    target: tier2
+
+prestige:
+  currency: prestige
+  measures: primary
+  action_name: transcend the craft
+  action_description: Shutter the brewery, distill everything you have learned, and begin again with arcane essence in hand.
+  action_emoji: "✨"
+
+labels:
+  offline_return: "While you were out, the cauldrons kept bubbling: {gains}"
+  status_title: "⚗️ Potion Brewery — the stockroom ledger"
+  shop_title: "📜 The Alchemist's Catalogue"
+  shop_description: Trade bottled potions for a fiercer, faster brewery.
+  level: Brew grade
+  prestige_progress: "lifetime potions toward transcendence:"
+
+# Noun skins for the ENGINE-DERIVED milestone slots (thresholds/bonuses are
+# engine-side, pre-registered in docs/design/achievements-v0.md).
+milestones:
+  - id: owned-1
+    name: a proper kitchen
+    description: Ten brewers bubbling at once — the hallway smells permanently of lavender and sulfur.
+    emoji: "🫕"
+  - id: owned-2
+    name: guild-sized operation
+    description: A hundred brewers; the guild sends inspectors just to watch.
+    emoji: "🏰"
+  - id: owned-3
+    name: the thousand-pot works
+    description: A thousand brewers — the town downwind reports prophetic dreams.
+    emoji: "🌋"
+  - id: lifetime-1
+    name: first crate corked
+    description: A thousand potions sealed and shelved without a single explosion. Well, one.
+    emoji: "📦"
+  - id: lifetime-2
+    name: royal supplier
+    description: A hundred thousand potions — the palace buys by the wagonload.
+    emoji: "👑"
+  - id: lifetime-3
+    name: legend of the still
+    description: Ten million potions; apprentices whisper your recipes like scripture.
+    emoji: "🌠"
+  - id: prestige-1
+    name: first drop of essence
+    description: One measure of arcane essence — the craft finally distilled to its truth.
+    emoji: "💧"
+  - id: prestige-2
+    name: essence in reserve
+    description: Five measures of essence, humming softly in their vials.
+    emoji: "🧿"
+  - id: prestige-3
+    name: transcendent brewer
+    description: Twenty-five measures — you no longer follow recipes; recipes follow you.
+    emoji: "🌌"

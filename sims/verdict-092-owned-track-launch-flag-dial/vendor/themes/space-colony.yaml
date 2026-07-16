@@ -1,0 +1,103 @@
+# space-colony — theme pack #2 (data only; validated by theme-gate against
+# docs/theme-schema.md / schema/theme.schema.json). Skins the SAME opaque
+# engine ids as egg-farm (primary/prestige, tier1/tier2, boost1/boost2):
+# identical mechanics, different world.
+schema_version: 1
+
+theme:
+  id: space-colony
+  name: Space Colony
+  description: A fledgling outpost on a far-off world, kept alive one breath at a time.
+  emoji: "🪐"
+  embed_color: "#4A7BD0"
+
+currencies:
+  - id: primary
+    name: oxygen
+    description: Breathable air, the colony's only real wealth.
+    emoji: "🫧"
+  - id: prestige
+    name: alien artifacts
+    description: Relics of a vanished civilization — proof of colonies founded and worlds left behind.
+    emoji: "🗿"
+
+generators:
+  - id: tier1
+    name: solar array
+    description: Panels drink the starlight and feed the oxygen scrubbers.
+    emoji: "🔆"
+    produces: primary
+    base_rate: 1
+  - id: tier2
+    name: hydroponics bay
+    description: Racks of engineered greens exhale a steady stream of oxygen.
+    emoji: "🌱"
+    produces: primary
+    base_rate: 5
+
+upgrades:
+  - id: boost1
+    name: polished reflectors
+    description: Mirror-finish reflectors squeeze more light into every panel of the solar array.
+    emoji: "🪞"
+    target: tier1
+  - id: boost2
+    name: enriched nutrient feed
+    description: A richer feed line for the hydroponics bay; every rack grows denser and breathes harder.
+    emoji: "🧪"
+    target: tier2
+
+prestige:
+  currency: prestige
+  measures: primary
+  action_name: launch a new colony
+  action_description: Pack the ship, leave the outpost behind, and found a new colony with alien artifacts in the hold.
+  action_emoji: "🚀"
+
+labels:
+  offline_return: "While you slept in cryo, the colony kept breathing: {gains}"
+  status_title: "🪐 Space Colony — life-support readout"
+  shop_title: "🛠️ Colony Requisitions"
+  shop_description: Spend hard-won oxygen on hardware the colony will thank you for.
+  level: Mark
+  prestige_progress: "lifetime oxygen toward launch:"
+
+# Noun skins for the ENGINE-DERIVED milestone slots (thresholds/bonuses are
+# engine-side, pre-registered in docs/design/achievements-v0.md).
+milestones:
+  - id: owned-1
+    name: first hab module
+    description: Ten machines humming at once — the outpost officially has a skyline.
+    emoji: "🏗️"
+  - id: owned-2
+    name: sector on the map
+    description: A hundred installations; the star charts finally print your name.
+    emoji: "🗺️"
+  - id: owned-3
+    name: terraforming tier
+    description: A thousand installations — the planet is starting to breathe back.
+    emoji: "🌍"
+  - id: lifetime-1
+    name: first tank banked
+    description: A thousand units of oxygen in reserve; nobody rations tonight.
+    emoji: "🫙"
+  - id: lifetime-2
+    name: breathable dome
+    description: A hundred thousand units — the dome no longer whistles at night.
+    emoji: "🏙️"
+  - id: lifetime-3
+    name: atmosphere exporter
+    description: Ten million units of oxygen — neighboring outposts buy from YOU now.
+    emoji: "💫"
+  - id: prestige-1
+    name: first artifact
+    description: One alien artifact in the hold — proof there was someone here before.
+    emoji: "🗿"
+  - id: prestige-2
+    name: xenoarchive shelf
+    description: Five artifacts, each older than your whole civilization.
+    emoji: "🏛️"
+  - id: prestige-3
+    name: precursor scholar
+    description: Twenty-five artifacts — you read the vanished script like a morning briefing.
+    emoji: "📜"

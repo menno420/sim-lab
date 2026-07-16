@@ -1,0 +1,90 @@
+# egg-farm — flagship default theme pack (data only; validated by theme-gate
+# against docs/theme-schema.md / schema/theme.schema.json)
+schema_version: 1
+
+theme:
+  id: egg-farm
+  name: Egg Farm
+  description: A cozy backyard farm where patient chickens fund your empire.
+  emoji: "🥚"
+  embed_color: "#F5C542"
+
+currencies:
+  - id: primary
+    name: eggs
+    description: Fresh eggs, the farm's lifeblood.
+    emoji: "🥚"
+  - id: prestige
+    name: golden eggs
+    description: Gleaming golden eggs — proof of farms sold and fortunes past.
+    emoji: "🥇"
+
+generators:
+  - id: tier1
+    name: chicken coop
+    description: A humble coop; each hen lays with metronomic dedication.
+    emoji: "🐔"
+    produces: primary
+    base_rate: 1
+
+upgrades:
+  - id: boost1
+    name: bigger henhouse
+    description: A roomier henhouse; every hen in the coop lays that bit faster.
+    emoji: "🏠"
+    target: tier1
+
+prestige:
+  currency: prestige
+  measures: primary
+  action_name: sell the farm
+  action_description: Sell the whole farm and start over with golden eggs in hand.
+  action_emoji: "🌟"
+
+labels:
+  offline_return: "While you were away, the hens kept laying: {gains}"
+  status_title: "🥚 Egg Farm — the morning count"
+  shop_title: "🧺 The Farm Supply Shed"
+  shop_description: Trade fresh eggs for a busier, happier farm.
+  level: Coop size
+  prestige_progress: "lifetime eggs toward the sale:"
+
+# Noun skins for the ENGINE-DERIVED milestone slots (thresholds/bonuses are
+# engine-side, pre-registered in docs/design/achievements-v0.md).
+milestones:
+  - id: owned-1
+    name: first flock
+    description: Ten layers on the roost — the yard finally sounds like a farm.
+    emoji: "🐣"
+  - id: owned-2
+    name: hundred-hen farmstead
+    description: A hundred layers strong; the feed bill is now a line item.
+    emoji: "🐥"
+  - id: owned-3
+    name: poultry empire
+    description: A thousand layers — neighbors set their clocks by the morning chorus.
+    emoji: "🏆"
+  - id: lifetime-1
+    name: first thousand eggs
+    description: The first thousand eggs of the season, counted and crated.
+    emoji: "🧺"
+  - id: lifetime-2
+    name: county-fair famous
+    description: A hundred thousand eggs — the county fair knows your name.
+    emoji: "🎖️"
+  - id: lifetime-3
+    name: ten-million-egg legend
+    description: Ten million eggs. Songs are sung. Omelettes are legion.
+    emoji: "👑"
+  - id: prestige-1
+    name: first golden egg
+    description: The first farm sold — one golden egg, warm in your palm.
+    emoji: "🥇"
+  - id: prestige-2
+    name: golden clutch
+    description: Five golden eggs in the nest box of your retirement fund.
+    emoji: "💰"
+  - id: prestige-3
+    name: golden dynasty
+    description: Twenty-five golden eggs — a dynasty measured in farms sold.
+    emoji: "🌟"
