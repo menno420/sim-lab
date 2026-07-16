@@ -1,0 +1,139 @@
+{
+ "proposal": {
+  "block": "## PROPOSAL 082 · 2026-07-16T08:44:56Z · status: sim-ready",
+  "idea": "ideas/venture-lab/owner-gate-recognition-cliff-2026-07-16.md (idea-engine)",
+  "verdict": "VERDICT 095 (the +13 offset's nineteenth row — P082 -> V095)",
+  "grounding": "https://github.com/menno420/venture-lab@95e18469aedad37f37f74a69eed17dd7dc002bcf · fetched 2026-07-16T08:23:04Z",
+  "claim_priced": "GOTCHAS.md #4 verbatim: 'a stray checkbox edit (agents reflow markdown all the time) can only ever RE-QUEUE an owner action, never silently drop one'"
+ },
+ "pinned_behaviors": {
+  "i_recognition": "text.lstrip().startswith('⚑') and '**Owner:**' in text (ocq.py is_owner_row; derive_owner_queue.py lines 215/221 identical)",
+  "ii_row_shape": "^- \\[[ xX]\\]\\s+(.*)$ at line start (bullet '-', one space, single-char state, ']', whitespace)",
+  "iii_fold_rule": "indented non-empty lines fold into the OPEN item of the same regex class; a non-matching flush-left line closes the item; an indented line with NO open item is invisible",
+  "iv_disposition": "[—–-]\\s*DONE\\s+(\\d{4})-(\\d{2})-(\\d{2}) (case-sensitive) on CHECKED rows only moves a row to Live; half-flipped cells still queue AND lint red (the both-marks rule)",
+  "v_section_arming": "gate section = first h2 matching ^##\\s.*OWNER-GATE (IGNORECASE) to the next h2; ^KILL-CHECK:\\s*(.*)$ heads the checkpoint line; checkpoints ARM only when the group has >= 1 recognized DONE row (once-live)",
+  "lint_error_classes": "half-flips both directions, invalid DONE date, defaultless flagged decision, no-H1, no-gate-section, no-rows, malformed KILL-CHECK token — every class conditioned on recognition",
+  "kill_check_regex": "^KILL-CHECK:\\s*(.*)$",
+  "gate_heading_regex": "^##\\s.*OWNER-GATE (IGNORECASE)"
+ },
+ "corpus": {
+  "C0": [
+   "# OCQK launch — owner gate",
+   "",
+   "## OWNER-GATE — OCQK launch",
+   "",
+   "1. Package the zip and stage the listing draft.",
+   "2. ⚑ Decide the launch price — **$19 flat** (default).",
+   "3. Publish the listing once the gate clears.",
+   "",
+   "- [ ] ⚑ **Owner:** click PUBLISH on the staged listing",
+   "- [ ] ⚑ **Owner:** approve the $19 launch price",
+   "",
+   "- [ ] ⚑ **Owner:** connect the payout account",
+   "",
+   "Sequencing: the payout connect precedes the publish click.",
+   "",
+   "- [ ] ⚑ **Owner:** confirm the refund policy wording",
+   "      applies to the storefront page too (blocking)",
+   "- [x] ⚑ **Owner:** sign off the GOTCHAS copy — DONE 2026-07-13",
+   "- [ ] seat: assign the support-inbox rotation",
+   "",
+   "KILL-CHECK: ⏲ T+7 no-sale kill review · ⏲ T+30 price-drop checkpoint"
+  ],
+  "C1_rule": "C0 minus line 18 (the DONE row) — 20 lines",
+  "C2_rule": "C0 with step 1 flagged + a '**…** (default)' marker: line 5 -> '1. ⚑ Package the zip and stage the listing draft — **stage first** (default).'",
+  "row_targets_C0_lines": {"r1": 9, "r2": 10, "r3": 12, "r4": 16, "r5": 18, "step2": 6, "heading": 3, "cont4": 17, "kill": 21}
+ },
+ "grid_cells_1_to_26": [
+  "1 OP1@r1 star-loss", "2 OP1@r2", "3 OP1@r3", "4 OP1@r4", "5 OP1@r5",
+  "6 OP2@r1 flag-fold", "7 OP2@r2", "8 OP2@r3", "9 OP2@r4", "10 OP2@r5",
+  "11 OP3@r1 indent", "12 OP3@r2", "13 OP3@r5",
+  "14 OP4@r1 bullet-swap", "15 OP4@r3", "16 OP4@r5",
+  "17 OP5@r1 bracket-damage", "18 OP6@step2 step-flag-removal",
+  "19 OP7@step2 default-marker-damage", "20 OP8@r1 check-without-DONE",
+  "21 OP9@r2 DONE-on-unchecked", "22 OP10@r5 invalid-DONE-date",
+  "23 OP11@r5 DONE-case-flip", "24 OP12@kill KILL-CHECK-prefix",
+  "25 OP13@heading heading-demote", "26 OP14@cont4 blocking-word-deletion"
+ ],
+ "operator_edits": {
+  "OP1": "replace first '**Owner:**' with '*Owner:**'",
+  "OP2": "replace first '⚑ **Owner:**' with '**⚑ Owner:**'",
+  "OP3": "prepend one space",
+  "OP4": "replace first '- [' with '* ['",
+  "OP5": "replace first '- [ ]' with '- []'",
+  "OP6": "delete first '⚑ '",
+  "OP7": "delete first ' (default)'",
+  "OP8": "replace first '- [ ]' with '- [x]'",
+  "OP9": "append ' — DONE 2026-07-13'",
+  "OP10": "replace first '2026-07-13' with '2026-13-13' (regex-shaped, calendar-invalid month 13)",
+  "OP11": "replace first 'DONE' with 'done'",
+  "OP12": "replace first 'KILL-CHECK:' with 'KILL CHECK:'",
+  "OP13": "replace leading '##' with '###'",
+  "OP14": "delete first ' (blocking)'"
+ },
+ "anchors_F3": {
+  "baseline_C0": {"steps": 3, "decisions": 1, "pending": 4, "done": 1, "non_owner": 1, "checkpoints_parsed": 2, "checkpoints_armed": 2, "blocked": true, "lint": 0, "manual": 0, "conservation": "4+1+1 == 6 checkbox rows"},
+  "baseline_C1": {"checkpoints_parsed": 2, "checkpoints_armed": 0, "pending": 4, "done": 0, "lint": 0},
+  "baseline_C2": {"decisions": 2, "lint": 0},
+  "class_totals": {"SILENT-LOSSY": 18, "ALARMED-LOSSY": 3, "ALARMED-SAFE": 4, "SILENT-REGRADE": 1},
+  "silent_lossy_list_verbatim": ["OP1@r1", "OP1@r2", "OP1@r3", "OP1@r4", "OP1@r5", "OP2@r1", "OP2@r2", "OP2@r3", "OP2@r4", "OP2@r5", "OP3@r1", "OP3@r2", "OP4@r1", "OP4@r3", "OP4@r5", "OP5@r1", "OP6@step2", "OP12@kill"],
+  "key_cell_tuples_pending_done_armed_lint": {
+   "OP1@r1": [3, 1, 2, 0],
+   "OP1@r5": [4, 0, 0, 0], "OP2@r5": [4, 0, 0, 0], "OP4@r5": [4, 0, 0, 0],
+   "OP3@r1": [3, 1, 2, 0], "OP3@r2": [3, 1, 2, 0],
+   "OP3@r5": [4, 0, 0, 1],
+   "OP11@r5": [5, 0, 0, 1],
+   "OP10@r5": [4, 1, 2, 1]
+  },
+  "OP12_tuple_parsed_armed_lint": [0, 0, 0],
+  "OP13_tuple_pending_manual_lint": [0, 1, 1],
+  "position_law": "OP3@r1 VANISH vs OP3@r2 MERGE, both pending 3; the merged WHAT contains both clicks' text (containment asserted)",
+  "two_by_two_row": "NO-OP · queue+lint 1 · queue+lint 1 · RETIRE-LIVE pending 3/done 2/lint 0",
+  "cascade_triple": "OP1@r5, OP2@r5, OP4@r5 each land done 0 · armed 0 · lint 0",
+  "once_live_pair_C1": [2, 0],
+  "repair_census": {"silent_caught": "18/18", "extras": ["OP3@r5", "OP13@heading"], "false_positives_on_C0_C1_C2": 0, "missed": ["OP14@cont4"]}
+ },
+ "arm_r": {
+  "draw_grammar": "per trace EXACTLY 3 rng.randint draws in registered order — corpus in [0,2], grid cell in [1,26], salt in [1,1000] drawn-and-logged; one random.Random per seed; inapplicable/no-edit cells counted honestly as their own classes; NO statistical gate (gates are the 3N draw sentinel and exact reproducibility)",
+  "seeds": {"20261722": {"N": 20000, "draws": 60000, "census": {"SILENT-LOSSY": 12856, "ALARMED-SAFE": 2770, "ALARMED-LOSSY": 1820, "SILENT-REGRADE": 1293, "NO-EDIT": 1004, "INAPPLICABLE": 257}, "class_stream_digest": "e8d8812b3f9c"},
+             "20261723": {"N": 8000, "draws": 24000, "census": {"SILENT-LOSSY": 5203, "ALARMED-SAFE": 1095, "ALARMED-LOSSY": 694, "SILENT-REGRADE": 516, "NO-EDIT": 407, "INAPPLICABLE": 85}, "class_stream_digest": "fc2709073718"}},
+  "presentation_seed": 20261724,
+  "aux_seed_never_read": 20261725,
+  "prior_block": "20261718–721 are P081/V094's registered set — untouched",
+  "next_free_block": 20261726
+ },
+ "typed_contacts": {
+  "C1": "Arm B == Arm A on the three baseline tuples",
+  "C2": "Arm B == Arm A on all 26 grid cells and all four 2x2 cells",
+  "C3": "the two independently-written decision evaluators emit the same ruling token",
+  "C4": "Arm R: A == B on every trace, draw counters == 3N exactly (60,000 / 24,000), and the class-stream digests reproduce"
+ },
+ "decision_rule": {
+  "order": "REJECT -> INVALID -> APPROVE -> NULL, REJECT evaluated FIRST",
+  "REJECT": "R1 (the true sentence survives: the disposition 2x2 exact, zero silent cells) AND R2 (the 26-cell census exact at {18,3,4,1} with the SILENT-LOSSY list verbatim AND the lint-downstream law: every SILENT cell lint 0 AND manual 0) AND R3 (cascade triple done 0/armed 0/lint 0 AND C1 parsed 2/armed 0) AND R4 (OP13 guarded manual>=1 lint>=1 while R2 row breaks are silent, AND the conservation-lint repair reproduces its registered catch census)",
+  "INVALID": "any F1–F6 gate failure",
+  "APPROVE": "zero SILENT-LOSSY cells on the registered grid — arithmetically excluded by the OP1@r1 pencil cell; mutually exclusive with REJECT",
+  "NULL": "anything else; named axes: source-semantics mismatch, corpus-convention, twin-fidelity mismatch",
+  "strict_inequality_margin": "SILENT-LOSSY >= 15 in the evaluator carries margin 3 below the registered 18"
+ },
+ "classification_taxonomy": {
+  "LOSSY": "pending < baseline OR decisions < baseline OR done < baseline OR armed < baseline (a pending click, a queue decision, a DONE row, or an armed checkpoint LOST)",
+  "ALARMED": "lint > 0 OR manual > 0",
+  "classes": ["SILENT-LOSSY", "ALARMED-LOSSY", "ALARMED-SAFE", "SILENT-REGRADE", "NO-EDIT", "INAPPLICABLE"]
+ },
+ "repair_arm": {
+  "looser_net": "whole-file: (owner-ish) any bullet-ish ('- ', '* ', '-[', '*[' after lstrip) or ⚑-bearing line whose markup-stripped (chars *_` removed, lowercased) text contains 'owner:'; (default-ish) any numbered step containing '(default'; (kill-ish) any ⏲ line whose lowercased text contains 'kill'",
+  "fires_when": "strict recognition counts fewer than the looser net on any of the three nets (strict owner rows = pending+done; strict decisions = recognized flagged steps; strict kill = recognized ^KILL-CHECK: lines in the gate section)"
+ },
+ "vacancy_derived_disclosures": {
+  "note": "sim-chosen realizations of shape-registered slots — disclosed here BEFORE the runner, never match claims; every REGISTERED value above is a match claim and must reproduce exactly",
+  "corpus_wording": "the registration pins C0's structure verbatim-by-constraint (21 lines; the DONE row at line 18 — C1 is a line-18 deletion; 3 steps with step 2 the flagged default-marked decision; 4 pending ⚑ **Owner:** rows with r4 carrying the indented '(blocking)' continuation; the non-owner seat row after the DONE row; KILL-CHECK with 2 ⏲ checkpoints at line 21; baseline tuple echoed above) but the drafter's literal WHAT wording is not quoted in the proposal — the wording here is a sim-chosen realization; the witness that it realizes the registered corpus exactly is the F3 anchor battery INCLUDING both registered Arm-R class-stream digests, which are functions of the full 78-pair class map",
+  "target_resolution": "operator targets are pinned as C0 1-based line numbers and applied at the SAME line number in every corpus (C1's deletion shifts content up through them); a target line number beyond the corpus length is INAPPLICABLE; an edit whose anchor substring is absent leaves the line unchanged = NO-EDIT",
+  "two_by_two_realization": "the disposition 2x2 is taken on r1 with valid date 2026-07-14 for the DONE legs (check via OP8's edit; DONE via appending ' — DONE 2026-07-14'; both for the retire cell)",
+  "class_stream_digest_procedure": "sha256 of the UTF-8 bytes of ''.join(class labels in trace order, exact spellings SILENT-LOSSY/ALARMED-LOSSY/ALARMED-SAFE/SILENT-REGRADE/NO-EDIT/INAPPLICABLE), hexdigest truncated to the first 12 chars",
+  "salt_logging": "the per-trace salt draw is logged in aggregate (sum + first 5 salts per seed) in results.json; the salt does not enter classification or the class stream",
+  "presentation_target": "seed 20261724 shuffles the display order of the 26-cell census table in stdout (presentation leg only)",
+  "observable_tuple": "steps, decisions, decisions-no-default, pending, done, non-owner, parsed, armed, blocked, manual, lint, pending texts, done dates — plus explicit merged/vanished row accounting for the F1 conservation identity"
+ },
+ "environment": {"cpython_minor_pinned": "3.11"}
+}
