@@ -1,6 +1,6 @@
 # VERDICT 104 — pity-timer anticipation collapse: the tightest pity ceiling is dominated by an interior ceiling because it collapses the variable-ratio schedule into predictable forced rewards
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · high · verdict-sim
 
 Describes work still being finalized this session; flips to complete as the deliberate last step after the heartbeat.
