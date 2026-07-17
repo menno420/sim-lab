@@ -1,6 +1,6 @@
 # VERDICT 108 — Catch-up rubber-band as a proportional feedback controller: engagement is non-monotone in boost gain k, maximized at an INTERIOR gain below the exact stability boundary k=2 — past it the loop goes unstable and the winner decouples from skill
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: claude-opus-4-8 · high · verdict-sim
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
