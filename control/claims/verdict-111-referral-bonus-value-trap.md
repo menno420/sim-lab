@@ -1,0 +1,1 @@
+- `verdict-111-referral-bonus-value-trap` (sim-lab) · **scope** — VERDICT 111 for idea-engine PROPOSAL 098 (referral-bonus value trap), offset +13; files: sims/verdict-111-referral-bonus-value-trap/, control/outbox.md (VERDICT 111 block), control/status.md (heartbeat), .sessions/2026-07-17-verdict-111-referral-value-trap.md card · `2026-07-17`
