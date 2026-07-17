@@ -1,0 +1,80 @@
+{
+  "R1_analytic_anchor": {
+    "analytic_E_k2_over_E_k": 20.239614589584583,
+    "mc_draws": 200000,
+    "mc_half_edge_estimate": 20.175055,
+    "pass": true,
+    "relerr_mc_vs_analytic": 0.003189763782251352,
+    "tolerance": 0.02
+  },
+  "R2_decision_relevant_W1": {
+    "T": 200,
+    "frac_lead_pos": 0.825,
+    "mean_lead": 1.1700079632270033,
+    "pass": true,
+    "sem": 0.05749330581347472,
+    "sigma_count": 20.35033377664619,
+    "stdev": 0.8130781282707986
+  },
+  "R3_negative_control_W0": {
+    "T": 200,
+    "frac_lead_pos": 0.4,
+    "mean_lead": -0.07686956507544748,
+    "pass": true,
+    "sem": 0.06668230962285326,
+    "sigma_count": -1.1527729844723744,
+    "stdev": 0.9430302663900104
+  },
+  "R4_sanity": {
+    "Var_over_E_k": 14.24081458958458,
+    "detection_bounded_by_horizon": true,
+    "max_degree": 337,
+    "mean_lead_bounded": true,
+    "moments_match_rebuild": true,
+    "pass": true,
+    "sum_degrees_eq_2E": true,
+    "var_lt_maxdeg": true
+  },
+  "W0_stub_drops": 7,
+  "committed_moments_W1": {
+    "E_k": 5.9988,
+    "E_k2": 121.4134,
+    "E_k2_over_E_k": 20.239614589584583,
+    "Var_k": 85.42779855999999,
+    "Var_over_E_k": 14.24081458958458,
+    "max_degree": 337,
+    "n_edges": 29994,
+    "sum_degrees": 59988
+  },
+  "config": {
+    "D_regular": 6,
+    "M": 3,
+    "MC_draws": 200000,
+    "MC_seed": 777,
+    "N": 10000,
+    "S_sensors": 100,
+    "T": 200,
+    "W0_seed": 20260718,
+    "W1_seed": 20260717,
+    "beta": 0.08,
+    "epi_seed_base": 1000,
+    "horizon": 400,
+    "no_new_halt": 5,
+    "sensor_seed_base": 5000,
+    "smoke": false,
+    "target": 30.0,
+    "theta": 0.3
+  },
+  "moments_W0": {
+    "E_k": 5.9986,
+    "E_k2": 35.9848,
+    "E_k2_over_E_k": 5.9988664021605045,
+    "Var_k": 0.0015980400000046302,
+    "Var_over_E_k": 0.00026640216050488955,
+    "max_degree": 6,
+    "n_edges": 29993,
+    "sum_degrees": 59986
+  },
+  "ruling": "APPROVE",
+  "spec_id": "VERDICT-109 / PROPOSAL-096"
+}
