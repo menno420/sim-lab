@@ -1,0 +1,326 @@
+{
+  "dose_response": [
+    {
+      "excess": 0.261206439,
+      "mu_open": 1.761315841,
+      "s": 0.0,
+      "sigma_open": 0.002855077,
+      "z": 501.072746807
+    },
+    {
+      "excess": 0.24656524,
+      "mu_open": 1.746674642,
+      "s": 0.1,
+      "sigma_open": 0.003764084,
+      "z": 358.771771477
+    },
+    {
+      "excess": 0.218160866,
+      "mu_open": 1.718270268,
+      "s": 0.2,
+      "sigma_open": 0.002677872,
+      "z": 446.188287131
+    },
+    {
+      "excess": 0.18131861,
+      "mu_open": 1.681428012,
+      "s": 0.3,
+      "sigma_open": 0.003508243,
+      "z": 283.071490019
+    },
+    {
+      "excess": 0.137846858,
+      "mu_open": 1.63795626,
+      "s": 0.4,
+      "sigma_open": 0.003467134,
+      "z": 217.755546178
+    },
+    {
+      "excess": 0.092428512,
+      "mu_open": 1.592537914,
+      "s": 0.5,
+      "sigma_open": 0.003264584,
+      "z": 155.066832743
+    },
+    {
+      "excess": 0.052839628,
+      "mu_open": 1.55294903,
+      "s": 0.6,
+      "sigma_open": 0.00300236,
+      "z": 96.390482974
+    },
+    {
+      "excess": 0.025389637,
+      "mu_open": 1.525499039,
+      "s": 0.7,
+      "sigma_open": 0.00230021,
+      "z": 60.451869313
+    },
+    {
+      "excess": 0.009855093,
+      "mu_open": 1.509964496,
+      "s": 0.8,
+      "sigma_open": 0.001684021,
+      "z": 32.047880791
+    },
+    {
+      "excess": 0.003349916,
+      "mu_open": 1.503459318,
+      "s": 0.9,
+      "sigma_open": 0.000833902,
+      "z": 21.987488153
+    },
+    {
+      "excess": 0.001521499,
+      "mu_open": 1.501630901,
+      "s": 1.0,
+      "sigma_open": 0.000850352,
+      "z": 9.793577701
+    },
+    {
+      "excess": 0.000475861,
+      "mu_open": 1.500585263,
+      "s": 1.1,
+      "sigma_open": 0.000439535,
+      "z": 5.915006567
+    },
+    {
+      "excess": 6.4144e-05,
+      "mu_open": 1.500173547,
+      "s": 1.2,
+      "sigma_open": 0.00021728,
+      "z": 1.600534923
+    }
+  ],
+  "first_failing_gate": null,
+  "fixtures_sha256": "30b2267111cc2b2bc51b30219be3cf7ac24228de3ed5b73809017b72ffbec8f9",
+  "gates": {
+    "R1": {
+      "gap": 0.261206439,
+      "mu_closed": 1.500109402,
+      "mu_open": 1.761315841,
+      "passed": true,
+      "z": 501.072746807
+    },
+    "R2": {
+      "mono_tol": 0.01,
+      "mono_violation": 0.0,
+      "passed": true,
+      "passed_mono": true,
+      "passed_threshold": true,
+      "s_star": 1.167563466
+    },
+    "R3": {
+      "all_same_sign": true,
+      "min_z": 122.142870348,
+      "n_cells_passed": 9,
+      "passed": true
+    },
+    "R4": {
+      "m_star": 1.5,
+      "mu_closed": 1.500109402,
+      "p_star": 0.5,
+      "passed": true,
+      "z_star": 0.0
+    }
+  },
+  "r3_cells": [
+    {
+      "N": 250,
+      "beta": 6.0,
+      "mu_closed": 1.500618667,
+      "mu_open": 1.688889351,
+      "passed": true,
+      "z": 122.142870348
+    },
+    {
+      "N": 250,
+      "beta": 12.0,
+      "mu_closed": 1.5004528,
+      "mu_open": 1.76395808,
+      "passed": true,
+      "z": 198.897928989
+    },
+    {
+      "N": 250,
+      "beta": 24.0,
+      "mu_closed": 1.500416498,
+      "mu_open": 1.831963947,
+      "passed": true,
+      "z": 331.283887509
+    },
+    {
+      "N": 500,
+      "beta": 6.0,
+      "mu_closed": 1.500301769,
+      "mu_open": 1.687476191,
+      "passed": true,
+      "z": 175.914484192
+    },
+    {
+      "N": 500,
+      "beta": 12.0,
+      "mu_closed": 1.500201164,
+      "mu_open": 1.761362596,
+      "passed": true,
+      "z": 334.370134237
+    },
+    {
+      "N": 500,
+      "beta": 24.0,
+      "mu_closed": 1.500198258,
+      "mu_open": 1.833137813,
+      "passed": true,
+      "z": 492.95914158
+    },
+    {
+      "N": 1000,
+      "beta": 6.0,
+      "mu_closed": 1.500175871,
+      "mu_open": 1.68852693,
+      "passed": true,
+      "z": 274.277148287
+    },
+    {
+      "N": 1000,
+      "beta": 12.0,
+      "mu_closed": 1.500109402,
+      "mu_open": 1.761315841,
+      "passed": true,
+      "z": 501.072746807
+    },
+    {
+      "N": 1000,
+      "beta": 24.0,
+      "mu_closed": 1.500101749,
+      "mu_open": 1.833759799,
+      "passed": true,
+      "z": 679.019230736
+    }
+  ],
+  "self_checks": [
+    {
+      "name": "closed_mu_approx_1.5",
+      "ok": true
+    },
+    {
+      "name": "open_s0_gt_closed",
+      "ok": true
+    },
+    {
+      "name": "z_s0_ge_SIG",
+      "ok": true
+    },
+    {
+      "name": "R2_monotonic",
+      "ok": true
+    },
+    {
+      "name": "s_star_interior",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N250_b6_signif",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N250_b12_signif",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N250_b24_signif",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N500_b6_signif",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N500_b12_signif",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N500_b24_signif",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N1000_b6_signif",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N1000_b12_signif",
+      "ok": true
+    },
+    {
+      "name": "r3_cell_N1000_b24_signif",
+      "ok": true
+    },
+    {
+      "name": "R4_zero_shortcut_flow",
+      "ok": true
+    },
+    {
+      "name": "R4_m_star_approx_1.5",
+      "ok": true
+    },
+    {
+      "name": "determinism_in_process",
+      "ok": true
+    },
+    {
+      "name": "params_pinned",
+      "ok": true
+    },
+    {
+      "name": "twins_agree",
+      "ok": true
+    }
+  ],
+  "self_checks_passed": 19,
+  "self_checks_total": 19,
+  "social": {
+    "m_star": 1.5,
+    "mu_closed": 1.500109402,
+    "p_star": 0.5,
+    "passed": true,
+    "z_star": 0.0
+  },
+  "twin": {
+    "agree": true,
+    "ifchain": [
+      "APPROVE",
+      null
+    ],
+    "table": [
+      "APPROVE",
+      null
+    ]
+  },
+  "verdict": "APPROVE",
+  "world": {
+    "ALPHA": 0.1,
+    "BETA": 12.0,
+    "MONO_TOL": 0.01,
+    "N": 1000,
+    "N_SEEDS": 30,
+    "R": 120,
+    "R4_M_TOL": 1e-06,
+    "SEED_BASE": 20260719,
+    "SIG": 3.0,
+    "s_grid": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0,
+      1.1,
+      1.2
+    ]
+  }
+}

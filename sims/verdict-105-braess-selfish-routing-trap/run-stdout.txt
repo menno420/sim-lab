@@ -1,0 +1,71 @@
+VERDICT 105 - Braess's paradox in selfish task routing (idea-engine PROPOSAL 092, +13)
+world: N=1000 BETA=12.0 ALPHA=0.1 R=120 N_SEEDS=30 SEED_BASE=20260719 SIG=3.0 MONO_TOL=0.01
+
+R1  paradox @ s=0 : mu_open=1.761316 mu_closed=1.500109 gap=0.261206 z=501.072747  -> PASS
+
+dose-response (open vs closed, mu_closed=1.500109)
+   s   mu_open   sigma_open    excess         z
+  0.0  1.761316    0.002855  0.261206  501.072747
+  0.1  1.746675    0.003764  0.246565  358.771771
+  0.2  1.718270    0.002678  0.218161  446.188287
+  0.3  1.681428    0.003508  0.181319  283.071490
+  0.4  1.637956    0.003467  0.137847  217.755546
+  0.5  1.592538    0.003265  0.092429  155.066833
+  0.6  1.552949    0.003002  0.052840   96.390483
+  0.7  1.525499    0.002300  0.025390   60.451869
+  0.8  1.509964    0.001684  0.009855   32.047881
+  0.9  1.503459    0.000834  0.003350   21.987488
+  1.0  1.501631    0.000850  0.001521    9.793578
+  1.1  1.500585    0.000440  0.000476    5.915007
+  1.2  1.500174    0.000217  0.000064    1.600535
+R2a max upward excess violation = 0.000000 (tol 0.01) -> PASS
+R2b interior s* = 1.167563 -> PASS
+
+R3 robustness (9 cells, s=0)
+     N  beta   mu_open  mu_closed          z  pass
+   250     6  1.688889   1.500619  122.142870  Y
+   250    12  1.763958   1.500453  198.897929  Y
+   250    24  1.831964   1.500416  331.283888  Y
+   500     6  1.687476   1.500302  175.914484  Y
+   500    12  1.761363   1.500201  334.370134  Y
+   500    24  1.833138   1.500198  492.959142  Y
+  1000     6  1.688527   1.500176  274.277148  Y
+  1000    12  1.761316   1.500109  501.072747  Y
+  1000    24  1.833760   1.500102  679.019231  Y
+R3 all_same_sign=True min_z=122.142870 -> PASS
+
+R4 social optimum @ s=0 : p*=0.500000 f_Z*(z*)=0.000000 M*=1.500000 (mu_closed=1.500109) -> PASS
+
+gates:
+  R1 passed=True
+  R2 passed=True
+  R3 passed=True
+  R4 passed=True
+
+twins: ifchain=('APPROVE', None) table=('APPROVE', None) agree=True
+
+self-checks 19/19
+  [ok] closed_mu_approx_1.5
+  [ok] open_s0_gt_closed
+  [ok] z_s0_ge_SIG
+  [ok] R2_monotonic
+  [ok] s_star_interior
+  [ok] r3_cell_N250_b6_signif
+  [ok] r3_cell_N250_b12_signif
+  [ok] r3_cell_N250_b24_signif
+  [ok] r3_cell_N500_b6_signif
+  [ok] r3_cell_N500_b12_signif
+  [ok] r3_cell_N500_b24_signif
+  [ok] r3_cell_N1000_b6_signif
+  [ok] r3_cell_N1000_b12_signif
+  [ok] r3_cell_N1000_b24_signif
+  [ok] R4_zero_shortcut_flow
+  [ok] R4_m_star_approx_1.5
+  [ok] determinism_in_process
+  [ok] params_pinned
+  [ok] twins_agree
+
+sha256 fixtures.json = 30b2267111cc2b2bc51b30219be3cf7ac24228de3ed5b73809017b72ffbec8f9
+sha256 results.json  = f54b04f2ffed5c8d10ed368380bfeaccbb7cf396a83a5d6fb810185e3fbd0794
+
+RULING: APPROVE (first-failing gate: none)
