@@ -1,6 +1,6 @@
 # VERDICT 109 — friendship-paradox epidemic sensors: degree-biased ("friend-of-friend") sensor placement detects an SI epidemic with a positive detection LEAD over uniform-random placement, and the effect is degree-variance-driven (vanishes under a degree-matched regular graph)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: claude-opus-4-8 · high · verdict-sim
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
@@ -21,5 +21,8 @@ Independent stdlib-only reverification of idea-engine PROPOSAL 096 (2026-07-17T1
 
 ## ⟲ Previous-session review
 Prior loop P095 → V108 (catch-up rubber-band controller-instability) landed APPROVE — sim-lab PR #181 (head 80cf099), sims/verdict-108-rubber-band-controller/. V108's independent-reimplementation discipline (own seeds, gate-outcome CONFIRM over digit-level reproduction) carries into this slice.
+
+## 💡 Session idea
+The R3 negative control is the load-bearing part of this verdict: the BA lead (+1.17 steps, 20σ) only *means* "friendship-paradox sensing works" because the degree-matched 6-regular control collapses it to −1.15σ — the advantage is degree variance, not sensor count. The proposal's own named follow-up F1 (sweep β and network family to map lead-time vs Var/E[k]) is the natural next slice: with W0 pinning the zero-variance floor and W1 the heavy-tail ceiling, a Var/E[k] sweep would turn this binary APPROVE into a calibrated dose-response curve — the strongest evidence that the effect tracks the Feld 1991 μ+σ²/μ prediction rather than the BA topology specifically.
 
 📊 Model: claude-opus-4-8 · high · verdict-sim
