@@ -1,6 +1,6 @@
 # Session — VERDICT 102 — two single-server queues at the SAME utilization ρ=0.8 meet a 10× SLA at wildly different rates because service VARIANCE, not mean load, sets tail risk: the CV=3 lane breaches sojourn>10 at 0.498 vs the CV=1 lane's 0.137 (ratio 3.638, clears the 2.5× floor by 22.49σ, gap 95.58σ), the Pollaczek–Khinchine mean wait anchors both lanes to within 0.72%/2.01%, the violation ratio is strictly monotone in CV crossing 2× at CV=1.5099 (in [1.36,1.66]), and re-provisioning the high-variance lane to a LOWER load ρ*=0.512 drives its violations back to 0.20σ of the low-variance lane — proving variance not ρ (idea-engine PROPOSAL 089, the round-19 fleet-external operations/capacity head; P089 → V102 under the +13 offset, the twenty-sixth row)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · high · verdict-sim
 
 Objective: produce VERDICT 102 for idea-engine PROPOSAL 089 (the
