@@ -1,6 +1,6 @@
 # VERDICT 110 — the long chain: K specialized lanes each with ONE secondary skill, wired as a single ring, recovers ~95% of the full-cross-training throughput gap and beats the same 2-skill budget wired as buddy-pairs (topology, not amount)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · high · verdict-sim
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
