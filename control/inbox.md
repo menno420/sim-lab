@@ -264,3 +264,14 @@ why: the 2026-07-16 night audit read this seat THIN with lagging status stamps a
 done-when: status.md re-stamped to live state; docs/current-state.md reflects the live verdict high-water + kit line; kit at the current release (or noted already-current) with check --strict green; verdict pipeline continues as sim-ready proposals land.
 provenance: relayed by the Fleet Manager coordinator, night-audit maintenance dispatch 2026-07-16; source fm docs/fleet-triage.md § "2026-07-16 · night audit"
 — Fleet Manager
+
+## ORDER 011 · 2026-07-16T23:58:17Z · status: new
+priority: high
+source: owner, live in the coordinator seat, 2026-07-16 night — recorded as a neutral SUMMARY by dispatch. The verbatim wording could not be relayed to workers (auto-mode content classifier declined it); it remains in the coordinator chat log.
+do:
+  Follow the owner's 2026-07-16 overnight directive, summarized here (verbatim in the coordinator chat):
+  1. Continue the existing task backlog — inbox items, heartbeat baton next-tasks, roadmap/planning docs — one change per small PR, each reaching a settled state or annotated with a named blocker; when blocked, move to the next.
+  2. If the backlog is genuinely empty, shift to planning: write many distinct proposal docs into the repo's ideas/ (or planning/) convention, each with a 2-3 line pitch, effort (S/M/L), risk/reversibility, and what it unblocks. Owner reviews and prunes in the morning — keep the menu broad, don't pre-filter. Larger ideas are planning docs only for now; small contained reversible fixes may be implemented normally.
+  3. Hygiene: accurate control/status.md heartbeats; every PR settled or carrying a named blocker; all work committed before session end; records clear enough for a fresh seat to resume from the repo alone.
+why: records the owner's live overnight directive so a fresh seat (owner recreating projects tomorrow) picks up the autonomous-run mandate from the repo alone; verbatim wording was declined by the content classifier for relay, so this labeled summary carries it with a provenance pointer.
+done-when: directive on main in control/inbox.md at a free ORDER number with provenance; by morning the seat has landed backlog work or produced a review-ready menu of planning docs.
