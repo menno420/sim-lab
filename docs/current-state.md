@@ -22,10 +22,10 @@ v1.7.0; `python3 bootstrap.py check --strict` exits 0.
 
 ## In flight
 
-> **Currency note (2026-07-16T21:26:22Z, V101 slice):** this section and
+> **Currency note (2026-07-17T01:05:51Z, V102 slice):** this section and
 > "Recently shipped" below summarize the session-2/3 seam only and are NOT
 > re-derived each verdict — the LIVE surfaces are the § Verdict-numbering map
-> below (extended through **V101**, high-water V101) and the coordinator
+> below (extended through **V102**, high-water V102) and the coordinator
 > heartbeat `control/status.md`. As of this stamp: VERDICT 097 (idea-engine PROPOSAL
 > 084, simpsons-paradox-aggregation-reversal — **REJECT**) rides sim-lab
 > PR #169 for merge-on-green; last shipped is #168 → 34ff0c9 (VERDICT 096,
@@ -500,6 +500,42 @@ From PROPOSAL 010 onward the offset is a constant +2.
   untouched. Note: ORDER-010(c) kit upgrade v1.15.0 → v1.18.0 remains **PARKED**
   on owner authorization (NOT executed by this verdict slice; carried forward per
   the V100 baton). Next expected: PROPOSAL 089 → **VERDICT 102** (P089 not yet
+  drafted at this refresh).
+- Extension (V102 slice, 2026-07-17): the +13 offset holds — PROPOSAL 089
+  (variance-blind-provisioning-trap) → **VERDICT 102** (APPROVE, first-failing-gate
+  None; verified at the live-outbox headers: newest `## VERDICT` was 101 at the
+  branch base origin/main 4ec111e — `## VERDICT 102` / `verdict-102` / `v102`
+  collision-grepped clean in control/outbox.md before the append (no ledger
+  header, no competing `sims/verdict-102-*` ledger claim, no competing remote
+  ref; the only prior "VERDICT 102" strings were the born-red session card
+  `.sessions/2026-07-17-verdict-102-variance-blind-provisioning-trap.md`, the V101
+  baton's next-2 pointer, and the control/status.md + this map's next-expected
+  lines — predictions + the card, not claims, per the V093 classification
+  doctrine) and re-checked at append time; no owner-direct or simreq interleave
+  occurred in this range). Gate outcomes: **R1 PASS** (trap effect: two lanes at
+  the SAME ρ=0.8 breach the 10× SLA at viol_A=0.136890 (CV=1) vs viol_B=0.498021
+  (CV=3), ratio 3.638115 clears the 2.5× floor by 22.49σ, gap 0.361131 separated
+  at 95.58σ), **R2 PASS** (P–K sanity: measured Wq 4.02873 vs PK 4.0 (rel-err
+  0.72%) and 19.59726 vs PK 20.0 (rel-err 2.01%), both ≤5% — else INVALID),
+  **R3 PASS** (dose-response ratio(CV)=viol(CV)/viol_A strictly monotone
+  1.0/1.984913/2.750624/3.296447/3.638115/3.976147 over CV∈{1.0,1.5,2.0,2.5,3.0,3.5},
+  adjacent separations 30.50/15.27/9.15/5.01/4.44σ all ≥3σ, 2× crossover CV=1.5099
+  in [1.36,1.66]), **R4 PASS** (provisioning correction: re-provisioned lane B*
+  ρ_B*=0.512/mean_s=0.64/CV=3 viol 0.136513, gap −0.000376 at 0.20σ from lane A,
+  ρ_B*=0.512<ρ_A=0.8) — all four gates pass → APPROVE. Mechanism: SLA-violation
+  risk is set by service-time VARIANCE, not mean utilization — two queues at the
+  same ρ meet a tail SLA at a ~3.6× different rate purely from CV, the penalty has
+  a dose-response in CV crossing 2× at CV≈1.51, and re-provisioning the
+  high-variance lane to a LOWER load restores parity. The measured table
+  reproduces the proposal's disclosed calibration (ratio≈3.67, crossover≈1.51, R4
+  gap≈+0.0001) to the book from an independent re-implementation. **Verdict
+  high-water is now V102.** V102 is SEEDLESS — the seeds are the in-file constants
+  S=[1001..1012] (two random.Random instances per arm, one service + one arrival),
+  NOT a ledger draw; no seed-ledger block consumed, the next free block stays
+  20261730, untouched. Note: ORDER-010(c) kit upgrade v1.15.0 → v1.18.0 remains
+  **PARKED** on owner authorization (NOT executed by this verdict slice; carried
+  forward per the V101 baton). Next expected: PROPOSAL 090 → **VERDICT 103** (the
+  next rotation slot, venture per fleet→venture→game→unrelated; P090 not yet
   drafted at this refresh).
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact

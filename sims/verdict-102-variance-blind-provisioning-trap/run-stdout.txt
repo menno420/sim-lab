@@ -1,0 +1,69 @@
+VERDICT-102 - variance-blind provisioning trap (P089)
+==================================================================================
+
+Pinned world: two single-server FCFS M/G/1 lanes; exact Lindley recursion
+  Wq_i=max(0,Wq_{i-1}+S_{i-1}-A_i), sojourn_i=Wq_i+S_i (Wq_1=0). lam=0.80, interarrival mean 1.2500.
+  N=200000 tasks/lane/rep, warmup=20000 (first 20000 excluded), R=12 reps, seeds S=[1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012].
+  SLA W_target=10.0; viol = fraction of post-warmup sojourn_i > 10.0. Service = balanced-means H2 (unified; CV=1 -> Exponential).
+  Pooling: per arm pooled mean over 12 rep-values; sample SD ddof=1; SE=SD/sqrt(12).
+
+H2 sampler params (CV=3.0, mean_s=1.0): p1=0.947214 m1=0.527864 m2=9.472136  E[S]=1.000000 E[S^2]=10.000000 CV=3.000000
+  expected 6dp: p1=0.947214 m1=0.527864 m2=9.472136 E[S]=1.000000 E[S^2]=10.000000 CV=3.000000 -> match True
+
+Per-arm results (viol = SLA-violation fraction; Wq = mean queue wait):
+  arm          CV     rho | viol_mean +/- SE           | Wq_mean +/- SE             | Wq_PK     
+  laneA       1.0   0.800 | +0.136890 +/- 0.001660  |    4.02873 +/-  0.02993 |   4.0000
+  cv1.5       1.5   0.800 | +0.271714 +/- 0.002948  |    6.58259 +/-  0.06910 |   6.5000
+  cv2.0       2.0   0.800 | +0.376532 +/- 0.002597  |   10.06266 +/-  0.12160 |  10.0000
+  cv2.5       2.5   0.800 | +0.451250 +/- 0.003036  |   14.50829 +/-  0.31281 |  14.5000
+  laneB       3.0   0.800 | +0.498021 +/- 0.003394  |   19.59726 +/-  0.27119 |  20.0000
+  cv3.5       3.5   0.800 | +0.544294 +/- 0.004138  |   26.42483 +/-  0.69439 |  26.5000
+  laneBstar   3.0   0.512 | +0.136513 +/- 0.000909  |    3.36346 +/-  0.02707 |   3.3574
+
+R1 trap effect (viol_B/viol_A >= 2.5 cleared by >=3 sigma; gap separated >=3 sigma):
+  viol_A=0.136890 (SE 0.001660)  viol_B=0.498021 (SE 0.003394)
+  ratio=3.638115 (SE 0.050604); clears k=2.5 by 22.49 sigma (need>=3) True
+  gap=0.361131 (SE 0.003778); gap separation 95.58 sigma (need>=3) True
+  R1 PASS
+
+R2 P-K sanity (|Wq_measured-Wq_PK|/Wq_PK <= 0.05 for BOTH lanes; else INVALID):
+  laneA Wq=4.02873 vs PK=4.0000  rel-err=0.0072  True
+  laneB Wq=19.59726 vs PK=20.0000  rel-err=0.0201  True
+  R2 PASS
+
+R3 dose-response (ratio(CV)=viol(CV)/viol_A, rho=0.8 fixed; monotone + adjacent >=3 sigma; 2x crossover in [1.36,1.66]):
+  CV    ratio          SE           adj-sep(sigma)
+  1.0   1.000000       0.000000                 
+  1.5   1.984913       0.032296     30.50       
+  2.0   2.750624       0.038371     15.27       
+  2.5   3.296447       0.045712     9.15        
+  3.0   3.638115       0.050604     5.01        
+  3.5   3.976147       0.056904     4.44        
+  monotone True ; all adjacent separations >=3 sigma True
+  2x crossover CV=1.5099 (band [1.36,1.66]) True
+  R3 PASS
+
+R4 provisioning correction / falsifier (re-provisioned lane B*, rho_B*=0.512<rho_A=0.8):
+  viol_A=0.136890  viol_B*=0.136513  gap*=-0.000376 (SE 0.001893)
+  |gap*| = 0.000376 <= 3*se_gap* = 0.005678 (0.20 sigma) True ; rho ordering 0.512<0.8 True
+  R4 PASS
+
+Twin evaluators: A(if-chain)=APPROVE/None  B(table)=APPROVE/None
+
+  [ok] pk_closed_form_known_points
+  [ok] h2_params_cv3_analytic_6dp
+  [ok] h2_params_cv1_degenerate
+  [ok] sampler_inline_matches_helper
+  [ok] R2_pk_anchor_laneA_within_5pct
+  [ok] R2_pk_anchor_laneB_within_5pct
+  [ok] R1_trap_effect
+  [ok] R3_dose_monotone_and_separated
+  [ok] R3_crossover_in_band
+  [ok] R4_correction_closes
+  [ok] twin_evaluators_agree
+  [ok] metric_task_count_180000
+  [ok] fixture_matches_committed
+  [ok] canonical_json_stable
+Self-checks: 14/14 passed
+
+VERDICT: APPROVE

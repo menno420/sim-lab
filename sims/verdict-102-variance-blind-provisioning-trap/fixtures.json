@@ -1,0 +1,137 @@
+{
+  "gate_thresholds": {
+    "crossover_band": [
+      1.36,
+      1.66
+    ],
+    "crossover_level": 2.0,
+    "k_ratio": 2.5,
+    "pk_tol": 0.05,
+    "rho_A": 0.8,
+    "rho_Bstar": 0.512,
+    "sep_min": 3.0
+  },
+  "h2_params": {
+    "laneA_cv1.0": {
+      "m1": 1.0,
+      "m2": 1.0,
+      "p1": 0.5,
+      "p2": 0.5
+    },
+    "laneB_cv3.0": {
+      "m1": 0.5278640450004206,
+      "m2": 9.472135954999567,
+      "p1": 0.9472135954999579,
+      "p2": 0.05278640450004213
+    }
+  },
+  "laneA_seed1001_first20_arrival_repr": [
+    "0.5862424442930466",
+    "0.12691005196580477",
+    "0.3472224878250215",
+    "0.5625367545320399",
+    "2.7271641546605307",
+    "4.131922557719239",
+    "5.7307958891013655",
+    "0.6534868949343051",
+    "3.7241002919364052",
+    "0.2987270262001127",
+    "0.1802562126219",
+    "2.0612189109558785",
+    "0.3245653935629608",
+    "0.8185651627274277",
+    "0.33916285089472537",
+    "1.5353626084570804",
+    "1.7260276749590986",
+    "2.494248947565753",
+    "0.532341810175502",
+    "0.5718546128796549"
+  ],
+  "laneA_seed1001_first20_service_repr": [
+    "1.2788398261607117",
+    "0.6366046009293905",
+    "0.8607961154591949",
+    "0.036222067328061706",
+    "0.18038857410680195",
+    "1.3989770573340152",
+    "0.5883732951488679",
+    "0.48773854529735067",
+    "0.11701862318457307",
+    "0.09277444099084686",
+    "0.6421811429171627",
+    "2.220699535959325",
+    "0.4477527499013655",
+    "0.843182423947066",
+    "0.4190461197769129",
+    "0.47995510600962116",
+    "3.194790774112681",
+    "1.5474078326005558",
+    "3.461247382320087",
+    "1.6818064328600535"
+  ],
+  "laneB_seed1001_first20_service_repr": [
+    "0.4097984573723072",
+    "0.47859497059143086",
+    "0.4827085372919114",
+    "0.2592629537756941",
+    "0.6835396375659503",
+    "1.0724669999816308",
+    "0.16791462397333318",
+    "0.05806203370885042",
+    "0.7985559597512156",
+    "0.15040465689554455",
+    "0.5248885357114603",
+    "0.4455962896265917",
+    "0.32784137540562375",
+    "1.8293308148907836",
+    "0.1887328689997992",
+    "1.2753540460361799",
+    "0.07220963024789379",
+    "0.23782646114326778",
+    "0.12988494020956606",
+    "0.04734979865004798"
+  ],
+  "n_metric_per_rep": 180000,
+  "pinned_world": {
+    "interarrival_mean": 1.25,
+    "lam": 0.8,
+    "mean_s_base": 1.0,
+    "model": "two single-server FCFS M/G/1 lanes; exact Lindley recursion Wq_i=max(0,Wq_{i-1}+S_{i-1}-A_i), sojourn_i=Wq_i+S_i; Wq_1=0",
+    "n_metric_per_rep": 180000,
+    "n_reps": 12,
+    "n_tasks": 200000,
+    "pooling": "per arm pooled mean over 12 rep-values; sample SD ddof=1; SE=SD/sqrt(12)",
+    "seeding": "service_seed = seed*7919 + round(CV*1000) + round(mean_s*1000)*7000003; arrival_seed = seed*104729 + round(mean_s*1000); two Random per arm",
+    "seeds": [
+      1001,
+      1002,
+      1003,
+      1004,
+      1005,
+      1006,
+      1007,
+      1008,
+      1009,
+      1010,
+      1011,
+      1012
+    ],
+    "service_sampler": "balanced-means 2-phase hyperexponential H2 (unified; CV=1 degenerates to Exponential); Exp(mean=m) = -m*log(1-u)",
+    "w_target": 10.0,
+    "warmup": 20000
+  },
+  "pk_anchors": {
+    "laneA": 4.000000000000001,
+    "laneB": 20.000000000000004,
+    "laneBstar": 3.3573770491803283
+  },
+  "preregistered_gates": {
+    "R1": "trap effect: ratio=viol_B/viol_A>=2.5 cleared by >=3 sigma AND gap=viol_B-viol_A separated >=3 sigma",
+    "R2": "P-K sanity: |Wq_measured-Wq_PK|/Wq_PK<=0.05 for BOTH lanes (else INVALID)",
+    "R3": "dose-response: ratio(CV)=viol(CV)/viol_A strictly monotone over CV in {1.0,1.5,2.0,2.5,3.0,3.5}, adjacent pairs >=3 sigma, 2x crossover in [1.36,1.66]",
+    "R4": "provisioning correction: |viol_B*-viol_A|<=3*se_gap* AND rho_B*=0.512<rho_A=0.8",
+    "decision_rule": "APPROVE iff R1 and R2 and R3 and R4 (order R1->R2->R3->R4); INVALID if non-deterministic or R2 off >5%; REJECT on R1/R4 hard-fail; NULL if R1 sub-threshold or R3 non-monotone/crossover"
+  },
+  "proposal": "## PROPOSAL 089 * 2026-07-16T22:04:51Z * status: sim-ready (idea-engine PROPOSAL 089, registered spec variance-blind-provisioning-trap-2026-07-16); offset +13 -> VERDICT 102",
+  "source": "scratchpad/v102 :: verdict-102-variance-blind-provisioning-trap"
+}
