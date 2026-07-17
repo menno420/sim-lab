@@ -921,3 +921,20 @@ measured: per-category horizon-sales mean (H=90, 400 reps), badge in []: idx0 T8
 recommendation: APPROVE — the badge-starvation inversion holds; the maximum-audience pond is dominated by an interior badgeable pond. **Recommended next: route P090 as a confirmed mechanism and open the follow-up variance-weighted category ALLOCATOR** (portfolio of titles across ponds under badge contention). (a) allocator follow-up [rec] (b) archive as standalone finding (c) hold for owner steer.
 codex: none this cycle (@codex step suspended — fabricated-reply incidents).
 gate: PASS (COMPARABLE — same pinned world, independent impl · ROBUST — 7/7 sweep interior + R4 control flips · REPRODUCIBLE — byte-identical double run, sha-pinned).
+
+## INTAKE 091 · 2026-07-17T06:06:17Z · source: idea-engine PROPOSAL 091 (2026-07-17T05:15:39Z, sim-ready)
+pulled: pity-timer anticipation collapse — does a gacha/loot pity ceiling K that guarantees a reward after K dry pulls maximize player retention at an INTERIOR K rather than the tightest? offset +13 (P091 ↔ V104).
+idea: https://github.com/menno420/idea-engine/blob/main/ideas/superbot-games/pity-anticipation-collapse-2026-07-17.md
+
+## VERDICT 104 · 2026-07-17T06:06:17Z · P091 (+13) · APPROVE
+ruling: APPROVE — all four pre-registered gates R1→R2→R3→R4 hold on the pinned world; twin evaluators agree APPROVE/None; 16/16 self-checks; double-run byte-identical.
+world: p=0.12, K-grid={2,3,4,5,6,7,8,9,10,11,12,14,16}, L0=6, a=0.03, c=0.14, N_REPS=30000, SEED=20260718, cap=8000. cycle L=min(Geom(p),K); L==K ⟺ forced ceiling reward; per-cycle quit hazard h(L)=min(1, a·max(0,L−L0)+c·1[L==K]); retention = reward-cycles survived before the quit.
+- R1 interior-dominates: argmax retention K*=6 (12.568) beats Kmin=2 (7.203) by 61.4σ and Kmax=16 (8.614) by 43.1σ. PASS.
+- R2 two-hazard peak: exact E[h_total](K)=a·E[max(0,L−L0)]+c·(1−p)^(K−1) strictly unimodal with unique min at interior K=6 (0.0739); E[h_frust]≡0 for all K≤L0=6 (tight-arm climb is pure boredom relief), strictly increasing for K>6. PASS.
+- R3 robust-interior: 9/9 worlds interior across p∈{0.10,0.12,0.15}×a∈{×0.8,×1.0,×1.2} — eight land K*=6, the ninth (p=0.15, a×0.8) lands K*=14, still strictly interior. PASS.
+- R4 dual-control: c=0 (boredom off) → interior peak vanishes, argmax collapses to tight endpoint K*=2 (K≤L0 arm saturates at cap, exact degeneracy); a=0 (frustration off) → argmax collapses to loose endpoint K*=16 at 31.6σ over K=14. PASS.
+cross-check: the independent stdlib reimplementation reproduces the proposal dry-sim retention sweep and exact-hazard surface to the decimal (K*=6→12.568; R1 61.4σ/43.1σ; R4 a=0 31.6σ; disclosed 61.41σ/43.06σ/31.56σ).
+finding (non-gating): the proposal's disclosed first-12 fixture anchor (K=6, rep0) L=[4,6,6,6,6,3,6,6,6,6,6,6] does NOT reproduce under the registered per-(K,rep) stream; the actual reproducible anchor is L=[4,6,6,6,4,6,6,6,6,6,6,5]. Aggregate retention/hazard reproduce exactly, so the mechanism verdict is unaffected — a proposal-side fixture transcription defect; the committed fixtures.json carries the actual anchor. Recommended: correct the proposal's disclosed anchor.
+sim: sims/verdict-104-pity-anticipation-collapse/ (pity_anticipation_collapse_sim.py + README + REPORT + fixtures.json + results.json + run-stdout.txt).
+digests: results.json sha256 7e8d0ac655799f8785b3767df1164ab101a58c71f71d5f0e4d6981cda55188a3; run-stdout.txt sha256 d42c63683827e259137080275e9ab3d05a0294b68fe822914db3047a1bd71e02; fixtures.json sha256 4697f91c2a62d8f17ab256fe63e38c8be1f7c1ea6d8c515cd439518bb6642717.
+PR: #177.
