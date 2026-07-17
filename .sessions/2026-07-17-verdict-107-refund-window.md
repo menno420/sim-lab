@@ -1,6 +1,6 @@
 # VERDICT 107 — Refund window as a conversion instrument: net revenue is non-monotone in refund-window length W, peaking at an INTERIOR window (W=13), the day before the window arms wardrobe abusers at W_abuse=14 — longer is not more revenue
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: claude-opus-4-8 · high · verdict-sim
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
