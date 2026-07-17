@@ -1,0 +1,169 @@
+{
+  "config": {
+    "CV_BAND": [
+      [
+        0.3,
+        20260716
+      ],
+      [
+        0.35,
+        20260717
+      ],
+      [
+        0.4,
+        20260719
+      ]
+    ],
+    "K": 12,
+    "LANE_CAP": 1.0,
+    "MEAN": 1.0,
+    "N_BOOT": 200,
+    "N_REPS": 20000,
+    "SD_BOUNDARY": 0.5,
+    "SD_MAIN": 0.35,
+    "SEED_BOUNDARY": 20260718,
+    "SEED_MAIN": 20260717
+  },
+  "cross_check_sd_050": {
+    "chain_recovery": 0.8536683018861426,
+    "mean_dedicated": 9.664220737220438,
+    "mean_fullflex": 11.35003470516484,
+    "mean_longchain": 11.103346684531475,
+    "note": "non-gating boundary disclosure",
+    "sd": 0.5,
+    "seed": 20260718
+  },
+  "cv_band": [
+    {
+      "chain_recovery": 0.9719626181522252,
+      "chain_recovery_bootstrap_sem": 0.0006114579295654332,
+      "mean_dedicated": 10.567031456519022,
+      "mean_fullflex": 11.587786605646793,
+      "mean_longchain": 11.559167303757615,
+      "sd": 0.3,
+      "seed": 20260716
+    },
+    {
+      "chain_recovery": 0.945998389981289,
+      "chain_recovery_bootstrap_sem": 0.0008546142436729388,
+      "mean_dedicated": 10.323680907596449,
+      "mean_fullflex": 11.513871496062785,
+      "mean_longchain": 11.449599288056486,
+      "sd": 0.35,
+      "seed": 20260717
+    },
+    {
+      "chain_recovery": 0.9154774595670193,
+      "chain_recovery_bootstrap_sem": 0.0011146448593437651,
+      "mean_dedicated": 10.093279494922742,
+      "mean_fullflex": 11.45364825182838,
+      "mean_longchain": 11.33866642856906,
+      "sd": 0.4,
+      "seed": 20260719
+    }
+  ],
+  "determinism": {
+    "double_run_byte_identical": true,
+    "results_sha256": "98908f05a6a2335071b2ab5916217778cddf4a3d6c200776803b941978b53918"
+  },
+  "edge_counts": {
+    "BUDDYPAIRS": 24,
+    "DEDICATED": 12,
+    "FULLFLEX": 144,
+    "LONGCHAIN": 24
+  },
+  "first_failing_gate": null,
+  "gates": {
+    "R1_chain_recovery": {
+      "N_BOOT": 200,
+      "bootstrap_sem": 0.0008546142436729388,
+      "margin_sigma": 53.82357048438409,
+      "pass": true,
+      "threshold": 0.9,
+      "value": 0.945998389981289
+    },
+    "R2_full_minus_dedicated": {
+      "margin_sigma": 300.61919227835864,
+      "note": "paired-difference SEM in served-fraction",
+      "pass": true,
+      "sem": 0.0002633981830592579,
+      "threshold": 0.02,
+      "value": 0.09918254903886135
+    },
+    "R3_longchain_minus_buddypairs": {
+      "margin_sigma": 210.9748077748196,
+      "note": "paired-difference SEM in served-fraction; identical 2K-edge budget",
+      "pass": true,
+      "sem": 0.00020285348448810807,
+      "threshold": 0.01,
+      "value": 0.05279697489633095
+    },
+    "R4_cv_band_min_recovery": {
+      "bootstrap_sem_at_min": 0.0011146448593437651,
+      "margin_sigma": 13.885552368788993,
+      "min_at_sd": 0.4,
+      "min_at_seed": 20260719,
+      "pass": true,
+      "threshold": 0.9,
+      "value": 0.9154774595670193
+    }
+  },
+  "ruling": "APPROVE",
+  "self_checks": {
+    "01_K_eq_12": true,
+    "02_N_REPS_eq_20000": true,
+    "03_SEED_MAIN_eq_20260717": true,
+    "04_LANE_CAP_eq_1": true,
+    "05_CV_BAND_len_3": true,
+    "06_feasibility_all_reps_all_structs": true,
+    "07_dominance_FULLFLEX_ge_LONGCHAIN": true,
+    "08_dominance_LONGCHAIN_ge_DEDICATED": true,
+    "09_dominance_BUDDYPAIRS_ge_DEDICATED": true,
+    "10_edges_LONGCHAIN_eq_BUDDYPAIRS_eq_2K": true,
+    "11_double_run_byte_identical": true,
+    "12_twin_evaluators_agree_within_1e-9": true,
+    "13_results_sha256_stable_across_double_run": true
+  },
+  "self_checks_passed": 13,
+  "spec_id": "VERDICT-110/PROPOSAL-097",
+  "structures": {
+    "BUDDYPAIRS": {
+      "mean_served": 10.816035589300594,
+      "mean_served_fraction": 0.9013362991083828,
+      "sem_served": 0.00501309632717478
+    },
+    "DEDICATED": {
+      "mean_served": 10.323680907596449,
+      "mean_served_fraction": 0.860306742299704,
+      "sem_served": 0.005000465805862739
+    },
+    "FULLFLEX": {
+      "mean_served": 11.513871496062785,
+      "mean_served_fraction": 0.9594892913385654,
+      "sem_served": 0.005031683467370319
+    },
+    "LONGCHAIN": {
+      "mean_served": 11.449599288056486,
+      "mean_served_fraction": 0.9541332740047072,
+      "sem_served": 0.0049873873758692925
+    }
+  },
+  "twin_evaluators": {
+    "A_impl": "Edmonds-Karp (BFS)",
+    "A_means": {
+      "BUDDYPAIRS": 10.816035589300594,
+      "DEDICATED": 10.323680907596449,
+      "FULLFLEX": 11.513871496062785,
+      "LONGCHAIN": 11.449599288056486
+    },
+    "B_impl": "Ford-Fulkerson (DFS)",
+    "B_means": {
+      "BUDDYPAIRS": 10.816035589300594,
+      "DEDICATED": 10.323680907596449,
+      "FULLFLEX": 11.513871496062785,
+      "LONGCHAIN": 11.449599288056486
+    },
+    "agree_within_1e-9": true,
+    "max_abs_delta": 0.0
+  }
+}
