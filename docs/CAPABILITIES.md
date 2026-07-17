@@ -156,6 +156,42 @@ as venue `any`.)
   `raw.githubusercontent.com` read of the same path returned HTTP 200 in the
   same session — the recorded raw bypass holds for fleet-manager reads
 
+- 2026-07-17 · wall · routine-fired · a successor seat booted by the "Ideas
+  Lab failsafe wake" cron in the `pinned-research` environment (no static
+  repo sources; repos added ad hoc via `add_repo`) found the ENTIRE GitHub
+  REST/GraphQL surface disabled for this session — not just PR creation ·
+  exact errors, three independent methods, all reproduced verbatim: (1)
+  `gh pr create` → "HTTP 403: This GraphQL query (RepositoryInfo, sent by
+  gh pr create/view (repo info preamble)) is not enabled for this session —
+  only the pinned set of PR-review operations is served. Use REST via `gh
+  api repos/{owner}/{repo}/...` instead."; (2) `gh api repos/.../pulls`
+  (POST) → "GitHub access is not enabled for this session. An org admin
+  must connect the Claude GitHub App for this organization." (HTTP 403);
+  (3) plain `curl -H "Authorization: Bearer $GH_TOKEN"` to both `POST
+  .../pulls` and `GET .../contents/control/status.md` → the identical
+  "GitHub access is not enabled for this session" message — so this is a
+  blanket REST/GraphQL disable, not an endpoint-specific one. A bare `GET
+  https://api.github.com/user` with the same token DID succeed (returned
+  the `menno420` identity), so the token itself is valid and *some* thin
+  read path is allowed; every write path (pulls, contents) and even the
+  read-only Contents API GET are refused · evidence: this session's own
+  transcript, 2026-07-17T19:5xZ, repo scope `menno420/idea-engine` +
+  `menno420/sim-lab` (both added via `add_repo` this session, no static
+  environment sources) · workaround: NONE found — `git clone`/`git push`
+  over the session's per-repo smart-HTTP proxy (`127.0.0.1:41729`) work
+  fine (this is how VERDICT-111's branch got pushed), so git-transport
+  writes are healthy; only the PR-open / any-REST-or-GraphQL step is
+  blocked. Matches the pre-existing "grant boundaries differ by venue"
+  wall above (routine-fired vs owner-live) but is a STRICTLY WORSE
+  instance of it: previously only PR-merge authority was venue-gated, now
+  PR-CREATION (and even Contents-API reads) are gated too for a
+  `routine-fired` seat in this specific environment. Net effect: a
+  failsafe-wake successor booted into `pinned-research` can verify,
+  simulate, and push branches, but cannot land anything — every slice
+  parks on a pushed-but-PR-less branch until an `owner-live` seat (or a
+  differently-provisioned venue) opens the PR. Filed as an owner-attention
+  item in the coordinator heartbeat once a landable venue is available.
+
 (Hand-filled by sessions, per the discovery rule. Seed rows above are
 kit-owned — they refresh at upgrade between the fence markers; local
 findings go here, below the fence. NOTE, disclosed at the 2026-07-14 ORDER

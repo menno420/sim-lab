@@ -1,9 +1,20 @@
 # VERDICT 111 — the referral bonus that maximizes viral coefficient R0 is strictly larger than the one that maximizes profit, so tuning for maximum virality overspends
 
-> **Status:** `in-progress`
+> **Status:** `parked — verified, unlandable this session`
 > 📊 Model: claude-sonnet-5 · high · verdict-sim
 
-Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
+Born in-progress as this session's first commit (born-red HOLD). PARKED, not
+flipped to complete: the sim is written, run, and verified (all 3 gates
+PASS, twins agree, 9/9 self-checks, byte-identical double run), and this
+branch is pushed to origin — but this session's GitHub REST/GraphQL access
+is disabled end-to-end (see `docs/CAPABILITIES.md` 2026-07-17 append: `gh
+pr create`, `gh api .../pulls`, and even a Contents-API GET all refuse with
+"GitHub access is not enabled for this session"). No PR could be opened, so
+nothing can land this session. git-transport push/clone works fine (that's
+how this branch exists on origin). Next session/venue with working GitHub
+REST access: open the PR from this branch as-is (claim + sim + results are
+already committed), verify the gates once more if you like, then flip this
+card to complete as the normal last step.
 
 ## Objective
 Independent stdlib-only reverification of idea-engine PROPOSAL 098 (2026-07-17T~15:47Z, sim-ready), offset +13 (P098 → V111), the round-22 venture slot: under a subcritical Galton-Watson referral cascade with a saturating per-attempt conversion probability q(b) and a bonus paid per successful referral, does profit Pi(b) peak at an INTERIOR bonus b*=4.5 whose viral coefficient R0=0.671 is strictly below the R0-maximizing bonus b_viral=8.0 (R0=0.736) — i.e. is "tune the referral bonus for maximum virality" a value trap that strictly overspends relative to the profit-optimal bonus?
