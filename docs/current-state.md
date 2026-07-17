@@ -25,7 +25,7 @@ v1.7.0; `python3 bootstrap.py check --strict` exits 0.
 > **Currency note (2026-07-17T01:05:51Z, V102 slice):** this section and
 > "Recently shipped" below summarize the session-2/3 seam only and are NOT
 > re-derived each verdict — the LIVE surfaces are the § Verdict-numbering map
-> below (extended through **V102**, high-water V102) and the coordinator
+> below (extended through **V104**, high-water V104) and the coordinator
 > heartbeat `control/status.md`. As of this stamp: VERDICT 097 (idea-engine PROPOSAL
 > 084, simpsons-paradox-aggregation-reversal — **REJECT**) rides sim-lab
 > PR #169 for merge-on-green; last shipped is #168 → 34ff0c9 (VERDICT 096,
@@ -538,6 +538,7 @@ From PROPOSAL 010 onward the offset is a constant +2.
   next rotation slot, venture per fleet→venture→game→unrelated; P090 not yet
   drafted at this refresh).
 - P090→V103 (+13, twenty-seventh row): big-pond badge-starvation inversion; APPROVE (R1 242.8σ / R2 445.2σ / R4 50.2σ, R3 7/7 interior); collision-grep clean; sim-lab PR #176.
+- P091↔V104 (+13, twenty-eighth row): pity-timer anticipation collapse; APPROVE (R1 61.4σ / R2 exact-hazard unimodal min K=6 / R4 c=0→K*=2, a=0→31.6σ; R3 9/9 interior); sim-lab PR #177.
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 

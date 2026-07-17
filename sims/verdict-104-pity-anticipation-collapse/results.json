@@ -1,0 +1,391 @@
+{
+  "anchor": {
+    "first12_L": [
+      4,
+      6,
+      6,
+      6,
+      4,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      5
+    ],
+    "first12_ceiling": [
+      false,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "k": 6,
+    "rep": 0
+  },
+  "anchor_reconciliation": {
+    "anchor_L_matches_disclosed": false,
+    "anchor_ceiling_matches_disclosed": false,
+    "computed_anchor_L": [
+      4,
+      6,
+      6,
+      6,
+      4,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      5
+    ],
+    "computed_anchor_ceiling": [
+      false,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    "disclosed_anchor_L": [
+      4,
+      6,
+      6,
+      6,
+      6,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "disclosed_anchor_ceiling": [
+      false,
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "note": "proposal-disclosed anchor does not reproduce under the registered per-(K,rep) stream; committed fixture carries the actual anchor; aggregate retention reproduces the dry-sim exactly, so the mechanism verdict is unaffected"
+  },
+  "first_failing_gate": null,
+  "fixtures_sha256": "4697f91c2a62d8f17ab256fe63e38c8be1f7c1ea6d8c515cd439518bb6642717",
+  "gates": {
+    "R1": {
+      "argmax_k": 6,
+      "passed": true,
+      "sep_vs_kmax": 43.06409601485653,
+      "sep_vs_kmin": 61.412833969990324
+    },
+    "R2": {
+      "argmin_k": 6,
+      "frust_inc_loose": true,
+      "frust_zero_tight": true,
+      "passed": true,
+      "unimodal": true,
+      "unique_min": true
+    },
+    "R3": {
+      "n_interior": 9,
+      "passed": true,
+      "worlds": [
+        {
+          "a_scale": 0.8,
+          "argmax_k": 6,
+          "interior": true,
+          "p": 0.1
+        },
+        {
+          "a_scale": 1.0,
+          "argmax_k": 6,
+          "interior": true,
+          "p": 0.1
+        },
+        {
+          "a_scale": 1.2,
+          "argmax_k": 6,
+          "interior": true,
+          "p": 0.1
+        },
+        {
+          "a_scale": 0.8,
+          "argmax_k": 6,
+          "interior": true,
+          "p": 0.12
+        },
+        {
+          "a_scale": 1.0,
+          "argmax_k": 6,
+          "interior": true,
+          "p": 0.12
+        },
+        {
+          "a_scale": 1.2,
+          "argmax_k": 6,
+          "interior": true,
+          "p": 0.12
+        },
+        {
+          "a_scale": 0.8,
+          "argmax_k": 14,
+          "interior": true,
+          "p": 0.15
+        },
+        {
+          "a_scale": 1.0,
+          "argmax_k": 6,
+          "interior": true,
+          "p": 0.15
+        },
+        {
+          "a_scale": 1.2,
+          "argmax_k": 6,
+          "interior": true,
+          "p": 0.15
+        }
+      ]
+    },
+    "R4": {
+      "a0_argmax_k": 16,
+      "a0_sep_over_k14": 31.555088803570438,
+      "c0_argmax_k": 2,
+      "passed": true
+    }
+  },
+  "per_k": [
+    {
+      "e_bore": 0.12320000000000002,
+      "e_frust": 0.0,
+      "e_total": 0.12320000000000002,
+      "k": 2,
+      "retention_mean": 7.203166666666666,
+      "se": 0.04444219657077145
+    },
+    {
+      "e_bore": 0.10841600000000001,
+      "e_frust": 0.0,
+      "e_total": 0.10841600000000001,
+      "k": 3,
+      "retention_mean": 8.199633333333333,
+      "se": 0.049997270900848094
+    },
+    {
+      "e_bore": 0.09540608,
+      "e_frust": 0.0,
+      "e_total": 0.09540608,
+      "k": 4,
+      "retention_mean": 9.4351,
+      "se": 0.05766084154471136
+    },
+    {
+      "e_bore": 0.0839573504,
+      "e_frust": 0.0,
+      "e_total": 0.0839573504,
+      "k": 5,
+      "retention_mean": 10.925,
+      "se": 0.06585795630760274
+    },
+    {
+      "e_bore": 0.073882468352,
+      "e_frust": 0.0,
+      "e_total": 0.073882468352,
+      "k": 6,
+      "retention_mean": 12.568033333333334,
+      "se": 0.07520777759913694
+    },
+    {
+      "e_bore": 0.06501657214976,
+      "e_frust": 0.01393212260352,
+      "e_total": 0.07894869475328001,
+      "k": 7,
+      "retention_mean": 11.6045,
+      "se": 0.07038804370378114
+    },
+    {
+      "e_bore": 0.05721458349178881,
+      "e_frust": 0.0261923904946176,
+      "e_total": 0.08340697398640641,
+      "k": 8,
+      "retention_mean": 10.970566666666667,
+      "se": 0.06556323467122994
+    },
+    {
+      "e_bore": 0.05034883347277415,
+      "e_frust": 0.03698142623878349,
+      "e_total": 0.08733025971155764,
+      "k": 9,
+      "retention_mean": 10.48,
+      "se": 0.06330122178336499
+    },
+    {
+      "e_bore": 0.04430697345604125,
+      "e_frust": 0.04647577769364947,
+      "e_total": 0.09078275114969073,
+      "k": 10,
+      "retention_mean": 9.9825,
+      "se": 0.06086506888372168
+    },
+    {
+      "e_bore": 0.03899013664131631,
+      "e_frust": 0.054830806973931535,
+      "e_total": 0.09382094361524784,
+      "k": 11,
+      "retention_mean": 9.522466666666666,
+      "se": 0.058147974963081314
+    },
+    {
+      "e_bore": 0.034311320244358345,
+      "e_frust": 0.06218323274057975,
+      "e_total": 0.09649455298493809,
+      "k": 12,
+      "retention_mean": 9.282,
+      "se": 0.05642396840908408
+    },
+    {
+      "e_bore": 0.026570686397231102,
+      "e_frust": 0.07434708592892256,
+      "e_total": 0.10091777232615366,
+      "k": 14,
+      "retention_mean": 8.9646,
+      "se": 0.05446115216589095
+    },
+    {
+      "e_bore": 0.020576339546015766,
+      "e_frust": 0.08376677383797522,
+      "e_total": 0.10434311338399099,
+      "k": 16,
+      "retention_mean": 8.6145,
+      "se": 0.05265067115004624
+    }
+  ],
+  "self_checks": [
+    {
+      "name": "R1 argmax_k == 6 (interior)",
+      "ok": true
+    },
+    {
+      "name": "R1 sep vs Kmin >= 3sigma",
+      "ok": true
+    },
+    {
+      "name": "R1 sep vs Kmax >= 3sigma",
+      "ok": true
+    },
+    {
+      "name": "R2 exact hazard unimodal",
+      "ok": true
+    },
+    {
+      "name": "R2 unique min at K=6",
+      "ok": true
+    },
+    {
+      "name": "R2 E[h_frust]==0 for all K<=L0",
+      "ok": true
+    },
+    {
+      "name": "R2 E[h_frust] strictly increasing for K>L0",
+      "ok": true
+    },
+    {
+      "name": "retention peak (R1) coincides with hazard trough (R2) at K=6",
+      "ok": true
+    },
+    {
+      "name": "E[h_bore](K=2) ~ 0.1232",
+      "ok": true
+    },
+    {
+      "name": "E[h_total](K=6) is the surface minimum",
+      "ok": true
+    },
+    {
+      "name": "R3 9/9 worlds interior",
+      "ok": true
+    },
+    {
+      "name": "R4 c=0 argmax == Kmin=2 (peak vanishes)",
+      "ok": true
+    },
+    {
+      "name": "R4 a=0 argmax == Kmax=16 (loose endpoint)",
+      "ok": true
+    },
+    {
+      "name": "R4 a=0 sep over K=14 >= 3sigma",
+      "ok": true
+    },
+    {
+      "name": "c=0 K<=L0 tight arm saturates at CAP (degeneracy)",
+      "ok": true
+    },
+    {
+      "name": "twins agree on verdict + first-failing gate",
+      "ok": true
+    }
+  ],
+  "self_checks_passed": 16,
+  "self_checks_total": 16,
+  "twin": {
+    "agree": true,
+    "ifchain": [
+      "APPROVE",
+      null
+    ],
+    "table": [
+      "APPROVE",
+      null
+    ]
+  },
+  "verdict": "APPROVE",
+  "world": {
+    "L0": 6,
+    "a": 0.03,
+    "c": 0.14,
+    "cap": 8000,
+    "k_grid": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      16
+    ],
+    "kmax": 16,
+    "kmin": 2,
+    "n_reps": 30000,
+    "p": 0.12,
+    "seed": 20260718
+  }
+}
