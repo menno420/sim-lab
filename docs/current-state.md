@@ -537,6 +537,7 @@ From PROPOSAL 010 onward the offset is a constant +2.
   forward per the V101 baton). Next expected: PROPOSAL 090 → **VERDICT 103** (the
   next rotation slot, venture per fleet→venture→game→unrelated; P090 not yet
   drafted at this refresh).
+- P090→V103 (+13, twenty-seventh row): big-pond badge-starvation inversion; APPROVE (R1 242.8σ / R2 445.2σ / R4 50.2σ, R3 7/7 interior); collision-grep clean; sim-lab PR #176.
 
 ## SIM-REQUEST intake namespace (`simreq-NNN`) — neutral fact
 
