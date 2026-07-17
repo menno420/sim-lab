@@ -1,0 +1,36 @@
+==============================================================================
+THE GROWTH CASH-TROUGH TRAP  --  sim-lab verifier
+==============================================================================
+Parameters (pinned):
+  SEED=20260717  T=24  A0=10.0  M=10.0  c=0.1 (s=0.9)  CAC=60.0
+  N_REPS=4000  K0(start capital)=3000.0  growth sweep=[1.05, 1.08, 1.15, 1.3]
+  LTV = m/c = 100.0   per-customer profit (untruncated) = LTV-CAC = 40.0
+  g_crit = CAC*s/(CAC-m) = 1.080000   (g<g_crit recovers; g>g_crit permanent burn)
+  cohort-0 truncated profit pi0(T) = m*(1-s^T)/c - CAC = 32.023356  (>0, identical across g)
+  g_low=1.05 (< g_crit)   g_high=1.3 (> g_crit)
+
+Running Monte-Carlo (4000 trajectories x 4 growth levels)...
+  g=1.05 : mean_trough=      -3064.51 (se      6.69)  ruin_p=0.533  fluid_kstar=11 fluid_C*=    -2713.71  pi0= 32.278(se 0.385)
+  g=1.08 : mean_trough=      -5071.33 (se     13.95)  ruin_p=0.998  fluid_kstar=23 fluid_C*=    -4601.17  pi0= 33.000(se 0.386)
+  g=1.15 : mean_trough=     -29062.01 (se     26.91)  ruin_p=1.000  fluid_kstar=23 fluid_C*=   -29096.34  pi0= 31.711(se 0.372)
+  g=1.3  : mean_trough=    -498627.20 (se     82.16)  ruin_p=1.000  fluid_kstar=23 fluid_C*=  -498721.23  pi0= 31.706(se 0.382)
+
+==============================================================================
+PRE-REGISTERED GATES
+==============================================================================
+  G1 cash-trough trap: trough(g_high) more negative than trough(g_low) by >=3 sigma
+     trough_low =-3064.51  trough_high=-498627.20  gap=495562.69  z=6011.93 -> PASS
+  G2 identical positive unit economics (control):
+     pi0 anchor low |z|=0.66 high |z|=0.83 (<3)  positivity low z=83.87 high z=83.00 (>=3)  low-vs-high |z|=1.05 (<3)  -> PASS
+  G3 fluid anchor MATCH at fluid trough period:
+     g=1.05 k*=11: sim C*=-2719.87 vs analytic -2713.71 |z|=0.89
+     g=1.3 k*=23: sim C*=-498627.20 vs analytic -498721.23 |z|=1.14
+     -> PASS
+
+  ALL GATES PASS: True
+==============================================================================
+
+RESULTS DICT:
+{"analytic":{"LTV":100.0,"g_crit":1.08,"pi0_truncated":32.02335569231275,"profit_untruncated":40.0},"gates":{"G1_trough_trap":{"pass":true,"trough_high":-498627.1975,"trough_low":-3064.5075,"z_sigma":6011.929420851079},"G2_unit_economics":{"pass":true,"pi0_analytic":32.02335569231275,"z_high_anchor":0.8300998306097453,"z_high_pos":82.99842460055233,"z_low_anchor":0.6621821131853776,"z_low_pos":83.87079955707293,"z_low_vs_high":1.0547547671335669},"G3_fluid_anchor":{"high":{"abs_z":1.144549482225757,"analytic":-498721.23167958367,"g":1.3,"kstar":23,"sim":-498627.1975},"low":{"abs_z":0.8861956441670499,"analytic":-2713.710129069742,"g":1.05,"kstar":11,"sim":-2719.87}},"G3_pass":true,"all_pass":true},"levels":{"1.05":{"mean_c0_profit":32.278200610964625,"mean_trough":-3064.5075,"ruin_prob":0.53275,"se_c0_profit":0.3848562405679673,"se_trough":6.686508185059284},"1.08":{"mean_c0_profit":33.0003905729097,"mean_trough":-5071.3275,"ruin_prob":0.998,"se_c0_profit":0.38636248142051066,"se_trough":13.954116597923496},"1.15":{"mean_c0_profit":31.71092704966597,"mean_trough":-29062.0075,"ruin_prob":1.0,"se_c0_profit":0.37214830619406564,"se_trough":26.91470901990839},"1.3":{"mean_c0_profit":31.706249047335675,"mean_trough":-498627.1975,"ruin_prob":1.0,"se_c0_profit":0.38201025139849076,"se_trough":82.15824745365595}},"params":{"A0":10.0,"CAC":60.0,"C_CHURN":0.1,"GROWTHS":[1.05,1.08,1.15,1.3],"G_HIGH":1.3,"G_LOW":1.05,"K0":3000.0,"M":10.0,"N_REPS":4000,"SEED":20260717,"S_SURV":0.9,"T":24}}
+
+Results-dict sha256: 5e6b4ce7cf3a58e6c5fa912ee5365ff4152c162818113320a8c2332195bc4d95
