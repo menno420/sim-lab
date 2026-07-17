@@ -1,0 +1,339 @@
+{
+  "baseline": [
+    {
+      "W": 0,
+      "arms": false,
+      "buyers_mean": 149.51,
+      "conv": 0.03,
+      "idx": 0,
+      "mean_netrev": 5980.4,
+      "p_honest": 0.0,
+      "refunds_mean": 0.0,
+      "se": 24.497753976123743
+    },
+    {
+      "W": 3,
+      "arms": false,
+      "buyers_mean": 209.1275,
+      "conv": 0.041804080208620996,
+      "idx": 1,
+      "mean_netrev": 7924.9,
+      "p_honest": 0.28346868942621073,
+      "refunds_mean": 11.005,
+      "se": 27.551182263385282
+    },
+    {
+      "W": 6,
+      "arms": false,
+      "buyers_mean": 245.285,
+      "conv": 0.04896361676485673,
+      "idx": 2,
+      "mean_netrev": 8933.4,
+      "p_honest": 0.486582880967408,
+      "refunds_mean": 21.95,
+      "se": 27.56866296984426
+    },
+    {
+      "W": 9,
+      "arms": false,
+      "buyers_mean": 266.1375,
+      "conv": 0.053306095195547104,
+      "idx": 3,
+      "mean_netrev": 9415.6,
+      "p_honest": 0.6321205588285577,
+      "refunds_mean": 30.7475,
+      "se": 29.954880021337623
+    },
+    {
+      "W": 12,
+      "arms": false,
+      "buyers_mean": 280.3275,
+      "conv": 0.055939941502901616,
+      "idx": 4,
+      "mean_netrev": 9686.7,
+      "p_honest": 0.7364028618842733,
+      "refunds_mean": 38.16,
+      "se": 30.729114389742783
+    },
+    {
+      "W": 13,
+      "arms": false,
+      "buyers_mean": 282.8475,
+      "conv": 0.05656323468021937,
+      "idx": 5,
+      "mean_netrev": 9740.3,
+      "p_honest": 0.7641229170143,
+      "refunds_mean": 39.34,
+      "se": 30.201325719047794
+    },
+    {
+      "W": 14,
+      "arms": true,
+      "buyers_mean": 285.72,
+      "conv": 0.05709084096406784,
+      "idx": 6,
+      "mean_netrev": 8859.9,
+      "p_honest": 0.7889279122089098,
+      "refunds_mean": 64.2225,
+      "se": 28.420049666699107
+    },
+    {
+      "W": 18,
+      "arms": true,
+      "buyers_mean": 293.735,
+      "conv": 0.05850638794896408,
+      "idx": 7,
+      "mean_netrev": 8940.1,
+      "p_honest": 0.8646647167633873,
+      "refunds_mean": 70.2325,
+      "se": 28.317568517031823
+    },
+    {
+      "W": 30,
+      "arms": true,
+      "buyers_mean": 299.2725,
+      "conv": 0.05979786159002744,
+      "idx": 8,
+      "mean_netrev": 8884.4,
+      "p_honest": 0.9643260066527476,
+      "refunds_mean": 77.1625,
+      "se": 28.42942455364033
+    }
+  ],
+  "first_failing_gate": null,
+  "fixtures_sha256": "7447b8d4faedc86437bbbb1c28384f54106ae7a9ba5a50404d39ddd8714c5895",
+  "gates": {
+    "R1": {
+      "argmax_W": 13,
+      "argmax_idx": 5,
+      "interior": true,
+      "margin_vs_W0": 96.68588087033272,
+      "margin_vs_W30": 20.63546861313943,
+      "pass": true
+    },
+    "R2": {
+      "conv_W13": 0.05656323468021937,
+      "conv_W14": 0.05709084096406784,
+      "conv_higher_at_armed": true,
+      "margin": 21.22944423501686,
+      "netrev_W13": 9740.3,
+      "netrev_W14": 8859.9,
+      "pass": true
+    },
+    "R3": {
+      "pass": true,
+      "sweep": [
+        {
+          "argmax_W": 13,
+          "argmax_idx": 5,
+          "interior": true,
+          "kind": "phi",
+          "value": 0.06
+        },
+        {
+          "argmax_W": 13,
+          "argmax_idx": 5,
+          "interior": true,
+          "kind": "phi",
+          "value": 0.07
+        },
+        {
+          "argmax_W": 13,
+          "argmax_idx": 5,
+          "interior": true,
+          "kind": "phi",
+          "value": 0.08
+        },
+        {
+          "argmax_W": 12,
+          "argmax_idx": 4,
+          "interior": true,
+          "kind": "phi",
+          "value": 0.09
+        },
+        {
+          "argmax_W": 13,
+          "argmax_idx": 5,
+          "interior": true,
+          "kind": "phi",
+          "value": 0.1
+        },
+        {
+          "argmax_W": 13,
+          "argmax_idx": 5,
+          "interior": true,
+          "kind": "rho_mult",
+          "value": 0.8
+        },
+        {
+          "argmax_W": 13,
+          "argmax_idx": 5,
+          "interior": true,
+          "kind": "rho_mult",
+          "value": 1.2
+        }
+      ]
+    },
+    "R4": {
+      "argmax_W": 0,
+      "argmax_idx": 0,
+      "margin": 9.688336973876856,
+      "pass": true
+    }
+  },
+  "knockout_dC0": [
+    {
+      "W": 0,
+      "idx": 0,
+      "mean_netrev": 6002.4,
+      "se": 24.889643144079006
+    },
+    {
+      "W": 3,
+      "idx": 1,
+      "mean_netrev": 5672.2,
+      "se": 23.283108853732074
+    },
+    {
+      "W": 6,
+      "idx": 2,
+      "mean_netrev": 5452.7,
+      "se": 22.10902071536596
+    },
+    {
+      "W": 9,
+      "idx": 3,
+      "mean_netrev": 5330.3,
+      "se": 23.289068826748796
+    },
+    {
+      "W": 12,
+      "idx": 4,
+      "mean_netrev": 5201.1,
+      "se": 21.89716167047788
+    },
+    {
+      "W": 13,
+      "idx": 5,
+      "mean_netrev": 5151.0,
+      "se": 22.663662634491033
+    },
+    {
+      "W": 14,
+      "idx": 6,
+      "mean_netrev": 4649.6,
+      "se": 22.032320755987666
+    },
+    {
+      "W": 18,
+      "idx": 7,
+      "mean_netrev": 4548.4,
+      "se": 20.8631680108423
+    },
+    {
+      "W": 30,
+      "idx": 8,
+      "mean_netrev": 4419.0,
+      "se": 21.061968480907165
+    }
+  ],
+  "mc_vs_analytic_max_relerr": 0.0041082711257374865,
+  "self_checks": [
+    {
+      "name": "conv(0)==c0",
+      "pass": true
+    },
+    {
+      "name": "conv-monotone-increasing",
+      "pass": true
+    },
+    {
+      "name": "conv-bounded-by-c0+dC",
+      "pass": true
+    },
+    {
+      "name": "p_honest(0)==0",
+      "pass": true
+    },
+    {
+      "name": "p_honest-monotone",
+      "pass": true
+    },
+    {
+      "name": "MC-vs-analytic-relerr<1.5%",
+      "pass": true
+    },
+    {
+      "name": "baseline-argmax-interior",
+      "pass": true
+    },
+    {
+      "name": "abuse-arms-at-W>=14",
+      "pass": true
+    },
+    {
+      "name": "W0-refunds~0",
+      "pass": true
+    },
+    {
+      "name": "all-SE-positive",
+      "pass": true
+    },
+    {
+      "name": "buyers~A*conv",
+      "pass": true
+    },
+    {
+      "name": "analytic-argmax==W13-interior",
+      "pass": true
+    },
+    {
+      "name": "analytic-abuse-cliff",
+      "pass": true
+    },
+    {
+      "name": "analytic-knockout-argmax==W0",
+      "pass": true
+    },
+    {
+      "name": "twins-agree",
+      "pass": true
+    }
+  ],
+  "twin": {
+    "agree": true,
+    "ifchain": [
+      "APPROVE",
+      null
+    ],
+    "table": [
+      "APPROVE",
+      null
+    ]
+  },
+  "verdict": "APPROVE",
+  "world": {
+    "A": 5000,
+    "C0": 0.03,
+    "DC": 0.03,
+    "DVAL": 0.2,
+    "N_REPS": 400,
+    "P": 40.0,
+    "PHI": 0.08,
+    "RHO": 0.1111111111111111,
+    "SEED": 20260717,
+    "TAU": 6.0,
+    "W_ABUSE": 14,
+    "W_GRID": [
+      0,
+      3,
+      6,
+      9,
+      12,
+      13,
+      14,
+      18,
+      30
+    ]
+  }
+}

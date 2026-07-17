@@ -972,3 +972,20 @@ finding (non-gating): the HOT branch is the retry-storm attractor at x=λ/(1−r
 sim: sims/verdict-106-metastable-retry-storm-collapse/ (metastable_retry_storm_sim.py + README + REPORT + fixtures.json + results.json + run-stdout.txt).
 digests: results.json sha256 3a1cb3c6…; run-stdout.txt sha256 d87e1dc8…; fixtures.json sha256 c475f3ec….
 PR: #179.
+
+## INTAKE 107 · 2026-07-17T11:04:27Z · source: idea-engine PROPOSAL 094 (2026-07-17T09:48:38Z, sim-ready)
+pulled: refund window as a conversion instrument — net revenue non-monotone in refund-window length; safety-net conversion lift saturates while refund cost step-jumps once the window arms wardrobe abusers at W_abuse=14, so the net-revenue-maximizing window is INTERIOR (W=13, day before the extraction threshold). offset +13 (P094 ↔ V107, P094 → V107).
+idea: https://github.com/menno420/idea-engine/blob/main/ideas/venture-lab/refund-window-abuse-threshold-2026-07-17.md
+
+## VERDICT 107 · 2026-07-17T11:04:27Z · P094 (+13) · APPROVE
+ruling: APPROVE — interior net-revenue optimum confirmed at W=13; all four pre-registered gates pass in order R1→R2→R3→R4, verdict never softened.
+world: W=[0,3,6,9,12,13,14,18,30] days, P=40.0, A=5000 views/rep, conv(W)=c0+dC(1−e^−W/τ) c0=0.030 dC=0.030 τ=6.0; per converted buyer abuser φ=0.08 else dissatisfied d=0.20 (honest refund iff Exp(ρ=1/9) realization t≤W) else satisfied; wardrobe abuse refunds iff W≥W_abuse=14; NR/rep=P·(buyers−refunds); N_REPS=400 SEED=20260717; stdlib-only sha256-keyed streams.
+- R1 interior optimum: PASS — argmax mean-netrev at W=13 (interior idx5), beats W=0 by 96.7σ and W=30 by 20.6σ (need ≥3σ).
+- R2 abuse cliff: PASS — last-safe W=13 nets $9740.30 vs first-armed W=14 $8859.90 by 21.2σ despite HIGHER conversion at W=14 (0.05656→0.05709); the +φ=0.08 wardrobe-refund step swamps the conversion gain.
+- R3 sweep robustness: PASS — argmax stays interior at all 7 sweep points (φ∈{0.06,0.07,0.08,0.09,0.10}, ρ×{0.8,1.2}); φ=0.09 tips one grid point left to W=12 (still interior), rest W=13.
+- R4 dC=0 knockout: PASS — removing conversion lift returns argmax to W=0 by 9.7σ (folk monotone restored), isolating the lift as the cause of the interior optimum.
+cross-check: independent stdlib reimplementation — aggregated exact-binomial (geometric-gap sampling) vs the proposal's per-buyer Bernoulli loop; gate outcomes converge with the proposal's disclosed dry-sim (R1 93.3σ/21.7σ, R2 20.7σ, R4 9.2σ) while the results digest deliberately differs from c3cfdae… (independent draws). MC-vs-analytic max rel-err 0.4108% (band 1.5%). Twin evaluators (if-chain + table) agree APPROVE/None; 15/15 self-checks.
+finding (non-gating): the conversion gain from W=13→W=14 (+0.00053) is real but the wardrobe-abuse step (+φ=0.08 of buyers refunding) drops net ≈$880/rep across the threshold; the φ=0.09 sweep tips the argmax one grid point left to W=12 — a disclosed <1σ neighbor, still interior — matching the proposal's near-tie disclosure.
+sim: sims/verdict-107-refund-window-abuse-threshold/ (refund_window_sim.py + README/REPORT + fixtures/results/run-stdout; `python3 refund_window_sim.py`, stdlib only, byte-identical double run).
+digests: results.json sha256 0d7cfe5c0157e22310f44c86ff79db3ca22deb39e9ace36814d3cd749141ac16; run-stdout.txt sha256 53ac627969291ecd01fac8405eb726ac82221973c7cf4588bcd71d3b871b84e2; fixtures.json sha256 7447b8d4faedc86437bbbb1c28384f54106ae7a9ba5a50404d39ddd8714c5895.
+PR: #180
