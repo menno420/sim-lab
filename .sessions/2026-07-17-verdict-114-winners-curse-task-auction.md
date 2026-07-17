@@ -1,6 +1,6 @@
 # VERDICT 114 — the winner's-curse task auction: when N agents compete to CLAIM a common-value task from unbiased-but-noisy private signals s_i = V + e_i and the highest signal wins, winning is itself information — the winner is the agent whose noise was the LARGEST of N draws, so E[e_winner] = E[max of N noises] > 0 — and an agent that commits resources sized to its OWN estimate (bid = signal) overpays by that order-statistic bias and earns NEGATIVE expected profit despite every individual estimate being unbiased; the cure is to SHADE the bid down by the expected winning-noise w·(N−1)/(N+1), which restores break-even and grows with N (P101, +13)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · medium · review/verify
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the verdict artifacts + heartbeat.
