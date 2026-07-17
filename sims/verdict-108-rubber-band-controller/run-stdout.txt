@@ -1,0 +1,99 @@
+==========================================================================================
+VERDICT-108  /  PROPOSAL-095  --  rubber-band as proportional feedback controller
+==========================================================================================
+MODEL:  g(t+1) = g(t) + F - k*g(t-d) - beta*(g(t)-g(t-1)) + eps,  eps~N(0,sigma^2)
+PARAMS: F=1.0 (s=0.5), sigma=1.0, T=4000, burn=1000, G_CAP=1e+06, N_REPS=400, seed=20260717
+
+------------------------------------------------------------------------------------------
+MAIN base sweep (d=0, beta=0):  k | E(k) +/- se | lead_change | skill_fid | var_meas | var_analytic | div_frac
+------------------------------------------------------------------------------------------
+  k=0.2   | E=0.00204 +/-0.00007 | lc=0.0020 | sf=1.0000 | var=2.7763 | ana=2.7778 | div=0.000
+  k=0.4   | E=0.03276 +/-0.00024 | lc=0.0343 | sf=0.9775 | var=1.5606 | ana=1.5625 | div=0.000
+  k=0.6   | E=0.09131 +/-0.00034 | lc=0.1003 | sf=0.9550 | var=1.1887 | ana=1.1905 | div=0.000
+  k=0.8   | E=0.13980 +/-0.00035 | lc=0.1792 | sf=0.8900 | var=1.0400 | ana=1.0417 | div=0.000
+  k=1.0   | E=0.15656 +/-0.00033 | lc=0.2654 | sf=0.7950 | var=0.9997 | ana=1.0000 | div=0.000
+  k=1.2   | E=0.22478 +/-0.00035 | lc=0.3597 | sf=0.8125 | var=1.0447 | ana=1.0417 | div=0.000
+  k=1.4   | E=0.21754 +/-0.00027 | lc=0.4580 | sf=0.7375 | var=1.1914 | ana=1.1905 | div=0.000
+  k=1.6   | E=0.19540 +/-0.00021 | lc=0.5664 | sf=0.6725 | var=1.5664 | ana=1.5625 | div=0.000
+  k=1.8   | E=0.18190 +/-0.00017 | lc=0.6996 | sf=0.6300 | var=2.7811 | ana=2.7778 | div=0.000
+  k=1.9   | E=0.15806 +/-0.00012 | lc=0.7903 | sf=0.6000 | var=5.2891 | ana=5.2632 | div=0.000
+  k=1.95  | E=0.15747 +/-0.00013 | lc=0.8512 | sf=0.5925 | var=10.2130 | ana=10.2564 | div=0.000
+  k=2.05  | E=0.00000 +/-0.00000 | lc=0.0000 | sf=0.4525 | var=   n/a   | ana=   n/a   | div=1.000
+  k=2.2   | E=0.00000 +/-0.00000 | lc=0.0000 | sf=0.5175 | var=   n/a   | ana=   n/a   | div=1.000
+
+------------------------------------------------------------------------------------------
+[R1] interior optimum beats both endpoints by >=3 sigma
+     argmax k = 1.2  E=0.22478 +/- 0.00035  interior=True
+     endpoint k=0.2 : E=0.00204 +/- 0.00007  margin=632.53 sigma
+     endpoint k=2.2 : E=0.00000 +/- 0.00000  margin=649.63 sigma
+     R1 => PASS
+
+------------------------------------------------------------------------------------------
+[R2] instability cliff at k=2 + variance formula
+  (a) diverged_frac k=2.05=1.000  k=2.2=1.000  => PASS
+  (b) last-stable 1.95 E=0.15747 vs first-above-2 2.05 E=0.00000  margin=1231.13 sigma  => PASS
+  (c) Var(g) vs sigma^2/(k(2-k)) on stable arm:
+        k=0.2   meas=2.7763 ana=2.7778 rel_err=0.00054
+        k=0.4   meas=1.5606 ana=1.5625 rel_err=0.00123
+        k=0.6   meas=1.1887 ana=1.1905 rel_err=0.00145
+        k=0.8   meas=1.0400 ana=1.0417 rel_err=0.00156
+        k=1.0   meas=0.9997 ana=1.0000 rel_err=0.00030
+        k=1.2   meas=1.0447 ana=1.0417 rel_err=0.00289
+        k=1.4   meas=1.1914 ana=1.1905 rel_err=0.00078
+        k=1.6   meas=1.5664 ana=1.5625 rel_err=0.00248
+        k=1.8   meas=2.7811 ana=2.7778 rel_err=0.00120
+        k=1.9   meas=5.2891 ana=5.2632 rel_err=0.00494
+        k=1.95  meas=10.2130 ana=10.2564 rel_err=0.00423
+      max rel_err=0.00494 (<0.05?)  => PASS
+  cliff bracket: last_stable=2.0 first_divergent=2.05 (analytic boundary k=2)
+     R2 => PASS
+
+------------------------------------------------------------------------------------------
+[R3] delay d=1 : Jury boundary k=1 (HALVED from 2), interior argmax
+     boundary bracket: last_stable=1.0 first_divergent=1.05  (predicted k=1)  ok=True
+     argmax k=0.8  E=0.13835  interior=True
+     s-sweep argmax (s=0.3,0.5,0.7 -> F=0.6,1.0,1.4): [0.6, 0.8, 0.8]  all_interior=True
+        s=0.3 F=0.6: argmax_k=0.6 E=0.11119 interior=True
+        s=0.5 F=1.0: argmax_k=0.8 E=0.14516 interior=True
+        s=0.7 F=1.4: argmax_k=0.8 E=0.13551 interior=True
+     R3 => PASS
+
+------------------------------------------------------------------------------------------
+[R4] dual control
+  (a) skill-off s=0 (F=0) collapses E: max|E| across grid = 0.01625 (~0?)  => PASS
+        (skill_fidelity at k=1.0 with F=0 = 0.4928 ~ 0.5 as expected)
+  (b) beta-sweep divergence onset vs k_crit=2-2*beta:
+        beta=0.0   predicted k_crit=2.0  measured bracket=(2.0, 2.05)  ok=True
+        beta=0.5   predicted k_crit=1.0  measured bracket=(1.0, 1.05)  ok=True
+        beta=-0.5  predicted k_crit=3.0  measured bracket=(3.0, 3.05)  ok=True
+     R4a => PASS   R4b => PASS
+
+------------------------------------------------------------------------------------------
+TWIN EVALUATORS: if-chain=('CONFIRMED', None)  data-driven=('CONFIRMED', None)  AGREE=True
+
+------------------------------------------------------------------------------------------
+SELF-CHECKS (15/15 passed):
+     ok  01_fixture_anchor
+     ok  02_base_is_AR1
+     ok  03_d1_uses_prev
+     ok  04_beta_form
+     ok  05_rng_reproducible
+     ok  06_var_formula_pos
+     ok  07_lc_in_range
+     ok  08_sf_in_range
+     ok  09_sgn
+     ok  10_diverged_lc0
+     ok  11_stable_no_div
+     ok  12_digest_repro
+     ok  13_twin_agree
+     ok  14_grid_endpoints
+     ok  15_gcap_detect
+
+------------------------------------------------------------------------------------------
+DETERMINISM DIGEST run#1 = a9da1284653ec66777d72bee6135a2459e3d44a3ead4e565325eb09619719625
+DETERMINISM DIGEST run#2 = a9da1284653ec66777d72bee6135a2459e3d44a3ead4e565325eb09619719625
+DIGESTS IDENTICAL = True
+
+==========================================================================================
+FINAL VERDICT: CONFIRMED
+==========================================================================================
