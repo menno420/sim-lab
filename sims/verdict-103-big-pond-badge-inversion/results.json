@@ -1,0 +1,329 @@
+{
+  "control_per_category": [
+    {
+      "T": 800,
+      "badge": 0,
+      "index": 0,
+      "mean": 1167.0425,
+      "sd": 33.46379023500221,
+      "se": 1.6731895117501103
+    },
+    {
+      "T": 1000,
+      "badge": 0,
+      "index": 1,
+      "mean": 1349.8725,
+      "sd": 37.15551877161683,
+      "se": 1.8577759385808417
+    },
+    {
+      "T": 1200,
+      "badge": 0,
+      "index": 2,
+      "mean": 1529.9325,
+      "sd": 41.81883524445662,
+      "se": 2.090941762222831
+    },
+    {
+      "T": 1400,
+      "badge": 0,
+      "index": 3,
+      "mean": 1710.975,
+      "sd": 41.11222339257148,
+      "se": 2.055611169628574
+    },
+    {
+      "T": 1600,
+      "badge": 0,
+      "index": 4,
+      "mean": 1888.63,
+      "sd": 43.89361826405719,
+      "se": 2.1946809132028595
+    },
+    {
+      "T": 1800,
+      "badge": 0,
+      "index": 5,
+      "mean": 2073.96,
+      "sd": 44.1817095487105,
+      "se": 2.209085477435525
+    },
+    {
+      "T": 2000,
+      "badge": 0,
+      "index": 6,
+      "mean": 2248.03,
+      "sd": 48.97719893008984,
+      "se": 2.4488599465044922
+    },
+    {
+      "T": 2200,
+      "badge": 0,
+      "index": 7,
+      "mean": 2426.8275,
+      "sd": 50.93966890765044,
+      "se": 2.546983445382522
+    },
+    {
+      "T": 2400,
+      "badge": 0,
+      "index": 8,
+      "mean": 2609.9775,
+      "sd": 52.235556637150744,
+      "se": 2.611777831857537
+    }
+  ],
+  "first_failing_gate": null,
+  "fixtures_sha256": "7e32097aa001aa52cdf193c53fb216ebf59708d165b497f10ff1ffd99d78c6c8",
+  "gates": {
+    "R1": {
+      "argmax": 3,
+      "beats_index": 8,
+      "passed": true,
+      "sep_sigma": 242.84984033953222
+    },
+    "R2": {
+      "first_unbadged": 4,
+      "last_badged": 3,
+      "passed": true,
+      "sep_sigma": 445.22721802556197,
+      "traffic_more_at_unbadged": true
+    },
+    "R3": {
+      "passed": true,
+      "points": [
+        {
+          "argmax": 3,
+          "interior": true,
+          "label": "b=1.0"
+        },
+        {
+          "argmax": 3,
+          "interior": true,
+          "label": "b=1.25"
+        },
+        {
+          "argmax": 3,
+          "interior": true,
+          "label": "b=1.5"
+        },
+        {
+          "argmax": 3,
+          "interior": true,
+          "label": "b=1.75"
+        },
+        {
+          "argmax": 3,
+          "interior": true,
+          "label": "b=2.0"
+        },
+        {
+          "argmax": 3,
+          "interior": true,
+          "label": "g*0.9"
+        },
+        {
+          "argmax": 2,
+          "interior": true,
+          "label": "g*1.1"
+        }
+      ]
+    },
+    "R4": {
+      "argmax": 8,
+      "passed": true,
+      "runner_up": 7,
+      "sep_sigma": 50.20445259936327
+    }
+  },
+  "per_category": [
+    {
+      "T": 800,
+      "badge": 1,
+      "index": 0,
+      "mean": 2251.2625,
+      "sd": 46.69491011155085,
+      "se": 2.3347455055775423
+    },
+    {
+      "T": 1000,
+      "badge": 1,
+      "index": 1,
+      "mean": 2700.9325,
+      "sd": 54.447721068690576,
+      "se": 2.722386053434529
+    },
+    {
+      "T": 1200,
+      "badge": 1,
+      "index": 2,
+      "mean": 3153.4725,
+      "sd": 52.23015620110648,
+      "se": 2.611507810055324
+    },
+    {
+      "T": 1400,
+      "badge": 1,
+      "index": 3,
+      "mean": 3605.625,
+      "sd": 63.64681191282613,
+      "se": 3.1823405956413064
+    },
+    {
+      "T": 1600,
+      "badge": 0,
+      "index": 4,
+      "mean": 1894.335,
+      "sd": 43.110195980692716,
+      "se": 2.1555097990346357
+    },
+    {
+      "T": 1800,
+      "badge": 0,
+      "index": 5,
+      "mean": 2071.6125,
+      "sd": 48.377249191622816,
+      "se": 2.418862459581141
+    },
+    {
+      "T": 2000,
+      "badge": 0,
+      "index": 6,
+      "mean": 2251.35,
+      "sd": 48.879551208207594,
+      "se": 2.4439775604103797
+    },
+    {
+      "T": 2200,
+      "badge": 0,
+      "index": 7,
+      "mean": 2424.73,
+      "sd": 46.94178231936123,
+      "se": 2.3470891159680614
+    },
+    {
+      "T": 2400,
+      "badge": 0,
+      "index": 8,
+      "mean": 2613.5725,
+      "sd": 51.22616561738393,
+      "se": 2.5613082808691963
+    }
+  ],
+  "self_checks": [
+    {
+      "name": "badge_vector == [1,1,1,1,0,0,0,0,0]",
+      "ok": true
+    },
+    {
+      "name": "crossover_index == 4",
+      "ok": true
+    },
+    {
+      "name": "main argmax interior",
+      "ok": true
+    },
+    {
+      "name": "main argmax == last_badged idx3",
+      "ok": true
+    },
+    {
+      "name": "R1 passed",
+      "ok": true
+    },
+    {
+      "name": "R1 sep >= 3",
+      "ok": true
+    },
+    {
+      "name": "R2 passed",
+      "ok": true
+    },
+    {
+      "name": "R2 unbadged pond has more traffic",
+      "ok": true
+    },
+    {
+      "name": "R2 sep >= 3",
+      "ok": true
+    },
+    {
+      "name": "R3 all sweep points interior (7)",
+      "ok": true
+    },
+    {
+      "name": "R4 control argmax == max-audience idx8",
+      "ok": true
+    },
+    {
+      "name": "R4 sep >= 3",
+      "ok": true
+    },
+    {
+      "name": "control badge all zero",
+      "ok": true
+    },
+    {
+      "name": "twins agree",
+      "ok": true
+    }
+  ],
+  "self_checks_passed": 14,
+  "self_checks_total": 14,
+  "twin": {
+    "agree": true,
+    "ifchain": [
+      "APPROVE",
+      null
+    ],
+    "table": [
+      "APPROVE",
+      null
+    ]
+  },
+  "verdict": "APPROVE",
+  "world": {
+    "C": 9,
+    "H": 90,
+    "T": [
+      800,
+      1000,
+      1200,
+      1400,
+      1600,
+      1800,
+      2000,
+      2200,
+      2400
+    ],
+    "b_nominal": 1.5,
+    "badge": [
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "crossover_index": 4,
+    "g": [
+      6,
+      9,
+      13,
+      18,
+      24,
+      31,
+      39,
+      48,
+      58
+    ],
+    "max_audience_index": 8,
+    "n_reps": 400,
+    "p0": 0.01,
+    "seed": 20260717,
+    "v0": 5.0
+  }
+}
