@@ -938,3 +938,20 @@ finding (non-gating): the proposal's disclosed first-12 fixture anchor (K=6, rep
 sim: sims/verdict-104-pity-anticipation-collapse/ (pity_anticipation_collapse_sim.py + README + REPORT + fixtures.json + results.json + run-stdout.txt).
 digests: results.json sha256 7e8d0ac655799f8785b3767df1164ab101a58c71f71d5f0e4d6981cda55188a3; run-stdout.txt sha256 d42c63683827e259137080275e9ab3d05a0294b68fe822914db3047a1bd71e02; fixtures.json sha256 4697f91c2a62d8f17ab256fe63e38c8be1f7c1ea6d8c515cd439518bb6642717.
 PR: #177.
+
+## INTAKE 092 · 2026-07-17T07:40:55Z · source: idea-engine PROPOSAL 092 (2026-07-17T06:59:49Z, sim-ready)
+pulled: Braess's paradox in selfish task routing — does adding a free A→B shortcut to a congested 4-node network RAISE everyone's greedy-equilibrium latency (~1.5→~2.0), with a monotone dose-response in shortcut cost s that vanishes above an interior threshold s*, while a social-optimum router refuses the shortcut? offset +13 (P092 ↔ V105).
+idea: https://github.com/menno420/idea-engine/blob/main/ideas/fleet/braess-selfish-routing-trap-2026-07-17.md
+
+## VERDICT 105 · 2026-07-17T07:40:55Z · P092 (+13) · APPROVE
+ruling: APPROVE — all four pre-registered gates R1→R2→R3→R4 hold on the pinned world; twin evaluators agree APPROVE/None; 19/19 self-checks; double-run byte-identical. Independent stdlib reimplementation (agent-level stochastic logit with inertia), not the proposal's dry-sim.
+world: nodes {S,A,B,T}; legs S→A=x_SA, S→B=1, A→T=1, B→T=x_BT, shortcut A→B=s; N=1000, β=12.0, damped-logit α=0.10, R=120, statistic=mean realized latency over last 30 rounds; N_SEEDS=30, SEED_BASE=20260719; s-grid {0.0..1.2 step 0.1}; R3 grid N∈{250,500,1000}×β∈{6,12,24}; social-opt grid step 0.001; SIG=3.0σ.
+- R1 paradox-exists: at s=0 μ_open=1.761316 > μ_closed=1.500109, gap=+0.261206 at z=501.1σ ≥ 3σ. PASS.
+- R2 dose-response: excess(s) monotone non-increasing (max upward violation 0.000000 ≤ 1e-2); significance crosses below 3σ at interior s*=1.1676 (z 5.92σ@s=1.1 → 1.60σ@s=1.2), 0<s*<1.2. PASS.
+- R3 robustness: all 9 N×β cells at s=0 show the paradox, same sign (positive), min z=122.1σ (cell N=250,β=6) ≥ 3σ. PASS.
+- R4 social-optimum control: planner minimizing mean latency with the shortcut open returns p*=0.5, zero shortcut flow (f_Z*=0), M*=1.500 ≤ μ_closed. The paradox is a selfish-routing artifact; the social optimum refuses the edge. PASS.
+cross-check: convergent with the proposal dry-sim on the core paradox — μ_open 1.76132 vs 1.76083, μ_closed 1.50011 vs 1.50010, gap +0.2612 vs +0.2607, R4 zero-flow identical. Divergent (expected, independent dynamics): z magnitudes higher (501σ vs 355σ; R3 min 122σ vs 135σ) and s*=1.168 vs 1.095 — both interior, gate outcomes identical. CONFIRM, not digit-reproduction.
+finding (non-gating): the equilibrium sits at μ≈1.76, below the pure-Nash collapse of 2.0 — logit β=12 leaves ~28% of agents on the two direct routes; the paradox is real but softened by bounded rationality.
+sim: sims/verdict-105-braess-selfish-routing-trap/ (braess_selfish_routing_sim.py + README + REPORT + fixtures.json + results.json + run-stdout.txt).
+digests: results.json sha256 f54b04f2…; run-stdout.txt sha256 09c2da90…; fixtures.json sha256 30b22671….
+PR: #178.
