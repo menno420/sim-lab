@@ -1,0 +1,47 @@
+{
+  "all_pass": true,
+  "gates": {
+    "G1_value_trap": {
+      "pass": true,
+      "z": 167.96
+    },
+    "G2_interior": {
+      "pass": true,
+      "z_vs_max": 282.75,
+      "z_vs_zero": 153.35
+    },
+    "G3_anchor_match": {
+      "pass": true,
+      "z": 0.06
+    }
+  },
+  "params": {
+    "C": 0.05,
+    "GRID_STEP": 0.01,
+    "K": 3,
+    "N": 100000,
+    "R_MAX": 500,
+    "SEED": 20260717,
+    "TAU_GREEDY": 0.95,
+    "TAU_MAX": 0.99
+  },
+  "policy": {
+    "U_star_analytic": 0.854918,
+    "tau_star": 0.8
+  },
+  "results_sha256": "7d7d7ad834978e75508c0c645935d6214b97550328d07c19d5b88130c662622b",
+  "sim": {
+    "U_greedy": 0.676363,
+    "U_max": -0.632192,
+    "U_star": 0.854837,
+    "U_zero": 0.750851,
+    "rerolls_analytic": 1.04918,
+    "rerolls_star": 1.04947,
+    "se_greedy": 0.001021,
+    "se_max": 0.005251,
+    "se_rerolls_star": 0.004612,
+    "se_star": 0.000293,
+    "se_zero": 0.000612
+  }
+}
+Results-JSON sha256: 7d7d7ad834978e75508c0c645935d6214b97550328d07c19d5b88130c662622b
