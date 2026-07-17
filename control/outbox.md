@@ -955,3 +955,20 @@ finding (non-gating): the equilibrium sits at μ≈1.76, below the pure-Nash col
 sim: sims/verdict-105-braess-selfish-routing-trap/ (braess_selfish_routing_sim.py + README + REPORT + fixtures.json + results.json + run-stdout.txt).
 digests: results.json sha256 f54b04f2…; run-stdout.txt sha256 09c2da90…; fixtures.json sha256 30b22671….
 PR: #178.
+
+## INTAKE 093 · 2026-07-17T09:10:32Z · source: idea-engine PROPOSAL 093 (2026-07-17T08:24:57Z, sim-ready)
+pulled: Retry-amplified metastable overload collapse — does a lane pool held at ~60% utilization become BISTABLE above a critical retry-aggressiveness r_c≈0.57, so a transient load blip tips it into a self-sustaining retry storm that persists after load returns to baseline (hysteresis, width ≈56), and is the fix a retry BUDGET (a cap that eliminates the HOT fixed point) rather than more lanes? source: idea-engine PROPOSAL 093 · 2026-07-17T08:24:57Z · status: sim-ready, target sim-lab. offset +13 (P093 ↔ V106, P093 → V106).
+idea: https://github.com/menno420/idea-engine/blob/main/ideas/fleet/metastable-retry-storm-collapse-2026-07-17.md
+
+## VERDICT 106 · 2026-07-17T09:10:32Z · P093 (+13) · APPROVE
+ruling: APPROVE — all four pre-registered gates R1→R2→R3→R4 hold on the pinned world (first-failing gate: none); twin evaluators agree APPROVE/None; twin root-finders and twin fold-finders cross-check within tolerance; 25/25 self-checks; double-run byte-identical. Independent stdlib-only mean-field reimplementation (root-solve + stochastic map), not the proposal's dry-sim.
+world: c=100 lanes; p(x)=p0+(1−p0)·σ(k·(u−θ)), u=x/c, p0=0.02, k=12.0, θ=1.05; balance F(x)=λ+r·p(x)·x−x. Pinned r=0.85, λ=60 (disclosed correction 70→60); retry-budget cap b=0.20; SEED_BASE=20260721; SIG=3.0σ; stochastic run N_REP=24 × T_STEPS=400, window 120. Tolerances (pre-registered): COLD∈[55,70], HOT∈[380,420], WIDTH_TARGET=56 ±2.0, RC_TARGET=0.566 ±0.02, |HOT−x*|≤0.5.
+- R1 bistability: (a) exactly 3 roots — COLD x=61.31 (u=0.613, stable), MIDDLE x=104.75 (unstable), HOT x=400.00 (u=4.0, stable) = λ/(1−r), HOT coincides with the collapsed mean-field to 4e-7. (b) seeded stochastic run: started-COLD u=0.6146 ± 0.0035 vs started-HOT u=3.9922 ± 0.0535, separation 308.82σ ≥ 3.0σ. PASS.
+- R2 hysteresis: adiabatic folds λ_up=78.07 (COLD fold), λ_down=22.68 (HOT fold), width=55.39 (|55.391−56|=0.609 ≤ 2.0); coexistence at operating point λ=60 confirmed (λ_down<60<λ_up and 3 roots). PASS.
+- R3 retry-lever: fold width monotone non-decreasing in r (max downward drop 0.000000); r_c=0.5642 (|0.5642−0.566|=0.0018 ≤ 0.02) where λ_down(r) crosses the operating point λ=60; onset clean — every grid r below r_c monostable at the operating point, every r above bistable. PASS.
+- R4 knockout: retry-budget cap b=0.20 binds when r·p·x>b·λ=12. Uncapped: 3 roots, HOT present. Capped: 1 root at x=61.31 (u=0.613), HOT eliminated — monostable. The fix is a retry budget, not more lanes. PASS.
+cross-check: convergent with the proposal dry-sim on every structural claim — bistability with COLD≈61 / HOT≈400 split by an unstable middle; hysteresis width 55.39 vs claimed ≈56 (λ_up 78.07 vs ≈78.5, λ_down 22.68 vs ≈22.5); r_c 0.5642 vs claimed ≈0.566; retry-budget cap eliminates the HOT fixed point. Independent reimplementation (twin root-finders); the stdout digest INTENTIONALLY differs from the proposal's disclosed db7d7fcc… — CONFIRM of gate outcomes, not digit-level reproduction.
+finding (non-gating): the HOT branch is the retry-storm attractor at x=λ/(1−r)=400 — at u=4 essentially every attempt fails (p≈1) so inflow r·p·x self-sustains regardless of the p0 floor. Adding lanes rescales u but leaves the λ/(1−r) collapse intact; only a retry budget (cap on r·p·x) removes the second attractor. The op-margin 60−λ_down(r) is a reusable knob for how deep a load trough must go before a stormed pool self-recovers.
+sim: sims/verdict-106-metastable-retry-storm-collapse/ (metastable_retry_storm_sim.py + README + REPORT + fixtures.json + results.json + run-stdout.txt).
+digests: results.json sha256 3a1cb3c6…; run-stdout.txt sha256 d87e1dc8…; fixtures.json sha256 c475f3ec….
+PR: #179.

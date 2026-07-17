@@ -1,0 +1,82 @@
+VERDICT 106 - Retry-amplified metastable overload collapse (idea-engine PROPOSAL 093)
+world: c=100 p0=0.02 k=12.0 theta=1.05 r=0.85 lambda=60.0 b=0.2 SEED_BASE=20260721 SIG=3.0
+
+fixed points of F(x)=lambda+r*p(x)*x-x  (roots=3)
+   name         x        u=x/c   dF/dx      stability
+   COLD   61.310829   0.613108   -0.946564   stable
+   MIDDLE 104.747677   1.047477   2.044240   unstable
+   HOT    400.000000   4.000000   -0.150000   stable
+   x* mean-field = lambda/(1-r) = 400.000000  (HOT-x* = -0.000000)
+
+R1a bistability structure -> PASS
+R1b stochastic (24 reps x 400 steps): cold u=0.614568+-0.003480  hot u=3.992182+-0.053468  sep=308.819169 sigma -> PASS
+R1 -> PASS
+
+R2 hysteresis: lambda_up=78.069505 lambda_down=22.678586 width=55.390919 (target 56.0 +-2.0)
+   root-count twin: lambda_up=78.000000 lambda_down=22.750000 ; coexist@lambda=60: True
+R2 -> PASS
+
+R3 retry-lever sweep
+      r      width    lam_up   lam_down   op_margin  op_bistable
+    0.30   0.770576   89.064205   88.293629   0.000000   N
+    0.35   3.465886   87.192196   83.726310   0.000000   N
+    0.40   7.040485   85.702655   78.662170   0.000000   N
+    0.45   11.189438   84.447538   73.258101   0.000000   N
+    0.50   15.766053   83.356215   67.590162   0.000000   N
+    0.55   20.684631   82.387235   61.702604   0.000000   N
+    0.60   25.890747   81.513649   55.622902   4.377098   Y
+    0.65   31.348736   80.716763   49.368027   10.631973   Y
+    0.70   37.035712   79.983008   42.947296   17.052704   Y
+    0.75   42.938801   79.302185   36.363384   23.636616   Y
+    0.80   49.054562   78.666422   29.611860   30.388140   Y
+    0.85   55.390919   78.069505   22.678586   37.321414   Y
+    0.90   61.974317   77.506436   15.532119   44.467881   Y
+    0.95   68.875724   76.973136   8.097412   51.902588   Y
+   width monotone (max drop 0.000000<=1e-06): True ; op-margin monotone (max drop 0.000000): True
+   r_c (op-point bistability onset, lambda_down=60) = 0.564155 (target 0.566 +-0.02)
+R3 -> PASS
+
+R4 knockout (retry budget cap b=0.2, binds at r*p*x > 12.000000)
+   uncapped roots=3 (HOT present=True) ; capped roots=1 (HOT present=False)
+   capped fixed point x=61.310829 (u=0.613108)
+R4 -> PASS
+
+gates:
+  R1 passed=True
+  R2 passed=True
+  R3 passed=True
+  R4 passed=True
+
+twins: ifchain=('APPROVE', None) table=('APPROVE', None) agree=True
+
+self-checks 25/25
+  [ok] twin_roots_agree
+  [ok] three_fixed_points
+  [ok] cold_near_61
+  [ok] hot_equals_xstar_400
+  [ok] cold_stable
+  [ok] hot_stable
+  [ok] middle_unstable
+  [ok] Fprime_analytic_vs_numeric_cold
+  [ok] Fprime_analytic_vs_numeric_middle
+  [ok] Fprime_analytic_vs_numeric_hot
+  [ok] stochastic_separation_ge_SIG
+  [ok] stochastic_cold_healthy
+  [ok] stochastic_hot_collapsed
+  [ok] folds_twin_agree
+  [ok] width_near_56
+  [ok] coexist_at_lam60
+  [ok] width_monotone_in_r
+  [ok] op_margin_monotone_in_r
+  [ok] rc_near_0566
+  [ok] rc_onset_clean
+  [ok] cap_eliminates_hot
+  [ok] uncapped_hot_present
+  [ok] determinism_in_process
+  [ok] params_pinned
+  [ok] twins_agree
+
+sha256 fixtures.json = c475f3ec6bb5fa890b6344504bde4b57986447be219361efa0d1a3090e685336
+sha256 results.json  = 3a1cb3c6e69990f5c6d873e0e23883fac0d4c0e3b3842224277680e05220a6eb
+
+RULING: APPROVE (first-failing gate: none)
