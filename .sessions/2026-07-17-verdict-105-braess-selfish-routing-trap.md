@@ -1,6 +1,6 @@
 # VERDICT 105 — Braess's paradox in selfish task routing: a free shortcut raises everyone's greedy-equilibrium latency
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · high · verdict-sim
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
