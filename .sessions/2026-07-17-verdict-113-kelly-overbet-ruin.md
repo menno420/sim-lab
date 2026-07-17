@@ -1,6 +1,6 @@
 # VERDICT 113 — the Kelly overbet ruin: in repeated even-money multiplicative betting on a favorable coin (p=0.6), staking a fraction f grows the ENSEMBLE (arithmetic-mean) wealth monotonically in f, yet the TIME-AVERAGE growth g(f)=p·ln(1+f)+q·ln(1−f) peaks at a strictly INTERIOR Kelly fraction f*=0.20 and turns NEGATIVE past a ruin boundary f_c≈0.389 — so naive double-Kelly (f=0.40, "bigger bet for bigger EV") is a value trap that decays the typical gambler to zero (P100, +13)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · medium · review/verify
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the verdict artifacts + heartbeat.
