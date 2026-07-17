@@ -1,6 +1,6 @@
 # VERDICT 106 — Retry-amplified metastable overload collapse: a lane pool at ~60% utilization goes bistable above a critical retry-aggressiveness, and the fix is a retry budget, not more lanes
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · high · verdict-sim
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
