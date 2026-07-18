@@ -1,9 +1,9 @@
 # CLEANUP — remove swept-in Python bytecode (__pycache__/*.pyc) from the tree and add a repo-root .gitignore so compiled artifacts can never sweep back in
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · high · review/verify
 
-Born in-progress as this session's FIRST commit (born-red HOLD); it holds `substrate-gate` red until the removal + `.gitignore` land and the close-out is written — the flip to `complete` is the deliberate LAST step, not part of this opening commit.
+Born in-progress as this session's FIRST commit (born-red HOLD); it held `substrate-gate` red until the removal + `.gitignore` landed and the close-out was written — this flip to `complete` is the deliberate LAST step. Removal verified: `git ls-files | grep -E '__pycache__|\.pyc$'` empty, `python3 bootstrap.py check --strict` exit 0 (bytecode-only hold cleared).
 
 ## GROUNDING
 Verified at HEAD, not assumed. Branch `claude/cleanup-pyc-gitignore` off origin/main HEAD `7d71fbec9fd35e0151345cf69703e5593903b653` (VERDICT 123, #196). `git ls-files | grep -E '__pycache__|\.pyc$'` reports 34 tracked compiled-bytecode files — one stray in `sims/verdict-123-discount-depth-breakeven/__pycache__/discount_breakeven_trap.cpython-311.pyc`, one in `sims/verdict-029-comp-stipend/__pycache__/`, and 32 under the two `sims/verdict-075-*` / `sims/verdict-076-*` fishing/mining fixture trees. No repo-root `.gitignore` exists (`test -f .gitignore` → absent), so nothing prevented the sweep. These are build outputs — deterministic, regenerated on any `python3` run — never source; committing them is pure noise and invites cross-platform diff churn. Scope is exactly: `git rm` every tracked `__pycache__`/`*.pyc` path + add a repo-root `.gitignore` covering `__pycache__/` and `*.pyc`. No sim source, fixture `.py`, or verdict artifact (results.json / run-stdout.txt) is touched.
