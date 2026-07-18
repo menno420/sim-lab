@@ -1,0 +1,62 @@
+{
+  "all_pass": true,
+  "gates": {
+    "G1_winrate_compression": {
+      "GAP_MAX": 0.12,
+      "pass": true,
+      "sbmm_decile_gap": 0.041946,
+      "z": 596.5172
+    },
+    "G2_matchmaking_causes_it": {
+      "gap_delta": 0.681006,
+      "pass": true,
+      "random_decile_gap": 0.722953,
+      "z_delta": 220.6321,
+      "z_level": 175.2561
+    },
+    "G3_rating_retains_skill": {
+      "CONTRAST_MIN": 0.3,
+      "contrast": 0.46188,
+      "corr_rating": 0.984387,
+      "corr_winrate_sbmm": 0.522507,
+      "pass": true,
+      "z": 31.6339
+    }
+  },
+  "params": {
+    "BURN_IN": 400,
+    "CONTRAST_MIN": 0.3,
+    "DELTA_MIN": 0.4,
+    "ELO_SCALE": 400.0,
+    "GAMES": 600,
+    "GAP_MAX": 0.12,
+    "K_FACTOR": 16.0,
+    "MATCH_JITTER": 15.0,
+    "N_PLAYERS": 200,
+    "R0": 1500.0,
+    "RANDOM_GAMES": 200,
+    "RANDOM_GAP_MIN": 0.5,
+    "RATING_CORR_MIN": 0.9,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "SKILL_SD": 250.0,
+    "TRIALS": 200
+  },
+  "results_sha256": "835b8e6cc9cd6a5eae699d7ea963dda3a6c3980fb6fd2de3cee6fce26056427c",
+  "sim": {
+    "contrast": 0.46188,
+    "corr_rating": 0.984387,
+    "corr_winrate_random": 0.982044,
+    "corr_winrate_sbmm": 0.522507,
+    "gap_delta": 0.681006,
+    "random_decile_gap": 0.722953,
+    "sbmm_decile_gap": 0.041946,
+    "se_contrast": 0.005117,
+    "se_corr_rating": 0.000142,
+    "se_corr_winrate_random": 0.000201,
+    "se_corr_winrate_sbmm": 0.005137,
+    "se_gap_delta": 0.001274,
+    "se_random_decile_gap": 0.001272,
+    "se_sbmm_decile_gap": 0.000131
+  }
+}
