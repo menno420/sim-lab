@@ -1,0 +1,5 @@
+# Python bytecode / compiled artifacts — never commit (build output, regenerated on any run)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
