@@ -2,7 +2,7 @@
 
 Reproduce PROPOSAL 134 (round-31 VENTURE slot, P134 → V147, +13): does collapsing a heterogeneous customer book to a single blended churn rate c̄ and computing LTV = m/c̄ UNDERSTATE the portfolio's true average LTV E[m/c]? Because 1/c is convex, Jensen forces E[m/c] ≥ m/c̄, with the gap driven by churn DISPERSION not level (gap ≈ m·Var(c)/c̄³) — reaching ~30% for churn uniform on 5%–35% (true ln(7)/0.30 = 6.486367 vs blended 5.000000).
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · high · review/verify
 
 Born red by design: this card landed `in-progress` in the branch's first commit, holding the substrate-gate HOLD red until byte-identical reproduction was proven and audited (ORDER 003 merge-on-green). The LAST commit flips it to `complete`, clearing the HOLD.
