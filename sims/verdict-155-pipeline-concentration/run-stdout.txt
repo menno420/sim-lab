@@ -1,0 +1,64 @@
+{
+  "all_pass": true,
+  "claim": "coverage ratio is not sufficient; quota-miss risk scales with deal HHI",
+  "closed_form": {
+    "conc_hhi": 0.23528888892,
+    "conc_mean": 3000000.0,
+    "conc_var": 3176400000413.28,
+    "granular_hhi": 0.013333333333,
+    "granular_mean": 3000000.0,
+    "granular_var": 180000000000.0,
+    "hhi_ratio": 17.646667,
+    "var_ratio_theory": 17.646667
+  },
+  "domain": "venture",
+  "gates": {
+    "G1_anchor_variance_law": {
+      "pass": true,
+      "threshold_sigma": 3.0,
+      "two_sided": true,
+      "z": 1.014985
+    },
+    "G2_coverage_control": {
+      "pass": true,
+      "threshold_sigma": 3.0,
+      "two_sided": true,
+      "z": 1.218738
+    },
+    "G3_head_miss_gap": {
+      "one_sided": true,
+      "pass": true,
+      "threshold_sigma": 3.0,
+      "z": 144.379268
+    }
+  },
+  "observed": {
+    "conc_book_mean": 2993621.874999,
+    "conc_var_emp": 3189094719130.2017,
+    "coverage_conc": 2.993622,
+    "coverage_granular": 2.998414,
+    "granular_book_mean": 2998413.75,
+    "granular_var_emp": 179830956915.95798,
+    "miss_conc": 0.1562,
+    "miss_diff": 0.1562,
+    "miss_granular": 0.0,
+    "var_ratio_emp": 17.733847
+  },
+  "params": {
+    "batch_trials": 2000,
+    "coverage_target": 3.0,
+    "n_batch": 40,
+    "n_conc_deals": 8,
+    "n_granular_deals": 75,
+    "p_win": 0.4,
+    "pipeline_value": 7500000.0,
+    "quota": 1000000.0,
+    "sigma": 3.0
+  },
+  "proposal": 142,
+  "seed": 20260717,
+  "slot": "round-33 venture"
+}
+Results-JSON sha256: e8534a6c6097e08e632ef492de89cf7c0abc06f41c6cc56937db5ffb3fc5eb64
+GATES: G1 z=1.015 pass=True | G2 z=1.219 pass=True | G3 z=144.379 pass=True
+ALL_PASS: True
