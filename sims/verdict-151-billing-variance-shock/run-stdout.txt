@@ -1,0 +1,53 @@
+{
+  "all_pass": true,
+  "closed_form": {
+    "cv_exact_concentrated": 0.097533,
+    "cv_exact_uniform": 0.025,
+    "cv_naive_lln": 0.025,
+    "hhi_concentrated": 0.038051,
+    "hhi_uniform": 0.0025,
+    "n_eff_concentrated": 26.280443,
+    "volatility_multiplier": 3.901339
+  },
+  "domain": "venture-lab",
+  "gates": {
+    "G1_shortfall_exists": {
+      "pass": true,
+      "threshold_sigma": 3.0,
+      "z": 116.537002
+    },
+    "G2_matches_closed_form": {
+      "pass": true,
+      "threshold_sigma": 3.0,
+      "z": -1.343306
+    },
+    "G3_concentration_driven": {
+      "pass": true,
+      "threshold_sigma": 3.0,
+      "unif_naive_gap": 5e-06,
+      "z": 113.523243
+    }
+  },
+  "n_accounts": 400,
+  "observed": {
+    "conc_cv_mean": 0.096707,
+    "conc_minus_naive": 0.071707,
+    "conc_minus_unif": 0.071702,
+    "unif_cv_mean": 0.025005,
+    "unif_naive_gap": 5e-06
+  },
+  "params": {
+    "batch_months": 250,
+    "cv_account": 0.5,
+    "gamma_shape_k": 4.0,
+    "n_batches": 60,
+    "size_law": "zipf_alpha_1_reciprocal_rank"
+  },
+  "proposal": 138,
+  "seed": 20260717,
+  "sigma": 3.0,
+  "slot": "round-32 VENTURE"
+}
+Results-JSON sha256: 4cd2fd286d5530ce001dc49becb80c29ced6484b834e051be59ed2acbf7a7d6b
+G1 shortfall_exists z=116.537 pass=True | G2 matches_closed_form z=-1.343 pass=True | G3 concentration_driven z=113.523 pass=True
+ALL_PASS: True
