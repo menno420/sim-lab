@@ -2,7 +2,7 @@
 
 Reproduce PROPOSAL 138 (round-32 VENTURE slot, P138 → V151, +13): under usage-based (consumption) pricing a firm's monthly revenue R = Σ Uᵢ is a sum over N independent accounts, so the law-of-large-numbers folk model predicts the revenue coefficient of variation falls like CV(R) = CV_account/√N. FALSE under heterogeneous account SIZES: independent-but-unequal accounts add in variance weighted by size², so CV(R) = CV_account·√HHI where HHI = Σwᵢ² (wᵢ = mᵢ/Σm) is the Herfindahl concentration index and N_eff = 1/HHI is the EFFECTIVE account count, NOT N. With Zipf sizes mᵢ = 1/i (i=1..400) and CV_account=0.5: HHI=0.038051, N_eff=26.280443, CV(R)=0.097533 versus the naive CV_account/√N=0.025000 — a 3.901339× volatility multiplier the account count hides, forced by Cauchy–Schwarz (HHI ≥ 1/N), concentration-driven not count-driven. The trap: a CFO who "has hundreds of usage-based accounts" models revenue as smoothly diversified and is blind-sided by single-account swings, because size concentration — not customer count — sets the variance floor.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · high · review/verify
 
 Born red by design: this card lands `in-progress` in the FIRST commit so the substrate-gate HOLD holds the PR red until the reproduction is proven and independently audited; the deliberate LAST commit flips it to `complete`, clearing the HOLD and releasing merge-on-green (CONVENTIONS born-red discipline). No gate is bypassed. This born-red HOLD is the ONLY reason the gate reads red pre-flip; a red gate AFTER the flip is a real defect, not the HOLD.
