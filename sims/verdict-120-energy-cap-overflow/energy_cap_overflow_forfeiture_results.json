@@ -1,0 +1,49 @@
+{
+  "all_pass": true,
+  "closed_form": {
+    "U_casual": 0.221199,
+    "U_frequent": 0.864665,
+    "W_casual": 0.778801,
+    "W_frequent": 0.135335
+  },
+  "gates": {
+    "G1_casual_forfeiture": {
+      "WASTE_MIN": 0.7,
+      "W_casual": 0.778675,
+      "pass": true,
+      "z": 581.5691
+    },
+    "G2_frequency_regressivity": {
+      "W_casual": 0.778675,
+      "W_frequent": 0.135641,
+      "pass": true,
+      "z": 1973.299
+    },
+    "G3_anchor_match": {
+      "pass": true,
+      "z_casual": 0.9307,
+      "z_frequent": 1.0304
+    }
+  },
+  "params": {
+    "C": 120,
+    "MU_CASUAL": 480,
+    "MU_FREQUENT": 60,
+    "N_GAPS": 5000,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "TRIALS": 400,
+    "WASTE_MIN": 0.7
+  },
+  "results_sha256": "2e30020af5a97661506c29c962d047fb9561948098b09f5a826084b013f3ce29",
+  "sim": {
+    "U_casual": 0.221325,
+    "U_frequent": 0.864359,
+    "W_casual": 0.778675,
+    "W_frequent": 0.135641,
+    "se_U_casual": 0.000135,
+    "se_U_frequent": 0.000296,
+    "se_W_casual": 0.000135,
+    "se_W_frequent": 0.000296
+  }
+}
