@@ -1,0 +1,50 @@
+{
+  "all_pass": true,
+  "anchor": {
+    "bias_max": 165.833333,
+    "e_max": 834.166667,
+    "efficiency_ratio_alt_over_nhat": 2.333333,
+    "var_alt_closed_form": 66399.666667,
+    "var_nhat_closed_form": 28457.0
+  },
+  "gates": {
+    "G1_mvue_unbiased": {
+      "pass": true,
+      "z": 0.3941
+    },
+    "G2_max_biased_low_mvue_above": {
+      "pass": true,
+      "z_above": 694.9667,
+      "z_bias": 1086.0456
+    },
+    "G3_anchor_match_efficiency": {
+      "pass": true,
+      "z_efficiency": 344.4929,
+      "z_var_match": 0.9831
+    }
+  },
+  "params": {
+    "K": 5,
+    "N_TRUE": 1000,
+    "SAMPLES": 4000,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "TRIALS": 200
+  },
+  "results_sha256": "37cea2bfb9b3f60c564d78bb6e5b31c9fcfe8ee7cb11c2fbafe38ddf9af31531",
+  "sim": {
+    "mean_nhat": 999.927753,
+    "mean_sample_max": 834.106461,
+    "mean_var_alt": 66476.372769,
+    "mean_var_nhat": 28509.405891,
+    "nhat_above_max_gap": 165.821292,
+    "se_gap": 0.238603,
+    "se_nhat": 0.1833,
+    "se_sample_max": 0.15275,
+    "se_var_alt": 96.462074,
+    "se_var_diff": 110.211166,
+    "se_var_nhat": 53.306373,
+    "var_diff_alt_minus_nhat": 37966.966877
+  }
+}
+Results-JSON sha256: 37cea2bfb9b3f60c564d78bb6e5b31c9fcfe8ee7cb11c2fbafe38ddf9af31531

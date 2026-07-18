@@ -1,0 +1,39 @@
+# VERDICT 133 — German-tank MVUE
+
+Reproduce PROPOSAL 120 (round-27 UNRELATED slot closer, P120 → V133, +13): the German-tank problem — minimum-variance unbiased estimation of the maximum of a discrete-uniform population. You observe K=5 distinct serial numbers drawn WITHOUT replacement from an unknown fleet numbered 1..N and must estimate N. The naive estimate "N = the largest serial I have seen" (the sample maximum m) is systematically too LOW: E[m]=K(N+1)/(K+1)<N (bias (N−K)/(K+1)) because a finite sample almost never catches the top of the range. The counterintuitive fix ADDS BACK the expected gap — the MVUE EXTRAPOLATES ABOVE the largest observed serial: N̂=m(1+1/K)−1 = "sample maximum + the average gap between the ordered samples", exactly unbiased (E[N̂]=N) with exact variance (N−K)(N+1)/(K(K+2)), and since m≥K always, N̂≥m always. It is the MVUE because m is a complete sufficient statistic (Lehmann–Scheffé); a competing unbiased estimator Ñ=2x̄−1 is also unbiased but strictly less efficient — Var(Ñ)/Var(N̂)=(K+2)/3≈2.33× noisier at K=5 — so the best estimate of a population size is LARGER than the largest one you have seen, and the max-based correction is both correct and minimum-variance.
+
+> **Status:** `complete`
+> 📊 Model: high · review/verify
+
+Born red by design: this card landed `in-progress` in the first commit so the substrate-gate HOLD held the PR red until the reproduction was proven and independently audited; this final commit flips it to `complete`, clearing the HOLD and releasing merge-on-green (ORDER 003). No gate was bypassed. PHASE 1 (reproduction + independent digest audit) is APPROVED: the verifier reproduced the disclosed digest byte-identical across 4 runs and gates G1/G2/G3 all PASS; this PHASE-2 commit flips the card to `complete` on that audited ruling and re-stamps the status heartbeat to V133 high-water.
+
+## Objective
+Reproduce the committed P120 reference verifier byte-identical under its pinned world (SEED=20260717, N_TRUE=1000, K=5, SAMPLES=4000, TRIALS=200, SIGMA_GATE=3.0) and confirm: (a) the compact-canonical results-dict sha256 equals the disclosed digest, (b) all three gates hold as disclosed, in order G1→G2→G3, (c) cross-invocation and in-process double runs are byte-identical. Source header (verbatim): `## PROPOSAL 120 · 2026-07-18T06:09:44Z · status: sim-ready` / `target: sim-lab (VERDICT 133, +13 offset)`.
+
+## GROUNDING (verified at HEAD)
+- idea-engine HEAD `0f61ea8026d401febe83aa0859c2d86e5e00d8fb` (#537); reference verifier `ideas/fleet/german_tank_mvue.py` — git blob `de5487e5bf706163188f811b97ed3b4723fc148a`, sha256 `130ebaafa72f8931440ac929954f8b0987d14ff947d5e7b09f36e8fe5b006aaf`, 188 lines / 8497 bytes. Source: https://github.com/menno420/idea-engine/blob/main/ideas/fleet/german_tank_mvue.py
+- Domain reference: https://en.wikipedia.org/wiki/German_tank_problem (frequentist MVUE N̂=m(1+k⁻¹)−1 = sample max + average gap, unbiased with variance (N−K)(N+1)/(K(K+2))).
+- sim-lab work branch cut from origin/main HEAD `acf8bf83ba41d6bb6762094c99b9adff4a80f401` (#206).
+- DIGEST POSTURE: SELF-FIELD / stdout-line (the P119/V132 posture). The verifier computes the digest over `json.dumps(results, sort_keys=True, separators=(",",":"))` BEFORE adding the `results_sha256` field, then writes the on-disk `german_tank_mvue_results.json` pretty-printed (indent=2, sort_keys) WITH the field — so `sha256sum` of the on-disk file (`145db407…`) is NOT the digest; the disclosed digest is the value printed on the `Results-JSON sha256:` stdout line (and stored in the file's own `results_sha256` field).
+- Offset authority: idea-engine control/outbox.md P120 `depends:` ledger (P120→V133 +13, "Offset pinned") + control/status.md baton — not docs/current-state.md (dormant snapshot through V059).
+
+## Constraints honored
+Stdlib-only (random, math, json, hashlib); verifier copied byte-identical (diff exit 0, blob + sha256 match); pinned SEED unchanged; no numpy/scipy; forward-only git; verdict reproduced independently, not assumed.
+
+## Gate plan (disclosed → reproduced)
+- G1 MVUE-unbiased (headline+control): measured mean N̂ within 3σ of N=1000 (|z|<3, /se convention) — the estimator that extrapolates ABOVE the largest observed serial is spot-on for N.
+- G2 max-biased-low + MVUE-above-max: (a) mean sample max strictly BELOW N by ≥3σ AND (b) mean N̂ exceeds mean sample max by ≥3σ — the estimate lands above the largest serial observed, the counterintuitive core.
+- G3 closed-form-anchor + efficiency: (a) empirical Var(N̂) reproduces (N−K)(N+1)/(K(K+2))=28457.0 within 3σ (|z|<3) AND (b) the MVUE strictly more efficient than Ñ=2x̄−1: Var(Ñ)−Var(N̂)≥0 by ≥3σ.
+
+## Outcome — APPROVE (exact reproduction)
+Reproduced digest `37cea2bfb9b3f60c564d78bb6e5b31c9fcfe8ee7cb11c2fbafe38ddf9af31531` == disclosed digest (MATCH). Cross-invocation A + B and an in-process double invocation all produced the identical digest (all exit 0; cross-invocation stdout diff exit 0 AND results-json diff exit 0). Verifier copy diff exit 0; blob `de5487e5` + sha256 `130ebaaf` match source.
+- **G1 MVUE-unbiased: PASS** — mean N̂ **999.927753** (se 0.1833) within 3σ of N=1000, **|z|=0.3941**.
+- **G2 max-biased-low + MVUE-above-max: PASS** — mean sample max **834.106461** below N by **z_bias=1086.0456σ** AND N̂-above-max gap **165.821292** by **z_above=694.9667σ** (the MVUE lands above the largest observed serial).
+- **G3 anchor-match + efficiency: PASS** — Var(N̂) **28509.405891** vs closed-form **28457.0** |z_var_match|=**0.9831** (<3) AND MVUE strictly more efficient: Var(Ñ)−Var(N̂) **37966.966877** by **z_efficiency=344.4929σ**.
+- Analytic anchors: E[m]=834.166667, bias_max=165.833333, Var(N̂)=28457.0, Var(Ñ)=66399.666667, efficiency ratio (K+2)/3=2.333333, E[N̂]=N=1000 exactly. Sim: mean N̂ 999.927753, mean sample max 834.106461, Var(N̂) 28509.405891, Var(Ñ) 66476.372769. all_pass=true, exit 0. First-failing gate: none.
+
+## ⟲ Previous-session review
+Prior loop landed VERDICT 132 (P119 PRD proc-rate compression, +13, sim-lab #206, digest ce121bd9…) — APPROVE, clean born-red flip, merge-on-green with no agent merge call. This slice closes round-27 on the verdict side at the UNRELATED slot (fleet P117→V130, venture P118→V131, game P119→V132, unrelated P120→V133).
+
+## 💡 Session idea
+Length-biased sampling of live serial ranges (fleet/ops): the German-tank MVUE assumes a static 1..N with uniform, gap-free numbering, but a monotonically-growing ID space sampled at a random wall-clock instant is length-biased toward the current high-water — sampling K live request/invoice IDs from a stream whose max is still climbing over-weights recent IDs, so the naive max is biased HIGH relative to the true issued-count-at-sample-time while the static MVUE gap-correction over-shoots. Sim: gate that a growing-stream sampler's realized N̂ over-estimates the true count-at-instant by a floor at ≥3σ (a sign-flip of P120's under-estimate), isolating how much of the gap correction is an artifact of the static-population assumption — distinct from P120's fixed-N discrete-uniform object.
