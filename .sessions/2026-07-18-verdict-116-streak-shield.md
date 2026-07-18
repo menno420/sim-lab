@@ -1,6 +1,6 @@
 # VERDICT 116 — streak-shield variance amplification: a "streak shield" (after W consecutive true wins, bank a shield that negates the next loss and scores it as a win) is REGRESSIVE — because the shield is BANKED off a SUCCESS signal (a win streak), the already-high-skill cohort banks shields faster and the mechanic boosts its mean rating uplift MORE than the low-skill cohort it is marketed to protect; on the pinned world the high-cohort uplift exceeds the low-cohort uplift by ≥3σ while BOTH cohorts stay positive, so a loss-protection resource gated on winning flows UPHILL and widens the very skill-to-rating gap it claims to close (P103, +13)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · low · review/verify
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the verdict artifacts + heartbeat.
