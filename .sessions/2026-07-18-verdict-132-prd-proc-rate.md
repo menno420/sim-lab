@@ -2,10 +2,10 @@
 
 Reproduce PROPOSAL 119 (round-27 GAME slot, P119 → V132, +13): the Warcraft III / Dota 2 Pseudo-Random Distribution (PRD) anti-streak proc system. Instead of a flat per-attempt chance p, PRD starts each proc's chance low and RAISES it by a constant increment C on every consecutive failure, resetting on a success: P(proc on the n-th attempt since the last proc)=min(1,C·n). The counterintuitive trap: the increment C is NOT the proc rate. A designer who wants "25% crit" and naively sets C=0.25 does NOT get a 25% effective rate — the escalating chance forces frequent early procs, so the long-run EFFECTIVE rate is 1/E[N] (E[N]=2.21875 for C=0.25) ≈ 0.4507, nearly DOUBLE the nominal. The fix is to SOLVE C for the target rate (C≈0.0847 yields effective 0.25), never set C=nominal; what PRD actually buys is a bad-luck-streak bound (⌈1/C⌉−1 misses), not a rate change.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: high · review/verify
 
-Born red by design: this card lands `in-progress` in the first commit so the substrate-gate HOLD holds the PR red until the reproduction is proven and independently audited; the final commit flips it to `complete`, clearing the HOLD and releasing merge-on-green (ORDER 003). No gate is bypassed. In THIS phase (PHASE 1) the flip to `complete` is WITHHELD: the reproduction is done and the digest reproduced exactly, but the final ruling and the card flip that releases merge-on-green are the dispatcher's call after an independent digest audit. This seat does NOT self-declare the merge and does NOT flip.
+Born red by design: this card lands `in-progress` in the first commit so the substrate-gate HOLD holds the PR red until the reproduction is proven and independently audited; the final commit flips it to `complete`, clearing the HOLD and releasing merge-on-green (ORDER 003). No gate was bypassed. PHASE 1 (reproduction + independent digest audit) is APPROVED: the verifier reproduced the disclosed digest byte-identical across 4 runs and gates G1/G2/G3 all PASS; this PHASE-2 commit flips the card to `complete` on that audited ruling.
 
 ## Objective
 Reproduce the committed P119 reference verifier byte-identical under its pinned world (SEED=20260717, ATTEMPTS=2000000, C_NAIVE=0.25, TARGET=0.25) and confirm: (a) the compact-canonical results-dict sha256 equals the disclosed digest, (b) all three gates hold as disclosed, in order G1→G2→G3, (c) cross-invocation and in-process double runs are byte-identical. Source header (verbatim): `## PROPOSAL 119 · 2026-07-18T05:48:40Z · status: sim-ready` / `target: sim-lab (VERDICT 132, +13 offset)`.
@@ -24,7 +24,7 @@ Stdlib-only (random, math, json, hashlib); verifier copied byte-identical (diff 
 - G2 solve-C-fixes-it (control): solved C_solved yields measured effective within 3σ of TARGET=0.25 (|z|<3) AND C_solved ≤ SOLVED_MAX=0.15.
 - G3 closed-form anchor + anti-streak: measured naive effective reproduces analytic 1/E[N]=0.450704 within 3σ (|z|<3) AND PRD max miss-streak strictly below the true-random max miss-streak.
 
-## Outcome — APPROVE (exact reproduction) · ruling/flip WITHHELD for dispatcher audit (PHASE 1)
+## Outcome — APPROVE (exact reproduction)
 Reproduced digest `ce121bd9885747c336bf8f655112dc0bbffb35ba0fbd01832c14eb57d4248911` == disclosed digest (MATCH). Cross-invocation A + B and an in-process double invocation all produced the identical digest (all exit 0). Verifier copy diff exit 0; blob + sha256 match source.
 - **G1 naive-C overshoot: PASS** — eff_naive **0.450684** ≥ 0.40, **z=146.3107σ**, **z_vs_null_0.25=655.4296σ**.
 - **G2 solve-C-fixes-it: PASS** — c_solved **0.084744** ≤ 0.15, eff_solved **0.24998** vs 0.25 |z|=0.0637 (<3).
