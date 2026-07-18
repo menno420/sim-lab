@@ -1,0 +1,42 @@
+{
+  "all_pass": true,
+  "anchor": {
+    "R_sys_at_T_e_neg_N": 2.061153622438558e-09,
+    "T_component_mtbf": 1.0,
+    "anchor_parallel_mtbf_T_HN": 3.59774,
+    "anchor_series_mtbf_T_over_N": 0.05
+  },
+  "gates": {
+    "G1_series_collapse": {
+      "pass": true,
+      "z": 2841.8816
+    },
+    "G2_single_component_control": {
+      "pass": true,
+      "z": 0.4508
+    },
+    "G3_anchor_match": {
+      "pass": true,
+      "z": 1.8061
+    }
+  },
+  "params": {
+    "COLLAPSE_MAX": 0.1,
+    "LAMBDA": 1.0,
+    "N_SERIES": 20,
+    "N_SYSTEMS": 20000,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "TRIALS": 400
+  },
+  "results_sha256": "0aa2a8da4627f43f13b634afdd12b3e674ba4983ad13b27b35c10e7928b7bdf7",
+  "sim": {
+    "mtbf_parallel": 3.597338,
+    "mtbf_series": 0.050032,
+    "mtbf_single": 0.999848,
+    "se_parallel": 0.000441,
+    "se_series": 1.8e-05,
+    "se_single": 0.000337
+  }
+}
+Results-JSON sha256: 0aa2a8da4627f43f13b634afdd12b3e674ba4983ad13b27b35c10e7928b7bdf7
