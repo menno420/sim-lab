@@ -1,6 +1,6 @@
 # VERDICT 121 — regression-to-the-mean selection illusion: take a noisy repeated measurement (pre score X, post score Y of the SAME unit, test-retest reliability rho=corr(X,Y)<1) with NOTHING done between the two reads, SELECT the underperformers (every unit with X below a fixed cutoff c, e.g. >1 SD below the mean), apply a literally-inert intervention, and re-measure — the selected group's mean IMPROVES strongly and reproducibly purely from regression to the mean (their extreme-low X was partly bad luck, and luck does not repeat, so Y drifts back toward the population mean), a spurious before/after shift of exactly Delta*=(rho−1)·E[X|X<c]>0 while the WHOLE population shows zero change (no time trend) and the top tail (over-performers) shows a symmetric spurious DECLINE — the transferable correction is to judge a group selected-because-extreme on a noisy metric against a randomized control or the unselected population, never the naked before/after delta; a statistics/measurement pure-mechanism head (round-24 UNRELATED slot closer), P108 → V121 (+13)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · low · review/verify
 
 Born in-progress as this session's FIRST commit (born-red HOLD); it stays in-progress until the reproduction artifacts + outbox block + heartbeat land and the close-out is written — the flip to `complete` is a deliberate LATER step, not part of this born-red opening commit. The `in-progress` badge is precisely what holds `substrate-gate` red so the PR cannot merge before the deliberate flip.
