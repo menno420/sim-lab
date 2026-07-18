@@ -2,7 +2,7 @@
 
 Reproduce PROPOSAL 118 (round-27 VENTURE slot, P118 → V131, +13): a Monte-Carlo of a steadily-hiring sales force where each rep's booked quota ramps linearly over R=6 months and reps churn at rate δ. In steady state the realized productivity per active rep is the closed form φ(β)=(1−e^{−βR})/(βR) with β = monthly headcount growth + attrition. Faster headcount growth (β_fast=g_fast+δ_low=0.11) and a matched attrition bump (β_attr=g_slow+δ_hi=0.11) both drag realized quota ≈0.157 below the slow-growth baseline (β_slow=g_slow+δ_low=0.04) — i.e. growth and attrition are interchangeable drags on capacity.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · high · review/verify
 
 Born red by design: this card lands `in-progress` in the first commit so the substrate-gate HOLD holds the PR red until the reproduction is proven; the final commit flips it to `complete`, clearing the HOLD and releasing merge-on-green (ORDER 003). No gate was bypassed.
