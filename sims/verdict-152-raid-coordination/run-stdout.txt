@@ -1,0 +1,47 @@
+{
+  "all_pass": true,
+  "g1_cliff": true,
+  "g1_mean_cliff_diff": 13.179610112229906,
+  "g1_se": 0.21050120075714365,
+  "g1_z": 62.61061725455567,
+  "g2_interior": true,
+  "g2_interior_fraction": 0.8598,
+  "g2_n_star_interior": true,
+  "g2_p0": 0.5,
+  "g2_z": 101.76680794836793,
+  "g3_interior_fraction_placebo": 0.0,
+  "g3_mean_fullbeats_diff": 199.4478103198337,
+  "g3_placebo": true,
+  "g3_se": 0.4990879180414521,
+  "g3_z": 399.6246014179579,
+  "mean_dps_at_n_star": 292.1891151059999,
+  "mean_dps_at_nmax": 279.18920396191237,
+  "mean_model_dps": {
+    "1": 100.0,
+    "2": 174.83999999999997,
+    "3": 228.33359999999996,
+    "4": 263.82909599999994,
+    "5": 284.2597637999999,
+    "6": 292.1891151059999,
+    "7": 289.8516021851519,
+    "8": 279.18920396191237
+  },
+  "n_star": 6,
+  "nmax": 8,
+  "params": {
+    "c_uptime": 0.06,
+    "floor": 0.35,
+    "k_shape": 4.0,
+    "mu_base": 100.0,
+    "q_collision": 0.07,
+    "theta": 25.0
+  },
+  "proposal": 139,
+  "seed": 20260717,
+  "sigma_gate": 3.0,
+  "trials": 20000
+}
+Results-JSON sha256: 16225c9a8e53cc23cfaa6a5df4b9631e5224d36a80ebada7f1a86546606c9fa3
+G1 cliff        : PASS (DPS(N*)-DPS(Nmax)=+13.1796, z=+62.61)
+G2 interior     : PASS (N*=6, interior_frac=0.85980, z=+101.77)
+G3 placebo      : PASS (interior_frac=0.0, full-beats=+199.4478, z=+399.62)
