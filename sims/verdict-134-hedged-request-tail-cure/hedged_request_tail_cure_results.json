@@ -1,0 +1,57 @@
+{
+  "all_pass": true,
+  "anchor": {
+    "dup_extra_load": 1.0,
+    "mixture_p95": 45.388281,
+    "mixture_p99": 321.887582
+  },
+  "gates": {
+    "G1_hedge_collapses_tail": {
+      "pass": true,
+      "z": 283.5451
+    },
+    "G2_knee_capture_and_load": {
+      "load_max": 0.08,
+      "mean_capture": 0.889581,
+      "mean_hedge_load": 0.04995,
+      "pass": true,
+      "z_capture": 237.7642
+    },
+    "G3_almost_free_efficiency": {
+      "pass": true,
+      "z": 282.3895
+    }
+  },
+  "params": {
+    "CAPTURE_MIN": 0.8,
+    "HEDGE_PCTL": 0.95,
+    "LOAD_MAX": 0.08,
+    "MEAN_FAST": 10.0,
+    "MEAN_SLOW": 200.0,
+    "N_REQUESTS": 20000,
+    "P_STRAGGLER": 0.05,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "TRIALS": 200
+  },
+  "results_sha256": "a76ef737962bd9c3663399dc19425dc3ca697c6d8775be682c3a128aa76b1b4e",
+  "sim": {
+    "eff_dup_per_unit_load": 294.381688,
+    "eff_hedge_per_unit_load": 5243.488535,
+    "efficiency_ratio_hedge_over_dup": 17.811871,
+    "mean_capture_ratio": 0.889581,
+    "mean_efficiency_edge": 4949.106846,
+    "mean_hedge_fire_frac": 0.04995,
+    "mean_p99_base": 322.613793,
+    "mean_p99_dup": 28.232104,
+    "mean_p99_hedge": 60.701541,
+    "mean_tail_cut_hedge": 261.912252,
+    "se_capture_ratio": 0.000377,
+    "se_efficiency_edge": 17.525819,
+    "se_hedge_fire_frac": 0.0,
+    "se_p99_base": 0.973275,
+    "se_p99_dup": 0.043837,
+    "se_p99_hedge": 0.120278,
+    "se_tail_cut_hedge": 0.923706
+  }
+}
