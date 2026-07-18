@@ -1,0 +1,60 @@
+{
+  "all_pass": true,
+  "closed_form": {
+    "C_max": -2029.774297,
+    "C_opt": 4777.125088,
+    "S_max": 99.702257,
+    "breakeven_conv_prob": 0.02,
+    "n_star": 1609.437912
+  },
+  "domain": "venture",
+  "gates": {
+    "G1_contribution_inversion": {
+      "mean": 6786.75,
+      "pass": true,
+      "se": 21.316474,
+      "stat": "mean_contribution_drop_opt_to_max",
+      "threshold": 1000.0,
+      "z": 271.4684
+    },
+    "G2_declining_intent_necessity": {
+      "mean": 35038.5,
+      "pass": true,
+      "se": 94.849568,
+      "stat": "mean_flat_gain_opt_to_max",
+      "threshold": 0.0,
+      "z": 369.4113
+    },
+    "G3_anchor_match": {
+      "pass": true,
+      "stat": "sim_vs_closed_form",
+      "z_C_max": 0.4226,
+      "z_C_opt": 0.014
+    }
+  },
+  "observed": {
+    "C_max_dec_mean": -2009.0,
+    "C_max_dec_se": 49.161363,
+    "C_opt_dec_mean": 4777.75,
+    "C_opt_dec_se": 44.770563,
+    "drop_mean": 6786.75,
+    "drop_se": 21.316474,
+    "flat_gain_mean": 35038.5,
+    "flat_gain_se": 94.849568
+  },
+  "params": {
+    "DROP_MIN": 1000.0,
+    "K": 0.001,
+    "N_MAX": 6000,
+    "N_OPT": 1609,
+    "P0": 0.1,
+    "V": 100.0,
+    "c_support": 2.0
+  },
+  "proposal": 114,
+  "results_sha256": "884242e6ed6d9b7cf8affef7400526985e8244b4b3541319f33653dce6639b38",
+  "seed": 20260717,
+  "sigma": 3.0,
+  "slot": "round-26-venture",
+  "trials": 400
+}

@@ -1,0 +1,62 @@
+{
+  "all_pass": true,
+  "anchor": {
+    "daly_frequent": 0.412322,
+    "daly_opt": 0.107106,
+    "daly_opt_4M": 0.05172,
+    "daly_rare": 0.545871,
+    "young_o_star": 0.1,
+    "young_o_star_4M": 0.05
+  },
+  "gates": {
+    "G1_over_checkpointing": {
+      "pass": true,
+      "z": 833.5744
+    },
+    "G2_ushape_sqrt_law": {
+      "pass": true,
+      "z_halve": 80.5085,
+      "z_rare": 113.2963
+    },
+    "G3_anchor_match": {
+      "pass": true,
+      "z_frequent": 1.7438,
+      "z_opt": 0.5778,
+      "z_rare": 0.1845
+    }
+  },
+  "intervals": {
+    "tau_frequent": 2.5,
+    "tau_rare": 160.0,
+    "tau_star": 20.0,
+    "tau_star_4M": 40.0
+  },
+  "params": {
+    "C": 1.0,
+    "DELTA_MIN": 0.05,
+    "HALVE_MIN": 0.02,
+    "K": 8,
+    "M": 200.0,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "TRIALS": 200,
+    "W": 40000.0
+  },
+  "results_sha256": "43a77ca77563e81f873cd73c81d35c684a2ec48bc26d2d740b083ef6be566a81",
+  "sim": {
+    "halving_drop": 0.054867,
+    "overhead_frequent": 0.412435,
+    "overhead_opt": 0.106933,
+    "overhead_opt_4M": 0.052066,
+    "overhead_rare": 0.545241,
+    "penalty_frequent": 0.305502,
+    "penalty_rare": 0.438308,
+    "se_frequent": 6.5e-05,
+    "se_halving_drop": 0.000433,
+    "se_opt": 0.0003,
+    "se_opt_4M": 0.000313,
+    "se_penalty_frequent": 0.000307,
+    "se_penalty_rare": 0.003427,
+    "se_rare": 0.003414
+  }
+}
