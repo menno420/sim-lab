@@ -1,0 +1,63 @@
+{
+  "all_pass": true,
+  "g1_equilibrium": true,
+  "g1_indifference_mean_payoff": {
+    "P": 0.0003870000000000028,
+    "R": 0.0005559999999995368,
+    "S": 0.0007189999999969626
+  },
+  "g1_max_abs_z": 1.3143865915026838,
+  "g1_z": {
+    "P": 1.226341070122763,
+    "R": 1.0143917430473668,
+    "S": 1.3143865915026838
+  },
+  "g2_anchor": 0.06666666666666667,
+  "g2_best_action": "R",
+  "g2_exact_vs_uniform_skewed": {
+    "P": 0.0,
+    "R": 0.06666666666666667,
+    "S": -0.06666666666666667
+  },
+  "g2_inversion": true,
+  "g2_mc_payoff_R_vs_uniform": 0.0672109999998512,
+  "g2_z_anchor": 0.9748529872924236,
+  "g2_z_exist": 120.3689727128182,
+  "g3_exact_vs_uniform_symmetric": {
+    "P": 0.0,
+    "R": 0.0,
+    "S": 0.0
+  },
+  "g3_max_abs_exact_exploit": 0.0,
+  "g3_mc_payoff_R_vs_uniform_sym": 0.0002170000000000004,
+  "g3_placebo": true,
+  "g3_z": 0.5939951919337725,
+  "proposal": 135,
+  "seed": 20260717,
+  "sigma_gate": 3.0,
+  "skewed_margins": {
+    "a_R_beats_S": 0.4,
+    "b_S_beats_P": 0.2,
+    "c_P_beats_R": 0.2
+  },
+  "symmetric_margins": {
+    "a": 0.2,
+    "b": 0.2,
+    "c": 0.2
+  },
+  "trials": 200000,
+  "x_star_skewed": {
+    "P": 0.5,
+    "R": 0.25,
+    "S": 0.25
+  },
+  "x_star_symmetric": {
+    "P": 0.3333333333333333,
+    "R": 0.3333333333333333,
+    "S": 0.3333333333333333
+  }
+}
+Results-JSON sha256: 92de2d5454c34f274869bc83d302682909b376380c16e60b6afcb12756424a4b
+G1 equilibrium  : PASS (max|z|=1.314)
+G2 inversion    : PASS (R vs uniform=+0.06721, z_exist=+120.37, z_anchor=+0.975)
+G3 placebo      : PASS (max|exact|=0.0e+00, z=+0.594)
