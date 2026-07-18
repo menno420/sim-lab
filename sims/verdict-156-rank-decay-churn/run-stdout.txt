@@ -1,0 +1,44 @@
+{
+  "all_pass": true,
+  "control_base_activity": 963.0025,
+  "control_base_pop": 1000.0,
+  "control_high_activity": 966.487,
+  "control_high_pop": 1000.0,
+  "first_failing_gate": null,
+  "g1_agreement": true,
+  "g1_half_a_reduction": 75.023,
+  "g1_half_b_reduction": 77.079,
+  "g1_z": -0.835097,
+  "g2_control": true,
+  "g2_control_reduction": -3.4845,
+  "g2_se": 0.258057,
+  "g2_z": -13.502832,
+  "g3_head": true,
+  "g3_head_reduction": 76.051,
+  "g3_se": 1.221153,
+  "g3_z": 62.278027,
+  "n": 1000,
+  "params": {
+    "d_high": 0.3,
+    "delta": 1.0,
+    "k": 0.03,
+    "lambda_control": 1.0,
+    "lambda_real": 2.25,
+    "patience": 3.0,
+    "u_max": 2.0
+  },
+  "proposal": 143,
+  "r": 20,
+  "real_base_activity": 657.044,
+  "real_base_pop": 1000.0,
+  "real_high_activity": 580.993,
+  "real_high_pop": 709.0,
+  "seed": 20260717,
+  "sigma_gate": 3.0,
+  "t": 200
+}
+Results-JSON sha256: ea060663fecf79059bedeb98d43c4f010d2daca6ff273ebf6a97545ddc83ac59
+G1 agreement    : PASS (half_a-half_b, z=-0.84, |z|<3.0)
+G2 control      : PASS (lambda=1 reduction=-3.4845, z=-13.50, not-sig-positive z<3.0)
+G3 head         : PASS (lambda=2.25 reduction=+76.0510, z=+62.28, z>=3.0)
+all_pass        : True first_failing_gate: None
