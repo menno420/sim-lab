@@ -1,0 +1,44 @@
+{
+  "all_pass": true,
+  "anchor": {
+    "h_star_herd_threshold": 0.6,
+    "overshoot_star": 0.292645,
+    "z_star_final_size": 0.892645
+  },
+  "counts": {
+    "major_frac": 0.8935,
+    "n_major": 3574,
+    "n_minor": 426
+  },
+  "gates": {
+    "G1_overshoot": {
+      "pass": true,
+      "z": 2883.28
+    },
+    "G2_anchor_match": {
+      "pass": true,
+      "z": 0.13
+    },
+    "G3_post_threshold_burn": {
+      "pass": true,
+      "z": 224.07
+    }
+  },
+  "params": {
+    "I0": 1,
+    "MAJOR_CUTOFF": 0.1,
+    "N_EPIDEMICS": 4000,
+    "N_POP": 5000,
+    "R0": 2.5,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0
+  },
+  "results_sha256": "2ecda33ccab80be04904c973478093bb50a51cde8e5964da9d35e1ca4d340c3f",
+  "sim": {
+    "burn_post_threshold": 0.194675,
+    "overshoot_sim": 0.292632,
+    "se_burn": 0.000869,
+    "se_z": 0.000101,
+    "z_sim_final_attack": 0.892632
+  }
+}
