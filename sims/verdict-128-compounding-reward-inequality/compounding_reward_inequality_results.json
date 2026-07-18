@@ -1,0 +1,58 @@
+{
+  "all_pass": true,
+  "anchors": {
+    "gini_closed_form": 0.682689,
+    "median_over_mean_closed_form": 0.367879,
+    "sigma_T": 1.414214,
+    "top_share_closed_form": 0.55277
+  },
+  "gates": {
+    "G1_concentration": {
+      "SHARE_MIN": 0.4,
+      "compound_top_share": 0.553674,
+      "pass": true,
+      "z": 160.8932
+    },
+    "G2_compounding_causes_it": {
+      "additive_top_share": 0.149729,
+      "pass": true,
+      "share_gap": 0.403945,
+      "z_additive": 964.4786,
+      "z_gap": 168.0571
+    },
+    "G3_closed_form_anchor": {
+      "compound_gini": 0.683305,
+      "compound_top_share": 0.553674,
+      "gini_closed_form": 0.682689,
+      "pass": true,
+      "top_share_closed_form": 0.55277,
+      "z_gini": 0.9362,
+      "z_top_share": 0.9466
+    }
+  },
+  "params": {
+    "ADD_SHARE_MAX": 0.2,
+    "DAYS": 200,
+    "DELTA_MIN": 0.25,
+    "MU_G": 0.02,
+    "N_PLAYERS": 5000,
+    "SEED": 20260717,
+    "SHARE_MIN": 0.4,
+    "SIGMA_G": 0.1,
+    "SIGMA_GATE": 3.0,
+    "TOP_FRAC": 0.1,
+    "TRIALS": 200,
+    "W0": 100.0
+  },
+  "results_sha256": "a9dbb30f38b77e342f03e9ced2af204d95aef624902ecd845d107b99c9140b1e",
+  "sim": {
+    "additive_top_share": 0.149729,
+    "compound_gini": 0.683305,
+    "compound_top_share": 0.553674,
+    "se_additive_top_share": 5.2e-05,
+    "se_compound_gini": 0.000657,
+    "se_compound_top_share": 0.000955,
+    "se_share_gap": 0.000916,
+    "share_gap": 0.403945
+  }
+}
