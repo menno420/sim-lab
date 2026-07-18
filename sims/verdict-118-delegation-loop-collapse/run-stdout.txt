@@ -1,0 +1,6 @@
+{"N":4096,"all_pass":true,"domain":"fleet","gates":{"G1_electorate_collapse":{"mean":0.01967,"pass":true,"se":0.000495,"stat":"mean_cyclic_frac","std":0.009891,"threshold":0.1,"z":162.4318},"G2_power_concentration":{"mean":0.748063,"pass":true,"se":0.009785,"stat":"mean_largest_bloc_frac","std":0.195708,"threshold":0.3,"z":45.7889},"G3_controlling_clique":{"mean":0.010834,"pass":true,"se":0.000419,"stat":"mean_core_cycle_frac","std":0.008379,"threshold":0.05,"z":93.4923}},"proposal":105,"seed":20260717,"sigma":3.0,"slot":"round-24-fleet","theory":{"cyclic_expected_frac":0.019583,"largest_component_frac_asymptotic":0.7582},"trials":400}
+sha256: c3e5e6c15bee39165e3ccfb3967135c06df2ccfd60af7d727b918cda47d49ea6
+G1_electorate_collapse: mean=0.01967 thr=0.1 z=162.4318 pass=True
+G2_power_concentration: mean=0.748063 thr=0.3 z=45.7889 pass=True
+G3_controlling_clique: mean=0.010834 thr=0.05 z=93.4923 pass=True
+ALL_PASS: True
