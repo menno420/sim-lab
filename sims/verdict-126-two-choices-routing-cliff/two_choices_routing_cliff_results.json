@@ -1,0 +1,58 @@
+{
+  "proposal": 113,
+  "phenomenon": "two-choices routing cliff (power-of-two-choices balanced allocations)",
+  "params": {
+    "seed": 20260717,
+    "n_workers": 20000,
+    "m_tasks": 20000,
+    "trials": 120,
+    "d_values": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "sigma_gate": 3.0,
+    "plateau_max": 2.0
+  },
+  "anchor": {
+    "single_choice_ln_n_over_lnln_n": 4.319221866822944,
+    "two_choice_lnln_n_over_ln2": 3.3079366654667703,
+    "d23_mean": 0.08333333333333333,
+    "d23_se": 0.02533620800437753
+  },
+  "sim": {
+    "mean_max_load_by_d": {
+      "1": 7.016666666666667,
+      "2": 3.0833333333333335,
+      "3": 3.0,
+      "4": 2.466666666666667
+    }
+  },
+  "gates": {
+    "G1_two_choices_jump": {
+      "stat": "mean(max_1 - max_2)",
+      "mean": 3.933333333333333,
+      "se": 0.06873540928271524,
+      "z": 57.2242658388075,
+      "pass": true
+    },
+    "G2_cliff_front_loaded": {
+      "stat": "mean((max_1-max_2) - (max_2-max_3))",
+      "mean": 3.85,
+      "se": 0.08422492229152842,
+      "z": 45.710935614448694,
+      "pass": true
+    },
+    "G3_plateau_beyond_two": {
+      "stat": "mean(max_2 - max_4)",
+      "ceiling": 2.0,
+      "mean": 0.6166666666666667,
+      "se": 0.05316763475669114,
+      "z": 26.018335020239753,
+      "pass": true
+    }
+  },
+  "all_pass": true,
+  "results_sha256": "068e23f599c9ccf9a4bcbf31d705a9760ee05091172f6432ea1c3df69d62b685"
+}
