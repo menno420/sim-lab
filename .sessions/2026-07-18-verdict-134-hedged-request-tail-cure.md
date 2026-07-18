@@ -25,8 +25,12 @@ Stdlib-only (random, math, json, hashlib); verifier copied byte-identical (diff 
 - G2 the knee: (a) mean capture ratio (p99_base−p99_hedge)/(p99_base−p99_dup) ≥ CAPTURE_MIN=0.80 by ≥3σ AND (b) mean hedge-fire fraction ≤ LOAD_MAX=0.08 (fires on ~p95=5% of requests) while full-dup costs +100% load.
 - G3 almost-free efficiency: mean(red_hedge/load_hedge − red_dup/load_dup) > 0 by ≥3σ — the p95 hedge's tail-cut-per-unit-load strictly exceeds full duplication's.
 
-## Outcome — reproduction in progress
-PHASE 1 under way; outcome, per-gate reproduced sigmas, and the digest match are recorded on the flip commit.
+## Outcome — APPROVE (exact reproduction)
+Reproduced digest `a76ef737962bd9c3663399dc19425dc3ca697c6d8775be682c3a128aa76b1b4e` == disclosed digest (MATCH). Cross-invocation A + B both printed the identical digest and an in-process double-run produced identical per-trial draws (all exit 0; cross-invocation stdout diff exit 0 AND results-json diff exit 0). Verifier copy diff exit 0; blob `5bd1866e` + sha256 `be975454` match source.
+- **G1 hedge collapses the tail: PASS** — per-trial mean tail-cut **261.912252** (se 0.923706) > 0 by **z=283.5451σ**; single-replica p99 **322.613793** → hedge@p95 p99 **60.701541**.
+- **G2 the knee: PASS** — (a) mean capture ratio **0.889581** (se 0.000377) ≥ 0.80 by **z_capture=237.7642σ** AND (b) mean hedge-fire load **0.04995** ≤ LOAD_MAX=0.08 (fires on ~p95=5% of requests) while full-dup costs +100%.
+- **G3 almost-free efficiency: PASS** — mean efficiency edge (red_hedge/load_hedge − red_dup/load_dup) **4949.106846** (se 17.525819) > 0 by **z=282.3895σ**; hedge tail-cut-per-unit-load **5243.488535** vs full-dup **294.381688** (ratio **17.811871×**).
+- Anchors: mixture p95=45.388281, mixture p99=321.887582, full-dup extra load=1.0. Sim: mean p99 base 322.613793, hedge 60.701541, dup 28.232104. all_pass=true, exit 0. First-failing gate: none.
 
 ## ⟲ Previous-session review
 Prior loop landed VERDICT 133 (P120 German-tank MVUE, +13, sim-lab #207, digest 37cea2bf…) — APPROVE, clean born-red flip, merge-on-green with no agent merge call. That slice closed round-27 on the verdict side at the UNRELATED slot; this slice REOPENS round-28 at the FLEET slot (P121 → V134).
