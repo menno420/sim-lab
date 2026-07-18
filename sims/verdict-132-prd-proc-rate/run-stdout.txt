@@ -1,0 +1,53 @@
+{
+  "all_pass": true,
+  "anchors": {
+    "E_N_naive": 2.21875,
+    "c_solved": 0.084744,
+    "eff_naive_closed_form": 0.450704,
+    "eff_solved_closed_form": 0.25,
+    "prd_max_streak_bound_naive": 3
+  },
+  "gates": {
+    "G1_naive_overshoot": {
+      "EFF_MIN": 0.4,
+      "eff_naive": 0.450684,
+      "pass": true,
+      "z": 146.3107,
+      "z_vs_null_0.25": 655.4296
+    },
+    "G2_solve_c_fixes_it": {
+      "SOLVED_MAX": 0.15,
+      "c_solved": 0.084744,
+      "eff_solved": 0.24998,
+      "pass": true,
+      "z": -0.0637
+    },
+    "G3_anchor_and_streak": {
+      "eff_naive": 0.450684,
+      "eff_naive_closed_form": 0.450704,
+      "pass": true,
+      "streak_naive": 3,
+      "streak_random": 51,
+      "z_anchor": -0.0589
+    }
+  },
+  "params": {
+    "ATTEMPTS": 2000000,
+    "C_NAIVE": 0.25,
+    "EFF_MIN": 0.4,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "SOLVED_MAX": 0.15,
+    "TARGET": 0.25
+  },
+  "results_sha256": "ce121bd9885747c336bf8f655112dc0bbffb35ba0fbd01832c14eb57d4248911",
+  "sim": {
+    "eff_naive": 0.450684,
+    "eff_random": 0.249999,
+    "eff_solved": 0.24998,
+    "streak_naive": 3,
+    "streak_random": 51,
+    "streak_solved": 11
+  }
+}
+Results-JSON sha256: ce121bd9885747c336bf8f655112dc0bbffb35ba0fbd01832c14eb57d4248911
