@@ -1,0 +1,69 @@
+CFG_LOW   lam=5    herd=4.9123 coalesced=0.9928 anchor=5.0000 (exact_poisson_mean_lambda*T) z=-2.5226 PASS
+CFG_HIGH  lam=30   herd=30.0830 coalesced=1.0000 anchor=30.0000 (exact_poisson_mean_lambda*T) z=+0.9635 PASS
+CFG_HEAD  lam=30   herd=30.1382 coalesced=1.0000 anchor=0.0000 (zero_amplification) z=+341.6440 PASS
+all_gates_pass = True
+first_failing_gate = None
+{
+  "all_gates_pass": true,
+  "configs": {
+    "CFG_HEAD": {
+      "T_recompute": 1.0,
+      "amplification_factor": 30.13825,
+      "anchor": 0.0,
+      "anchor_kind": "zero_amplification",
+      "coalesce": true,
+      "coalesced_mean_exact": 1.0,
+      "lambda": 30.0,
+      "mean_coalesced_recomputes": 1.0,
+      "mean_naive_herd": 30.13825,
+      "pass": true,
+      "poisson_mean_lambda_T": 30.0,
+      "replications": 4000,
+      "se": 0.085288,
+      "statistic": 29.13825,
+      "statistic_kind": "mean_amplification(naive-coalesced)",
+      "z": 341.643962
+    },
+    "CFG_HIGH": {
+      "T_recompute": 1.0,
+      "amplification_factor": 30.083,
+      "anchor": 30.0,
+      "anchor_kind": "exact_poisson_mean_lambda*T",
+      "coalesce": false,
+      "coalesced_mean_exact": 1.0,
+      "lambda": 30.0,
+      "mean_coalesced_recomputes": 1.0,
+      "mean_naive_herd": 30.083,
+      "pass": true,
+      "poisson_mean_lambda_T": 30.0,
+      "replications": 4000,
+      "se": 0.08614,
+      "statistic": 30.083,
+      "statistic_kind": "mean_naive_herd",
+      "z": 0.963546
+    },
+    "CFG_LOW": {
+      "T_recompute": 1.0,
+      "amplification_factor": 4.948124,
+      "anchor": 5.0,
+      "anchor_kind": "exact_poisson_mean_lambda*T",
+      "coalesce": false,
+      "coalesced_mean_exact": 0.993262,
+      "lambda": 5.0,
+      "mean_coalesced_recomputes": 0.99275,
+      "mean_naive_herd": 4.91225,
+      "pass": true,
+      "poisson_mean_lambda_T": 5.0,
+      "replications": 4000,
+      "se": 0.034786,
+      "statistic": 4.91225,
+      "statistic_kind": "mean_naive_herd",
+      "z": -2.522567
+    }
+  },
+  "first_failing_gate": null,
+  "seed": 20260717,
+  "sigma_gate": 3.0,
+  "t_recompute": 1.0
+}
+Results-JSON sha256: 81929730f04afec22fcacffd0d44d81609c6d2d2e395dd0803ec77ee29f19422
