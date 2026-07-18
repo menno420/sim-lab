@@ -1,0 +1,79 @@
+{
+  "all_pass": true,
+  "config": {
+    "cv2_h2": 4.0,
+    "lambda": 0.8,
+    "mean_service": 1.0,
+    "n_jobs": 600000,
+    "replications": 30,
+    "rho": 0.8,
+    "seed": 20260717,
+    "subseed_bits": 64,
+    "warmup": 150000,
+    "z_gate": 3.0
+  },
+  "gates": {
+    "G1_deterministic_MD1": {
+      "cv2": 0.0,
+      "dist": "D",
+      "pass": true,
+      "wq_theory": 2.0000000000000004,
+      "z": 0.4962218765306398
+    },
+    "G2_exponential_MM1": {
+      "cv2": 1.0,
+      "dist": "M",
+      "pass": true,
+      "wq_theory": 4.000000000000001,
+      "z": -0.9344778245649594
+    },
+    "G3_hyperexponential_MH2_1": {
+      "cv2": 4.0,
+      "dist": "H2",
+      "pass": true,
+      "wq_theory": 10.000000000000002,
+      "z": -1.8378587148111825
+    }
+  },
+  "h2_params": {
+    "branch_mean_1": 0.5635083268962916,
+    "branch_mean_2": 4.436491673103709,
+    "p1": 0.8872983346207417
+  },
+  "mechanism": "service-variance-wait-tax",
+  "per_dist": {
+    "D": {
+      "cv2": 0.0,
+      "grand_mean": 2.0022210255286175,
+      "pass": true,
+      "se": 0.004475871850200233,
+      "std_across_reps": 0.024515359768570517,
+      "wq_theory": 2.0000000000000004,
+      "z": 0.4962218765306398
+    },
+    "H2": {
+      "cv2": 4.0,
+      "grand_mean": 9.921618653177939,
+      "pass": true,
+      "se": 0.042648189542750355,
+      "std_across_reps": 0.23359375449320305,
+      "wq_theory": 10.000000000000002,
+      "z": -1.8378587148111825
+    },
+    "M": {
+      "cv2": 1.0,
+      "grand_mean": 3.9877169848573506,
+      "pass": true,
+      "se": 0.013144255347491604,
+      "std_across_reps": 0.07199405155429058,
+      "wq_theory": 4.000000000000001,
+      "z": -0.9344778245649594
+    }
+  },
+  "theory": {
+    "D": 2.0000000000000004,
+    "H2": 10.000000000000002,
+    "M": 4.000000000000001
+  }
+}
+Results-JSON sha256: ab44d56a22c24f83c4a2048af56dc3dbdbf462d3aa9990bd19c64426891e4307
