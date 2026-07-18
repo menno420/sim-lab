@@ -25,8 +25,12 @@ Stdlib-only (random, math, json, hashlib); verifier copied byte-identical (diff 
 - G2 max-biased-low + MVUE-above-max: (a) mean sample max strictly BELOW N by ≥3σ AND (b) mean N̂ exceeds mean sample max by ≥3σ — the estimate lands above the largest serial observed, the counterintuitive core.
 - G3 closed-form-anchor + efficiency: (a) empirical Var(N̂) reproduces (N−K)(N+1)/(K(K+2))=28457.0 within 3σ (|z|<3) AND (b) the MVUE strictly more efficient than Ñ=2x̄−1: Var(Ñ)−Var(N̂)≥0 by ≥3σ.
 
-## Outcome — PENDING (born-red HOLD)
-Reproduction + independent digest audit in progress; this section is filled with the audited ruling in a later commit, and only then is the card flipped to `complete`.
+## Outcome — APPROVE (exact reproduction)
+Reproduced digest `37cea2bfb9b3f60c564d78bb6e5b31c9fcfe8ee7cb11c2fbafe38ddf9af31531` == disclosed digest (MATCH). Cross-invocation A + B and an in-process double invocation all produced the identical digest (all exit 0; cross-invocation stdout diff exit 0 AND results-json diff exit 0). Verifier copy diff exit 0; blob `de5487e5` + sha256 `130ebaaf` match source.
+- **G1 MVUE-unbiased: PASS** — mean N̂ **999.927753** (se 0.1833) within 3σ of N=1000, **|z|=0.3941**.
+- **G2 max-biased-low + MVUE-above-max: PASS** — mean sample max **834.106461** below N by **z_bias=1086.0456σ** AND N̂-above-max gap **165.821292** by **z_above=694.9667σ** (the MVUE lands above the largest observed serial).
+- **G3 anchor-match + efficiency: PASS** — Var(N̂) **28509.405891** vs closed-form **28457.0** |z_var_match|=**0.9831** (<3) AND MVUE strictly more efficient: Var(Ñ)−Var(N̂) **37966.966877** by **z_efficiency=344.4929σ**.
+- Analytic anchors: E[m]=834.166667, bias_max=165.833333, Var(N̂)=28457.0, Var(Ñ)=66399.666667, efficiency ratio (K+2)/3=2.333333, E[N̂]=N=1000 exactly. Sim: mean N̂ 999.927753, mean sample max 834.106461, Var(N̂) 28509.405891, Var(Ñ) 66476.372769. all_pass=true, exit 0. First-failing gate: none.
 
 ## ⟲ Previous-session review
 Prior loop landed VERDICT 132 (P119 PRD proc-rate compression, +13, sim-lab #206, digest ce121bd9…) — APPROVE, clean born-red flip, merge-on-green with no agent merge call. This slice closes round-27 on the verdict side at the UNRELATED slot (fleet P117→V130, venture P118→V131, game P119→V132, unrelated P120→V133).
