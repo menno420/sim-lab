@@ -1,0 +1,52 @@
+{
+  "all_pass": true,
+  "exact": {
+    "bias_vs_half": -0.14711,
+    "defined_sequences": 21232,
+    "e_exact": 0.35289,
+    "total_sequences": 32768
+  },
+  "first_failing_gate": null,
+  "gates": {
+    "G1_estimator_agreement": {
+      "mean_first_half": 0.353071,
+      "mean_second_half": 0.353576,
+      "pass": true,
+      "rule": "|z| < sigma_gate",
+      "stat": "z = (mean_firsthalf - mean_secondhalf) / se_diff",
+      "z": -0.384486
+    },
+    "G2_closed_form_agreement": {
+      "e_exact": 0.35289,
+      "mc_mean": 0.353323,
+      "pass": true,
+      "rule": "|z| < sigma_gate",
+      "stat": "z = (mc_mean - e_exact) / mc_se",
+      "z": 0.660242
+    },
+    "G3_head_below_half": {
+      "mc_mean": 0.353323,
+      "pass": true,
+      "rule": "z >= sigma_gate",
+      "stat": "z = (0.5 - mc_mean) / mc_se",
+      "z": 223.601743
+    }
+  },
+  "mc": {
+    "mc_bias_vs_half": -0.146677,
+    "mc_mean": 0.353323,
+    "mc_se": 0.000656,
+    "n_defined": 259246,
+    "undefined_dropped": 140754
+  },
+  "params": {
+    "k_streak": 3,
+    "m_sequences": 400000,
+    "n_flips": 15,
+    "seed": 20260717,
+    "sigma_gate": 3.0
+  },
+  "phenomenon": "hot-hand streak-selection bias (Miller-Sanjurjo finite-sequence selection bias)",
+  "proposal": 144
+}
+Results-JSON sha256: 1c262684265b51e714365a29aa1209ff646b13975d554a404aaf144927b2dac3
