@@ -2,7 +2,7 @@
 
 Reproduce PROPOSAL 135 (round-31 GAME slot, P135 → V148, +13): in a weighted rock-paper-scissors balance triangle (skew-symmetric zero-sum game, cycle R>S>P>R with winning margins a=margin(R beats S), b=margin(S beats P), c=margin(P beats R)), does the mixed-strategy Nash equilibrium play each unit in proportion to the margin of the matchup it is NOT in (x*_R:x*_P:x*_S = b:a:c), so that buffing R's margin a from the symmetric 0.2 to 0.4 moves x* from (1/3,1/3,1/3) to (R 0.25, P 0.50, S 0.25) — DROPPING R's own pick rate and DOUBLING its counter P's — while the game value stays 0 and the intuitive uniform (1/3-each) meta is exploitable by (a−c)/3? The whole point inverts the folk reading "balance = equal pick rates; buff a weak unit and it gets played more": the equilibrium weights are the INVERSE margins (b, a, c), so a buff to a raises the counter's share x*_P (∝a), not the buffed unit's own x*_R (∝b), while the value stays 0.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · high · review/verify
 
 Born red by design: this card lands `in-progress` in the FIRST commit so the substrate-gate HOLD holds the PR red until the reproduction is proven and independently audited; the deliberate LAST commit flips it to `complete`, clearing the HOLD and releasing merge-on-green (ORDER 003). No gate is bypassed. This born-red HOLD is the ONLY reason the gate reads red pre-flip; a red gate AFTER the flip is a real defect, not the HOLD.
