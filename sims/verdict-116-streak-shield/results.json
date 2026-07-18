@@ -1,0 +1,1 @@
+{"games":200,"high_p":0.55,"high_uplift_mean":35.313,"high_uplift_stderr":0.068073,"low_p":0.45,"low_uplift_mean":21.6436,"low_uplift_stderr":0.05745,"n_per_cohort":10000,"passed":true,"regressive":true,"seed":20260717,"sigma_gate":3.0,"streak_w":3,"uplift_gap":13.6694,"uplift_gap_sigma":153.4585}
