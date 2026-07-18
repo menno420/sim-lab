@@ -1,0 +1,42 @@
+CFG_MOD : PASS (z=-0.914, mc=0.167100, closed=0.167862, p=0.48, i=20, N=40, trials=200000)
+CFG_FAIR: PASS (z=+0.635, mc=0.500710, closed=0.500000, p=0.5, i=20, N=40, trials=200000)
+CFG_EDGE: PASS (z=+3049.279, mc=0.002510, closed=0.002468, p=0.485, i=100, N=200, trials=100000)
+{
+  "all_gates_pass": true,
+  "configs": {
+    "CFG_EDGE": {
+      "N": 200,
+      "closed": 0.00246818501883934,
+      "gate": true,
+      "i": 100,
+      "mc": 0.00251,
+      "p": 0.485,
+      "trials": 100000,
+      "z": 3049.2791251725334
+    },
+    "CFG_FAIR": {
+      "N": 40,
+      "closed": 0.5,
+      "gate": true,
+      "i": 20,
+      "mc": 0.50071,
+      "p": 0.5,
+      "trials": 200000,
+      "z": 0.6350439458615589
+    },
+    "CFG_MOD": {
+      "N": 40,
+      "closed": 0.16786226899122164,
+      "gate": true,
+      "i": 20,
+      "mc": 0.1671,
+      "p": 0.48,
+      "trials": 200000,
+      "z": -0.9137735756724799
+    }
+  },
+  "linear_anchor": 0.485,
+  "seed": 20260717,
+  "sigma_gate": 3.0
+}
+Results-JSON sha256: d6668ff14304a95d575b45f747efcbff4186e63cc6e306161da390a4f896a6ba
