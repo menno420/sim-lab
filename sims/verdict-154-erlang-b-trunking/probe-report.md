@@ -1,0 +1,40 @@
+# Probe report — VERDICT 154 · Erlang-B trunking efficiency (P141 → V154, +13)
+
+**Verdict: APPROVE** (exact reproduction) — byte-identical verifier copy + exact digest reproduction + all three gates PASS in order CFG_SMALL → CFG_MED → CFG_HEAD. Born-red card flip is the deliberate LAST commit that releases the substrate-gate HOLD; landing is via merge-on-green, zero agent merge calls.
+
+Source: idea-engine `ideas/fleet/erlang_b_trunking_efficiency.py` at `2d7d05e` (PROPOSAL 141, round-33 FLEET slot OPENER, landed via idea-engine #585). Permalink: https://github.com/menno420/idea-engine/blob/2d7d05e954f17493ce8d1dee6203acd98be38e29/ideas/fleet/erlang_b_trunking_efficiency.py
+
+## Reproduction posture
+- Verifier copied **byte-identical** from idea-engine `ideas/fleet/erlang_b_trunking_efficiency.py` — `diff` exit **0**, file sha256 `fd4d6bfd9e668400f678291979c63c45d32a9599bed0e1efbd8e7f97c26e275c`, git blob `c11093a6331af4bc71f1b8d77774ea768fbd065d`, **179** lines / **6605** bytes.
+- Pinned world: **SEED=20260717**, **SIGMA_GATE=3.0**, **MU=1.0**, offered-load-per-server **ρ=0.8**, pooled anchor **POOL_C=100 / POOL_A=80.0**. Three configs drawn sequentially off ONE `random.Random(SEED)` stream in the fixed order: **CFG_SMALL** c=2 a=1.6 R=400 A=8000 W=1500, **CFG_MED** c=10 a=8.0 R=400 A=8000 W=1500, **CFG_HEAD** c=2 a=1.6 R=400 A=8000 W=1500. Stdlib-only (hashlib, json, random); no numpy/scipy.
+- Method: for each config the exact Erlang-B anchor is computed with no RNG — `erlang_b(c,a)` runs the stable recursion B(0,a)=1, B(k,a)=a·B(k−1,a)/(k+a·B(k−1,a)) — then `simulate_replication()` runs an event-driven M/M/c/c loss system per replication (interarrival ~ Exp(λ=a·μ) then service ~ Exp(μ), exactly two draws/arrival in fixed order; a call is accepted onto the first free server whose free-at ≤ clock, else blocked/cleared), R=400 independent replications, mc = mean of the per-replication post-warmup blocking fractions, se = sample-std/√R (an honest between-replication standard error, so within-replication autocorrelation folds into the between-replication spread), z = (mc − anchor)/se. The two verifier-correctness configs gate on |z|<3σ vs the exact Erlang-B anchor; the headline config gates on z≥3σ ABOVE the pooled exact B(100,80). The single pinned stream drawn in the fixed config order makes the run deterministic — identical double-run → identical results dict → identical sha256.
+- DIGEST POSTURE: **WHOLE-DICT / NO-SELF-FIELD / STDOUT-ONLY** — the results dict carries **NO** `results_sha256` field; `main()` computes `payload=json.dumps(results, sort_keys=True, separators=(",",":"))`, `digest=sha256(payload.encode()).hexdigest()`, then PRINTS the pretty `json.dumps(results, indent=2, sort_keys=True)` dump followed by `Results-JSON sha256: <digest>`. It writes NO results file. **Twist (P127+):** the disclosed digest is the sha256 of the COMPACT-canonical serialization, NOT the pretty indent=2 dump printed on stdout — recompute over the compact form. The compute entry is `run()`; `main()` itself calls `run()` twice, compact-hashes both, and asserts the two digests equal (the in-process double-run determinism check is built into the verifier).
+
+## Digest — reproduced == disclosed
+| run | digest |
+|---|---|
+| disclosed (P141 outbox / verifier `Results-JSON sha256:` line) | `a9556fa032f268407b136f9aa0d93bdb936f26bd1eb2d609b019e9d60959173a` |
+| cross-invocation A (fresh `python3`, committed `run-stdout.txt`) | `a9556fa032f268407b136f9aa0d93bdb936f26bd1eb2d609b019e9d60959173a` |
+| cross-invocation B (fresh `python3`) | `a9556fa032f268407b136f9aa0d93bdb936f26bd1eb2d609b019e9d60959173a` |
+| in-process run 1 (`run()` compact-hashed inside `main()`) | `a9556fa032f268407b136f9aa0d93bdb936f26bd1eb2d609b019e9d60959173a` |
+| in-process run 2 (`run()` compact-hashed inside `main()`) | `a9556fa032f268407b136f9aa0d93bdb936f26bd1eb2d609b019e9d60959173a` |
+| independent recompute (`import run()`, hash compact serialization outside `main()`) | `a9556fa032f268407b136f9aa0d93bdb936f26bd1eb2d609b019e9d60959173a` |
+
+**All canonical computations == the disclosed digest EXACTLY.** all_gates_pass=**true**, exit **0**, byte-identical across cross-invocation A/B (stdout diff exit **0**) and across the asserted in-process double-run.
+
+## Gates (disclosed → reproduced), order CFG_SMALL → CFG_MED → CFG_HEAD
+| gate | criterion | disclosed | reproduced | result |
+|---|---|---|---|---|
+| **CFG_SMALL** verifier-correctness | MC blocking vs exact B(2,1.6)=0.329897, \|z\|<3σ | mc **0.330324**, z **+1.194** | mc **0.330324231** vs anchor **0.329896907**, se **0.000357895**, z **+1.193992** | **PASS** |
+| **CFG_MED** verifier-correctness | MC blocking vs exact B(10,8)=0.121661, \|z\|<3σ | mc **0.122158**, z **+1.377** | mc **0.122157692** vs anchor **0.121661064**, se **0.000360696**, z **+1.376861** | **PASS** |
+| **CFG_HEAD** counterintuitive headline (z≥3) | MC blocking z≥3σ ABOVE pooled anchor B(100,80)=0.003992 | mc **0.329770**, z **+959.483** | mc **0.329769615** vs L **0.003992029**, se **0.000339535**, z **+959.482625** | **PASS** |
+
+First-failing gate: **none**. all_gates_pass=**true**, exit **0**.
+
+## Exact Erlang-B anchors & observed (all match disclosed exactly)
+- **CFG_SMALL** (c=2, a=1.6): exact B(2,1.6)=**0.329896907**; Monte-Carlo mc=**0.330324231** over R=400 replications; z=(mc−anchor)/se=**+1.193992** — the event-driven M/M/c/c loss system reproduces the exact Erlang-B formula at a 2-server pool.
+- **CFG_MED** (c=10, a=8.0): exact B(10,8)=**0.121661064**; Monte-Carlo mc=**0.122157692** over R=400 replications; z=**+1.376861** — at c=10 and the IDENTICAL ρ=0.8, blocking is already ~2.7× below CFG_SMALL, so the trunking gradient (more servers at the same utilization → less blocking) is real.
+- **CFG_HEAD** (c=2, a=1.6, vs pooled anchor): pooled exact B(100,80)=**0.003992029**; Monte-Carlo mc=**0.329769615** over R=400 replications; z=(mc−L)/se=**+959.482625** — a 2-server fragment blocks ~959σ ABOVE the pooled 100-server prediction at the identical utilization, a ~90× multiplication of dropped calls. The folk "same-utilization → same-blocking" guess understates loss by dozens of orders of sigma.
+
+## Transferable correction (lane consumer, Q-0264)
+Lane CONSUMER = anyone provisioning a shared resource pool that serves bursty demand and drops (rather than queues) overflow — a fabric / trunk-group / connection-pool / GPU-slot / license-seat architect deciding whether to pool capacity or carve it into per-tenant / per-shard silos. The transferable correction: **blocking is NOT a function of utilization alone — at a fixed offered-load-per-server ρ, the Erlang-B loss B(c,c·ρ) falls steeply as pool size c grows, so fragmenting one pool into small same-ρ pools MULTIPLIES the fraction of demand it drops.** For an M/M/c/c loss system with offered load a Erlangs, the exact blocking is B(c,a)=(a^c/c!)/Σ_{k=0..c}a^k/k! (stable recursion B(0,a)=1, B(k,a)=a·B(k−1,a)/(k+a·B(k−1,a))): at ρ=0.8, B(2,1.6)≈0.330 vs B(100,80)≈0.004 — the same utilization, ~90× less blocking pooled. To act on it: never size shared-resource pools per-tenant / per-shard at a target utilization and assume the aggregate drop rate is unchanged — small pools lack the statistical-multiplexing headroom to absorb coincident bursts and each fragment independently rejects during its own local peak, so the loss compounds and does not average out; pool capacity, and if isolation forces fragmentation, budget the trunking penalty explicitly. DISTINCT from the M/G/1 Pollaczek-Khinchine wait-variance head P137 (a single-server DELAY object where service-time variance inflates the expected WAIT — a queueing/delay system, not a loss system) and the M/M/c Erlang-C delay head (an expected-WAIT queueing object with a queue): here the object is a multi-server LOSS system (no queue, blocked calls are cleared), the statistic is the BLOCKING probability B(c,a), and the pooled exact B(100,80) control proves the ~90× multiplication is the pool-size economy-of-scale, not a magnitude or sim artifact.

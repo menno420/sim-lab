@@ -1,0 +1,56 @@
+CFG_SMALL  c=2   a=1.6  mc=0.330324 anchor=0.329897 (exact_B(2,1.6)) z=+1.194 PASS
+CFG_MED    c=10  a=8    mc=0.122158 anchor=0.121661 (exact_B(10,8)) z=+1.377 PASS
+CFG_HEAD   c=2   a=1.6  mc=0.329770 anchor=0.003992 (pooled_exact_B(100,80)) z=+959.483 PASS
+all_gates_pass = True
+{
+  "all_gates_pass": true,
+  "configs": {
+    "CFG_HEAD": {
+      "anchor": 0.003992029,
+      "anchor_kind": "pooled_exact_B(100,80)",
+      "arrivals_per_rep": 8000,
+      "mc_blocking": 0.329769615,
+      "offered_load": 1.6,
+      "pass": true,
+      "replications": 400,
+      "se": 0.000339535,
+      "servers": 2,
+      "warmup": 1500,
+      "z": 959.482625
+    },
+    "CFG_MED": {
+      "anchor": 0.121661064,
+      "anchor_kind": "exact_B(10,8)",
+      "arrivals_per_rep": 8000,
+      "mc_blocking": 0.122157692,
+      "offered_load": 8.0,
+      "pass": true,
+      "replications": 400,
+      "se": 0.000360696,
+      "servers": 10,
+      "warmup": 1500,
+      "z": 1.376861
+    },
+    "CFG_SMALL": {
+      "anchor": 0.329896907,
+      "anchor_kind": "exact_B(2,1.6)",
+      "arrivals_per_rep": 8000,
+      "mc_blocking": 0.330324231,
+      "offered_load": 1.6,
+      "pass": true,
+      "replications": 400,
+      "se": 0.000357895,
+      "servers": 2,
+      "warmup": 1500,
+      "z": 1.193992
+    }
+  },
+  "exact_B_10_8": 0.121661064,
+  "exact_B_2_1p6": 0.329896907,
+  "mu": 1.0,
+  "offered_load_per_server": 0.8,
+  "pooled_anchor_B_100_80": 0.003992029,
+  "seed": 20260717,
+  "sigma_gate": 3.0
+}
+Results-JSON sha256: a9556fa032f268407b136f9aa0d93bdb936f26bd1eb2d609b019e9d60959173a
