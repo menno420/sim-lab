@@ -1,0 +1,40 @@
+{
+  "all_pass": true,
+  "first_failing_gate": null,
+  "g1_agreement": true,
+  "g1_half_a_gap": 0.741044,
+  "g1_half_b_gap": 0.741657,
+  "g1_z": -0.69753,
+  "g2_control": true,
+  "g2_naive_gap": -0.398765,
+  "g2_se": 0.000276,
+  "g2_z": -1442.35432,
+  "g3_head": true,
+  "g3_rational_gap": 0.741351,
+  "g3_se": 0.000436,
+  "g3_z": 1701.028769,
+  "n": 1000,
+  "naive_share_bad": 0.300617,
+  "naive_share_good": 0.699383,
+  "naive_vel_bad": 0.300463,
+  "naive_vel_good": 0.69817,
+  "params": {
+    "e_max": 2.0,
+    "gamma": 0.9,
+    "inc_max": 2.0
+  },
+  "proposal": 147,
+  "r": 40,
+  "rational_share_bad": 0.870675,
+  "rational_share_good": 0.129325,
+  "rational_vel_bad": 0.870242,
+  "rational_vel_good": 0.129105,
+  "seed": 20260717,
+  "sigma_gate": 3.0,
+  "t": 100
+}
+Results-JSON sha256: 90995ccd7c152402a6189a3fbdb60a401d04f750767127eae449cf8f67f7b969
+G1 agreement    : PASS (half_a-half_b, z=-0.70, |z|<3.0)
+G2 control      : PASS (naive gap=-0.3988, z=-1442.35, not-sig-positive z<3.0)
+G3 head         : PASS (rational gap=+0.7414, z=+1701.03, z>=3.0)
+all_pass        : True first_failing_gate: None
