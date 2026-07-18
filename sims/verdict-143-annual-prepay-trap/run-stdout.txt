@@ -1,0 +1,75 @@
+{
+  "all_pass": true,
+  "closed_form": {
+    "annual_multiple_months": 10.0,
+    "apr_implied": 0.511621,
+    "apr_true_ref": 0.126825,
+    "d_fair_ref": 0.052698,
+    "over_discount_ratio": 3.162697,
+    "pv_multiple_at_r_true": 11.367628,
+    "r_star_monthly": 0.035032
+  },
+  "domain": "venture",
+  "gates": {
+    "G1_implied_financing_rate": {
+      "mean": 0.38468,
+      "pass": true,
+      "se": 1e-05,
+      "stat": "mean_apr_implied_minus_apr_true",
+      "threshold": 0.15,
+      "z": 24078.7034
+    },
+    "G2_deadweight_npv_destruction": {
+      "mean": 0.114002,
+      "pass": true,
+      "se": 4e-06,
+      "sign_block": true,
+      "stat": "mean_npv_monthly_minus_annual_per_dollar_list",
+      "threshold": 0.03,
+      "z": 22938.9668
+    },
+    "G3_irr_breakeven_discount_anchor": {
+      "apr_anchor_ok": true,
+      "irr_unique": true,
+      "pass": true,
+      "ratio_dev_mean": -0.0,
+      "stat": "dollar_weighted_minus_count_mean_pv_multiple",
+      "z": 0.0031
+    }
+  },
+  "observed": {
+    "apr_anchor_matches_analytic_irr": true,
+    "apr_gap_mean": 0.38468,
+    "apr_gap_se": 1e-05,
+    "d_star_mean": 0.052665,
+    "irr_unique_sign_change": true,
+    "npv_annual_per_dollar_mean": 0.833333,
+    "npv_gap_per_dollar_mean": 0.114002,
+    "npv_gap_per_dollar_se": 4e-06,
+    "npv_monthly_per_dollar_mean": 0.947335,
+    "ratio_dev_mean": -0.0,
+    "ratio_dev_se": 2.6e-05,
+    "sign_block_annual_destroys_value": true
+  },
+  "params": {
+    "APR_GAP_MIN": 0.15,
+    "DISCOUNT": 0.166667,
+    "MONTHS": 12,
+    "MSPEND0": 100.0,
+    "NPV_GAP_MIN": 0.03,
+    "N_CUSTOMERS": 8000,
+    "R_TRUE_MONTHLY": 0.01,
+    "SHAPE": 64.0
+  },
+  "proposal": 130,
+  "seed": 20260717,
+  "sigma": 3.0,
+  "slot": "round-30-venture",
+  "trials": 400
+}
+Results-JSON sha256: cf0d9e72622af9a3d595f687855624ce92ad426ec4c8f640940000e07afcae7b
+annual-prepay d=0.1667 (2 months free)  ->  implied financing APR=0.511621 (r*=0.035032/mo)  vs  real cost of capital APR=0.126825  |  at r_true the monthly-billing PV=11.367628 months  >  annual-prepay PV=10.0 months (NPV destroyed 0.114002 per $ of annual list)  |  fair break-even discount d_fair=0.052698  =>  offered d over-discounts by 3.162697x
+G1_implied_financing_rate: pass=True  {'stat': 'mean_apr_implied_minus_apr_true', 'mean': 0.38468, 'se': 1e-05, 'threshold': 0.15, 'z': 24078.7034, 'pass': True}
+G2_deadweight_npv_destruction: pass=True  {'stat': 'mean_npv_monthly_minus_annual_per_dollar_list', 'mean': 0.114002, 'se': 4e-06, 'threshold': 0.03, 'z': 22938.9668, 'sign_block': True, 'pass': True}
+G3_irr_breakeven_discount_anchor: pass=True  {'stat': 'dollar_weighted_minus_count_mean_pv_multiple', 'ratio_dev_mean': -0.0, 'z': 0.0031, 'apr_anchor_ok': True, 'irr_unique': True, 'pass': True}
+ALL_PASS: True
