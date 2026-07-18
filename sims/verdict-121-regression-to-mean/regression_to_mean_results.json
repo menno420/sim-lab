@@ -1,0 +1,41 @@
+{
+  "all_pass": true,
+  "anchor": {
+    "delta_star_spurious_improvement": 0.762568,
+    "delta_top_star_spurious_decline": -0.762568,
+    "m_sel_selection_gap": -1.525135,
+    "m_top_overperformer_gap": 1.525135
+  },
+  "gates": {
+    "G1_spurious_improvement": {
+      "pass": true,
+      "z": 312.4059
+    },
+    "G2_population_control": {
+      "pass": true,
+      "z": 0.1204
+    },
+    "G3_anchor_match": {
+      "pass": true,
+      "z": 0.4969
+    }
+  },
+  "params": {
+    "C_THRESH": -1.0,
+    "IMPROVE_MIN": 0.5,
+    "N_UNITS": 20000,
+    "RHO": 0.5,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "TRIALS": 400
+  },
+  "results_sha256": "35d65a5060d0582a5fd0d041c2d72635657c7f8c62ac024d4ee004b285ed8aed",
+  "sim": {
+    "delta_pop": 4.5e-05,
+    "delta_sel": 0.762986,
+    "delta_top": -0.764375,
+    "se_pop": 0.000372,
+    "se_sel": 0.000842,
+    "se_top": 0.000738
+  }
+}
