@@ -1,0 +1,58 @@
+{
+  "all_pass": true,
+  "anchor": {
+    "R_JS_DIM_LO_closed_form": 2.230204,
+    "R_JS_DIM_closed_form": 6.047064,
+    "R_JS_theta0_all_p": 2.0,
+    "R_MLE_DIM": 10.0,
+    "advantage_DIM_anchor_z": 0.4868,
+    "advantage_DIM_closed_form": 3.952936
+  },
+  "gates": {
+    "G1_shrinkage_dominates_mle": {
+      "pass": true,
+      "z": 502.9231
+    },
+    "G2_gain_grows_with_dimension": {
+      "pass": true,
+      "z": 507.6366
+    },
+    "G3_boundary_exactly_zero_at_p2": {
+      "max_abs_adv": 0.0,
+      "pass": true
+    }
+  },
+  "params": {
+    "DIM": 10,
+    "DIM_BOUNDARY": 2,
+    "DIM_HI": 20,
+    "DIM_LO": 3,
+    "NOISE_SD": 1.0,
+    "SEED": 20260717,
+    "SIGMA_GATE": 3.0,
+    "TARGET": 0.0,
+    "TAU": 1.0,
+    "TRIALS": 200000
+  },
+  "sim": {
+    "dose_hi_minus_lo": 6.648803,
+    "max_abs_advantage_boundary": 0.0,
+    "mean_advantage_DIM": 3.956766,
+    "mean_advantage_DIM_HI": 7.445553,
+    "mean_advantage_DIM_LO": 0.79675,
+    "mean_js_risk_DIM": 6.052289,
+    "mean_js_risk_boundary": 2.006887,
+    "mean_mle_risk_DIM": 10.009055,
+    "mean_mle_risk_boundary": 2.006887,
+    "se_advantage_DIM": 0.007868,
+    "se_advantage_DIM_HI": 0.010596,
+    "se_advantage_DIM_LO": 0.007699,
+    "se_dose": 0.013098
+  },
+  "theta_norm2": {
+    "DIM": 9.264243,
+    "DIM_LO": 0.807136
+  }
+}
+Results-JSON sha256: 689ae146cb519e89d9ce8a9ed43919fdc87ad7c263531a122516cf74a4a5f57b
+ALL_PASS: True
