@@ -1,6 +1,6 @@
 # VERDICT 120 — energy-cap overflow-forfeiture tax in free-to-play stamina pacing: a stamina bar regenerates 1 unit/period up to a cap C while players log in at a Poisson rate (inter-login gaps iid Exponential mean μ), so the regen banked between logins is min(gap, C) and the overflow max(0, gap−C) accrued while the bar is full is silently FORFEITED — the usable (spendable) fraction of all regenerated stamina is the exact closed form U(μ)=E[min(G,C)]/E[G]=1−e^{−C/μ}, a CONCAVE saturating function of the cap, so raising the cap past C~μ adds exponentially little usable energy and the overflow-forfeited fraction W(μ)=e^{−C/μ} rises monotonically with the login gap — the busy/casual player the cap is sold to "protect" forfeits the LARGEST fraction while the always-online player captures nearly all of it; a GAME-domain pure-mechanism head (round-24 game slot), P107 → V120 (+13)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: opus-4.8 · low · review/verify
 
 Born in-progress as this session's FIRST commit (born-red HOLD); it stays in-progress until the reproduction artifacts + heartbeat land and the close-out is written — the flip to `complete` is a deliberate LATER step, not part of this born-red opening commit.
