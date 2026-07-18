@@ -1,0 +1,68 @@
+{
+  "all_pass": true,
+  "config": {
+    "n_grid": [
+      10,
+      69,
+      100,
+      200
+    ],
+    "p_leaf": 0.01,
+    "seed": 20260717,
+    "trials": 120000,
+    "z_gate": 3.0
+  },
+  "crossover": {
+    "n_star": 69,
+    "root": 68.96756393652842
+  },
+  "gates": {
+    "G1_union_bound_tail": {
+      "exact": 0.6339676587267709,
+      "n": 100,
+      "pass": true,
+      "z": -0.3362996260670384
+    },
+    "G2_median_crossover": {
+      "bracket": true,
+      "exact": 0.500162970100801,
+      "n": 69,
+      "pass": true,
+      "z": -0.014759452902530413
+    },
+    "G3_mean_slow_linear": {
+      "exact": 1.0,
+      "n": 100,
+      "pass": true,
+      "z": 0.05512459105261225
+    }
+  },
+  "mechanism": "fan-out-tail-amplification",
+  "per_n": {
+    "10": {
+      "mean_slow_leaves_exact": 0.1,
+      "mean_slow_leaves_hat": 0.1002,
+      "p_slow_exact": 0.09561792499119559,
+      "p_slow_hat": 0.0959
+    },
+    "100": {
+      "mean_slow_leaves_exact": 1.0,
+      "mean_slow_leaves_hat": 1.0001583333333333,
+      "p_slow_exact": 0.6339676587267709,
+      "p_slow_hat": 0.6335
+    },
+    "200": {
+      "mean_slow_leaves_exact": 2.0,
+      "mean_slow_leaves_hat": 2.0039083333333334,
+      "p_slow_exact": 0.8660203251420383,
+      "p_slow_hat": 0.8667416666666666
+    },
+    "69": {
+      "mean_slow_leaves_exact": 0.6900000000000001,
+      "mean_slow_leaves_hat": 0.6881333333333334,
+      "p_slow_exact": 0.500162970100801,
+      "p_slow_hat": 0.5001416666666667
+    }
+  }
+}
+Results-JSON sha256: 4b3de5012a6cedc99de8e446c3fdd0aa79b1988fd0594c3cbb9e33702131c42d
