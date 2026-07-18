@@ -1,0 +1,48 @@
+{
+  "all_pass": true,
+  "closed_form": {
+    "high_after": 0.8,
+    "high_before": 0.75,
+    "high_improvement": 0.05,
+    "low_after": 0.3,
+    "low_before": 0.25,
+    "low_improvement": 0.05,
+    "pooled": 0.5
+  },
+  "count_conserved": true,
+  "first_failing_gate": null,
+  "g1_agreement": true,
+  "g1_half_a_impr": 0.049696,
+  "g1_half_b_impr": 0.049445,
+  "g1_z": 0.361594,
+  "g2_cons_max_rel": 0.0,
+  "g2_control": true,
+  "g2_pooled_impr": 0.0,
+  "g2_z": 0.010159,
+  "g3_head": true,
+  "g3_head_z": 133.926813,
+  "g3_high_impr": 0.049516,
+  "g3_high_z": 133.926813,
+  "g3_low_impr": 0.049571,
+  "g3_low_z": 144.191642,
+  "mean_high_after": 0.799861,
+  "mean_high_before": 0.750344,
+  "mean_low_after": 0.298889,
+  "mean_low_before": 0.249318,
+  "mean_n_migrated": 395.55,
+  "n": 4000,
+  "params": {
+    "cons_tol": 1e-09,
+    "t_coarse": 0.5,
+    "t_fine": 0.6
+  },
+  "proposal": 148,
+  "r": 40,
+  "seed": 20260717,
+  "sigma_gate": 3.0
+}
+Results-JSON sha256: 79b7443f3c993d830de4cd9d63c2ce826111e45ec426c3fd8bf17a8c33306470
+G1 agreement    : PASS (low half_a-half_b, z=+0.36, |z|<3.0)
+G2 control      : PASS (pooled impr=+0.000000, cons_max_rel=0.00e+00, z=+0.01, not-sig-positive z<3.0)
+G3 head         : PASS (low impr=+0.0496 z=+144.19, high impr=+0.0495 z=+133.93, min z=+133.93>=3.0)
+all_pass        : True first_failing_gate: None
