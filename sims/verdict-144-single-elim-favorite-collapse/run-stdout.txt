@@ -1,0 +1,42 @@
+{
+  "all_pass": true,
+  "closed_form_title_prob": {
+    "2": 0.5625,
+    "4": 0.31640625,
+    "6": 0.177978515625,
+    "8": 0.1001129150390625
+  },
+  "favorite_strength": 3.0,
+  "g1_sim_correct": true,
+  "g1_z": 0.5096944639694352,
+  "g2_geometric_haircut": true,
+  "g2_ratio_anchor": 0.31640625,
+  "g2_ratio_mc": 0.3185710208353154,
+  "g2_z": 0.9163465017212093,
+  "g3_anchor": 0.822021484375,
+  "g3_inversion": true,
+  "g3_majority": true,
+  "g3_p_favorite_loses_r6": 0.82266,
+  "g3_z": 0.7465538727644705,
+  "mc_title_freq": {
+    "2": 0.562975,
+    "4": 0.31533,
+    "6": 0.17734,
+    "8": 0.100455
+  },
+  "p_match": 0.75,
+  "proposal": 131,
+  "rounds": [
+    2,
+    4,
+    6,
+    8
+  ],
+  "seed": 20260717,
+  "sigma_gate": 3.0,
+  "trials": 200000
+}
+Results-JSON sha256: 002806188054a6eb2f768208f52629d0a3bd0d14624e0489e480efcf86c2a0f2
+G1 sim-correct  : PASS (z=+0.510)
+G2 geometric    : PASS (z=+0.916)
+G3 inversion    : PASS (z=+0.747, P(fav loses)=0.8227)
