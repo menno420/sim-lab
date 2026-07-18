@@ -1,0 +1,7 @@
+{"N":200000,"T":24,"all_pass":true,"closed_form":{"R_cf_0":0.76,"R_cf_late":0.969537,"asymptote":0.97,"lift_cf":0.209537},"domain":"venture","gates":{"G1_survivorship_lift":{"mean":0.209617,"pass":true,"se":5.2e-05,"stat":"mean_observed_lift","threshold":0.05,"z":3079.6379},"G2_individual_constant":{"pass":true,"r_A":0.97,"r_B":0.55,"stat":"pooled_segment_retention","z_A":0.7328,"z_B":0.8081},"G3_anchor_match":{"pass":true,"stat":"R_obs_vs_R_cf","z_late":1.672,"z_t0":0.5941}},"observed":{"R_early_mean":0.759975,"R_early_se":4.1e-05,"R_late_mean":0.969593,"R_late_se":3.4e-05,"lift_mean":0.209617,"lift_se":5.2e-05,"pooled_A_mean":0.969995,"pooled_A_se":6e-06,"pooled_B_mean":0.549955,"pooled_B_se":5.6e-05},"params":{"LIFT_MIN":0.05,"N_A":100000,"N_B":100000,"R_A":0.97,"R_B":0.55,"W_A":0.5,"W_B":0.5},"proposal":106,"seed":20260717,"sigma":3.0,"slot":"round-24-venture","t_late":12,"trials":400}
+sha256: 1dd09b8d06cfbd0155e5822f60f5c1fbf091bf192d4395e503c4f889dd6856d6
+R_early=0.759975 -> R_late(t=12)=0.969593 lift=0.209617  (closed-form 0.76 -> 0.969537, asymptote 0.97)
+G1_survivorship_lift: pass=True  {'stat': 'mean_observed_lift', 'mean': 0.209617, 'se': 5.2e-05, 'threshold': 0.05, 'z': 3079.6379, 'pass': True}
+G2_individual_constant: pass=True  {'stat': 'pooled_segment_retention', 'z_A': 0.7328, 'z_B': 0.8081, 'r_A': 0.97, 'r_B': 0.55, 'pass': True}
+G3_anchor_match: pass=True  {'stat': 'R_obs_vs_R_cf', 'z_t0': 0.5941, 'z_late': 1.672, 'pass': True}
+ALL_PASS: True
