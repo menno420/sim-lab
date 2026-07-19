@@ -1,0 +1,31 @@
+{
+  "G1_investor_invariance": {
+    "pass": true,
+    "prorata_minus_shuffle_change_mean": -0.0283,
+    "se": 0.000146,
+    "shuffle_change_absmean": 0.0,
+    "z": 194.139005
+  },
+  "G2_wealth_transfer": {
+    "pass": true,
+    "predicted_qt_mean": 0.04526,
+    "relerr_mean": 0.0,
+    "transfer_mean": 0.04526,
+    "z": 260.109119
+  },
+  "G3_robust_shift": {
+    "pass": true,
+    "prorata_minus_shuffle_change_mean": -0.024062,
+    "se": 9.8e-05,
+    "shuffle_change_absmean": 0.0,
+    "z": 246.501756
+  },
+  "all_pass": true,
+  "first_failing_gate": null,
+  "founder_shares": 10000000,
+  "mechanism": "option-pool-shuffle-investor-invariance",
+  "n_draws": 4000,
+  "seed": 20260717,
+  "z_gate": 3.0
+}
+sha256: f588004512fce81ea824be9fec0c95a3ba2f3e2a8ec03af5867b526bbcb5b4b5
