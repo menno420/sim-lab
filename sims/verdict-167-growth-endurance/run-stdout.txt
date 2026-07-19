@@ -1,0 +1,3 @@
+{"G1_dominance_sign":{"frac_dominant":0.992229,"gap_mean":0.354025,"z":996.770037},"G2_relative_effect":{"null":0.1,"rel_mean":2.219712,"z":925.51319},"G3_shifted_robustness":{"frac_dominant":0.997938,"gap_mean":0.322362,"z":1107.766114},"all_pass":true,"config":{"DELTA":0.05,"HORIZON":12,"N":1500,"REL_NULL":0.1,"SEED":20260717,"TRIALS":300},"first_failing_gate":null,"mechanism":"growth-endurance-dominance","proposal":154}
+sha256:5dccb475a6fde0ebd5c557b3baa393be8430b91902bbadedb7f5bd16754495bf
+all_pass:True
