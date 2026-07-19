@@ -1,0 +1,32 @@
+{
+  "all_pass": true,
+  "deepening_diff_mean": -0.271863,
+  "deepening_loose_mean_r": -0.52506,
+  "deepening_tight_mean_r": -0.796923,
+  "deepening_z": 110.99457,
+  "first_failing_gate": null,
+  "g1_selected_mean_r": -0.710835,
+  "g1_selected_std_r": 0.021896,
+  "g1_z": 459.110893,
+  "g2_selected_minus_pop_mean": -0.710818,
+  "g2_z": 454.654805,
+  "g3_exponential_mean_r": -0.738422,
+  "g3_exponential_z": 531.488409,
+  "g3_uniform_mean_r": -0.49835,
+  "g3_uniform_z": 305.311106,
+  "gates": {
+    "G1_selected_negative": true,
+    "G2_selection_induced_reversal": true,
+    "G3_robust_nonnormal": true
+  },
+  "loose_frac": 0.4,
+  "n_per_trial": 8000,
+  "population_mean_r": -1.7e-05,
+  "population_std_r": 0.010299,
+  "seed": 20260717,
+  "tight_frac": 0.02,
+  "top_frac": 0.1,
+  "trials": 200,
+  "z_gate": 3.0
+}
+Results-JSON sha256: 42a47b8890316dd5d9da056f1598ad4e3b7472678ffb0e4d3a62c25cadc19e0b
