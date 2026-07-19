@@ -1,0 +1,35 @@
+Bullwhip effect verifier -- order-up-to policy, i.i.d. demand, common seed
+  base  : L=4 p=8  formula ratio=2.500000  measured=2.499097
+  shift : L=6 p=4  formula ratio=8.500000  measured=8.495599
+  G1 ratio_mean=2.499097  z=+880.399457  (null ratio=1)
+  G2 relerr_mean=0.002767  z=+104.491569  (ceiling 0.05)
+  G3 shift_relerr_mean=0.005070  z=+91.810513  (ceiling 0.05)
+  gates : G1=True  G2=True  G3=True  all_pass=True
+
+{
+  "all_pass": true,
+  "d_mean": 100.0,
+  "d_sd": 20.0,
+  "first_failing_gate": null,
+  "formula_ratio_base": 2.5,
+  "formula_ratio_shift": 8.5,
+  "g1_amplification_real": true,
+  "g2_matches_formula": true,
+  "g3_distribution_free": true,
+  "lead": 4,
+  "n_per": 40000,
+  "ratio_mean": 2.499097,
+  "ratio_z": 880.399457,
+  "relerr_mean": 0.002767,
+  "relerr_z": 104.491569,
+  "reps": 30,
+  "seed": 20260717,
+  "shift_lead": 6,
+  "shift_ratio_mean": 8.495599,
+  "shift_relerr_mean": 0.00507,
+  "shift_relerr_z": 91.810513,
+  "shift_window": 4,
+  "warmup": 8000,
+  "window": 8
+}
+Results-JSON sha256: b45986240123fd6f922ce4f4a72d6a2c76ab7d3d8edb2da3b2d76b4efa13a49b
