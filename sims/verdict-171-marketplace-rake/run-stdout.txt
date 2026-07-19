@@ -1,0 +1,3 @@
+{"G1_domination_sign":{"frac_dominant":1.0,"gap_mean":0.080126,"z":592.387661},"G2_relative_effect":{"null":0.1,"rel_mean":0.640656,"z":581.508639},"G3_shifted_robustness":{"frac_dominant":1.0,"gap_mean":0.087422,"z":1142.566654},"all_pass":true,"config":{"C_MAX":0.5,"C_MAX_SHIFT":0.35,"N":4000,"REL_NULL":0.1,"SEED":20260717,"TRIALS":300,"T_MAX":0.45,"T_STAR":0.25,"T_STAR_SHIFT":0.175},"descriptive":{"r_max_base_mean":0.044944,"r_star_base_mean":0.12507,"r_star_shift_mean":0.087422},"first_failing_gate":null,"mechanism":"marketplace-take-rate-disintermediation","proposal":158}
+sha256:9b8be9fcc3e51afcff0561e43930aa5a38b32f803708c1602f7cf3d69e3b1f43
+all_pass:True
