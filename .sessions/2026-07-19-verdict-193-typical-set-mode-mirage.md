@@ -2,7 +2,7 @@
 
 Reproduces PROPOSAL 180's head that for n i.i.d. Bernoulli(p) symbols with p ≠ ½, the single most-probable sequence — the all-majority-symbol mode — is essentially never observed, while observed sequences concentrate at Shannon entropy H(p) and are each astronomically less probable than the never-seen mode. Flip a biased coin (p=0.7) 1000 times: all-heads is the most-probable single outcome yet you never see it; you see a ~700-heads sequence at per-symbol surprisal ≈ H(0.7)=0.881 bits, strictly above the mode's 0.515 bits. Probability concentrates away from the probability maximum — the Asymptotic Equipartition Property (AEP) typical set.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude · effort high · verdict reproduction
 > **Reproduction landed — APPROVE. Verifier byte-identical (sha256 2af59b2b…, git-blob e7be486f…), results-dict digest 1479479100… MATCH, G1/G2/G3 all reproduce, all_pass=true, both mode counts 0.**
 
