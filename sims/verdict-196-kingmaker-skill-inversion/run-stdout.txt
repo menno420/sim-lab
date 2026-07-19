@@ -1,0 +1,73 @@
+{
+  "all_pass": true,
+  "first_failing_gate": null,
+  "g1_skill_is_real": {
+    "null": "no kingmaker => stronger contender wins > 0.5",
+    "pass": true,
+    "stronger_win_rate": 0.695125,
+    "z_vs_half": 174.525106
+  },
+  "g2_inversion": {
+    "null": "spiteful kingmaker => stronger contender wins < 0.5",
+    "pass": true,
+    "stronger_win_rate": 0.193235,
+    "z_vs_half": -274.378957
+  },
+  "g3_robustness": {
+    "baseline_win_rate": 0.695125,
+    "deepens": true,
+    "pass": true,
+    "stronger_win_rate": 0.410205,
+    "z_vs_half": -80.31509
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "skill_is_real_no_kingmaker",
+      "pass": true,
+      "z": 174.525106
+    },
+    {
+      "id": "G2",
+      "name": "inversion_spiteful_kingmaker",
+      "pass": true,
+      "z": -274.378957
+    },
+    {
+      "id": "G3",
+      "name": "robustness_shifted_partial_spite",
+      "pass": true,
+      "z": -80.31509
+    }
+  ],
+  "head": "kingmaker_skill_inversion",
+  "n_games": 200000,
+  "params": {
+    "baseline": {
+      "mu": 0.0,
+      "qnoise": 0.5,
+      "scale": 1.0,
+      "sigma": 1.0,
+      "spite": 0.0
+    },
+    "shifted": {
+      "mu": 0.0,
+      "qnoise": 0.7,
+      "scale": 1.0,
+      "sigma": 1.5,
+      "spite": 0.6
+    },
+    "spiteful": {
+      "mu": 0.0,
+      "qnoise": 0.5,
+      "scale": 1.0,
+      "sigma": 1.0,
+      "spite": 1.0
+    }
+  },
+  "proposal": 183,
+  "seed": 20260717,
+  "slot": "round-43 GAME",
+  "z_gate": 3.0
+}
+Results-JSON sha256: d928732259d7f54185db3ad5219322166bc2abd9f005667d2b1bd5873451432d
