@@ -1,0 +1,59 @@
+Strong-Allee viability-cliff verifier — deterministic basin + demographic noise
+  det boundaries (must ≈ A=30.0) : [30.0, 30.0, 30.0]
+  G1 doomed-below : p_below=1.000000  z1=+20.000000  (null=0.5)
+  G2 safe-above   : p_above=0.000000  z2=+20.000000  (ceiling null=0.5)
+  G3 robust-shift : gap=0.822500  z3=+6.293250  (null=0.6)
+  gates : G1=True  G2=True  G3=True  all_pass=True
+
+{
+  "all_pass": true,
+  "det_basin_boundaries": [
+    30.0,
+    30.0,
+    30.0
+  ],
+  "det_pairs": [
+    [
+      0.6,
+      100.0
+    ],
+    [
+      0.3,
+      150.0
+    ],
+    [
+      0.9,
+      80.0
+    ]
+  ],
+  "first_failing_gate": null,
+  "g1_doomed_below": true,
+  "g2_safe_above": true,
+  "g3_robust_shift": true,
+  "gap": 0.8225,
+  "n_above": 34.5,
+  "n_below": 25.5,
+  "p_above": 0.0,
+  "p_above_hi": 0.09,
+  "p_below": 1.0,
+  "p_below_hi": 0.9125,
+  "params": {
+    "a": 30.0,
+    "delta": 0.15,
+    "dt": 0.02,
+    "ext_eps": 0.5,
+    "gap_min": 0.6,
+    "k": 100.0,
+    "r": 0.6,
+    "r_trials": 400,
+    "seed": 20260717,
+    "sigma_hi": 0.55,
+    "sigma_lo": 0.25,
+    "t_steps": 2000,
+    "z_gate": 3.0
+  },
+  "z1": 20.0,
+  "z2": 20.0,
+  "z3": 6.29325
+}
+Results-JSON sha256: bbc42b796c1dab6fae0b4be5da91e277a737cfdd5fd61246700fe826600b9471
