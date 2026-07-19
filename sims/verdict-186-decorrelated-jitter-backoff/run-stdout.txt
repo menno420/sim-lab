@@ -1,0 +1,57 @@
+{
+  "all_pass": true,
+  "gates": {
+    "G1_work_reduction_tight": {
+      "effect": 1315.49,
+      "full_mean_total": 784.51,
+      "none_total": 2100,
+      "pass": true,
+      "reduction_fraction": 0.626424,
+      "z": 4350.282085
+    },
+    "G2_herd_flattening_tight": {
+      "effect": 73.365,
+      "full_mean_post_herd_peak": 116.635,
+      "none_post_herd_peak": 190,
+      "pass": true,
+      "z": 244.458881
+    },
+    "G3_robust_shifted_arrivals": {
+      "mean_paired_diff": 15.8175,
+      "pass": true,
+      "se_paired_diff": 1.335457,
+      "z": 11.844264
+    }
+  },
+  "meta": {
+    "base": 1,
+    "cap": 64,
+    "capacity": 10,
+    "grounding": "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/ (Brooker, AWS Architecture Blog; Full Jitter minimizes competing calls / total work)",
+    "head": "decorrelated jitter backoff: adding random jitter to exponential retry backoff decorrelates the herd, cutting total retry work and repeated peak contention vs no-jitter backoff",
+    "n_clients": 200,
+    "reduction_floor": 0.3,
+    "seed": 20260717,
+    "smear_mean": 2.0,
+    "trials": 400,
+    "z_gate": 3.0
+  },
+  "smear_herd": {
+    "full_mean_total": 703.4075,
+    "mean_paired_diff": 15.8175,
+    "none_mean_total": 719.225,
+    "se_paired_diff": 1.335457
+  },
+  "tight_herd": {
+    "equal_mean_total": 754.49,
+    "full_mean_post_herd_peak": 116.635,
+    "full_mean_total": 784.51,
+    "full_se_post_herd_peak": 0.300112,
+    "full_se_total": 0.302392,
+    "none_drain_time": 958,
+    "none_post_herd_peak": 190,
+    "none_total_attempts": 2100,
+    "reduction_fraction": 0.626424
+  }
+}
+Results-JSON sha256: efea8579300ab0806132a48ea68cb8e9030105d8356b6fad51273fa8cb19e2f8
