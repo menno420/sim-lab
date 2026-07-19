@@ -1,25 +1,25 @@
 # VERDICT 188 — the pie-rule opening trap (reproduce PROPOSAL 175)
 
-Under the PIE RULE (swap rule / cut-and-choose), the first player names an opening move and the second player may then choose to SWAP sides and inherit it. This makes an opening's raw strength NON-monotone in its value to the mover: the STRONGER the opening, the more certainly the opponent swaps to steal it, so a first player who ranks openings by win-probability and plays the strongest one hands the advantage away and LOSES. The mover's realised value is min(p, 1−p) over the swap decision, maximised not at the strongest move (p→1) but at the most BALANCED one (p→½): the pie rule rewards fairness, not force, and ranking openings on raw strength systematically selects the trap. This card reproduces the round-41 verifier and rules on it. **This card is provisional — work in-progress.**
+Under the PIE RULE (swap rule / cut-and-choose), the first player names an opening move and the second player may then choose to SWAP sides and inherit it. This makes an opening's raw strength NON-monotone in its value to the mover: the STRONGER the opening, the more certainly the opponent swaps to steal it, so a first player who ranks openings by win-probability and plays the strongest one hands the advantage away and LOSES. The mover's realised value is min(p, 1−p) over the swap decision, maximised not at the strongest move (p→1) but at the most BALANCED one (p→½): the pie rule rewards fairness, not force, and ranking openings on raw strength systematically selects the trap. This card reproduces the round-41 verifier and rules on it.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · effort high · verdict reproduction
 
 **Born-red HOLD:** this card lands `in-progress` on its first commit to hold the PR red under the substrate-gate, and flips to `complete` on the last commit once the reproduction below is recorded (sim directory, run-stdout, probe report in place and the heartbeat stamped). Red until the flip is the HOLD, not a defect. Contents below are provisional until the reproduction lands.
 
 ## Objective
 
-Reproduce `ideas/<lane>/pie_rule_opening_trap.py` (idea-engine, PROPOSAL 175) byte-identical in sim-lab under SEED=20260717, confirm the disclosed results-dict sha256 reproduces byte-exact, evaluate the three ordered z-gates (G1 → G2 → G3) against the proposal's own pre-registered criteria, verify grounding live, and rule. Factual reproduction only; verdict rendered in Outcome once the run is in.
+Reproduce `ideas/superbot-games/pie_rule_opening_trap.py` (idea-engine, PROPOSAL 175) byte-identical in sim-lab under SEED=20260717, confirm the disclosed results-dict sha256 reproduces byte-exact, evaluate the three ordered z-gates (G1 → G2 → G3) against the proposal's own pre-registered criteria, verify grounding live, and rule. Factual reproduction only; verdict rendered in Outcome once the run is in.
 
 ## GROUNDING (verified at HEAD)
 
 - Verifier sim copy (intended): `sims/verdict-188-pie-rule-opening-trap/pie_rule_opening_trap.py` — to be a byte-identical copy of the idea-engine reference (`diff` exit 0 target).
-- Idea-engine source: `ideas/<lane>/pie_rule_opening_trap.py` @ idea-engine main `TBD` (PROPOSAL 175, PR TBD). Reference file sha256 `TBD`, git blob `TBD` (to be read at HEAD; sim-copy match to be reconfirmed at copy time).
+- Idea-engine source: `ideas/superbot-games/pie_rule_opening_trap.py` @ idea-engine main `6dd9f3d` (PROPOSAL 175, PR #665, merge SHA `6dd9f3dc733301510f6571c0eb67b3858aa18379`). Reference file sha256 `7e89f6908d835cb5d9c72de6c149926ac61b20043fd537d300c21827f12f4e39`, git blob `ace21553a02343a058ed7f0a26bd58a05cd15daf` (read at HEAD; sim-copy match reconfirmed at copy time).
 - Offset authority: PROPOSAL 175 → VERDICT 188 (+13), round-41 slot (P172→V185, P173→V186, P174→V187, next slot in the ladder).
-- Pinned world constants (from the verifier, not invented): SEED=20260717 (in-source, env-inert) · Z_GATE=3.0 · TRIALS TBD. Mover realised value under the pie rule = min(p, 1−p) where p is the opening's win-probability for the mover; the swap decision keeps the opponent on the ≥½ side. Exact opening distributions, swap model, and per-gate trial counts to be taken verbatim from the committed verifier — TBD.
-- Domain reference: the pie rule / swap rule in combinatorial games (e.g. Hex first-move advantage neutralised by the swap option). Durable anchor and live HTTP 200 recheck TBD this session.
-- Disclosed digest: results-dict sha256 `TBD` (from PROPOSAL 175 gate criteria). Reproduction must reproduce it EXACTLY before the card flips.
-- DIGEST POSTURE: WHOLE-DICT / NO-SELF-FIELD / STDOUT-ONLY — the compact-canonical results dict's own sha256 is the digest (floats rounded 6 dp before hashing); printed to stdout, nothing written to disk. `main()` runs `compute()` twice, asserts `a == b`, canonicalizes, prints indent=2 dump, then `double_run_identical=true`, `all_pass=…`, `first_failing_gate=…`, and the `Results-JSON sha256 …` line. To be confirmed against the committed verifier.
+- Pinned world constants (from the verifier, not invented): SEED=20260717 (in-source, env-inert) · Z_GATE=3.0 · N_GAMES=200000 games per condition. Mover realised value under the pie rule = min(f, 1−f) where f is the opening's win-probability for the mover; the swap decision keeps the opponent on the ≥½ side. Opening catalogues: BASE_OPENINGS=[0.50, 0.60, 0.70, 0.80, 0.90] (G1/G2 baseline world), SHIFT_OPENINGS=[0.50, 0.65, 0.78, 0.88, 0.95] (G3 robustness world). Each gate seeds its own `random.Random(SEED + k)` (G1 +11, G2 +22, G3 +33) and Bernoulli-samples realized wins at rate `realized_p(f, pie_rule)`; strongest = max(catalogue), most_balanced = argmin|f−0.5|. All constants taken verbatim from the committed verifier.
+- Domain reference: the pie rule / swap rule in combinatorial games (e.g. Hex first-move advantage neutralised by the swap option) — https://en.wikipedia.org/wiki/Pie_rule, pinned `…/Pie_rule@1200819498` (oldid 1200819498). Durable anchor is the swap / take-over mechanic and the "neither too strong nor too weak" opening prescription. Live HTTP 200 reconfirmed this session.
+- Disclosed digest: results-dict sha256 `72950442cc7509423256f28470c2281c9f79de3b601611b9feb931d083e8cb08` (from PROPOSAL 175 gate criteria). Reproduction must reproduce it EXACTLY before the card flips.
+- DIGEST POSTURE: WHOLE-DICT / NO-SELF-FIELD / STDOUT-ONLY — the compact-canonical results dict's own sha256 is the digest (floats rounded 6 dp before hashing); printed to stdout, nothing written to disk. `main()` runs `compute()` twice, asserts `a == b`, canonicalizes, prints indent=2 dump, then `double_run_identical=true`, `all_pass=…`, `first_failing_gate=…`, and the `Results-JSON sha256 …` line.
 
 ## Constraints honored
 
@@ -27,34 +27,35 @@ Stdlib-only (`json`, `math`, `hashlib`, `random`, and any others the verifier de
 
 ## Gate plan (reproduced at HEAD), order G1 → G2 → G3
 
-- G1 — the swap steals the strongest opening: over the opening distribution, ranking by raw win-probability selects a move the opponent swaps into, so the mover's realised value min(p, 1−p) is strictly BELOW the balanced-opening value; pass = (realised-value gap / se ≥ 3.0) and (mean gap in the trap's favour). Proposal targets: TBD. Measured value TBD.
-- G2 — the balanced opening is the pie-rule optimum: choosing the opening closest to p=½ maximises the mover's realised value against a swapping opponent; pass = (delta-value z ≥ 3.0) and (mean delta > 0 for the balanced move over the strongest move). Proposal targets: TBD. Measured value TBD.
-- G3 — robustness under a shifted / noisier opening distribution or an imperfect swap decision: the ordering (strength ranks the trap, balance ranks the optimum) survives; pass = (mean gap / se ≥ 3.0) and (mean gap > 0). Proposal targets: TBD. Measured value TBD.
-- all_pass = G1 AND G2 AND G3 (proposal reports **true**; to be reproduced). Measured TBD.
+- G1 — the first-move edge exists WITHOUT the rule: the greedy-strongest opening (f=0.9, no swap) wins above fair; pass = (win_rate > 0.5) and (z_vs_half ≥ 3.0). Proposal target: win_rate > 0.5 by ≥ 3σ. Measured: win_rate 0.900505, z_vs_half +598.381968 → PASS.
+- G2 — the trap: the SAME naive greedy-strongest opening (f=0.9) UNDER the swap rule inverts below fair, because a rational responder swaps into the 0.9-side and leaves the mover 1−0.9=0.1; pass = (win_rate < 0.5) and (z_vs_half ≤ −3.0). Proposal target: win_rate < 0.5 by ≥ 3σ. Measured: win_rate 0.10111, z_vs_half −591.72081 → PASS.
+- G3 — robustness under a shifted opening catalogue ([0.50, 0.65, 0.78, 0.88, 0.95]): balanced play (opt_f=0.5) strictly dominates naive-strong play (naive_f=0.95) AND restores a fair game; pass = (gap_mean > 0) and (z_gap ≥ 3.0) and (opt within 2pp of 0.5). Proposal target: gap > 0 by ≥ 3σ with the balanced rate within 2pp of fair. Measured: opt_rate 0.50116 dominates naive_rate 0.04946, gap_mean 0.4517, z_gap +370.907761, opt_within_2pct_of_fair=true → PASS.
+- all_pass = G1 AND G2 AND G3 (proposal reports **true**; reproduced). Measured: `all_pass=true`, `first_failing_gate=null`.
 
 ## Probe questions (independent-audit checklist)
 
-1. Does the verifier copy match the idea-engine source byte-for-byte? Target: diff exit 0; reference file sha256 `TBD`, git blob `TBD`. Sim-copy hashes TBD.
-2. Does the results-dict digest reproduce byte-exact? Target: printed `Results-JSON sha256 TBD` == disclosed. Reproduction TBD.
-3. Is the run deterministic across invocations? Target: two separate `python3` runs byte-identical (diff exit 0) plus the in-process `assert a == b` double-run equality. Reproduction TBD.
+1. Does the verifier copy match the idea-engine source byte-for-byte? Target: diff exit 0; reference file sha256 `7e89f690…f12f4e39`, git blob `ace21553…5cd15daf`. Sim-copy hashes IDENTICAL (diff exit 0).
+2. Does the results-dict digest reproduce byte-exact? Target: printed `Results-JSON sha256 72950442…d083e8cb08` == disclosed. Reproduced — MATCH (exact).
+3. Is the run deterministic across invocations? Target: two separate `python3` runs byte-identical (diff exit 0) plus the in-process `assert a == b` double-run equality. Reproduced — cross-invocation diff exit 0 plus the in-process double-run assert passed.
 4. Is the SEED honestly pinned? SEED=20260717 is a module-level source constant; the file imports no `os` and reads no env var — to be confirmed against the committed verifier.
-5. Do all three gates pass in order with z ≥ 3.0? Target: TBD; all_pass=true, no failing gate. Measured TBD.
+5. Do all three gates pass in order with |z| ≥ 3.0? Target: G1 z=+598.38, G2 z=−591.72, G3 z_gap=+370.91; all_pass=true, no failing gate. Measured: all three PASS in order, `all_pass=true`, `first_failing_gate=null`.
 6. Is the mechanism sound, not a strawman? The mover's realised value is min(p, 1−p) because a rational opponent swaps whenever p>½; a stronger opening (higher p) therefore yields the opponent a stronger stolen position, and the mover is left below the swap floor — the trap is a consequence of the swap rule, not an artificially weak baseline. To be confirmed from the numbers.
-7. Does grounding document the specific head? The pie rule neutralises first-move advantage and makes the strongest opening a liability under a swapping opponent; the durable anchor is the swap-rule definition and the min(p, 1−p) payoff algebra, not a verbatim heading string. Live HTTP 200 recheck TBD.
+7. Does grounding document the specific head? The pie rule neutralises first-move advantage and makes the strongest opening a liability under a swapping opponent; the durable anchor is the swap-rule definition and the min(f, 1−f) payoff algebra, not a verbatim heading string. Live HTTP 200 confirmed (Wikipedia "Pie rule", oldid 1200819498).
 8. Real game-theory phenomenon or textbook toy? The swap rule is used in practice (Hex, Twixt and other first-move-advantaged games) precisely to force the opener toward a balanced move; the head is that ranking openings on raw strength selects the trap, with the balanced opening the honest optimum. To be affirmed in Outcome.
 
 ## Outcome
 
-Reproduction pending — this card is born-red and `in-progress`. Measured results, verifier byte-identity, determinism, digest match, per-gate numbers, grounding recheck, and the ruling will be recorded here on the flip to `complete`, at which point the verdict high-water advances V187 → V188 (union-max, no regress). Contents above are provisional until the reproduction lands.
+Reproduced clean. Measured results below.
 
-- **Verifier byte-identity:** TBD.
-- **Determinism:** TBD.
-- **Digest:** TBD.
-- **Gates in order (measured vs proposal target):** TBD.
-- **Grounding:** TBD.
-- **Reproduction record paths:** `sims/verdict-188-pie-rule-opening-trap/{pie_rule_opening_trap.py, run-stdout.txt, probe-report.md}` (to be created).
+- **Verifier byte-identity:** copied byte-identically from the idea-engine reference — `diff` exit 0; sim-copy file sha256 `7e89f6908d835cb5d9c72de6c149926ac61b20043fd537d300c21827f12f4e39`, git blob `ace21553a02343a058ed7f0a26bd58a05cd15daf` (both match the idea-engine reference at main `6dd9f3d`, merge SHA `6dd9f3dc733301510f6571c0eb67b3858aa18379`).
+- **Determinism:** two separate invocations byte-identical (cross-invocation `diff` exit 0) plus the in-process `double_run_identical=true` (`main()` runs `run()` twice and asserts byte-identical compact-canonical serializations).
+- **Digest:** printed `Results-JSON sha256 72950442cc7509423256f28470c2281c9f79de3b601611b9feb931d083e8cb08` == disclosed → **MATCH (exact)**.
+- **Gates in order (measured vs proposal target):** G1 (first-move edge exists, NO pie rule; greedy-strongest opening_f=0.9) — win_rate 0.900505, z_vs_half +598.381968 (target > 0.5 by ≥ 3σ), PASS; G2 (the trap — naive-greedy opening_f=0.9 UNDER the pie rule) — win_rate 0.10111, z_vs_half −591.72081 (target < 0.5 by ≥ 3σ — the strongest opening now LOSES under the swap rule), PASS; G3 (robustness, shifted catalogue) — balanced opt_f=0.5 win_rate 0.50116 dominates naive_f=0.95 win_rate 0.04946, gap_mean 0.4517, z_gap +370.907761, opt_within_2pct_of_fair=true (target gap > 0 by ≥ 3σ, balanced within 2pp of fair), PASS. `all_pass=true`, `first_failing_gate=null`. Every field matches to the printed precision.
+- **Mechanism:** under the swap rule the responder takes over the mover's side whenever f > 0.5, so the realized first-mover win prob = min(f, 1−f); the maximizer is f=0.5 (a fair game), and opening with the strongest (highest-f) move hands the advantage straight to the responder — the trap is a consequence of the rule, not an artificially weak baseline.
+- **Grounding:** Wikipedia "Pie rule" — https://en.wikipedia.org/wiki/Pie_rule live HTTP 200; supports the swap / take-over mechanic and the "neither too strong nor too weak" opening prescription; pinned `…/Pie_rule@1200819498` (oldid 1200819498).
+- **Reproduction record paths:** `sims/verdict-188-pie-rule-opening-trap/{pie_rule_opening_trap.py, run-stdout.txt, probe-report.md}`.
 
-**Ruling: PENDING** (born-red HOLD; verdict rendered here once the reproduction is in).
+**Ruling: APPROVE.** The digest reproduced exactly and all three gates pass on the proposal's own thresholds; the algebra (realized first-mover value min(f, 1−f), maximised at the balanced f=0.5, not at the strongest opening) is textbook-sound and the mechanism is measured, not assumed. The verdict high-water advances V187 → V188 (union-max, no regress).
 
 ## ⟲ Previous-session review
 
@@ -64,4 +65,4 @@ VERDICT 187 (the IRR speed trap, reproduce PROPOSAL 174, round-41 VENTURE slot) 
 
 The last three heads (jitter herd, IRR speed, pie-rule swap) are all metric-non-monotonicity traps: a naive ranking (raw retry schedule, raw dollars-returned, raw opening strength) inverts once the strategic mechanism (jitter decorrelation, timing normalisation, the swap option) is priced in. A follow-up could pull these into one "selection-inverting metric" catalogue and pre-register the shared gate shape — a signed realised-value gap between the naive-optimal and the mechanism-aware-optimal choice — so future proposals in this family reuse a single audited harness instead of re-deriving the z-gate each time.
 
-**Recommendation: HOLD (born-red). Card lands `in-progress` to keep the PR red under the substrate-gate; on reproduction it will confirm the disclosed digest and G1/G2/G3 against PROPOSAL 175's own thresholds and, if they match, APPROVE and advance the verdict high-water V187 → V188 (union-max, no regress).**
+**Recommendation: APPROVE PROPOSAL 175 (the pie-rule opening trap). Reproduced byte-identical at SEED=20260717 with the disclosed digest `72950442…d083e8cb08` matching EXACTLY and G1/G2/G3 all passing on the proposal's own thresholds; the verdict high-water advances V187 → V188 (union-max, no regress below whatever is already there).**
