@@ -1,0 +1,59 @@
+{
+  "all_pass": true,
+  "base_config_c8": {
+    "bits_per_elem": 8,
+    "dom_pass": true,
+    "floor_pass": true,
+    "floor_phi": 0.021416,
+    "fpr_high": 0.04928,
+    "fpr_low": 0.117938,
+    "fpr_opt": 0.022213,
+    "fpr_opt_predicted": 0.021577,
+    "k_high": 12,
+    "k_low": 1,
+    "k_opt": 6,
+    "m_bits": 12000,
+    "penalty_high_minus_opt": 0.027067,
+    "penalty_sig": true,
+    "se_high": 0.000552,
+    "se_low": 0.000741,
+    "se_opt": 0.000324,
+    "z_high_vs_opt": 42.29791,
+    "z_low_vs_opt": 118.376354
+  },
+  "gate_g1_optimum_dominance_pass": true,
+  "gate_g2_more_hashes_hurt_and_floor_pass": true,
+  "gate_g3_robust_shift_pass": true,
+  "head": "bloom filter: past the optimum k*, more hash functions raise the false-positive rate; the minimum is floored by bits-per-element",
+  "n_elements": 1500,
+  "n_queries": 1500,
+  "seed": 20260717,
+  "shift_config_c12": {
+    "bits_per_elem": 12,
+    "dom_pass": true,
+    "floor_pass": true,
+    "floor_phi": 0.003134,
+    "fpr_high": 0.007484,
+    "fpr_low": 0.081013,
+    "fpr_opt": 0.003324,
+    "fpr_opt_predicted": 0.003142,
+    "k_high": 16,
+    "k_low": 1,
+    "k_opt": 8,
+    "m_bits": 18000,
+    "penalty_high_minus_opt": 0.00416,
+    "penalty_sig": true,
+    "se_high": 0.000193,
+    "se_low": 0.000585,
+    "se_opt": 0.000124,
+    "z_high_vs_opt": 18.148262,
+    "z_low_vs_opt": 129.804852
+  },
+  "tol": 0.2,
+  "trials": 150,
+  "z_gate": 3.0
+}
+Results-JSON sha256: 3fdfc867123a80a1476d414610413060c24b3580841f1d808dac10a75f8b5d7f
+G1 optimum dominance:        PASS
+G2 more-hashes-hurt + floor: PASS
+G3 robust (shifted config):  PASS
