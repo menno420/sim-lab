@@ -1,0 +1,39 @@
+{
+  "all_pass": true,
+  "baseline": {
+    "mean_tax": 0.127846,
+    "mean_x": 0.403207,
+    "rejects": 4862,
+    "sd_tax": 0.090528
+  },
+  "gate_G1_postmoney_more_dilutive": {
+    "mean_tax": 0.127846,
+    "pass": true,
+    "z": 631.562768,
+    "z_gate": 3.0
+  },
+  "gate_G2_convex_in_stack": {
+    "mean_tax_high_x": 0.235555,
+    "mean_tax_low_x": 0.037163,
+    "pass": true,
+    "ratio_gate": 3.0,
+    "ratio_high_over_low": 6.338353,
+    "z_diff": 824.297,
+    "z_gate": 3.0
+  },
+  "gate_G3_robust_under_heavier_stacking": {
+    "mean_tax_base": 0.127846,
+    "mean_tax_shift": 0.229045,
+    "pass": true,
+    "shift_rejects": 260788,
+    "z_gate": 3.0,
+    "z_increase": 344.175738,
+    "z_positive": 1074.028387
+  },
+  "head": "post-money SAFEs don't share dilution; stacking tax = x^2/(1+x), convex in aggregate SAFE ownership x",
+  "proposal": 178,
+  "seed": 20260717,
+  "trials": 200000,
+  "x_cap": 0.85
+}
+Results-JSON sha256 78758a602a36ba32bc1fd97b77820c97e86abbe7828a160ddbdd22ae7e8b2549
