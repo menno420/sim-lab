@@ -2,7 +2,7 @@
 
 PROPOSAL 186 claims that under a power-law venture portfolio a fund that HOLDS BACK a reserve fraction (RESERVE_FRAC=0.50) to defend its pro-rata ownership in the eventual winners earns a strictly higher fund MOIC than a "spray-and-pray" fund that deploys everything into initial checks and lets every follow-on round dilute it. Dilution is multiplicative — (1−d)^R = 0.70^4 = 0.2401 — and lands hardest on exactly the power-law winners that carry the whole return, so spray's MOIC is capped where the value lives. The edge is contributed by the defended top-decile companies, not by the extra names spray buys. This verdict reproduces that mechanism byte-identically from the disclosed verifier.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · effort high · task-class simulation-reproduction
 > **Result:** reproduced — results-dict sha256 b917778d…2950f MATCH across all 64 hex, all three gates PASS, deterministic. Head honestly scoped as regime-dependent (fat-tail + steep-dilution). APPROVE.
 
