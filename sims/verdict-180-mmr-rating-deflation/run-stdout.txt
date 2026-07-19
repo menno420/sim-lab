@@ -1,0 +1,76 @@
+{
+  "all_pass": true,
+  "baseline": {
+    "drift_sd": 40.404757,
+    "max_identity_residual": 0.0,
+    "mean_drift": -498.683032,
+    "z_deflation": -78.058838
+  },
+  "first_failing_gate": null,
+  "g1_deflation_real": {
+    "null": "zero-sum => mean drift == 0",
+    "pass": true,
+    "z_deflation": -78.058838
+  },
+  "g2_churn_ledger_identity": {
+    "max_residual": 0.0,
+    "pass": true
+  },
+  "g3_robustness_deeper_floor": {
+    "baseline_drift": -498.683032,
+    "deepens": true,
+    "pass": true,
+    "shifted_drift": -797.745574,
+    "z_deflation": -131.368189
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "deflation_real",
+      "pass": true,
+      "z": -78.058838
+    },
+    {
+      "id": "G2",
+      "name": "churn_ledger_identity",
+      "pass": true,
+      "residual": 0.0
+    },
+    {
+      "id": "G3",
+      "name": "robustness_deeper_floor",
+      "pass": true,
+      "z": -131.368189
+    }
+  ],
+  "head": "mmr_rating_deflation",
+  "params": {
+    "baseline": {
+      "K": 32.0,
+      "churn_every": 50,
+      "floor": 1000.0
+    },
+    "conv_games": 40,
+    "pool_size": 60,
+    "replications": 40,
+    "shifted": {
+      "K": 24.0,
+      "churn_every": 40,
+      "floor": 700.0
+    },
+    "skill_mu": 1500.0,
+    "skill_sigma": 300.0,
+    "steps": 15000
+  },
+  "proposal": 167,
+  "seed": 20260717,
+  "shifted": {
+    "drift_sd": 38.406452,
+    "max_identity_residual": 0.0,
+    "mean_drift": -797.745574,
+    "z_deflation": -131.368189
+  },
+  "slot": "round-39 GAME",
+  "z_gate": 3.0
+}
+Results-JSON sha256: dcf252dd29f271a68a835046ea712256841c39fb657fc04c4f0aa8747e5855db
