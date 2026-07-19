@@ -2,9 +2,9 @@
 
 PROPOSAL 184 claims that when many units share one true success rate p but differ in sample size n, the standard deviation of each unit's observed rate is √(p(1−p)/n), so it shrinks as 1/√n. A naive leaderboard ranked by observed rate therefore surfaces the smallest-n units at BOTH the top and the bottom of the board — a sample-size illusion (de Moivre's equation, Wainer's "most dangerous equation"), not a quality signal. This verdict reproduces that mechanism byte-identically from the disclosed verifier.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · effort high · task-class simulation-reproduction
-> **Result:** pending reproduction — filled at the flip commit.
+> **Result:** reproduced — results-dict sha256 8b9506d1…8871 MATCH across all 64 hex, all gates PASS, deterministic. APPROVE.
 
 **Born-red HOLD.** This card lands `in-progress` on the first commit so the substrate-gate born-red check holds the PR red. It flips to `complete` on the last commit, after the verifier copy, run stdout, and probe report are committed and the control/status.md heartbeat is written.
 
@@ -40,7 +40,16 @@ The mechanism rests on the standard error of a proportion: SE = σ/√n, i.e. SD
 
 ## Outcome
 
-Pending reproduction — filled at the flip commit.
+Reproduced byte-identically under SEED=20260717 (verifier copied from idea-engine @ec4706b, `diff` exit 0; file sha256 `4755ab568c7c40a4eadc34b0a43d78620a45723ffc9a287254105b5c7fbf8283`). The in-process double-run assert holds and a separate cross-invocation produced byte-identical stdout. `all_pass = true`, `first_failing_gate = null`.
+
+| Gate | Metric | Value | z | Verdict |
+|------|--------|-------|---|---------|
+| G1 — de Moivre scaling law | corr(\|r̂−p\|, 1/√n) | 0.570449 | 238.774053 | PASS |
+| G2 — extremes small-n dominated | pop_mean_n − extremes_mean_n | 147.021788 | 213.047828 | PASS |
+| G3a — robust (shifted p=0.1) | corr | 0.570124 | 219.519762 | PASS |
+| G3b — robust (shifted n∈[25,250]) | delta | 38.443275 | 129.55551 | PASS |
+
+Results-dict sha256 = `8b9506d1182b6c5f3121ff8b585dfb7032d47a337013e30d4f7fbfc1e0968871` — MATCHES the disclosed PROPOSAL 184 digest across all 64 hex characters. The σ/√n scaling law that gate G1 rests on is live-confirmed at the pinned Wikipedia "Standard error" revision (oldid 1362665393): "the standard error of the mean equals the standard deviation divided by the square root of the sample size."
 
 ## ⟲ Previous-session review
 
@@ -50,4 +59,4 @@ Previous-session review: V196 (kingmaker skill-inversion, PROPOSAL 183) landed v
 
 The verifier hard-codes P = 0.5, where p(1−p) is maximal. A cheap extension: sweep p across {0.1, 0.3, 0.5} and report whether the corr(|r̂ − p|, 1/√n) gate strengthens or weakens with p — it should scale with √(p(1−p)), giving a second, orthogonal confirmation of de Moivre's law beyond the single-p run.
 
-**Recommendation: APPROVE — pending in-branch confirmation of the digest match and the σ/√n grounding; flips to complete once reproduction holds.**
+**Recommendation: APPROVE — reproduced byte-identically under SEED=20260717; the results-dict sha256 matches the disclosed digest across all 64 hex, all gates PASS, and the σ/√n law gate G1 rests on is live-confirmed at the pinned "Standard error" source.**
