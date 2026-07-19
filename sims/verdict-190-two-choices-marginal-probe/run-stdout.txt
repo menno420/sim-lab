@@ -1,0 +1,79 @@
+{
+  "all_pass": true,
+  "gates": {
+    "g1_second_probe_jump": {
+      "gap_1_2": 3.536,
+      "pass": true,
+      "z": 77.709782
+    },
+    "g2_second_probe_dominance": {
+      "all_further_gain": 0.884,
+      "dom_stat": 2.652,
+      "pass": true,
+      "ratio_second_over_further": 4.0,
+      "second_probe_gain": 3.536,
+      "z": 46.693563
+    },
+    "g3_robust_shifted_load": {
+      "all_further_gain": 0.992,
+      "dom_stat": 3.672,
+      "pass": true,
+      "ratio_second_over_further": 4.701613,
+      "second_probe_gain": 4.664,
+      "z": 52.81092
+    }
+  },
+  "params": {
+    "ds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_balls": 8000,
+    "ratio_min": 3.0,
+    "seed": 20260717,
+    "sigma_gate": 3.0,
+    "trials": 250
+  },
+  "regime_a_load1": {
+    "all_further_gain_2_to_dmax": 0.884,
+    "gap_1_2": 3.536,
+    "gap_2_3": 0.068,
+    "gap_3_4": 0.816,
+    "maxload_mean": {
+      "1": 6.588,
+      "2": 3.052,
+      "3": 2.984,
+      "4": 2.168
+    },
+    "maxload_se": {
+      "1": 0.043273,
+      "2": 0.01407,
+      "3": 0.007952,
+      "4": 0.023693
+    },
+    "second_probe_gain": 3.536
+  },
+  "regime_b_load2": {
+    "all_further_gain_2_to_dmax": 0.992,
+    "bins": 4000,
+    "maxload_mean": {
+      "1": 8.748,
+      "2": 4.084,
+      "3": 3.944,
+      "4": 3.092
+    },
+    "maxload_se": {
+      "1": 0.057123,
+      "2": 0.017579,
+      "3": 0.014571,
+      "4": 0.018316
+    },
+    "second_probe_gain": 4.664
+  }
+}
+Results-JSON sha256: 625b38309d4e6c8209a74f9123b23d56d769beb4ad592b917093d8c67d234c7f
+G1 second-probe jump:      PASS
+G2 second-probe dominance: PASS
+G3 robust (shifted load):  PASS
