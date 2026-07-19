@@ -8,7 +8,7 @@ State: reproduced — APPROVE
 - File sha256 `eab29688c582e1bb048bd75d6a0982683219692fbe619cd3cb8fbc708b3a0f7b`; git blob `c4214e36426b2c9fb6e7030abdb26af8bd8c1eac`.
 - SEED=20260717, TRIALS=200000, stdlib only.
 - In-process double-run asserted equal; separate cross-invocation byte-match (crossdiff exit 0).
-- Emitted results-dict sha256 `ed8a081bb104683d1ee8c0c2ec9b90e2a1212100495d9d4b5e484016a75b243` MATCHES the disclosed target.
+- Emitted results-dict sha256 `ed8a081bb104683d1ee8c0c2ec9b90e2a1212100495d9d44b5e484016a75b243` MATCHES the disclosed target.
 
 ## Gates (proposal's own criteria)
 
