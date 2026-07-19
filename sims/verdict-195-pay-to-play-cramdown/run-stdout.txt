@@ -1,0 +1,27 @@
+{
+  "all_pass": true,
+  "base_median_exit": 18.0,
+  "cold_median_exit": 11.0,
+  "danger_band": 15.0,
+  "gate_G1_pass": true,
+  "gate_G1_ratio_gate": 2.0,
+  "gate_G1_ret_band_mean": 2.674407,
+  "gate_G1_ret_band_z": 308.093567,
+  "gate_G2_conv_gate": 1.5,
+  "gate_G2_conv_mean": 2.348806,
+  "gate_G2_conv_over_dil": 2.362501,
+  "gate_G2_dil_mean": 0.994203,
+  "gate_G2_pass": true,
+  "gate_G2_z": 848.320658,
+  "gate_G3_band_prob_z": 112.415006,
+  "gate_G3_base_band_prob": 0.42401,
+  "gate_G3_cold_band_prob": 0.601695,
+  "gate_G3_cold_conv_over_dil": 2.516596,
+  "gate_G3_pass": true,
+  "head": "pay-to-play cramdown cliff: conditional on a modest exit the marginal pro-rata dollar is the highest-return dollar, driven by the preferred->common conversion (not dilution), and it sharpens in cold markets",
+  "pro_rata_check": 1.25,
+  "proposal": 182,
+  "seed": 20260717,
+  "trials": 200000
+}
+Results-JSON sha256 ed8a081bb104683d1ee8c0c2ec9b90e2a1212100495d9d44b5e484016a75b243
