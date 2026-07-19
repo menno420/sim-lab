@@ -1,0 +1,41 @@
+{
+  "G1_fr_minus_wa_loss": {
+    "mean": 0.012813,
+    "pass": true,
+    "se": 8.2e-05,
+    "z": 155.70736
+  },
+  "G2_transfer_convexity": {
+    "mean": 0.028025,
+    "pass": true,
+    "se": 0.000336,
+    "z": 83.28419
+  },
+  "G3_shifted": {
+    "fr_minus_wa_loss": {
+      "mean": 0.013013,
+      "se": 6.4e-05,
+      "z": 203.899173
+    },
+    "pass": true,
+    "transfer_convexity": {
+      "mean": 0.112724,
+      "se": 0.001057,
+      "z": 106.647194
+    }
+  },
+  "all_pass": true,
+  "first_failing_gate": null,
+  "mechanism": "full_ratchet_antidilution_convexity",
+  "n_samples": 4000,
+  "nongated_fraction_convexity_mean": 0.001305,
+  "nongated_shallow_crossover": {
+    "drop": 0.02,
+    "gap": 0.001532,
+    "loss_full_ratchet": 0.00207,
+    "loss_weighted_avg": 0.000538
+  },
+  "seed": 20260717,
+  "z_gate": 3.0
+}
+sha256: c6c1278f5acb6cc59992e7d4300e69edfc713bef0168cd9571e85c4677c18b59
