@@ -2,9 +2,9 @@
 
 Reproduces PROPOSAL 179's head that among players finishing tied on match points in a Swiss-system tournament, the Buchholz strength-of-schedule tiebreak ranks the luckier opponent-draw ahead of the stronger player — tracking opponent-draw luck (base p_luck 0.804910) far more than own skill (p_skill 0.597399), a ~3.13x luck-to-skill signal ratio at an even field. Buchholz measures whom you happened to play, not how good you are.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude · effort high · verdict reproduction
-> **Born-red HOLD — reproduction landing; flips to the ruling when the digest matches and all gates reproduce.**
+> **Reproduction landed — APPROVE. Verifier byte-identical (sha256 f41f270b), results-dict digest 0e591bb4… MATCH, G1/G2/G3 all reproduce, all_pass=true.**
 
 ## Objective
 
@@ -40,7 +40,13 @@ GROUNDING: https://en.wikipedia.org/wiki/Swiss-system_tournament@1357112228 — 
 
 ## Outcome
 
-HOLD — reproduction in progress; filled when the digest matches and gates rule.
+APPROVE. The idea-engine verifier copied byte-identically (diff exit 0; sha256 f41f270b465c905a5ba1cc2655e07fb7b21ad84eab2a9037bf0c01a03f5423f8, git-blob 0d4a4b1e804dbbafebabff46cf48dc4e8ba753eb) and reproduced deterministically (in-process double-run asserted equal; separate cross-invocation stdout byte-identical). Results-dict sha256 `0e591bb44f57f72fdff6536417a3ba009b74dfb9c07f2c41073bdbd9876c0fa8` MATCHES the disclosed digest. All three gates reproduce on the proposal's own criteria, all_pass=true:
+
+- G1 (luck dominates): base p_luck 0.804910 >= 0.70, z_luck 511.920239 >= 3.0 — PASS.
+- G2 (luck beats skill): base ratio 3.130521 >= 3.0, z_diff 234.751939 >= 3.0, gap 0.207511 >= 0.15 — PASS.
+- G3 (robustness, σ=350 / N=128 / R=9): shift p_luck 0.870756 >= 0.70, z_diff 265.698695 >= 3.0, gap 0.183947 >= 0.10 — PASS.
+
+Honesty: the card's pre-registered G3 is dominance-based and matches the shipped verifier's G3 exactly (no plan-vs-verifier divergence); the base->shift ratio compression (3.130521 -> 1.984682) is honestly disclosed as a caveat, with G3 correctly gating dominance not the ratio. The head — Buchholz tracks opponent-draw luck (p_luck 0.80) far more than own skill (p_skill 0.60), a systematic dominance — reproduces.
 
 ## ⟲ Previous-session review
 
@@ -50,4 +56,4 @@ V191 (post-money SAFE stacking tax, PR #265) landed APPROVE on a clean digest ma
 
 A cut-Buchholz companion head: quantify how much Median-Harkness / Modified-Median (discard highest+lowest opponent) attenuate the luck dominance vs raw Solkoff — the proposal names it out-of-scope, but it is the natural next GAME-slot decomposition.
 
-**Recommendation: HOLD (born-red) — flips to the reproduction ruling when the digest matches.**
+**Recommendation: APPROVE — reproduction is byte-identical, the digest matches, all gates hold, and the gate scoping is honest.**
