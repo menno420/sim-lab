@@ -52,4 +52,4 @@ Nominal / fair-doubling world (p=0.5, r=2.0):
 Shifted world (biased coin p=0.4, r=2.5, cap_bits 10, still on p·r = 1):
 - MC price **6.828497** vs its closed form **7.0** (= (1−0.4)·10 + 1), z **-1.000661**, cap 9536.743164.
 
-## Verdict: TBD — pending orchestrator decision
+## Verdict: APPROVE — verifier byte-identical (sha256 55d4f9bc…), results-dict sha256 e1919f49… matches disclosed, deterministic (in-process double-run + cross-invocation byte-identical, exit 0); G1 z=16496.53 PASS, G2 z=1998.19 PASS, G3 z=-1.00 PASS; closed-form EV_cap=(1-p)M+1=7.0 consistent with MC (nominal 7.068, shifted 6.828).
