@@ -1,0 +1,56 @@
+Palm / M/G/inf repair-pipeline insensitivity verifier -- stdlib, SEED pinned
+  load (E[N]=lam*E[S]) = 10.000000
+  G1 pipeline-is-load     load_relerr_mean=0.004443  z=+68.279173  (ceiling 0.05)
+  G2 variance-insensitive disp_relerr_mean=0.021783  z=+12.870661  (ceiling 0.05)
+  G3 distribution-free    spread_mean=0.031331  z=+10.750843  (ceiling 0.05)
+  M/G/1 wait tax at CV=3.0: (1+CV^2)/2 = 5.000000x  (the pipeline shows NONE of it)
+  gates: G1=True G2=True G3=True  all_pass=True
+
+{
+  "all_pass": true,
+  "first_failing_gate": null,
+  "g1_pipeline_is_load": {
+    "ceiling": 0.05,
+    "load_relerr_mean": 0.004443,
+    "pass": true,
+    "se": 0.000667,
+    "z": 68.279173
+  },
+  "g2_variance_insensitive": {
+    "ceiling": 0.05,
+    "disp_relerr_mean": 0.021783,
+    "pass": true,
+    "se": 0.002192,
+    "z": 12.870661
+  },
+  "g3_distribution_free": {
+    "ceiling": 0.05,
+    "pass": true,
+    "se": 0.001736,
+    "spread_mean": 0.031331,
+    "z": 10.750843
+  },
+  "gates": [
+    true,
+    true,
+    true
+  ],
+  "params": {
+    "R": 30,
+    "ceiling": 0.05,
+    "cv_hi": 3.0,
+    "horizon": 60000,
+    "lam": 1.0,
+    "load": 10.0,
+    "mean_s": 10.0,
+    "warmup": 8000
+  },
+  "proposal": 161,
+  "readout": {
+    "mg1_wait_tax_multiplier": 5.0
+  },
+  "seed": 20260717,
+  "sigma_gate": 3.0,
+  "slot": "round-38 FLEET (fleet-ops spares / maintenance pipeline)"
+}
+Results-JSON sha256: 9bbe2171bd7678fc7efa03c550f0afbcec438498b0553a1723ee078bf5ec13ef
