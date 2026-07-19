@@ -1,0 +1,126 @@
+{
+  "all_pass": true,
+  "des_matches_exact_within_3sigma": true,
+  "des_replicated": [
+    {
+      "R": 16,
+      "c": 19,
+      "des_exp_pwait": 0.376968,
+      "des_exp_se": 0.004955,
+      "des_exp_util": 0.842664,
+      "des_h2_pwait": 0.417219,
+      "des_h2_se": 0.009695,
+      "des_h2_util": 0.846978,
+      "erlangC_pwait": 0.373569,
+      "rho": 0.842105,
+      "z_exp_vs_erlangC": 0.686047
+    },
+    {
+      "R": 64,
+      "c": 69,
+      "des_exp_pwait": 0.440691,
+      "des_exp_se": 0.015534,
+      "des_exp_util": 0.929724,
+      "des_h2_pwait": 0.494776,
+      "des_h2_se": 0.028067,
+      "des_h2_util": 0.93277,
+      "erlangC_pwait": 0.432521,
+      "rho": 0.927536,
+      "z_exp_vs_erlangC": 0.52593
+    }
+  ],
+  "erlangC_ledger": [
+    {
+      "R": 16,
+      "c": 19,
+      "c_tight_exact": 19,
+      "erlangC_pwait": 0.373569,
+      "headroom": 3,
+      "headroom_over_sqrtR": 0.75,
+      "mm1_pwait_same_rho": 0.842105,
+      "per_unit_slack": 0.1875,
+      "rho": 0.842105
+    },
+    {
+      "R": 64,
+      "c": 69,
+      "c_tight_exact": 69,
+      "erlangC_pwait": 0.432521,
+      "headroom": 5,
+      "headroom_over_sqrtR": 0.625,
+      "mm1_pwait_same_rho": 0.927536,
+      "per_unit_slack": 0.078125,
+      "rho": 0.927536
+    },
+    {
+      "R": 256,
+      "c": 265,
+      "c_tight_exact": 265,
+      "erlangC_pwait": 0.466705,
+      "headroom": 9,
+      "headroom_over_sqrtR": 0.5625,
+      "mm1_pwait_same_rho": 0.966038,
+      "per_unit_slack": 0.035156,
+      "rho": 0.966038
+    },
+    {
+      "R": 1024,
+      "c": 1041,
+      "c_tight_exact": 1041,
+      "erlangC_pwait": 0.48514,
+      "headroom": 17,
+      "headroom_over_sqrtR": 0.53125,
+      "mm1_pwait_same_rho": 0.98367,
+      "per_unit_slack": 0.016602,
+      "rho": 0.98367
+    }
+  ],
+  "gates": {
+    "G1_pooling_decoupling_exact": {
+      "R": 1024,
+      "effect": 0.49853,
+      "erlangC_pwait": 0.48514,
+      "mm1_pwait_same_rho": 0.98367,
+      "pass": true,
+      "per_unit_slack": 0.016602,
+      "rho": 0.98367
+    },
+    "G2_sqrt_staffing_form": {
+      "beta": 0.506054,
+      "gap": 0.025196,
+      "headroom_over_sqrtR_at_Rmax": 0.53125,
+      "pass": true
+    },
+    "G3_hyperexp_robustness_replicated": {
+      "R": 64,
+      "des_h2_pwait": 0.494776,
+      "des_h2_se": 0.028067,
+      "effect": 0.43276,
+      "pass": true,
+      "rho": 0.927536,
+      "z": 15.418819
+    }
+  },
+  "meta": {
+    "alpha_target": 0.5,
+    "beta": 0.506054,
+    "count": 25000,
+    "des_loads": [
+      16,
+      64
+    ],
+    "grounding": "https://www.columbia.edu/~ww2040/tutorial.pdf (Gans-Koole-Mandelbaum sec 4.1.1, eqs 14-15)",
+    "head": "square-root safety staffing: safety headroom ~ beta*sqrt(R), so larger fleets safely run hotter at a fixed delay grade",
+    "ledger_loads": [
+      16,
+      64,
+      256,
+      1024
+    ],
+    "reps": 15,
+    "seed": 20260717,
+    "warmup": 15000,
+    "z_gate": 3.0
+  }
+}
+Results-JSON sha256: 2597a50513127f663123c741aaca2bf646198035388a3325cbf4706e29092de8
