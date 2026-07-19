@@ -2,7 +2,7 @@
 
 Reproduces idea-engine PROPOSAL 168 (Condorcet's voting-cycle paradox): transitive individual preferences compose into an intransitive collective majority, so a majority can prefer A over B, B over C, and C over A at once. Under impartial culture a random three-candidate electorate has no Condorcet winner roughly 8.7% of the time, and that rate rises with candidate count. The proposal's verifier `ideas/fleet/condorcet_voting_cycle.py` (idea-engine `11bb533`) is copied byte-identically into `sims/verdict-181-condorcet-cycle/condorcet_voting_cycle.py` and re-run under `SEED=20260717` with an in-process double-run plus a separate cross-invocation, both required byte-identical, against the disclosed results-dict sha256 `70de2ab46cf482130fa35b051f579d72215efa757dfcf7b5f60e56d85fc08fbe`.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · high effort · verdict-reproduction
 
 **Born-red HOLD.** This card lands `in-progress` on the first commit so the substrate-gate born-red check holds the PR red until the reproduction is in. It flips to `complete` on the last commit — after the verifier copy, run stdout, and probe report are committed and the `control/status.md` heartbeat is written. This hold is the only legitimate red on this PR; any other gate failure is a real defect.
@@ -38,10 +38,10 @@ Confirm that the PROPOSAL 168 verifier reproduces byte-identically in sim-lab un
 **7.** Does G3 keep the cycle rate above zero under the popularity tilt?
 
 ## Outcome
-_Pending reproduction — finalized on the flip commit._
+**APPROVE.** The verifier reproduces byte-identically (`diff` exit 0; file sha256 `259b1e35c06798b9f5f1f254dfab06ce9ee496223f240371bfaa274de60a5def`, git blob `f349dfa78e4c6a1012858d4fc0aab95daa678578`), is deterministic in-process and across a separate invocation, and prints the disclosed results-dict digest `70de2ab46cf482130fa35b051f579d72215efa757dfcf7b5f60e56d85fc08fbe` (MATCH). All four gates pass on the proposal's own criteria: G1 cycles-exist z_vs_zero = +61.46 (m=3 rate 0.086275); G2a documented-rate match |z_vs_documented| = 0.44 (measured 0.086275 vs the ≈ 8.7% anchor); G2b monotone-in-candidates step-z 19.39 / 11.95 / 18.63 (rates 0.0867 → 0.1789 → 0.2479 → 0.3685 across m = 3 < 4 < 5 < 7); G3 robustness-under-tilt z_vs_zero = +21.33 (rate 0.02225 > 0). `all_pass = true`, no failing gate.
 
 ## ⟲ Previous-session review
-_Filled on the flip commit._
+VERDICT 180 (MMR/Elo rating deflation, PROPOSAL 167, sim-lab #254) landed APPROVE with a byte-identical verifier copy and a matching digest; its card and probe-report format are the template this card follows. main was green at HEAD before this card's born-red hold.
 
 ## 💡 Session idea
-_Filled on the flip commit._
+The G2a "documented-rate match" gate is a closeness anchor (|z| < 3), the inverse of the usual far-from-zero gate — a reusable pattern for any proposal whose claim is "reproduces a known published constant" rather than "beats the null". Worth codifying in the verdict-verifier skill so future documented-value reproductions state up front which anchor direction each gate uses.
