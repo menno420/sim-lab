@@ -2,7 +2,7 @@
 
 After a shared failure, N clients retrying on PLAIN capped-exponential backoff stay phase-locked: they re-collide every window, so total retry work grows like N^2/2K against a server of capacity K. Adding FULL JITTER — drawing each retry uniformly inside the same backoff window — decorrelates the herd, spreading retries so collisions drop, with no change to the schedule's magnitude. This card reproduces the round-41 FLEET verifier and rules on it. **This card is provisional — work in-progress.**
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · effort high · verdict reproduction
 
 **Born-red HOLD:** this card lands `in-progress` on its first commit to hold the PR red under the substrate-gate, and flips to `complete` on the last commit once the reproduction below is recorded.
