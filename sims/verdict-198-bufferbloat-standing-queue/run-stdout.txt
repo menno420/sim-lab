@@ -1,0 +1,35 @@
+{
+  "all_pass": true,
+  "eps_throughput": 0.02,
+  "first_failing_gate": null,
+  "g1_dwait_mean": 49.954161,
+  "g1_dwait_std": 0.620711,
+  "g1_w_large_mean": 71.05128,
+  "g1_w_ratio": 3.367819,
+  "g1_w_small_mean": 21.09712,
+  "g1_z": 508.993574,
+  "g2_thr_gap": 0.000265,
+  "g2_thr_large_mean": 0.999687,
+  "g2_thr_small_mean": 0.999952,
+  "g3_dwait_mean": 50.033018,
+  "g3_thr_gap": 0.000555,
+  "g3_thr_large_mean": 1.000406,
+  "g3_thr_small_mean": 1.000961,
+  "g3_z": 581.376023,
+  "gates": {
+    "G1_latency_scales_with_buffer": true,
+    "G2_no_goodput_dividend": true,
+    "G3_robust_shifted_load": true
+  },
+  "k_large": 75,
+  "k_small": 25,
+  "load_base": 1.25,
+  "load_shift": 1.5,
+  "mu": 1.0,
+  "n_arrivals": 20000,
+  "seed": 20260717,
+  "trials": 40,
+  "warmup": 4000,
+  "z_gate": 3.0
+}
+Results-JSON sha256: d968600582b39bde30bbbead4b192a0d08c4d1bcb64c3b5c1a17f40924139142

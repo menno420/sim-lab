@@ -2,9 +2,9 @@
 
 PROPOSAL 185 claims that on a saturated FCFS server (offered load ρ = λ/μ > 1) the finite buffer K sits essentially full, so mean sojourn W ≈ (K − ρ/(ρ−1))/μ grows ~linearly in K while goodput stays pinned at the service rate μ. A bigger buffer buys a permanent standing queue — pure latency, zero throughput. This is bufferbloat. This verdict reproduces that mechanism byte-identically from the disclosed verifier.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · effort high · task-class simulation-reproduction
-> **Result:** born-red HOLD — flips to `complete` on the last commit, after the verifier copy, run stdout, and probe report are committed and the control/status.md heartbeat is written.
+> **Result:** reproduced — results-dict sha256 d968600582…139142 MATCH across all 64 hex, all gates PASS, deterministic. APPROVE.
 
 **Born-red HOLD.** This card lands `in-progress` on the first commit so the substrate-gate born-red check holds the PR red. It flips to `complete` on the last commit, after the verifier copy, run stdout, and probe report are committed and the control/status.md heartbeat is written.
 
@@ -39,14 +39,24 @@ The mechanism rests on the standing-queue law of a saturated FCFS buffer: under 
 
 ## Outcome
 
-Reproduction pending — born-red HOLD. This section is filled at the flip commit, after the verifier is copied, the run stdout and probe report are committed, and the results-dict sha256 is compared to the disclosed digest across all 64 hex characters.
+Reproduced byte-identically under SEED=20260717 (verifier copied from idea-engine @0772612, `diff` exit 0; file sha256 `e25b54637e20c961bf963c812755b97df8bf2189ebf70b6348d4e7ad99cb8762`, git blob `416280d408fef395a81363189ab500778539fa27`). The in-process double-run assert holds and a separate cross-invocation produced byte-identical stdout (`diff` exit 0). `all_pass = true`, `first_failing_gate = null`.
+
+| Gate | Metric | Value | z | Verdict |
+|------|--------|-------|---|---------|
+| G1 — latency scales with buffer | ΔW = W(K_LARGE) − W(K_SMALL) | 49.954161 | 508.993574 | PASS |
+| G2 — no goodput dividend | \|thr(K_SMALL) − thr(K_LARGE)\| | 0.000265 | — | PASS |
+| G3 — robust (shifted load ρ=1.5) | ΔW | 50.033018 | 581.376023 | PASS |
+
+W(K_SMALL) = 21.09712, W(K_LARGE) = 71.05128, ratio = 3.367819 (K 25 → 75). thr(K_SMALL) = 0.999952, thr(K_LARGE) = 0.999687, both ≥ (1−EPS)·μ = 0.98. G3 throughputs 1.000961 vs 1.000406, gap 0.000555, both within bound.
+
+Results-dict sha256 = `d968600582b39bde30bbbead4b192a0d08c4d1bcb64c3b5c1a17f40924139142` — MATCHES the disclosed PROPOSAL 185 digest across all 64 hex characters (byte-grep, count 1, no truncation). The standing-queue law the gates rest on is live-confirmed at the Wikipedia "Bufferbloat" revision (revid 1354864082): "In a first-in first-out queuing system, overly large buffers result in longer queues and higher latency, and do not improve network throughput."
 
 ## ⟲ Previous-session review
 
-Previous-session review: V197 (de Moivre small-sample variance, PROPOSAL 184) landed with digest MATCH and all gates PASS; the ruled verdict high-water is carried in the idea-engine outbox, not in sim-lab. This card follows the same born-red HOLD flow and leaves sim-lab's verdict high-water reference unchanged — V198 is ruled via the idea-engine outbox mirror.
+Previous-session review: V197 (de Moivre small-sample variance, PROPOSAL 184) landed with digest MATCH and all gates PASS; the ruled verdict high-water is carried in the idea-engine outbox, not in sim-lab. This card follows the same born-red HOLD flow and leaves sim-lab's verdict high-water reference at V197 — V198 is ruled via the idea-engine outbox mirror.
 
 ## 💡 Session idea
 
-The verifier holds K_SMALL/K_LARGE fixed at 25/75. A cheap extension: sweep K over {25, 50, 75, 100} at fixed ρ and regress mean W on K — the standing-queue law predicts a straight line of slope ≈ 1/μ through the origin-offset −ρ/(ρ−1)/μ, so the R² of that linear fit is a second, orthogonal confirmation of the affine-in-K claim beyond the single paired ΔW.
+The verifier holds K_SMALL/K_LARGE fixed at 25/75. A cheap extension: sweep K over {25, 50, 75, 100} at fixed ρ and regress mean W on K — the standing-queue law predicts a straight line of slope ≈ 1/μ (offset −ρ/(ρ−1)/μ), so the R² of that linear fit is a second, orthogonal confirmation of the affine-in-K claim beyond the single paired ΔW.
 
-**Recommendation: pending reproduction (born-red HOLD).**
+**Recommendation: APPROVE — reproduced byte-identically under SEED=20260717; the results-dict sha256 matches the disclosed digest across all 64 hex, all three gates PASS in order (G1 ΔW=49.954161 z=508.99, G2 thr-gap 0.000265, G3 ΔW=50.033018 z=581.38), the run is deterministic across a separate invocation, and the standing-queue law gate G1 rests on is live-confirmed at the pinned "Bufferbloat" source.**
