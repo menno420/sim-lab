@@ -1,0 +1,62 @@
+{
+  "all_pass": true,
+  "base": {
+    "cost_penalty_pct": 30.81864,
+    "failure_rate_reduction": 8.1e-05,
+    "pm_cost_rate": 6.541129,
+    "pm_failure_rate": 0.999949,
+    "promised_reduction": 0.1,
+    "rtf_cost_rate": 5.000151,
+    "rtf_failure_rate": 1.00003,
+    "z_benefit": 111.984471,
+    "z_cost": 362.634738
+  },
+  "crossover": {
+    "weibull_beats_rtf": true,
+    "weibull_best_cost_rate": 3.071961,
+    "weibull_best_t": 0.55,
+    "weibull_rtf_cost_rate": 5.0,
+    "weibull_shape": 2.5
+  },
+  "first_failing_gate": null,
+  "gates": {
+    "G1_cost_penalty": true,
+    "G2_benefit_absent": true,
+    "G3_robustness": true
+  },
+  "params": {
+    "c_fail": 5.0,
+    "c_fail_shift": 8.0,
+    "c_plan": 1.0,
+    "c_plan_shift": 1.0,
+    "delta_null": 0.1,
+    "lam": 1.0,
+    "lam_shift": 1.7,
+    "n_cycles": 100000,
+    "t_pm": 0.5,
+    "t_pm_shift": 0.3,
+    "trials": 30,
+    "weibull_shape": 2.5
+  },
+  "proposal": "PROPOSAL 165",
+  "seed": 20260717,
+  "shifted": {
+    "cost_penalty_pct": 18.764686,
+    "failure_rate_reduction": 0.000595,
+    "pm_cost_rate": 16.149977,
+    "pm_failure_rate": 1.699192,
+    "promised_reduction": 0.17,
+    "rtf_cost_rate": 13.598299,
+    "rtf_failure_rate": 1.699787,
+    "z_benefit": 82.044394,
+    "z_cost": 159.820952
+  },
+  "sigma_gate": 3.0,
+  "slot": "round-39 FLEET",
+  "theory": {
+    "exp_failure_rate_invariant": 1.0,
+    "exp_pm_cost_rate": 6.541494,
+    "exp_rtf_cost_rate": 5.0
+  }
+}
+Results-JSON sha256: 0a9c4406e8abc9a6fa51b80a0101c6f55277f3304c3d8b468b13f4600424bd69
