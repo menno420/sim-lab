@@ -1,0 +1,71 @@
+{
+  "all_pass": true,
+  "base_openings": [
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "first_failing_gate": null,
+  "g1": {
+    "n": 200000,
+    "opening_f": 0.9,
+    "pass": true,
+    "rule": "no-pie",
+    "strategy": "greedy-strongest",
+    "win_rate": 0.900505,
+    "z_vs_half": 598.381968
+  },
+  "g2": {
+    "n": 200000,
+    "opening_f": 0.9,
+    "pass": true,
+    "rule": "pie",
+    "strategy": "naive-greedy-strongest",
+    "win_rate": 0.10111,
+    "z_vs_half": -591.72081
+  },
+  "g3": {
+    "gap_mean": 0.4517,
+    "naive_f": 0.95,
+    "naive_rate": 0.04946,
+    "opt_f": 0.5,
+    "opt_rate": 0.50116,
+    "opt_within_2pct_of_fair": true,
+    "pass": true,
+    "rule": "pie",
+    "shift_openings": [
+      0.5,
+      0.65,
+      0.78,
+      0.88,
+      0.95
+    ],
+    "z_gap": 370.907761
+  },
+  "gates": [
+    {
+      "gate": "G1",
+      "name": "first-move edge exists (no pie rule)",
+      "pass": true
+    },
+    {
+      "gate": "G2",
+      "name": "strongest opening is losing under pie rule",
+      "pass": true
+    },
+    {
+      "gate": "G3",
+      "name": "balanced dominates + restores fairness (shifted world)",
+      "pass": true
+    }
+  ],
+  "head": "Under the pie/swap rule realized first-mover win prob = min(f, 1-f), so the strongest opening becomes the worst move: the first-move edge (G1) inverts below 0.5 for naive-strong play (G2) while balanced play dominates and restores a fair game (G3).",
+  "n_games": 200000,
+  "proposal": 175,
+  "seed": 20260717,
+  "slot": "round-41 GAME",
+  "z_gate": 3.0
+}
+Results-JSON sha256: 72950442cc7509423256f28470c2281c9f79de3b601611b9feb931d083e8cb08
