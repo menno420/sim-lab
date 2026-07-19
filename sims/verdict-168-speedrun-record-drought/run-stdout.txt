@@ -1,0 +1,75 @@
+{
+  "all_pass": true,
+  "exp_pass": {
+    "cov_count_N1_N2": 3.562131,
+    "mean_count_N1": 5.2015,
+    "mean_count_N2": 9.773,
+    "sd_count_N1": 1.875174,
+    "sd_count_N2": 2.836015,
+    "se_count_N1": 0.029649,
+    "se_count_N2": 0.044841,
+    "var_count_N1_identity": 3.516277
+  },
+  "first_failing_gate": null,
+  "g1_harmonic_law": {
+    "H_N2": 9.787606,
+    "mean_count_N2": 9.773,
+    "pass": true,
+    "se": 0.044841,
+    "z": -0.325727
+  },
+  "g2_log_slowdown": {
+    "headline_x100_attempts_multiplies_records_by": 1.886812,
+    "linear_pred_count_N2": 520.15,
+    "mean_count_N2": 9.773,
+    "pass": true,
+    "ratio_null_H_N2_over_H_N1": 1.886812,
+    "ratio_observed": 1.878881,
+    "se_ratio": 0.008083,
+    "z_linear": 11381.841906,
+    "z_ratio": -0.981196
+  },
+  "g3_distribution_free": {
+    "H_N2": 9.787606,
+    "dist": "pareto(2.5)",
+    "mean_count_N2": 9.73,
+    "pass": true,
+    "se": 0.044819,
+    "z": -1.285293
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "harmonic_law",
+      "pass": true,
+      "z": -0.325727
+    },
+    {
+      "id": "G2",
+      "name": "log_slowdown",
+      "pass": true,
+      "z": 11381.841906
+    },
+    {
+      "id": "G3",
+      "name": "distribution_free",
+      "pass": true,
+      "z": -1.285293
+    }
+  ],
+  "harmonic": {
+    "H_N1": 5.187378,
+    "H_N2": 9.787606,
+    "ratio_H_N2_over_H_N1": 1.886812
+  },
+  "params": {
+    "N1": 100,
+    "N2": 10000,
+    "dist_g1g2": "exponential(1.0)",
+    "dist_g3": "pareto(2.5)",
+    "seed": 20260717,
+    "sigma_gate": 3.0,
+    "trials": 4000
+  }
+}
+Results-JSON sha256: fa31d28495ab63c8ff9f1c502031da475bfa334c918fb29173fab26e8e489f26
