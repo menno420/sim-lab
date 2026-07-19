@@ -1,0 +1,37 @@
+{
+  "all_pass": true,
+  "deterministic_momentum": 1.291976,
+  "g1_momentum": {
+    "mean_m": 1.291456,
+    "pass": true,
+    "se": 0.000234,
+    "z": 1246.791124
+  },
+  "g2_null_contrast": {
+    "mean_m_null": 1.000409,
+    "pass": true,
+    "se_null": 0.000199,
+    "z_contrast": 949.016224,
+    "z_null": 2.059462
+  },
+  "g3_robustness_shift": {
+    "mean_m_shift": 1.219339,
+    "pass": true,
+    "se": 0.000197,
+    "z": 1115.580283
+  },
+  "seed": 20260717,
+  "world": {
+    "k_reps": 1500,
+    "n0": 300000,
+    "n_classes": 17,
+    "nrr_growth": 1.5,
+    "nrr_repl_check": 1.0,
+    "null_band": 0.02,
+    "shift_classes": 1,
+    "survival": 0.96,
+    "t_steps": 50,
+    "z_gate": 3.0
+  }
+}
+Results-JSON sha256: fb74854ebd92a08fe48770136cf4e5645b47176394d1b04a70c2a0cc6ef36f33
