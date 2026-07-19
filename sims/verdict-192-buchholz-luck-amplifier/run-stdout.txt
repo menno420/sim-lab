@@ -1,0 +1,36 @@
+{
+  "all_pass": true,
+  "base": {
+    "mean_d": 0.207511,
+    "n": 64,
+    "n_pairs": 442632,
+    "n_tournaments": 1200,
+    "p_luck": 0.80491,
+    "p_skill": 0.597399,
+    "ratio": 3.130521,
+    "rounds": 7,
+    "sigma": 200.0,
+    "z_diff": 234.751939,
+    "z_luck": 511.920239
+  },
+  "gates": {
+    "G1_luck_dominates": true,
+    "G2_luck_beats_skill": true,
+    "G3_robust_shift": true
+  },
+  "seed": 20260717,
+  "shift": {
+    "mean_d": 0.183947,
+    "n": 128,
+    "n_pairs": 548135,
+    "n_tournaments": 400,
+    "p_luck": 0.870756,
+    "p_skill": 0.686809,
+    "ratio": 1.984682,
+    "rounds": 9,
+    "sigma": 350.0,
+    "z_diff": 265.698695,
+    "z_luck": 818.237315
+  }
+}
+results-dict sha256: 0e591bb44f57f72fdff6536417a3ba009b74dfb9c07f2c41073bdbd9876c0fa8
