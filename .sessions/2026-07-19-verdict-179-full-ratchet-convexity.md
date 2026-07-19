@@ -2,7 +2,7 @@
 
 Reproduce PROPOSAL 166 (P166 → V179, +13, round-39 VENTURE slot): a down round issues new stock at price P_new = p·P_old with drop d = 1−p; a full-ratchet anti-dilution clause resets the prior investor's conversion price all the way to P_new, handing them extra as-converted shares dAD_FR = N_A·(1/p − 1) = N_A·d/(1−d), convex in the drop d. The folk belief (inverted here): "anti-dilution is anti-dilution; a d-percent down round costs founders about d-percent" — two errors, because full-ratchet is strictly worse than broad-based weighted-average, and the share transfer is convex (super-linear) in the drop, not proportional. It is NOT a claim that founders' ownership FRACTION is globally convex in the drop — new-money issuance inflates the base and dampens that second difference, so the convexity claim is scoped to the SHARE TRANSFER, disclosed honestly as a non-gated field. Three ordered z-gates (z_gate=3.0): G1 full-ratchet founder loss > weighted-average founder loss; G2 transfer convexity dAD_FR(2d) − 2·dAD_FR(d) > 0; G3 both hold in a shifted heavier-preferred / deeper-drop world. Model-basis caveat (P024 discipline): the result is a property of the standard NVCA / Venture-Deals full-ratchet and broad-based weighted-average conversion-price formulas on a normalized single-prior-investor cap table, one down round, no pay-to-play / carve-outs / forfeiture.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · high · review/verify
 
 Born-red HOLD: this card's first commit (2026-07-19T11:02:16Z) lands `in-progress`, holding the substrate-gate red while the byte-identical verifier copy, run-stdout, and probe-report are committed; the card flips `complete` last — after the coordinator heartbeat — which releases the gate.
