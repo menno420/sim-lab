@@ -1,0 +1,37 @@
+{
+  "all_pass": true,
+  "base": {
+    "mean": -60.205174,
+    "same_sign_frac": 0.9996,
+    "sd": 35.86702,
+    "se": 0.507236,
+    "z": -118.692568
+  },
+  "base_opp_mean": 1500.0,
+  "g1_order_effect": true,
+  "g2_sign_magnitude": true,
+  "g3_robust_shift": true,
+  "min_points_gate": 5.0,
+  "n_games": 12,
+  "opp_rd": 30.0,
+  "opp_sd": 200.0,
+  "r0": 1500.0,
+  "rd0": 350.0,
+  "seed": 20260717,
+  "shift_opp_mean": 1700.0,
+  "shifted": {
+    "mean": -54.313763,
+    "same_sign_frac": 0.9954,
+    "sd": 38.209313,
+    "se": 0.540361,
+    "z": -100.513794
+  },
+  "sign_frac_gate": 0.9,
+  "trials": 5000,
+  "z_gate": 3.0
+}
+Results-JSON sha256: d4f690a51493a8fc32dd0971548078b059277ba81b6e02c84364415f4d168ba6
+G1 order-effect   : PASS z=-118.6926
+G2 sign+magnitude : PASS same_sign=0.9996 mean=-60.2052
+G3 robust (shift) : PASS z=-100.5138
+ALL_PASS          : True
