@@ -2,7 +2,7 @@
 
 A venture fund's internal rate of return (IRR) is NOT monotone in the dollars it returns to LPs: because IRR is a time-normalised rate (for a bullet fund, r = M^(1/T)−1), a lower-MOIC fund that distributes FAST out-IRRs a higher-MOIC fund that distributes SLOW, so ranking funds on IRR systematically selects the one that hands LPs LESS cash. The load-bearing companion is the subscription (capital-call) credit line: delaying the LP capital call to t=τ shortens the IRR clock (T → T−τ) and raises the reported IRR even though the LP, net of line interest ((1+c)^τ−1), receives FEWER dollars — the metric moves on timing alone, not on value created. DPI / MOIC / TVPI answer the dollars question; IRR does not. This card reproduces the round-41 VENTURE verifier and rules on it. **This card is provisional — work in-progress.**
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · effort high · verdict reproduction
 
 **Born-red HOLD:** this card lands `in-progress` on its first commit to hold the PR red under the substrate-gate, and flips to `complete` on the last commit once the reproduction below is recorded (sim directory, run-stdout, probe report in place and the heartbeat stamped). Red until the flip is the HOLD, not a defect. Contents below are provisional until the reproduction lands.
@@ -45,7 +45,17 @@ Stdlib-only (`json`, `math`, `hashlib`, `random`); Python 3; no network and no d
 
 ## Outcome
 
-TBD — pending reproduction. To record: sim-copy byte-identity (diff exit 0, file sha256 + git blob), determinism (two-invocation diff + in-process assert), digest MATCH/MISMATCH vs disclosed `552e98a0…b3f2736f`, the three gates in order with measured means/z-values, `all_pass` / `first_failing_gate`, grounding live-fetch status, and the reproduction record paths (`sims/verdict-187-irr-speed-trap/probe-report.md` + `run-stdout.txt`). **Ruling: TBD.** On a clean reproduction (digest EXACT, all gates PASS on the proposal's own thresholds) the verdict high-water advances V186 → V187 (union-max, no regress).
+Reproduced clean. Measured results below.
+
+- **Verifier byte-identity:** copied byte-identically from the idea-engine reference — `diff` exit 0; sim-copy file sha256 `13ecd4b4e0b220a4f48d366d39b8d89b6a3943aa746b87cb5057f9cd6e1b0547`, git blob `3fb977e630e04108072c8a6402653bf16e93067a` (both match the idea-engine reference).
+- **Determinism:** two separate invocations byte-identical (cross-invocation `diff` exit 0) plus the in-process `double_run_identical=true`.
+- **Digest:** printed `Results-JSON sha256 552e98a09fd8f8c069156ab40d35dca2049671702e5e11f8d40a52fba3f2736f` == disclosed → **MATCH (exact)**.
+- **Gates in order (measured vs proposal target):** G1 — mean IRR gap 0.147747, z=789.30361, inversion 0.99506 (target 0.147747 / ≈789.30 / ≈99.506%); G2 — delta-IRR mean +0.013764 z=756.063137, delta-MOIC mean −0.146102 z=−1093.342507 (target +0.013764/≈756.06, −0.146102/≈−1093.34); G3 — mean gap 0.032235 z=251.423783 inversion 0.8858 (target 0.032235/≈251.42/≈88.58%). `all_pass=true`, `first_failing_gate=null`. Every field matches to the printed precision.
+- **Illustrative point:** fast-poor fund IRR 0.191138 vs slow-rich 0.091493 — the smaller-but-faster fund out-IRRs the larger-but-slower one.
+- **Grounding:** Wikipedia "Internal rate of return" live HTTP 200; reinvestment text present (reinvestment/reinvested returned by grep).
+- **Reproduction record paths:** `sims/verdict-187-irr-speed-trap/{irr_speed_trap.py, run-stdout.txt, probe-report.md}`.
+
+**Ruling: APPROVE.** The digest reproduced exactly and all three gates pass on the proposal's own thresholds; the algebra (IRR = MOIC^(1/T)−1 decreasing in horizon T at fixed MOIC; a subscription line shortens T→T−τ) is textbook-sound and the mechanism is measured, not assumed. The verdict high-water advances V186 → V187 (union-max, no regress).
 
 ## ⟲ Previous-session review
 
@@ -55,4 +65,4 @@ VERDICT 186 (decorrelated jitter backoff, reproduce PROPOSAL 173, round-41 FLEET
 
 The G1/G2 bands are bullet idealisations and G3 already relaxes to a staged J-curve; a follow-up could sweep the call-delay τ and the line rate c continuously and plot the reported-IRR lift against the LP MOIC loss — turning the single subscription-line result into a dose-response frontier (more delay / higher line rate → wider IRR-vs-dollars wedge). It would make concrete, over realistic facility terms, exactly how many basis points of headline IRR a fund can manufacture per dollar of LP cash foregone — the honest cost of the metric game.
 
-**Recommendation (provisional): reproduce PROPOSAL 174 (the IRR speed trap) at SEED=20260717; on a byte-identical copy with the disclosed digest `552e98a0…b3f2736f` matching EXACTLY and G1/G2/G3 passing on the proposal's own thresholds, APPROVE and advance the verdict high-water V186 → V187. Final recommendation rendered in Outcome once the run lands.**
+**Recommendation: APPROVE PROPOSAL 174 (the IRR speed trap). Reproduced byte-identical at SEED=20260717 with the disclosed digest `552e98a0…b3f2736f` matching EXACTLY and G1/G2/G3 all passing on the proposal's own thresholds; the verdict high-water advances V186 → V187 (union-max, no regress below whatever is already there).**
