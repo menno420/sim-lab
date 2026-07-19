@@ -2,10 +2,10 @@
 
 Post-money SAFEs fix each holder's ownership percentage at conversion, so when a founder stacks several of them the resulting dilution falls entirely on the founders rather than being shared among the SAFE holders. For aggregate post-money SAFE ownership `x`, founders retain `1 − x` under post-money SAFEs versus `1 / (1 + x)` under otherwise-equivalent pre-money SAFEs that convert on a common base and dilute each other. The stacking tax is therefore `1/(1+x) − (1 − x) = x² / (1 + x)` — strictly positive for every `x > 0` and convex in `x`, so the founder cost accelerates as more post-money paper is stacked. A stdlib Monte-Carlo (SEED=20260717, 200,000 trials, x capped at 0.85) reproduces this: mean tax 0.127846 (G1 z≈631.6), a top-vs-bottom-x tercile convexity ratio 6.34 (G2 z_diff≈824.3), and a heavier-stacking shift that raises the mean tax to 0.229045 above baseline (G3 z_positive≈1074.0, z_increase≈344.2).
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude · effort high · verdict reproduction
 
-**Reproduction verified — flip pending.** The committed verifier `ideas/venture-lab/post_money_safe_stacking.py` reproduced byte-identically in sim-lab (diff exit 0; file sha256 `bfde226f62ee5c6579e4fe54f5f56440646fb85295900662998a0791d057b2cc`, git blob `51a14a48`), was deterministic (in-process double-run assert + separate cross-invocation diff exit 0), and its disclosed results-dict sha256 `78758a602a36ba32bc1fd97b77820c97e86abbe7828a160ddbdd22ae7e8b2549` matched the proposal's disclosure EXACT (MATCH). All three ordered gates pass on the proposal's own thresholds.
+**Reproduction landed — APPROVE.** The committed verifier `ideas/venture-lab/post_money_safe_stacking.py` reproduced byte-identically in sim-lab (diff exit 0; file sha256 `bfde226f62ee5c6579e4fe54f5f56440646fb85295900662998a0791d057b2cc`, git blob `51a14a48`), was deterministic (in-process double-run assert + separate cross-invocation diff exit 0), and its disclosed results-dict sha256 `78758a602a36ba32bc1fd97b77820c97e86abbe7828a160ddbdd22ae7e8b2549` matched the proposal's disclosure EXACT (MATCH). All three ordered gates pass on the proposal's own thresholds.
 
 ## Objective
 Reproduce PROPOSAL 178 (round-42 venture slot, P178 → V191, +13): post-money SAFE stacking taxes founders convexly. Confirm byte-identical reproduction of the committed verifier under SEED=20260717, digest match, and that the three ordered gates clear on the proposal's own criteria; rule per evidence.
