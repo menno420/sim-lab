@@ -1,0 +1,44 @@
+Kleinrock conservation law verifier -- single-server M/G/1, common random numbers
+  swing : W1_fifo=33.088966 -> W1_prio_short=6.794325  (short jobs jump the queue)
+          W2_fifo=33.186088 -> W2_prio_short=46.364871  (long jobs pay it back)
+  conserved sum(rho_i W_i): fifo=28.180657 prio_short=28.198485 prio_long=28.177276
+  G1 transfer_short_mean=+7.450148  z=+30.100904
+  G2 leak_mean=0.040689  z=+12.680569  (ceiling 0.10)
+  G3 shift_leak_mean=0.023037  z=+23.740077  (ceiling 0.10)
+  gates : G1=True  G2=True  G3=True  all_pass=True
+
+{
+  "all_pass": true,
+  "conserved_fifo": 28.180657,
+  "conserved_prio_long": 28.177276,
+  "conserved_prio_short": 28.198485,
+  "first_failing_gate": null,
+  "g1_swing_real": true,
+  "g2_conservation": true,
+  "g3_robust": true,
+  "lam": 0.354167,
+  "leak_mean": 0.040689,
+  "leak_z": 12.680569,
+  "n_jobs": 20000,
+  "p1": 0.8,
+  "reps": 30,
+  "rho": 0.85,
+  "rho1": 0.283333,
+  "rho2": 0.566667,
+  "s1": 1.0,
+  "s2": 8.0,
+  "seed": 20260717,
+  "shift_leak_mean": 0.023037,
+  "shift_leak_z": 23.740077,
+  "shift_p1": 0.6,
+  "shift_rho": 0.8,
+  "shift_s2": 6.0,
+  "transfer_short_mean": 7.450148,
+  "transfer_short_z": 30.100904,
+  "w1_fifo": 33.088966,
+  "w1_prio_short": 6.794325,
+  "w2_fifo": 33.186088,
+  "w2_prio_short": 46.364871,
+  "warmup": 4000
+}
+Results-JSON sha256: 1b40af51baa24c2041bbd822b190e5447c6299840604822580b3b3bb3153ee18
