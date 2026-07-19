@@ -2,7 +2,7 @@
 
 Reproduce PROPOSAL 167 (P167 → V180, +13, round-39 GAME slot): within a fixed pool every game is a strictly zero-sum transaction — the winner gains exactly what the loser drops — so play moves zero net points and total pool rating is conserved by games alone. Mean rating therefore drifts DOWN only through boundary crossings: newcomers enter at a provisional rating floor BELOW their eventual true level, while climbers who have reached their true skill retire carrying accumulated points ABOVE the floor OUT of the pool. The enter-low / retire-high asymmetry bleeds points out at a rate set by churn, so a strictly zero-sum ladder deflates in the long run with no change in anyone's true skill. The folk belief (inverted here): "a zero-sum game conserves points, so the pool's mean rating is stable" — the error is that conservation holds only WITHIN play; the pool is open at its boundary, and churn across an enter-low/retire-high gap is a strictly one-directional point sink. Model-basis caveat (P024 discipline): the head is a property of the standard Elo update on a single closed pool with provisional-floor entry and skill-reset churn; it is a SIGN / mean-non-conservation claim (mean drift < 0, within-play ledger residual = 0), not a claim about the exact deflation magnitude, which is a function of the pinned churn rate, floor gap, and K.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · high · review/verify
 
 Born-red HOLD: this card's first commit lands `in-progress`, holding the substrate-gate red while the byte-identical verifier copy, run-stdout, and probe-report are committed in a separate reproduction commit; the card flips `complete` last — after the coordinator heartbeat — which releases the gate. The Outcome below is intentionally unfilled (`_Pending reproduction — filled at flip._`) in this first commit; the digest, gate statistics, and verdict are PENDING until the reproduction is proven and independently audited.
@@ -50,7 +50,7 @@ Byte-identical verifier copy (diff exit 0, copy sha256 == source, copy git blob 
 
 ## Outcome
 
-_Pending reproduction — filled at flip._
+**APPROVE.** The reproduced verifier is byte-identical to the idea-engine reference (file sha256 `b9d14de839ae416677d7062e904a65ef494d97edeb28c556d6b381a63b5bae58`), and the reproduced compact-canonical results-dict sha256 `dcf252dd29f271a68a835046ea712256841c39fb657fc04c4f0aa8747e5855db` matches the disclosed digest exactly, deterministic across the in-process double-run assert and a separate cross-invocation. All three ordered gates pass with z_gate=3.0 (all_pass=true, first_failing_gate=null): G1 deflation-real mean_drift −498.683032, z −78.06 < −3; G2 within-play churn-ledger identity max|residual| 0.0, so the drift is boundary-crossing churn and not a play artifact; G3 deeper-floor deepens the deflation to −797.745574, z −131.37, strictly below baseline. Grounding at https://en.wikipedia.org/wiki/Elo_rating_system ("Combating deflation") confirmed live — the strictly-zero-sum ladder deflates through enter-low/retire-high boundary crossings exactly as claimed, with no change in anyone's true skill.
 
 ## ⟲ Previous-session review
 
