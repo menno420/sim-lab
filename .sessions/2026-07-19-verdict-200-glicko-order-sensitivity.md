@@ -2,7 +2,7 @@
 
 > **Status:** `complete`
 
-📊 **Model:** opus-4.8 · effort high · verdict-simulation / reproduction
+📊 Model: opus-4.8 · effort high · verdict-simulation / reproduction
 
 started: 2026-07-19T23:11:32Z
 flipped: 2026-07-19T23:21:35Z
