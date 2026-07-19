@@ -1,0 +1,39 @@
+{
+  "head": "term-sheet-winners-curse",
+  "seed": 20260717,
+  "constants": {
+    "V0": 1.0,
+    "sigma": 0.25,
+    "sigma_heavy": 0.35,
+    "trials": 200000,
+    "n_low": 2,
+    "n_high": 8,
+    "z_gate": 3.0
+  },
+  "gaussian": {
+    "mean_excess_n_low": -0.141221,
+    "mean_excess_n_high": -0.355814,
+    "z_winner_overpays": 1041.753878,
+    "z_deepens_with_n": 373.85128
+  },
+  "conditional_reversal": {
+    "mean_excess_unconditional": 0.000385,
+    "mean_excess_winner": -0.355814,
+    "z_reversal": 544.530293
+  },
+  "robustness_laplace": {
+    "mean_excess_n_low": -0.185565,
+    "mean_excess_n_high": -0.500907,
+    "z_winner_overpays": 730.514721,
+    "z_deepens_with_n": 330.733505
+  },
+  "gates": {
+    "G1_winner_overpays_deepens": true,
+    "G2_conditional_reversal": true,
+    "G3_robust_heavy_tail": true
+  },
+  "all_pass": true
+}
+double_run_identical=true
+all_pass=true
+Results-JSON sha256 e5cdbfec872e5879a66c13029e003fd37b8a8aa72738ec2b1ba7e18030b8e4f7

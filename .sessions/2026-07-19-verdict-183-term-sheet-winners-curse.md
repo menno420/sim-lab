@@ -2,7 +2,7 @@
 
 The investor who wins a competitive VC round systematically overpays: with K bidders each forming an unbiased but noisy estimate of the company's intrinsic value and the highest bid winning, the winning valuation is the maximum order statistic of K unbiased draws and is therefore biased above true value — the classic common-value-auction winner's curse (Capen–Clapp–Campbell 1971). Reproduction of `term_sheet_winners_curse.py` at SEED=20260717 is byte-identical across invocations, the results-dict digest matches the disclosed `e5cdbfec…`, and all three pre-registered gates pass.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · high · verdict-reproduction
 
 **Born-red HOLD.** This card lands `in-progress` on its first commit to hold the PR red under the substrate-gate; it flips to `complete` on the last commit once the sim directory, run-stdout, and probe report are in place and the heartbeat is stamped. Red until the flip is the HOLD, not a defect.
