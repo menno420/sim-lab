@@ -2,7 +2,7 @@
 
 Reproduces PROPOSAL 181's head that a Bloom filter's false-positive rate is convex (U-shaped) in the number of hash functions k, minimized at k* = (m/n)·ln2 — past the optimum each extra hash SETS another bit, saturates the array faster, and makes false positives WORSE, not better; and the achievable minimum is floored at φ = (½)^{(m/n)·ln2} ≈ 0.6185^{(m/n)}, set by bits-per-element ALONE so no choice of k crosses it. At 8 bits/element the FPR is 11.79% at k=1, bottoms at 2.22% at k*=6 (on the memory floor φ=2.14%), then climbs back to 4.93% at k=12. The lever a team chasing fewer false hits actually needs is bits-per-element (m/n), not more hashes.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Opus · high · verdict-reproduction
 > **Reproduction in progress — reproducing PROPOSAL 181 at SEED=20260717; disclosed results-dict digest 3fdfc867… to be confirmed, gates G1/G2/G3 to be ruled in order.**
 
