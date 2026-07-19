@@ -1,0 +1,79 @@
+{
+  "all_pass": true,
+  "deficit_demo": {
+    "deficit": 0.4,
+    "mean_share": 0.553794,
+    "note": "R spends 40% LESS and still wins the field majority",
+    "share_sd": 0.0231,
+    "z": 40.335299
+  },
+  "first_failing_gate": null,
+  "g1_evenness_beaten": {
+    "mean_share": 0.537637,
+    "null": "equal budget => equal 0.5 battlefield share",
+    "pass": true,
+    "share_sd": 0.025796,
+    "z": 25.27061
+  },
+  "g2_concede_arithmetic_identity": {
+    "checks": 14421,
+    "deficit_frontier_max_d": {
+      "20": 0.44,
+      "40": 0.47,
+      "8": 0.37
+    },
+    "mismatches": 0,
+    "note": "analytic majority frontier d -> 1/2 as B grows (deficit*B < k < B/2)",
+    "pass": true
+  },
+  "g3_robustness_hetero_value_deficit": {
+    "baseline_share": 0.537637,
+    "deepens": true,
+    "deficit": 0.4,
+    "mean_value_share": 0.788032,
+    "pass": true,
+    "share_sd": 0.044336,
+    "z": 112.524168
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "evenness_beaten",
+      "pass": true,
+      "z": 25.27061
+    },
+    {
+      "id": "G2",
+      "mismatches": 0,
+      "name": "concede_arithmetic_identity",
+      "pass": true
+    },
+    {
+      "id": "G3",
+      "name": "robustness_hetero_value_deficit",
+      "pass": true,
+      "z": 112.524168
+    }
+  ],
+  "head": "blotto_evenness_trap",
+  "params": {
+    "battlefields_range": [
+      8,
+      40
+    ],
+    "budget_rule": "T = B (uniform allocation = 1.0 per field)",
+    "deficit": 0.4,
+    "deficit_demo_replications": 300,
+    "g1_replications": 300,
+    "g3_replications": 300,
+    "value_dist_shifted": [
+      0.2,
+      5.0
+    ]
+  },
+  "proposal": 171,
+  "seed": 20260717,
+  "slot": "round-40 GAME",
+  "z_gate": 3.0
+}
+Results-JSON sha256: 05afdeffd9f44721fd6e71ee4595a024541b99976176bd30449b043c1755be63
