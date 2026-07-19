@@ -1,0 +1,103 @@
+{
+  "all_pass": true,
+  "classic_by_cap": {
+    "m_10": {
+      "cap": 1024.0,
+      "closed_form": 6.0,
+      "mc_mean": 6.121433,
+      "se": 0.063216,
+      "z_anchor": 1.920911
+    },
+    "m_12": {
+      "cap": 4096.0,
+      "closed_form": 7.0,
+      "mc_mean": 7.067918,
+      "se": 0.123719,
+      "z_anchor": 0.548966
+    },
+    "m_6": {
+      "cap": 64.0,
+      "closed_form": 4.0,
+      "mc_mean": 3.998032,
+      "se": 0.014066,
+      "z_anchor": -0.139879
+    },
+    "m_8": {
+      "cap": 256.0,
+      "closed_form": 5.0,
+      "mc_mean": 4.952937,
+      "se": 0.029604,
+      "z_anchor": -1.589759
+    }
+  },
+  "first_failing_gate": null,
+  "g1_finite_price_collapse": {
+    "cap": 4096.0,
+    "closed_form": 7.0,
+    "half_cap": 2048.0,
+    "mc_fair_price": 7.067918,
+    "pass": true,
+    "z": 16496.525875
+  },
+  "g2_sublinear_scaling": {
+    "delta_cap_proportional_pred": 251.876047,
+    "delta_logrule_pred": 3.0,
+    "delta_measured": 3.069885,
+    "m_hi": 12,
+    "m_lo": 6,
+    "pass": true,
+    "se_delta": 0.124516,
+    "z_logrule_anchor": 0.561254,
+    "z_sublinear": 1998.187697
+  },
+  "g3_robust_shifted": {
+    "cap": 9536.743164,
+    "cap_bits": 10,
+    "closed_form": 7.0,
+    "mc_fair_price": 6.828497,
+    "p_cont": 0.4,
+    "pass": true,
+    "r": 2.5,
+    "se": 0.17139,
+    "slope_per_bit_pred": 0.6,
+    "z_anchor": -1.000661
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "finite_price_collapse",
+      "pass": true,
+      "z": 16496.525875
+    },
+    {
+      "id": "G2",
+      "name": "sublinear_scaling",
+      "pass": true,
+      "z": 1998.187697
+    },
+    {
+      "id": "G3",
+      "name": "robust_under_shifted_coin",
+      "pass": true,
+      "z": -1.000661
+    }
+  ],
+  "params": {
+    "cap_bits_nominal": 12,
+    "cap_bits_shift": 10,
+    "n_samples": 400000,
+    "p_cont": 0.5,
+    "p_cont_shift": 0.4,
+    "r": 2.0,
+    "r_shift": 2.5,
+    "seed": 20260717,
+    "sigma_gate": 3.0,
+    "slope_bits": [
+      6,
+      8,
+      10,
+      12
+    ]
+  }
+}
+Results-JSON sha256: e1919f49d20df0b50121864b8e35f78be0637e4eeb812799e9f0d8af535ef078
