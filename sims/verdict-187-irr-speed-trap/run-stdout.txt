@@ -1,0 +1,23 @@
+{
+  "all_pass": true,
+  "ex_fast_poor_irr": 0.191138,
+  "ex_slow_rich_irr": 0.091493,
+  "first_failing_gate": null,
+  "g1_inversion_fraction": 0.99506,
+  "g1_irr_gap_mean": 0.147747,
+  "g1_irr_gap_z": 789.30361,
+  "g1_pass": true,
+  "g2_delta_irr_mean": 0.013764,
+  "g2_delta_irr_z": 756.063137,
+  "g2_delta_moic_mean": -0.146102,
+  "g2_delta_moic_z": -1093.342507,
+  "g2_pass": true,
+  "g3_inversion_fraction": 0.8858,
+  "g3_irr_gap_mean": 0.032235,
+  "g3_irr_gap_z": 251.423783,
+  "g3_pass": true
+}
+double_run_identical=true
+all_pass=true
+first_failing_gate=null
+Results-JSON sha256 552e98a09fd8f8c069156ab40d35dca2049671702e5e11f8d40a52fba3f2736f
