@@ -32,7 +32,7 @@ See `sims/verdict-195-pay-to-play-cramdown/probe-report.md` (8-item audit).
 
 ## Outcome
 
-Byte-identical reproduction (diff exit 0; git blob c4214e36426b2c9fb6e7030abdb26af8bd8c1eac). Deterministic: in-process double-run equal, separate cross-invocation byte-match (crossdiff exit 0). Emitted results-dict sha256 `ed8a081bb104683d1ee8c0c2ec9b90e2a1212100495d9d4b5e484016a75b243` MATCHES the disclosed target.
+Byte-identical reproduction (diff exit 0; git blob c4214e36426b2c9fb6e7030abdb26af8bd8c1eac). Deterministic: in-process double-run equal, separate cross-invocation byte-match (crossdiff exit 0). Emitted results-dict sha256 `ed8a081bb104683d1ee8c0c2ec9b90e2a1212100495d9d44b5e484016a75b243` MATCHES the disclosed target.
 
 - G1 in-band return mean 2.674407 >= 2.0 (z 308.093567) — PASS
 - G2 conversion/dilution 2.362501 >= 1.5 (conv 2.348806 / dil 0.994203, z 848.320658) — PASS
