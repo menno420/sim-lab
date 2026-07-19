@@ -1,0 +1,77 @@
+{
+  "all_pass": true,
+  "claim": "a 100%-quota comp cliff relocates deals across the period boundary, so observed bookings show bunching + spurious negative autocorrelation while demand is conserved (artifact not real volatility)",
+  "dist_A": {
+    "ac_diff_mean": -0.145509,
+    "ac_diff_se": 0.011066,
+    "ac_z": -13.149401,
+    "band_diff_mean": 74.50375,
+    "band_diff_se": 0.310773,
+    "band_z": 239.736603,
+    "conservation_max_rel": 0.0,
+    "name": "exponential_amount",
+    "obs_ac_mean": -0.275185,
+    "obs_band_mean": 126.16375,
+    "true_ac_mean": -0.129676,
+    "true_band_mean": 51.66
+  },
+  "dist_B": {
+    "ac_diff_mean": -0.136372,
+    "ac_diff_se": 0.010403,
+    "ac_z": -13.109365,
+    "band_diff_mean": 56.59125,
+    "band_diff_se": 0.322967,
+    "band_z": 175.223184,
+    "conservation_max_rel": 0.0,
+    "name": "poisson_count_unit",
+    "obs_ac_mean": -0.278576,
+    "obs_band_mean": 144.47875,
+    "true_ac_mean": -0.142204,
+    "true_band_mean": 87.8875
+  },
+  "domain": "venture",
+  "first_failing_gate": null,
+  "gates": {
+    "G1_bunching": {
+      "one_sided": true,
+      "pass": true,
+      "threshold_sigma": 3.0,
+      "z": 239.736603
+    },
+    "G2_spurious_neg_autocorr": {
+      "one_sided": true,
+      "pass": true,
+      "threshold_sigma": 3.0,
+      "z": -13.149401
+    },
+    "G3_conservation_robustness": {
+      "conservation_max_rel_A": 0.0,
+      "conservation_max_rel_B": 0.0,
+      "pass": true,
+      "robust_ac_z_B": -13.109365,
+      "robust_band_z_B": 175.223184,
+      "threshold_sigma": 3.0
+    }
+  },
+  "params": {
+    "accel_bank_cap": 0.5,
+    "band_eps": 0.1,
+    "conservation_tol": 1e-06,
+    "deals_per": 12,
+    "dist_alternate": "poisson_count_unit",
+    "dist_primary": "exponential_amount",
+    "m_trials": 800,
+    "n_periods": 8,
+    "n_reps": 50,
+    "over_thresh": 0.2,
+    "pull_window": 0.2,
+    "quota": 12.0,
+    "sigma": 3.0
+  },
+  "proposal": 146,
+  "seed": 20260717,
+  "slot": "round-34 venture"
+}
+Results-JSON sha256: 90e5ea44d1b7ccd2a230d4c3dd74eef8798ec56cf54794553f9e434efce00ea4
+GATES: G1 z=239.737 pass=True | G2 z=-13.149 pass=True | G3 pass=True
+ALL_PASS: True
