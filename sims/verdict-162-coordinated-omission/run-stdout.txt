@@ -1,0 +1,59 @@
+G1 tail-blindness    : mean log(open/closed p99)=+4.6433 z=+2505.7334 PASS
+G2 omitted-backlog   : mean(open-closed stall count)=+294.6350 z=+5148.2784 PASS
+G3 correction-recov  : mean log(corr/closed p99)=+4.4086 z=+2606.6706 PASS
+recovery fraction    : 0.7888  (open p99 0.048583  closed p99 0.000468  corr p99 0.038420)
+all_pass = True  first_failing_gate = None
+{
+  "all_pass": true,
+  "config": {
+    "D_over_tau": 50.0,
+    "horizon_T": 1.0,
+    "lam": 1000.0,
+    "mu_service": 0.0001,
+    "n_stalls": 6,
+    "n_svc": 12000,
+    "percentile_q": 0.99,
+    "replicates": 200,
+    "seed": 20260717,
+    "stall_D": 0.05,
+    "tau": 0.001,
+    "utilisation": 0.1,
+    "z_gate": 3.0
+  },
+  "descriptive": {
+    "mean_closed_p99": 0.000468,
+    "mean_closed_stall_count": 6.0,
+    "mean_corrected_p99": 0.03842,
+    "mean_open_over_closed_p99": 103.855766,
+    "mean_open_p99": 0.048583,
+    "mean_open_stall_count": 300.635,
+    "mean_recovery_fraction": 0.788774
+  },
+  "first_failing_gate": null,
+  "gates": {
+    "G1_tail_blindness": {
+      "mean": 4.643332,
+      "pass": true,
+      "se": 0.001853,
+      "statistic": "mean log(open_p99/closed_p99)",
+      "z": 2505.733369
+    },
+    "G2_omitted_backlog": {
+      "mean": 294.635,
+      "pass": true,
+      "se": 0.05723,
+      "statistic": "mean (open_stall_count - closed_stall_count)",
+      "z": 5148.278412
+    },
+    "G3_correction_recovery": {
+      "mean": 4.408601,
+      "pass": true,
+      "se": 0.001691,
+      "statistic": "mean log(corrected_p99/closed_p99)",
+      "z": 2606.670555
+    }
+  },
+  "mechanism": "coordinated-omission",
+  "proposal": 149
+}
+Results-JSON sha256: 12d3ce4fce9a4f1cc218be0ee6f5dbc945d42a5e45173a46044704524dbfab5d
