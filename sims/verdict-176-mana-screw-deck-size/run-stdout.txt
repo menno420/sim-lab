@@ -1,0 +1,103 @@
+{
+  "all_pass": true,
+  "first_failing_gate": null,
+  "g1_head_deck_size": {
+    "diff_b_minus_a": 0.015493,
+    "offcurve_a_40card": 0.209482,
+    "offcurve_b_60card": 0.224975,
+    "pass": true,
+    "ratio_only_null": "equal off-curve (pB == pA)",
+    "se": 0.000922,
+    "z": 16.804944
+  },
+  "g2_mechanism_fpc": {
+    "fpc_ratio_closed_form": 1.061633,
+    "mean_a_check": 2.799585,
+    "mean_b_check": 2.7988,
+    "pass": true,
+    "se_ratio": 0.003175,
+    "var_a_measured": 1.418017,
+    "var_b_measured": 1.504962,
+    "var_ratio_measured_b_over_a": 1.061314,
+    "z": -0.100413
+  },
+  "g3_robustness_shift": {
+    "diff_b_minus_a": 0.013952,
+    "offcurve_a_40card": 0.167433,
+    "offcurve_b_60card": 0.181385,
+    "pass": true,
+    "se": 0.000848,
+    "shift": "p=0.30, keep window [1,3]",
+    "z": 16.44651
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "head_deck_size",
+      "pass": true,
+      "z": 16.804944
+    },
+    {
+      "id": "G2",
+      "name": "mechanism_fpc",
+      "pass": true,
+      "z": -0.100413
+    },
+    {
+      "id": "G3",
+      "name": "robustness_shift",
+      "pass": true,
+      "z": 16.44651
+    }
+  ],
+  "params": {
+    "deck_a": {
+      "N": 40,
+      "lands": 16,
+      "p": 0.4
+    },
+    "deck_a_shift": {
+      "N": 40,
+      "lands": 12,
+      "p": 0.3
+    },
+    "deck_b": {
+      "N": 60,
+      "lands": 24,
+      "p": 0.4
+    },
+    "deck_b_shift": {
+      "N": 60,
+      "lands": 18,
+      "p": 0.3
+    },
+    "g3_shift": "matched fraction shifted 0.40->0.30, keep window recentered [2,4]->[1,3]",
+    "hand_size": 7,
+    "keep_window": [
+      2,
+      4
+    ],
+    "keep_window_shift": [
+      1,
+      3
+    ],
+    "off_curve_def": "land count outside the keep window (<lo screwed, >hi flooded)",
+    "seed": 20260717,
+    "trials": 400000,
+    "z_gate": 3.0
+  },
+  "theory": {
+    "fpc_a_33_39": 0.846154,
+    "fpc_b_53_59": 0.898305,
+    "fpc_ratio_b_over_a": 1.061633,
+    "mean_lands": 2.8,
+    "offcurve_a_shift_theory": 0.167978,
+    "offcurve_a_theory": 0.209662,
+    "offcurve_b_shift_theory": 0.182016,
+    "offcurve_b_theory": 0.225433,
+    "var_a_hypergeom": 1.421538,
+    "var_b_hypergeom": 1.509153,
+    "var_ratio_theory_b_over_a": 1.061633
+  }
+}
+Results-JSON sha256: 1280ae6278b508f00d3737841768181288e7ed31f12a443d5982b5f03b898e33
