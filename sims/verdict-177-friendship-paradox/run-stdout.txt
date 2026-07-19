@@ -1,0 +1,50 @@
+{
+  "all_pass": true,
+  "first_failing_gate": null,
+  "g1_paradox_positive": {
+    "all_networks_positive": true,
+    "equal_popularity_null": 0.0,
+    "gap_mean": 0.575478,
+    "gap_se": 0.012362,
+    "pass": true,
+    "z": 46.553724
+  },
+  "g2_mechanism_size_bias": {
+    "closed_form": "nu = sum(k^2)/sum(k) = <k^2>/<k>",
+    "mean_std_residual_z": -0.867047,
+    "note": "two-sided match test; PASS when |z| < 3",
+    "pass": true
+  },
+  "g3_robust_shift": {
+    "all_networks_positive": true,
+    "gap_mean": 2.011742,
+    "gap_mean_base": 0.575478,
+    "gap_se": 0.17395,
+    "heavier_tail_bigger_gap": true,
+    "pass": true,
+    "z": 11.56506
+  },
+  "gates": [
+    true,
+    true,
+    true
+  ],
+  "params": {
+    "N": 4000,
+    "R": 40,
+    "TRIALS": 20000,
+    "alpha_base": 3.5,
+    "alpha_shift": 2.6,
+    "deg_scale": 2.0
+  },
+  "proposal": 164,
+  "seed": 20260717,
+  "sigma_gate": 3.0,
+  "slot": "round-38 UNRELATED (network science / social-network sampling)",
+  "theory": {
+    "gap_equals_var_over_mean": "nu - mu = Var(k)/mu",
+    "identity_max_abs_residual": 0.0,
+    "var_over_mean_mean_base": 0.575478
+  }
+}
+Results-JSON sha256: 0df9954e7378ae4c896e892c4614ff2967a117b646276fdde3f21ec874b0bd4f
