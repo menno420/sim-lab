@@ -2,7 +2,7 @@
 
 Reproduce PROPOSAL 153 (round-36 FLEET slot, P153 → V166, +13): clean-room re-run of the disclosed verifier `ideas/fleet/kleinrock_conservation_zero_sum.py` under SEED=20260717, confirm the byte-identical results-dict sha256 `1b40af51baa24c2041bbd822b190e5447c6299840604822580b3b3bb3153ee18`, and evaluate gates G1 (transfer real) → G2 (conservation leak under the 0.10 ceiling) → G3 (shifted-mix robustness) in order.
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: Claude Opus · high · review/verify
 
 Born red by design: this card lands `in-progress` in the FIRST commit so the substrate-gate HOLD holds the PR red until the reproduction is proven and independently audited; the deliberate LAST commit flips it to `complete`, clearing the HOLD and releasing merge-on-green (born-red discipline). No gate is bypassed.
@@ -38,8 +38,17 @@ Independently reproduce PROPOSAL 153's claim — that in a work-conserving singl
 **5.** G2: is leak_mean < 0.10 at z ≥ 3 below the ceiling (observed 0.040689, z +12.680569)?
 **6.** G3: under the shifted mix, is leak < 0.10 at z ≥ 3 (observed 0.023037, z +23.740077), and does the conserved load-weighted wait hold near 28.18 across FIFO / priority-short / priority-long (spread ~0.08%)?
 
-## Outcome — pending (fills at flip)
-Reproduction and audit run after this born-red commit; the last commit records the verdict and flips Status to `complete`.
+## Outcome — APPROVE (exact reproduction, clean)
+Reproduced clean-room under SEED=20260717. The copied verifier is byte-identical to the idea-engine reference (file sha256 `72f740652714e76c4e9c83ed9844d66fa6dc8a41370d66e73f9a6a1e462faafb`, git blob `a9280c5519b1cca8308dc5652d5398028e495dfb`, `diff` exit 0). Determinism confirmed three ways: the in-process double-run assert passed, a separate cross-invocation reproduced byte-identical stdout (`diff` exit 0), and an independent re-hash matched. The computed results-dict sha256 is `1b40af51baa24c2041bbd822b190e5447c6299840604822580b3b3bb3153ee18` — an exact match to the disclosed digest (all 64 hex).
+
+Gates, evaluated in order:
+- **G1 (transfer real):** transfer_short_mean = +7.450148, z = +30.100904 vs 0 → PASS.
+- **G2 (conservation leak):** leak_mean = 0.040689, z = +12.680569, below the 0.10 ceiling → PASS.
+- **G3 (shifted-mix robustness):** shift_leak_mean = 0.023037, z = +23.740077, below the 0.10 ceiling → PASS.
+
+Conserved load-weighted wait Σρ·W: FIFO 28.180657, priority-short 28.198485, priority-long 28.177276 — spread 0.075% of mean, invariant across disciplines. Priority-short cuts the short-job mean wait 33.088966 → 6.794325 while the long-job mean wait rises 33.186088 → 46.364871: delay is redistributed zero-sum, not eliminated. all_pass = true, first_failing_gate = null. (Honest caveat: the priority-long discipline surfaces only through conserved_prio_long = 28.177276; no separate long-wait scalar is emitted for it, so the long-wait contrast cited is FIFO → priority-short.)
+
+**Verdict: APPROVE** — PROPOSAL 153's conservation claim reproduces exactly; work-conserving scheduling redistributes delay rather than reducing total load-weighted wait.
 
 ## ⟲ Previous-session review
 Chains back to VERDICT 165 (Braess paradox). Confirmed on this branch: prior verdict cards land with the born-red HOLD and flip to `complete` on the last commit; this card follows the same discipline.
