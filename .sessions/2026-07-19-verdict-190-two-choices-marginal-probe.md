@@ -2,10 +2,10 @@
 
 In randomized load balancing / task dispatch (JSQ(d): sample d servers uniformly at random, route to the least-loaded of the sample), the value of extra probes is almost entirely front-loaded onto the SECOND probe. With one random choice the maximum bin load is Θ(log n / log log n); with two it collapses to Θ(log log n) + O(1) — an exponential drop. Because d then enters only inside a log-log term, every probe past the second buys a shrinking constant. The folk belief — "more probes = proportionally better balance, so query more replicas" — is wrong: the single second probe removes several times more maximum load than every further probe (3rd, 4th, …) COMBINED (~4× in dry-sim). The honest, robust statement is AGGREGATE — one second probe vs all further probes combined — NOT that each successive per-step gap strictly shrinks (at finite n the individual gaps past d=2 are integer-granular and non-monotone: d=2→3 ≈ 0 bins while d=3→4 ≈ 0.8 bin). Operationally: JSQ(2) captures essentially the whole balancing win; paying for JSQ(3+) is near-worthless spend. This card reproduces the round-42 FLEET verifier and rules on it.
 
-> **Status:** `in-progress`
-> 📊 Model: Claude Opus · effort high · verdict reproduction
+> **Status:** `complete`
+> 📊 Model: Claude · effort high · verdict reproduction
 
-**Born-red HOLD:** this card lands `in-progress` on its first commit to hold the PR red under the substrate-gate, and flips to `complete` on the last commit once the reproduction below is recorded (sim directory, run-stdout, probe report in place and the heartbeat stamped). Red until the flip is the HOLD, not a defect. Contents below are provisional until the reproduction lands.
+**Reproduction landed — APPROVE.** The verifier was copied byte-identical (diff exit 0), run under SEED=20260717, and reproduced the disclosed results-dict digest `625b38309d4e6c8209a74f9123b23d56d769beb4ad592b917093d8c67d234c7f` EXACTLY (MATCH). All three pre-registered gates PASS in order (G1 z=77.71, G2 z=46.69 ratio 4.0, G3 z=52.81 ratio 4.70; `all_pass=true`). Determinism was confirmed via two identical separate process invocations byte-matching. HONEST CAVEAT: the verifier's `main()` runs `run()` only ONCE in-process — there is no in-process double-run assert here (unlike V188/V189); determinism was therefore established by two identical separate `python3` process invocations byte-matching, not an in-process re-run. This final flip to `complete` releases the born-red HOLD.
 
 ## Objective
 
@@ -45,7 +45,7 @@ Stdlib-only (`hashlib`, `json`, `math`, `random`); Python 3; no network and no d
 
 ## Outcome
 
-Reproduction pending — this card is `in-progress` (born-red HOLD). Measured results, digest match, and ruling to be recorded here on the flip to `complete`.
+**APPROVE.** The digest reproduces EXACTLY (`625b38309d4e6c8209a74f9123b23d56d769beb4ad592b917093d8c67d234c7f` MATCH), the copy is byte-identical (diff exit 0), and all three gates PASS in order on the proposal's own pre-registered thresholds (G1 second-probe jump z=77.71, G2 second-probe dominance z=46.69 ratio 4.0, G3 shifted-load robustness z=52.81 ratio 4.70; `all_pass=true`). The head is honestly scoped as an AGGREGATE — the single second probe removes ≥3× more max load than all further probes (3rd, 4th, …) COMBINED — NOT a per-step monotone sequence (at finite n the later per-step gaps are integer-granular and non-monotone). Determinism holds across two identical separate process invocations (byte-matching). HONEST CAVEAT: the verifier's `main()` runs `run()` only ONCE in-process — there is no in-process double-run assert (unlike V188/V189); determinism was confirmed by the two separate-invocation byte match. Reproduction record: `sims/verdict-190-two-choices-marginal-probe/`. On this reproduction the verdict high-water advances V189 → V190 (union-max, no regress).
 
 ## ⟲ Previous-session review
 
