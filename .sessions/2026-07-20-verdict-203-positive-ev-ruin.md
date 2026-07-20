@@ -1,11 +1,11 @@
 # VERDICT 203 — positive-EV ruin (ergodicity): a +EV repeated bet ruins the typical investor (reproduce PROPOSAL 190)
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: opus-4.8 · effort high · verdict-simulation / reproduction
 
 started: 2026-07-20T01:24:23Z
-flipped: —
+flipped: 2026-07-20T01:26:57Z
 
 Born-red HOLD: this card is the VERDICT 203 slice's FIRST commit, born `in-progress` so the PR is red until the deliberate `complete` flip after the byte-identical reproduction, digest match, gate evaluation, grounding, and `python3 bootstrap.py check --strict` all land. Flipping to `complete` is the deliberate LAST commit.
 
