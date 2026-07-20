@@ -1,0 +1,171 @@
+{
+  "G1_exact_enumeration": {
+    "1": {
+      "D_all_agree": true,
+      "D_n_brute": 0,
+      "D_n_incexc": 0,
+      "D_n_recur": 0,
+      "E": "1",
+      "E_eq_1": true,
+      "Var": "0",
+      "Var_ok": true,
+      "p_derange": "0"
+    },
+    "2": {
+      "D_all_agree": true,
+      "D_n_brute": 1,
+      "D_n_incexc": 1,
+      "D_n_recur": 1,
+      "E": "1",
+      "E_eq_1": true,
+      "Var": "1",
+      "Var_ok": true,
+      "p_derange": "1/2"
+    },
+    "3": {
+      "D_all_agree": true,
+      "D_n_brute": 2,
+      "D_n_incexc": 2,
+      "D_n_recur": 2,
+      "E": "1",
+      "E_eq_1": true,
+      "Var": "1",
+      "Var_ok": true,
+      "p_derange": "1/3"
+    },
+    "4": {
+      "D_all_agree": true,
+      "D_n_brute": 9,
+      "D_n_incexc": 9,
+      "D_n_recur": 9,
+      "E": "1",
+      "E_eq_1": true,
+      "Var": "1",
+      "Var_ok": true,
+      "p_derange": "3/8"
+    },
+    "5": {
+      "D_all_agree": true,
+      "D_n_brute": 44,
+      "D_n_incexc": 44,
+      "D_n_recur": 44,
+      "E": "1",
+      "E_eq_1": true,
+      "Var": "1",
+      "Var_ok": true,
+      "p_derange": "11/30"
+    },
+    "6": {
+      "D_all_agree": true,
+      "D_n_brute": 265,
+      "D_n_incexc": 265,
+      "D_n_recur": 265,
+      "E": "1",
+      "E_eq_1": true,
+      "Var": "1",
+      "Var_ok": true,
+      "p_derange": "53/144"
+    },
+    "7": {
+      "D_all_agree": true,
+      "D_n_brute": 1854,
+      "D_n_incexc": 1854,
+      "D_n_recur": 1854,
+      "E": "1",
+      "E_eq_1": true,
+      "Var": "1",
+      "Var_ok": true,
+      "p_derange": "103/280"
+    },
+    "8": {
+      "D_all_agree": true,
+      "D_n_brute": 14833,
+      "D_n_incexc": 14833,
+      "D_n_recur": 14833,
+      "E": "1",
+      "E_eq_1": true,
+      "Var": "1",
+      "Var_ok": true,
+      "p_derange": "2119/5760"
+    }
+  },
+  "G2_derangement_floor": {
+    "M": 80000,
+    "folk_floor": 0.3,
+    "inv_e": 0.3678794412,
+    "n": 200,
+    "p_derange": 0.369875,
+    "pass": true,
+    "z_floor": 40.937939,
+    "z_inv_e": 1.169146
+  },
+  "G3_n_invariance": {
+    "means": {
+      "10": 1.004275,
+      "100": 1.0002125,
+      "1000": 1.000425,
+      "2000": 0.9824
+    },
+    "pass": true,
+    "plan": [
+      [
+        10,
+        80000
+      ],
+      [
+        100,
+        80000
+      ],
+      [
+        1000,
+        40000
+      ],
+      [
+        2000,
+        25000
+      ]
+    ],
+    "range": 0.021875,
+    "z_vs_1": {
+      "10": 1.209153,
+      "100": 0.060104,
+      "1000": 0.085,
+      "2000": -2.782804
+    }
+  },
+  "G4_poisson1_shape": {
+    "M": 80000,
+    "buckets": "k=0,1,2,3,>=4",
+    "chi2": 1.36372,
+    "counts": [
+      29316,
+      29462,
+      14767,
+      4954,
+      1501
+    ],
+    "crit_0p001": 18.467,
+    "df": 4,
+    "expected": [
+      29430.3553,
+      29430.3553,
+      14715.1776,
+      4905.0592,
+      1519.0526
+    ],
+    "n": 100,
+    "pass": true
+  },
+  "decision": "sim-ready",
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+results_sha256: 7b99e6504b7cfa776ce871b7756b2ff71ed5bcd025e9dd6134d0f8d8e246dfb0
+decision: sim-ready
