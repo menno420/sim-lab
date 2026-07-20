@@ -1,0 +1,105 @@
+{
+  "head": "condorcet-jury-committee",
+  "seed": 20260717,
+  "constants": {
+    "z_gate": 3.0,
+    "T_mc": 200000,
+    "N_mc": 101,
+    "N_enum": [
+      1,
+      3,
+      5,
+      7,
+      9
+    ],
+    "p_above": "3/5",
+    "p_below": "2/5",
+    "p_half": "1/2"
+  },
+  "g1_statistical_agreement": {
+    "above_p0.60": {
+      "closed_form": 0.979103309,
+      "empirical_rate": 0.97912,
+      "abs_z": 0.0521848522,
+      "within_3sigma": true
+    },
+    "below_p0.40": {
+      "closed_form": 0.020896691,
+      "empirical_rate": 0.020815,
+      "abs_z": 0.2554090111,
+      "within_3sigma": true
+    },
+    "direction": "abs(empirical - closed_form) <= 3*stderr (agreement)"
+  },
+  "g2_exact_enumeration": {
+    "p_3_5": {
+      "enum_equals_closed_form_exact": true,
+      "M_grid": {
+        "1": "3/5",
+        "3": "81/125",
+        "5": "2133/3125",
+        "7": "11097/15625",
+        "9": "286497/390625"
+      },
+      "monotone_direction_holds": true,
+      "direction": "strictly_increasing_toward_1",
+      "endpoint_ok": true
+    },
+    "p_2_5": {
+      "enum_equals_closed_form_exact": true,
+      "M_grid": {
+        "1": "2/5",
+        "3": "44/125",
+        "5": "992/3125",
+        "7": "4528/15625",
+        "9": "104128/390625"
+      },
+      "monotone_direction_holds": true,
+      "direction": "strictly_decreasing_toward_0",
+      "endpoint_ok": true
+    },
+    "p_1_2": {
+      "enum_equals_closed_form_exact": true,
+      "M_grid": {
+        "1": "1/2",
+        "3": "1/2",
+        "5": "1/2",
+        "7": "1/2",
+        "9": "1/2"
+      },
+      "monotone_direction_holds": true,
+      "direction": "flat_at_one_half",
+      "endpoint_ok": true
+    }
+  },
+  "g3_robustness_shift": {
+    "closed_form": 0.979103309,
+    "exact_leg": {
+      "monotone_rate": 0.979245,
+      "bernoulli_rate": 0.979245,
+      "votes_bit_identical": true,
+      "rate_exactly_equal": true,
+      "direction": "monotone value-transform leaves every vote identical (exact ==)"
+    },
+    "statistical_leg": {
+      "heavytail_cauchy_rate": 0.97911,
+      "abs_z_vs_closed_form": 0.020919597,
+      "within_3sigma": true,
+      "direction": "abs(heavytail_rate - closed_form) <= 3*stderr (distribution-free)"
+    }
+  },
+  "gates": {
+    "G1_statistical_3sigma": true,
+    "G2_exact_enumeration": true,
+    "G3_robustness_shift": true
+  },
+  "first_failing_gate": null,
+  "all_pass": true
+}
+double_run_identical=true
+all_pass=true
+G1_above_abs_z=0.0521848522
+G1_below_abs_z=0.2554090111
+G3_exact_bit_identical=True
+G3_heavytail_abs_z=0.020919597
+RESULTS_SHA256=e37537a46ae122d030e858f1f21015b2f528ab84d567a5b13227cf1905eaf1df

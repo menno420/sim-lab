@@ -1,0 +1,69 @@
+{{Short description|Statistical theorem}}
+[[File:Condorcet’s jury theorem graph.svg|alt=Two-dimensional line graph showing that a group vote overperforms individual judgement – has higher probability of success – when the individuals' chance of being right is greater than half.|thumb|Graph of cumulative probabilities of success (y axis) for a few binomial distributions with given individual chance of success (x axis) and number of "jurors" (color).]]
+'''Condorcet's jury theorem''' is a [[Statistics|statistical]] theorem about the [[probability]] of a given group of individuals arriving at a correct decision. The theorem was first expressed by the [[Marquis de Condorcet]] in his 1785 work ''Essay on the Application of Analysis to the Probability of Majority Decisions''.<ref>{{cite book| url=http://gallica.bnf.fr/ark:/12148/bpt6k417181
+| title=Essai sur l'application de l'analyse à la probabilité des décisions rendues à la pluralité des voix |trans-title=Essay on the Application of Analysis to the Probability of Majority Decisions | format=PNG | language=fr | accessdate=2008-03-10 | author=Marquis de Condorcet | authorlink=Marquis de Condorcet| year=1785 }}</ref>
+
+The assumptions of the theorem are that a group wishes to reach a decision by [[majority rule|majority vote]]. One of the two outcomes of the vote is ''correct'', and each voter has an [[Independence_(probability_theory)|independent]] probability ''p'' of voting for the correct decision. The theorem asks how many voters we should include in the group. The result depends on whether ''p'' is greater than or less than 1/2:
+* If ''p'' is greater than 1/2 (each voter is more likely to vote correctly), then adding more voters increases the probability that the majority decision is correct. In the limit, the probability that the majority votes correctly approaches 1 as the number of voters increases.
+* On the other hand, if ''p'' is less than 1/2 (each voter is more likely to vote incorrectly), then adding more voters makes things worse: the optimal jury consists of a single voter.
+Since Condorcet, many other researchers have proved various other [[jury theorem]]s, relaxing some or all of Condorcet's assumptions.
+
+== Proofs ==
+=== Proof 1: Calculating the probability that two additional voters change the outcome ===
+To avoid the need for a tie-breaking rule, we assume ''n'' is odd. Essentially the same argument works for even ''n'' if ties are broken by adding a single voter.
+
+Now suppose we start with ''n'' voters, and let ''m'' of these voters vote correctly.
+
+Consider what happens when we add two more voters (to keep the total number odd). The majority vote changes in only two cases:
+
+* ''m'' was one vote too small to get a majority of the ''n'' votes, but both new voters voted correctly.
+* ''m'' was just equal to a majority of the ''n'' votes, but both new voters voted incorrectly.
+
+The rest of the time, either the new votes cancel out, only increase the gap, or do not make enough of a difference. So we only care what happens when a single vote (among the first ''n'') separates a correct from an incorrect majority.
+
+Restricting our attention to this case, we can imagine that the first ''n''−1 votes cancel out and that the deciding vote is cast by the ''n''th voter. In this case the probability of getting a correct majority is just ''p''. Now suppose we send in the two extra voters. The probability that they change an incorrect majority to a correct majority is (1−''p'')''p''<sup>2</sup>, while the probability that they change a correct majority to an incorrect majority is ''p''(1−''p'')<sup>2</sup>. The first of these probabilities is greater than the second [[if and only if]] ''p'' > 1/2, proving the theorem.
+
+=== Proof 2: Calculating the probability that the decision is correct ===
+This proof is direct; it just sums up the probabilities of the majorities. Each term of the sum multiplies the number of [[combination]]s of a majority by the [[probability#Mathematical treatment|probability]] of that majority. Each majority is counted using a [[combination]], ''n'' items taken ''k'' at a time, where ''n'' is the jury size, and ''k'' is the size of the majority. Probabilities range from 0 (=&nbsp;the vote is always wrong) to 1 (=&nbsp;always right). Each person decides independently, so the probabilities of their decisions multiply. The probability of each correct decision is ''p''. The probability of an incorrect decision, ''q'', is the opposite of ''p'', i.e. 1 − ''p''. The power notation, i.e. <math>p^x</math> is a shorthand for ''x'' multiplications of ''p''.
+
+Committee or jury accuracies can be easily estimated by using this approach in computer spreadsheets or programs.
+
+As an example, let us take the simplest case of ''n'' = 3, ''p'' = 0.8. We need to show that 3 people have higher than 0.8 chance of being right. Indeed:
+
+{{block indent|1=0.8 × 0.8 × 0.8 + 0.8 × 0.8 × 0.2 + 0.8 × 0.2 × 0.8 + 0.2 × 0.8 × 0.8 = 0.896.}}
+
+== Asymptotics ==
+Asymptotics is the "calculus of approximations". It is used to solve hard problems that cannot be solved exactly and to provide simpler forms of complicated results, from early results like Taylor's and Stirling's formulas to the [[prime number theorem]]. An important topic in the study of asymptotic is [[asymptotic distribution]] which is a probability distribution that is in a sense the "limiting" distribution of a sequence of distributions. The probability of a correct majority decision {{nowrap|''P''(''n'', ''p''),}} when the individual probability ''p'' is close to 1/2 grows linearly in terms of {{nowrap|''p'' − 1/2.}} For ''n'' voters each one having probability ''p'' of deciding correctly and for odd ''n'' (where there are no possible ties):
+
+<math display="block">P(n, p) = 1/2 + c_1 (p - 1/2) + c_3 (p - 1/2)^3 + O\left( (p - 1/2)^5 \right),</math>
+
+where
+
+<math display="block">c_1 = {n \choose {\lfloor n/2 \rfloor}} \frac{\lfloor n/2 \rfloor + 1}{4^{\lfloor n/2 \rfloor}} = \sqrt{\frac{2n + 1}{\pi}} \left(1 + \frac{1}{16n^2} + O(n^{-3})\right),</math>
+
+and the asymptotic approximation in terms of ''n'' is very accurate. The expansion is only in odd powers and <math>c_3 < 0</math>. In simple terms, this says that when the decision is difficult (''p'' close to 1/2), the gain by having ''n'' voters grows proportionally to <math>\sqrt{n}</math>.<ref>{{Cite journal |last=McLennan |first=Andrew |date=1998 |title=Consequences of the Condorcet Jury Theorem for Beneficial Information Aggregation by Rational Agents |url=https://www.jstor.org/stable/2585673 |journal=The American Political Science Review |volume=92 |issue=2 |pages=413–418 |doi=10.2307/2585673 |jstor=2585673 |issn=0003-0554}}</ref>
+
+== The theorem in other disciplines ==
+The Condorcet jury theorem has recently been used to conceptualize score integration when several physician readers (radiologists, endoscopists, etc.) independently evaluate images for disease activity. This task arises in central reading performed during clinical trials and has similarities to voting. According to the authors, the application of the theorem can translate individual reader scores into a final score in a fashion that is both mathematically sound (by avoiding averaging of [[ordinal data]]), mathematically tractable for further analysis, and in a manner that is consistent with the scoring task at hand (based on decisions about the presence or absence of features, a subjective classification task).<ref>{{Cite journal|last1=Gottlieb|first1=Klaus|last2=Hussain|first2=Fez|date=2015-02-19|title=Voting for Image Scoring and Assessment (VISA) – theory and application of a 2 + 1 reader algorithm to improve accuracy of imaging endpoints in clinical trials|journal=BMC Medical Imaging|volume=15|pages=6|doi=10.1186/s12880-015-0049-0|issn=1471-2342|pmc=4349725|pmid=25880066 |doi-access=free }}</ref>
+
+The Condorcet jury theorem is also used in [[ensemble learning]] in the field of [[machine learning]].<ref>{{Cite web |first1=Jenny |last1=Yeon |first2=Jared |last2=Wilber |title=Random Forest |url=https://mlu-explain.github.io/random-forest/ |access-date=2022-05-24 |website=MLU-Explain |publisher=Amazon}}</ref> An ensemble method combines the predictions of many individual classifiers by majority voting. Assuming that each of the individual classifiers predict with slightly greater than 50% accuracy and their predictions are independent, then the ensemble of their predictions will be far greater than their individual predictive scores.
+
+== Applicability to democratic processes ==
+Many political theorists and philosophers use Condorcet's jury theorem (CJT) to defend democracy
+<ref>{{Cite journal |last=Brennan |first=Jason |date=2011 |title=Condorcet's Jury Theorem and the Optimum Number of Voters |url=http://journals.sagepub.com/doi/10.1111/j.1467-9256.2011.01403.x |journal=Politics |language=en |volume=31 |issue=2 |pages=55–62 |doi=10.1111/j.1467-9256.2011.01403.x |s2cid=152938266 |issn=0263-3957|url-access=subscription }}</ref> Nevertheless, it is an empirical question whether CJT holds in real life or not. CJT is a ''double-edged sword'': it can either prove that majority rule is an (almost) perfect mechanism to aggregate information, when <math>p>1/2</math>, or an (almost) perfect disaster, when <math>p<1/2</math>. A disaster would mean that the wrong option is chosen systematically. Some authors have argued that we are in the latter scenario. For instance, [[Bryan Caplan]] has extensively [[The Myth of the Rational Voter|argued]] that voters' knowledge is systematically biased toward (probably) wrong options. In the CJT setup, this could be interpreted as evidence for  <math>p<1/2</math>.
+
+In 2022, another approach to study the applicability of CJT was taken.<ref>{{Cite journal |last=Romaniega Sancho |first=Álvaro |date=2022 |title=On the probability of the Condorcet Jury Theorem or the Miracle of Aggregation |url=https://linkinghub.elsevier.com/retrieve/pii/S0165489622000543 |journal=Mathematical Social Sciences |language=en |volume=119 |pages=41–55 |doi=10.1016/j.mathsocsci.2022.06.002|arxiv=2108.00733 |s2cid=249921504 }}</ref> Instead of considering the homogeneous case, each voter is allowed to have a probability <math>p_i\in[0,1]</math>, possibly different from other voters. This case was previously studied by Daniel Berend and Jacob Paroush<ref>{{Cite journal |last1=Berend |first1=Daniel |last2=Paroush |first2=Jacob |date=1998 |title=When is Condorcet's Jury Theorem valid? |url=https://www.jstor.org/stable/41106274 |journal=Social Choice and Welfare |volume=15 |issue=4 |pages=481–488 |doi=10.1007/s003550050118 |jstor=41106274 |s2cid=120012958 |issn=0176-1714|url-access=subscription }}</ref> and includes the classical theorem of Condorcet (when <math>p_i=p~~ \forall~i\in\mathbb{N}</math>) and other results, like the miracle of aggregation (when <math>p_i=1/2</math> for most voters and <math>p_i=1</math> for a small proportion of them). Then, following a Bayesian approach, the [[prior probability]] (in this case, [[A priori probability|a priori]]) of the thesis predicted by the theorem is estimated. That is, if we choose an arbitrary sequence of voters (i.e., a sequence <math>(p_i)_{i\in\mathbb{N}}</math>), will the theorem hold? The answer is no. More precisely, if a random sequence of <math>p_i</math> is taken following an unbiased distribution that does not favor competence, <math>p_i>1/2</math>, or incompetence, <math>p_i<1/2</math>, then the thesis predicted by the theorem will not hold [[almost surely]]. With this new approach, proponents of CJT should present strong evidence of competence, to overcome the low prior probability. That is, it is not only the case that there is evidence against competence ([[posterior probability]]), but also that we cannot expect CJT to hold in the absence of any evidence (prior probability).
+
+== Further reading ==
+
+*[[Condorcet method]]
+*[[Condorcet paradox]]
+*[[Jury theorem]]
+*[[Law of large numbers]]
+*[[Wisdom of the crowd]]
+
+==References==
+{{reflist}}
+
+[[Category:Theorems in probability theory]]
+[[Category:Voting theory]]
