@@ -1,0 +1,65 @@
+{
+  "head": "positive-ev-time-average-ruin",
+  "seed": 20260717,
+  "constants": {
+    "W0": 1.0,
+    "T": 100,
+    "P": 20000,
+    "z_gate": 3.0,
+    "u_base": 1.5,
+    "d_base": 0.6,
+    "u_shift": 1.6,
+    "d_shift": 0.55
+  },
+  "base_world": {
+    "u": 1.5,
+    "d": 0.6,
+    "ensemble_expected_multiplier": 1.05,
+    "geometric_per_round_multiplier": 0.9486832981,
+    "mean_final_wealth": 55.6049183908,
+    "median_final_wealth": 0.0051537752,
+    "mean_time_avg_growth": -0.0527741776,
+    "se_time_avg_growth": 0.0003233558,
+    "mean_per_round_simple_return": 0.04990775,
+    "se_per_round_simple_return": 0.0003181981,
+    "frac_below_start": 0.8623,
+    "frac_ruined_10pct": 0.75635,
+    "z_time_avg_negative": 163.2077618449,
+    "z_ev_positive": 156.8448905713,
+    "z_frac_below_start": 102.4739147296
+  },
+  "shifted_world": {
+    "u": 1.6,
+    "d": 0.55,
+    "ensemble_expected_multiplier": 1.075,
+    "geometric_per_round_multiplier": 0.938083152,
+    "mean_final_wealth": 296.2018051143,
+    "median_final_wealth": 0.0016754582,
+    "mean_time_avg_growth": -0.0632973382,
+    "se_time_avg_growth": 0.0003730339,
+    "mean_per_round_simple_return": 0.075609,
+    "se_per_round_simple_return": 0.0003712309,
+    "frac_below_start": 0.8627,
+    "frac_ruined_10pct": 0.75695,
+    "z_time_avg_negative": 169.6825537139,
+    "z_ev_positive": 203.6710827592,
+    "z_frac_below_start": 102.5870518145
+  },
+  "gates": {
+    "G1_time_average_negative": true,
+    "G2_arithmetic_ev_positive": true,
+    "G3_typical_investor_ruined": true,
+    "G4_robustness_shift": true
+  },
+  "first_failing_gate": null,
+  "all_pass": true
+}
+double_run_identical=true
+all_pass=true
+G1_z(time_avg_negative,base)=163.2077618449
+G2_z(ev_positive,base)=156.8448905713
+G3_z(frac_below_start,base)=102.4739147296
+G4_z(time_avg_negative,shift)=169.6825537139
+G4_z(ev_positive,shift)=203.6710827592
+G4_z(frac_below_start,shift)=102.5870518145
+RESULTS_SHA256=8d04b241d3589e2e49337c087da623d73c47dbe84074eaf5596bfa39db3c5336
