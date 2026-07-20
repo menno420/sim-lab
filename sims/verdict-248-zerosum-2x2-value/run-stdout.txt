@@ -1,0 +1,169 @@
+{
+  "all_gates_pass": true,
+  "claim": "zerosum_2x2_value: v == (a*d - b*c)/(a + d - b - c)",
+  "decision": "sim-ready",
+  "first_failing_gate": null,
+  "gates": {
+    "G1_exact_value_identity": {
+      "panel": [
+        {
+          "closed_form_eq_indifference": true,
+          "game": "a=3 b=-1 c=-2 d=1",
+          "mix_interior": true,
+          "no_saddle": true,
+          "p_row0": "3/7",
+          "pure_maximin": "-1",
+          "pure_minimax": "1",
+          "q_col0": "2/7",
+          "value": "1/7",
+          "value_indifference_route": "1/7"
+        },
+        {
+          "closed_form_eq_indifference": true,
+          "game": "a=2 b=0 c=-1 d=3",
+          "mix_interior": true,
+          "no_saddle": true,
+          "p_row0": "2/3",
+          "pure_maximin": "0",
+          "pure_minimax": "2",
+          "q_col0": "1/2",
+          "value": "1",
+          "value_indifference_route": "1"
+        },
+        {
+          "closed_form_eq_indifference": true,
+          "game": "a=1 b=4 c=3 d=2",
+          "mix_interior": true,
+          "no_saddle": true,
+          "p_row0": "1/4",
+          "pure_maximin": "2",
+          "pure_minimax": "3",
+          "q_col0": "1/2",
+          "value": "5/2",
+          "value_indifference_route": "5/2"
+        },
+        {
+          "closed_form_eq_indifference": true,
+          "game": "a=0 b=-2 c=-3 d=1",
+          "mix_interior": true,
+          "no_saddle": true,
+          "p_row0": "2/3",
+          "pure_maximin": "-2",
+          "pure_minimax": "0",
+          "q_col0": "1/2",
+          "value": "-1",
+          "value_indifference_route": "-1"
+        }
+      ],
+      "pass": true,
+      "saddle_crosscheck": {
+        "game": "a=4 b=3 c=2 d=1",
+        "has_saddle": true,
+        "pure_maximin": "3",
+        "pure_minimax": "3",
+        "pure_value": "3"
+      }
+    },
+    "G2_montecarlo_agreement": {
+      "mc_mean": 0.143712,
+      "pass": true,
+      "pass_if": "abs(z) < Z_ACCEPT",
+      "target": 0.142857,
+      "trials": 400000,
+      "z": 0.345941,
+      "z_accept": 3.0
+    },
+    "G3_invariance_robustness": {
+      "affine_invariance": [
+        {
+          "alpha": "2",
+          "alpha_v_plus_beta": "37/7",
+          "beta": "5",
+          "matches": true,
+          "p_row0": "3/7",
+          "q_col0": "2/7",
+          "value": "37/7"
+        },
+        {
+          "alpha": "3",
+          "alpha_v_plus_beta": "-4/7",
+          "beta": "-1",
+          "matches": true,
+          "p_row0": "3/7",
+          "q_col0": "2/7",
+          "value": "-4/7"
+        },
+        {
+          "alpha": "1/2",
+          "alpha_v_plus_beta": "141/14",
+          "beta": "10",
+          "matches": true,
+          "p_row0": "3/7",
+          "q_col0": "2/7",
+          "value": "141/14"
+        }
+      ],
+      "minimax_guarantee": [
+        {
+          "equals_v": true,
+          "expected_payoff": "1/7",
+          "q_col0": "1"
+        },
+        {
+          "equals_v": true,
+          "expected_payoff": "1/7",
+          "q_col0": "0"
+        },
+        {
+          "equals_v": true,
+          "expected_payoff": "1/7",
+          "q_col0": "1/2"
+        },
+        {
+          "equals_v": true,
+          "expected_payoff": "1/7",
+          "q_col0": "1/3"
+        },
+        {
+          "equals_v": true,
+          "expected_payoff": "1/7",
+          "q_col0": "2/7"
+        }
+      ],
+      "p_row0": "3/7",
+      "pass": true,
+      "q_col0": "2/7",
+      "value": "1/7"
+    },
+    "G4_falsifiability_naive": {
+      "mc_mean": 0.143712,
+      "naive_claim": "value == pure-strategy security level (maximin)",
+      "naive_target": -1.0,
+      "pass": true,
+      "pass_if": "abs(z_naive) >= Z_REJECT (naive rule refuted)",
+      "z_naive": 462.564053,
+      "z_reject": 6.0
+    }
+  },
+  "reference_game": {
+    "matrix": [
+      [
+        "3",
+        "-1"
+      ],
+      [
+        "-2",
+        "1"
+      ]
+    ],
+    "p_row0": "3/7",
+    "pure_maximin": "-1",
+    "pure_minimax": "1",
+    "q_col0": "2/7",
+    "value": "1/7"
+  },
+  "seed": 20260717
+}
+in_process_double_run: IDENTICAL
+results_sha256: a8d766a845b4cd53518fc572f30041dfb154148a67f399c39463476ec1e4276a
+decision: sim-ready
