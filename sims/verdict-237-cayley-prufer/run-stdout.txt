@@ -1,0 +1,224 @@
+{
+  "G1_exact_cayley_identity": {
+    "n_values": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "pass": true,
+    "per_n": {
+      "2": {
+        "brute_count": 1,
+        "match": true,
+        "n_pow_n_minus_2": 1
+      },
+      "3": {
+        "brute_count": 3,
+        "match": true,
+        "n_pow_n_minus_2": 3
+      },
+      "4": {
+        "brute_count": 16,
+        "match": true,
+        "n_pow_n_minus_2": 16
+      },
+      "5": {
+        "brute_count": 125,
+        "match": true,
+        "n_pow_n_minus_2": 125
+      },
+      "6": {
+        "brute_count": 1296,
+        "match": true,
+        "n_pow_n_minus_2": 1296
+      }
+    }
+  },
+  "G2_exact_bijection_roundtrip": {
+    "all_roundtrip_ok": true,
+    "expected": 125,
+    "n": 5,
+    "num_distinct_prufer": 125,
+    "num_trees": 125,
+    "pass": true,
+    "prufer_covers_all_sequences": true
+  },
+  "G3_exact_probabilities": {
+    "edge_12_count": 50,
+    "edge_12_expected": "2/5",
+    "edge_12_prob": "2/5",
+    "leaf_prob_expected": "64/125",
+    "leaf_prob_v1": "64/125",
+    "mean_degree_expected": "8/5",
+    "mean_degree_v1": "8/5",
+    "n": 5,
+    "pass": true
+  },
+  "G4_mc_agreement": {
+    "mean_deg_empirical": 1.834915,
+    "mean_deg_theory": 1.833333,
+    "n": 12,
+    "n_draws": 200000,
+    "p_edge_empirical": 0.166375,
+    "p_edge_theory": 0.166667,
+    "pass": true,
+    "z_deg": 0.80931,
+    "z_edge": -0.35
+  },
+  "G5_robustness_grid": {
+    "identity_all_match": true,
+    "identity_grid": {
+      "2": {
+        "count": 1,
+        "expected": 1,
+        "match": true,
+        "method": "brute"
+      },
+      "3": {
+        "count": 3,
+        "expected": 3,
+        "match": true,
+        "method": "brute"
+      },
+      "4": {
+        "count": 16,
+        "expected": 16,
+        "match": true,
+        "method": "brute"
+      },
+      "5": {
+        "count": 125,
+        "expected": 125,
+        "match": true,
+        "method": "brute"
+      },
+      "6": {
+        "count": 1296,
+        "expected": 1296,
+        "match": true,
+        "method": "brute"
+      },
+      "7": {
+        "count": 16807,
+        "expected": 16807,
+        "match": true,
+        "method": "prufer-roundtrip"
+      },
+      "8": {
+        "count": 262144,
+        "expected": 262144,
+        "match": true,
+        "method": "prufer-roundtrip"
+      }
+    },
+    "mc_all_pass": true,
+    "mc_edge_prob": {
+      "10": {
+        "p_empirical": 0.19919,
+        "p_theory": 0.2,
+        "pass": true,
+        "z": -0.905608
+      },
+      "20": {
+        "p_empirical": 0.098955,
+        "p_theory": 0.1,
+        "pass": true,
+        "z": -1.557794
+      },
+      "6": {
+        "p_empirical": 0.330845,
+        "p_theory": 0.333333,
+        "pass": true,
+        "z": -2.36064
+      }
+    },
+    "pass": true
+  },
+  "G6_falsifiability": {
+    "naive_edge_half_rejected": {
+      "empirical_p": 0.166375,
+      "null_p": 0.5,
+      "rejected": true,
+      "z": -298.403272
+    },
+    "naive_edge_one_over_n_rejected": {
+      "empirical_p": 0.166375,
+      "null_p": 0.083333,
+      "rejected": true,
+      "z": 134.368033
+    },
+    "pass": true,
+    "polarity_note": "REJECT wrong alternatives: this gate PASSES because the wrong values are rejected (exact strict inequality / large |z|), opposite polarity to G3/G4/G5",
+    "wrong_formula_rejection": {
+      "all_unique": true,
+      "n_values": [
+        4,
+        5,
+        6
+      ],
+      "per_n": {
+        "4": {
+          "factorial_n_minus_1": 6,
+          "n_pow_n_minus_1": 64,
+          "n_pow_n_minus_2": 16,
+          "true_count": 16,
+          "two_pow_n_minus_1": 8,
+          "unique_match": true
+        },
+        "5": {
+          "factorial_n_minus_1": 24,
+          "n_pow_n_minus_1": 625,
+          "n_pow_n_minus_2": 125,
+          "true_count": 125,
+          "two_pow_n_minus_1": 16,
+          "unique_match": true
+        },
+        "6": {
+          "factorial_n_minus_1": 120,
+          "n_pow_n_minus_1": 7776,
+          "n_pow_n_minus_2": 1296,
+          "true_count": 1296,
+          "two_pow_n_minus_1": 32,
+          "unique_match": true
+        }
+      }
+    }
+  },
+  "all_pass": true,
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true,
+    "G5": true,
+    "G6": true
+  },
+  "grid": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "n_mc": 200000,
+  "proposal": 224,
+  "seed": 20260717,
+  "slot": "Cayley's formula / Prufer bijection (P224 -> V237, +13 offset)",
+  "verdict": 237,
+  "z_gate": 3.0
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+G5: PASS
+G6: PASS
+
+all_pass: True
+results_sha256: 7e8dbff568cf62ab3e15ebdc1d9a7e893f024d10f4bd39b1630cbc444317ad1b
