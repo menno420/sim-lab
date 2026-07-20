@@ -1,6 +1,6 @@
 # VERDICT 248 reproduction — value of a 2×2 zero-sum game is v = (a·d − b·c)/(a + d − b − c) (von Neumann minimax); reproduction-only, canonical ruling deferred
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Opus · high · verdict-reproduction
 started: 2026-07-20T23:40:00Z
