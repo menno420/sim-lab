@@ -1,0 +1,219 @@
+{
+  "G1_exact_identity_two_routes": {
+    "Q6_reduced_fraction": "23/36",
+    "pass": true,
+    "routes": {
+      "1": {
+        "A_brute": 1,
+        "B_mobius": 1,
+        "N_squared": 1,
+        "Q_from_brute": "1",
+        "Q_from_mobius": "1",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "10": {
+        "A_brute": 63,
+        "B_mobius": 63,
+        "N_squared": 100,
+        "Q_from_brute": "63/100",
+        "Q_from_mobius": "63/100",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "100": {
+        "A_brute": 6087,
+        "B_mobius": 6087,
+        "N_squared": 10000,
+        "Q_from_brute": "6087/10000",
+        "Q_from_mobius": "6087/10000",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "2": {
+        "A_brute": 3,
+        "B_mobius": 3,
+        "N_squared": 4,
+        "Q_from_brute": "3/4",
+        "Q_from_mobius": "3/4",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "200": {
+        "A_brute": 24463,
+        "B_mobius": 24463,
+        "N_squared": 40000,
+        "Q_from_brute": "24463/40000",
+        "Q_from_mobius": "24463/40000",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "3": {
+        "A_brute": 7,
+        "B_mobius": 7,
+        "N_squared": 9,
+        "Q_from_brute": "7/9",
+        "Q_from_mobius": "7/9",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "4": {
+        "A_brute": 11,
+        "B_mobius": 11,
+        "N_squared": 16,
+        "Q_from_brute": "11/16",
+        "Q_from_mobius": "11/16",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "5": {
+        "A_brute": 19,
+        "B_mobius": 19,
+        "N_squared": 25,
+        "Q_from_brute": "19/25",
+        "Q_from_mobius": "19/25",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "50": {
+        "A_brute": 1547,
+        "B_mobius": 1547,
+        "N_squared": 2500,
+        "Q_from_brute": "1547/2500",
+        "Q_from_mobius": "1547/2500",
+        "counts_equal": true,
+        "densities_equal": true
+      },
+      "6": {
+        "A_brute": 23,
+        "B_mobius": 23,
+        "N_squared": 36,
+        "Q_from_brute": "23/36",
+        "Q_from_mobius": "23/36",
+        "counts_equal": true,
+        "densities_equal": true
+      }
+    }
+  },
+  "G2_monte_carlo_agreement": {
+    "M": 200000,
+    "N": 10000,
+    "Q_N_exact": "60794971/100000000",
+    "Q_N_float": 0.60794971,
+    "asymptotic_6_over_pi2": 0.6079271018540267,
+    "coprime_count": 121759,
+    "pass": true,
+    "phat": 0.608795,
+    "z_accept": 3.0,
+    "z_agreement": 0.774312
+  },
+  "G3_partition_invariant": {
+    "Q_N_in_open_unit_interval": {
+      "1": {
+        "Q_N": "1",
+        "boundary_degenerate_eq_1": true
+      },
+      "10": {
+        "Q_N": "63/100",
+        "in_open_unit": true
+      },
+      "100": {
+        "Q_N": "6087/10000",
+        "in_open_unit": true
+      },
+      "2": {
+        "Q_N": "3/4",
+        "in_open_unit": true
+      },
+      "20": {
+        "Q_N": "51/80",
+        "in_open_unit": true
+      },
+      "200": {
+        "Q_N": "24463/40000",
+        "in_open_unit": true
+      },
+      "3": {
+        "Q_N": "7/9",
+        "in_open_unit": true
+      },
+      "50": {
+        "Q_N": "1547/2500",
+        "in_open_unit": true
+      }
+    },
+    "Q_bounds_all_ok": true,
+    "partition_all_exact": true,
+    "partition_identity_sum_A_eq_N_squared": {
+      "1": {
+        "N_squared": 1,
+        "equal": true,
+        "sum_A_floor_N_over_d": 1
+      },
+      "10": {
+        "N_squared": 100,
+        "equal": true,
+        "sum_A_floor_N_over_d": 100
+      },
+      "100": {
+        "N_squared": 10000,
+        "equal": true,
+        "sum_A_floor_N_over_d": 10000
+      },
+      "2": {
+        "N_squared": 4,
+        "equal": true,
+        "sum_A_floor_N_over_d": 4
+      },
+      "20": {
+        "N_squared": 400,
+        "equal": true,
+        "sum_A_floor_N_over_d": 400
+      },
+      "200": {
+        "N_squared": 40000,
+        "equal": true,
+        "sum_A_floor_N_over_d": 40000
+      },
+      "3": {
+        "N_squared": 9,
+        "equal": true,
+        "sum_A_floor_N_over_d": 9
+      },
+      "50": {
+        "N_squared": 2500,
+        "equal": true,
+        "sum_A_floor_N_over_d": 2500
+      }
+    },
+    "pass": true
+  },
+  "G4_falsifiability_naive_three_quarters": {
+    "M": 200000,
+    "N": 10000,
+    "exact_accepted": true,
+    "naive_hypothesis": "avoid a shared factor of 2 => P(coprime)=3/4",
+    "naive_p": 0.75,
+    "naive_rejected": true,
+    "pass": true,
+    "phat": 0.608795,
+    "true_density_6_over_pi2": 0.6079271018540267,
+    "z_naive": -145.835897,
+    "z_reject": 8.0
+  },
+  "all_pass": true,
+  "claim": "P(two uniform integers in [1,N] coprime) = (1/N^2) sum mu(k) floor(N/k)^2 -> 6/pi^2 = 1/zeta(2)",
+  "decision": "sim-ready",
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+results_sha256: 754580401315c5e987d30467f1d99ee125605f6203de69d9340f910308840fec
+decision: sim-ready
