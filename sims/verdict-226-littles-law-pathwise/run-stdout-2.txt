@@ -1,0 +1,41 @@
+{
+  "determinism_double_run_ok": true,
+  "exact_gate": {
+    "L_discipline_dependent_count": 200,
+    "identity_exact_all": true,
+    "lambda_invariant_all": true,
+    "n_per_realization": 30,
+    "realizations": 200
+  },
+  "gates": {
+    "G1_pathwise_identity_and_lambda_invariance": true,
+    "G2_L_discipline_dependent": true,
+    "G3_mc_mm1_3sigma_discrimination": true,
+    "G4_robustness_and_falsifiability": true
+  },
+  "mc_gate": {
+    "L_hat": 2.303624,
+    "L_true_closed_form": 2.333333,
+    "L_wrong_alt": 1.633333,
+    "n_arrivals": 120000,
+    "nbatches": 40,
+    "rho": 0.7,
+    "se": 0.032095,
+    "z_correct_abs": 0.92568,
+    "z_wrong_abs": 20.884821
+  },
+  "robustness_gate": {
+    "identity_exact_deterministic_service": true,
+    "identity_exact_highvariance_service": true,
+    "mean_service": 4,
+    "perturbed_accounting_rejected": true,
+    "realizations": 200
+  },
+  "seed": 20260717,
+  "sim_ready": true,
+  "thresholds": {
+    "Z_AGREE": 4.0,
+    "Z_SEP": 6.0
+  }
+}
+results_sha256=51c34924d9bc600417a69ad84c60780c337efda7d70fd3929e3d2801daf4131f
