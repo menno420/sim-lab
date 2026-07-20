@@ -1,6 +1,6 @@
 # VERDICT 227 — raise your BATNA by a dollar and the symmetric Nash bargain hands you exactly fifty cents: the threat-point pass-through ∂x₁/∂d₁ = ½ because the surplus the two parties split shrinks by that same dollar and the other half dissolves into it — reproduce PROPOSAL 214
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Opus family · high · review/verify
 
@@ -20,7 +20,8 @@ half-integer grid, 200/200, unique maximizer 200/200; G2 SURPRISE: a Rubinstein 
 hold 200/200 AND the folk full-pass-through accounting is falsified 200/200 (it sums to S+δ, violating conservation)
 — all PASS, `all_pass: true`. Head: symmetric Nash passes exactly ½ of any threat-point gain into your share; the
 other half dissolves into the shrinking surplus. Born-red HOLD armed on this first card commit; released by the
-deliberate `complete` flip LAST.
+deliberate `complete` flip LAST — flipped 2026-07-20T14:03:49Z after the sim dir, full-64 digest match, four-gate
+evaluation (all PASS), and both determinism checks landed. VERDICT 227 = APPROVE.
 
 ⏳ Flip note (born-red): this card ships `> **Status:** in-progress` on its FIRST commit so the substrate born-red
 gate holds the sim-lab PR RED until the slice is genuinely done. It flips to `complete` as the deliberate LAST
