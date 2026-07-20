@@ -1,6 +1,6 @@
 # Session 2026-07-20 — VERDICT 237 · Cayley's formula / Prufer bijection
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 
 ## 💡 Session idea
 Reproduce Ideas Lab PROPOSAL 224 (Cayley's formula: the number of labeled trees on {1..n} is EXACTLY T(n)=n^(n−2), proven via the Prufer bijection labeled-trees ↔ {1..n}^(n−2)). Stdlib-only firsthand verifier, SEED=20260717, Z_GATE=3.0, N_MC=200000, full-64 digest, six gates each in its own direction -> APPROVE.
