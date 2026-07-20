@@ -1,11 +1,11 @@
 # VERDICT 204 — Penney's game second-mover advantage (non-transitivity): reproduce PROPOSAL 191
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Claude Opus · effort high · task-class verdict-reproduction
 
 started: 2026-07-20T02:00:48Z
-flipped: (pending — deliberate LAST commit)
+flipped: 2026-07-20T02:03:45Z
 
 Born-red HOLD: this card is the VERDICT 204 slice's FIRST commit, born `in-progress` so the PR is red until the deliberate `complete` flip after the byte-identical reproduction, digest match, gate evaluation in order (G1→G2→G3→G4), grounding assessment, and heartbeat all land. Flipping to `complete` is the deliberate LAST commit — it clears the HOLD and releases merge-on-green.
 
