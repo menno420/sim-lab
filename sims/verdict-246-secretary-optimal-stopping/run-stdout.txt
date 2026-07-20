@@ -1,0 +1,389 @@
+{
+  "G1_exact_identity_brute_vs_closed": {
+    "pass": true,
+    "rows": {
+      "4": {
+        "P1_equals_1_over_n": true,
+        "P_r_star_fraction": "11/24",
+        "argmax_equals_r_star": true,
+        "argmax_r": 2,
+        "by_threshold": {
+          "1": {
+            "closed_form_fraction": "1/4",
+            "empirical_fraction": "1/4",
+            "equal": true,
+            "n_factorial": 24,
+            "win_count": 6
+          },
+          "2": {
+            "closed_form_fraction": "11/24",
+            "empirical_fraction": "11/24",
+            "equal": true,
+            "n_factorial": 24,
+            "win_count": 11
+          },
+          "3": {
+            "closed_form_fraction": "5/12",
+            "empirical_fraction": "5/12",
+            "equal": true,
+            "n_factorial": 24,
+            "win_count": 10
+          },
+          "4": {
+            "closed_form_fraction": "1/4",
+            "empirical_fraction": "1/4",
+            "equal": true,
+            "n_factorial": 24,
+            "win_count": 6
+          }
+        },
+        "pass": true,
+        "r_star": 2
+      },
+      "5": {
+        "P1_equals_1_over_n": true,
+        "P_r_star_fraction": "13/30",
+        "argmax_equals_r_star": true,
+        "argmax_r": 3,
+        "by_threshold": {
+          "1": {
+            "closed_form_fraction": "1/5",
+            "empirical_fraction": "1/5",
+            "equal": true,
+            "n_factorial": 120,
+            "win_count": 24
+          },
+          "2": {
+            "closed_form_fraction": "5/12",
+            "empirical_fraction": "5/12",
+            "equal": true,
+            "n_factorial": 120,
+            "win_count": 50
+          },
+          "3": {
+            "closed_form_fraction": "13/30",
+            "empirical_fraction": "13/30",
+            "equal": true,
+            "n_factorial": 120,
+            "win_count": 52
+          },
+          "4": {
+            "closed_form_fraction": "7/20",
+            "empirical_fraction": "7/20",
+            "equal": true,
+            "n_factorial": 120,
+            "win_count": 42
+          },
+          "5": {
+            "closed_form_fraction": "1/5",
+            "empirical_fraction": "1/5",
+            "equal": true,
+            "n_factorial": 120,
+            "win_count": 24
+          }
+        },
+        "pass": true,
+        "r_star": 3
+      },
+      "6": {
+        "P1_equals_1_over_n": true,
+        "P_r_star_fraction": "77/180",
+        "argmax_equals_r_star": true,
+        "argmax_r": 3,
+        "by_threshold": {
+          "1": {
+            "closed_form_fraction": "1/6",
+            "empirical_fraction": "1/6",
+            "equal": true,
+            "n_factorial": 720,
+            "win_count": 120
+          },
+          "2": {
+            "closed_form_fraction": "137/360",
+            "empirical_fraction": "137/360",
+            "equal": true,
+            "n_factorial": 720,
+            "win_count": 274
+          },
+          "3": {
+            "closed_form_fraction": "77/180",
+            "empirical_fraction": "77/180",
+            "equal": true,
+            "n_factorial": 720,
+            "win_count": 308
+          },
+          "4": {
+            "closed_form_fraction": "47/120",
+            "empirical_fraction": "47/120",
+            "equal": true,
+            "n_factorial": 720,
+            "win_count": 282
+          },
+          "5": {
+            "closed_form_fraction": "3/10",
+            "empirical_fraction": "3/10",
+            "equal": true,
+            "n_factorial": 720,
+            "win_count": 216
+          },
+          "6": {
+            "closed_form_fraction": "1/6",
+            "empirical_fraction": "1/6",
+            "equal": true,
+            "n_factorial": 720,
+            "win_count": 120
+          }
+        },
+        "pass": true,
+        "r_star": 3
+      },
+      "7": {
+        "P1_equals_1_over_n": true,
+        "P_r_star_fraction": "29/70",
+        "argmax_equals_r_star": true,
+        "argmax_r": 3,
+        "by_threshold": {
+          "1": {
+            "closed_form_fraction": "1/7",
+            "empirical_fraction": "1/7",
+            "equal": true,
+            "n_factorial": 5040,
+            "win_count": 720
+          },
+          "2": {
+            "closed_form_fraction": "7/20",
+            "empirical_fraction": "7/20",
+            "equal": true,
+            "n_factorial": 5040,
+            "win_count": 1764
+          },
+          "3": {
+            "closed_form_fraction": "29/70",
+            "empirical_fraction": "29/70",
+            "equal": true,
+            "n_factorial": 5040,
+            "win_count": 2088
+          },
+          "4": {
+            "closed_form_fraction": "57/140",
+            "empirical_fraction": "57/140",
+            "equal": true,
+            "n_factorial": 5040,
+            "win_count": 2052
+          },
+          "5": {
+            "closed_form_fraction": "37/105",
+            "empirical_fraction": "37/105",
+            "equal": true,
+            "n_factorial": 5040,
+            "win_count": 1776
+          },
+          "6": {
+            "closed_form_fraction": "11/42",
+            "empirical_fraction": "11/42",
+            "equal": true,
+            "n_factorial": 5040,
+            "win_count": 1320
+          },
+          "7": {
+            "closed_form_fraction": "1/7",
+            "empirical_fraction": "1/7",
+            "equal": true,
+            "n_factorial": 5040,
+            "win_count": 720
+          }
+        },
+        "pass": true,
+        "r_star": 3
+      }
+    }
+  },
+  "G2_monte_carlo_optimal_agreement": {
+    "N": 200000,
+    "n": 100,
+    "one_over_e": 0.36787944117144233,
+    "p0_exact_fraction": "13983373923308456694625973177420433229969/37686689313358095764612869694763407328000",
+    "p0_float": 0.371042778712643,
+    "pass": true,
+    "phat_optimal": 0.370775,
+    "r_star": 38,
+    "wins_optimal": 74155,
+    "z_accept": 3.0,
+    "z_optimal": -0.247895
+  },
+  "G3_invariance_dp_route_and_rank_only": {
+    "exact_dp_second_route": {
+      "pass": true,
+      "rows": {
+        "4": {
+          "1": {
+            "closed_form_fraction": "1/4",
+            "dp_route_fraction": "1/4",
+            "equal": true
+          },
+          "2": {
+            "closed_form_fraction": "11/24",
+            "dp_route_fraction": "11/24",
+            "equal": true
+          },
+          "3": {
+            "closed_form_fraction": "5/12",
+            "dp_route_fraction": "5/12",
+            "equal": true
+          },
+          "4": {
+            "closed_form_fraction": "1/4",
+            "dp_route_fraction": "1/4",
+            "equal": true
+          }
+        },
+        "5": {
+          "1": {
+            "closed_form_fraction": "1/5",
+            "dp_route_fraction": "1/5",
+            "equal": true
+          },
+          "2": {
+            "closed_form_fraction": "5/12",
+            "dp_route_fraction": "5/12",
+            "equal": true
+          },
+          "3": {
+            "closed_form_fraction": "13/30",
+            "dp_route_fraction": "13/30",
+            "equal": true
+          },
+          "4": {
+            "closed_form_fraction": "7/20",
+            "dp_route_fraction": "7/20",
+            "equal": true
+          },
+          "5": {
+            "closed_form_fraction": "1/5",
+            "dp_route_fraction": "1/5",
+            "equal": true
+          }
+        },
+        "6": {
+          "1": {
+            "closed_form_fraction": "1/6",
+            "dp_route_fraction": "1/6",
+            "equal": true
+          },
+          "2": {
+            "closed_form_fraction": "137/360",
+            "dp_route_fraction": "137/360",
+            "equal": true
+          },
+          "3": {
+            "closed_form_fraction": "77/180",
+            "dp_route_fraction": "77/180",
+            "equal": true
+          },
+          "4": {
+            "closed_form_fraction": "47/120",
+            "dp_route_fraction": "47/120",
+            "equal": true
+          },
+          "5": {
+            "closed_form_fraction": "3/10",
+            "dp_route_fraction": "3/10",
+            "equal": true
+          },
+          "6": {
+            "closed_form_fraction": "1/6",
+            "dp_route_fraction": "1/6",
+            "equal": true
+          }
+        },
+        "7": {
+          "1": {
+            "closed_form_fraction": "1/7",
+            "dp_route_fraction": "1/7",
+            "equal": true
+          },
+          "2": {
+            "closed_form_fraction": "7/20",
+            "dp_route_fraction": "7/20",
+            "equal": true
+          },
+          "3": {
+            "closed_form_fraction": "29/70",
+            "dp_route_fraction": "29/70",
+            "equal": true
+          },
+          "4": {
+            "closed_form_fraction": "57/140",
+            "dp_route_fraction": "57/140",
+            "equal": true
+          },
+          "5": {
+            "closed_form_fraction": "37/105",
+            "dp_route_fraction": "37/105",
+            "equal": true
+          },
+          "6": {
+            "closed_form_fraction": "11/42",
+            "dp_route_fraction": "11/42",
+            "equal": true
+          },
+          "7": {
+            "closed_form_fraction": "1/7",
+            "dp_route_fraction": "1/7",
+            "equal": true
+          }
+        }
+      }
+    },
+    "pass": true,
+    "rank_only_mc_invariance": {
+      "N": 200000,
+      "invariance_seed": 20260718,
+      "n": 100,
+      "p0_float": 0.371042778712643,
+      "pass": true,
+      "phat": 0.371905,
+      "quality_distribution": "U**3 (strictly monotone; rank-preserving)",
+      "r_star": 38,
+      "wins": 74381,
+      "z_accept": 3.0,
+      "z_invariance": 0.798199
+    }
+  },
+  "G4_falsifiability_naive_take_first": {
+    "N": 200000,
+    "n": 100,
+    "naive_exact_fraction": "1/100",
+    "naive_rejects_optimal": true,
+    "naive_rule": "take the first candidate (r=1)",
+    "naive_self_consistent": true,
+    "optimal_target_p0": 0.371042778712643,
+    "pass": true,
+    "phat_naive": 0.00991,
+    "wins_naive": 1982,
+    "z_naive_self": -0.40452,
+    "z_naive_vs_optimal": -334.317693,
+    "z_reject": 6.0
+  },
+  "all_gates_pass": true,
+  "claim": "threshold rule (reject first r-1, then take first record) selects the best of n uniformly-ordered rank-observed candidates with probability P(r,n)=((r-1)/n) sum_{i=r}^{n} 1/(i-1); optimal P(r*(n),n) -> 1/e; naive take-first wins with probability 1/n",
+  "decision": "sim-ready",
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "r_star_test_set": {
+    "4": 2,
+    "5": 3,
+    "6": 3,
+    "7": 3
+  },
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+results_sha256: 048261949a65653b7ad49d90c4968780cc5af2cb77705c9292d409743da68cac
+decision: sim-ready
