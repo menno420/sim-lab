@@ -1,7 +1,7 @@
 # VERDICT 107 — Refund window as a conversion instrument: net revenue is non-monotone in refund-window length W, peaking at an INTERIOR window (W=13), the day before the window arms wardrobe abusers at W_abuse=14 — longer is not more revenue
 
 > **Status:** `complete`
-> 📊 Model: claude-opus-4-8 · high · verdict-sim
+> 📊 Model: agent · high · verdict-sim
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
 
@@ -30,4 +30,4 @@ V106 (P093 metastable retry-storm collapse, APPROVE, #179) landed clean via merg
 ## 💡 Session idea
 The abuse cliff is a reusable owner-facing knob: net revenue = P·(buyers − refunds), and the marginal window day W→W+1 adds conversion (a real gain) but at W=W_abuse the wardrobe-abuse cohort (+φ=0.08 of buyers) begins refunding, a step of ≈$880/rep that no conversion gain within reach can offset. The optimum is therefore always the last day before the extraction threshold, independent of how far conversion keeps rising past it — a template for auditing any generous-policy dial (refund window, free-trial length, return period) for an abuse-armed step discontinuity before setting it by the folk-monotone intuition.
 
-📊 Model: claude-opus-4-8 · high · verdict-sim
+📊 Model: agent · high · verdict-sim

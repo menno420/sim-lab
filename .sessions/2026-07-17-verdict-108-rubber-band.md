@@ -1,7 +1,7 @@
 # VERDICT 108 — Catch-up rubber-band as a proportional feedback controller: engagement is non-monotone in boost gain k, maximized at an INTERIOR gain below the exact stability boundary k=2 — past it the loop goes unstable and the winner decouples from skill
 
 > **Status:** `complete`
-> 📊 Model: claude-opus-4-8 · high · verdict-sim
+> 📊 Model: agent · high · verdict-sim
 
 Born in-progress as this session's first commit (born-red HOLD); flips to complete as the deliberate last step after the heartbeat.
 
@@ -23,4 +23,4 @@ Prior loop P094 → V107 (refund-window abuse-threshold) CLOSED — sim-lab PR #
 ## 💡 Session idea
 Follow-ups named by P095 (none in scope): an N-racer field (does the pairwise stability boundary survive a pack?) and a nonlinear/saturating boost (does a soft cap round the cliff into an interior ridge?). The flat-topped E(k) ridge across k∈[1.2,1.4] observed here is direct evidence the saturating-boost follow-up would be informative.
 
-📊 Model: claude-opus-4-8 · high · verdict-sim
+📊 Model: agent · high · verdict-sim
