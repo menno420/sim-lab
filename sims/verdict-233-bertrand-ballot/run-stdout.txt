@@ -1,0 +1,213 @@
+{
+  "g1_exact_identity": {
+    "3,1": {
+      "brute_prob": "1/2",
+      "closed_form": "1/2",
+      "equal": true,
+      "favorable": 2,
+      "total": 4
+    },
+    "4,2": {
+      "brute_prob": "1/3",
+      "closed_form": "1/3",
+      "equal": true,
+      "favorable": 5,
+      "total": 15
+    },
+    "5,2": {
+      "brute_prob": "3/7",
+      "closed_form": "3/7",
+      "equal": true,
+      "favorable": 9,
+      "total": 21
+    },
+    "5,3": {
+      "brute_prob": "1/4",
+      "closed_form": "1/4",
+      "equal": true,
+      "favorable": 14,
+      "total": 56
+    },
+    "6,3": {
+      "brute_prob": "1/3",
+      "closed_form": "1/3",
+      "equal": true,
+      "favorable": 28,
+      "total": 84
+    },
+    "7,2": {
+      "brute_prob": "5/9",
+      "closed_form": "5/9",
+      "equal": true,
+      "favorable": 20,
+      "total": 36
+    }
+  },
+  "g2_scale_invariance": {
+    "all_count_identities_hold": true,
+    "all_ratios_equal_base": true,
+    "base_pair": [
+      2,
+      1
+    ],
+    "base_ratio": "1/3",
+    "per_k": {
+      "1": {
+        "a": 2,
+        "b": 1,
+        "brute_prob": "1/3",
+        "count_identity_holds": true,
+        "favorable": 1,
+        "ratio_equals_base": true,
+        "scaled_ratio": "1/3",
+        "total": 3
+      },
+      "2": {
+        "a": 4,
+        "b": 2,
+        "brute_prob": "1/3",
+        "count_identity_holds": true,
+        "favorable": 5,
+        "ratio_equals_base": true,
+        "scaled_ratio": "1/3",
+        "total": 15
+      },
+      "3": {
+        "a": 6,
+        "b": 3,
+        "brute_prob": "1/3",
+        "count_identity_holds": true,
+        "favorable": 28,
+        "ratio_equals_base": true,
+        "scaled_ratio": "1/3",
+        "total": 84
+      },
+      "5": {
+        "a": 10,
+        "b": 5,
+        "brute_prob": "1/3",
+        "count_identity_holds": true,
+        "favorable": 1001,
+        "ratio_equals_base": true,
+        "scaled_ratio": "1/3",
+        "total": 3003
+      }
+    }
+  },
+  "g3_montecarlo": {
+    "3,1": {
+      "mean": 0.50114,
+      "se": 0.001118031083,
+      "target": 0.5,
+      "target_frac": "1/2",
+      "within_3sigma": true,
+      "z": 1.01965
+    },
+    "5,2": {
+      "mean": 0.42719,
+      "se": 0.001106116413,
+      "target": 0.428571429,
+      "target_frac": "3/7",
+      "within_3sigma": true,
+      "z": -1.2489
+    },
+    "7,3": {
+      "mean": 0.39957,
+      "se": 0.001095248408,
+      "target": 0.4,
+      "target_frac": "2/5",
+      "within_3sigma": true,
+      "z": -0.392605
+    }
+  },
+  "g4_falsifiability": {
+    "all_corrupt_neq_brute": true,
+    "all_naive_rejected": true,
+    "exact_corrupt_count_leg": {
+      "3,1": {
+        "brute_favorable": 2,
+        "corrupt_count": "3/1",
+        "corrupt_neq_brute": true
+      },
+      "4,2": {
+        "brute_favorable": 5,
+        "corrupt_count": "10/1",
+        "corrupt_neq_brute": true
+      },
+      "5,2": {
+        "brute_favorable": 9,
+        "corrupt_count": "15/1",
+        "corrupt_neq_brute": true
+      },
+      "5,3": {
+        "brute_favorable": 14,
+        "corrupt_count": "35/1",
+        "corrupt_neq_brute": true
+      },
+      "6,3": {
+        "brute_favorable": 28,
+        "corrupt_count": "56/1",
+        "corrupt_neq_brute": true
+      },
+      "7,2": {
+        "brute_favorable": 20,
+        "corrupt_count": "28/1",
+        "corrupt_neq_brute": true
+      }
+    },
+    "naive_model": "prob = a/(a+b) (A vote share / P(first vote is A))",
+    "per_pair": {
+      "3,1": {
+        "mean": 0.50114,
+        "naive_frac": "3/4",
+        "naive_rejected": true,
+        "naive_value": 0.75,
+        "z_naive": -222.587729
+      },
+      "5,2": {
+        "mean": 0.42719,
+        "naive_frac": "5/7",
+        "naive_rejected": true,
+        "naive_value": 0.714285714,
+        "z_naive": -259.552892
+      },
+      "7,3": {
+        "mean": 0.39957,
+        "naive_frac": "7/10",
+        "naive_rejected": true,
+        "naive_value": 0.7,
+        "z_naive": -274.303069
+      }
+    }
+  },
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "mc_pairs": [
+    [
+      3,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      7,
+      3
+    ]
+  ],
+  "mc_trials": 200000,
+  "proposal": 220,
+  "seed": 20260717,
+  "sim_ready": true,
+  "slot": "round-52 UNRELATED (fleet->venture->game->unrelated)",
+  "theorem": "Bertrand ballot theorem (lead-throughout)",
+  "verdict": 233
+}
+results_sha256=d52f08b930d92b01ee8d0f81089974843262710f301dd738594602bf3d4378aa
+determinism_double_run=True
+sim_ready=True
