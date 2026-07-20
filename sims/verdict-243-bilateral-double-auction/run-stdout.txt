@@ -1,0 +1,114 @@
+{
+  "all_pass": true,
+  "first_failing_gate": null,
+  "gate1_exact_equality": {
+    "deadweight": "5/192",
+    "delta": "1/4",
+    "direction": "EQUALITY (exact Fraction integration)",
+    "efficiency_ratio": "27/32",
+    "first_best": "1/6",
+    "pass": true,
+    "realized_gains": "9/64",
+    "trade_prob": "9/32"
+  },
+  "gate2_mc_agreement": {
+    "direction": "AGREEMENT |z|<3.0",
+    "mean_gains": 0.140558,
+    "p_hat_trade": 0.28099,
+    "pass": true,
+    "samples": 200000,
+    "target_gains": 0.140625,
+    "target_trade_prob": 0.28125,
+    "z_gains": -0.123561,
+    "z_trade": -0.258615
+  },
+  "gate3_robustness": {
+    "buyer_best_response": [
+      {
+        "closed_form": "7/20",
+        "grid_argmax": "7/20",
+        "pass": true,
+        "v": "2/5"
+      },
+      {
+        "closed_form": "29/60",
+        "grid_argmax": "483/1000",
+        "pass": true,
+        "v": "3/5"
+      },
+      {
+        "closed_form": "11/20",
+        "grid_argmax": "11/20",
+        "pass": true,
+        "v": "7/10"
+      },
+      {
+        "closed_form": "41/60",
+        "grid_argmax": "683/1000",
+        "pass": true,
+        "v": "9/10"
+      }
+    ],
+    "direction": "INVARIANCE best-response argmax == closed form AND second exact route agrees",
+    "pass": true,
+    "route2_difference_density": "9/64",
+    "route2_matches": true,
+    "seller_best_response": [
+      {
+        "c": "1/10",
+        "closed_form": "19/60",
+        "grid_argmax": "317/1000",
+        "pass": true
+      },
+      {
+        "c": "3/10",
+        "closed_form": "9/20",
+        "grid_argmax": "9/20",
+        "pass": true
+      },
+      {
+        "c": "1/2",
+        "closed_form": "7/12",
+        "grid_argmax": "583/1000",
+        "pass": true
+      },
+      {
+        "c": "7/10",
+        "closed_form": "43/60",
+        "grid_argmax": "717/1000",
+        "pass": true
+      }
+    ]
+  },
+  "gate4_falsifiability": {
+    "direction": "REJECTION |z|>6.0 (naive: the double auction is efficient => gains 1/6)",
+    "efficient_rule_mean": 0.166504,
+    "equilibrium_mean": 0.140558,
+    "first_best_target": 0.16666667,
+    "naive_rejected": true,
+    "pass": true,
+    "samples": 200000,
+    "z_efficient_vs_fb": -0.308089,
+    "z_equilibrium_vs_fb": -47.919492
+  },
+  "gates": {
+    "gate1": true,
+    "gate2": true,
+    "gate3": true,
+    "gate4": true
+  },
+  "n_mc_main": 200000,
+  "proposal": 230,
+  "seed": 20260717,
+  "slot": "round-56 VENTURE",
+  "verdict": 243,
+  "z_gate": 3.0,
+  "z_reject": 6.0
+}
+
+gate1: PASS
+gate2: PASS
+gate3: PASS
+gate4: PASS
+all_pass: True
+results_sha256: 5052053d3a6cb6fb1419afe0846f4f339d3537057d6ee5fbeb8a86e9b9ea42c3
