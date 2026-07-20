@@ -1,6 +1,6 @@
 # Session 2026-07-20 — VERDICT 239 · Myerson optimal reserve
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 
 ## 💡 Session idea
 Reproduce Ideas Lab PROPOSAL 226 (Myerson optimal reserve for iid Uniform[0,1] bidders: the revenue-maximizing single-item mechanism is a second-price auction with reserve r*=1/2 — the SAME for every n — with exact expected revenue R*(n)=2n/(n+1)−1+(1/2)^n/(n+1); so R*(2)=5/12 vs the no-reserve 1/3, an extra 1/12). Stdlib-only firsthand verifier, SEED=20260717, Z_GATE=3.0, N_MC=200000, full-64 digest, seven gates each in its own direction -> APPROVE.
