@@ -1,0 +1,182 @@
+{
+  "G1": {
+    "claim": "fpa_revenue == spa_revenue == (n-1)/(n+1) exactly",
+    "rows": [
+      {
+        "closed_form": [
+          1,
+          3
+        ],
+        "fpa": [
+          1,
+          3
+        ],
+        "identical": true,
+        "n": 2,
+        "spa": [
+          1,
+          3
+        ]
+      },
+      {
+        "closed_form": [
+          1,
+          2
+        ],
+        "fpa": [
+          1,
+          2
+        ],
+        "identical": true,
+        "n": 3,
+        "spa": [
+          1,
+          2
+        ]
+      },
+      {
+        "closed_form": [
+          2,
+          3
+        ],
+        "fpa": [
+          2,
+          3
+        ],
+        "identical": true,
+        "n": 5,
+        "spa": [
+          2,
+          3
+        ]
+      },
+      {
+        "closed_form": [
+          9,
+          11
+        ],
+        "fpa": [
+          9,
+          11
+        ],
+        "identical": true,
+        "n": 10,
+        "spa": [
+          9,
+          11
+        ]
+      },
+      {
+        "closed_form": [
+          19,
+          21
+        ],
+        "fpa": [
+          19,
+          21
+        ],
+        "identical": true,
+        "n": 20,
+        "spa": [
+          19,
+          21
+        ]
+      },
+      {
+        "closed_form": [
+          49,
+          51
+        ],
+        "fpa": [
+          49,
+          51
+        ],
+        "identical": true,
+        "n": 50,
+        "spa": [
+          49,
+          51
+        ]
+      }
+    ]
+  },
+  "G2": {
+    "N": 500000,
+    "fpa_mean": 0.7501794065876076,
+    "mu_exact": 0.75,
+    "n": 7,
+    "paired_diff_mean": 0.000147831125005716,
+    "pass_when": "|z_fpa|,|z_spa|,|z_diff| all < 3.0",
+    "spa_mean": 0.7500315754625884,
+    "z_diff": 0.9577579264073839,
+    "z_fpa": 1.3430627062901466,
+    "z_spa": 0.15475696884296453
+  },
+  "G3": {
+    "fpa_mean_scaled": 3.569959712888153,
+    "monotone_increasing": true,
+    "mu_scaled": 3.5714285714285716,
+    "pass_when": "monotone sweep agrees (|z|<3) AND scaled revenue = k*(n-1)/(n+1) exactly and empirically",
+    "scale_exact_equiv": true,
+    "scale_k": 5,
+    "scale_n": 6,
+    "spa_mean_scaled": 3.570659875208096,
+    "sweep": [
+      {
+        "agree": true,
+        "mu": 0.3333333333333333,
+        "n": 2,
+        "spa_mean": 0.33436657400787856,
+        "z": 1.6962488334847896
+      },
+      {
+        "agree": true,
+        "mu": 0.6666666666666666,
+        "n": 5,
+        "spa_mean": 0.6664985463767041,
+        "z": -0.3662398086957877
+      },
+      {
+        "agree": true,
+        "mu": 0.8181818181818182,
+        "n": 10,
+        "spa_mean": 0.8183725153739057,
+        "z": 0.6659650151265322
+      },
+      {
+        "agree": true,
+        "mu": 0.9607843137254902,
+        "n": 50,
+        "spa_mean": 0.9607742488580562,
+        "z": -0.14464380131022828
+      }
+    ],
+    "z_fpa_scaled": -1.1042492841555944,
+    "z_spa_scaled": -0.3725478933584475
+  },
+  "G4": {
+    "N": 500000,
+    "information_rent_1_over_np1": 0.125,
+    "mu_naive": 0.875,
+    "mu_true": 0.75,
+    "n": 7,
+    "naive_model": "revenue = winner's value = n/(n+1)",
+    "pass_when": "naive rejected |z|>5.0 while true model holds |z|<3.0",
+    "z_vs_naive": -612.8107127508744,
+    "z_vs_true": 0.6390925280698204
+  },
+  "claim": "First-price and second-price auctions yield identical expected seller revenue (n-1)/(n+1) for n symmetric U(0,1) bidders.",
+  "gates": {
+    "G1_exact_identity": true,
+    "G2_montecarlo_agreement": true,
+    "G3_robustness": true,
+    "G4_falsifiability": true
+  },
+  "proposal": 222,
+  "seed": 20260717,
+  "sim_ready": true,
+  "verdict": 235
+}
+results_sha256=b22b9f2767755feb2334594f2671060c61818e192ee3c24b99f9705e3f9951d2
+determinism_double_run=True
+sim_ready=True
