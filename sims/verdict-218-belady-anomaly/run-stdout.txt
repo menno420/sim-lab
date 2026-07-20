@@ -1,0 +1,74 @@
+{
+  "G1_canonical_witness": {
+    "anomaly_delta": 1,
+    "canonical": [
+      1,
+      2,
+      3,
+      4,
+      1,
+      2,
+      5,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "fifo_3": 9,
+    "fifo_4": 10,
+    "lru_curve_frames_1_to_5": [
+      12,
+      12,
+      10,
+      8,
+      5
+    ],
+    "lru_monotone_non_increasing": true,
+    "pass": true
+  },
+  "G2_exhaustive": {
+    "A": 4,
+    "L": 8,
+    "fifo_anomalous": 0,
+    "frames_max": 4,
+    "lru_anomalous": 0,
+    "pass": true,
+    "total": 65536
+  },
+  "G3_signal": {
+    "A": 6,
+    "L": 16,
+    "N": 200000,
+    "fifo_anom": 36,
+    "frames_max": 6,
+    "lru_anom": 0,
+    "p_fifo": "0.0001800000",
+    "pass": true,
+    "z": "6.000270"
+  },
+  "G4_robustness": {
+    "A": 7,
+    "L": 20,
+    "N": 200000,
+    "fifo_anom": 109,
+    "fifo_rate": "0.0005450000",
+    "floor": "0.0003000000",
+    "frames_max": 7,
+    "lru_anom": 0,
+    "pass": true,
+    "z": "10.441729"
+  },
+  "decision": "sim-ready",
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+results_sha256: e5c3517c9d3408bc76941be37b820d0216fcbe0fb00c2cffaf1d8bf763bf7bff
+decision: sim-ready
