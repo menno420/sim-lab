@@ -1,0 +1,144 @@
+{
+  "head": "newsvendor-critical-fractile",
+  "seed": 20260717,
+  "constants": {
+    "N": 40,
+    "demand_p": "1/2",
+    "mean": 20,
+    "median": 20,
+    "z_gate": 3.0,
+    "T_mc": 200000
+  },
+  "cases": {
+    "high": {
+      "p": 10,
+      "c": 2,
+      "s": 0
+    },
+    "low": {
+      "p": 10,
+      "c": 8,
+      "s": 0
+    },
+    "mid": {
+      "p": 10,
+      "c": 5,
+      "s": 0
+    }
+  },
+  "g1_exact_argmax": {
+    "high": {
+      "CR": "4/5",
+      "Q_star_closed_form": 23,
+      "Q_argmax_enum": 23,
+      "above_mean": true,
+      "below_mean": false,
+      "equals_median": false,
+      "exact_match": true
+    },
+    "low": {
+      "CR": "1/5",
+      "Q_star_closed_form": 17,
+      "Q_argmax_enum": 17,
+      "above_mean": false,
+      "below_mean": true,
+      "equals_median": false,
+      "exact_match": true
+    },
+    "mid": {
+      "CR": "1/2",
+      "Q_star_closed_form": 20,
+      "Q_argmax_enum": 20,
+      "above_mean": false,
+      "below_mean": false,
+      "equals_median": true,
+      "exact_match": true
+    }
+  },
+  "g2_montecarlo": {
+    "q_star": 23,
+    "q_naive": 20,
+    "mean_profit_q_star": 151.22005,
+    "mean_profit_q_naive": 147.51845,
+    "mean_diff": 3.7016,
+    "z_meandiff": 133.9969425219,
+    "z_means": 50.4772410337
+  },
+  "g3_shift_sweep": {
+    "c_grid": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "CR_grid": [
+      "1",
+      "9/10",
+      "4/5",
+      "7/10",
+      "3/5",
+      "1/2",
+      "2/5",
+      "3/10",
+      "1/5",
+      "1/10",
+      "0"
+    ],
+    "Q_star_grid": [
+      40,
+      24,
+      23,
+      22,
+      21,
+      20,
+      19,
+      18,
+      17,
+      16,
+      0
+    ],
+    "monotone_nondecreasing_in_CR": true,
+    "iff_median_direction": true
+  },
+  "g4_marginal_identity": {
+    "high": {
+      "CR": "4/5",
+      "Q_star": 23,
+      "marginal_identity_exact": true,
+      "sign_structure_ok": true
+    },
+    "low": {
+      "CR": "1/5",
+      "Q_star": 17,
+      "marginal_identity_exact": true,
+      "sign_structure_ok": true
+    },
+    "mid": {
+      "CR": "1/2",
+      "Q_star": 20,
+      "marginal_identity_exact": true,
+      "sign_structure_ok": true
+    }
+  },
+  "gates": {
+    "G1_exact_argmax": true,
+    "G2_montecarlo_3sigma": true,
+    "G3_shift_monotone": true,
+    "G4_marginal_identity": true
+  },
+  "first_failing_gate": null,
+  "all_pass": true
+}
+double_run_identical=true
+all_pass=true
+G2_z_meandiff=133.9969425219
+G2_z_means=50.4772410337
+G2_mean_diff=3.7016
+RESULTS_SHA256=62acbcf62c3b94d9e6765a5681fef0ca8ba1b13c554bd6f882b653920f131b3e
