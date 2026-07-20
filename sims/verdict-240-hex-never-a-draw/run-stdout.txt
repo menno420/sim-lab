@@ -1,0 +1,231 @@
+{
+  "all_pass": true,
+  "first_failing_gate": null,
+  "gate1_exhaustive_exact": {
+    "direction": "EQUALITY",
+    "fraction_half_all": true,
+    "pass": true,
+    "per_size": [
+      {
+        "P_red": "1/2",
+        "blue_wins": 8,
+        "both_win": 0,
+        "colorings": 16,
+        "draws": 0,
+        "n": 2,
+        "red_eq_half_exact": true,
+        "red_wins": 8
+      },
+      {
+        "P_red": "1/2",
+        "blue_wins": 256,
+        "both_win": 0,
+        "colorings": 512,
+        "draws": 0,
+        "n": 3,
+        "red_eq_half_exact": true,
+        "red_wins": 256
+      },
+      {
+        "P_red": "1/2",
+        "blue_wins": 32768,
+        "both_win": 0,
+        "colorings": 65536,
+        "draws": 0,
+        "n": 4,
+        "red_eq_half_exact": true,
+        "red_wins": 32768
+      }
+    ],
+    "sizes": [
+      2,
+      3,
+      4
+    ]
+  },
+  "gate2_mc_half": {
+    "both": 0,
+    "direction": "AGREEMENT |z|<3.0",
+    "draws": 0,
+    "n": 11,
+    "p_hat": 0.498808,
+    "pass": true,
+    "red_wins": 59857,
+    "samples": 120000,
+    "z": -0.825611
+  },
+  "gate3_robustness": {
+    "direction": "INVARIANT draws==0 + AGREEMENT symmetry |z|<3.0",
+    "draws_all_zero": true,
+    "pass": true,
+    "per_cell": [
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 5,
+        "p": "3/10",
+        "red_rate": 0.0814,
+        "red_wins": 1221,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 5,
+        "p": "1/2",
+        "red_rate": 0.505333,
+        "red_wins": 7580,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 5,
+        "p": "7/10",
+        "red_rate": 0.916133,
+        "red_wins": 13742,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 7,
+        "p": "3/10",
+        "red_rate": 0.039,
+        "red_wins": 585,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 7,
+        "p": "1/2",
+        "red_rate": 0.489133,
+        "red_wins": 7337,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 7,
+        "p": "7/10",
+        "red_rate": 0.9614,
+        "red_wins": 14421,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 9,
+        "p": "3/10",
+        "red_rate": 0.019,
+        "red_wins": 285,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 9,
+        "p": "1/2",
+        "red_rate": 0.497867,
+        "red_wins": 7468,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 9,
+        "p": "7/10",
+        "red_rate": 0.980067,
+        "red_wins": 14701,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 11,
+        "p": "3/10",
+        "red_rate": 0.009067,
+        "red_wins": 136,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 11,
+        "p": "1/2",
+        "red_rate": 0.499667,
+        "red_wins": 7495,
+        "samples": 15000
+      },
+      {
+        "both": 0,
+        "draws": 0,
+        "n": 11,
+        "p": "7/10",
+        "red_rate": 0.9904,
+        "red_wins": 14856,
+        "samples": 15000
+      }
+    ],
+    "symmetry": [
+      {
+        "n": 5,
+        "pass": true,
+        "sum": 0.997533,
+        "z": -0.775987
+      },
+      {
+        "n": 7,
+        "pass": true,
+        "sum": 1.0004,
+        "z": 0.179378
+      },
+      {
+        "n": 9,
+        "pass": true,
+        "sum": 0.999067,
+        "z": -0.584843
+      },
+      {
+        "n": 11,
+        "pass": true,
+        "sum": 0.999467,
+        "z": -0.480036
+      }
+    ]
+  },
+  "gate4_falsifiability": {
+    "direction": "REJECTION |z|>6.0 (naive: hex draws at square rate)",
+    "hex_both": 0,
+    "hex_draws": 0,
+    "n": 7,
+    "pass": true,
+    "q_square_draw_rate": 0.526067,
+    "samples": 120000,
+    "square_both": 0,
+    "square_draws": 63128,
+    "z_reject": -364.965983
+  },
+  "gates": {
+    "gate1": true,
+    "gate2": true,
+    "gate3": true,
+    "gate4": true
+  },
+  "n_mc_main": 120000,
+  "n_mc_robust": 15000,
+  "proposal": 227,
+  "seed": 20260717,
+  "slot": "round-54 GAME",
+  "verdict": 240,
+  "z_gate": 3.0,
+  "z_reject": 6.0
+}
+
+gate1: PASS
+gate2: PASS
+gate3: PASS
+gate4: PASS
+all_pass: True
+results_sha256: 76d9a3267140171bec9ad335b370c6028e1359d23f39c7c87f3d7125598ebed8
