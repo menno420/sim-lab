@@ -1,0 +1,68 @@
+{
+  "G1_exact_uniform": {
+    "closed_form": "P(K_n=k)=1/(n+1)",
+    "direction": "exact-agreement (Fraction, zero deviation)",
+    "max_abs_deviation": "0",
+    "n_range": [
+      1,
+      20
+    ],
+    "pass": true,
+    "sample_law_n3": [
+      "1/4",
+      "1/4",
+      "1/4",
+      "1/4"
+    ]
+  },
+  "G2_signal_dispersion_vs_lln": {
+    "direction": "high z = SIGNAL (dispersion does not vanish; LLN defeated by reinforcement)",
+    "iid_observed_var": 0.0012472517,
+    "lln_null_var": 0.00125,
+    "observed_var": 0.0838204573,
+    "pass": true,
+    "se_null": 1.2500313e-05,
+    "threshold": 3.0,
+    "uniform_pred_var": 0.0833333333,
+    "z": 6605.4714
+  },
+  "G3_agreement_mc_matches_exact": {
+    "abs_z": 2.11,
+    "direction": "low |z| = AGREEMENT (Monte-Carlo converges to the exact uniform law)",
+    "exact_middle_third_prob": 0.3333333333,
+    "mc_middle_third_rate": 0.3263,
+    "pass": true,
+    "se": 0.0033333333,
+    "threshold": 3.0
+  },
+  "G4_shift_asymmetric_start": {
+    "direction": "exact-agreement to Beta(2,1) + mean shifts many sigma from 1/2 (robustness/shift)",
+    "exact_max_abs_deviation": "0",
+    "mc_mean_share": 0.6665581281,
+    "pass": true,
+    "predicted_mean": 0.6666666667,
+    "threshold": 3.0,
+    "z_vs_half": 100.9484
+  },
+  "G5_determinism": {
+    "in_process_double_run": "IDENTICAL",
+    "pass": true
+  },
+  "all_gates_pass": true,
+  "head": "polya-urn-reinforcement-uniform-finish",
+  "params": {
+    "m_mc": 20000,
+    "n_enum_max": 20,
+    "n_mc": 200,
+    "start_shift": [
+      2,
+      1
+    ],
+    "start_symmetric": [
+      1,
+      1
+    ]
+  },
+  "seed": 20260717
+}
+results_sha256: d566e380865bfb7089d5042ed7169edfddc7cab7f112af80de6ef2c29c91aa68
