@@ -1,6 +1,6 @@
 # PROPOSAL 219 — Nim / Sprague–Grundy: a position is a second-player (P) loss iff the nim-sum (XOR of heap sizes) is zero, and the single-pile Subtraction game Sub({1..k}) has Grundy value G(n)=n mod (k+1) — stage the SEED=20260717 stdlib verifier so VERDICT 232 can reproduce it
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 
 📊 Model: Claude Opus · high · verification/staging
 
