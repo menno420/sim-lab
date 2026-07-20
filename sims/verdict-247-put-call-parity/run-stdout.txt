@@ -1,0 +1,142 @@
+{
+  "all_gates_pass": true,
+  "claim": "put_call_parity_binomial: C - P == S0 - K * R**-n",
+  "decision": "sim-ready",
+  "first_failing_gate": null,
+  "gates": {
+    "G1_exact_parity_identity": {
+      "panel": [
+        {
+          "C": "48",
+          "C_minus_P": "36",
+          "P": "12",
+          "S0_minus_K_disc": "36",
+          "enum_eq_formula": true,
+          "market": "S0=100 K=100 u=2 d=1/2 R=5/4 n=2",
+          "parity_exact": true
+        },
+        {
+          "C": "792272/33275",
+          "C_minus_P": "6480/1331",
+          "P": "630272/33275",
+          "S0_minus_K_disc": "6480/1331",
+          "enum_eq_formula": true,
+          "market": "S0=80 K=100 u=3/2 d=2/3 R=11/10 n=3",
+          "parity_exact": true
+        },
+        {
+          "C": "5141728125/78675968",
+          "C_minus_P": "993080/21609",
+          "P": "1962043955/101154816",
+          "S0_minus_K_disc": "993080/21609",
+          "enum_eq_formula": true,
+          "market": "S0=120 K=90 u=5/3 d=3/5 R=21/20 n=4",
+          "parity_exact": true
+        },
+        {
+          "C": "222050/16807",
+          "C_minus_P": "0",
+          "P": "222050/16807",
+          "S0_minus_K_disc": "0",
+          "enum_eq_formula": true,
+          "market": "S0=50 K=50 u=4/3 d=3/4 R=1 n=5",
+          "parity_exact": true
+        }
+      ],
+      "pass": true
+    },
+    "G2_montecarlo_agreement": {
+      "mc_mean": 35.98356,
+      "pass": true,
+      "pass_if": "abs(z) < Z_ACCEPT",
+      "target": 36.0,
+      "trials": 400000,
+      "z": -0.112845,
+      "z_accept": 3.0
+    },
+    "G3_invariance_robustness": {
+      "pass": true,
+      "scale_homogeneity": [
+        {
+          "C_minus_P": "108",
+          "lambda": "3",
+          "lambda_times_base": "108",
+          "matches": true
+        },
+        {
+          "C_minus_P": "126",
+          "lambda": "7/2",
+          "lambda_times_base": "126",
+          "matches": true
+        },
+        {
+          "C_minus_P": "36/5",
+          "lambda": "1/5",
+          "lambda_times_base": "36/5",
+          "matches": true
+        }
+      ],
+      "target": "36",
+      "volatility_invariance": [
+        {
+          "C": "48",
+          "C_minus_P": "36",
+          "P": "12",
+          "d": "1/2",
+          "matches_target": true,
+          "u": "2"
+        },
+        {
+          "C": "196/5",
+          "C_minus_P": "36",
+          "P": "16/5",
+          "d": "2/3",
+          "matches_target": true,
+          "u": "3/2"
+        },
+        {
+          "C": "169/4",
+          "C_minus_P": "36",
+          "P": "25/4",
+          "d": "3/5",
+          "matches_target": true,
+          "u": "5/3"
+        },
+        {
+          "C": "625/14",
+          "C_minus_P": "36",
+          "P": "121/14",
+          "d": "5/9",
+          "matches_target": true,
+          "u": "9/5"
+        }
+      ]
+    },
+    "G4_falsifiability_naive": {
+      "mc_mean": 35.98356,
+      "naive_claim": "C - P == S0 - K (undiscounted strike)",
+      "naive_target": 0.0,
+      "pass": true,
+      "pass_if": "abs(z_naive) >= Z_REJECT (naive rule refuted)",
+      "z_naive": 246.993214,
+      "z_reject": 6.0
+    }
+  },
+  "reference_market": {
+    "C": "48",
+    "C_minus_P": "36",
+    "K": "100",
+    "P": "12",
+    "R": "5/4",
+    "S0": "100",
+    "S0_minus_K_disc": "36",
+    "d": "1/2",
+    "n": 2,
+    "q_riskneutral": "1/2",
+    "u": "2"
+  },
+  "seed": 20260717
+}
+in_process_double_run: IDENTICAL
+results_sha256: 637c7b8a0b3a12090d377c4cf10994d81880aed0095bc3966a8a9328b587ede4
+decision: sim-ready
