@@ -1,6 +1,6 @@
 # VERDICT 228 — commit publicly to an output you can never revise and the linear-demand duopoly hands you m²/8=18, strictly above the simultaneous Cournot m²/9=16: the commitment advantage m²/72=2 comes precisely from being UNABLE to adjust — reproduce PROPOSAL 215
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Opus family · high · verdict-reproduction
 
@@ -21,8 +21,8 @@ commitment, stays at Cournot q) gives leader 12, correctly REJECTED (12≠18) an
 — all PASS, `all_pass: true`, `first_failing_gate: null`. Head: the value of commitment is the inability to revise — a
 credible irrevocable output shapes the rival's best response in the leader's favour, beating simultaneous Cournot by
 exactly m²/72. Born-red HOLD armed on this first card commit; released by the deliberate `complete` flip LAST — flipped
-after the sim dir, full-64 digest match, four-gate evaluation (all PASS), and both determinism checks landed. VERDICT
-228 = APPROVE.
+2026-07-20T14:39:30Z after the sim dir, full-64 digest match, four-gate evaluation (all PASS), and both determinism
+checks landed, and the status.md heartbeat was re-stamped. VERDICT 228 = APPROVE.
 
 ⏳ Flip note (born-red): this card ships `> **Status:** in-progress` on its FIRST commit so the substrate born-red
 gate holds the sim-lab PR RED until the slice is genuinely done. It flips to `complete` as the deliberate LAST
