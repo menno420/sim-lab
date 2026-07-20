@@ -1,0 +1,23 @@
+== G1 exhaustive convergence + tight bound (4-digit) ==
+  input_count            = 8991  (expect 8991)
+  nonconverge            = 0  (expect 0)
+  max_steps              = 7  (expect 7)
+  inputs_needing_exact_7 = 1980
+  wrong_bound_<=6_FALSE  = True  (expect True: some input needs 7)
+  G1_PASS                = True
+== G2 unique fixed point (4-digit) ==
+  non-repdigit fixed points = [6174]  (expect [6174])
+  G2_PASS                   = True
+== G3 Monte-Carlo sanity (parsed from run-stdout.txt) ==
+  n_draws   = 200000
+  successes = 200000  (expect 200000)
+  z         = 44.946657  (expect >= 3)
+  G3_PASS   = True
+== G4 dimension-shift (3-digit) ==
+  input_count               = 891  (expect 891)
+  nonconverge               = 0  (expect 0)
+  non-repdigit fixed points = [495]  (expect [495])
+  max_steps                 = 6  (expect 6)
+  G4_PASS                   = True
+== SUMMARY ==
+  all_gates_pass = True

@@ -1,6 +1,6 @@
 # VERDICT 229 — Kaprekar's routine funnels every 4-digit number with ≥2 distinct digits to the single constant 6174 in at most 7 steps: the digit map D(n)=desc(n)−asc(n) is a global contraction onto one absorbing state, not a scrambler — reproduce PROPOSAL 216
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Opus family · high · verdict-reproduction
 
@@ -16,8 +16,17 @@ pre-registered gates each in its own direction — G1 EXHAUSTIVE+FALSIFIABILITY:
 EXACT unique fixed point: the valid 4-digit domain has exactly one fixed point [6174]; G3 MONTE-CARLO significance:
 200000 seeded draws all reach 6174 in ≤7 steps, one-sided z vs p0=0.99 ≥ 3; G4 DIMENSION-SHIFT: the 3-digit routine
 funnels all 891 valid inputs to the DIFFERENT constant 495 with max_steps==6. Grounding byte-pinned (Wikipedia
-"Kaprekar's routine" oldid 1364472561). Born-red HOLD armed on this first card commit; released by the deliberate
-`complete` flip LAST. VERDICT 229 ruling pending probe.
+"Kaprekar's routine" oldid 1364472561, wikitext sha1 `9190b7328602bbc2de0eaad722e5bba4218d8c5b`, 3-way match; all
+three content claims — 6174, "within seven iterations" cited to Hanover 2017, and the 495/6174 base-width limitation
+— literally on-page). Digest full-64 MATCH (printed AND grep-extracted, exact 64-char compare). Determinism CONFIRMED
+(in-process `determinism_double_run=True` AND separate cross-invocation `diff` exit 0). Four gates each in its own
+direction ALL PASS via an independent probe (fresh Kaprekar step, not importing the verifier): G1 input_count=8991,
+nonconverge=0, max_steps=7, 1980 inputs need exactly 7 (so the wrong "≤6" bound is REJECTED); G2 fixed_points=[6174];
+G3 successes=200000, z=44.946657; G4 input_count=891, nonconverge=0, fixed_points=[495], max_steps=6. Grounding caveat
+assessed HONEST (correctly distinguishes cited-bound from firsthand-exhaustive-proof, neither over- nor under-sold —
+no correction needed, unlike V222). Born-red HOLD armed on this first card commit; released by the deliberate
+`complete` flip LAST — flipped 2026-07-20T15:05:32Z after the sim dir, full-64 digest match, four-gate evaluation
+(all PASS), both determinism checks, and the grounding 3-way match landed. VERDICT 229 = APPROVE.
 
 ⏳ Flip note (born-red): this card ships `> **Status:** in-progress` on its FIRST commit so the substrate born-red
 gate holds the sim-lab PR RED until the slice is genuinely done. It flips to `complete` as the deliberate LAST
