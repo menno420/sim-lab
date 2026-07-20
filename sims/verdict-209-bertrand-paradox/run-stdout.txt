@@ -1,0 +1,113 @@
+{
+  "all_pass": true,
+  "g1_montecarlo_vs_closedform": {
+    "endpoints": {
+      "p_hat": 0.331715,
+      "p_star": 0.333333,
+      "pass": true,
+      "std_error": 0.001054,
+      "z": 1.535286
+    },
+    "midpoint": {
+      "p_hat": 0.24883,
+      "p_star": 0.25,
+      "pass": true,
+      "std_error": 0.000968,
+      "z": 1.208371
+    },
+    "radial": {
+      "p_hat": 0.499135,
+      "p_star": 0.5,
+      "pass": true,
+      "std_error": 0.001118,
+      "z": 0.77368
+    }
+  },
+  "g1_pass": true,
+  "g2_exactly_true": {
+    "endpoints": {
+      "closed_form_denominator": 3,
+      "closed_form_numerator": 1,
+      "exact_denominator": 3,
+      "exact_match": true,
+      "exact_numerator": 1,
+      "pass": true,
+      "quadrature": 0.33333,
+      "quadrature_agrees": true
+    },
+    "midpoint": {
+      "closed_form_denominator": 4,
+      "closed_form_numerator": 1,
+      "exact_denominator": 4,
+      "exact_match": true,
+      "exact_numerator": 1,
+      "pass": true,
+      "quadrature": 0.249997,
+      "quadrature_agrees": true
+    },
+    "radial": {
+      "closed_form_denominator": 2,
+      "closed_form_numerator": 1,
+      "exact_denominator": 2,
+      "exact_match": true,
+      "exact_numerator": 1,
+      "pass": true,
+      "quadrature": 0.5,
+      "quadrature_agrees": true
+    }
+  },
+  "g2_pass": true,
+  "g3_pass": true,
+  "g3_robustness_shift": {
+    "answers_differ": true,
+    "cross_method_spread": 0.25,
+    "pass": true,
+    "scale_invariant": true,
+    "sweep": {
+      "endpoints": {
+        "1": 0.33333,
+        "10": 0.33333,
+        "2": 0.33333,
+        "5": 0.33333
+      },
+      "midpoint": {
+        "1": 0.249997,
+        "10": 0.249997,
+        "2": 0.249997,
+        "5": 0.249997
+      },
+      "radial": {
+        "1": 0.5,
+        "10": 0.5,
+        "2": 0.5,
+        "5": 0.5
+      }
+    },
+    "within_method_spread": {
+      "endpoints": 0.0,
+      "midpoint": 0.0,
+      "radial": 0.0
+    }
+  },
+  "head": "bertrand-paradox-chord-nonuniqueness",
+  "seed": 20260717,
+  "world": {
+    "grid_1d": 200000,
+    "grid_2d": 1500,
+    "grid_tol": 0.001,
+    "m_trials": 200000,
+    "methods": [
+      "endpoints",
+      "radial",
+      "midpoint"
+    ],
+    "r_shift": [
+      1,
+      2,
+      5,
+      10
+    ],
+    "z_gate": 3.0
+  }
+}
+Results-JSON sha256: ab79371c9908f7b16f9478d41969e224eb4c95c19d237a2773df693173b5c3cb
