@@ -1,0 +1,154 @@
+{
+  "G1_exact_indifference": {
+    "delta_star": "1/2",
+    "delta_star_expected": "1/2",
+    "incentive_gap": "0/1",
+    "pass": true,
+    "payoff": [
+      5,
+      3,
+      1,
+      0
+    ]
+  },
+  "G2_exact_grid": {
+    "pass": true,
+    "per_tuple": {
+      "(5, 2, 1, 0)": {
+        "delta_star": "3/4",
+        "in_open_unit": true,
+        "incentive_gap": "0/1",
+        "ok": true
+      },
+      "(5, 3, 1, 0)": {
+        "delta_star": "1/2",
+        "in_open_unit": true,
+        "incentive_gap": "0/1",
+        "ok": true
+      },
+      "(5, 4, 1, 0)": {
+        "delta_star": "1/4",
+        "in_open_unit": true,
+        "incentive_gap": "0/1",
+        "ok": true
+      },
+      "(9, 8, 1, 0)": {
+        "delta_star": "1/8",
+        "in_open_unit": true,
+        "incentive_gap": "0/1",
+        "ok": true
+      }
+    }
+  },
+  "G3_mc_agreement": {
+    "delta": 0.5,
+    "mean": 0.0089,
+    "n": 200000,
+    "pass": true,
+    "payoff": [
+      5,
+      3,
+      1,
+      0
+    ],
+    "std": 2.834735,
+    "z": 1.404082
+  },
+  "G4_mc_grid": {
+    "max_abs_z": 1.150506,
+    "n": 200000,
+    "pass": true,
+    "per_tuple": {
+      "(5, 2, 1, 0)": {
+        "delta_star": 0.75,
+        "pass": true,
+        "z": 0.630256
+      },
+      "(5, 3, 1, 0)": {
+        "delta_star": 0.5,
+        "pass": true,
+        "z": -1.150506
+      },
+      "(5, 4, 1, 0)": {
+        "delta_star": 0.25,
+        "pass": true,
+        "z": 0.654137
+      },
+      "(9, 8, 1, 0)": {
+        "delta_star": 0.125,
+        "pass": true,
+        "z": -0.319587
+      }
+    }
+  },
+  "G5_falsify_wrong_formula": {
+    "delta_wrong": 0.4,
+    "delta_wrong_exact": "2/5",
+    "pass": true,
+    "rejected": true,
+    "theoretical_ED_exact": "-2/3",
+    "wrong_rule": "delta_wrong = (T-R)/(T-S) uses Sucker S instead of Punishment P",
+    "z_wrong": -140.372466
+  },
+  "G6_falsify_below_threshold": {
+    "claim_rejected": "cooperation holds for all delta > 0 (deviation strictly profitable below delta*)",
+    "delta_below": 0.25,
+    "delta_below_exact": "1/4",
+    "pass": true,
+    "rejected": true,
+    "theoretical_ED_exact": "-4/3",
+    "z_below": -448.661725
+  },
+  "all_pass": true,
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true,
+    "G5": true,
+    "G6": true
+  },
+  "grid": [
+    [
+      5,
+      3,
+      1,
+      0
+    ],
+    [
+      5,
+      4,
+      1,
+      0
+    ],
+    [
+      5,
+      2,
+      1,
+      0
+    ],
+    [
+      9,
+      8,
+      1,
+      0
+    ]
+  ],
+  "n_mc": 200000,
+  "proposal": 223,
+  "seed": 20260717,
+  "slot": "grim-trigger folk-theorem threshold (P223 -> V236, +13 offset)",
+  "verdict": 236,
+  "z_gate": 3.0
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+G5: PASS
+G6: PASS
+
+all_pass: True
+results_sha256: 7f00cea0bd40b2133ae9e91110c5112e8d5bf16bbcd90809a91911015215334f
