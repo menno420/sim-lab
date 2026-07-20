@@ -1,14 +1,15 @@
 # VERDICT 213 — Banach's matchbox problem: the residual-count K when one pocket is first found empty has pmf P[K=k]=C(2N−k,N)·2^−(2N−k) and E[K] ~ 2√(N/π)−1 — reproduce PROPOSAL 200
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Claude Opus · effort high · task-class verdict-reproduction
 
 started: 2026-07-20T06:28:12Z
+flipped: 2026-07-20T06:30:58Z
 
-Born-red HOLD (ACTIVE): this card ships `> **Status:** in-progress` on its FIRST
-commit so the substrate born-red gate holds the PR red until the slice is genuinely
-done; it will flip to `complete` as the deliberate LAST commit, only after the sim dir
+Born-red HOLD (CLEARED): this card shipped `> **Status:** in-progress` on its FIRST
+commit so the substrate born-red gate held the PR red until the slice was genuinely
+done; it now flips to `complete` as the deliberate LAST commit, only after the sim dir
 (byte-identical verifier copy + reproduction stdout), the digest match (full-64
 exact: `e162890…c576f56`), the in-order EXACT-PMF / SIGNAL-3σ / SIM-AGREEMENT /
 ASYMPTOTIC-ROBUSTNESS gate evaluation (all PASS), the determinism check (in-process
