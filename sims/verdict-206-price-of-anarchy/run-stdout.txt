@@ -1,0 +1,67 @@
+{
+  "all_pass": true,
+  "g1_exactly_true_pigou": {
+    "eq_flow_closed_form": "1",
+    "eq_flow_grid": "1",
+    "exact_match": true,
+    "grid_points": 13,
+    "opt_flow_closed_form": "1/2",
+    "opt_flow_grid": "1/2",
+    "optimal_avg_latency": "3/4",
+    "pass": true,
+    "price_of_anarchy": "4/3",
+    "price_of_anarchy_float": 1.333333,
+    "selfish_avg_latency": "1"
+  },
+  "g2_best_response_interior": {
+    "br_k_unique": true,
+    "closed_form_avg_latency": "3/4",
+    "converged_avg_latency": "3/4",
+    "eq_flow_closed_form": "3/4",
+    "k_star": 3000,
+    "moves_max": 2829,
+    "optimal_avg_latency": "23/32",
+    "pass": true,
+    "price_of_anarchy": "24/23",
+    "price_of_anarchy_float": 1.043478,
+    "trials": 50
+  },
+  "g3_bound_and_loss_random": {
+    "frac_positive_loss": 1.0,
+    "frac_within_4_3_bound": 1.0,
+    "max_poa_float": 1.328904,
+    "mean_loss": 0.148868,
+    "pass": true,
+    "std_loss": 0.091804,
+    "trials": 20000,
+    "z": 229.325562
+  },
+  "g4_regime_shift_control": {
+    "frac_efficient_poa_1": 1.0,
+    "max_loss": "0",
+    "pass": true,
+    "trials": 20000
+  },
+  "head": "price-of-anarchy-pigou-4-3-bound",
+  "seed": 20260717,
+  "world": {
+    "br_trials": 50,
+    "grid": 12,
+    "interior": [
+      "1",
+      "0",
+      "1",
+      "1/2"
+    ],
+    "k_quanta": 4000,
+    "pigou": [
+      "1",
+      "0",
+      "0",
+      "1"
+    ],
+    "trials": 20000,
+    "z_gate": 3.0
+  }
+}
+Results-JSON sha256: 9fc650416ae0907bddc988addf0ae4cf76d336a062a9bdaa5aef95eea6d5dcda
