@@ -1,6 +1,6 @@
 # VERDICT 218 — Bélády's anomaly: FIFO page replacement is NON-monotone in the number of frames — giving the cache MORE memory can make it fault MORE. On the canonical reference string [1,2,3,4,1,2,5,1,2,3,4,5] FIFO faults 9 times at 3 frames but 10 times at 4 frames (delta +1), while LRU is a STACK algorithm (Mattson, Gecsei, Slutz & Traiger 1970) and is provably immune — adding a frame can never increase LRU faults, so LRU is never anomalous — reproduce PROPOSAL 205
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Claude · high effort · verdict-reproduction
 
