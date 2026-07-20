@@ -1,0 +1,36 @@
+{
+  "all_pass": true,
+  "g1_long_idle_warm_blowup": {
+    "paired_warm_minus_be_mean": 3.281912,
+    "pass": true,
+    "ratio_be": 1.903787,
+    "ratio_warm": 5.522566,
+    "z": 306.250137
+  },
+  "g2_short_idle_cold_blowup": {
+    "paired_cold_minus_be_mean": 0.794634,
+    "pass": true,
+    "ratio_be": 1.033101,
+    "ratio_cold": 5.030524,
+    "z": 1524.124639
+  },
+  "g3_matched_constant_and_shift": {
+    "e_over_e_minus_1": 1.581977,
+    "pass": true,
+    "ratio_be_hyper": 1.601131,
+    "ratio_be_match": 1.579541,
+    "rel_err": 0.00154,
+    "z_hyper": 124.186516
+  },
+  "world": {
+    "B": 1.0,
+    "R": 200000,
+    "e_over_e_minus_1": 1.581977,
+    "mu_long": 5.0,
+    "mu_match": 1.0,
+    "mu_short": 0.2,
+    "seed": 20260717,
+    "z_min": 3.0
+  }
+}
+Results-JSON sha256: 0a0464162b20350c6d07104fed5bf62f1578021be85c0ecba18b4b07a3964c2b
