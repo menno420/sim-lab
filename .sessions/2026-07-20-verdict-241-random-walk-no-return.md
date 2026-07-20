@@ -1,6 +1,6 @@
 # Session — VERDICT 241 (reproduce PROPOSAL 228, random-walk no-return identity)
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > Born-red HOLD: lands `in-progress` on the first commit to hold the PR red through substrate-gate, flips to `complete` as the last commit once the verifier, probe report, and captured stdout are in place and verified. Merge-on-green lands it (ORDER 003, zero agent merge calls).
 
 ## 💡 Session idea
