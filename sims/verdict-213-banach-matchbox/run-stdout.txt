@@ -1,0 +1,57 @@
+{
+  "EK10_float": 2.700138,
+  "EK200_float": 14.98759,
+  "EK50_exact": "1115296899859219265664919877185/158456325028528675187087900672",
+  "EK50_float": 7.038513,
+  "G1_exactly_true": true,
+  "G2_signal_3sigma": true,
+  "G3_agreement": true,
+  "G4_robustness": true,
+  "N_head": 50,
+  "all_pass": true,
+  "g1_detail": {
+    "10": {
+      "ek_equal": true,
+      "pmf_equal": true,
+      "sum_is_one": true
+    },
+    "50": {
+      "ek_equal": true,
+      "pmf_equal": true,
+      "sum_is_one": true
+    }
+  },
+  "grid": [
+    10,
+    50,
+    200
+  ],
+  "pmf10_K0": 0.176197,
+  "pmf50_K0": 0.079589,
+  "pmf50_KN": 0.0,
+  "pmf50_head": [
+    0.079589,
+    0.079589,
+    0.078785,
+    0.077177,
+    0.074791
+  ],
+  "pmf_sum10_is_one": true,
+  "pmf_sum50_is_one": true,
+  "ratios": {
+    "10": 1.170086,
+    "200": 1.130493,
+    "50": 1.136817
+  },
+  "se": 0.003828,
+  "seed": 20260717,
+  "sim_mean": 7.04112,
+  "sim_var": 29.303195,
+  "trials": 2000000,
+  "two_over_sqrt_pi": 1.128379,
+  "z2": 1839.497873,
+  "z3": 0.681218,
+  "z_gate": 3.0
+}
+
+results_sha256=e162890959eba728cf83004508a213f3585009bcc8fbc6e8bebdab753c576f56
