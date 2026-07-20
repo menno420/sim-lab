@@ -1,0 +1,52 @@
+{
+  "all_pass": true,
+  "g1_montecarlo_vs_closedform": {
+    "p_closed_form": 0.311828,
+    "p_hat": 0.311315,
+    "pass": true,
+    "std_error": 0.001036,
+    "z": 0.495079
+  },
+  "g2_exactly_true_enumeration": {
+    "closed_form_denominator": 840,
+    "closed_form_numerator": 307,
+    "enum_denominator": 840,
+    "enum_numerator": 307,
+    "exact_match": true,
+    "n": 8,
+    "opens": 4,
+    "pass": true,
+    "value": 0.365476
+  },
+  "g3_robustness_shift": {
+    "ln2_floor": 0.306853,
+    "log10_advantage_over_naive": 29.596914,
+    "naive_survival_log10": -30.103,
+    "pass": true,
+    "spread": 0.004925,
+    "sweep": {
+      "100": 0.311828,
+      "1000": 0.307353,
+      "10000": 0.306903,
+      "300": 0.308517,
+      "3000": 0.307019
+    }
+  },
+  "head": "hundred-prisoners-cycle-strategy",
+  "seed": 20260717,
+  "world": {
+    "m_trials": 200000,
+    "n_enum": 8,
+    "n_main": 100,
+    "n_shift": [
+      100,
+      300,
+      1000,
+      3000,
+      10000
+    ],
+    "open_main": 50,
+    "z_gate": 3.0
+  }
+}
+Results-JSON sha256: ebc266644b5e21cb3c3c52415abd30e907c279fed74aa8f1c7151d5be895fdcf
