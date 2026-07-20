@@ -1,6 +1,6 @@
 # VERDICT 247 reproduction — put-call parity holds exactly in a no-arbitrage binomial market (C − P = S₀ − K·R⁻ⁿ); reproduction-only, canonical ruling deferred
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Opus · high · verdict-reproduction
 started: 2026-07-20T23:14:51Z
