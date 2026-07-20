@@ -1,6 +1,6 @@
 # PROPOSAL 229 → VERDICT 242 — Derangement routing: when N agents are assigned N tasks by a uniformly-random permutation, the chance that NO agent lands on its own home task is p_N = D_N/N! = Σ(−1)^k/k! → 1/e ≈ 36.8%, and it is NOT the naive (1−1/N)^N — stage the SEED=20260717 stdlib verifier so VERDICT 242 can rule on it
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 
 📊 Model: opus-4.8 · high · verification/staging
 
