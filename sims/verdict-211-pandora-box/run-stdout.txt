@@ -1,0 +1,142 @@
+{
+  "head": "pandora-box-reservation-index",
+  "seed": 20260717,
+  "constants": {
+    "N_boxes": 4,
+    "M_instances": 400,
+    "z_gate": 3.0,
+    "reward_support": "distinct ints on 0..10, rational weights 1..4",
+    "cost_support": "Fraction(1..5, {1,2}) = 0.5..5"
+  },
+  "g1_exact_agreement": {
+    "base_mismatch_count": 0,
+    "shift_mismatch_count": 0,
+    "direction": "AGREEMENT \u2014 index_policy_value == optimal_value exactly (Fraction); ZERO mismatches is the pass condition"
+  },
+  "g2_surprise_regret": {
+    "mean_regret_exact": "3913166353771/5867769600000",
+    "mean_regret_float": 0.6668916165,
+    "std_regret": 0.8600990908,
+    "z_regret": 15.507320578,
+    "n_positive_regret": 289,
+    "n_instances": 400,
+    "direction": "HIGH z (>=3 sigma) \u2014 the mean-greedy heuristic is genuinely, significantly SUBOPTIMAL vs the reservation-index optimum"
+  },
+  "g3_nonmonotonicity": {
+    "z_order_ne_mean_order_count": 305,
+    "lower_mean_opened_first_count": 153,
+    "decline_higher_mean_count": 236,
+    "witness": {
+      "instance": {
+        "boxes": [
+          {
+            "id": 0,
+            "cost": "2",
+            "support": [
+              [
+                5,
+                "1/4"
+              ],
+              [
+                6,
+                "1/4"
+              ],
+              [
+                9,
+                "1/2"
+              ]
+            ],
+            "mean": "29/4",
+            "reservation_z": "16/3"
+          },
+          {
+            "id": 1,
+            "cost": "1",
+            "support": [
+              [
+                2,
+                "4/9"
+              ],
+              [
+                7,
+                "1/9"
+              ],
+              [
+                9,
+                "4/9"
+              ]
+            ],
+            "mean": "17/3",
+            "reservation_z": "34/5"
+          },
+          {
+            "id": 2,
+            "cost": "3",
+            "support": [
+              [
+                4,
+                "3/5"
+              ],
+              [
+                6,
+                "2/5"
+              ]
+            ],
+            "mean": "24/5",
+            "reservation_z": "9/5"
+          },
+          {
+            "id": 3,
+            "cost": "1",
+            "support": [
+              [
+                2,
+                "3/7"
+              ],
+              [
+                6,
+                "4/7"
+              ]
+            ],
+            "mean": "30/7",
+            "reservation_z": "17/4"
+          }
+        ]
+      },
+      "first_opened_box_by_z": 1,
+      "first_opened_mean": "17/3",
+      "highest_mean_box": 0,
+      "highest_mean": "29/4",
+      "optimal_value": "55/9",
+      "greedy_mean_value": "11/2",
+      "index_value": "55/9",
+      "note": "optimum opens box 1 (mean 17/3, z 34/5) BEFORE the higher-mean box 0 (mean 29/4, z 16/3)"
+    },
+    "direction": "reservation order != expected-reward order; the optimum opens a lower-mean box FIRST and declines a higher-mean box"
+  },
+  "g4_robustness_shift": {
+    "regime": "costs x3",
+    "mismatch_count": 0,
+    "mean_regret_exact": "2988700847171/800150400000",
+    "mean_regret_float": 3.7351738463,
+    "std_regret": 3.9215063437,
+    "z_regret": 19.0496891702,
+    "n_positive_regret": 321,
+    "direction": "shifted regime still EXACT (0 mismatches) and surprise regret stays positive at >= 3 sigma"
+  },
+  "gates": {
+    "G1_exact_index_eq_optimal": true,
+    "G2_surprise_regret_3sigma": true,
+    "G3_nonmonotonicity_witness": true,
+    "G4_robustness_shift": true
+  },
+  "first_failing_gate": null,
+  "all_pass": true
+}
+double_run_identical=true
+all_pass=true
+G1_base_mismatch=0 G1_shift_mismatch=0
+G2_z_regret=15.507320578 (mean_regret=3913166353771/5867769600000, n_positive=289/400)
+G3_z_order_ne_mean=305 lower_mean_first=153 decline_higher_mean=236
+G4_shift_z_regret=19.0496891702 (mismatch=0)
+RESULTS_SHA256=a0cb19cc5574c17ea982580f1546a46ece84d9a32fbd06beb1e3290cacd1fcad
