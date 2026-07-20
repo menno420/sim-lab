@@ -1,6 +1,6 @@
 # PROPOSAL 225 → VERDICT 238 — Balls into bins: the expected number of collisions (unordered pairs sharing a bin) is EXACTLY E[X] = C(m,2)/n = m(m−1)/(2n) — quadratic in the balls, by linearity over the C(m,2) pairs, NOT the naive m²/(2n) — stage the SEED=20260717 stdlib verifier so VERDICT 238 can rule on it
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 
 📊 Model: opus-4.8 · high · review/verify
 
