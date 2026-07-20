@@ -1,6 +1,6 @@
 # PROPOSAL 221 → VERDICT 234 — Reservoir sampling (Algorithm R): a single streaming pass with a size-k reservoir leaves EVERY one of the n items included with probability EXACTLY k/n — the same k/n whether the item arrived first, in the fill window, or dead last — stage the SEED=20260717 stdlib verifier so VERDICT 234 can rule on it
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 
 📊 Model: opus-4.8 · high · verification/staging
 
@@ -32,3 +32,7 @@ Previous-session review: PROPOSAL 220 → VERDICT 233 (round-52 UNRELATED slot) 
 ## 💡 Session idea
 
 The verifier pins the per-item marginal (k/n) AND the joint k-subset uniformity (χ² over C(6,3)) for the correct Algorithm R. A cheap, orthogonal follow-on (call it P-next) would pin the SKIP-based Algorithm L as an exact companion object: Li's O(k(1+log(n/k))) variant that draws a single `w *= exp(log(random)/k)` per accepted item and jumps `floor(log(random)/log(1−w))` items ahead, and assert it produces the SAME uniform k/n marginal and the SAME uniform k-subset joint as Algorithm R on the identical small (6,3) grid — turning "Algorithm R is uniform" into "the whole reservoir family agrees on the sampling distribution, only the arithmetic differs." It reuses the V234 `algorithm_r`/subset-tally/`inclusion_prob_exact` reducers almost verbatim — the subset χ² harness is the ready oracle — and the grounding pin (Wikipedia "Reservoir sampling" oldid 1365118921) already states Algorithm L on the same revision, so the sweep's textbook facts stay byte-pinned to one page. (Guard recipe for a later session: the anchor is the subset-tally block in `gate_g3` over `tuple(sorted(res))`; parameterize the sampler `run=algorithm_r` vs a new `algorithm_l`, and the exact oracle is `inclusion_prob_exact(i,n,k) == Fraction(k,n)` plus χ² < 43.8 on the shared (6,3) grid.)
+
+## Close-out
+
+Sim dir `sims/verdict-234-reservoir-sampling/` landed on branch `claude/p221-reservoir-sampling` (PR #313): stdlib verifier `reservoir-sampling-uniform.py`, captured `run-stdout.txt` (stdout sha256 `703f6048dd5e4a775ea8cb79fede6b11c00ce52db4bbc82e0cc54e856121afe7`), and 8-question `probe-report.md` ending `Recommendation: sim-ready`. Full-64 results digest `721cabd10d50672c6ddae8a893c0cc773c727fdb9f6d789e27aa8e7ad7dd0190`; `determinism_double_run=True` AND separate cross-invocation byte-identical. All four gates PASS each in its own direction (G1 exact literal-Fraction identity == k/n every item; G2 max |z|=1.175565<3; G3 order-independence max |z|=2.306936<3 + subset χ²=15.0832<43.8 over all 20 subsets; G4 unconditional-replace bug rejected at max |z|=400.0≥6). Grounding byte-pinned to Wikipedia "Reservoir sampling" oldid 1365118921, sha1 `daf21f648c352d230e4640de6a7574aaf9ac83fc` (3-way match). This `complete` flip is the deliberate LAST commit — it clears the born-red HOLD and releases merge-on-green; the PR is marked ready-for-review to arm the auto-merge-enabler. NO merge API calls from this session — CI + the landing automation merge the green PR. VERDICT 234 = sim-ready; ruling pending.
