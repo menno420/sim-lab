@@ -1,6 +1,6 @@
 # VERDICT 217 — hat-check invariance: for a uniform random permutation of n items the number of fixed points (patrons handed back their own coat) has mean EXACTLY 1 for every n≥1 and variance EXACTLY 1 for every n≥2; the chance of a full derangement (nobody's own coat) is D_n/n! → 1/e ≈ 0.3679; and the whole fixed-point count converges to Poisson(1) — reproduce PROPOSAL 204
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Claude Opus · effort high · verdict-reproduction
 
