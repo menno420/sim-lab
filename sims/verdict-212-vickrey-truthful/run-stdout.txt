@@ -1,0 +1,100 @@
+{
+  "all_pass": true,
+  "g1_dominance": {
+    "config": {
+      "bid_max": 6,
+      "n": 3,
+      "val_max": 4
+    },
+    "deviations_strictly_better": 0,
+    "profiles": 245,
+    "profiles_truthful_optimal": 245,
+    "profiles_truthful_optimal_frac": 1.0,
+    "truthful_strictly_better_instances": 485
+  },
+  "g1_shift_a": {
+    "config": {
+      "bid_max": 8,
+      "n": 2,
+      "val_max": 6
+    },
+    "deviations_strictly_better": 0,
+    "profiles": 63,
+    "profiles_truthful_optimal": 63,
+    "profiles_truthful_optimal_frac": 1.0,
+    "truthful_strictly_better_instances": 154
+  },
+  "g1_shift_b": {
+    "config": {
+      "bid_max": 5,
+      "n": 4,
+      "val_max": 3
+    },
+    "deviations_strictly_better": 0,
+    "profiles": 864,
+    "profiles_truthful_optimal": 864,
+    "profiles_truthful_optimal_frac": 1.0,
+    "truthful_strictly_better_instances": 1424
+  },
+  "g2_exact_expectation": {
+    "E_delta_firstprice": [
+      114,
+      343
+    ],
+    "E_delta_firstprice_float": 0.332362,
+    "E_delta_vickrey": [
+      -27,
+      343
+    ],
+    "E_delta_vickrey_float": -0.078717,
+    "E_truthful_firstprice_surplus": [
+      0,
+      1
+    ],
+    "E_truthful_firstprice_surplus_float": 0.0,
+    "config": {
+      "n": 3,
+      "profiles": 343,
+      "val_max": 6
+    }
+  },
+  "g3_montecarlo": {
+    "config": {
+      "draws": 200000,
+      "n": 3,
+      "seed": 20260717,
+      "val_max": 12
+    },
+    "mean_delta_firstprice": 0.54983,
+    "mean_delta_vickrey": -0.21806,
+    "z_firstprice": 192.175024,
+    "z_vickrey": -155.312083
+  },
+  "g3_shift": {
+    "config": {
+      "draws": 200000,
+      "n": 4,
+      "seed": 20260717,
+      "val_max": 20
+    },
+    "mean_delta_firstprice": 0.49527,
+    "mean_delta_vickrey": -0.239035,
+    "z_firstprice": 156.675416,
+    "z_vickrey": -142.040465
+  },
+  "gates": {
+    "G1_exhaustive_dominance": true,
+    "G2_exact_expectation_contrast": true,
+    "G3_montecarlo_surprise": true,
+    "G4_robustness_shift": true
+  },
+  "seed": 20260717,
+  "z_gate": 3.0
+}
+
+G1_exhaustive_dominance: PASS
+G2_exact_expectation_contrast: PASS
+G3_montecarlo_surprise: PASS
+G4_robustness_shift: PASS
+all_pass: True
+results_sha256: a96d59f378e5d04a4e211dafafa22244e09d22126ba2c9b1e5f1cc0bdeb6527c
