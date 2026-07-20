@@ -1,0 +1,279 @@
+{
+  "algorithm": "R (Waterman / Knuth TAOCP Vol.2 / Vitter)",
+  "configs": [
+    [
+      40,
+      8
+    ],
+    [
+      25,
+      5
+    ]
+  ],
+  "g1_exact_identity": {
+    "25,5": {
+      "all_items_equal_k_over_n": true,
+      "items_checked": 25,
+      "k": 5,
+      "n": 25,
+      "sample": {
+        "1": {
+          "equals_k_over_n": true,
+          "prob": "1/5"
+        },
+        "25": {
+          "equals_k_over_n": true,
+          "prob": "1/5"
+        },
+        "5": {
+          "equals_k_over_n": true,
+          "prob": "1/5"
+        },
+        "6": {
+          "equals_k_over_n": true,
+          "prob": "1/5"
+        }
+      },
+      "target_k_over_n": "1/5"
+    },
+    "40,8": {
+      "all_items_equal_k_over_n": true,
+      "items_checked": 40,
+      "k": 8,
+      "n": 40,
+      "sample": {
+        "1": {
+          "equals_k_over_n": true,
+          "prob": "1/5"
+        },
+        "40": {
+          "equals_k_over_n": true,
+          "prob": "1/5"
+        },
+        "8": {
+          "equals_k_over_n": true,
+          "prob": "1/5"
+        },
+        "9": {
+          "equals_k_over_n": true,
+          "prob": "1/5"
+        }
+      },
+      "target_k_over_n": "1/5"
+    }
+  },
+  "g2_montecarlo": {
+    "25,5": {
+      "all_within_3sigma": true,
+      "k": 5,
+      "max_abs_z": 1.175565,
+      "n": 25,
+      "p_k_over_n": 0.2,
+      "per_probe": {
+        "1": {
+          "freq": 0.2013625,
+          "within_3sigma": true,
+          "z": 0.963433
+        },
+        "25": {
+          "freq": 0.2016625,
+          "within_3sigma": true,
+          "z": 1.175565
+        },
+        "5": {
+          "freq": 0.201525,
+          "within_3sigma": true,
+          "z": 1.078338
+        },
+        "6": {
+          "freq": 0.200975,
+          "within_3sigma": true,
+          "z": 0.689429
+        }
+      },
+      "probes": [
+        1,
+        5,
+        6,
+        25
+      ],
+      "se": 0.001414213562,
+      "trials": 80000
+    },
+    "40,8": {
+      "all_within_3sigma": true,
+      "k": 8,
+      "max_abs_z": 0.76014,
+      "n": 40,
+      "p_k_over_n": 0.2,
+      "per_probe": {
+        "1": {
+          "freq": 0.2005625,
+          "within_3sigma": true,
+          "z": 0.397748
+        },
+        "40": {
+          "freq": 0.200375,
+          "within_3sigma": true,
+          "z": 0.265165
+        },
+        "8": {
+          "freq": 0.198925,
+          "within_3sigma": true,
+          "z": -0.76014
+        },
+        "9": {
+          "freq": 0.2003125,
+          "within_3sigma": true,
+          "z": 0.220971
+        }
+      },
+      "probes": [
+        1,
+        8,
+        9,
+        40
+      ],
+      "se": 0.001414213562,
+      "trials": 80000
+    }
+  },
+  "g3_robustness": {
+    "both_hold": true,
+    "order_independence": {
+      "all_within_3sigma": true,
+      "arrival_order_shuffled": true,
+      "config": [
+        40,
+        8
+      ],
+      "max_abs_z": 2.306936,
+      "per_probe": {
+        "1": {
+          "freq": 0.2015875,
+          "within_3sigma": true,
+          "z": 1.122532
+        },
+        "40": {
+          "freq": 0.1967375,
+          "within_3sigma": true,
+          "z": -2.306936
+        },
+        "8": {
+          "freq": 0.2013,
+          "within_3sigma": true,
+          "z": 0.919239
+        },
+        "9": {
+          "freq": 0.1982875,
+          "within_3sigma": true,
+          "z": -1.21092
+        }
+      },
+      "probes": [
+        1,
+        8,
+        9,
+        40
+      ],
+      "trials": 80000
+    },
+    "subset_uniformity": {
+      "chi_square": 15.0832,
+      "chi_square_crit_0p001_df19": 43.8,
+      "config": [
+        6,
+        3
+      ],
+      "distinct_subsets_observed": 20,
+      "distinct_subsets_possible": 20,
+      "expected_per_subset": 7500.0,
+      "max_count": 7636,
+      "min_count": 7399,
+      "trials": 150000,
+      "uniform_within_crit": true
+    }
+  },
+  "g4_falsifiability": {
+    "both_wrong_models_rejected": true,
+    "first_k_naive_model": {
+      "model": "inclusion = 1 for i<=k, 0 for i>k",
+      "per_probe": {
+        "1": {
+          "naive_inclusion": "1/1",
+          "naive_neq_true": true,
+          "true_k_over_n": "1/5"
+        },
+        "40": {
+          "naive_inclusion": "0/1",
+          "naive_neq_true": true,
+          "true_k_over_n": "1/5"
+        },
+        "8": {
+          "naive_inclusion": "1/1",
+          "naive_neq_true": true,
+          "true_k_over_n": "1/5"
+        },
+        "9": {
+          "naive_inclusion": "0/1",
+          "naive_neq_true": true,
+          "true_k_over_n": "1/5"
+        }
+      },
+      "rejected": true
+    },
+    "unconditional_replace_bug": {
+      "config": [
+        40,
+        8
+      ],
+      "max_abs_z": 400.0,
+      "model": "for i>k pick j uniform in [1,k] and ALWAYS replace (no j<=i gate)",
+      "p_k_over_n": 0.2,
+      "per_probe": {
+        "1": {
+          "deviates_from_k_over_n": true,
+          "freq": 0.01345,
+          "z": -93.275
+        },
+        "40": {
+          "deviates_from_k_over_n": true,
+          "freq": 1.0,
+          "z": 400.0
+        },
+        "8": {
+          "deviates_from_k_over_n": true,
+          "freq": 0.01315,
+          "z": -93.425
+        },
+        "9": {
+          "deviates_from_k_over_n": true,
+          "freq": 0.01535,
+          "z": -92.325
+        }
+      },
+      "probes": [
+        1,
+        8,
+        9,
+        40
+      ],
+      "rejected_at_z_ge_6": true,
+      "trials": 40000
+    }
+  },
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "proposal": "PROPOSAL 221",
+  "seed": 20260717,
+  "sim_ready": true,
+  "theorem": "Reservoir sampling Algorithm R - uniform k/n inclusion",
+  "verdict": 234
+}
+results_sha256=721cabd10d50672c6ddae8a893c0cc773c727fdb9f6d789e27aa8e7ad7dd0190
+determinism_double_run=True
+sim_ready=True
