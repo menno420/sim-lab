@@ -1,0 +1,50 @@
+{
+  "all_pass": true,
+  "base": {
+    "L": 3,
+    "all_favor_p2": true,
+    "favor_frac": 1.0,
+    "max_dev_from_exact": 0.007067,
+    "min_edge": 0.161,
+    "min_winrate": 0.661,
+    "min_z": 58.90958,
+    "n_first_picks": 8,
+    "worst_exact": 0.666667,
+    "worst_mc": 0.661,
+    "worst_pa": "100",
+    "worst_pb": "110"
+  },
+  "base_L": 3,
+  "exact_tol": 0.02,
+  "g1_headline_3sigma": true,
+  "g2_sign_magnitude": true,
+  "g3_robust_shift_l4": true,
+  "g4_exactly_true": true,
+  "min_edge_gate": 0.05,
+  "p_heads": 0.5,
+  "seed": 20260717,
+  "shift_L": 4,
+  "shifted": {
+    "L": 4,
+    "all_favor_p2": true,
+    "favor_frac": 1.0,
+    "max_dev_from_exact": 0.005933,
+    "min_edge": 0.079033,
+    "min_winrate": 0.579033,
+    "min_z": 27.726515,
+    "n_first_picks": 16,
+    "worst_exact": 0.583333,
+    "worst_mc": 0.579033,
+    "worst_pa": "0011",
+    "worst_pb": "1001"
+  },
+  "sign_frac_gate": 1.0,
+  "trials": 30000,
+  "z_gate": 3.0
+}
+Results-JSON sha256: 8942324fa0c31abf11a053bb56b98306709611f73b9a2ad344fe0034d87744f4
+G1 headline (>=3s): PASS min_z=58.9096
+G2 sign+magnitude: PASS favor_frac=1.0000 min_edge=0.1610
+G3 robust (L=4)  : PASS min_z=27.7265
+G4 exactly-true  : PASS base_dev=0.00707 shift_dev=0.00593
+ALL_PASS         : True
