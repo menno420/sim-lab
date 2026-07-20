@@ -1,6 +1,6 @@
 # VERDICT 219 — Independent positives MULTIPLY the odds: k conditionally-independent symmetric screens (AND rule) compose by likelihood-ratio product, so the k-th screen need only clear (odds-against)^(1/k) — the k-th-root diligence ladder. At a 1% base rate TWO independent 95% screens (AND) flag a ~78%-good shortlist that one 99% screen cannot (a single test sits at the PPV knife-edge ≈0.5), while the gain VANISHES exactly when the screens are redundant (ρ=1 collapses PPV to the single-screen 0.161) — reproduce PROPOSAL 206
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Claude · high effort · verdict-reproduction
 
