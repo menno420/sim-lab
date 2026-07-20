@@ -1,6 +1,6 @@
 # VERDICT 222 — Grid quorums √N intersection: on a k×k grid, assign each site the quorum row∪col (2k−1 sites). Any two such quorums ALWAYS intersect (share ≥ the row/col crossing sites) even though each is only O(√N) of the N=k² sites — the Maekawa mutual-exclusion property. STRUCTURE, not size, buys the intersection: random subsets of the same size 2k−1 are disjoint at a positive rate, while grid quorums are never disjoint. Reproduce PROPOSAL 209
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Opus family · high effort · verdict-reproduction
 
