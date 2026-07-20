@@ -18,12 +18,18 @@
 
 ## 📊 Model: Claude · high effort · verdict-reproduction
 
-## Ruling: pending coordinator sign-off
+## Ruling: APPROVE
 
-This probe reproduces the disclosed digest byte-for-byte (full-64 exact), determinism holds
-both in-process and across invocations, and all four gates PASS in their stated directions.
-No final APPROVE/REJECT ruling is written here — the ruling is left to be finalized under
-coordinator sign-off (a later worker flips the card).
+The reproduction is byte-identical and deterministic, the results-dict digest matches full-64
+exact (`e5c3517c9d3408bc76941be37b820d0216fcbe0fb00c2cffaf1d8bf763bf7bff`), all four gates pass
+(G1 canonical FIFO 9→10 Δ=+1 with LRU monotone non-increasing; G2 exhaustive 4^8=65536 strings
+both FIFO- and LRU-anomaly-free; G3/G4 signal z ≥ 3σ with LRU provably exactly zero), and the
+external Wikipedia pin (oldid 1312057235, raw-wikitext sha1
+`ffabfee5a2daf46ebc33fca9e3ed94c854e2bd38`) is authentic and firsthand-supports the head; the
+one noted caveat — the page's worked example uses an equivalent reference string
+`3,2,1,0,3,2,4,…` rather than the proposal's `1,2,3,4,1,2,5,…` and does not cite Mattson 1970 —
+is a minor disclosure nuance, not a defect, since the verifier witnesses the proposal's own
+canonical string firsthand at G1.
 
 ## Head
 
@@ -134,4 +140,4 @@ lru_anom=0); **G4** robustness (fifo_anom=109, rate 0.0005450000 > 0.0003 floor,
 `ffabfee5a2daf46ebc33fca9e3ed94c854e2bd38`) and firsthand-supports the head (FIFO
 non-monotonicity + LRU immunity, 9/10 counts), with honest caveats (worked-example uses the
 equivalent `3,2,1,0,3,2,4,3,2,1,0,4` string; does not cite Mattson 1970) that do not block.
-**Ruling: pending coordinator sign-off.** (Run stdout: `run-stdout.txt`.)
+**Ruling: APPROVE.** (Run stdout: `run-stdout.txt`.)
