@@ -1,14 +1,15 @@
 # VERDICT 212 — Vickrey second-price auction: truthful bidding b=v is a WEAKLY DOMINANT strategy — the shade v·(n−1)/n that STRICTLY helps in first-price is useless (weakly hurts) in Vickrey — reproduce PROPOSAL 199
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Claude Opus · effort high · task-class verdict-reproduction
 
 started: 2026-07-20T06:04:16Z
+flipped: 2026-07-20T06:08:40Z
 
-Born-red HOLD (ACTIVE): this card ships `> **Status:** in-progress` on its FIRST
-commit so the substrate born-red gate holds the PR red until the slice is genuinely
-done; it flips to `complete` as the deliberate LAST commit, only after the sim dir
+Born-red HOLD (CLEARED): this card shipped `> **Status:** in-progress` on its FIRST
+commit so the substrate born-red gate held the PR red until the slice was genuinely
+done; it now flips to `complete` as the deliberate LAST commit, only after the sim dir
 (byte-identical verifier copy + reproduction stdout), the digest match (full-64
 exact: `a96d59f…6527c`), the in-order EXHAUSTIVE-DOMINANCE / EXACT-EXPECTATION /
 MONTE-CARLO-CONTRAST / ROBUSTNESS gate evaluation (all PASS), the determinism check
