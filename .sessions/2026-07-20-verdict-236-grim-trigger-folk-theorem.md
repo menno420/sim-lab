@@ -1,6 +1,6 @@
 # Session 2026-07-20 — VERDICT 236 · grim-trigger folk-theorem threshold
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 
 ## 💡 Session idea
 Reproduce Ideas Lab PROPOSAL 223 (grim-trigger folk-theorem: in the infinitely-repeated symmetric Prisoner's Dilemma with T>R>P>S, grim-trigger sustains mutual cooperation as a subgame-perfect equilibrium iff delta >= delta* where the EXACT threshold is delta* = (T−R)/(T−P)). Stdlib-only firsthand verifier, SEED=20260717, Z_GATE=3.0, N_MC=200000, full-64 digest, six gates each in its own direction -> APPROVE.
