@@ -1,6 +1,6 @@
 # VERDICT 226 — change the scheduler, change every wait, but throughput × mean-time-in-system still counts the queue to the bit: Little's law L=λW is an EXACT pathwise identity for every work-conserving discipline (FIFO/LIFO/SIRO/priority), distribution-and-discipline-free, with L,W discipline-dependent but T/λ invariant — reproduce PROPOSAL 213
 
-> **Status:** in-progress
+> **Status:** complete
 
 📊 Model: Opus family · high · review/verify
 
