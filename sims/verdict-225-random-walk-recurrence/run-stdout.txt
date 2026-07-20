@@ -1,0 +1,63 @@
+{
+  "determinism_double_run_ok": true,
+  "exact_2d": [
+    {
+      "2n": 2,
+      "closed": 4,
+      "enum": 4,
+      "eq": true
+    },
+    {
+      "2n": 4,
+      "closed": 36,
+      "enum": 36,
+      "eq": true
+    },
+    {
+      "2n": 6,
+      "closed": 400,
+      "enum": 400,
+      "eq": true
+    }
+  ],
+  "exact_3d": [
+    {
+      "2n": 2,
+      "closed": 6,
+      "enum": 6,
+      "eq": true
+    },
+    {
+      "2n": 4,
+      "closed": 90,
+      "enum": 90,
+      "eq": true
+    }
+  ],
+  "f2_hi": 0.6814,
+  "f2_lo": 0.5808,
+  "f3_hi": 0.335467,
+  "f3_lo": 0.314667,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true,
+    "G5": true,
+    "G6": true
+  },
+  "mc_K": 15000,
+  "mc_T_hi": 1200,
+  "mc_T_lo": 100,
+  "scaled_2d_n2000": 0.31827,
+  "scaled_2d_target_1_over_pi": 0.31831,
+  "scaled_3d_n60": 0.231839,
+  "scaled_3d_target": 0.233291,
+  "seed": 20260717,
+  "sim_ready": true,
+  "z_dominate_2d_over_3d": 63.8705,
+  "z_shift_2d": 18.1551,
+  "z_shift_3d": 3.8467,
+  "z_transient_3d": 42.6792
+}
+results_sha256=66ca292316986d8121a552e3c4c61557182d787b2e25cf54659a0130d0dede07
