@@ -1,0 +1,169 @@
+{
+  "configs": [
+    [
+      365,
+      23
+    ],
+    [
+      256,
+      64
+    ],
+    [
+      1000,
+      100
+    ]
+  ],
+  "g1_exact_identity": {
+    "1000,100": {
+      "E_float": 4.95,
+      "m": 100,
+      "n": 1000,
+      "pairs_C_m_2": 4950,
+      "route_a_pairsum": "99/20",
+      "route_b_perbin": "99/20",
+      "route_c_closed": "99/20",
+      "three_routes_equal": true
+    },
+    "256,64": {
+      "E_float": 7.875,
+      "m": 64,
+      "n": 256,
+      "pairs_C_m_2": 2016,
+      "route_a_pairsum": "63/8",
+      "route_b_perbin": "63/8",
+      "route_c_closed": "63/8",
+      "three_routes_equal": true
+    },
+    "365,23": {
+      "E_float": 0.693150685,
+      "m": 23,
+      "n": 365,
+      "pairs_C_m_2": 253,
+      "route_a_pairsum": "253/365",
+      "route_b_perbin": "253/365",
+      "route_c_closed": "253/365",
+      "three_routes_equal": true
+    }
+  },
+  "g2_montecarlo": {
+    "1000,100": {
+      "E_exact": 4.95,
+      "m": 100,
+      "n": 1000,
+      "sample_mean": 4.94247,
+      "sample_sd": 2.230554903,
+      "trials": 200000,
+      "within_3sigma": true,
+      "z": -1.509722
+    },
+    "256,64": {
+      "E_exact": 7.875,
+      "m": 64,
+      "n": 256,
+      "sample_mean": 7.86881,
+      "sample_sd": 2.800742474,
+      "trials": 200000,
+      "within_3sigma": true,
+      "z": -0.988399
+    },
+    "365,23": {
+      "E_exact": 0.693150685,
+      "m": 23,
+      "n": 365,
+      "sample_mean": 0.691765,
+      "sample_sd": 0.831336057,
+      "trials": 200000,
+      "within_3sigma": true,
+      "z": -0.745423
+    }
+  },
+  "g3_robustness": {
+    "both_hold": true,
+    "exact_scaling": {
+      "256,64": {
+        "n_independent_equal": true,
+        "predicted_ratio": "254/63",
+        "ratio_E2m_over_Em": "254/63"
+      },
+      "365,23": {
+        "n_independent_equal": true,
+        "predicted_ratio": "45/11",
+        "ratio_E2m_over_Em": "45/11"
+      }
+    },
+    "scaling_holds": true,
+    "sweep": {
+      "128,40": {
+        "E_exact": 6.09375,
+        "m": 40,
+        "n": 128,
+        "sample_mean": 6.088858333,
+        "trials": 120000,
+        "within_3sigma": true,
+        "z": -0.687537
+      },
+      "365,30": {
+        "E_exact": 1.191780822,
+        "m": 30,
+        "n": 365,
+        "sample_mean": 1.192666667,
+        "trials": 120000,
+        "within_3sigma": true,
+        "z": 0.281804
+      },
+      "500,50": {
+        "E_exact": 2.45,
+        "m": 50,
+        "n": 500,
+        "sample_mean": 2.446266667,
+        "trials": 120000,
+        "within_3sigma": true,
+        "z": -0.830305
+      },
+      "64,16": {
+        "E_exact": 1.875,
+        "m": 16,
+        "n": 64,
+        "sample_mean": 1.87995,
+        "trials": 120000,
+        "within_3sigma": true,
+        "z": 1.26199
+      }
+    },
+    "sweep_all_within_3sigma": true
+  },
+  "g4_falsifiability": {
+    "E_naive_m_squared_over_2n": 8.0,
+    "E_ordered_m_m_minus_1_over_n": 15.75,
+    "E_true_m_m_minus_1_over_2n": 7.875,
+    "both_wrong_models_rejected": true,
+    "config": [
+      256,
+      64
+    ],
+    "naive_overstatement_exact": "1/8",
+    "naive_rejected_at_z_ge_6": true,
+    "ordered_rejected_at_z_ge_6": true,
+    "sample_mean": 7.871395,
+    "trials": 200000,
+    "true_agrees_within_3sigma": true,
+    "z_naive_reject": -20.566187,
+    "z_ordered_reject": -1259.926656,
+    "z_true_agree": -0.576503
+  },
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "identity": "E[colliding pairs] = C(m,2)/n = m(m-1)/(2n) exactly",
+  "proposal": "PROPOSAL 225",
+  "seed": 20260717,
+  "sim_ready": true,
+  "theorem": "Balls-into-bins expected collision count = m(m-1)/(2n)",
+  "verdict": 238
+}
+results_sha256=874a5b611f327149714d07b841bb4285481bbb223086823a5980b5ae6a31a57a
+determinism_double_run=True
+sim_ready=True
