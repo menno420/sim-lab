@@ -1,0 +1,115 @@
+{
+  "G1_mc_significance": {
+    "hits": 25214,
+    "n": 200000,
+    "p_true": 0.125,
+    "pass": true,
+    "phat": 0.12607,
+    "z": 1.446904
+  },
+  "G2_exact_density": {
+    "count": 64,
+    "density": [
+      1,
+      8
+    ],
+    "expected": [
+      1,
+      8
+    ],
+    "expected_count": 64,
+    "pass": true,
+    "total": 512
+  },
+  "G3_subtraction_grundy": {
+    "k": 3,
+    "mismatches": 0,
+    "modulus": 4,
+    "pass": true,
+    "range": [
+      0,
+      256
+    ]
+  },
+  "G4_sprague_grundy_sum": {
+    "checked": 1681,
+    "grid": [
+      0,
+      40
+    ],
+    "mismatches": 0,
+    "pass": true
+  },
+  "G5_robustness": {
+    "pass": true,
+    "per_k": {
+      "2": {
+        "mismatches": 0,
+        "modulus": 3
+      },
+      "3": {
+        "mismatches": 0,
+        "modulus": 4
+      },
+      "4": {
+        "mismatches": 0,
+        "modulus": 5
+      },
+      "5": {
+        "mismatches": 0,
+        "modulus": 6
+      }
+    },
+    "range": [
+      0,
+      200
+    ]
+  },
+  "G6_falsifiability": {
+    "naive_rule": "loss iff (a+b+c) even -> predicts density 1/2",
+    "p_naive": 0.5,
+    "pass": true,
+    "phat": 0.12607,
+    "rejected": true,
+    "z_naive": -334.45316
+  },
+  "all_pass": true,
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true,
+    "G5": true,
+    "G6": true
+  },
+  "params": {
+    "grundy_n": 256,
+    "n_draws": 200000,
+    "nim_base": 8,
+    "nim_heaps": 3,
+    "robust_ks": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "robust_n": 200,
+    "sum_bound": 40
+  },
+  "proposal": 219,
+  "seed": 20260717,
+  "slot": "round-52 GAME (fleet->venture->game->unrelated)",
+  "verdict": 232,
+  "z_gate": 3.0
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+G5: PASS
+G6: PASS
+
+all_pass: True
+results_sha256: e50e461d105e4984f6f562def0eba3f527ef4030512f9cf75294ddd6709002b7
