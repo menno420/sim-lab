@@ -1,0 +1,136 @@
+{
+  "G1_exact_grid_intersection": {
+    "N": 36,
+    "direction": "exact-equality (Fraction == 1): EVERY grid-quorum pair intersects",
+    "intersection_fraction": "1",
+    "k": 6,
+    "num_grid_quorums": 36,
+    "num_pairs": 630,
+    "pass": true
+  },
+  "G2_mc_agrees_closed_form": {
+    "closed_form_disjoint_prob": 0.007419042458,
+    "direction": "LOW |z| = CONVERGENCE (MC disjoint-rate agrees with the closed form)",
+    "mc_disjoint_rate": 0.0074515,
+    "pass": true,
+    "se_closed": 6.0679487e-05,
+    "threshold": 3.0,
+    "z": 0.5349
+  },
+  "G3_surprise_disjoint_positive": {
+    "direction": "HIGH z = SURPRISE (same-size RANDOM subsets genuinely fail to always intersect; STRUCTURE, not size, buys the guarantee)",
+    "mc_disjoint_hits": 14903,
+    "mc_disjoint_rate": 0.0074515,
+    "pass": true,
+    "se_hat": 6.0811081e-05,
+    "threshold": 3.0,
+    "z": 122.5352
+  },
+  "G4_shift_robustness": {
+    "all_grid_intersection_exact_1": true,
+    "all_quorum_beats_majority": true,
+    "direction": "exact-equality across k: grid always intersects, 2k-1 < majority, ratio (2k-1)/N strictly decreasing (savings scale with N)",
+    "k_range": [
+      4,
+      10
+    ],
+    "pass": true,
+    "rows": [
+      {
+        "N": 16,
+        "grid_intersection_fraction": "1",
+        "k": 4,
+        "majority_size": 9,
+        "quorum_size_2k_minus_1": 7,
+        "size_ratio_2k_minus_1_over_N": "7/16"
+      },
+      {
+        "N": 25,
+        "grid_intersection_fraction": "1",
+        "k": 5,
+        "majority_size": 13,
+        "quorum_size_2k_minus_1": 9,
+        "size_ratio_2k_minus_1_over_N": "9/25"
+      },
+      {
+        "N": 36,
+        "grid_intersection_fraction": "1",
+        "k": 6,
+        "majority_size": 19,
+        "quorum_size_2k_minus_1": 11,
+        "size_ratio_2k_minus_1_over_N": "11/36"
+      },
+      {
+        "N": 49,
+        "grid_intersection_fraction": "1",
+        "k": 7,
+        "majority_size": 25,
+        "quorum_size_2k_minus_1": 13,
+        "size_ratio_2k_minus_1_over_N": "13/49"
+      },
+      {
+        "N": 64,
+        "grid_intersection_fraction": "1",
+        "k": 8,
+        "majority_size": 33,
+        "quorum_size_2k_minus_1": 15,
+        "size_ratio_2k_minus_1_over_N": "15/64"
+      },
+      {
+        "N": 81,
+        "grid_intersection_fraction": "1",
+        "k": 9,
+        "majority_size": 41,
+        "quorum_size_2k_minus_1": 17,
+        "size_ratio_2k_minus_1_over_N": "17/81"
+      },
+      {
+        "N": 100,
+        "grid_intersection_fraction": "1",
+        "k": 10,
+        "majority_size": 51,
+        "quorum_size_2k_minus_1": 19,
+        "size_ratio_2k_minus_1_over_N": "19/100"
+      }
+    ],
+    "size_ratio_strictly_decreasing": true
+  },
+  "G5_determinism": {
+    "in_process_double_run": "IDENTICAL",
+    "pass": true
+  },
+  "all_gates_pass": true,
+  "feasibility_probe": {
+    "closed_form_disjoint_prob": "10925/1472562",
+    "closed_form_disjoint_prob_float": 0.007419042458,
+    "note": "closed form computed FIRST; thresholds below are what this math meets"
+  },
+  "head": "grid-quorum-sqrt-intersection",
+  "params": {
+    "N_main": 36,
+    "k_main": 6,
+    "k_shift": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "quorum_size_main": 11,
+    "t_mc": 2000000
+  },
+  "seed": 20260717
+}
+
+--- feasibility probe (closed form computed BEFORE thresholds) ---
+closed_form_disjoint_prob(N=36,s=11) = 10925/1472562 = 0.007419042458
+--- gate verdicts (direction stated) ---
+G1 exact grid intersection : pass=True fraction=1 [exact-equality == 1]
+G2 MC vs closed form       : pass=True z=0.5349 [LOW |z| convergence, <3]
+G3 disjoint-rate surprise  : pass=True z=122.5352 [HIGH z surprise, >=3]
+G4 shift/robustness        : pass=True [exact-equality across k, ratio strictly decreasing]
+G5 determinism             : pass=True [IDENTICAL]
+all_gates_pass = True
+results_sha256: bbc54843f3693815f107f95df069c26d985a3799b2afe2c0f689a38e3659096f
