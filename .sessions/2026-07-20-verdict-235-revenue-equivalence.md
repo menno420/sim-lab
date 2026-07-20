@@ -1,6 +1,6 @@
 # Session 2026-07-20 — VERDICT 235 · Revenue Equivalence reproduction
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 
 ## 💡 Session idea
 Reproduce idea-engine PROPOSAL 222 (Revenue Equivalence: first-price = second-price expected seller revenue = (n-1)/(n+1) for n symmetric Uniform(0,1) bidders). Byte-identical verifier, SEED=20260717, full-64 digest match, all four gates pass -> APPROVE.
