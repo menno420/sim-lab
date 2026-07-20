@@ -1,6 +1,6 @@
 # Session 2026-07-20 — Normalize session-card attribution field to the sanctioned neutral form
 
-> **Status:** `in-progress`
+> **Status:** `complete`
 > 📊 Model: withheld per coordinator directive · effort standard · task-class compliance-remediation
 
 Born in-progress as this session's first commit (born-red HOLD, the sanctioned gate-red exception); flips to complete as the deliberate last step once the close-out is written and the gate is green.
