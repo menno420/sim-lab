@@ -1,7 +1,7 @@
 # Session — VERDICT 244 reproduction mirror (Shapley value of the airport cost-sharing game, from PROPOSAL 231)
 
-> **Status:** in-progress
-> Born-red HOLD: lands `in-progress` on the first commit to hold the PR red through substrate-gate; flips to `complete` as the last commit once the byte-identical verifier, run-stdout, and probe-report are in place and verified. Merge-on-green lands it (zero agent merge calls).
+> **Status:** `complete`
+> Born-red HOLD (released): landed `in-progress` on the first commit to hold the PR red through substrate-gate, flipped to `complete` as the last commit once the byte-identical verifier, run-stdout, and probe-report were in place and verified. Merge-on-green lands it (zero agent merge calls).
 
 ## 💡 Session idea
 
