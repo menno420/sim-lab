@@ -1,0 +1,192 @@
+{
+  "head": "open Jackson network with feedback -> product-form independent M/M/1 marginals",
+  "n_batches": 30,
+  "n_events": 800000,
+  "seed": 20260717,
+  "set1": {
+    "exact_balance_max_abs_residual": "0/1",
+    "exact_balance_states_checked": 64,
+    "marginal_means": [
+      {
+        "closed_form": 1.0,
+        "emp_mean": 1.001852,
+        "se": 0.0139,
+        "z": 0.133253
+      },
+      {
+        "closed_form": 1.333333,
+        "emp_mean": 1.347086,
+        "se": 0.023883,
+        "z": 0.575864
+      },
+      {
+        "closed_form": 2.0,
+        "emp_mean": 2.044631,
+        "se": 0.04538,
+        "z": 0.983478
+      }
+    ],
+    "n_batches": 30,
+    "n_events": 800000,
+    "nonpoisson": {
+      "arrivals_recorded": 246263,
+      "cv2": 1.404111,
+      "cv2_batches": 30,
+      "cv2_se": 0.019995,
+      "feedback_station": 1,
+      "z_nonpoisson": 20.210254
+    },
+    "pairwise_correlation": {
+      "1-2": {
+        "emp_corr": 0.004074,
+        "se": 0.017481,
+        "z": 0.233043
+      },
+      "1-3": {
+        "emp_corr": 0.007377,
+        "se": 0.02191,
+        "z": 0.336708
+      },
+      "2-3": {
+        "emp_corr": 0.012071,
+        "se": 0.02649,
+        "z": 0.455705
+      }
+    },
+    "params": {
+      "R": [
+        [
+          "0/1",
+          "1/1",
+          "0/1"
+        ],
+        [
+          "0/1",
+          "0/1",
+          "1/1"
+        ],
+        [
+          "3/4",
+          "0/1",
+          "0/1"
+        ]
+      ],
+      "lam": [
+        "4/1",
+        "4/1",
+        "4/1"
+      ],
+      "lam0": [
+        "1/1",
+        "0/1",
+        "0/1"
+      ],
+      "mu": [
+        "8/1",
+        "7/1",
+        "6/1"
+      ],
+      "name": "set1_strong_feedback",
+      "rho": [
+        "1/2",
+        "4/7",
+        "2/3"
+      ]
+    },
+    "warmup_events": 50000
+  },
+  "set2": {
+    "exact_balance_max_abs_residual": "0/1",
+    "exact_balance_states_checked": 64,
+    "marginal_means": [
+      {
+        "closed_form": 1.333333,
+        "emp_mean": 1.348295,
+        "se": 0.012222,
+        "z": 1.224147
+      },
+      {
+        "closed_form": 2.0,
+        "emp_mean": 2.035241,
+        "se": 0.032075,
+        "z": 1.098711
+      },
+      {
+        "closed_form": 1.0,
+        "emp_mean": 0.992916,
+        "se": 0.011968,
+        "z": 0.591916
+      }
+    ],
+    "n_batches": 30,
+    "n_events": 800000,
+    "nonpoisson": {
+      "arrivals_recorded": 304669,
+      "cv2": 1.00811,
+      "cv2_batches": 30,
+      "cv2_se": 0.003924,
+      "feedback_station": 1,
+      "z_nonpoisson": 2.066678
+    },
+    "pairwise_correlation": {
+      "1-2": {
+        "emp_corr": 0.011053,
+        "se": 0.016314,
+        "z": 0.677484
+      },
+      "1-3": {
+        "emp_corr": 0.00438,
+        "se": 0.010319,
+        "z": 0.424487
+      },
+      "2-3": {
+        "emp_corr": 0.006658,
+        "se": 0.016841,
+        "z": 0.395371
+      }
+    },
+    "params": {
+      "R": [
+        [
+          "0/1",
+          "1/2",
+          "0/1"
+        ],
+        [
+          "0/1",
+          "0/1",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "0/1",
+          "0/1"
+        ]
+      ],
+      "lam": [
+        "8/7",
+        "4/7",
+        "2/7"
+      ],
+      "lam0": [
+        "1/1",
+        "0/1",
+        "0/1"
+      ],
+      "mu": [
+        "2/1",
+        "6/7",
+        "4/7"
+      ],
+      "name": "set2_partial_cycle",
+      "rho": [
+        "4/7",
+        "2/3",
+        "1/2"
+      ]
+    },
+    "warmup_events": 50000
+  },
+  "warmup_events": 50000
+}
+RESULTS_SHA256=29d55fa57612782046831e792beb1584cb5c688bc181b6363d12774b56cae258
