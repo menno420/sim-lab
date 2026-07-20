@@ -1,0 +1,46 @@
+{
+  "Rstar": {
+    "1": "1/4",
+    "2": "5/12",
+    "3": "17/32",
+    "4": "49/80",
+    "5": "43/64"
+  },
+  "all_pass": true,
+  "first_failing_gate": null,
+  "gain_2": "1/12",
+  "gates": {
+    "G1_psi_zero_at_half": true,
+    "G2_three_routes_agree": true,
+    "G3_R2_5_12_gain_1_12": true,
+    "G4_mc_n2_agrees": true,
+    "G5_mc_n3_agrees": true,
+    "G6_grid_opt_at_half": true,
+    "G7_reject_no_reserve": true
+  },
+  "grid_opt": {
+    "2": true,
+    "3": true,
+    "5": true
+  },
+  "mc_n2_mean": "0.41619502469293446",
+  "mc_n2_z": "-0.8222447505199753",
+  "mc_n3_mean": "0.5322036684628617",
+  "mc_n3_z": "1.8159190976017108",
+  "n_mc": 200000,
+  "no_reserve_2": "1/3",
+  "paired_gain_mean": "0.08350364087588037",
+  "paired_gain_z": "175.43989743655857",
+  "r_star": "1/2",
+  "routes_agree": {
+    "1": true,
+    "2": true,
+    "3": true,
+    "4": true,
+    "5": true
+  },
+  "seed": 20260717,
+  "z_gate": 3.0
+}
+results_sha256: b125afaf186e8d2430783b89af1a877193a65752db77884458485ced7ec918f0
+all_pass: True
