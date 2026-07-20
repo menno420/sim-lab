@@ -1,0 +1,216 @@
+{
+  "all_pass": true,
+  "closed_forms_pinned": {
+    "advantage": [
+      2,
+      1
+    ],
+    "cournot": [
+      16,
+      1
+    ],
+    "follower": [
+      9,
+      1
+    ],
+    "leader": [
+      18,
+      1
+    ],
+    "m": 12
+  },
+  "enum_pinned": {
+    "cournot_profit": [
+      16,
+      1
+    ],
+    "cournot_q": 4,
+    "follower_profit": [
+      9,
+      1
+    ],
+    "follower_q": [
+      3,
+      1
+    ],
+    "leader_profit": [
+      18,
+      1
+    ],
+    "leader_q": 6,
+    "n_symmetric_nash": 1
+  },
+  "eps_support": [
+    -2,
+    -1,
+    0,
+    1,
+    2
+  ],
+  "first_failing_gate": null,
+  "g1_significance": {
+    "A": 12,
+    "C": 0,
+    "commit_qL": 6,
+    "draws": 200000,
+    "follower_br": 3,
+    "m": 12,
+    "mean_gap": 1.99223,
+    "sd_gap": 8.481575,
+    "seed": 20260728,
+    "z_vs_0": 105.045621
+  },
+  "g2_exact": {
+    "cournot_eq": true,
+    "follower_eq": true,
+    "leader_eq": true,
+    "leader_gt_cournot": true
+  },
+  "g3_shift": {
+    "cost_shift_world": {
+      "A": 15,
+      "C": 3,
+      "closed": {
+        "advantage": [
+          2,
+          1
+        ],
+        "cournot": [
+          16,
+          1
+        ],
+        "follower": [
+          9,
+          1
+        ],
+        "leader": [
+          18,
+          1
+        ],
+        "m": 12
+      },
+      "enum": {
+        "cournot_profit": [
+          16,
+          1
+        ],
+        "cournot_q": 4,
+        "follower_profit": [
+          9,
+          1
+        ],
+        "follower_q": [
+          3,
+          1
+        ],
+        "leader_profit": [
+          18,
+          1
+        ],
+        "leader_q": 6,
+        "n_symmetric_nash": 1
+      },
+      "exact": true
+    },
+    "mc_scaled": {
+      "A": 24,
+      "C": 0,
+      "commit_qL": 12,
+      "draws": 200000,
+      "follower_br": 6,
+      "m": 24,
+      "mean_gap": 7.94882,
+      "sd_gap": 16.974197,
+      "seed": 20260750,
+      "z_vs_0": 209.424945
+    },
+    "scaled_world": {
+      "A": 24,
+      "C": 0,
+      "closed": {
+        "advantage": [
+          8,
+          1
+        ],
+        "cournot": [
+          64,
+          1
+        ],
+        "follower": [
+          36,
+          1
+        ],
+        "leader": [
+          72,
+          1
+        ],
+        "m": 24
+      },
+      "enum": {
+        "cournot_profit": [
+          64,
+          1
+        ],
+        "cournot_q": 8,
+        "follower_profit": [
+          36,
+          1
+        ],
+        "follower_q": [
+          6,
+          1
+        ],
+        "leader_profit": [
+          72,
+          1
+        ],
+        "leader_q": 12,
+        "n_symmetric_nash": 1
+      },
+      "exact": true
+    }
+  },
+  "g4_falsifiability": {
+    "commit_qL": 6,
+    "cournot_profit": [
+      16,
+      1
+    ],
+    "static_follower_q": 4,
+    "true_gt_cournot": true,
+    "true_leader_profit": [
+      18,
+      1
+    ],
+    "wrong_lt_cournot": true,
+    "wrong_rejected_neq_true": true,
+    "wrong_static_leader_profit": [
+      12,
+      1
+    ]
+  },
+  "gates": {
+    "G1_significance": true,
+    "G2_exact_enumeration": true,
+    "G3_robustness_shift": true,
+    "G4_falsifiability": true
+  },
+  "grid_max": 48,
+  "head": "In a linear-demand quantity duopoly the leader who PUBLICLY COMMITS to an output earns strictly more than in the simultaneous Cournot equilibrium (pi_leader=m^2/8 > pi_cournot=m^2/9, advantage m^2/72>0): G1 the advantage survives a noisy follower at >=3 sigma; G2 exhaustive integer-grid enumeration matches the closed forms EXACTLY (Fraction) with leader>cournot; G3 it holds under scaled and cost-shifted worlds; G4 the static-follower accounting that ignores the reaction is correctly rejected (and would flip the sign).",
+  "pinned_world": {
+    "A": 12,
+    "C": 0,
+    "m": 12
+  },
+  "proposal": 215,
+  "seed": 20260717,
+  "slot": "round-51 GAME",
+  "z_gate": 3.0
+}
+
+G1_significance: PASS
+G2_exact_enumeration: PASS
+G3_robustness_shift: PASS
+G4_falsifiability: PASS
+all_pass: True
+results_sha256: f6fdd85e2c22a1d49be9af6bd7479ab2e59869be818e1c451d1ca40caba6fb7b
