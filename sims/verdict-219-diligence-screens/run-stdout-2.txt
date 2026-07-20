@@ -1,0 +1,100 @@
+{
+  "G1_exactly_true": {
+    "cells_total": 27,
+    "direction": "direct == odds-form == exhaustive-enumeration exact in 100% of cells (mismatches==0)",
+    "mismatches": 0,
+    "ok": true
+  },
+  "G2_kth_root_ladder": {
+    "boolean_violations": 0,
+    "cells_total": 36,
+    "clearing_accuracy_percent_k1_k2_k3": [
+      100,
+      91,
+      83
+    ],
+    "clearing_strictly_decreasing_in_k": true,
+    "direction": "exact boolean [poly>] == [PPV>1/2] in 100% of cells AND clearing accuracy strictly decreasing in k (violations==0)",
+    "ok": true
+  },
+  "G3_three_sigma_vs_folk": {
+    "M": 400000,
+    "PPV_1_single_screen_contrast": 0.161017,
+    "PPV_2_closed": 0.784783,
+    "PPV_emp": 0.789277,
+    "SE": 0.006045,
+    "direction": "two-independent-screen empirical PPV exceeds 1/2 by >=3 sigma (z_majority>=3) while one screen of the same accuracy is far minority (PPV_1~0.161)",
+    "emp_within_3se_of_closed": true,
+    "good_pass": 3592,
+    "ok": true,
+    "passed_total": 4551,
+    "z_majority": 47.851639
+  },
+  "G4_correlation_robustness": {
+    "correlation_nullification": {
+      "ppv_at_rho1_equals_ppv1": true,
+      "ppv_by_rho": [
+        "361/460",
+        "133/340",
+        "247/940",
+        "1501/7540",
+        "19/118"
+      ],
+      "ppv_by_rho_float": [
+        0.784783,
+        0.391176,
+        0.262766,
+        0.199072,
+        0.161017
+      ],
+      "ppv_strictly_decreasing_in_rho": true,
+      "rho_grid": [
+        "0",
+        "1/4",
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "violations": 0
+    },
+    "direction": "redundancy exactly nullifies the second screen (PPV(rho=1)==PPV_1) and PPV strictly decreasing in correlation; odds = prior * prod(LR_i) exact in 100% of cells and k-needed monotone in p (violations==0)",
+    "odds_multiplication_identity": {
+      "cells_total": 12,
+      "k_needed_nondecreasing": true,
+      "k_needed_over_decreasing_p": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "mismatches": 0,
+      "violations": 0
+    },
+    "ok": true
+  },
+  "decision": "sim-ready",
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "head": "independent positives MULTIPLY the odds: k conditionally-independent symmetric screens (AND rule) compose by likelihood-ratio product; the k-th screen need only clear (odds-against)^(1/k); two 95% screens beat one 99% at 1% base rate; the gain vanishes when screens are redundant",
+  "pinned_world": {
+    "PPV_1": "19/118",
+    "PPV_2": "361/460",
+    "a_accuracy": "95/100",
+    "k_grid": [
+      1,
+      2,
+      3
+    ],
+    "ladder_threshold": "(a/(1-a))^k > (1-p)/p",
+    "p_base_rate": "1/100"
+  },
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+results_sha256: b04322fa5698021f2a78679abd43cdc3c3a878cbd4c5692a2376d222833e98c6
+decision: sim-ready
