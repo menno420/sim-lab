@@ -1,0 +1,59 @@
+{
+  "G1_exact_hypergeometric_tail": {
+    "P_float": "0.432163",
+    "P_num_den": "296431911/685926212",
+    "pass": true,
+    "tail_complement_mismatch": 0,
+    "vandermonde_residual": "0",
+    "z": "exact"
+  },
+  "G2_mc_agreement": {
+    "MC_N": 400000,
+    "P_float": "0.432163",
+    "p_hat": "0.430443",
+    "pass": true,
+    "z": "-2.1966"
+  },
+  "G3_byzantine_identity_invariance": {
+    "P_float": "0.432163",
+    "byz2_differs_from_canonical": true,
+    "byz2_size": 21,
+    "p_hat2": "0.432700",
+    "pass": true,
+    "structural_counts_only": true,
+    "z2": "0.6856"
+  },
+  "G4_falsifiability_binomial_foil": {
+    "binom_differs_from_exact": true,
+    "foil": "with-replacement Binomial(K, B/N) \u2014 ignores finite-population negative correlation, overstates the tail",
+    "p_binom": "0.435210",
+    "pass": true,
+    "rejected": true,
+    "true_accepted_same_sample": true,
+    "z_foil": "-6.0822",
+    "z_true_same_sample": "-2.1966"
+  },
+  "all_pass": true,
+  "claim": "committee sortition safety in a Byzantine fleet: P(>=T Byzantine in a size-K sortition committee) = hypergeometric upper tail, N=64,B=21,K=16,T=6, N=3B+1 (BFT bound)",
+  "constants": {
+    "B": 21,
+    "K": 16,
+    "MC_N": 400000,
+    "N": 64,
+    "N_eq_3B_plus_1": true,
+    "T": 6,
+    "Z_ACCEPT": "3.0",
+    "expected_byz_per_committee": "5.250000"
+  },
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+P_exact = 296431911/685926212 = 0.432163
+G2_z = -2.1966
+G3_z2 = 0.6856
+G4_z_foil = -6.0822  (P_binom = 0.435210; z_true_same_sample = -2.1966)
+all_pass = True  decision = PASS
+results_sha256 = 37567447cc2e96a1b1c57404ed3e43b52d09c829f186293cc5f4f6122a03802d
