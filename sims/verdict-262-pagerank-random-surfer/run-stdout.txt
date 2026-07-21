@@ -1,0 +1,206 @@
+{
+  "G1_exact": {
+    "adjugate_mismatches": 0,
+    "adjugate_pi": [
+      "52/179",
+      "40/179",
+      "50/179",
+      "37/179"
+    ],
+    "google_matrix": [
+      [
+        "1/8",
+        "3/8",
+        "3/8",
+        "1/8"
+      ],
+      [
+        "1/8",
+        "1/8",
+        "3/8",
+        "3/8"
+      ],
+      [
+        "5/8",
+        "1/8",
+        "1/8",
+        "1/8"
+      ],
+      [
+        "1/4",
+        "1/4",
+        "1/4",
+        "1/4"
+      ]
+    ],
+    "max_residual": "0",
+    "pass": true,
+    "pi": [
+      "52/179",
+      "40/179",
+      "50/179",
+      "37/179"
+    ],
+    "pi_float": [
+      "0.2905027933",
+      "0.2234636872",
+      "0.2793296089",
+      "0.2067039106"
+    ],
+    "power_iteration": {
+      "converged": true,
+      "eps": "1e-18",
+      "iters": 32,
+      "matches_pi_within_eps": true,
+      "note": "corroboration; exact stochastic matrix never reaches pi in finitely many exact steps (lambda_2 != 0)"
+    },
+    "row_sums_ok": true,
+    "sum_is_one": true,
+    "z": null,
+    "z_note": "exact"
+  },
+  "G2_mc_agreement": {
+    "autocorrelated_needs_batch_means": true,
+    "max_abs_z": "1.7965",
+    "method": "batch_means",
+    "pass": true,
+    "per_node": [
+      {
+        "mean_hat": "0.290218",
+        "node": 0,
+        "pi": "0.290503",
+        "z": "-1.7965"
+      },
+      {
+        "mean_hat": "0.223404",
+        "node": 1,
+        "pi": "0.223464",
+        "z": "-0.3012"
+      },
+      {
+        "mean_hat": "0.279488",
+        "node": 2,
+        "pi": "0.279330",
+        "z": "0.8511"
+      },
+      {
+        "mean_hat": "0.206889",
+        "node": 3,
+        "pi": "0.206704",
+        "z": "0.8993"
+      }
+    ],
+    "total_steps": 4000000,
+    "visit_counts": [
+      1160871,
+      893618,
+      1117953,
+      827558
+    ]
+  },
+  "G3_equivariance": {
+    "pass": true,
+    "permutation": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "pi_permuted": [
+      "40/179",
+      "37/179",
+      "52/179",
+      "50/179"
+    ],
+    "relabel_mismatches": 0,
+    "sigma_of_pi": [
+      "40/179",
+      "37/179",
+      "52/179",
+      "50/179"
+    ]
+  },
+  "G4_falsifiability": {
+    "in_degrees": [
+      1,
+      1,
+      2,
+      1
+    ],
+    "max_abs_z_naive": "646.5432",
+    "naive_claim": "pi proportional to in-degree",
+    "pass": true,
+    "per_node_z_naive": [
+      {
+        "node": 0,
+        "pi_naive": "0.200000",
+        "z": "568.6106"
+      },
+      {
+        "node": 1,
+        "pi_naive": "0.200000",
+        "z": "119.0903"
+      },
+      {
+        "node": 2,
+        "pi_naive": "0.400000",
+        "z": "-646.5432"
+      },
+      {
+        "node": 3,
+        "pi_naive": "0.200000",
+        "z": "33.3856"
+      }
+    ],
+    "pi_naive": [
+      "1/5",
+      "1/5",
+      "2/5",
+      "1/5"
+    ],
+    "rejected": true,
+    "same_sample_agrees_true_pi": true
+  },
+  "adjacency": {
+    "0": [
+      1,
+      2
+    ],
+    "1": [
+      2,
+      3
+    ],
+    "2": [
+      0
+    ],
+    "3": []
+  },
+  "all_pass": true,
+  "batch_size": 20000,
+  "burn_in": 50000,
+  "claim": "PageRank random-surfer stationary distribution on the fixed 4-node directed graph 0->{1,2}, 1->{2,3}, 2->{0}, 3->{} (dangling) with damping d=1/2 and uniform teleport 1/N is exactly pi=(52/179,40/179,50/179,37/179).",
+  "damping": "1/2",
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "n_batches": 200,
+  "n_nodes": 4,
+  "proposal": 249,
+  "seed": 20260717,
+  "z_accept": "3.0000",
+  "z_reject": "6.0000"
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+in_process_double_run: IDENTICAL
+all_pass: True
+first_failing_gate: None
+results_sha256=18ba2ac7a7bfe36dc476214f79d55c26c3e212d8073d581ae226da55d4154355
