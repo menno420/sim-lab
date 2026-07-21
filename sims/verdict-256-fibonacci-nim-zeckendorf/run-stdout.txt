@@ -1,0 +1,77 @@
+{
+  "G1_exact_identity": {
+    "mismatches": 0,
+    "n_tested": 800,
+    "pass": true,
+    "zeckendorf_strategy_violations": 0
+  },
+  "G2_mc_agreement": {
+    "losses": 3570,
+    "n_samples": 200000,
+    "p0_float": "0.0175",
+    "p0_fraction": "7/400",
+    "p_hat": "0.01785",
+    "pass": true,
+    "z": "1.19370699368"
+  },
+  "G3_invariance_robustness": {
+    "N2": 1200,
+    "games_played": 31440,
+    "invariance_discrepancies": 0,
+    "optimal_player_losses": 0,
+    "overlap": 800,
+    "pass": true
+  },
+  "G4_falsifiability": {
+    "foil_multiples_of_3": {
+      "disagreement_count": 274,
+      "z_abs": "20.413966739"
+    },
+    "foil_powers_of_two": {
+      "disagreement_count": 18,
+      "z_abs": "4.29119123911"
+    },
+    "pass": true
+  },
+  "N": 800,
+  "N2": 1200,
+  "R": 40,
+  "all_pass": true,
+  "claim": "Fibonacci nim (Whinihan): the player to move loses iff n is a Fibonacci number; from a winning position remove the smallest Zeckendorf summand to leave the opponent a P-position.",
+  "fibonacci_upto_N": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    13,
+    21,
+    34,
+    55,
+    89,
+    144,
+    233,
+    377,
+    610
+  ],
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "n_samples": 200000,
+  "proposal": 243,
+  "seed": 20260717,
+  "z_gate": "3"
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+all_pass: True
+first_failing_gate: None
+results_sha256=344cdaa21a550c745184aaab00951db1063f522d3fe25544738299fdf8ee7dce
