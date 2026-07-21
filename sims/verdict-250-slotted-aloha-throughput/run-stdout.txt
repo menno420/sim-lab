@@ -1,0 +1,13 @@
+{
+  "all_gates_pass": true,
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "gate_z": {
+    "G1_exact_error": "0 (exact rational identity)",
+    "G2_max_abs_z": 2.2817,
+    "G4_min_abs_z": 445.44
+  },
+  "in_process_double_run_identical": true,
+  "results_sha256": "fb72d76e05c3e41d3f671f7d324a76dde84ea815a6360be1652508db4fc0cb9a"
+}
+results_sha256=fb72d76e05c3e41d3f671f7d324a76dde84ea815a6360be1652508db4fc0cb9a
