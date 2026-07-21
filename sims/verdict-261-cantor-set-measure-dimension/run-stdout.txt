@@ -1,0 +1,11 @@
+PROPOSAL 248 — middle-thirds Cantor set: measure 0 & dimension log2/log3
+SEED = 20260717
+------------------------------------------------------------------------
+G1 EXACT identity (Fraction, zero tol): measure_mismatches=0 count_mismatches=0 removed_length_mismatches=0 moran_residual=0.0 z=None -> PASS
+   anchors (2/3)^n: {'0': '1/1', '1': '2/3', '2': '4/9', '3': '8/27', '6': '64/729'}
+G2 MC agreement (|z|<3.0): n=6 trials=500000 hits=43778 p_hat=0.087556 p_exact=64/729=0.0877914952 z=-0.5884286072 -> PASS
+G3 invariance/robustness: box_count_mismatches=0 critical_mass_mismatches=0 scale_invariance_mismatches=0 dim=log2/log3=0.6309297535714574 second_config(n=4) z=0.049254051 -> PASS
+G4 falsifiability (|z|>3.0): naive measure=2/3 rejected at z=-868.666 (same sample agrees with exact at z=-0.5884286072); mass@dim1=0.0077073466->0, mass@dim0=4096.0->inf, mass@dim(log2/log3)=1.0==1 -> PASS
+------------------------------------------------------------------------
+all_gates_pass = True first_failing_gate = None decision = PASS
+results_sha256 = 6303e32144742d019f280177b5119001b90e2e87a16d36ec0634a17460c9885e
