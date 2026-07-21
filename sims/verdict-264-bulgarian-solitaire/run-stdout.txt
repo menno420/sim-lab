@@ -1,0 +1,155 @@
+{
+  "G1_exact": {
+    "all_M_match_k2_minus_k": true,
+    "pass": true,
+    "per_k": [
+      {
+        "M_max_steps": 0,
+        "k": 1,
+        "k2_minus_k": 0,
+        "match": true,
+        "n_triangular": 1,
+        "num_partitions": 1
+      },
+      {
+        "M_max_steps": 2,
+        "k": 2,
+        "k2_minus_k": 2,
+        "match": true,
+        "n_triangular": 3,
+        "num_partitions": 3
+      },
+      {
+        "M_max_steps": 6,
+        "k": 3,
+        "k2_minus_k": 6,
+        "match": true,
+        "n_triangular": 6,
+        "num_partitions": 11
+      },
+      {
+        "M_max_steps": 12,
+        "k": 4,
+        "k2_minus_k": 12,
+        "match": true,
+        "n_triangular": 10,
+        "num_partitions": 42
+      },
+      {
+        "M_max_steps": 20,
+        "k": 5,
+        "k2_minus_k": 20,
+        "match": true,
+        "n_triangular": 15,
+        "num_partitions": 176
+      },
+      {
+        "M_max_steps": 30,
+        "k": 6,
+        "k2_minus_k": 30,
+        "match": true,
+        "n_triangular": 21,
+        "num_partitions": 792
+      },
+      {
+        "M_max_steps": 42,
+        "k": 7,
+        "k2_minus_k": 42,
+        "match": true,
+        "n_triangular": 28,
+        "num_partitions": 3718
+      },
+      {
+        "M_max_steps": 56,
+        "k": 8,
+        "k2_minus_k": 56,
+        "match": true,
+        "n_triangular": 36,
+        "num_partitions": 17977
+      }
+    ],
+    "total_nonconvergent": 0,
+    "z": null,
+    "z_note": "exact"
+  },
+  "G2_mc_agreement": {
+    "convergence_rate": "1.000000",
+    "convergence_rate_is_one": true,
+    "iid_draws_no_batch_means": true,
+    "k": 6,
+    "mu": "20.167929",
+    "n_mc": 40000,
+    "n_triangular": 21,
+    "pass": true,
+    "pop_partitions": 792,
+    "sigma": "8.471034",
+    "xbar": "20.167375",
+    "z": "-0.0131"
+  },
+  "G3_invariance": {
+    "conservation_steps_checked": 908472,
+    "conservation_violations": 0,
+    "order_mismatches": 0,
+    "order_samples": 1400,
+    "pass": true,
+    "z": null,
+    "z_note": "exact"
+  },
+  "G4_falsifiability": {
+    "all_nontriangular_have_period_gt1": true,
+    "foil": "non-triangular n also converge to a unique period-1 fixed point, just like triangular n",
+    "foil_null_fraction": "0.000000",
+    "foil_rejected": true,
+    "fraction_period_gt1": "1.000000",
+    "n_mc": 40000,
+    "n_with_period_gt1_cycle": 19,
+    "nontriangular_n_range": [
+      2,
+      25
+    ],
+    "num_nontriangular_n": 19,
+    "pass": true,
+    "smallest_cycle": [
+      [
+        1,
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "smallest_nontriangular_with_cycle": 2,
+    "z_foil": "40000.5000"
+  },
+  "all_pass": true,
+  "claim": "Bulgarian solitaire (remove one card from every pile, then form ONE new pile of size = number of piles) is a deterministic map on integer partitions of n. If n=T_k=k(k+1)/2 is triangular, EVERY partition converges to the unique period-1 fixed point, the staircase delta_k=(k,k-1,...,1), and the MAX steps-to-fixed-point over all partitions of T_k is EXACTLY k^2-k. Non-triangular n admit no fixed point (limit cycles of period>1). Distinct from all impartial-game Grundy heads (nim-sum, Wythoff, Hackenbush, Fibonacci-Nim, Penney, Banzhaf): a dynamical system, not a game value.",
+  "first_failing_gate": null,
+  "g2_k": 6,
+  "g2_n_mc": 40000,
+  "g4_n_mc": 40000,
+  "g4_n_range": [
+    2,
+    25
+  ],
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "k_max": 8,
+  "proposal": 251,
+  "seed": 20260717,
+  "z_accept": "3.0000",
+  "z_reject": "6.0000"
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+in_process_double_run: IDENTICAL
+all_pass: True
+first_failing_gate: None
+results_sha256=f9fdd4c7a787d5b559248f8897ca00d82fa3e556535f67fd552a6854e0b19537
