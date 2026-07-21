@@ -1,0 +1,112 @@
+{
+  "G1_exact_identity": {
+    "expectation_mismatches": 0,
+    "identity_mismatches": 0,
+    "ld_ratios": [
+      "1/4",
+      "1/2",
+      "3/4",
+      "1/1"
+    ],
+    "mean_sines": "29/50",
+    "pairs_tested": 20,
+    "pass": true,
+    "rational_sines": [
+      "0/1",
+      "1/2",
+      "3/5",
+      "4/5",
+      "1/1"
+    ]
+  },
+  "G2_mc_agreement": {
+    "crossings": 636571,
+    "iid_bernoulli_no_thinning": true,
+    "l_over_d": "1/2",
+    "n_drops": 2000000,
+    "p_hat": "0.3182855",
+    "p_theory": "0.318309886184",
+    "pass": true,
+    "pi_hat": "3.14183335402",
+    "z": "-0.0740355452082"
+  },
+  "G3_invariance_robustness": {
+    "full_circle": {
+      "crossings": 318203,
+      "p_hat": "0.318203",
+      "z": "-0.229457897577"
+    },
+    "max_abs_z": "1.15685382694",
+    "pass": true,
+    "scale_configs": [
+      {
+        "crossings": 318267,
+        "d": "4",
+        "k": "2",
+        "l": "2",
+        "p_hat": "0.318267",
+        "z": "-0.0920659080407"
+      },
+      {
+        "crossings": 317771,
+        "d": "10",
+        "k": "5",
+        "l": "5",
+        "p_hat": "0.317771",
+        "z": "-1.15685382694"
+      },
+      {
+        "crossings": 318105,
+        "d": "0.6",
+        "k": "0.3",
+        "l": "0.3",
+        "p_hat": "0.318105",
+        "z": "-0.439839381554"
+      },
+      {
+        "crossings": 318379,
+        "d": "200",
+        "k": "100",
+        "l": "100",
+        "p_hat": "0.318379",
+        "z": "0.148370073647"
+      }
+    ]
+  },
+  "G4_falsifiability": {
+    "foil_half_mean_sine": {
+      "p_naive": "0.25",
+      "z_abs": "223.019509108"
+    },
+    "foil_no_angle_factor": {
+      "p_naive": "0.5",
+      "z_abs": "513.96622076"
+    },
+    "pass": true
+  },
+  "N": 2000000,
+  "N_inv": 1000000,
+  "all_pass": true,
+  "claim": "Buffon's needle (short needle l <= d): a needle dropped uniformly at random on a plane ruled with parallel lines spaced d apart crosses a line with probability exactly 2*l/(pi*d).",
+  "d0": "2",
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "l0": "1",
+  "proposal": 244,
+  "seed": 20260717,
+  "z_gate": "3"
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+all_pass: True
+first_failing_gate: None
+results_sha256=20f5616bae9df0533ab9ac0b6f23206cc1f457c2105b83103ed51bec98ff8a1b
