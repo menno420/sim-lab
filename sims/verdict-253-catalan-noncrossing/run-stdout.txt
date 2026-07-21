@@ -1,0 +1,195 @@
+{
+  "P_exact": {
+    "2": "2/3",
+    "3": "1/3",
+    "4": "2/15"
+  },
+  "all_gates_pass": true,
+  "claim": "catalan_noncrossing: a uniformly random perfect matching of 2n circle points is non-crossing with probability exactly C_n/(2n-1)!!, C_n = binom(2n,n)/(n+1); n=2->2/3, n=3->1/3, n=4->2/15",
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "gates": {
+    "G1_exact_catalan": {
+      "P_exact": {
+        "2": "2/3",
+        "3": "1/3",
+        "4": "2/15"
+      },
+      "brute_force_matchings": [
+        {
+          "C_n": 2,
+          "P_brute_fraction": "2/3",
+          "P_closed_fraction": "2/3",
+          "P_exact_equal": true,
+          "double_factorial_2n_minus_1": 3,
+          "n": 2,
+          "noncrossing_count": 2,
+          "noncrossing_equals_C_n": true,
+          "total_equals_double_factorial": true,
+          "total_matchings": 3
+        },
+        {
+          "C_n": 5,
+          "P_brute_fraction": "1/3",
+          "P_closed_fraction": "1/3",
+          "P_exact_equal": true,
+          "double_factorial_2n_minus_1": 15,
+          "n": 3,
+          "noncrossing_count": 5,
+          "noncrossing_equals_C_n": true,
+          "total_equals_double_factorial": true,
+          "total_matchings": 15
+        },
+        {
+          "C_n": 14,
+          "P_brute_fraction": "2/15",
+          "P_closed_fraction": "2/15",
+          "P_exact_equal": true,
+          "double_factorial_2n_minus_1": 105,
+          "n": 4,
+          "noncrossing_count": 14,
+          "noncrossing_equals_C_n": true,
+          "total_equals_double_factorial": true,
+          "total_matchings": 105
+        }
+      ],
+      "catalan_three_routes": [
+        {
+          "C_binom_difference": 2,
+          "C_binom_over_n_plus_1": 2,
+          "C_recurrence": 2,
+          "n": 2,
+          "three_routes_equal": true
+        },
+        {
+          "C_binom_difference": 5,
+          "C_binom_over_n_plus_1": 5,
+          "C_recurrence": 5,
+          "n": 3,
+          "three_routes_equal": true
+        },
+        {
+          "C_binom_difference": 14,
+          "C_binom_over_n_plus_1": 14,
+          "C_recurrence": 14,
+          "n": 4,
+          "three_routes_equal": true
+        },
+        {
+          "C_binom_difference": 42,
+          "C_binom_over_n_plus_1": 42,
+          "C_recurrence": 42,
+          "n": 5,
+          "three_routes_equal": true
+        },
+        {
+          "C_binom_difference": 132,
+          "C_binom_over_n_plus_1": 132,
+          "C_recurrence": 132,
+          "n": 6,
+          "three_routes_equal": true
+        }
+      ],
+      "error_count": 0,
+      "name": "closed form == brute force, exact rational",
+      "ok": true,
+      "pass_if": "error_count == 0"
+    },
+    "G2_montecarlo_agreement": {
+      "name": "sampled non-crossing freq agrees with C_n/(2n-1)!!",
+      "ok": true,
+      "pass_if": "abs(z) < Z_ACCEPT for both n=3 and n=4",
+      "points": [
+        {
+          "P_exact": "1/3",
+          "P_float": 0.333333,
+          "hits": 66883,
+          "n": 3,
+          "ok": true,
+          "p_hat": 0.334415,
+          "trials": 200000,
+          "z": 1.0262,
+          "z_accept": 3.0
+        },
+        {
+          "P_exact": "2/15",
+          "P_float": 0.133333,
+          "hits": 26540,
+          "n": 4,
+          "ok": true,
+          "p_hat": 0.1327,
+          "trials": 200000,
+          "z": -0.8332,
+          "z_accept": 3.0
+        }
+      ]
+    },
+    "G3_invariance": {
+      "exact_invariance": [
+        {
+          "C_n": 5,
+          "count_invariant_over_all_rotations_and_reflection": true,
+          "n": 3
+        },
+        {
+          "C_n": 14,
+          "count_invariant_over_all_rotations_and_reflection": true,
+          "n": 4
+        }
+      ],
+      "exact_invariance_all_true": true,
+      "mc_dihedral_n3": {
+        "P_exact": "1/3",
+        "hits": 66737,
+        "ok": true,
+        "p_hat": 0.333685,
+        "trials": 200000,
+        "z": 0.3336,
+        "z_accept": 3.0
+      },
+      "name": "estimate invariant under dihedral relabeling; exact count invariant",
+      "ok": true,
+      "pass_if": "mc |z| < Z_ACCEPT AND exact invariance all True"
+    },
+    "G4_falsifiability": {
+      "naive_half": {
+        "P_naive": 0.5,
+        "claim": "P == 1/2 (half of all matchings are non-crossing)",
+        "p_hat": 0.334415,
+        "rejected": true,
+        "z_naive": -148.1037,
+        "z_reject": 6.0
+      },
+      "naive_power_of_two": {
+        "C_3": 5,
+        "claim": "non-crossing count == 2^(n-1)",
+        "fails": true,
+        "value_2_pow_n_minus_1_at_n3": 4
+      },
+      "name": "naive P=1/2 rejected; 2^(n-1) count foil fails",
+      "ok": true,
+      "pass_if": "abs(z_naive) >= Z_REJECT and 2^(n-1) != C_n"
+    }
+  },
+  "params": {
+    "mc_trials": 200000,
+    "n_brute": [
+      2,
+      3,
+      4
+    ],
+    "n_exact": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "z_accept": 3.0,
+    "z_reject": 6.0
+  },
+  "seed": 20260717
+}
+in_process_double_run: IDENTICAL
+results_sha256: 6b7c1a8ba3ca4a96e91ca5405c089cb037d3cf32d933fcf20b508e5f8faf24bf
+decision: PASS
