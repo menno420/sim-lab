@@ -1,0 +1,117 @@
+{
+  "G1_exact_backbone": {
+    "E_L": "6",
+    "G_of_x": "((1+x)/2)^n",
+    "Var_L": "3",
+    "avg_congestion": "1/2",
+    "checked": 75,
+    "mismatches": 0,
+    "n_primary": 12,
+    "pass": true,
+    "z": "exact"
+  },
+  "G2_mc_agreement": {
+    "N_mc": 400000,
+    "N_nodes": 4096,
+    "congestion_est": 0.499829,
+    "congestion_true": 0.5,
+    "mean_len": 5.997945,
+    "n": 12,
+    "pass": true,
+    "se": 0.00274,
+    "true_mean_E_L": 6.0,
+    "z": -0.749864,
+    "z_congestion": -0.749864
+  },
+  "G3_robustness_invariance": {
+    "adv_mean_len": 6.002165,
+    "adv_pass": true,
+    "adv_se": 0.002736,
+    "adv_true_mean_E_L": 6.0,
+    "adv_z": 0.79122,
+    "adversarial_source_permutation": "bit-reversal of node index",
+    "n_invariance_pass": true,
+    "n_invariance_sweep": [
+      {
+        "E_L": 4.0,
+        "mean_len": 3.999518,
+        "n": 8,
+        "pass": true,
+        "ratio_mean_over_n": 0.49994,
+        "z": -0.215486
+      },
+      {
+        "E_L": 5.0,
+        "mean_len": 4.99972,
+        "n": 10,
+        "pass": true,
+        "ratio_mean_over_n": 0.499972,
+        "z": -0.112088
+      },
+      {
+        "E_L": 6.0,
+        "mean_len": 6.003382,
+        "n": 12,
+        "pass": true,
+        "ratio_mean_over_n": 0.500282,
+        "z": 1.232978
+      },
+      {
+        "E_L": 7.0,
+        "mean_len": 7.007962,
+        "n": 14,
+        "pass": true,
+        "ratio_mean_over_n": 0.500569,
+        "z": 2.686444
+      }
+    ],
+    "pass": true,
+    "z": 0.79122
+  },
+  "G4_falsifiability": {
+    "congestion_true_same_sample": 0.499829,
+    "pass": true,
+    "primary_foil": "every packet crosses all n dimensions -> route length = n = 12",
+    "primary_foil_mean": 12.0,
+    "primary_rejected": true,
+    "secondary_foil": "each edge traversed deterministically -> congestion = 1.0 not 1/2",
+    "secondary_foil_congestion": 1.0,
+    "secondary_rejected": true,
+    "true_accepted_same_sample": true,
+    "z_congestion_foil": -2190.134211,
+    "z_foil": -2190.134211,
+    "z_true_same_sample": -0.749864
+  },
+  "all_pass": true,
+  "claim": "Valiant two-phase routing on Q_n: phase-1 route length L = popcount(s^d) ~ Binomial(n,1/2); E[L]=n/2, Var[L]=n/4, source-invariant; G(x)=((1+x)/2)^n; avg edge congestion = 1/2",
+  "constants": {
+    "N_DIM": 12,
+    "N_MC": 400000,
+    "PGF_NS": [
+      1,
+      2,
+      3,
+      8,
+      12
+    ],
+    "SWEEP_N": [
+      8,
+      10,
+      12,
+      14
+    ],
+    "Z_ACCEPT": "3.0",
+    "Z_REJECT": "50.0"
+  },
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+G1_z = exact (checked=75, mismatches=0)
+G2_z = -0.749864  (congestion_est=0.499829, z_congestion=-0.749864)
+G3_adv_z = 0.79122  (n_invariance_pass=True)
+G4_z_foil = -2190.134211  z_congestion_foil = -2190.134211  (z_true_same_sample = -0.749864)
+all_pass = True  decision = PASS
+results_sha256 = fd0d970057a36cfb2f2ad3dfe200acd09d3ce303d8c1eb37e88f6d3330fa759f
