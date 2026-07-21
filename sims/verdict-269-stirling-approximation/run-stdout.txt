@@ -1,0 +1,73 @@
+{
+  "G1_exact_stirling_series": {
+    "a_1": "1/12",
+    "a_2": "1/288",
+    "a_3": "-139/51840",
+    "c_1": "1/12",
+    "c_2": "-1/360",
+    "c_3": "1/1260",
+    "c_4": "-1/1680",
+    "checked": 29,
+    "mismatches": 0,
+    "pass": true,
+    "z": "exact"
+  },
+  "G2_mc_agreement": {
+    "N": 400000,
+    "n": 10,
+    "pass": true,
+    "r_hat": "1.009022",
+    "r_stir_closed_form": "1.008365",
+    "se": "0.000504",
+    "shape": 10,
+    "z": "1.3029"
+  },
+  "G3_robustness_invariance": {
+    "invariance_r_hat": "1.007639",
+    "invariance_se": "0.000504",
+    "invariance_shape": 12,
+    "pass": true,
+    "robbins_sweep_max": 64,
+    "robbins_tightest_lower_gap": "1.683e-06",
+    "robbins_tightest_upper_gap": "1.060e-08",
+    "robbins_violations": 0,
+    "z": "-1.4413"
+  },
+  "G4_falsifiability": {
+    "foil": "sqrt(pi*n) prefactor (factor-2-under-root error) -> ratio = 1/sqrt(2)",
+    "foil_value": "0.707107",
+    "pass": true,
+    "rejected": true,
+    "secondary_foil": "drop the 1/(12n) correction -> ratio = 1",
+    "secondary_rejected": true,
+    "true_accepted_same_sample": true,
+    "z_foil": "598.9410",
+    "z_secondary_foil": "17.8982",
+    "z_true_same_sample": "1.3029"
+  },
+  "all_pass": true,
+  "claim": "lim n!/(sqrt(2*pi*n)(n/e)^n) = 1; ln(r_n) = sum B_{2k}/(2k(2k-1)) n^{-(2k-1)}; Robbins 1/(12n+1) < ln(r_n) < 1/(12n)",
+  "constants": {
+    "A_MAX": 6,
+    "DPS": 60,
+    "KTERMS": 4,
+    "K_MAX": 7,
+    "N_MC": 400000,
+    "N_MC_INV": 400000,
+    "N_STIRLING": 10,
+    "SWEEP_MAX": 64,
+    "Z_ACCEPT": "3.0",
+    "Z_REJECT": "50.0"
+  },
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+G1_z = exact (checked=29, mismatches=0)
+G2_z = 1.3029
+G3_z = -1.4413 (robbins_violations=0)
+G4_z_foil = 598.9410  (G4_z_true_same_sample = 1.3029)
+all_pass = True  decision = PASS
+results_sha256 = f6511c51458be68eb564460ed1229456b0e7fd0aff2733e75c47e22f4066d267
