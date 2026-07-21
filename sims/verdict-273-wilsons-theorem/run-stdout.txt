@@ -1,0 +1,122 @@
+{
+  "G1": {
+    "bignum_mismatches": 0,
+    "bignum_range_hi": 400,
+    "checked": 1499,
+    "direction": "exact: Wilson predicate == independent trial-division primality on [2,N]; iterated-mod == full-bignum residue on [2,bignum_N]",
+    "mismatches": 0,
+    "pass": true,
+    "range_hi": 1500,
+    "z": "exact"
+  },
+  "G2": {
+    "N_samples": 200000,
+    "direction": "iid MC: empirical Wilson-predicate density matches exact prime density pi(N)/(N-1) at |z|<3",
+    "exact_density": "239/1499",
+    "exact_prime_count": 239,
+    "hits": 31622,
+    "pass": true,
+    "phat": "0.158110",
+    "z": "-1.624284",
+    "z_accept": "3.000000"
+  },
+  "G3": {
+    "composite_nonzero_exceptions": [],
+    "direction": "invariance: composite n>4 => (n-1)! congruent to 0 (mod n); sole composite exception n=4 (residue 2)",
+    "n4_residue": 2,
+    "pass": true,
+    "range_hi": 1500,
+    "violations": 0
+  },
+  "G4": {
+    "N_samples": 200000,
+    "direction": "falsifiability: reject the sign-flip foil (n-1)! congruent to +1 (mod n) iff prime at |z|>3",
+    "foil_hits": 135,
+    "foil_phat": "0.000675",
+    "pass": true,
+    "reject": true,
+    "z_foil": "-193.948379",
+    "z_reject": "3.000000"
+  },
+  "SEED": 20260721,
+  "all_gates_pass": true,
+  "anchors": {
+    "11": {
+      "is_prime": true,
+      "residue": 10,
+      "wilson_holds": true
+    },
+    "1105": {
+      "is_prime": false,
+      "residue": 0,
+      "wilson_holds": false
+    },
+    "13": {
+      "is_prime": true,
+      "residue": 12,
+      "wilson_holds": true
+    },
+    "15": {
+      "is_prime": false,
+      "residue": 0,
+      "wilson_holds": false
+    },
+    "2": {
+      "is_prime": true,
+      "residue": 1,
+      "wilson_holds": true
+    },
+    "3": {
+      "is_prime": true,
+      "residue": 2,
+      "wilson_holds": true
+    },
+    "4": {
+      "is_prime": false,
+      "residue": 2,
+      "wilson_holds": false
+    },
+    "5": {
+      "is_prime": true,
+      "residue": 4,
+      "wilson_holds": true
+    },
+    "561": {
+      "is_prime": false,
+      "residue": 0,
+      "wilson_holds": false
+    },
+    "6": {
+      "is_prime": false,
+      "residue": 0,
+      "wilson_holds": false
+    },
+    "7": {
+      "is_prime": true,
+      "residue": 6,
+      "wilson_holds": true
+    },
+    "9": {
+      "is_prime": false,
+      "residue": 0,
+      "wilson_holds": false
+    }
+  },
+  "claim": "for n>=2: (n-1)! == -1 (mod n) iff n is prime",
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "params": {
+    "M": 200000,
+    "N": 1500,
+    "bignum_N": 400
+  },
+  "proposal": 260
+}
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+results_sha256 = 938969bc60f733cea8c9e79e5a29a7b062e661de10619aa8bcdf61719e9ba474
+
+determinism: in-process double-run identical = True
