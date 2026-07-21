@@ -1,0 +1,220 @@
+{
+  "all_gates_pass": true,
+  "anchors": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      8,
+      13
+    ],
+    [
+      9,
+      15
+    ],
+    [
+      11,
+      18
+    ],
+    [
+      12,
+      20
+    ]
+  ],
+  "claim": "wythoff_beatty: P-positions == (floor(n*phi), floor(n*phi^2)) with b_n == a_n + n; {a_n},{b_n} partition Z+; density 1/phi",
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "gates": {
+    "G1_exact_beatty": {
+      "b_minus_a_equals_n": {
+        "errors": 0,
+        "n_range": 200000
+      },
+      "beatty_partition": [
+        {
+          "M": 1000,
+          "counts_sum_equals_M_fraction": true,
+          "covers_1..M": true,
+          "exact_partition": true,
+          "lower_count": 618,
+          "lower_density_float": 0.618,
+          "lower_density_fraction": "309/500",
+          "no_overlap": true,
+          "overlap_count": 0,
+          "upper_count": 382
+        },
+        {
+          "M": 100000,
+          "counts_sum_equals_M_fraction": true,
+          "covers_1..M": true,
+          "exact_partition": true,
+          "lower_count": 61804,
+          "lower_density_float": 0.61804,
+          "lower_density_fraction": "15451/25000",
+          "no_overlap": true,
+          "overlap_count": 0,
+          "upper_count": 38196
+        },
+        {
+          "M": 1000000,
+          "counts_sum_equals_M_fraction": true,
+          "covers_1..M": true,
+          "exact_partition": true,
+          "lower_count": 618034,
+          "lower_density_float": 0.618034,
+          "lower_density_fraction": "309017/500000",
+          "no_overlap": true,
+          "overlap_count": 0,
+          "upper_count": 381966
+        }
+      ],
+      "board_set_identity": [
+        {
+          "N": 30,
+          "count_ratio_equal_fraction": true,
+          "dp_cold_count": 12,
+          "formula_cold_count": 12,
+          "set_identity": true
+        },
+        {
+          "N": 60,
+          "count_ratio_equal_fraction": true,
+          "dp_cold_count": 24,
+          "formula_cold_count": 24,
+          "set_identity": true
+        },
+        {
+          "N": 90,
+          "count_ratio_equal_fraction": true,
+          "dp_cold_count": 35,
+          "formula_cold_count": 35,
+          "set_identity": true
+        }
+      ],
+      "error_count": 0,
+      "name": "Grundy-0 == isqrt-Beatty; b-a==n; exact partition",
+      "ok": true,
+      "pass_if": "error_count == 0"
+    },
+    "G2_montecarlo_density": {
+      "K": 200000,
+      "M": 1000000,
+      "hits": 123458,
+      "name": "MC lower density agrees with 1/phi",
+      "ok": true,
+      "p_hat": 0.61729,
+      "pass_if": "abs(z) < Z_ACCEPT",
+      "target_density_inv_phi": 0.618034,
+      "z": -0.684799,
+      "z_accept": 3.0
+    },
+    "G3_invariance": {
+      "generator_agreement": [
+        {
+          "N": 30,
+          "isqrt_vs_greedy_mex_identical": true,
+          "positions": 12
+        },
+        {
+          "N": 60,
+          "isqrt_vs_greedy_mex_identical": true,
+          "positions": 24
+        },
+        {
+          "N": 90,
+          "isqrt_vs_greedy_mex_identical": true,
+          "positions": 35
+        }
+      ],
+      "mismatch_count": 0,
+      "name": "isqrt vs greedy-mex agree; pile-swap symmetry",
+      "ok": true,
+      "pass_if": "mismatch_count == 0",
+      "pile_swap_symmetry": [
+        {
+          "N": 30,
+          "asymmetric_cells": 0
+        },
+        {
+          "N": 60,
+          "asymmetric_cells": 0
+        },
+        {
+          "N": 90,
+          "asymmetric_cells": 0
+        }
+      ]
+    },
+    "G4_falsifiability": {
+      "F1_naive_k_2k": {
+        "claim": "every P-position is (k, 2k), i.e. b_n == 2*a_n (universal)",
+        "coincidental_fits": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "counterexample_count": 199999,
+        "first_counterexample_n_a_b": [
+          2,
+          3,
+          5
+        ],
+        "n_range": 200000,
+        "refuted": true
+      },
+      "F2_naive_even_split": {
+        "claim": "lower Wythoff density == 1/2",
+        "p_hat": 0.61729,
+        "rejected": true,
+        "z_reject": 104.907365,
+        "z_reject_threshold": 6.0
+      },
+      "name": "even-split foil rejected; (k,2k) foil refuted",
+      "ok": true,
+      "pass_if": "abs(z_reject) >= Z_REJECT and F1 has counterexamples (first at n=2 -> (3,5))"
+    }
+  },
+  "params": {
+    "board_panel": [
+      30,
+      60,
+      90
+    ],
+    "mc_K": 200000,
+    "mc_M": 1000000,
+    "n_identity_range": 200000,
+    "partition_panel": [
+      1000,
+      100000,
+      1000000
+    ],
+    "z_accept": 3.0,
+    "z_reject": 6.0
+  },
+  "seed": 20260717
+}
+in_process_double_run: IDENTICAL
+results_sha256: 9fe0e90d2c4544a9c38c051be34b9369fdf84f12b53e4ed16818feb5c87eabcc
+decision: PASS
