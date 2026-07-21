@@ -1,0 +1,97 @@
+{
+  "G1_exact_moment_identity": {
+    "R_1": "1/2",
+    "R_2": "3/4",
+    "R_3": "15/8",
+    "R_6": "10395/64",
+    "checked": 13,
+    "mismatches": 0,
+    "pass": true,
+    "z": "exact"
+  },
+  "G2_mc_agreement": {
+    "L": "6.0",
+    "N": 400000,
+    "erf_L_defect": "0.000e+00",
+    "estimate": "1.776277",
+    "pass": true,
+    "se": "0.005459",
+    "target_sqrt_pi": "1.772454",
+    "target_truncated": "1.772454",
+    "z": "0.7004"
+  },
+  "G3_invariance": {
+    "exact_checked": 65,
+    "exact_mismatches": 0,
+    "mc_configs": [
+      {
+        "a": "1.0000",
+        "mu": "0.0000",
+        "sqrt_a_times_estimate": "1.768205",
+        "z": "-0.5516"
+      },
+      {
+        "a": "2.0000",
+        "mu": "0.0000",
+        "sqrt_a_times_estimate": "1.784350",
+        "z": "1.5375"
+      },
+      {
+        "a": "0.5000",
+        "mu": "0.0000",
+        "sqrt_a_times_estimate": "1.774269",
+        "z": "0.2355"
+      },
+      {
+        "a": "1.0000",
+        "mu": "3.0000",
+        "sqrt_a_times_estimate": "1.766397",
+        "z": "-0.7863"
+      },
+      {
+        "a": "1.0000",
+        "mu": "-2.0000",
+        "sqrt_a_times_estimate": "1.771130",
+        "z": "-0.1717"
+      },
+      {
+        "a": "3.0000",
+        "mu": "1.0000",
+        "sqrt_a_times_estimate": "1.777732",
+        "z": "0.6839"
+      }
+    ],
+    "mc_max_abs_z": "1.5375",
+    "pass": true
+  },
+  "G4_falsifiability": {
+    "foil": "sqrt(2*pi) \u2014 the standard-normal normalizer (Stirling's constant)",
+    "foil_value": "2.506628",
+    "pass": true,
+    "rejected": true,
+    "true_accepted_same_sample": true,
+    "z_foil": "-133.7896",
+    "z_true_same_sample": "0.7004"
+  },
+  "all_pass": true,
+  "claim": "integral_{-inf}^{inf} e^{-x^2} dx = sqrt(pi); even moments M_{2m} = sqrt(pi) (2m-1)!!/2^m",
+  "constants": {
+    "L": "6.0",
+    "M_MAX": 12,
+    "N_MC": 400000,
+    "N_MC_INV": 200000,
+    "Z_ACCEPT": "3.0",
+    "Z_REJECT": "50.0"
+  },
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "seed": 20260717
+}
+
+in_process_double_run: IDENTICAL
+G1_z = exact
+G2_z = 0.7004
+G3_mc_max_abs_z = 1.5375 (exact_mismatches=0)
+G4_z_foil = -133.7896  (G4_z_true_same_sample = 0.7004)
+all_pass = True  decision = PASS
+results_sha256 = f8d553495590f7e0dc52d702e6b3dbb813464b4b48e8bc3a159f140b1e88c0d8
