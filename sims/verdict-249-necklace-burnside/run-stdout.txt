@@ -1,0 +1,118 @@
+{
+  "all_gates_pass": true,
+  "claim": "necklace_burnside: N_k(n) == (1/n) sum_{d|n} phi(d) k^(n/d)",
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "gates": {
+    "G1_exact_orbit_count": {
+      "headline_fraction_repr": "Fraction(130, 1)",
+      "headline_reduces_to": 130,
+      "name": "exact closed form == brute == expected",
+      "ok": true,
+      "panel": [
+        {
+          "all_agree": true,
+          "brute_orbit_count": 130,
+          "burnside_fraction": "130",
+          "burnside_int": 130,
+          "denominator_is_1": true,
+          "expected": 130,
+          "k": 3,
+          "n": 6
+        },
+        {
+          "all_agree": true,
+          "brute_orbit_count": 6,
+          "burnside_fraction": "6",
+          "burnside_int": 6,
+          "denominator_is_1": true,
+          "expected": 6,
+          "k": 2,
+          "n": 4
+        },
+        {
+          "all_agree": true,
+          "brute_orbit_count": 8,
+          "burnside_fraction": "8",
+          "burnside_int": 8,
+          "denominator_is_1": true,
+          "expected": 8,
+          "k": 2,
+          "n": 5
+        },
+        {
+          "all_agree": true,
+          "brute_orbit_count": 14,
+          "burnside_fraction": "14",
+          "burnside_int": 14,
+          "denominator_is_1": true,
+          "expected": 14,
+          "k": 2,
+          "n": 6
+        },
+        {
+          "all_agree": true,
+          "brute_orbit_count": 24,
+          "burnside_fraction": "24",
+          "burnside_int": 24,
+          "denominator_is_1": true,
+          "expected": 24,
+          "k": 3,
+          "n": 4
+        }
+      ]
+    },
+    "G2_montecarlo_agreement": {
+      "n_hat": 129.934834,
+      "name": "MC estimator agrees with N",
+      "ok": true,
+      "pass_if": "abs(z) < Z_ACCEPT",
+      "se": 0.07738129,
+      "target": 130,
+      "trials": 400000,
+      "z": -0.842145,
+      "z_accept": 3.0
+    },
+    "G3_invariance_relabel": {
+      "checks": [
+        {
+          "brute_orbit_count": 130,
+          "invariant": true,
+          "k": 3,
+          "n": 6,
+          "relabeled_orbit_count": 130
+        },
+        {
+          "brute_orbit_count": 8,
+          "invariant": true,
+          "k": 2,
+          "n": 5,
+          "relabeled_orbit_count": 8
+        }
+      ],
+      "name": "orbit count invariant to colour relabel",
+      "ok": true,
+      "relabel": "cyclic +1 (mod k) on every bead"
+    },
+    "G4_falsifiability_naive": {
+      "n_hat": 129.934834,
+      "n_naive": 121.5,
+      "naive_claim": "N == k^n / n (divide by group order, ignores non-free orbits)",
+      "name": "naive N == k^n/n rejected",
+      "ok": true,
+      "pass_if": "abs(z_reject_stat) >= Z_REJECT (naive rule refuted)",
+      "z_reject": 6.0,
+      "z_reject_stat": 109.003526
+    }
+  },
+  "headline": {
+    "N_exact": 130,
+    "k": 3,
+    "k_pow_n": 729,
+    "n": 6
+  },
+  "seed": 20260717
+}
+in_process_double_run: IDENTICAL
+results_sha256: 4ce987eb3da551811389d54d5d70f72ec27cadcd8600efc73320ad9860938ece
+decision: PASS
