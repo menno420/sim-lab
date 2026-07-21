@@ -1,0 +1,177 @@
+{
+  "G1_exact_identity": {
+    "anchor_mismatches": 0,
+    "anchors": {
+      "(1,0)": "1/1",
+      "(10,7)": "11/4",
+      "(2,1)": "3/2",
+      "(3,2)": "2/1"
+    },
+    "battery_size": 12,
+    "head_exact": "101/31",
+    "head_naive": "10/3",
+    "max_discrepancy": "0",
+    "mismatches": 0,
+    "pass": true,
+    "rows": [
+      {
+        "E": "1/1",
+        "E_float": "1.0000000000",
+        "m": 1,
+        "n": 0
+      },
+      {
+        "E": "3/2",
+        "E_float": "1.5000000000",
+        "m": 2,
+        "n": 1
+      },
+      {
+        "E": "2/1",
+        "E_float": "2.0000000000",
+        "m": 3,
+        "n": 2
+      },
+      {
+        "E": "2/1",
+        "E_float": "2.0000000000",
+        "m": 5,
+        "n": 3
+      },
+      {
+        "E": "11/4",
+        "E_float": "2.7500000000",
+        "m": 10,
+        "n": 7
+      },
+      {
+        "E": "1/1",
+        "E_float": "1.0000000000",
+        "m": 13,
+        "n": 0
+      },
+      {
+        "E": "17/9",
+        "E_float": "1.8888888889",
+        "m": 16,
+        "n": 8
+      },
+      {
+        "E": "24/7",
+        "E_float": "3.4285714286",
+        "m": 23,
+        "n": 17
+      },
+      {
+        "E": "51/16",
+        "E_float": "3.1875000000",
+        "m": 50,
+        "n": 35
+      },
+      {
+        "E": "101/31",
+        "E_float": "3.2580645161",
+        "m": 100,
+        "n": 70
+      },
+      {
+        "E": "43/11",
+        "E_float": "3.9090909091",
+        "m": 128,
+        "n": 96
+      },
+      {
+        "E": "129/29",
+        "E_float": "4.4482758621",
+        "m": 257,
+        "n": 200
+      }
+    ],
+    "z": null,
+    "z_note": "exact"
+  },
+  "G2_mc_agreement": {
+    "E_exact": "101/31",
+    "E_exact_float": "3.2580645161",
+    "iid_no_thinning": true,
+    "m": 100,
+    "mean_hat": "3.2596000000",
+    "n": 70,
+    "n_trials": 200000,
+    "pass": true,
+    "sample_std": "2.6242450864",
+    "z": "0.2616711626"
+  },
+  "G3_invariance_robustness": {
+    "config_A": {
+      "mean_hat": "3.2600450000",
+      "occupied": "first_n_slots",
+      "z": "0.3374925104"
+    },
+    "config_B": {
+      "mean_hat": "3.2516050000",
+      "occupied": "fixed_pseudorandom_subset",
+      "z": "-1.1046610225"
+    },
+    "convergence": {
+      "alpha": "7/10",
+      "approaches_limit": true,
+      "below_limit": true,
+      "limit": "10/3",
+      "monotone_increasing": true,
+      "ms": [
+        10,
+        100,
+        1000,
+        10000,
+        100000
+      ],
+      "vals": [
+        "11/4",
+        "101/31",
+        "143/43",
+        "10001/3001",
+        "100001/30001"
+      ]
+    },
+    "pass": true,
+    "z_invariance_AB": "1.0187955206"
+  },
+  "G4_falsifiability": {
+    "exact_value": "101/31",
+    "naive_claim": "expected probes = 1/(1-alpha) exactly at finite (m,n)",
+    "naive_value": "10/3",
+    "naive_value_float": "3.3333333333",
+    "pass": true,
+    "rejected": true,
+    "same_sample_agrees_exact": true,
+    "z_abs": "12.5653466132"
+  },
+  "all_pass": true,
+  "claim": "Open-addressing hash table under uniform hashing (each key's probe sequence is a uniformly random permutation of all m slots): with m slots and n occupied (alpha=n/m), the expected probes in an UNSUCCESSFUL search is exactly (m+1)/(m-n+1), converging monotonically to 1/(1-alpha) as m,n -> infinity at fixed alpha.",
+  "first_failing_gate": null,
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "m_head": 100,
+  "n_head": 70,
+  "n_inv": 200000,
+  "n_trials": 200000,
+  "proposal": 245,
+  "seed": 20260717,
+  "z_accept": "3.0000000000",
+  "z_reject": "3.0000000000"
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+in_process_double_run: IDENTICAL
+all_pass: True
+first_failing_gate: None
+results_sha256=98d7398935db83b93f4e5b71ef4393abf487d3bc4371018d0d9d16e4f75e1746
