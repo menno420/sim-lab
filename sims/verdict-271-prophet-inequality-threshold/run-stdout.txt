@@ -1,0 +1,123 @@
+{
+  "G1_exact": {
+    "checks": [
+      {
+        "E_alg": "1/1",
+        "E_max": "5/4",
+        "guarantee_ge_half": true,
+        "instance": "generic",
+        "ratio": "4/5",
+        "tau": "5/8"
+      },
+      {
+        "E_alg": "1/1",
+        "E_max": "3/2",
+        "guarantee_ge_half": true,
+        "instance": "tight_M2",
+        "ratio": "2/3",
+        "tau": "3/4"
+      },
+      {
+        "E_alg": "1/1",
+        "E_max": "5/3",
+        "guarantee_ge_half": true,
+        "instance": "tight_M3",
+        "ratio": "3/5",
+        "tau": "5/6"
+      },
+      {
+        "E_alg": "1/1",
+        "E_max": "7/4",
+        "guarantee_ge_half": true,
+        "instance": "tight_M4",
+        "ratio": "4/7",
+        "tau": "7/8"
+      },
+      {
+        "E_alg": "1/1",
+        "E_max": "9/5",
+        "guarantee_ge_half": true,
+        "instance": "tight_M5",
+        "ratio": "5/9",
+        "tau": "9/10"
+      },
+      {
+        "E_alg": "10/1",
+        "E_max": "10/1",
+        "guarantee_ge_half": true,
+        "instance": "teeth_1_then_10",
+        "ratio": "1/1",
+        "tau": "5/1"
+      }
+    ],
+    "pass": true,
+    "threshold_necessity_takefirst_ratio": "1/10"
+  },
+  "G2_mc_agreement": {
+    "N": 200000,
+    "exact_E_alg": "1/1",
+    "instance": "generic",
+    "mc_mean": "0.9969950000",
+    "pass": true,
+    "se": "0.0015786481",
+    "seed": 20260721,
+    "z": "-1.903527"
+  },
+  "G3_invariance": {
+    "base_ratio": "4/5",
+    "lambdas": [
+      {
+        "lambda": "2/1",
+        "ok": true,
+        "ratio": "4/5"
+      },
+      {
+        "lambda": "3/1",
+        "ok": true,
+        "ratio": "4/5"
+      },
+      {
+        "lambda": "100/1",
+        "ok": true,
+        "ratio": "4/5"
+      },
+      {
+        "lambda": "1/7",
+        "ok": true,
+        "ratio": "4/5"
+      }
+    ],
+    "pass": true
+  },
+  "G4_falsifiability": {
+    "foil": "gambler matches prophet: E[ALG]==E[max]",
+    "foil_rejected": true,
+    "foil_target": "1.2500000000",
+    "monotone_toward_half": true,
+    "pass": true,
+    "tight_family_ratios": [
+      {
+        "M": 2,
+        "ratio": "2/3"
+      },
+      {
+        "M": 3,
+        "ratio": "3/5"
+      },
+      {
+        "M": 4,
+        "ratio": "4/7"
+      },
+      {
+        "M": 5,
+        "ratio": "5/9"
+      }
+    ],
+    "z_foil": "-160.266876"
+  },
+  "all_gates_pass": true,
+  "claim": "prophet inequality: single-threshold rule with tau=E[max]/2 accepting the first X_i>=tau (else the last) satisfies E[ALG]>=(1/2)E[max]; the constant 1/2 is optimal",
+  "first_failing_gate": null,
+  "seed": 20260721
+}
+results_sha256=1c235e4991e2775e0c5813966f6cec313c296580c83a27195b287d9e4e3068fb
