@@ -1,0 +1,46 @@
+{
+  "all_gates_pass": true,
+  "claim": "pooled per-member cost Var = p(1-p)/n, mean = p (insurance risk-pooling law)",
+  "exact": {
+    "cv_sq": "9/100",
+    "sd_pooled_n100": 0.03,
+    "sd_single_member": 0.3,
+    "sqrt_n_reduction": 10.0,
+    "var_naive_comonotonic": "9/100",
+    "var_route_A_direct": "9/10000",
+    "var_route_B_pmf": "9/10000",
+    "var_theory": "9/10000"
+  },
+  "first_failing_gate": null,
+  "gates": {
+    "G1_exact_two_routes_equal": true,
+    "G2_mc_agreement_absz_lt_3": true,
+    "G3_invariance_sigma2_over_n_and_cv_scale": true,
+    "G4_falsify_comonotonic_absz_ge_8": true,
+    "z_naive_reject": -21771.77
+  },
+  "monte_carlo": {
+    "g2_metric_maxabs_z": 1.4513,
+    "mean_lbar": 0.099972,
+    "mean_u_est_var": 0.00090594,
+    "z_mean_vs_p": -0.2994,
+    "z_var_vs_theory": 1.4513
+  },
+  "params": {
+    "inv_ns": [
+      1,
+      10,
+      100,
+      1000
+    ],
+    "m_pools": 100000,
+    "n_pool": 100,
+    "p": "1/10",
+    "severity": 5
+  },
+  "proposal": 238,
+  "seed": 20260717
+}
+results_sha256=1e0520c849597c1b6a4135598ee76617488c49659c1820e1841b255b9115cbbb
+all_gates_pass=True
+first_failing_gate=None
