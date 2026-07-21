@@ -1,0 +1,71 @@
+{
+  "G1_exact_unbiased_variance": {
+    "E2_at_2": "3",
+    "E4_at_2": "10",
+    "Var_at_2": "1",
+    "Var_at_63": "1953",
+    "checked": 405,
+    "mismatches": 0,
+    "n_range": "0..80",
+    "pass": true,
+    "z": "exact"
+  },
+  "G2_mc_agreement": {
+    "M": 300000,
+    "exact_var": "1953.0000",
+    "mean": "62.945547",
+    "n_mc": 63,
+    "pass": true,
+    "sample_sd": "43.937469",
+    "sample_var": "1930.5012",
+    "se": "0.080218",
+    "target": 63,
+    "var_ratio": "0.9885",
+    "z": "-0.6788"
+  },
+  "G3_invariance": {
+    "M2": 300000,
+    "martingale_increment_range": "0..79",
+    "martingale_violations": 0,
+    "mean2": "30.958720",
+    "n_mc2": 31,
+    "pass": true,
+    "se2": "0.039146",
+    "z2": "-1.0545"
+  },
+  "G4_falsifiability": {
+    "mean_foil": "63.945547",
+    "mean_raw_counter": "5.737313",
+    "pass": true,
+    "primary_foil": "forgot the -1 correction: est = 2^C (E = n+1)",
+    "primary_rejected": true,
+    "secondary_foil": "raw counter: est = C (E ~ log2(n))",
+    "secondary_rejected": true,
+    "true_accepted_same_sample": true,
+    "z_foil_primary": "11.7871",
+    "z_secondary_foil": "-36771.5913",
+    "z_true_same_sample": "-0.6788"
+  },
+  "all_pass": true,
+  "claim": "Morris approximate counting: E[2^{C_n}] = n+1 so E[N_hat=2^C-1] = n; E[4^{C_n}] = 1 + 3n(n+1)/2 so Var[N_hat] = n(n-1)/2",
+  "constants": {
+    "M_REPL": 300000,
+    "M_REPL2": 300000,
+    "N_EXACT": 80,
+    "N_MC1": 63,
+    "N_MC2": 31,
+    "Z_ACCEPT": "3.0",
+    "Z_REJECT": "3.0"
+  },
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "seed": 20260721
+}
+
+in_process_double_run: IDENTICAL
+G1_z = exact (checked=405, mismatches=0)
+G2_z = -0.6788  (mean=62.945547)
+G3_z2 = -1.0545 (martingale_violations=0)
+G4_z_foil_primary = 11.7871  (z_secondary_foil = -36771.5913, z_true_same_sample = -0.6788)
+all_pass = True  decision = PASS
+results_sha256 = ade24bf035bcc213d144494660998ed207ddae62b00e0a36879643b5a98239e6
