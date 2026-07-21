@@ -1,0 +1,102 @@
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+anchors g(n): g(0)=1  g(1)=2  g(2)=4  g(3)=7  g(4)=8  g(5)=11  g(6)=13  g(7)=14  g(8)=16
+G1: single_coin_mismatches=0 decomp_mismatches=0 (K=13, 8192 positions)
+G2: p0=1/32 p_hat=0.0310335000 z=-1.7597 (N=2000000)
+G3: disjoint_discrepancies=0 optimal_play_losses=0 pprop_violations=0
+G4: z_foil_A=7832.7060 z_foil_B=1413.6946 (value-level) | p_disagree_A=62318 p_disagree_B=0 | witness_A=[0] witness_B=[1]
+
+all_gates_pass=True first_failing_gate=None decision=PASS
+
+{
+  "G1": {
+    "anchors": {
+      "0": 1,
+      "1": 2,
+      "2": 4,
+      "3": 7,
+      "4": 8,
+      "5": 11,
+      "6": 13,
+      "7": 14,
+      "8": 16
+    },
+    "decomp_mismatches": 0,
+    "decomp_n_positions": 8192,
+    "decomp_slots_K": 13,
+    "pass": true,
+    "seq_matches_odious": true,
+    "single_coin_max_n": 255,
+    "single_coin_mismatches": 0,
+    "z": "exact \u2014 z=n/a"
+  },
+  "G2": {
+    "L": 16,
+    "N": 2000000,
+    "hits": 62067,
+    "n_positions": 65536,
+    "p0_float": "0.0312500000",
+    "p0_frac": "1/32",
+    "p_hat": "0.0310335000",
+    "pass": true,
+    "z": "-1.7597"
+  },
+  "G3": {
+    "disjoint_discrepancies": 0,
+    "disjoint_samples": 400,
+    "optimal_play_losses": 0,
+    "pass": true,
+    "pprop_moves_checked": 74482,
+    "pprop_positions": 400,
+    "pprop_violations": 0,
+    "robust_games": 300
+  },
+  "G4": {
+    "L": 13,
+    "N": 2000000,
+    "f_value_A": "0.9684300000",
+    "f_value_B": "0.4998165000",
+    "foil_A": "g(n)=n (Turning Turtles / plain Nim)",
+    "foil_B": "g(n)=2n+1 (drops odious correction)",
+    "ground_truth": "general mex-DP oracle Grundy value (== XOR closed_g, cross-checked)",
+    "note_foilB_P_coincidence": "foil-B reproduces the true P-set exactly (p_disagree_B=0): XOR(head indices)==0 forces an even count of odious-index heads, so foil-B lands P/N by luck but gets Grundy VALUES wrong",
+    "p_disagree_A": 62318,
+    "p_disagree_B": 0,
+    "pass": true,
+    "single_coin_value_witness": "n=1: true g=2, foil-A says 1, foil-B says 3",
+    "value_disagree_A": 1936860,
+    "value_disagree_B": 999633,
+    "value_witness_A_position": [
+      0
+    ],
+    "value_witness_B_position": [
+      1
+    ],
+    "z_foil_A": "7832.7060",
+    "z_foil_B": "1413.6946",
+    "z_p_A": "253.6182",
+    "z_p_B": "0.0000"
+  },
+  "SEED": 20260717,
+  "all_gates_pass": true,
+  "anchors_g": {
+    "0": 1,
+    "1": 2,
+    "2": 4,
+    "3": 7,
+    "4": 8,
+    "5": 11,
+    "6": 13,
+    "7": 14,
+    "8": 16
+  },
+  "claim": "Mock Turtles coin-turning game: single-coin Grundy value g(n) = odious member of {2n,2n+1} = 2n if popcount(n) odd else 2n+1; position value = XOR of g over heads; P iff nim-sum 0",
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "proposal": 255
+}
+
+results_sha256 = 6b4b3775427d90daea848f4e4c3779ba35ba9e34dab9ee6c906cb6ed33c2f868
