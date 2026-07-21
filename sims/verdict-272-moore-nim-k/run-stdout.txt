@@ -1,0 +1,161 @@
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+anchors (heaps | k -> moore_predicate_P / true outcome):
+        3-5-7|k1: moore_P=False outcome=N  agree=True
+        1-1-1|k2: moore_P= True outcome=P  agree=True
+        2-2-2|k2: moore_P= True outcome=P  agree=True
+          1-1|k2: moore_P=False outcome=N  agree=True
+        7-7-7|k2: moore_P= True outcome=P  agree=True
+        1-2-3|k3: moore_P=False outcome=N  agree=True
+
+G1: positions_checked=7014 mismatches=0 (k1=4680, k2=1554, k3=780)
+G2: f=1771561/1073741824 (~0.001650) p_hat=0.001765 z=1.268354 (N=200000)
+G3: collapse_violations=0 perm_violations=0 pad_violations=0
+G4: foil_error_rate=0.345800 z_foil=51.409363 theorem_errors=0 (N=5000)
+
+all_gates_pass=True first_failing_gate=None decision=PASS
+
+{
+  "G1": {
+    "direction": "theorem <=> true game outcome (exhaustive, k in {1,2,3})",
+    "mismatches": 0,
+    "pass": true,
+    "per_k": {
+      "1": {
+        "H_bound": 8,
+        "M_heaps": 4,
+        "mismatches": 0,
+        "positions_checked": 4680
+      },
+      "2": {
+        "H_bound": 6,
+        "M_heaps": 4,
+        "mismatches": 0,
+        "positions_checked": 1554
+      },
+      "3": {
+        "H_bound": 5,
+        "M_heaps": 4,
+        "mismatches": 0,
+        "positions_checked": 780
+      }
+    },
+    "positions_checked": 7014
+  },
+  "G2": {
+    "N": 200000,
+    "b": 6,
+    "direction": "sampled moore_predicate frequency vs independent exact P-fraction",
+    "f_float": "0.001650",
+    "f_frac": "1771561/1073741824",
+    "hits": 353,
+    "k": 2,
+    "m": 5,
+    "p_hat": "0.001765",
+    "pass": true,
+    "z": "1.268354"
+  },
+  "G3": {
+    "collapse_checked": 4680,
+    "collapse_violations": 0,
+    "direction": "structural symmetries (k=1 collapse to X=0; permutation + zero-pad)",
+    "invariance_positions": 400,
+    "pad_violations": 0,
+    "pass": true,
+    "perm_violations": 0,
+    "total_violations": 0
+  },
+  "G4": {
+    "H_bound": 4,
+    "N": 5000,
+    "direction": "refute a plausible-but-wrong rule (ordinary Nim applied to k=2)",
+    "foil": "ordinary-Nim rule: predict P <=> nim-sum XOR == 0 (columns mod 2)",
+    "foil_error_rate": "0.345800",
+    "foil_errors": 1729,
+    "k": 2,
+    "m": 4,
+    "pass": true,
+    "theorem_errors": 0,
+    "z_foil": "51.409363"
+  },
+  "SEED": 20260717,
+  "all_gates_pass": true,
+  "anchors": {
+    "1-1-1|k2": {
+      "agree": true,
+      "heaps": [
+        1,
+        1,
+        1
+      ],
+      "k": 2,
+      "moore_predicate_P": true,
+      "outcome": "P"
+    },
+    "1-1|k2": {
+      "agree": true,
+      "heaps": [
+        1,
+        1
+      ],
+      "k": 2,
+      "moore_predicate_P": false,
+      "outcome": "N"
+    },
+    "1-2-3|k3": {
+      "agree": true,
+      "heaps": [
+        1,
+        2,
+        3
+      ],
+      "k": 3,
+      "moore_predicate_P": false,
+      "outcome": "N"
+    },
+    "2-2-2|k2": {
+      "agree": true,
+      "heaps": [
+        2,
+        2,
+        2
+      ],
+      "k": 2,
+      "moore_predicate_P": true,
+      "outcome": "P"
+    },
+    "3-5-7|k1": {
+      "agree": true,
+      "heaps": [
+        3,
+        5,
+        7
+      ],
+      "k": 1,
+      "moore_predicate_P": false,
+      "outcome": "N"
+    },
+    "7-7-7|k2": {
+      "agree": true,
+      "heaps": [
+        7,
+        7,
+        7
+      ],
+      "k": 2,
+      "moore_predicate_P": true,
+      "outcome": "P"
+    }
+  },
+  "claim": "Moore's Nim (Nim_k), normal play: a position is a P-position IFF every binary column-sum c_j = \u03a3_i bit_j(a_i) \u2261 0 (mod k+1); for k=1 this is ordinary Nim (nim-sum XOR == 0)",
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "proposal": 259
+}
+
+results_sha256 = da147d54d970d71754baa2994189c9e5f73cfbbf1ad36c7b2366f9ddf870402d
+
+determinism: in-process double-run identical = True
