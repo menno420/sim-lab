@@ -1,0 +1,162 @@
+{
+  "all_gates_pass": true,
+  "claim": "min_variance_two_fund: for n assets with SPD covariance Sigma the global minimum-variance portfolio is w*=Sigma^-1 1/(1^T Sigma^-1 1) with variance 1/(1^T Sigma^-1 1); for Sigma=[[4,1/2],[1/2,1]] w*=(1/8,7/8), sigma*^2=15/16; beats equal-weight (3/2) and the best single asset (1); efficient weights are affine in target return (two-fund separation)",
+  "decision": "PASS",
+  "exact": {
+    "sigma_star_sq": "15/16",
+    "w1_star": "1/8",
+    "w2_star": "7/8"
+  },
+  "first_failing_gate": null,
+  "gates": {
+    "G1_exact_identity": {
+      "closed_form_matches_matrix_2asset": true,
+      "error_count": 0,
+      "name": "closed form == matrix GMV; FOC equalised (exact Fraction)",
+      "ok": true,
+      "panel": [
+        {
+          "Sigma_w": [
+            "15/16",
+            "15/16"
+          ],
+          "foc_equalised": true,
+          "matrix": "2asset",
+          "var": "15/16",
+          "w": [
+            "1/8",
+            "7/8"
+          ],
+          "weights_sum_one": true
+        },
+        {
+          "Sigma_w": [
+            "1",
+            "1",
+            "1"
+          ],
+          "foc_equalised": true,
+          "matrix": "3asset",
+          "var": "1",
+          "w": [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          "weights_sum_one": true
+        },
+        {
+          "Sigma_w": [
+            "25/19",
+            "25/19",
+            "25/19",
+            "25/19"
+          ],
+          "foc_equalised": true,
+          "matrix": "4asset",
+          "var": "25/19",
+          "w": [
+            "4/19",
+            "2/19",
+            "3/19",
+            "10/19"
+          ],
+          "weights_sum_one": true
+        }
+      ],
+      "pass_if": "closed form == matrix form AND (Sigma w*)_i == sigma*^2 for all i, all panels",
+      "sigma_star_sq": "15/16",
+      "w1_star": "1/8",
+      "w2_star": "7/8"
+    },
+    "G2_montecarlo_agreement": {
+      "n": 200000,
+      "name": "GMV sample variance agrees with sigma*^2",
+      "ok": true,
+      "pass_if": "abs(z) < Z_ACCEPT (GMV sample variance agrees with sigma*^2)",
+      "s2_gmv_hat": "0.9389802396",
+      "sigma_star_sq_float": "0.9375000000",
+      "z": "0.4992990385",
+      "z_accept": 3.0
+    },
+    "G3_invariance": {
+      "name": "scale-equivariance + two-fund separation",
+      "ok": true,
+      "pass_if": "scale-equivariance exact + MC z identical AND two-fund affine exact AND GMV on frontier",
+      "scale": {
+        "k": "4",
+        "mc_scale_identical": true,
+        "mc_z_base": "0.4992990385",
+        "mc_z_scaled": "0.4992990385",
+        "var_base": "15/16",
+        "var_scaled": "15/4",
+        "var_scales_by_k": true,
+        "w_base": [
+          "1/8",
+          "7/8"
+        ],
+        "weights_identical_under_kSigma": true
+      },
+      "two_fund": {
+        "affine_combo_exact": true,
+        "alpha": "1/2",
+        "gmv_recovered_on_frontier": true,
+        "w_combo": [
+          "1/2",
+          "0",
+          "1/2"
+        ],
+        "w_target_mC": [
+          "1/2",
+          "0",
+          "1/2"
+        ]
+      }
+    },
+    "G4_falsifiability": {
+      "naive_equal_weight": {
+        "claim": "equal weights 1/n achieve the minimum variance",
+        "distinct": true,
+        "eq_var_exact": "3/2",
+        "gmv_var_exact": "15/16",
+        "rejected": true,
+        "s2_eq_hat": "1.5039217987",
+        "z_reject": 6.0,
+        "z_vs_gmv": "191.0595200324"
+      },
+      "naive_single_asset": {
+        "asset_var_exact": "1",
+        "claim": "hold the single lowest-variance asset (asset 2, var 1)",
+        "distinct": true,
+        "gmv_var_exact": "15/16",
+        "rejected": true,
+        "s2_a2_hat": "1.0011461920",
+        "z_reject": 6.0,
+        "z_vs_gmv": "21.4684726468"
+      },
+      "name": "equal-weight and single-asset both rejected",
+      "ok": true,
+      "pass_if": "eq_var != gmv AND asset_var != gmv AND both |z| >= Z_REJECT on same sample"
+    }
+  },
+  "params": {
+    "mc_n": 200000,
+    "scale_k": "4",
+    "sigma2": [
+      [
+        "4",
+        "1/2"
+      ],
+      [
+        "1/2",
+        "1"
+      ]
+    ],
+    "z_accept": 3.0,
+    "z_reject": 6.0
+  },
+  "seed": 20260717
+}
+in_process_double_run: IDENTICAL
+results_sha256: 3c1ec97050d0ca481e084976055ce3ea0e435c86b794e909507757e3eedf3f9c
+decision: PASS
