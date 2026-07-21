@@ -1,0 +1,297 @@
+{
+  "G1_exact": {
+    "headline_ok": true,
+    "instances": [
+      {
+        "all_winners_same_price": true,
+        "k": 2,
+        "mismatches": 0,
+        "per_winner": [
+          {
+            "W_with_i_others": "8/1",
+            "W_without_i": "14/1",
+            "agent_id": 0,
+            "equals_uniform_price": true,
+            "externality_payment": "6/1",
+            "value": "10/1"
+          },
+          {
+            "W_with_i_others": "10/1",
+            "W_without_i": "16/1",
+            "agent_id": 1,
+            "equals_uniform_price": true,
+            "externality_payment": "6/1",
+            "value": "8/1"
+          }
+        ],
+        "revenue": "12/1",
+        "uniform_price": "6/1",
+        "uniform_price_is_kplus1_highest": true,
+        "valuations": [
+          10,
+          8,
+          6,
+          4,
+          2
+        ],
+        "winner_ids": [
+          0,
+          1
+        ],
+        "winner_values": [
+          10,
+          8
+        ]
+      },
+      {
+        "all_winners_same_price": true,
+        "k": 2,
+        "mismatches": 0,
+        "per_winner": [
+          {
+            "W_with_i_others": "8/1",
+            "W_without_i": "16/1",
+            "agent_id": 0,
+            "equals_uniform_price": true,
+            "externality_payment": "8/1",
+            "value": "10/1"
+          },
+          {
+            "W_with_i_others": "10/1",
+            "W_without_i": "18/1",
+            "agent_id": 1,
+            "equals_uniform_price": true,
+            "externality_payment": "8/1",
+            "value": "8/1"
+          }
+        ],
+        "revenue": "16/1",
+        "uniform_price": "8/1",
+        "uniform_price_is_kplus1_highest": true,
+        "valuations": [
+          10,
+          8,
+          8,
+          4,
+          2
+        ],
+        "winner_ids": [
+          0,
+          1
+        ],
+        "winner_values": [
+          10,
+          8
+        ]
+      },
+      {
+        "all_winners_same_price": true,
+        "k": 1,
+        "mismatches": 0,
+        "per_winner": [
+          {
+            "W_with_i_others": "0/1",
+            "W_without_i": "8/1",
+            "agent_id": 0,
+            "equals_uniform_price": true,
+            "externality_payment": "8/1",
+            "value": "10/1"
+          }
+        ],
+        "revenue": "8/1",
+        "uniform_price": "8/1",
+        "uniform_price_is_kplus1_highest": true,
+        "valuations": [
+          10,
+          8,
+          6,
+          4,
+          2
+        ],
+        "winner_ids": [
+          0
+        ],
+        "winner_values": [
+          10
+        ]
+      },
+      {
+        "all_winners_same_price": true,
+        "k": 3,
+        "mismatches": 0,
+        "per_winner": [
+          {
+            "W_with_i_others": "14/1",
+            "W_without_i": "18/1",
+            "agent_id": 0,
+            "equals_uniform_price": true,
+            "externality_payment": "4/1",
+            "value": "10/1"
+          },
+          {
+            "W_with_i_others": "16/1",
+            "W_without_i": "20/1",
+            "agent_id": 1,
+            "equals_uniform_price": true,
+            "externality_payment": "4/1",
+            "value": "8/1"
+          },
+          {
+            "W_with_i_others": "18/1",
+            "W_without_i": "22/1",
+            "agent_id": 2,
+            "equals_uniform_price": true,
+            "externality_payment": "4/1",
+            "value": "6/1"
+          }
+        ],
+        "revenue": "12/1",
+        "uniform_price": "4/1",
+        "uniform_price_is_kplus1_highest": true,
+        "valuations": [
+          10,
+          8,
+          6,
+          4,
+          2
+        ],
+        "winner_ids": [
+          0,
+          1,
+          2
+        ],
+        "winner_values": [
+          10,
+          8,
+          6
+        ]
+      }
+    ],
+    "pass": true,
+    "single_item_recovers_second_price": true,
+    "total_mismatches": 0,
+    "triple_ok": true,
+    "z": null,
+    "z_note": "exact"
+  },
+  "G2_mc_agreement": {
+    "autocorrelated_needs_batch_means": false,
+    "enum_profiles": 7776,
+    "exact_mean_true": "7/1",
+    "exact_mean_true_float": "7.000000",
+    "iid_se_is_honest": true,
+    "n_profiles": 200000,
+    "pass": true,
+    "sample_mean": "700641/100000",
+    "sample_mean_float": "7.006410",
+    "sample_std_float": "2.351116",
+    "z": "1.2193"
+  },
+  "G3_invariance": {
+    "own_report_dsic": {
+      "distinct_payments": [
+        "6/1"
+      ],
+      "highest_losing_bid": "6/1",
+      "invariant": true,
+      "mismatches": 0,
+      "winner_pos": 1,
+      "winning_reports": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    "pass": true,
+    "relabel_equivariance": {
+      "mismatches": 0,
+      "payment_mismatches": 0,
+      "permutation": [
+        2,
+        0,
+        3,
+        1,
+        4
+      ],
+      "winners_equivariant": true,
+      "winners_original": [
+        0,
+        1
+      ],
+      "winners_relabelled": [
+        0,
+        2
+      ]
+    },
+    "total_mismatches": 0,
+    "z": null,
+    "z_note": "exact"
+  },
+  "G4_falsifiability": {
+    "exact_mean_foil": "5831/648",
+    "exact_mean_foil_float": "8.998457",
+    "foil": "uniform price = lowest WINNING bid (k-th highest = 2nd highest)",
+    "pass": true,
+    "rejected": true,
+    "same_sample_agrees_true": true,
+    "z_foil": "-378.9138"
+  },
+  "all_pass": true,
+  "claim": "Multi-unit single-demand VCG (Clarke pivot): k units to n unit-demand bidders. Efficient allocation = the k highest-value bidders; each winner's Clarke-pivot payment = its externality on others = W_{-i}(without i) - W_{-i}(with i) = the SAME uniform price = the (k+1)-th highest valuation (highest losing bid); truthful reporting is a dominant strategy; expected revenue = k*E[V_{(k+1):n}]. On n=5,k=2,v=(10,8,6,4,2): winners {10,8}, uniform price 6, revenue 12. At k=1 it recovers single-item second-price (price = 2nd highest).",
+  "first_failing_gate": null,
+  "fixed_instance": {
+    "k": 2,
+    "valuations": [
+      10,
+      8,
+      6,
+      4,
+      2
+    ]
+  },
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4": true
+  },
+  "mc_face": 6,
+  "mc_k": 2,
+  "mc_n": 200000,
+  "mc_n_bidders": 5,
+  "proposal": 250,
+  "seed": 20260717,
+  "z_accept": "3.0000",
+  "z_reject": "6.0000"
+}
+
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+in_process_double_run: IDENTICAL
+all_pass: True
+first_failing_gate: None
+results_sha256=7b0758bc85433ed89f640bbe47aba2a4dd63bf337ab9b3a0a19c6a4497319f2b
