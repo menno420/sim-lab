@@ -1,0 +1,101 @@
+G1: PASS
+G2: PASS
+G3: PASS
+G4: PASS
+
+anchors:
+  bamboo(3,5,7) grundy=1 colon=1 xor=1
+  Y-tree        grundy=1 colon=1
+  explicit tree grundy=4 colon=4
+
+all_gates_pass=True first_failing_gate=None
+
+{
+  "G1": {
+    "max_edges_reached": 34,
+    "mismatches": 0,
+    "n_exhaustive_trees": 200,
+    "n_positions_checked": 800,
+    "pass": true
+  },
+  "G2": {
+    "N": 200000,
+    "hits": 16496,
+    "model": {
+      "k": 3,
+      "maxlen": 8,
+      "n_forests": 512
+    },
+    "p0_count": 42,
+    "p0_float": 0.08203125,
+    "p0_frac": "21/256",
+    "p_hat": 0.08248,
+    "pass": true,
+    "z": 0.7313341378
+  },
+  "G3": {
+    "games_played": 360,
+    "n_relabel_trees": 200,
+    "optimal_play_losses": 0,
+    "pass": true,
+    "relabel_discrepancies": 0
+  },
+  "G4": {
+    "pass": true,
+    "q_A": 0.5,
+    "q_A_frac": "1/2",
+    "q_B": 0.33203125,
+    "q_B_frac": "85/256",
+    "z_A": -373.4412407863,
+    "z_B": -236.9775442593,
+    "z_true_agreement": 0.7313341378
+  },
+  "SEED": 20260717,
+  "all_gates_pass": true,
+  "anchors": {
+    "bamboo_3_5_7": {
+      "colon": 1,
+      "grundy": 1,
+      "xor": 1
+    },
+    "explicit_tree": {
+      "colon": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "grundy": 4
+    },
+    "y_tree": {
+      "colon": 1,
+      "grundy": 1
+    }
+  },
+  "claim": "Green Hackenbush == Nim (colon principle)",
+  "first_failing_gate": null,
+  "proposal": 247
+}
+
+results_sha256=f1967eac6a0158fb4b1546facd309355577f251033067167296f6b921903c0b9
