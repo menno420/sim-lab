@@ -1,0 +1,73 @@
+{
+  "SEED": 20260717,
+  "abs_elasticity": "5/3",
+  "all_pass": true,
+  "claim": "monopoly optimal markup = reciprocal elasticity: linear inverse demand p(q)=a\u2212b\u00b7q, constant MC c, gives q*=(a\u2212c)/(2b), p*=(a+c)/2, pi*=(a\u2212c)^2/(4b), and Lerner L=(p*\u2212c)/p*=(a\u2212c)/(a+c)=1/|eps*|; instance a=1,b=1,c=1/4",
+  "decision": "PASS",
+  "first_failing_gate": null,
+  "g1": {
+    "all_exact_pass": true,
+    "foc_cross_check": "MR(q*) == c",
+    "n_triples": 5,
+    "pass": true,
+    "reciprocal_cross_check": "L == 1/|eps*| == (a-c)/(a+c)",
+    "sweep_pass": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "z": "exact \u2014 z=n/a"
+  },
+  "g2": {
+    "n": 2000000,
+    "n_buy": 749815,
+    "pass": true,
+    "z": "-0.2702"
+  },
+  "g3": {
+    "all_exact_pass": true,
+    "lambda_pass": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "lambdas": [
+      "2/1",
+      "3/1",
+      "100/1",
+      "1/7"
+    ],
+    "pass": true,
+    "q_star_invariant": true,
+    "z": "exact \u2014 z=n/a"
+  },
+  "g4": {
+    "exact_dominates": true,
+    "exact_gap": "1/64",
+    "foil": "revenue-maximisation == profit-maximisation (price at p_rev=a/2, ignores cost) \u2014 rejected: profit-max strictly dominates",
+    "n": 2000000,
+    "pass": true,
+    "z_foil": "189.8672"
+  },
+  "lerner": "3/5",
+  "p_star": "5/8",
+  "params": {
+    "a": "1/1",
+    "b": "1/1",
+    "c": "1/4"
+  },
+  "pi_star": "9/64",
+  "q_star": "3/8"
+}
+
+in_process_double_run: IDENTICAL
+p* = 5/8  q* = 3/8  pi* = 9/64  L = 3/5  1/|eps*| = 3/5 (=(a-c)/(a+c))
+G1 = exact — z=n/a  sweep_pass = [True, True, True, True, True]
+G2_z = -0.2702  (n_buy = 749815/2000000)
+G3 = exact — z=n/a  lambda_pass = [True, True, True, True]
+G4_z_foil = 189.8672  (exact_gap = 1/64)
+all_pass = True  decision = PASS
+results_sha256 = 025706848687e612a0f1b6d9e5c6bef64c9e0fc09748dd9cc93ee7626003f0c3
